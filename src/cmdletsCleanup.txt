@@ -1,0 +1,669 @@
+V0.1
+Fix all operation IDs
+
+Function        Add-ZNSegmentCustom                                0.0.1      ZN.AccessOrchestrator     Group?
+Function        Edit-ZNSegmentCustomGroup                          0.0.1      ZN.AccessOrchestrator     Edit?
+Function        Export-ZNSegmentAsset                              0.0.1      ZN.AccessOrchestrator     Remove for now
+Function        Export-ZNSegmentAudit                              0.0.1      ZN.AccessOrchestrator     Remove for now
+Function        Export-ZNSegmentEntityAnalysis                     0.0.1      ZN.AccessOrchestrator     Remove for now
+Function        Export-ZNSegmentGroup                              0.0.1      ZN.AccessOrchestrator     Remove for now
+Function        Export-ZNSegmentInboundAllow                       0.0.1      ZN.AccessOrchestrator     Remove for now
+Function        Export-ZNSegmentInboundBlock                       0.0.1      ZN.AccessOrchestrator     Remove for now
+Function        Export-ZNSegmentNetworkActivity                    0.0.1      ZN.AccessOrchestrator     Remove for now
+Function        Export-ZNSegmentOutboundAllow                      0.0.1      ZN.AccessOrchestrator     Remove for now
+Function        Export-ZNSegmentOutboundBlock                      0.0.1      ZN.AccessOrchestrator     Remove for now
+Function        Export-ZNSegmentUser                               0.0.1      ZN.AccessOrchestrator     Remove for now
+Function        Get-ZNSegmentAdGroup                               0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAllGroup                              0.0.1      ZN.AccessOrchestrator     Changed Schema Tag
+Function        Get-ZNSegmentAsset                                 0.0.1      ZN.AccessOrchestrator     List, then you have to call entity.
+Function        Get-ZNSegmentAssetFilter                           0.0.1      ZN.AccessOrchestrator     Hide filters cmdlets?
+Function        Get-ZNSegmentAssetMonitoredFilter                  0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetOtFilter                         0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetProtectedFilter                  0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetQueuedFilter                     0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetsMonitored                       0.0.1      ZN.AccessOrchestrator     
+Function        Get-ZNSegmentAssetsOt                              0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetsProtected                       0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetsQueued                          0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetStateStatistics                  0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetStatistics                       0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAudit                                 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAuditFilter                           0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentCustomGroup                           0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentCustomGroupCandidate                  0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentEntity                                0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentEntityAnalysis                        0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentEntityAncestor                        0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentEnvironmentDeployment                 0.0.1      ZN.AccessOrchestrator  Rename to trust ??
+Function        Get-ZNSegmentGroupCustomFilter                     0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentGroupFilter                           0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentGroupsTag                             0.0.1      ZN.AccessOrchestrator change to TagGroups
+Function        Get-ZNSegmentGroupStatistics                       0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentGroupSuccessor                        0.0.1      ZN.AccessOrchestrator what is succesor
+Function        Get-ZNSegmentGroupSuccessorFilter                  0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentGroupSystemFilter                     0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentGroupTagFilter                        0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundAllow                          0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundAllowExcludedLocalCandidate    0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundAllowLocalCandidate            0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundAllowRemoteCandidate           0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundBlock                          0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundBlockExcludedLocalCandidate    0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundBlockLocalCandidate            0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundBlockRemoteCandidate           0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaPoliciesInbound                    0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaPolicy                             0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaPolicyMfaMethod                    0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaPolicySourceCandidate              0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaPolicySourceUserCandidate          0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentNetworkActivity                       0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentNetworkActivityFilter                 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundAllow                         0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundAllowExcludedLocalCandidate   0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundAllowLocalCandidate           0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundAllowRemoteCandidate          0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundBlock                         0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundBlockExcludedLocalCandidate   0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundBlockLocalCandidate           0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundBlockRemoteCandidate          0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentProtectionPolicy                      0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentProtectionPolicyGroupCandidate        0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePoliciesOutbound              0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePoliciesStatistics            0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyDistribution            0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyInboundDestinationCand… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyInboundDestinationCand… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyInboundFilter           0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyInboundSimulateDestina… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyInboundSimulateSourceC… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyInboundSimulateSourceU… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyInboundSourceCandidate… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyInboundSourceUserCandi… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyOutboundDestinationCan… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyOutboundDestinationCan… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyOutboundFilter          0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyOutboundMfaMethod       0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyOutboundSimulateDestin… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyOutboundSimulateSource… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyOutboundSimulateSource… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyOutboundSourceCandidate 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyOutboundSourceCandidat… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyOutboundSourceUserCand… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePolicyOutboundSourceUserCand… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRuleDistrubtion                       0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRuleHistory                           0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRuleInboundAllowFilter                0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRuleInboundAllowLocalCandidateFilter  0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRuleInboundAllowRemoteCandidateFilter 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRuleInboundBlockFilter                0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRuleInboundBlockLocalCandidateFilter  0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRuleInboundBlockRemoteCandidateFilter 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRuleOutboundAllowFilter               0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRuleOutboundAllowLocalCandidateFilter 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRuleOutboundAllowRemoteCandidateFilt… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRuleOutboundBlockFilter               0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRuleOutboundBlockLocalCandidateFilter 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRuleOutboundBlockRemoteCandidateFilt… 0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRulesStatistics                       0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentSettingRoleCandidate                  0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentSettingsAuth                          0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentSettingsRole                          0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentSystemGroup                           0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentUser                                  0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentUserFilter                            0.0.1      ZN.AccessOrchestrator
+Function        Get-ZNSegmentUserStatistics                        0.0.1      ZN.AccessOrchestrator
+Function        Invoke-ZNSegmentBatchAiNext                        0.0.1      ZN.AccessOrchestrator
+Function        Invoke-ZNSegmentEncodeEntiteIP                     0.0.1      ZN.AccessOrchestrator
+Function        Invoke-ZNSegmentEncodeEntiteIPRange                0.0.1      ZN.AccessOrchestrator
+Function        Invoke-ZNSegmentEncodeEntiteSubnet                 0.0.1      ZN.AccessOrchestrator
+Function        Invoke-ZNSegmentExtendAssetQueue                   0.0.1      ZN.AccessOrchestrator
+Function        Invoke-ZNSegmentQueueAsset                         0.0.1      ZN.AccessOrchestrator
+Function        Invoke-ZNSegmentSimulateMfaPolicy                  0.0.1      ZN.AccessOrchestrator
+Function        Invoke-ZNSegmentSimulateReactivePolicyOutbound     0.0.1      ZN.AccessOrchestrator
+Function        Invoke-ZNSegmentValidatepAssetUnprotect            0.0.1      ZN.AccessOrchestrator
+Function        New-ZNSegmentAssetOt                               0.0.1      ZN.AccessOrchestrator
+Function        New-ZNSegmentAssetsLinux                           0.0.1      ZN.AccessOrchestrator
+Function        New-ZNSegmentCustomGroup                           0.0.1      ZN.AccessOrchestrator
+Function        New-ZNSegmentInboundAllow                          0.0.1      ZN.AccessOrchestrator
+Function        New-ZNSegmentInboundBlock                          0.0.1      ZN.AccessOrchestrator
+Function        New-ZNSegmentMfaPolicy                             0.0.1      ZN.AccessOrchestrator
+Function        New-ZNSegmentOutboundAllow                         0.0.1      ZN.AccessOrchestrator
+Function        New-ZNSegmentOutboundBlock                         0.0.1      ZN.AccessOrchestrator
+Function        New-ZNSegmentProtectionPolicy                      0.0.1      ZN.AccessOrchestrator
+Function        New-ZNSegmentReactivePoliciesOutbound              0.0.1      ZN.AccessOrchestrator
+Function        New-ZNSegmentSettingsRole                          0.0.1      ZN.AccessOrchestrator
+Function        Protect-ZNSegmentAsset                             0.0.1      ZN.AccessOrchestrator
+Function        Protect-ZNSegmentAssetOt                           0.0.1      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentApiKey                             0.0.1      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentAssetOt                            0.0.1      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentCustom                             0.0.1      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentCustomGroup                        0.0.1      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentInboundAllow                       0.0.1      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentInboundBlock                       0.0.1      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentMfaPolicy                          0.0.1      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentOutboundAllow                      0.0.1      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentOutboundBlock                      0.0.1      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentProtectionPolicy                   0.0.1      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentReactivePoliciesOutbound           0.0.1      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentSettingsRole                       0.0.1      ZN.AccessOrchestrator
+Function        Search-ZNSegmentAsset                              0.0.1      ZN.AccessOrchestrator
+Function        Set-ZNSegmentApiKey                                0.0.1      ZN.AccessOrchestrator
+Function        Test-ZNSegmentAssetsProtect                        0.0.1      ZN.AccessOrchestrator
+Function        Unprotect-ZNSegmentAsset                           0.0.1      ZN.AccessOrchestrator
+Function        Unprotect-ZNSegmentAssetsOt                        0.0.1      ZN.AccessOrchestrator
+Function        Update-ZNSegmentInboundAllow                       0.0.1      ZN.AccessOrchestrator
+Function        Update-ZNSegmentInboundBlock                       0.0.1      ZN.AccessOrchestrator
+Function        Update-ZNSegmentMfaPoliciesInbound                 0.0.1      ZN.AccessOrchestrator
+Function        Update-ZNSegmentOutboundAllow                      0.0.1      ZN.AccessOrchestrator
+Function        Update-ZNSegmentOutboundBlock                      0.0.1      ZN.AccessOrchestrator
+Function        Update-ZNSegmentProtectionPolicy                   0.0.1      ZN.AccessOrchestrator
+Function        Update-ZNSegmentReactivePoliciesOutboundbound      0.0.1      ZN.AccessOrchestrator
+Function        Update-ZNSegmentSettingsAuth                       0.0.1      ZN.AccessOrchestrator
+
+
+
+v.02
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Function        Add-ZNSegmentCustomGroupsMember                    0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAdGroup                               0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAiNextBatch                           0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAsset                                 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetsFilter                          0.0.2      ZN.AccessOrchestrator Hide Filters???
+Function        Get-ZNSegmentAssetsMonitored                       0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetsMonitoredFilter                 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetsOt                              0.0.2      ZN.AccessOrchestrator  switch to OTAssets?
+Function        Get-ZNSegmentAssetsOtFilter                        0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetsProtected                       0.0.2      ZN.AccessOrchestrator  switch to ProtectedAssets?
+Function        Get-ZNSegmentAssetsProtectedFilter                 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetsQueued                          0.0.2      ZN.AccessOrchestrator switch to LearningAssets?
+Function        Get-ZNSegmentAssetsQueuedFilter                    0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetsStatesStatistics                0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetsStatistics                      0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAudit                                 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAuditsFilter                          0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentCustomGroup                           0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentCustomGroupsCandidate                 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentCustomGroupsFilter                    0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentEntity                                0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentEntityAnalysis                        0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentEntityAncestor                        0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentGroup                                 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentGroupsFilter                          0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentGroupsStatistics                      0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentGroupsSuccessor                       0.0.2      ZN.AccessOrchestrator what is succesor?
+Function        Get-ZNSegmentGroupsSuccessorsFilter                0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundAllowRule                      0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundAllowRulesDesinationCandidate… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundAllowRulesDestinationCandidate 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundAllowRulesExcludedDestination… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundAllowRulesFilter               0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundAllowRulesSourceCandidate      0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundAllowRulesSourceCandidatesFil… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundBlockRule                      0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundBlockRulesDestinationCandidate 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundBlockRulesDestinationCandidat… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundBlockRulesExcludedLocalCandid… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundBlockRulesFilter               0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundBlockRulesSourceCandidate      0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundBlockRulesSourceCandidatesFil… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPoliciesDestinationCandida… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPoliciesDestinationCandida… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPoliciesFilter              0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPoliciesMfamethod           0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPoliciesSimulateDestinatio… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPoliciesSimulateSourceCand… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPoliciesSimulateSourceUser… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPoliciesSourceCandidate     0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPoliciesSourceCandidatesFi… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPoliciesSourceUserCandidate 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPoliciesSourceUsersCandida… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPolicy                      0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesDestinationCandid… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesDestinationCandid… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesFilter             0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesMfamethod          0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesSimulateDesinatio… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesSimulateSourceCan… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesSimulateSourceUse… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesSourceCandidate    0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesSourceCandidatesF… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesSourceUserCandida… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesSourceUsersCandid… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPolicy                     0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentNetworkActivitiesFilter               0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentNetworkActivity                       0.0.2      ZN.AccessOrchestrator  Remove for now due to our Cost?
+Function        Get-ZNSegmentOutboundAllowRule                     0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundAllowRulesDestinationCandida… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundAllowRulesDestinationCandida… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundAllowRulesExcludedSourceCand… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundAllowRulesFilter              0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundAllowRulesSourceCandidate     0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundAllowRulesSourceCandidatesFi… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundBlockRule                     0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundBlockRulesDestinationCandida… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundBlockRulesDestinationCandida… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundBlockRulesExcludedSourceCand… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundBlockRulesFilter              0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundBlockRulesSourceCandidate     0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundBlockRulesSourceCandidatesFi… 0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentProtectionPoliciesGroupCandidate      0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentProtectionPolicy                      0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentReactivePoliciesDistribution          0.0.2      ZN.AccessOrchestrator Fixed
+Function        Get-ZNSegmentReactivePoliciesStatistics            0.0.2      ZN.AccessOrchestrator Fixed
+Function        Get-ZNSegmentRole                                  0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRolesCandidate                        0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRulesDistribution                     0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRulesHistory                          0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRulesStatistics                       0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentSettingsAuth                          0.0.2      ZN.AccessOrchestrator  Hide
+Function        Get-ZNSegmentSystemGroup                           0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentSystemGroupsFilter                    0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentTagGroup                              0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentTagGroupsFilter                       0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentTrustServer                           0.0.2      ZN.AccessOrchestrator 
+Function        Get-ZNSegmentUser                                  0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentUsersFilter                           0.0.2      ZN.AccessOrchestrator
+Function        Get-ZNSegmentUserStatistics                        0.0.2      ZN.AccessOrchestrator
+Function        Invoke-ZNSegmentEncodeEntityIP                     0.0.2      ZN.AccessOrchestrator 
+Function        Invoke-ZNSegmentEncodeEntityIPRange                0.0.2      ZN.AccessOrchestrator
+Function        Invoke-ZNSegmentEncodeEntitySubnet                 0.0.2      ZN.AccessOrchestrator
+Function        Invoke-ZNSegmentExtendAssetQueue                   0.0.2      ZN.AccessOrchestrator Rename AssetExtendLearning
+Function        Invoke-ZNSegmentQueueAsset                         0.0.2      ZN.AccessOrchestrator
+Function        Invoke-ZNSegmentSimulateMfaInboundPolicy           0.0.2      ZN.AccessOrchestrator hide?
+Function        Invoke-ZNSegmentSimulateMfaOutboundPolicy          0.0.2      ZN.AccessOrchestrator hide?
+Function        New-ZNSegmentAssetsLinux                           0.0.2      ZN.AccessOrchestrator
+Function        New-ZNSegmentAssetsOt                              0.0.2      ZN.AccessOrchestrator
+Function        New-ZNSegmentCustomGroup                           0.0.2      ZN.AccessOrchestrator
+Function        New-ZNSegmentInboundAllowRule                      0.0.2      ZN.AccessOrchestrator
+Function        New-ZNSegmentInboundBlockRule                      0.0.2      ZN.AccessOrchestrator
+Function        New-ZNSegmentMfaInboundPolicy                      0.0.2      ZN.AccessOrchestrator
+Function        New-ZNSegmentMfaOutboundPolicy                     0.0.2      ZN.AccessOrchestrator
+Function        New-ZNSegmentOutboundAllowRule                     0.0.2      ZN.AccessOrchestrator
+Function        New-ZNSegmentOutboundBlockRule                     0.0.2      ZN.AccessOrchestrator
+Function        New-ZNSegmentProtectionPolicy                      0.0.2      ZN.AccessOrchestrator
+Function        New-ZNSegmentRole                                  0.0.2      ZN.AccessOrchestrator
+Function        Protect-ZNSegmentAsset                             0.0.2      ZN.AccessOrchestrator
+Function        Protect-ZNSegmentAssetsOt                          0.0.2      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentApiKey                             0.0.2      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentAssetsOt                           0.0.2      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentCustomGroup                        0.0.2      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentCustomGroupsMember                 0.0.2      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentInboundAllowRule                   0.0.2      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentInboundBlockRule                   0.0.2      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentMfaInboundPolicy                   0.0.2      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentMfaOutboundPolicy                  0.0.2      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentOutboundAllowRule                  0.0.2      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentOutboundBlockRule                  0.0.2      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentProtectionPolicy                   0.0.2      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentRole                               0.0.2      ZN.AccessOrchestrator
+Function        Search-ZNSegmentAsset                              0.0.2      ZN.AccessOrchestrator
+Function        Set-ZNSegmentApiKey                                0.0.2      ZN.AccessOrchestrator
+Function        Test-ZNSegmentAssetProtection                      0.0.2      ZN.AccessOrchestrator
+Function        Test-ZNSegmentAssetsUnprotect                      0.0.2      ZN.AccessOrchestrator
+Function        Unprotect-ZNSegmentAsset                           0.0.2      ZN.AccessOrchestrator
+Function        Unprotect-ZNSegmentAssetsOt                        0.0.2      ZN.AccessOrchestrator
+Function        Update-ZNSegmentCustomGroup                        0.0.2      ZN.AccessOrchestrator
+Function        Update-ZNSegmentInboundAllowRule                   0.0.2      ZN.AccessOrchestrator
+Function        Update-ZNSegmentInboundBlockRule                   0.0.2      ZN.AccessOrchestrator
+Function        Update-ZNSegmentMfaInboundPolicy                   0.0.2      ZN.AccessOrchestrator
+Function        Update-ZNSegmentMfaOutboundPolicy                  0.0.2      ZN.AccessOrchestrator
+Function        Update-ZNSegmentOutboundAllowRule                  0.0.2      ZN.AccessOrchestrator
+Function        Update-ZNSegmentOutboundBlockRule                  0.0.2      ZN.AccessOrchestrator
+Function        Update-ZNSegmentProtectionPolicy                   0.0.2      ZN.AccessOrchestrator
+Function        Update-ZNSegmentSettingsAuth                       0.0.2      ZN.AccessOrchestrator Hide
+
+
+
+V0.3
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Function        Add-ZNSegmentCustomGroupsMember                    0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAdGroup                               0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAiNextBatch                           0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAsset                                 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetsMonitored                       0.0.3      ZN.AccessOrchestrator 
+Function        Get-ZNSegmentAssetsOt                              0.0.3      ZN.AccessOrchestrator 
+Function        Get-ZNSegmentAssetsProtected                       0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetsQueued                          0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetsStatesStatistics                0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentAssetsStatistics                      0.0.3      ZN.AccessOrchestrator
+    PS /workspaces/ZeroNetworks-PowerShell/src/AccessOrchestrator [ZN.AccessOrchestrator]> Get-ZNSegmentAssetsStatistics  
+
+ItemAddingProtectionCount               : 
+ItemDeletedCount                        : 0
+ItemForceAddingProtectionCount          : 
+ItemForceRemovingProtectionCount        : 
+ItemForcedUnprotectedCount              : 
+ItemMonitoredCount                      : 8
+ItemNotProtectedLink                    : {protectionStatus, status}
+ItemProtectedCount                      : 
+ItemProtectedDueToProtectionPolicyCount : 
+ItemQueuedCount                         : 
+ItemQueuedDueToProtectionPolicyCount    : 
+ItemRemovingProtectionCount             : 
+ItemTotalCount                          : 9
+Function        Get-ZNSegmentAudit                                 0.0.3      ZN.AccessOrchestrator
+    PS /workspaces/ZeroNetworks-PowerShell/src/AccessOrchestrator [ZN.AccessOrchestrator]> Get-ZNSegmentAudit -Limit 10 -Order desc -Search "" -Cursor "" | gm
+
+   TypeName: ZeroNetworks.PowerShell.Cmdlets.AccessOrchestrator.Models.AuditList
+
+Name         MemberType Definition
+----         ---------- ----------
+Equals       Method     bool Equals(System.Object obj)
+GetHashCode  Method     int GetHashCode()
+GetType      Method     type GetType()
+ToJson       Method     ZeroNetworks.PowerShell.Cmdlets.AccessOrchestrator.Runtime.Json.JsonNode ToJson(ZeroNetworks.PowerShell.Cmdlets.AccessOrchestrator.Runtime.Json.JsonObject container, ZeroNetworks.PowerShell.Cmdlets.AccessOrchestrator.Runtime.SerializationMo…
+ToJsonString Method     string ToJsonString()
+ToString     Method     string ToString()
+Items        Property   ZeroNetworks.PowerShell.Cmdlets.AccessOrchestrator.Models.IAudit[] Items {get;set;}
+ScrollCursor Property   string ScrollCursor {get;set;}
+
+PS /workspaces/ZeroNetworks-PowerShell/src/AccessOrchestrator [ZN.AccessOrchestrator]> (Get-ZNSegmentAudit -Limit 10).Items                               
+
+AuditType Details
+--------- -------                                                                                                                                                                                                                                                        
+32        {"rule":{"LocalEntityID":"","localEntityNames":{"id":"b:110002","name":"All protected assets"},"remoteEntityNames":[{"id":"b:12ac10010120","name":"172.16.1.1"},{"id":"b:12ac10020120","name":"172.16.2.1"}],"ports":[{"protocol_type":1}],"expiration":0,"des…
+32        {"rule":{"LocalEntityID":"","localEntityNames":{"id":"b:110002","name":"All protected assets"},"remoteEntityNames":[{"id":"b:12ac10010120","name":"172.16.1.1"}],"ports":[{"protocol_type":1}],"expiration":0,"description":"Sentinel Integration - Block Mali…
+32        {"rule":{"LocalEntityID":"","localEntityNames":{"id":"b:110002","name":"All protected assets"},"remoteEntityNames":[{"id":"b:12ac10010120","name":"172.16.1.1"},{"id":"b:12ac10020120","name":"172.16.2.1"}],"ports":[{"protocol_type":1}],"expiration":0,"des…
+32        {"rule":{"LocalEntityID":"","localEntityNames":{"id":"b:110002","name":"All protected assets"},"remoteEntityNames":[{"id":"b:12ac10010120","name":"172.16.1.1"}],"ports":[{"protocol_type":1}],"expiration":0,"description":"Sentinel Integration - Block Mali…
+32        {"rule":{"LocalEntityID":"","localEntityNames":{"id":"b:110002","name":"All protected assets"},"remoteEntityNames":[{"id":"b:12ac10010120","name":"172.16.1.1"},{"id":"b:12ac10020120","name":"172.16.2.1"}],"ports":[{"protocol_type":1}],"expiration":0,"des…
+32        {"rule":{"LocalEntityID":"","localEntityNames":{"id":"b:110002","name":"All protected assets"},"remoteEntityNames":[{"id":"b:12ac10010120","name":"172.16.1.1"}],"ports":[{"protocol_type":1}],"expiration":0,"description":"Sentinel Integration - Block Mali…
+32        {"rule":{"LocalEntityID":"","localEntityNames":{"id":"b:110002","name":"All protected assets"},"remoteEntityNames":[{"id":"b:12ac10010120","name":"172.16.1.1"},{"id":"b:12ac10020120","name":"172.16.2.1"}],"ports":[{"protocol_type":1}],"expiration":0,"des…
+32        {"rule":{"LocalEntityID":"","localEntityNames":{"id":"b:110002","name":"All protected assets"},"remoteEntityNames":[{"id":"b:12ac10010120","name":"172.16.1.1"}],"ports":[{"protocol_type":1}],"expiration":0,"description":"Sentinel Integration - Block Mali…
+32        {"rule":{"LocalEntityID":"","localEntityNames":{"id":"b:110002","name":"All protected assets"},"remoteEntityNames":[{"id":"b:12ac10010120","name":"172.16.1.1"},{"id":"b:12ac10020120","name":"172.16.2.1"}],"ports":[{"protocol_type":1}],"expiration":0,"des…
+32        {"rule":{"LocalEntityID":"","localEntityNames":{"id":"b:110002","name":"All protected assets"},"remoteEntityNames":[{"id":"b:12ac10010120","name":"172.16.1.1"}],"ports":[{"protocol_type":1}],"expiration":0,"description":"Sentinel Integration - Block Mali…
+
+Function        Get-ZNSegmentCustomGroup                           0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentCustomGroupsCandidate                 0.0.3      ZN.AccessOrchestrator useful? HIDE Done.
+
+Function        Get-ZNSegmentEntity                                0.0.3      ZN.AccessOrchestrator
+    Entity ID Problem, need to fix
+Function        Get-ZNSegmentEntityAnalysis                        0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentEntityAncestor                        0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentGroup                                 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentGroupsStatistics                      0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentGroupsSuccessor                       0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundAllowRule                      0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundAllowRulesDestinationCandidate 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundAllowRulesExcludedDestination… 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundAllowRulesSourceCandidate      0.0.3      ZN.AccessOrchestrator BUG- Opened issue
+Function        Get-ZNSegmentInboundBlockRule                      0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundBlockRulesDestinationCandidate 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundBlockRulesExcludedLocalCandid… 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentInboundBlockRulesSourceCandidate      0.0.3      ZN.AccessOrchestrator BUG- Opened issue
+Function        Get-ZNSegmentMfaInboundPoliciesDestinationCandida… 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPoliciesMfamethod           0.0.3      ZN.AccessOrchestrator
+Get-ZNSegmentMfaInboundPoliciesMfamethod 
+3
+5
+1
+2
+4
+Function        Get-ZNSegmentMfaInboundPoliciesSimulateDestinatio… 0.0.3      ZN.AccessOrchestrator hide simulate?
+Function        Get-ZNSegmentMfaInboundPoliciesSimulateSourceCand… 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPoliciesSimulateSourceUser… 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPoliciesSourceCandidate     0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPoliciesSourceUserCandidate 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaInboundPolicy                      0.0.3      ZN.AccessOrchestrator
+Get-ZNSegmentMfaInboundPolicy -ReactivePolicyId f68d322c-1cb0-451d-aff2-c920a1a17333
+
+CreatedAt CreatedBy CreatedByName Description DstPort DstProcessNames FallbackToLoggedOnUser Id MfaMethods ProtocolType RuleCreationMode RuleDuration SrcProcessNames State UpdatedAt
+--------- --------- ------------- ----------- ------- --------------- ---------------------- -- ---------- ------------ ---------------- ------------ --------------- ----- ---------
+                                                                                                                                                                            
+
+Function        Get-ZNSegmentMfaOutboundPoliciesDestinationCandid… 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesMfamethod          0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesSimulateDesinatio… 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesSimulateSourceCan… 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesSimulateSourceUse… 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesSourceCandidate    0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPoliciesSourceUserCandida… 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaOutboundPolicy                     0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentMfaPoliciesDistribution               0.0.3      ZN.AccessOrchestrator Fixed.
+Get-ZNSegmentMfaPoliciesDistribution          
+Get-ZNSegmentMfaPoliciesDistribution_List: Value was either too large or too small for an Int32.
+Function        Get-ZNSegmentMfaPoliciesStatistics                 0.0.3      ZN.AccessOrchestrator not useful?
+Function        Get-ZNSegmentOutboundAllowRule                     0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundAllowRulesDestinationCandida… 0.0.3      ZN.AccessOrchestrator BUG not working
+Function        Get-ZNSegmentOutboundAllowRulesExcludedSourceCand… 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundAllowRulesSourceCandidate     0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundBlockRule                     0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundBlockRulesDestinationCandida… 0.0.3      ZN.AccessOrchestrator BUG not working
+Function        Get-ZNSegmentOutboundBlockRulesExcludedSourceCand… 0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentOutboundBlockRulesSourceCandidate     0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentProtectionPoliciesGroupCandidate      0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentProtectionPolicy                      0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentRole                                  0.0.3      ZN.AccessOrchestrator hide. Done
+Function        Get-ZNSegmentRolesCandidate                        0.0.3      ZN.AccessOrchestrator hide. Done
+Function        Get-ZNSegmentRulesDistribution                     0.0.3      ZN.AccessOrchestrator Not ready????
+Get-ZNSegmentRulesDistribution -RuleId be2bdc05-7837-4125-88ba-983e3ff7e763
+
+cmdlet Get-ZNSegmentRulesDistribution at command pipeline position 1
+Supply values for the following parameters:
+RuleDirection: 1
+
+Error
+-----
+no such api
+Function        Get-ZNSegmentRulesHistory                          0.0.3      ZN.AccessOrchestrator not useful, we need an api to list available history objects.
+Function        Get-ZNSegmentRulesStatistics                       0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentSettingsAuth                          0.0.3      ZN.AccessOrchestrator Hide. Done
+Function        Get-ZNSegmentSystemGroup                           0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentTagGroup                              0.0.3      ZN.AccessOrchestrator
+Function        Get-ZNSegmentTrustServer                           0.0.3      ZN.AccessOrchestrator
+Get-ZNSegmentTrustServer 
+
+ItemDefaultGateway : 
+ItemDnsIPAddress   : 
+ItemIPAddress      : 
+ItemId             : 
+ItemName           : 
+ItemState          : 
+ItemStatus         : 
+ItemSubnetMask     : 
+Function        Get-ZNSegmentUser                                  0.0.3      ZN.AccessOrchestrator
+Get-ZNSegmentUser 
+
+cmdlet Get-ZNSegmentUser at command pipeline position 1
+Supply values for the following parameters:
+Limit: 10
+Get-ZNSegmentUser_List: Value was either too large or too small for an Int32.
+Function        Get-ZNSegmentUserStatistics                        0.0.3      ZN.AccessOrchestrator
+Function        Invoke-ZNSegmentEncodeEntityIP                     0.0.3      ZN.AccessOrchestrator
+Function        Invoke-ZNSegmentEncodeEntityIPRange                0.0.3      ZN.AccessOrchestrator Fixed
+Invoke-ZNSegmentEncodeEntityIPRange -IP '1.1.1.1-2' -debug
+DEBUG: CmdletBeginProcessing: 
+DEBUG: CmdletProcessRecordStart: 
+DEBUG: CmdletProcessRecordAsyncStart: 
+DEBUG: CmdletGetPipeline: 
+DEBUG: CmdletBeforeAPICall: 
+DEBUG: URLCreated: /entities/encode-ip-range?ip=1.1.1.1-2
+DEBUG: RequestCreated: /api/v1/entities/encode-ip-range?ip=1.1.1.1-2
+DEBUG: HeaderParametersAdded: 
+DEBUG: BeforeCall: 
+DEBUG: ResponseCreated: 
+DEBUG: BeforeResponseDispatch: 
+bad request
+DEBUG: Finally: 
+DEBUG: CmdletAfterAPICall: 
+DEBUG: CmdletProcessRecordAsyncEnd: 
+DEBUG: CmdletProcessRecordEnd: 
+DEBUG: CmdletEndProcessing: 
+Function        Invoke-ZNSegmentEncodeEntitySubnet                 0.0.3      ZN.AccessOrchestrator
+Function        Invoke-ZNSegmentExtendAssetQueue                   0.0.3      ZN.AccessOrchestrator Bug with CAll need to debug.
+Function        Invoke-ZNSegmentQueueAsset                         0.0.3      ZN.AccessOrchestrator Bug with CAll need to debug.
+Function        Invoke-ZNSegmentSimulateMfaInboundPolicy           0.0.3      ZN.AccessOrchestrator Need to create a custom cmdlet to create SimParams payload.
+Function        Invoke-ZNSegmentSimulateMfaOutboundPolicy          0.0.3      ZN.AccessOrchestrator Need to create a custom cmdlet to create SimParams payload.
+Function        New-ZNSegmentAssetsLinux                           0.0.3      ZN.AccessOrchestrator
+Function        New-ZNSegmentAssetsOt                              0.0.3      ZN.AccessOrchestrator
+Function        New-ZNSegmentCustomGroup                           0.0.3      ZN.AccessOrchestrator Need to debug
+Function        New-ZNSegmentInboundAllowRule                      0.0.3      ZN.AccessOrchestrator Need to create custom cmdlet to handle portslist.
+what to do about Local / Remote????
+New-ZNSegmentInboundAllowRule -ExpiresAt <Int32> -LocalEntityId <String> -LocalProcessesList <String[]> -PortsList <IPortsListItem[]> -RemoteEntityIdsList <String[]> -State <Int32>
+Function        New-ZNSegmentInboundBlockRule                      0.0.3      ZN.AccessOrchestrator Need to create custom cmdlet to handle portslist.
+Function        New-ZNSegmentMfaInboundPolicy                      0.0.3      ZN.AccessOrchestrator Need to create custom cmdlet to handle objects
+ New-ZNSegmentMfaInboundPolicy -DstEntityInfoId <String> -DstPort <String> -FallbackToLoggedOnUser -MfaMethods <Int32[]> -ProtocolType <Int32> -RuleDuration <Int32> -SrcEntityInfos <IReactivePolicyBodySrcEntityInfosItem[]> -SrcProcessNames <String[]> 
+    -SrcUserInfos <IReactivePolicyBodySrcUserInfosItem[]> [-Description <String>] [-DstEntityInfoAssetType <Int32>] [-DstEntityInfoDomain <String>] [-DstEntityInfoName <String>] [-DstEntityInfoProtectionState <Int32>] [-DstProcessNames <String[]>] 
+    [-RuleCreationMode <Int32>] 
+Function        New-ZNSegmentMfaOutboundPolicy                     0.0.3      ZN.AccessOrchestrator Need to create custom cmdlet to handle objects
+Function        New-ZNSegmentOutboundAllowRule                     0.0.3      ZN.AccessOrchestratorNeed to create custom cmdlet to handle objects
+Function        New-ZNSegmentOutboundBlockRule                     0.0.3      ZN.AccessOrchestrator Need to create custom cmdlet to handle objects
+Function        New-ZNSegmentProtectionPolicy                      0.0.3      ZN.AccessOrchestrator
+Function        New-ZNSegmentRole                                  0.0.3      ZN.AccessOrchestrator Hide. Done
+Function        Protect-ZNSegmentAsset                             0.0.3      ZN.AccessOrchestrator
+Function        Protect-ZNSegmentAssetsOt                          0.0.3      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentApiKey                             0.0.3      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentAssetsOt                           0.0.3      ZN.AccessOrchestrator Bug!
+Function        Remove-ZNSegmentCustomGroup                        0.0.3      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentCustomGroupsMember                 0.0.3      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentInboundAllowRule                   0.0.3      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentInboundBlockRule                   0.0.3      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentMfaInboundPolicy                   0.0.3      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentMfaOutboundPolicy                  0.0.3      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentOutboundAllowRule                  0.0.3      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentOutboundBlockRule                  0.0.3      ZN.AccessOrchestrator
+Function        Remove-ZNSegmentProtectionPolicy                   0.0.3      ZN.AccessOrchestrator 
+Function        Remove-ZNSegmentRole                               0.0.3      ZN.AccessOrchestrator Hide. Done
+Function        Search-ZNSegmentAsset                              0.0.3      ZN.AccessOrchestrator
+Function        Set-ZNSegmentApiKey                                0.0.3      ZN.AccessOrchestrator
+Function        Test-ZNSegmentAssetProtection                      0.0.3      ZN.AccessOrchestrator hide? not useful; rename to segment?
+Function        Test-ZNSegmentAssetsUnprotect                      0.0.3      ZN.AccessOrchestrator hide? not useful; rename to segment?
+Function        Unprotect-ZNSegmentAsset                           0.0.3      ZN.AccessOrchestrator
+Function        Unprotect-ZNSegmentAssetsOt                        0.0.3      ZN.AccessOrchestrator
+Function        Update-ZNSegmentCustomGroup                        0.0.3      ZN.AccessOrchestrator  need to debug.
+Function        Update-ZNSegmentInboundAllowRule                   0.0.3      ZN.AccessOrchestrator Write customer cmdlet wapper to make it easy?
+Function        Update-ZNSegmentInboundBlockRule                   0.0.3      ZN.AccessOrchestrator Write customer cmdlet wapper to make it easy?
+Function        Update-ZNSegmentMfaInboundPolicy                   0.0.3      ZN.AccessOrchestrator Write customer cmdlet wapper to make it easy?
+Function        Update-ZNSegmentMfaOutboundPolicy                  0.0.3      ZN.AccessOrchestrator Write customer cmdlet wapper to make it easy?
+Function        Update-ZNSegmentOutboundAllowRule                  0.0.3      ZN.AccessOrchestrator Write customer cmdlet wapper to make it easy?
+Function        Update-ZNSegmentOutboundBlockRule                  0.0.3      ZN.AccessOrchestrator Write customer cmdlet wapper to make it easy?
+Function        Update-ZNSegmentProtectionPolicy                   0.0.3      ZN.AccessOrchestrator Write customer cmdlet wapper to make it easy?
+Function        Update-ZNSegmentSettingsAuth                       0.0.3      ZN.AccessOrchestrator Hide. DONE
+
+
+v0.4
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Function        Add-ZNSegmentCustomGroupsMember                    0.0.4      ZN.Segment
+Function        Get-ZNSegmentAdGroup                               0.0.4      ZN.Segment
+Function        Get-ZNSegmentAiNextBatch                           0.0.4      ZN.Segment
+Function        Get-ZNSegmentAsset                                 0.0.4      ZN.Segment
+Function        Get-ZNSegmentAssetsMonitored                       0.0.4      ZN.Segment
+Function        Get-ZNSegmentAssetsOt                              0.0.4      ZN.Segment
+Function        Get-ZNSegmentAssetsProtected                       0.0.4      ZN.Segment
+Function        Get-ZNSegmentAssetsQueued                          0.0.4      ZN.Segment
+Function        Get-ZNSegmentAssetsStatesStatistics                0.0.4      ZN.Segment
+Function        Get-ZNSegmentAssetsStatistics                      0.0.4      ZN.Segment
+Function        Get-ZNSegmentAudit                                 0.0.4      ZN.Segment
+Function        Get-ZNSegmentCustomGroup                           0.0.4      ZN.Segment
+Function        Get-ZNSegmentEntity                                0.0.4      ZN.Segment  Entity ID Problem, need to fix
+Function        Get-ZNSegmentEntityAnalysis                        0.0.4      ZN.Segment
+Function        Get-ZNSegmentEntityMemberOf                        0.0.4      ZN.Segment
+Function        Get-ZNSegmentGroup                                 0.0.4      ZN.Segment
+Function        Get-ZNSegmentGroupsMember                          0.0.4      ZN.Segment
+Function        Get-ZNSegmentGroupsStatistics                      0.0.4      ZN.Segment
+Function        Get-ZNSegmentInboundAllowRule                      0.0.4      ZN.Segment
+Function        Get-ZNSegmentInboundAllowRulesDestinationCandidate 0.0.4      ZN.Segment
+Function        Get-ZNSegmentInboundAllowRulesExcludedDestination… 0.0.4      ZN.Segment
+Function        Get-ZNSegmentInboundAllowRulesSourceCandidate      0.0.4      ZN.Segment  BUG- Opened issue
+Function        Get-ZNSegmentInboundBlockRule                      0.0.4      ZN.Segment
+Function        Get-ZNSegmentInboundBlockRulesDestinationCandidate 0.0.4      ZN.Segment
+Function        Get-ZNSegmentInboundBlockRulesExcludedLocalCandid… 0.0.4      ZN.Segment
+Function        Get-ZNSegmentInboundBlockRulesSourceCandidate      0.0.4      ZN.Segment  BUG- Opened issue
+Function        Get-ZNSegmentMfaInboundPoliciesDestinationCandida… 0.0.4      ZN.Segment
+Function        Get-ZNSegmentMfaInboundPoliciesMfamethod           0.0.4      ZN.Segment
+Function        Get-ZNSegmentMfaInboundPoliciesSimulateDestinatio… 0.0.4      ZN.Segment
+Function        Get-ZNSegmentMfaInboundPoliciesSimulateSourceCand… 0.0.4      ZN.Segment
+Function        Get-ZNSegmentMfaInboundPoliciesSimulateSourceUser… 0.0.4      ZN.Segment
+Function        Get-ZNSegmentMfaInboundPoliciesSourceCandidate     0.0.4      ZN.Segment
+Function        Get-ZNSegmentMfaInboundPoliciesSourceUserCandidate 0.0.4      ZN.Segment
+Function        Get-ZNSegmentMfaInboundPolicy                      0.0.4      ZN.Segment
+Function        Get-ZNSegmentMfaOutboundPoliciesDestinationCandid… 0.0.4      ZN.Segment  
+Function        Get-ZNSegmentMfaOutboundPoliciesMfamethod          0.0.4      ZN.Segment
+Function        Get-ZNSegmentMfaOutboundPoliciesSimulateDesinatio… 0.0.4      ZN.Segment
+Function        Get-ZNSegmentMfaOutboundPoliciesSimulateSourceCan… 0.0.4      ZN.Segment
+Function        Get-ZNSegmentMfaOutboundPoliciesSimulateSourceUse… 0.0.4      ZN.Segment
+Function        Get-ZNSegmentMfaOutboundPoliciesSourceCandidate    0.0.4      ZN.Segment
+Function        Get-ZNSegmentMfaOutboundPoliciesSourceUserCandida… 0.0.4      ZN.Segment
+Function        Get-ZNSegmentMfaOutboundPolicy                     0.0.4      ZN.Segment
+Function        Get-ZNSegmentMfaPoliciesDistribution               0.0.4      ZN.Segment
+Function        Get-ZNSegmentMfaPoliciesStatistics                 0.0.4      ZN.Segment
+Function        Get-ZNSegmentOutboundAllowRule                     0.0.4      ZN.Segment
+Function        Get-ZNSegmentOutboundAllowRulesDestinationCandida… 0.0.4      ZN.Segment  BUG not working
+Function        Get-ZNSegmentOutboundAllowRulesExcludedSourceCand… 0.0.4      ZN.Segment
+Function        Get-ZNSegmentOutboundAllowRulesSourceCandidate     0.0.4      ZN.Segment
+Function        Get-ZNSegmentOutboundBlockRule                     0.0.4      ZN.Segment
+Function        Get-ZNSegmentOutboundBlockRulesDestinationCandida… 0.0.4      ZN.Segment  BUG not working
+Function        Get-ZNSegmentOutboundBlockRulesExcludedSourceCand… 0.0.4      ZN.Segment
+Function        Get-ZNSegmentOutboundBlockRulesSourceCandidate     0.0.4      ZN.Segment
+Function        Get-ZNSegmentProtectionPoliciesGroupCandidate      0.0.4      ZN.Segment
+Function        Get-ZNSegmentProtectionPolicy                      0.0.4      ZN.Segment
+Function        Get-ZNSegmentRulesDistribution                     0.0.4      ZN.Segment  Not ready????
+Function        Get-ZNSegmentRulesHistory                          0.0.4      ZN.Segment    not useful, we need an api to list available history objects.
+Function        Get-ZNSegmentRulesStatistics                       0.0.4      ZN.Segment
+Function        Get-ZNSegmentSystemGroup                           0.0.4      ZN.Segment
+Function        Get-ZNSegmentTagGroup                              0.0.4      ZN.Segment
+Function        Get-ZNSegmentTrustServer                           0.0.4      ZN.Segment
+Function        Get-ZNSegmentUser                                  0.0.4      ZN.Segment
+Function        Get-ZNSegmentUserStatistics                        0.0.4      ZN.Segment
+Function        Invoke-ZNSegmentEncodeEntityIP                     0.0.4      ZN.Segment
+Function        Invoke-ZNSegmentEncodeEntityIPRange                0.0.4      ZN.Segment
+Function        Invoke-ZNSegmentEncodeEntitySubnet                 0.0.4      ZN.Segment
+Function        Invoke-ZNSegmentExtendAssetQueue                   0.0.4      ZN.Segment    Bug with CAll need to debug.
+Function        Invoke-ZNSegmentQueueAsset                         0.0.4      ZN.Segment    Bug with CAll need to debug.
+Function        Invoke-ZNSegmentSimulateMfaInboundPolicy           0.0.4      ZN.Segment     Need to create a custom cmdlet to create SimParams payload.
+Function        Invoke-ZNSegmentSimulateMfaOutboundPolicy          0.0.4      ZN.Segment     Need to create a custom cmdlet to create SimParams payload.
+Function        New-ZNSegmentAssetsLinux                           0.0.4      ZN.Segment
+Function        New-ZNSegmentAssetsOt                              0.0.4      ZN.Segment
+Function        New-ZNSegmentCustomGroup                           0.0.4      ZN.Segment    Bug with CAll need to debug.
+Function        New-ZNSegmentInboundAllowRule                      0.0.4      ZN.Segment    Need to create custom cmdlet to handle portslist.
+Function        New-ZNSegmentInboundBlockRule                      0.0.4      ZN.Segment    Need to create custom cmdlet to handle portslist.
+Function        New-ZNSegmentMfaInboundPolicy                      0.0.4      ZN.Segment    Need to create custom cmdlet to handle objects
+Function        New-ZNSegmentMfaOutboundPolicy                     0.0.4      ZN.Segment    Need to create custom cmdlet to handle objects
+Function        New-ZNSegmentOutboundAllowRule                     0.0.4      ZN.Segment    Need to create custom cmdlet to handle portslist.
+Function        New-ZNSegmentOutboundBlockRule                     0.0.4      ZN.Segment    Need to create custom cmdlet to handle portslist.
+Function        New-ZNSegmentProtectionPolicy                      0.0.4      ZN.Segment
+Function        Protect-ZNSegmentAsset                             0.0.4      ZN.Segment
+Function        Protect-ZNSegmentAssetsOt                          0.0.4      ZN.Segment
+Function        Remove-ZNSegmentApiKey                             0.0.4      ZN.Segment
+Function        Remove-ZNSegmentAssetsOt                           0.0.4      ZN.Segment    Bug with CAll need to debug.
+Function        Remove-ZNSegmentCustomGroup                        0.0.4      ZN.Segment
+Function        Remove-ZNSegmentCustomGroupsMember                 0.0.4      ZN.Segment
+Function        Remove-ZNSegmentInboundAllowRule                   0.0.4      ZN.Segment
+Function        Remove-ZNSegmentInboundBlockRule                   0.0.4      ZN.Segment
+Function        Remove-ZNSegmentMfaInboundPolicy                   0.0.4      ZN.Segment
+Function        Remove-ZNSegmentMfaOutboundPolicy                  0.0.4      ZN.Segment
+Function        Remove-ZNSegmentOutboundAllowRule                  0.0.4      ZN.Segment
+Function        Remove-ZNSegmentOutboundBlockRule                  0.0.4      ZN.Segment
+Function        Remove-ZNSegmentProtectionPolicy                   0.0.4      ZN.Segment
+Function        Search-ZNSegmentAsset                              0.0.4      ZN.Segment
+Function        Set-ZNSegmentApiKey                                0.0.4      ZN.Segment
+Function        Test-ZNSegmentAssetsProtection                     0.0.4      ZN.Segment    hide? not useful; rename to segment?
+Function        Test-ZNSegmentAssetsUnprotect                      0.0.4      ZN.Segment    hide? not useful; rename to segment?
+Function        Unprotect-ZNSegmentAsset                           0.0.4      ZN.Segment
+Function        Unprotect-ZNSegmentAssetsOt                        0.0.4      ZN.Segment
+Function        Update-ZNSegmentCustomGroup                        0.0.4      ZN.Segment    Bug with CAll need to debug.
+Function        Update-ZNSegmentInboundAllowRule                   0.0.4      ZN.Segment    Write customer cmdlet wapper to make it easy?
+Function        Update-ZNSegmentInboundBlockRule                   0.0.4      ZN.Segment    Write customer cmdlet wapper to make it easy?
+Function        Update-ZNSegmentMfaInboundPolicy                   0.0.4      ZN.Segment    Write customer cmdlet wapper to make it easy?
+Function        Update-ZNSegmentMfaOutboundPolicy                  0.0.4      ZN.Segment    Write customer cmdlet wapper to make it easy?
+Function        Update-ZNSegmentOutboundAllowRule                  0.0.4      ZN.Segment    Write customer cmdlet wapper to make it easy?
+Function        Update-ZNSegmentOutboundBlockRule                  0.0.4      ZN.Segment    Write customer cmdlet wapper to make it easy?
+Function        Update-ZNSegmentProtectionPolicy                   0.0.4      ZN.Segment
+
+#MUST DO
+DONE - Remove viaidentity stuff.  Remove-ZNSegmentAssetsOt -InputObject
+DONE - Set any parameter Limit to default Default 10
+Examples for docs
+make api key powershell variable. Need to talk to someone in dev.
+?rename cmdlets from protect to segment.  Are we keeping the API the same?
+
+Adding paging stuff: https://github.com/Azure/autorest/blob/main/docs/extensions/readme.md#x-ms-pageable
+
+V.Next
+Try Azure Key auth - https://github.com/Azure/autorest/blob/main/docs/generate/authentication.md
+Try flatten: https://github.com/Azure/autorest/blob/main/docs/extensions/readme.md#x-ms-client-flatten
+is there a way to clean up enums like protection state
+    - need to update openapi with more examples and enums.
+Format tables - nice to have
