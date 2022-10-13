@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Segment
-online version: https://test.comzn.segment/remove-znsegmentinboundblockrule
+online version: https://github.com/zn.segment/remove-znsegmentinboundblockrule
 schema: 2.0.0
 ---
 

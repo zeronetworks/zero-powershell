@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Segment
-online version: https://test.comzn.segment/set-znsegmentapikey
+online version: https://github.com/zn.segment/set-znsegmentapikey
 schema: 2.0.0
 ---
 

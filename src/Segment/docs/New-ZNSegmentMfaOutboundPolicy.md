@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Segment
-online version: https://test.comzn.segment/new-znsegmentmfaoutboundpolicy
+online version: https://github.com/zn.segment/new-znsegmentmfaoutboundpolicy
 schema: 2.0.0
 ---
 

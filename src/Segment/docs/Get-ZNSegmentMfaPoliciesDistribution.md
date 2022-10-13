@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Segment
-online version: https://test.comzn.segment/get-znsegmentmfapoliciesdistribution
+online version: https://github.com/zn.segment/get-znsegmentmfapoliciesdistribution
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 Module Name: ZN.Segment
 Module Guid: 5a6854fa-3bad-4153-a65a-a1aebae7c0f5
-Download Help Link: https://test.comzn.segment
+Download Help Link: https://github.com/zn.segment
 Help Version: 1.0.0.0
 Locale: en-US
 ---

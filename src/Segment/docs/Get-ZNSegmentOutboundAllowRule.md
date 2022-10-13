@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Segment
-online version: https://test.comzn.segment/get-znsegmentoutboundallowrule
+online version: https://github.com/zn.segment/get-znsegmentoutboundallowrule
 schema: 2.0.0
 ---
 

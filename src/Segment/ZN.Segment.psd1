@@ -16,8 +16,8 @@
   PrivateData = @{
     PSData = @{
       Tags = 'Zero', 'Networks', 'PSModule', 'Segment'
-      LicenseUri = 'https://github.com/ZeroNetworks/ZN-PowerShell'
-      ProjectUri = 'https://github.com/ZeroNetworks/ZN-PowerShell'
+      LicenseUri = 'https://github.com/zeronetworks/zero-powershell/license.md'
+      ProjectUri = 'https://github.com/ZeroNetworks/zero-powershell'
       ReleaseNotes = ''
     }
   }

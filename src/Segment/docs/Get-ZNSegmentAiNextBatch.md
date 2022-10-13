@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Segment
-online version: https://test.comzn.segment/get-znsegmentainextbatch
+online version: https://github.com/zn.segment/get-znsegmentainextbatch
 schema: 2.0.0
 ---
 

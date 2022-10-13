@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Segment
-online version: https://test.comzn.segment/invoke-znsegmentqueueasset
+online version: https://github.com/zn.segment/invoke-znsegmentqueueasset
 schema: 2.0.0
 ---
 

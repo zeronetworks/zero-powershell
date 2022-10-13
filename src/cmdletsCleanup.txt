@@ -655,7 +655,10 @@ Function        Update-ZNSegmentProtectionPolicy                   0.0.4      ZN
 #MUST DO
 DONE - Remove viaidentity stuff.  Remove-ZNSegmentAssetsOt -InputObject
 DONE - Set any parameter Limit to default Default 10
-Examples for docs
+Msotly done....Examples for docs
+
+License upload to github?  what license?
+We need to figure out help location online version: https://github.com/zn.segment/get-znsegmentadgroup  new repo so we dont have to open our public repo.
 make api key powershell variable. Need to talk to someone in dev.
 ?rename cmdlets from protect to segment.  Are we keeping the API the same?
 

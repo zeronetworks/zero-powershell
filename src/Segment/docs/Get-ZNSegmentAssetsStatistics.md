@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Segment
-online version: https://test.comzn.segment/get-znsegmentassetsstatistics
+online version: https://github.com/zn.segment/get-znsegmentassetsstatistics
 schema: 2.0.0
 ---
 

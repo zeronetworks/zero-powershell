@@ -4,11 +4,10 @@
 ``` yaml
 azure: false
 powershell: true
-help-link-prefix: https://test.com
+help-link-prefix: https://github.com/
 #license-header: MICROSOFT_MIT_NO_VERSION
 #pwsh-license-header: MICROSOFT_APACHE_NO_VERSION
 #branch: main
-#repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)
 metadata:
   authors: Zero Networks
   owners: Zero Networks
@@ -17,8 +16,8 @@ metadata:
   tags: Zero Networks PSModule $(service-name)
   companyName: Zero Networks
   #requireLicenseAcceptance: true
-  licenseUri: https://github.com/ZeroNetworks/ZN-PowerShell
-  projectUri: https://github.com/ZeroNetworks/ZN-PowerShell
+  licenseUri: https://github.com/zeronetworks/zero-powershell/license.md
+  projectUri: https://github.com/ZeroNetworks/zero-powershell
 ```
 
 > Names

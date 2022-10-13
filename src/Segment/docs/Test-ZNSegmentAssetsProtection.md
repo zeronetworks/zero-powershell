@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Segment
-online version: https://test.comzn.segment/test-znsegmentassetsprotection
+online version: https://github.com/zn.segment/test-znsegmentassetsprotection
 schema: 2.0.0
 ---
 

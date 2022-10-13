@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Segment
-online version: https://test.comzn.segment/remove-znsegmentcustomgroupsmember
+online version: https://github.com/zn.segment/remove-znsegmentcustomgroupsmember
 schema: 2.0.0
 ---
 
