@@ -13,9 +13,9 @@ Update outbound block rule
 ## SYNTAX
 
 ```
-Update-ZNSegmentOutboundBlockRule -RuleId <String> -ExpiresAt <Int32> -LocalEntityId <String>
- -LocalProcessesList <String[]> -PortsList <IPortsListItem[]> -RemoteEntityIdsList <String[]> -State <Int32>
- [-Description <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSegmentOutboundBlockRule -RuleId <String> -LocalEntityId <String> -LocalProcessesList <String[]>
+ -PortsList <IPortsListItem[]> -RemoteEntityIdsList <String[]> -State <Int32> [-Description <String>]
+ [-ExpiresAt <Int32>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,9 +84,9 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
-.
+1=Enabled, 2=Disabled
 
 ```yaml
 Type: System.Int32
@@ -220,7 +220,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IApiError
 
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAuthError
 

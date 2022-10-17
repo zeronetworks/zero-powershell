@@ -590,16 +590,16 @@ Function        Get-ZNSegmentMfaOutboundPolicy                     0.0.4      ZN
 Function        Get-ZNSegmentMfaPoliciesDistribution               0.0.4      ZN.Segment
 Function        Get-ZNSegmentMfaPoliciesStatistics                 0.0.4      ZN.Segment
 Function        Get-ZNSegmentOutboundAllowRule                     0.0.4      ZN.Segment
-Function        Get-ZNSegmentOutboundAllowRulesDestinationCandida… 0.0.4      ZN.Segment  BUG not working
+Function        Get-ZNSegmentOutboundAllowRulesDestinationCandida… 0.0.4      ZN.Segment  BUG- Opened issue
 Function        Get-ZNSegmentOutboundAllowRulesExcludedSourceCand… 0.0.4      ZN.Segment
 Function        Get-ZNSegmentOutboundAllowRulesSourceCandidate     0.0.4      ZN.Segment
 Function        Get-ZNSegmentOutboundBlockRule                     0.0.4      ZN.Segment
-Function        Get-ZNSegmentOutboundBlockRulesDestinationCandida… 0.0.4      ZN.Segment  BUG not working
+Function        Get-ZNSegmentOutboundBlockRulesDestinationCandida… 0.0.4      ZN.Segment  BUG- Opened issue
 Function        Get-ZNSegmentOutboundBlockRulesExcludedSourceCand… 0.0.4      ZN.Segment
 Function        Get-ZNSegmentOutboundBlockRulesSourceCandidate     0.0.4      ZN.Segment
 Function        Get-ZNSegmentProtectionPoliciesGroupCandidate      0.0.4      ZN.Segment
 Function        Get-ZNSegmentProtectionPolicy                      0.0.4      ZN.Segment
-Function        Get-ZNSegmentRulesDistribution                     0.0.4      ZN.Segment  Not ready????
+Function        Get-ZNSegmentRulesDistribution                     0.0.4      ZN.Segment  Not in Prod yet.
 Function        Get-ZNSegmentRulesHistory                          0.0.4      ZN.Segment    not useful, we need an api to list available history objects.
 Function        Get-ZNSegmentRulesStatistics                       0.0.4      ZN.Segment
 Function        Get-ZNSegmentSystemGroup                           0.0.4      ZN.Segment
@@ -610,13 +610,13 @@ Function        Get-ZNSegmentUserStatistics                        0.0.4      ZN
 Function        Invoke-ZNSegmentEncodeEntityIP                     0.0.4      ZN.Segment
 Function        Invoke-ZNSegmentEncodeEntityIPRange                0.0.4      ZN.Segment
 Function        Invoke-ZNSegmentEncodeEntitySubnet                 0.0.4      ZN.Segment
-Function        Invoke-ZNSegmentExtendAssetQueue                   0.0.4      ZN.Segment    Bug with CAll need to debug.
-Function        Invoke-ZNSegmentQueueAsset                         0.0.4      ZN.Segment    Bug with CAll need to debug.
-Function        Invoke-ZNSegmentSimulateMfaInboundPolicy           0.0.4      ZN.Segment     Need to create a custom cmdlet to create SimParams payload.
-Function        Invoke-ZNSegmentSimulateMfaOutboundPolicy          0.0.4      ZN.Segment     Need to create a custom cmdlet to create SimParams payload.
+Function        Invoke-ZNSegmentExtendAssetQueue                   0.0.4      ZN.Segment    Bug with CAll need to debug.  requires 14 or 30.  Autorest doesnt support integer enum :(
+Function        Invoke-ZNSegmentQueueAsset                         0.0.4      ZN.Segment    Bug with CAll need to debug.  requires 14 or 30.  Autorest doesnt support integer enum :(
+Function        Invoke-ZNSegmentSimulateMfaInboundPolicy           0.0.4      ZN.Segment     Need to create a custom cmdlet to create SimParams payload.  OR change the API to accept params as a body
+Function        Invoke-ZNSegmentSimulateMfaOutboundPolicy          0.0.4      ZN.Segment     Need to create a custom cmdlet to create SimParams payload.  OR change the API to accept params as a body
 Function        New-ZNSegmentAssetsLinux                           0.0.4      ZN.Segment
 Function        New-ZNSegmentAssetsOt                              0.0.4      ZN.Segment
-Function        New-ZNSegmentCustomGroup                           0.0.4      ZN.Segment    Bug with CAll need to debug.
+Function        New-ZNSegmentCustomGroup                           0.0.4      ZN.Segment    Bug with CAll need to debug. Fixed in API.
 Function        New-ZNSegmentInboundAllowRule                      0.0.4      ZN.Segment    Need to create custom cmdlet to handle portslist.
 Function        New-ZNSegmentInboundBlockRule                      0.0.4      ZN.Segment    Need to create custom cmdlet to handle portslist.
 Function        New-ZNSegmentMfaInboundPolicy                      0.0.4      ZN.Segment    Need to create custom cmdlet to handle objects

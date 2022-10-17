@@ -6,7 +6,7 @@ Deletes the API key
 Deletes the API Key
 
 #.Link
-https://
+https://github.com/zn.segment/remove-znsegmentapikey
 #>
 function Remove-ZNSegmentApiKey {
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Low')]

@@ -245,6 +245,9 @@ Add outbound rule
 ### [New-ZNSegmentOutboundBlockRule](New-ZNSegmentOutboundBlockRule.md)
 Add outbound block rule
 
+### [New-ZNSegmentPortsList](New-ZNSegmentPortsList.md)
+Create a in-memory object for PortsList
+
 ### [New-ZNSegmentProtectionPolicy](New-ZNSegmentProtectionPolicy.md)
 Add protection policy
 

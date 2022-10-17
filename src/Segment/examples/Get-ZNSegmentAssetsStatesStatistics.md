@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: List asset statistics
 ```powershell
-{{ Add code here }}
+Get-ZNSegmentAssetsStatistics 
 ```
 
 ```output
-{{ Add output here }}
+ItemAddingProtectionCount               : 
+ItemDeletedCount                        : 0
+ItemForceAddingProtectionCount          : 
+ItemForceRemovingProtectionCount        : 
+ItemForcedUnprotectedCount              : 
+ItemMonitoredCount                      : 8
+ItemNotProtectedLink                    : {protectionStatus, status}
+ItemProtectedCount                      : 
+ItemProtectedDueToProtectionPolicyCount : 
+ItemQueuedCount                         : 
+ItemQueuedDueToProtectionPolicyCount    : 
+ItemRemovingProtectionCount             : 
+ItemTotalCount                          : 12
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet lists the asset statstics for the environment.

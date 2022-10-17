@@ -13,9 +13,9 @@ Add outbound rule
 ## SYNTAX
 
 ```
-New-ZNSegmentOutboundAllowRule -ExpiresAt <Int32> -LocalEntityId <String> -LocalProcessesList <String[]>
+New-ZNSegmentOutboundAllowRule -LocalEntityId <String> -LocalProcessesList <String[]>
  -PortsList <IPortsListItem[]> -RemoteEntityIdsList <String[]> -State <Int32> [-Description <String>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ExpiresAt <Int32>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,27 +23,39 @@ Add outbound rule
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an outbound allow rule
 ```powershell
-{{ Add code here }}
+$portsList = New-ZNSegmentPortsList -Protocol TCP -Ports "53"
+$source = (Get-ZNSegmentOutboundAllowRulesSourceCandidate -search "all protected assets").Items
+$destination = Invoke-ZNSegmentEncodeEntityIp -IP 8.8.8.8
+New-ZNSegmentOutboundAllowRule -LocalEntityId $destination.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1
 ```
 
 ```output
-{{ Add output here }}
+CreatedByEnforcementSource : 0
+CreatedById                : m:86786c2f022cf2bd7dc38f165c98b4ee736c8c3b
+CreatedByName              : PowerShell
+CreatedByUserRole          : 4
+ItemAction                 : 1
+ItemCreatedAt              : 1665759234620
+ItemDescription            : 
+ItemDirection              : 2
+ItemExcludedLocalIdsList   : {}
+ItemExpiresAt              : 0
+ItemId                     : c551b646-75d1-477d-8023-367461883fd7
+ItemLocalEntityId          : b:110002
+ItemLocalProcessesList     : {*}
+ItemParentId               : 
+ItemParentType             : 0
+ItemPortsList              : {ZeroNetworks.PowerShell.Cmdlets.Segment.Models.PortsListItem}
+ItemRemoteEntityIdsList    : {b:120808080820}
+ItemState                  : 1
+ItemUpdatedAt              : 
+UpdatedById                : 
+UpdatedByName              : 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet creates an outbound allow rule for the environment.
 
 ## PARAMETERS
 
@@ -70,9 +82,9 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -139,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
-.
+1=Enabled, 2=Disabled
 
 ```yaml
 Type: System.Int32
@@ -191,7 +203,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IApiError
 
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAuthError
 

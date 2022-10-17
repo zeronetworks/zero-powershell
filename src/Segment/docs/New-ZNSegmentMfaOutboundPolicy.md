@@ -232,7 +232,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
-.
+1=Enabled, 2=Disabled
 
 ```yaml
 Type: System.Int32
@@ -284,7 +284,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IApiError
 
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAuthError
 

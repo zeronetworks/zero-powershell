@@ -13,8 +13,8 @@ Groups
 ## SYNTAX
 
 ```
-Update-ZNSegmentCustomGroup -GroupId <String> -GroupName <String> [-GroupDescription <String>]
- [-MembersId <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSegmentCustomGroup -GroupId <String> -Name <String> [-Description <String>] [-MembersId <String[]>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +46,7 @@ Groups
 
 ## PARAMETERS
 
-### -GroupDescription
+### -Description
 .
 
 ```yaml
@@ -76,21 +76,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupName
-.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MembersId
 members id
 
@@ -100,6 +85,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -144,9 +144,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
-
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAny
+
+### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IApiError
 
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAuthError
 

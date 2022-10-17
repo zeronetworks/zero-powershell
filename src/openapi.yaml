@@ -877,7 +877,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/queueBody'
+              $ref: '#/components/schemas/queueExtendBody'
         required: true
       responses:
         '200':
@@ -1431,7 +1431,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/entity'
+                $ref: '#/components/schemas/entityResponse'
         '400':
           description: Bad Request
           content:
@@ -6326,6 +6326,8 @@ components:
       properties:
         error:
           type: string
+        message:
+          type: string
     asset:
       type: object
       properties:
@@ -6862,9 +6864,14 @@ components:
         entities:
           type: array
           items:
-            $ref: '#/components/schemas/asset'
+            $ref: '#/components/schemas/entity'
         count:
           type: integer
+    entityResponse:
+      type: object
+      properties:
+        entity:
+          $ref: '#/components/schemas/entity'
     exportId:
       type: object
       properties:
@@ -7022,7 +7029,6 @@ components:
         description:
           type: string
         dstEntityInfo:
-          type: object
           $ref: '#/components/schemas/idNamePair'
         dstPort:
           type: string
@@ -7076,6 +7082,10 @@ components:
             $ref: '#/components/schemas/idNamePair'
         state:
           type: integer
+          description: '1=Enabled, 2=Disabled'
+          enum:
+            - 1
+            - 2
         updatedAt:
           $ref: '#/components/schemas/timestamp'
     reactivePolicyBody:
@@ -7143,6 +7153,10 @@ components:
                 type: string
         state:
           type: integer
+          description: '1=Enabled, 2=Disabled'
+          enum:
+            - 1
+            - 2
     reactivePolicyList:
       type: object
       properties:
@@ -7274,9 +7288,21 @@ components:
           type: array
           items:
             type: string
+        queueDays:
+          type: integer
+          description: number of days
+          enum: [14,30]
+    queueExtendBody:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
         extendByDays:
           type: integer
           description: number of days
+          enum: [14,30]
     roleBody:
       type: object
       properties:
@@ -7331,7 +7357,6 @@ components:
       properties:
         action:
           type: integer
-          format: int32
         createdAt:
           $ref: '#/components/schemas/timestamp'
         createdBy:
@@ -7341,15 +7366,16 @@ components:
         direction:
           type: integer
           format: int32
+        excludedLocalIdsList:
+          type: array
+          items:
+            type: string
         expiresAt:
-          type: integer
-          format: int32
+          $ref: '#/components/schemas/timestamp'
         id:
           type: string
         localEntityId:
           type: string
-        localEntityInfo:
-          $ref: '#/components/schemas/idNamePair'
         localProcessesList:
           type: array
           items:
@@ -7365,15 +7391,13 @@ components:
           type: array
           items:
             type: string
-        remoteEntityInfos:
-          type: array
-          items:
-            $ref: '#/components/schemas/idNamePair'
         state:
           type: integer
           format: int32
         updatedAt:
           $ref: '#/components/schemas/timestamp'
+        updatedBy:
+          $ref: '#/components/schemas/idNamePair'
     ruleBody:
       required:
         - expiresAt
@@ -7404,8 +7428,10 @@ components:
             type: string
         state:
           type: integer
-          format: int32
-          example: 1
+          description: '1=Enabled, 2=Disabled'
+          enum:
+            - 1
+            - 2
     ruleDistribution:
       type: array
       items:
@@ -7595,11 +7621,11 @@ components:
     customGroupBody:
       type: object
       required:
-        - groupName
+        - name
       properties:
-        groupName:
+        name:
           type: string
-        groupDescription:
+        description:
           type: string
         membersId:
           description: members id

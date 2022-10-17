@@ -6,7 +6,7 @@ Set the API key for use in all other cmdlets
 Set the API key for use in all other cmdlets
 
 #.Link
-https://
+https://github.com/zn.segment/set-znsegmentapikey
 #>
 function Set-ZNSegmentApiKey {
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Low')]

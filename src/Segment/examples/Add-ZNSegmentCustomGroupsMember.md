@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Add a member to a custom group
 ```powershell
-{{ Add code here }}
+$cgroup = Get-ZNSegmentCustomGroup | where {$_.Name -eq "test"}
+Add-ZNSegmentCustomGroupsMember -GroupId $cgroup.Id -MembersId (Search-ZNSegmentAsset -Fqdn linuxserver.zero.labs)
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet adds a member to the custom group in the environment.

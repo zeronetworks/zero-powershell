@@ -84,9 +84,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
-
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAny
+
+### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IApiError
 
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAuthError
 

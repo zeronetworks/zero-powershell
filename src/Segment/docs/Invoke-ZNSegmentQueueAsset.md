@@ -12,15 +12,8 @@ Move asset from monitored to learning
 
 ## SYNTAX
 
-### QueueExpanded (Default)
 ```
-Invoke-ZNSegmentQueueAsset [-ExtendByDays <Int32>] [-Items <String[]>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Queue
-```
-Invoke-ZNSegmentQueueAsset -Body <IQueueBody> [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-ZNSegmentQueueAsset [-Items <String[]>] [-QueueDays <Int32>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,52 +21,21 @@ Move asset from monitored to learning
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Move an asset into learning
 ```powershell
-{{ Add code here }}
+Invoke-ZNSegmentQueueAsset -Items @((Search-ZNSegmentAsset -Fqdn fs1.zero.labs)) -QueueDays 14
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet will extend the learning time of an asset in the environment.
 
 ## PARAMETERS
 
-### -Body
+### -Items
 .
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IQueueBody
-Parameter Sets: Queue
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ExtendByDays
-number of days
-
-```yaml
-Type: System.Int32
-Parameter Sets: QueueExpanded
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -83,12 +45,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Items
-.
+### -QueueDays
+number of days
 
 ```yaml
-Type: System.String[]
-Parameter Sets: QueueExpanded
+Type: System.Int32
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -134,28 +96,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IQueueBody
-
 ## OUTPUTS
 
-### System.String
-
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAny
+
+### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IApiError
 
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAuthError
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <IQueueBody>`: .
-  - `[ExtendByDays <Int32?>]`: number of days
-  - `[Items <String[]>]`: 
 
 ## RELATED LINKS
 

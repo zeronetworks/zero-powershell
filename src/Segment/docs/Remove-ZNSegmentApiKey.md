@@ -20,7 +20,7 @@ Remove-ZNSegmentApiKey -ApiKey <String> [-Confirm] [-WhatIf] [<CommonParameters>
 Deletes the API Key
 
 #.Link
-https://
+https://github.com/zn.segment/remove-znsegmentapikey
 
 ## EXAMPLES
 

@@ -12,15 +12,9 @@ Extend asset learning period
 
 ## SYNTAX
 
-### ExtendExpanded (Default)
 ```
 Invoke-ZNSegmentExtendAssetQueue [-ExtendByDays <Int32>] [-Items <String[]>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### Extend
-```
-Invoke-ZNSegmentExtendAssetQueue -Body <IQueueBody> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,52 +22,21 @@ Extend asset learning period
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Extend an asset learning time
 ```powershell
-{{ Add code here }}
+Invoke-ZNSegmentExtendAssetQueue -Items @((Search-ZNSegmentAsset -Fqdn fs1.zero.labs)) -ExtendByDays 14
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet will extend the learning time of an asset in the environment.
 
 ## PARAMETERS
-
-### -Body
-.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IQueueBody
-Parameter Sets: Extend
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -ExtendByDays
 number of days
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ExtendExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -88,7 +51,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ExtendExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -134,28 +97,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IQueueBody
-
 ## OUTPUTS
 
-### System.String
-
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAny
+
+### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IApiError
 
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAuthError
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <IQueueBody>`: .
-  - `[ExtendByDays <Int32?>]`: number of days
-  - `[Items <String[]>]`: 
 
 ## RELATED LINKS
 

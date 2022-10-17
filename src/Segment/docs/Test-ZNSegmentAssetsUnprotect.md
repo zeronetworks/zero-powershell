@@ -12,14 +12,8 @@ Validate assets for removing from protection
 
 ## SYNTAX
 
-### ValidateExpanded (Default)
 ```
 Test-ZNSegmentAssetsUnprotect -Items <String[]> [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Validate
-```
-Test-ZNSegmentAssetsUnprotect -Body <IAssetBody> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,28 +35,12 @@ This cmdlet will test if an asset is can be removed from segmentation.
 
 ## PARAMETERS
 
-### -Body
-.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAssetBody
-Parameter Sets: Validate
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Items
 .
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ValidateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -108,27 +86,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAssetBody
-
 ## OUTPUTS
 
 ### System.Int32
 
-### System.String
+### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IApiError
 
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAuthError
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <IAssetBody>`: .
-  - `Items <String[]>`: 
 
 ## RELATED LINKS
 

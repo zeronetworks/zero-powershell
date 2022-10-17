@@ -13,8 +13,8 @@ Groups
 ## SYNTAX
 
 ```
-New-ZNSegmentCustomGroup -GroupName <String> [-GroupDescription <String>] [-MembersId <String[]>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-ZNSegmentCustomGroup -Name <String> [-Description <String>] [-MembersId <String[]>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,31 +22,17 @@ Groups
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a custom group
 ```powershell
-{{ Add code here }}
+New-ZNSegmentCustomGroup -Name "test3" -Description "test custom group" -MembersId @((Search-ZNSegmentAsset -Fqdn dc1.zero.labs))
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet will create a new customer group in the environment.
+The MembersId is an array of assetIds to add to the group.
 
 ## PARAMETERS
 
-### -GroupDescription
+### -Description
 .
 
 ```yaml
@@ -55,21 +41,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GroupName
-.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -85,6 +56,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -129,11 +115,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
-
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAlreadyExistError
 
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAny
+
+### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IApiError
 
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAuthError
 

@@ -38,12 +38,145 @@ inlining-threshold: 50
 
 directive:
   # Fixes/overrides to swaggers
-  # None
+  - from: openapi.yaml
+    where: $.components.schemas.entity
+    debug: true
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {
+          "assetStatus": {
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          "assetType": {
+            "type": "integer",
+            "format": "int32",
+            "enum": [
+              0,
+              1,
+              2
+            ]
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/timestamp"
+          },
+          "description": {
+            "type": "string"
+          },
+          "distinguishedName": {
+            "type": "string"
+          },
+          "directMembersCount": {
+            "type": "integer"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "fqdn": {
+            "type": "string"
+          },
+          "guid": {
+            "type": "string"
+          },
+          "hasProtectionPolicy": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "string"
+          },
+          "ipV4Addresses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ipV6Addresses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "jobTitle": {
+            "type": "string"
+          },
+          "lastLogon": {
+            "$ref": "#/components/schemas/timestamp"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "managers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manager"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "officePhone": {
+            "type": "string"
+          },
+          "operatingSystem": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "protectionState": {
+            "type": "integer",
+            "format": "int32",
+            "enum": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "role": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sid": {
+            "type": "string"
+          },
+          "source": {
+            "type": "integer"
+          },
+          "state": {
+            "$ref": "#/components/schemas/state"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/timestamp"
+          },
+          "userPrincipleName": {
+            "type": "string"
+          }
+        }
+      }
+
+      
   # Following is two common directive which are normally required
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Add$|^AddViaIdentity$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
   # Customize
   # Remove the export cmdlets
@@ -94,8 +227,20 @@ directive:
       subject: EntityMemberOf
       variant: GetViaIdentity
     remove: true
-  # hide ViaIdentity
+  # hide variants that use body
   - where:
-      variant: (.*)ViaIdentity(.*)
+      variant: ^Extend$|^Queue$|^Protect&|^Validate$|^Unprotect$|^AddViaIdentityExpanded$|^DeleteViaIdentity$|^GetViaIdentity$|^UpdateViaIdentityExpanded$
+    hide: true
+  # set expiresAt default for rules
+  - where:
+      parameter-name: ExpiresAt
+    set:
+      default:
+        name: ExpiresAt Default
+        description: Sets the expiresAt parmaeter to 0 or never.
+        script: '0'
+  # Hide Get Entity for custom object
+  - where:
+      subject: Entity
     hide: true
 ```

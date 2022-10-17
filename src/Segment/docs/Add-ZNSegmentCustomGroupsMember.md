@@ -12,15 +12,8 @@ Groups
 
 ## SYNTAX
 
-### AddExpanded (Default)
 ```
 Add-ZNSegmentCustomGroupsMember -GroupId <String> -MembersId <String[]> [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Add
-```
-Add-ZNSegmentCustomGroupsMember -GroupId <String> -Body <ICustomGroupMembersBody> [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -29,45 +22,15 @@ Groups
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Add a member to a custom group
 ```powershell
-{{ Add code here }}
+$cgroup = Get-ZNSegmentCustomGroup | where {$_.Name -eq "test"}
+Add-ZNSegmentCustomGroupsMember -GroupId $cgroup.Id -MembersId (Search-ZNSegmentAsset -Fqdn linuxserver.zero.labs)
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet adds a member to the custom group in the environment.
 
 ## PARAMETERS
-
-### -Body
-.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Segment.Models.ICustomGroupMembersBody
-Parameter Sets: Add
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -GroupId
 members id
@@ -89,7 +52,7 @@ members id
 
 ```yaml
 Type: System.String[]
-Parameter Sets: AddExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -135,27 +98,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.ICustomGroupMembersBody
-
 ## OUTPUTS
 
-### System.String
-
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAny
+
+### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IApiError
 
 ### ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IAuthError
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <ICustomGroupMembersBody>`: .
-  - `MembersId <String[]>`: members id
 
 ## RELATED LINKS
 

@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Extend an asset learning time
 ```powershell
-{{ Add code here }}
+Invoke-ZNSegmentExtendAssetQueue -Items @((Search-ZNSegmentAsset -Fqdn fs1.zero.labs)) -ExtendByDays 14
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet will extend the learning time of an asset in the environment.
