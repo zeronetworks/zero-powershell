@@ -21,27 +21,18 @@ Get an entity
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get an entity
 ```powershell
-{{ Add code here }}
+Get-ZNSegmentEntity -EntityId a:a:ZgBWOMyc
 ```
 
 ```output
-{{ Add output here }}
+AssetStatus AssetType Domain    Fqdn          IPV4Addresses  IPV6Addresses               Id           Name OperatingSystem                   ProtectionState Source
+----------- --------- ------    ----          -------------  -------------               --           ---- ---------------                   --------------- ------
+2           2         zero.labs dc1.zero.labs {192.168.10.0} {fe80::8863:40e6:ced3:75a8} a:a:ZgBWOMyc DC1  Windows Server 2012 R2 Datacenter 10              3
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet gets an entity for the environment.
 
 ## PARAMETERS
 

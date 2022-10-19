@@ -243,4 +243,13 @@ directive:
   - where:
       subject: Entity
     hide: true
+  # Hide remove ot (Not implemneted)
+  - where:
+      subject: AssetsOt
+      verb: Remove
+    hide: true
+  # Hide Rule History (not useful)
+  - where:
+      subject: RulesHistory
+    hide: true
 ```

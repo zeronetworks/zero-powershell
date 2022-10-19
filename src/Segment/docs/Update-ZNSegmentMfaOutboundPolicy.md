@@ -14,10 +14,10 @@ Update outbound MFA policy
 
 ```
 Update-ZNSegmentMfaOutboundPolicy -ReactivePolicyId <String> -DstEntityInfoId <String> -DstPort <String>
- -DstProcessNames <String[]> -FallbackToLoggedOnUser -MfaMethods <Int32[]> -ProtocolType <Int32>
- -RuleDuration <Int32> -SrcEntityInfos <IReactivePolicyBodySrcEntityInfosItem[]> -SrcProcessNames <String[]>
- -SrcUserInfos <IReactivePolicyBodySrcUserInfosItem[]> [-Description <String>] [-RuleCreationMode <Int32>]
- [-State <Int32>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -FallbackToLoggedOnUser -MfaMethods <Int32[]> -ProtocolType <Int32> -RuleCreationMode <Int32>
+ -RuleDuration <Int32> -SrcEntityInfos <IReactivePolicyOutboundBodySrcEntityInfosItem[]>
+ -SrcProcessNames <String[]> -SrcUserInfos <IReactivePolicyOutboundBodySrcUserInfosItem[]> -State <Int32>
+ [-Description <String>] [-DstProcessNames <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,27 +25,38 @@ Update outbound MFA policy
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an inbound MFA policy
 ```powershell
-{{ Add code here }}
+#Get the policy
+$mfaPolicy = Get-ZNSegmentMfaOutboundPolicy -ReactivePolicyId b307438a-5a02-49a0-a8e3-944c0558f0fe 
+#add a port
+$mfaPolicy.ItemDstPort = $mfaPolicy.ItemDstPort+,",23"
+Update-ZNSegmentMfaOutboundPolicy -ReactivePolicyId $mfaPolicy.ItemId -DstEntityInfoId $mfaPolicy.DstEntityInfoId -DstPort $mfaPolicy.ItemDstPort -FallbackToLoggedOnUser:$false -MfaMethods $mfaPolicy.ItemMfaMethods -ProtocolType $mfaPolicy.ItemProtocolType -RuleCreationMode $mfaPolicy.ItemRuleCreationMode -RuleDuration $mfaPolicy.ItemRuleDuration -SrcEntityInfos $mfaPolicy.ItemSrcEntityInfos -SrcProcessNames $mfaPolicy.ItemSrcProcessNames  -SrcUserInfos $mfaPolicy.ItemSrcUserInfos -State $mfaPolicy.ItemState
 ```
 
 ```output
-{{ Add output here }}
+DstEntityInfoId            : a:t:oOkjcyED
+DstEntityInfoName          : switch01
+ItemCreatedAt              : 1665598259106
+ItemCreatedBy              : 1f352ed0-86f1-454f-90a5-592c197c8000
+ItemCreatedByName          : Zero Networks
+ItemDescription            : 
+ItemDstPort                : 22-23
+ItemDstProcessNames        : {*}
+ItemFallbackToLoggedOnUser : False
+ItemId                     : b307438a-5a02-49a0-a8e3-944c0558f0fe
+ItemMfaMethods             : {4}
+ItemProtocolType           : 6
+ItemRuleCreationMode       : 1
+ItemRuleDuration           : 6
+ItemSrcEntityInfos         : {All protected assets}
+ItemSrcProcessNames        : {*}
+ItemSrcUserInfos           : {Any user}
+ItemState                  : 1
+ItemUpdatedAt              : 1666114035566
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet will update an outbound MFA policy
 
 ## PARAMETERS
 
@@ -102,7 +113,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -177,7 +188,7 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -204,7 +215,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for SRCENTITYINFOS properties and create a hash table.
 
 ```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IReactivePolicyBodySrcEntityInfosItem[]
+Type: ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IReactivePolicyOutboundBodySrcEntityInfosItem[]
 Parameter Sets: (All)
 Aliases:
 
@@ -235,7 +246,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for SRCUSERINFOS properties and create a hash table.
 
 ```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IReactivePolicyBodySrcUserInfosItem[]
+Type: ZeroNetworks.PowerShell.Cmdlets.Segment.Models.IReactivePolicyOutboundBodySrcUserInfosItem[]
 Parameter Sets: (All)
 Aliases:
 
@@ -254,7 +265,7 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -314,10 +325,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`SRCENTITYINFOS <IReactivePolicyBodySrcEntityInfosItem[]>`: .
+`SRCENTITYINFOS <IReactivePolicyOutboundBodySrcEntityInfosItem[]>`: .
   - `Id <String>`: 
 
-`SRCUSERINFOS <IReactivePolicyBodySrcUserInfosItem[]>`: .
+`SRCUSERINFOS <IReactivePolicyOutboundBodySrcUserInfosItem[]>`: .
   - `Id <String>`: 
 
 ## RELATED LINKS

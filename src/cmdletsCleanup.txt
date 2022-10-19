@@ -617,17 +617,20 @@ Function        Invoke-ZNSegmentSimulateMfaOutboundPolicy          0.0.4      ZN
 Function        New-ZNSegmentAssetsLinux                           0.0.4      ZN.Segment
 Function        New-ZNSegmentAssetsOt                              0.0.4      ZN.Segment
 Function        New-ZNSegmentCustomGroup                           0.0.4      ZN.Segment    Bug with CAll need to debug. Fixed in API.
-Function        New-ZNSegmentInboundAllowRule                      0.0.4      ZN.Segment    Need to create custom cmdlet to handle portslist.
-Function        New-ZNSegmentInboundBlockRule                      0.0.4      ZN.Segment    Need to create custom cmdlet to handle portslist.
+Function        New-ZNSegmentInboundAllowRule                      0.0.4      ZN.Segment    Need to create custom cmdlet to handle portslist. DONE
+Function        New-ZNSegmentInboundBlockRule                      0.0.4      ZN.Segment    Need to create custom cmdlet to handle portslist. DONE
+
+These two cmdlets would be great if we changed the API.  like rules where it accepts a list of entityIds for users and machines.  vs srcUserInfos....  Talk to AMIR!
 Function        New-ZNSegmentMfaInboundPolicy                      0.0.4      ZN.Segment    Need to create custom cmdlet to handle objects
 Function        New-ZNSegmentMfaOutboundPolicy                     0.0.4      ZN.Segment    Need to create custom cmdlet to handle objects
-Function        New-ZNSegmentOutboundAllowRule                     0.0.4      ZN.Segment    Need to create custom cmdlet to handle portslist.
-Function        New-ZNSegmentOutboundBlockRule                     0.0.4      ZN.Segment    Need to create custom cmdlet to handle portslist.
+
+Function        New-ZNSegmentOutboundAllowRule                     0.0.4      ZN.Segment    Need to create custom cmdlet to handle portslist. DONE
+Function        New-ZNSegmentOutboundBlockRule                     0.0.4      ZN.Segment    Need to create custom cmdlet to handle portslist. DONE
 Function        New-ZNSegmentProtectionPolicy                      0.0.4      ZN.Segment
 Function        Protect-ZNSegmentAsset                             0.0.4      ZN.Segment
 Function        Protect-ZNSegmentAssetsOt                          0.0.4      ZN.Segment
 Function        Remove-ZNSegmentApiKey                             0.0.4      ZN.Segment
-Function        Remove-ZNSegmentAssetsOt                           0.0.4      ZN.Segment    Bug with CAll need to debug.
+Function        Remove-ZNSegmentAssetsOt                           0.0.4      ZN.Segment    Bug with CAll need to debug.  Asked if it should be avalible.
 Function        Remove-ZNSegmentCustomGroup                        0.0.4      ZN.Segment
 Function        Remove-ZNSegmentCustomGroupsMember                 0.0.4      ZN.Segment
 Function        Remove-ZNSegmentInboundAllowRule                   0.0.4      ZN.Segment
@@ -643,7 +646,7 @@ Function        Test-ZNSegmentAssetsProtection                     0.0.4      ZN
 Function        Test-ZNSegmentAssetsUnprotect                      0.0.4      ZN.Segment    hide? not useful; rename to segment?
 Function        Unprotect-ZNSegmentAsset                           0.0.4      ZN.Segment
 Function        Unprotect-ZNSegmentAssetsOt                        0.0.4      ZN.Segment
-Function        Update-ZNSegmentCustomGroup                        0.0.4      ZN.Segment    Bug with CAll need to debug.
+Function        Update-ZNSegmentCustomGroup                        0.0.4      ZN.Segment    Wont work.  Need additonal API to get a group byId that returns properties like members.
 Function        Update-ZNSegmentInboundAllowRule                   0.0.4      ZN.Segment    Write customer cmdlet wapper to make it easy?
 Function        Update-ZNSegmentInboundBlockRule                   0.0.4      ZN.Segment    Write customer cmdlet wapper to make it easy?
 Function        Update-ZNSegmentMfaInboundPolicy                   0.0.4      ZN.Segment    Write customer cmdlet wapper to make it easy?
@@ -655,9 +658,9 @@ Function        Update-ZNSegmentProtectionPolicy                   0.0.4      ZN
 #MUST DO
 DONE - Remove viaidentity stuff.  Remove-ZNSegmentAssetsOt -InputObject
 DONE - Set any parameter Limit to default Default 10
-Msotly done....Examples for docs
+Mostly done....Examples for docs
 
-License upload to github?  what license?
+License upload to github?  what license should we use.?
 We need to figure out help location online version: https://github.com/zn.segment/get-znsegmentadgroup  new repo so we dont have to open our public repo.
 make api key powershell variable. Need to talk to someone in dev.
 ?rename cmdlets from protect to segment.  Are we keeping the API the same?

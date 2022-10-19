@@ -2598,7 +2598,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/reactivePolicyBody'
+              $ref: '#/components/schemas/reactivePolicyInboundBody'
         required: true
       responses:
         '200':
@@ -2606,7 +2606,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/reactivePolicyResponse'
+                $ref: '#/components/schemas/reactivePolicyItem'
         '400':
           description: Bad Request
           content:
@@ -2675,7 +2675,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/reactivePolicyBody'
+              $ref: '#/components/schemas/reactivePolicyInboundBody'
         required: true
       responses:
         '200':
@@ -2683,7 +2683,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/reactivePolicyResponse'
+                $ref: '#/components/schemas/reactivePolicyItem'
         '400':
           description: Bad Request
           content:
@@ -3227,7 +3227,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/reactivePolicyBody'
+              $ref: '#/components/schemas/reactivePolicyOutboundBody'
         required: true
       responses:
         '200':
@@ -3235,7 +3235,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/reactivePolicyResponse'
+                $ref: '#/components/schemas/reactivePolicyItem'
         '400':
           description: Bad Request
           content:
@@ -3304,7 +3304,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/reactivePolicyBody'
+              $ref: '#/components/schemas/reactivePolicyOutboundBody'
         required: true
       responses:
         '200':
@@ -3312,7 +3312,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/reactivePolicyResponse'
+                $ref: '#/components/schemas/reactivePolicyItem'
         '400':
           description: Bad Request
           content:
@@ -7088,7 +7088,7 @@ components:
             - 2
         updatedAt:
           $ref: '#/components/schemas/timestamp'
-    reactivePolicyBody:
+    reactivePolicyInboundBody:
       required:
         - dstEntityInfo
         - dstPort
@@ -7100,6 +7100,78 @@ components:
         - srcEntityInfos
         - srcProcessNames
         - srcUserInfos
+        - ruleCreationMode
+        - state
+      type: object
+      properties:
+        description:
+          type: string
+        dstEntityInfo:
+          required:
+            - id
+          type: object
+          properties:
+              id:
+                type: string
+        dstPort:
+          type: string
+        dstProcessNames:
+          type: array
+          items:
+            type: string
+        fallbackToLoggedOnUser:
+          type: boolean
+        mfaMethods:
+          type: array
+          items:
+            type: integer
+        protocolType:
+          type: integer
+        ruleCreationMode:
+          type: integer
+        ruleDuration:
+          type: integer
+        srcEntityInfos:
+          type: array
+          items:
+            required:
+              - id
+            type: object
+            properties:
+              id:
+                type: string
+        srcProcessNames:
+          type: array
+          items:
+            type: string
+        srcUserInfos:
+          type: array
+          items:
+            required:
+              - id
+            type: object
+            properties:
+              id:
+                type: string
+        state:
+          type: integer
+          description: '1=Enabled, 2=Disabled'
+          enum:
+            - 1
+            - 2
+    reactivePolicyOutboundBody:
+      required:
+        - dstEntityInfo
+        - dstPort
+        - fallbackToLoggedOnUser
+        - mfaMethods
+        - protocolType
+        - ruleDuration
+        - srcEntityInfos
+        - srcProcessNames
+        - srcUserInfos
+        - ruleCreationMode
+        - state
       type: object
       properties:
         description:
@@ -7171,6 +7243,11 @@ components:
           type: array
           items:
             type: integer
+    reactivePolicyItem:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/reactivePolicy'
     reactivePolicyResponse:
       type: object
       properties:

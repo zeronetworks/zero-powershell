@@ -176,9 +176,6 @@ Get protection policies
 ### [Get-ZNSegmentRulesDistribution](Get-ZNSegmentRulesDistribution.md)
 Get distribution of rule hit count
 
-### [Get-ZNSegmentRulesHistory](Get-ZNSegmentRulesHistory.md)
-Get a historic version of an inbound allow rule
-
 ### [Get-ZNSegmentRulesStatistics](Get-ZNSegmentRulesStatistics.md)
 Get rules statistics
 
@@ -259,9 +256,6 @@ Protect OT/IoT assets
 
 ### [Remove-ZNSegmentApiKey](Remove-ZNSegmentApiKey.md)
 Deletes the API key
-
-### [Remove-ZNSegmentAssetsOt](Remove-ZNSegmentAssetsOt.md)
-Remove an OT asset
 
 ### [Remove-ZNSegmentCustomGroup](Remove-ZNSegmentCustomGroup.md)
 Groups
