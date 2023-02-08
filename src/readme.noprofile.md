@@ -11,9 +11,9 @@ help-link-prefix: https://github.com/
 metadata:
   authors: Zero Networks
   owners: Zero Networks
-  description: 'Zero Networks PowerShell: $(service-name) cmdlets'
+  description: 'Zero Networks PowerShell cmdlets'
   #copyright: Microsoft Corporation. All rights reserved.
-  tags: Zero Networks PSModule $(service-name)
+  tags: Zero Networks PSModule
   companyName: Zero Networks
   #requireLicenseAcceptance: true
   licenseUri: https://github.com/zeronetworks/zero-powershell/license.md
@@ -23,7 +23,6 @@ metadata:
 > Names
 ``` yaml
 prefix: ZN
-subject-prefix: $(service-name)
 module-name: $(prefix).$(service-name)
 namespace: ZeroNetworks.PowerShell.Cmdlets.$(service-name)
 ```

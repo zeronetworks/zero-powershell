@@ -1,4 +1,4 @@
-namespace ZeroNetworks.PowerShell.Cmdlets.Segment
+namespace ZeroNetworks.PowerShell.Cmdlets.Api
 {
     using Runtime;
     using System.Collections.Generic;
@@ -29,7 +29,7 @@ namespace ZeroNetworks.PowerShell.Cmdlets.Segment
 
         protected async Task<HttpResponseMessage> AddApiKey(HttpRequestMessage request, IEventListener callback, ISendAsync next)
         {
-            request.Headers.Add("Authorization", System.Environment.GetEnvironmentVariable("ZNSegmentApiKey"));
+            request.Headers.Add("Authorization", System.Environment.GetEnvironmentVariable("ZNApiKey"));
 
             // let it go on.
             return await next.SendAsync(request, callback);

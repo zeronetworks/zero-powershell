@@ -1,0 +1,55 @@
+---
+external help file:
+Module Name: ZN.Api
+online version: https://github.com/zn.api/get-znainextbatch
+schema: 2.0.0
+---
+
+# Get-ZNAiNextBatch
+
+## SYNOPSIS
+Returns a date in epoch(ms) for the next batch of AI rules.
+
+## SYNTAX
+
+```
+Get-ZNAiNextBatch [<CommonParameters>]
+```
+
+## DESCRIPTION
+Returns a date in epoch(ms) for the next batch of AI rules.
+
+## EXAMPLES
+
+### Example 1: Get the date for the next batch of AI rules creation
+```powershell
+$aiDate = Get-ZNAiNextBatch
+(Get-Date -Date "01-01-1970") + ([System.TimeSpan]::FromMilliseconds($ai))
+```
+
+```output
+Thursday, October 20, 2022 11:59:59 PM
+```
+
+The date is stored in epoch(MS).
+It can easily be converted to human readable date.
+
+## PARAMETERS
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### System.Int64
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+## NOTES
+
+ALIASES
+
+## RELATED LINKS
+
