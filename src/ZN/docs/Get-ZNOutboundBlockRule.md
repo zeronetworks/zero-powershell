@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znoutboundblockrule
+online version: https://github.com/zeronetworkszn.api/get-znoutboundblockrule
 schema: 2.0.0
 ---
 
@@ -34,7 +34,7 @@ Get-ZNOutboundBlockRule
 ```
 
 ```output
-ction CreatedAt     Description                               Direction ExpiresAt Id                                   LocalEntityId LocalProcessesList ParentId ParentType RemoteEntityIdsList              State UpdatedAt
+Action CreatedAt     Description                               Direction ExpiresAt Id                                   LocalEntityId LocalProcessesList ParentId ParentType RemoteEntityIdsList              State UpdatedAt
 ------ ---------     -----------                               --------- --------- --                                   ------------- ------------------ -------- ---------- -------------------              ----- ---------
 2      1648736821514 Sentinel Integration - Block Malicous IPs 2         0         0faafa72-2540-4d55-9418-ed62472e0e2d b:110002      {*}                         0          {b:12ac10010120, b:12ac10020120} 1     1665491061074     
 ```
@@ -55,6 +55,7 @@ ItemAction                 : 2
 ItemCreatedAt              : 1648736821514
 ItemDescription            : Sentinel Integration - Block Malicous IPs
 ItemDirection              : 2
+ItemExcludedLocalIdsList   : {}
 ItemExpiresAt              : 0
 ItemId                     : 0faafa72-2540-4d55-9418-ed62472e0e2d
 ItemLocalEntityId          : b:110002
@@ -65,9 +66,11 @@ ItemPortsList              : {ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsLi
 ItemRemoteEntityIdsList    : {b:12ac10010120, b:12ac10020120}
 ItemRemoteEntityInfos      : {172.16.1.1, 172.16.2.1}
 ItemState                  : 1
-ItemUpdatedAt              : 1665491061074
+ItemUpdatedAt              : 1675945614691
 LocalEntityInfoId          : b:110002
 LocalEntityInfoName        : All protected assets
+UpdatedById                : m:79e1eb0a32b6f5ff066ed50cf180bcab0d122bf1
+UpdatedByName              : MS Sentinel Integration
 ```
 
 Get a specific outbound block rule.

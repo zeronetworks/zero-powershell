@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-znprotectionautomationsetting
+online version: https://github.com/zeronetworkszn.api/update-znprotectionautomationsetting
 schema: 2.0.0
 ---
 
@@ -21,27 +21,12 @@ Returns the properties of the group that was updated for Protection Automation s
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update protection automation
 ```powershell
-{{ Add code here }}
+Update-ZNProtectionAutomationSetting -GroupId (Get-ZNAdGroup -Search ZeroNetworksProtectedAssets).Id
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet updates the Automation setting under Protection.
 
 ## PARAMETERS
 

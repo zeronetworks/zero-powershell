@@ -6,7 +6,7 @@ Set the API key for use in all other cmdlets
 Set the API key for use in all other cmdlets
 
 #.Link
-https://github.com/zn/set-znapikey
+https://github.com/zeronetworks/zn.api/set-znapikey
 #>
 function Set-ZNApiKey {
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Low')]
@@ -18,6 +18,8 @@ function Set-ZNApiKey {
     )
 
     process {
+        CheckModuleLatest
+        
         try {
             $env:ZNApiKey = $ApiKey
         }

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/new-znadsecondarysetting
+online version: https://github.com/zeronetworkszn.api/new-znadsecondarysetting
 schema: 2.0.0
 ---
 
@@ -21,27 +21,12 @@ Add a secondary AD settings in Asset Managment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Add a new secondary AD domain
 ```powershell
-{{ Add code here }}
+New-ZNAdSecondarySetting -DomainId newdomain.zero.labs -Dc dc1.newdomain.zero.labs
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The cmdlet will create a new secondary AD domain in Active Directory under Asset Management.
 
 ## PARAMETERS
 

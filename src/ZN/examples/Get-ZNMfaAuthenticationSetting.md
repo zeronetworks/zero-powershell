@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get MFA Authentication Settings
 ```powershell
-{{ Add code here }}
+Get-ZNMfaAuthenticationSetting
 ```
 
 ```output
-{{ Add output here }}
+ItemIsRequiresAuth ItemIsSsoForceAuth ItemTokenTtl
+------------------ ------------------ ------------
+              True              False           60
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet gets the MFA Authentication settings under Protection.

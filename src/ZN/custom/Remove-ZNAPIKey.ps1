@@ -6,15 +6,12 @@ Deletes the API key
 Deletes the API Key
 
 #.Link
-https://github.com/zn/remove-znapikey
+https://github.com/zeronetworks/zn.api/remove-znapikey
 #>
 function Remove-ZNApiKey {
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Low')]
     param(
-        [Parameter(Mandatory)]
-        [System.String]
-        # Api Key
-        ${ApiKey}
+
     )
 
     process {

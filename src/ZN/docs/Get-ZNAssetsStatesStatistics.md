@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znassetsstatesstatistics
+online version: https://github.com/zeronetworkszn.api/get-znassetsstatesstatistics
 schema: 2.0.0
 ---
 
@@ -21,28 +21,16 @@ Returns an object with asset state statistics.
 
 ## EXAMPLES
 
-### Example 1: List asset statistics
+### Example 1: Get asset connected count
 ```powershell
-Get-ZNAssetsStatistics 
+Get-ZNAssetsStatesStatistics
 ```
 
 ```output
-ItemAddingProtectionCount               : 
-ItemDeletedCount                        : 0
-ItemForceAddingProtectionCount          : 
-ItemForceRemovingProtectionCount        : 
-ItemForcedUnprotectedCount              : 
-ItemMonitoredCount                      : 8
-ItemNotProtectedLink                    : {protectionStatus, status}
-ItemProtectedCount                      : 
-ItemProtectedDueToProtectionPolicyCount : 
-ItemQueuedCount                         : 
-ItemQueuedDueToProtectionPolicyCount    : 
-ItemRemovingProtectionCount             : 
-ItemTotalCount                          : 12
+10
 ```
 
-This cmdlet lists the asset statstics for the environment.
+This cmdlet returns the number of connected assets.
 
 ## PARAMETERS
 
@@ -53,7 +41,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsStatesStatisticsReactivePoliciesStatistics
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsStatesStatisticsAssetsStatesStatistics
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

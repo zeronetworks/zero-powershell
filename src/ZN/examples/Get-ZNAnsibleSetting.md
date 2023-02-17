@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the Ansible user settings
 ```powershell
-{{ Add code here }}
+Get-ZNAnsibleSetting
 ```
 
 ```output
-{{ Add output here }}
+ClientId CredentialsName DisableCertificateValidation Url             Username
+-------- --------------- ---------------------------- ---             --------
+1234     ssh             True                         https://1.1.1.1 znAdmin
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet gets the Linux Ansible User settings under Asset Management.

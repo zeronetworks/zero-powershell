@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znaiexclusionnetworkserver
+online version: https://github.com/zeronetworkszn.api/get-znaiexclusionnetworkserver
 schema: 2.0.0
 ---
 
@@ -21,27 +21,18 @@ Get AI network exclusion for servers: lists of tcp/udp ports / ports ranges + bo
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the AI Exclusion Setting for servers
 ```powershell
-{{ Add code here }}
+Get-ZNAiExclusionNetworkServer
 ```
 
 ```output
-{{ Add output here }}
+Icmp  ProcessesList TcpPorts UdpPorts
+----  ------------- -------- --------
+False {}                     
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet returns the AI Exclusion setting for servers under Data Collection.
 
 ## PARAMETERS
 

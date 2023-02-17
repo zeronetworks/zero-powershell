@@ -1,54 +1,48 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znentityanalysis
+online version: https://github.com/zeronetworkszn.api/get-zngroupaudit
 schema: 2.0.0
 ---
 
-# Get-ZNEntityAnalysis
+# Get-ZNGroupAudit
 
 ## SYNOPSIS
-Returns an object with entity analysis data.
+Returns a list of audits for the group.
 
 ## SYNTAX
 
 ```
-Get-ZNEntityAnalysis -EntityId <String> [-Connectionstate <Int32>] [-Direction <String>] [-From <Int32>]
- [-Sort <String>] [-To <Int32>] [<CommonParameters>]
+Get-ZNGroupAudit -GroupId <String> [-Cursor <Int64>] [-Filters <String>] [-Limit <Int32>] [-Order <String>]
+ [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns an object with entity analysis data.
+Returns a list of audits for the group.
 
 ## EXAMPLES
 
-### Example 1: Get entity analysis
+### Example 1: Get audits for a group
 ```powershell
-$asset = Search-ZNAsset -Fqdn "dc1.zero.labs" 
-Get-ZNEntityAnalysis -EntityId $asset
+(Get-ZNGroupAudit -GroupId g:c:gP9POclU).Items
 ```
 
 ```output
-CountByAsset        : 0
-CountByPort         : 0
-CountByProcess      : 0
-CountByUser         : 0
-ItemByAsset         : {}
-ItemByPort          : {}
-ItemByProcess       : {}
-ItemByUser          : {}
-ItemConnectionState : 
+AuditType Details
+--------- -------                                                                                                                     
+18        {"rp":{"enforcementSource":5,"duration":6,"ports":"123","protocol":6,"mfaMethods":[5],"description":"Test Policy","srcProce…
+17        {"rp":{"enforcementSource":5,"duration":6,"ports":"123","protocol":6,"mfaMethods":[5],"description":"Test Policy","srcProce…
 ```
 
-Get entity analysis for an asset.
+This cmdlet get the audits for a group.
 
 ## PARAMETERS
 
-### -Connectionstate
-connnection state for the query
+### -Cursor
+cursor position to start at
 
 ```yaml
-Type: System.Int32
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -59,8 +53,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Direction
-direction for the query
+### -Filters
+JSON string URI encoded set of fiters
 
 ```yaml
 Type: System.String
@@ -74,8 +68,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EntityId
-entityId to filter on
+### -GroupId
+groupId to filter on
 
 ```yaml
 Type: System.String
@@ -89,8 +83,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -From
-startTime in epoch(ms)
+### -Limit
+Limit the return results
 
 ```yaml
 Type: System.Int32
@@ -99,13 +93,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 10
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Sort
-sort for the query
+### -Order
+What order to sort the results
 
 ```yaml
 Type: System.String
@@ -119,11 +113,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -To
-endTime in epoch(ms)
+### -Search
+Test to search for
 
 ```yaml
-Type: System.Int32
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -141,7 +135,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IEntityAnalysisItems
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAuditList
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

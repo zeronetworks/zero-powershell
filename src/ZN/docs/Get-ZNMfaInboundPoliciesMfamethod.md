@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znmfainboundpoliciesmfamethod
+online version: https://github.com/zeronetworkszn.api/get-znmfainboundpoliciesmfamethod
 schema: 2.0.0
 ---
 
@@ -35,7 +35,7 @@ Get-ZNMfaInboundPoliciesMfamethod
 ```
 
 This cmdlet will return the possible MFA methods for an inbound MFA policy.
-
+The values are mapped to:
 1 = SMS
 2 = Email
 3 = Duo Push

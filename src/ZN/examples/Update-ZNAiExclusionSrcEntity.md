@@ -1,22 +1,23 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update AI Exclusion settings for excluded sources
 ```powershell
-{{ Add code here }}
+Update-ZNAiExclusionSrcEntity -Body (Search-ZNAsset -Fqdn dc1.zero.labs)
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
+This cmdlet updates the AI excluded sources under Data Collection.
 
-### Example 2: {{ Add title here }}
+### Example 2: Add a setting to the current settings.
 ```powershell
-{{ Add code here }}
+$excludedSources = @()
+$excludedSources += (Get-ZNAiExclusionSrcEntity).Id
+Update-ZNAiExclusionSrcEntity -Body ($excludedSources += (Search-ZNAsset -Fqdn fs1.zero.labs))
 ```
 
 ```output
-{{ Add output here }}
+   
 ```
 
-{{ Add description here }}
-
+Use exisitng settings to update or add ports or processes.

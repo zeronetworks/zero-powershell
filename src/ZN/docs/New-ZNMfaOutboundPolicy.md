@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/new-znmfaoutboundpolicy
+online version: https://github.com/zeronetworkszn.api/new-znmfaoutboundpolicy
 schema: 2.0.0
 ---
 
@@ -14,10 +14,10 @@ Returns a the properties of outbound MFA policy created.
 
 ```
 New-ZNMfaOutboundPolicy -AdditionalPortsList <IPortsListItem[]> -DstEntityInfoId <String> -DstPort <String>
- -FallbackToLoggedOnUser -MfaMethods <Int32[]> -ProtocolType <Int32> -RuleCreationMode <Int32>
+ -DstProcessNames <String[]> -FallbackToLoggedOnUser -MfaMethods <Int32[]> -ProtocolType <Int32>
  -RuleDuration <Int32> -SrcEntityInfos <IReactivePolicyOutboundBodySrcEntityInfosItem[]>
  -SrcProcessNames <String[]> -SrcUserInfos <IReactivePolicyOutboundBodySrcUserInfosItem[]> -State <Int32>
- [-Description <String>] [-DstProcessNames <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Description <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,7 +132,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -170,21 +170,6 @@ Accept wildcard characters: False
 ```
 
 ### -ProtocolType
-.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RuleCreationMode
 .
 
 ```yaml

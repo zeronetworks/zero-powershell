@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-znnotificationsetting
+online version: https://github.com/zeronetworkszn.api/update-znnotificationsetting
 schema: 2.0.0
 ---
 
@@ -22,27 +22,18 @@ Returns the properties of the updated Mail Notifications settings.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update mail notifications
 ```powershell
-{{ Add code here }}
+Update-ZNNotificationSetting -AssetProtected:$true -AssetQueued:$false -AssetUnprotected:$true
 ```
 
 ```output
-{{ Add output here }}
+AssetProtected AssetQueued AssetUnprotected
+-------------- ----------- ----------------
+True           False       True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet updates the Mail notifications setting under System.
 
 ## PARAMETERS
 

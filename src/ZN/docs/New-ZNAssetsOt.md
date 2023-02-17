@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/new-znassetsot
+online version: https://github.com/zeronetworkszn.api/new-znassetsot
 schema: 2.0.0
 ---
 
@@ -23,11 +23,10 @@ Returns an empty object.
 
 ### Example 1: Create an OT/IoT Asset
 ```powershell
-New-ZNAssetsOt -DisplayName webcam -Ipv4 "192.168.10.20" -Type 4 
+New-ZNAssetsOt -DisplayName webcam2 -Ipv4 "192.168.10.30" -Type 4 
 ```
 
 This cmdlet will create an OT/IoT asset in the environment.
-
 Support Asset Types:
 4 = IP Camera
 5 = Smart TV

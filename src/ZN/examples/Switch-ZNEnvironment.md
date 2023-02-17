@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Change Zero Networks Environment
 ```powershell
-{{ Add code here }}
+$env = Get-ZNEnvironment | where {$_.name -eq 'Zero Networks Demo'}
+Switch-ZNEnvironment -EnvironmentId $env.Id
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet allows switching between Zero Networks environments when managing multiple environments.

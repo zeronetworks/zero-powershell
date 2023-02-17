@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get Protection Automation setting
 ```powershell
-{{ Add code here }}
+Get-ZNProtectionAutomationSetting
 ```
 
 ```output
-{{ Add output here }}
+ItemDomain ItemHasProtectionPolicy ItemId       ItemName
+---------- ----------------------- ------       --------
+zero.labs                    False g:a:zPeRnP0P ZeroNetworksProtectedAssets
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet gets the Protection Automation setting under Protection.

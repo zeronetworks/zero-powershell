@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znoutboundallowrule
+online version: https://github.com/zeronetworkszn.api/get-znoutboundallowrule
 schema: 2.0.0
 ---
 
@@ -43,20 +43,21 @@ This cmdlet gets outbound allow rules from the environment.
 
 ### Example 2: Get a specific outbound allow rule
 ```powershell
- Get-ZNOutboundAllowRule -RuleId "0a1444a2-7cb7-4319-a0de-a013d6b67402"
+ Get-ZNOutboundAllowRule -RuleId "c551b646-75d1-477d-8023-367461883fd7"
 ```
 
 ```output
-CreatedByEnforcementSource : 5
-CreatedById                : 1f352ed0-86f1-454f-90a5-592c197c8000
-CreatedByName              : Zero Networks
-CreatedByUserRole          : 1
+CreatedByEnforcementSource : 0
+CreatedById                : m:86786c2f022cf2bd7dc38f165c98b4ee736c8c3b
+CreatedByName              : PowerShell
+CreatedByUserRole          : 4
 ItemAction                 : 1
-ItemCreatedAt              : 1665518196557
+ItemCreatedAt              : 1665759234620
 ItemDescription            : 
 ItemDirection              : 2
+ItemExcludedLocalIdsList   : {}
 ItemExpiresAt              : 0
-ItemId                     : 0a1444a2-7cb7-4319-a0de-a013d6b67402
+ItemId                     : c551b646-75d1-477d-8023-367461883fd7
 ItemLocalEntityId          : b:110002
 ItemLocalProcessesList     : {*}
 ItemParentId               : 
@@ -65,9 +66,11 @@ ItemPortsList              : {ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsLi
 ItemRemoteEntityIdsList    : {b:120808080820}
 ItemRemoteEntityInfos      : {8.8.8.8}
 ItemState                  : 1
-ItemUpdatedAt              : 
+ItemUpdatedAt              : 1671621569513
 LocalEntityInfoId          : b:110002
 LocalEntityInfoName        : All protected assets
+UpdatedById                : 
+UpdatedByName              :
 ```
 
 Get a specific outbound allow rule.

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/invoke-znrediscoveransiblesetting
+online version: https://github.com/zeronetworkszn.api/invoke-znrediscoveransiblesetting
 schema: 2.0.0
 ---
 
@@ -21,27 +21,12 @@ Rediscover monitored assets from Ansible
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Force discovery of Linux Assets
 ```powershell
-{{ Add code here }}
+Invoke-ZNRediscoverAnsibleSetting
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet forces redsicovery of Linux assets.
 
 ## PARAMETERS
 

@@ -1,23 +1,29 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-zngroup
+online version: https://github.com/zeronetworkszn.api/get-zngroup
 schema: 2.0.0
 ---
 
 # Get-ZNGroup
 
 ## SYNOPSIS
-Returns a list of groups.
+Returns the properties of an group.
 
 ## SYNTAX
 
+### List (Default)
 ```
 Get-ZNGroup [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
+### Get
+```
+Get-ZNGroup -GroupId <String> [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Returns a list of groups.
+Returns the properties of an group.
 
 ## EXAMPLES
 
@@ -27,18 +33,18 @@ Get-ZNGroup
 ```
 
 ```output
-CreatedAt     Description                                                                DirectMembersCount Domain    Guid                                 HasProtectionPolicy Id           Name                                      Role Sid                                          UpdatedAt
----------     -----------                                                                ------------------ ------    ----                                 ------------------- --           ----                                      ---- ---                                          ---------
-1646147849282                                                                            0                  zero.labs dfaca10e-9718-4d59-a471-61d3af1bd49a False               g:a:yu1gHyge Access Control Assistance Operators       3    S-1-5-32-579                                 1646147976836
-1646147849650                                                                            0                  zero.labs 0fa70a32-93e7-484d-984b-94c9d4d98d49 False               g:a:LXwCiIyG Account Operators                         3    S-1-5-32-548                                 1646147976929
-1664439304197 Includes all Acronis backup servers in the environment                     0                  tag       e136ec7d-96be-4148-93ce-8f8c4b372e34 False               g:t:32276c2c Acronis backup                            3                                                 1664439304197
-1646147849770                                                                            0                  zero.labs 84d2ad0c-b06f-44fd-a043-3c1549945246 False               g:a:ukYAIg2J Administrators                            3    S-1-5-32-544                                 1648643959816
-1646147849525                                                                            0                  zero.labs 7155e8a9-5818-4bdb-a201-a584f3975b7b False               g:a:zpYqGY8G Allowed RODC Password Replication Group   3    S-1-5-21-1655129710-1269081394-587607975-571 1646147976886
-1661144901938 Includes all IP ranges without protected OT/IoT devices in the environment 0                  system    0064a099-bac4-4053-86e9-b8fd0d308094 False               g:s:18276c2c Any asset except protected OT/IoT devices 3                                                 1661145206326
-1656865701309 Includes all asset management servers in the environment                   0                  tag       7bfb635e-8eba-4d36-9fe8-94a971ee01fb False               g:t:10276c2c Asset management                          3                                                 1661144910063
-1646147849644                                                                            0                  zero.labs e518320f-5bda-480a-8c44-87f0b0a4ab18 False               g:a:GqUGqkiM Backup Operators                          3    S-1-5-32-551                                 1646147976926
-1664439304197 Includes all backup servers in the environment                             4                  tag       d63ccad6-5c54-4309-ab47-74991d584387 False               g:t:23276c2c Backup servers                            3                                                 1664439311149
-1664439304197 Includes all certificate authority servers in the environment              1                  tag       686cfae1-4f4d-4d06-8cfc-8425a9e96d02 False               g:t:37276c2c Certificate Authority                     3                                                 1664439311149
+CreatedAt     Description                                                                DirectMembersCount Domain    Guid                                 HasProtectionPolicy Id           Name
+---------     -----------                                                                ------------------ ------    ----                                 ------------------- --           ----                 
+1646147849282                                                                            0                  zero.labs dfaca10e-9718-4d59-a471-61d3af1bd49a False               g:a:yu1gHyge Access Control Assis…
+1646147849650                                                                            0                  zero.labs 0fa70a32-93e7-484d-984b-94c9d4d98d49 False               g:a:LXwCiIyG Account Operators    
+1646147849770                                                                            0                  zero.labs 84d2ad0c-b06f-44fd-a043-3c1549945246 False               g:a:ukYAIg2J Administrators       
+1646147849525                                                                            0                  zero.labs 7155e8a9-5818-4bdb-a201-a584f3975b7b False               g:a:zpYqGY8G Allowed RODC Passwor…
+1661144901938 Includes all IP ranges without protected OT/IoT devices in the environment 3                  system    0064a099-bac4-4053-86e9-b8fd0d308094 False               g:s:18276c2c Any asset except pro…
+1646147849644                                                                            0                  zero.labs e518320f-5bda-480a-8c44-87f0b0a4ab18 False               g:a:GqUGqkiM Backup Operators     
+1667984801729 Includes all biometric entry systems in the environment                    0                  OT/IoT    8745f7da-2e00-40b8-adf4-7ab5c2f928d1 False               g:o:0T276c2c Biometric entry syst…
+1667984801729 Includes all camera devices in the environment                             1                  OT/IoT    13df7695-9bac-41ea-9437-8fef8dd3f28e False               g:o:04276c2c Cameras              
+1667984801729 Includes all card readers in the environment                               0                  OT/IoT    80348a50-eae9-48fe-be2f-d12d67a6682d False               g:o:0A276c2c Card readers         
+1646147849235                                                                            0                  zero.labs a122e408-0192-45e0-b3ca-6e5b26534981 False               g:a:zobH4QmN Certificate Service …
 ```
 
 The cmdlet gets all groups for the environment
@@ -65,6 +71,18 @@ CreatedAt     Description                                                      D
 
 Use offset to get the next page of custom groups.
 
+### Example 3: Find a group
+```powershell
+Get-ZNGroup -Search Test
+```
+
+CreatedAt     Description        DirectMembersCount Domain Guid                                 HasProtectionPolicy Id           Name
+---------     -----------        ------------------ ------ ----                                 ------------------- --           ---- 
+1665444139901 Test servers group 1                  custom 68468022-0294-4c48-9e76-3074a14c22f5 False               g:c:gP9POclU Test…
+```output
+
+Use the search parameter to search by Name property.
+
 ## PARAMETERS
 
 ### -Filters
@@ -72,10 +90,25 @@ JSON string URI encoded set of fiters
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GroupId
+groupId to filter on
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -87,7 +120,7 @@ Limit the return results
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -102,7 +135,7 @@ Used to page through results
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -117,7 +150,7 @@ Test to search for
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False

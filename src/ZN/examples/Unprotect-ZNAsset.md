@@ -1,7 +1,6 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-Search-ZNAsset -Fqdn dc1.zero.labs
-Unprotect-ZNAsset -Items "a:a:ZgBWOMyc"
+Unprotect-ZNAsset -Items (Search-ZNAsset -Fqdn dc1.zero.labs)
 ```
 
 ```output

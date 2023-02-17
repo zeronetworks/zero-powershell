@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/test-znassetsunprotect
+online version: https://github.com/zeronetworkszn.api/test-znassetsunprotect
 schema: 2.0.0
 ---
 
@@ -12,8 +12,14 @@ Returns a number of assets that are valid to unprotect.
 
 ## SYNTAX
 
+### ValidateExpanded (Default)
 ```
 Test-ZNAssetsUnprotect -Items <String[]> [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Validate
+```
+Test-ZNAssetsUnprotect -Body <IAssetBody> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,8 +29,7 @@ Returns a number of assets that are valid to unprotect.
 
 ### Example 1: Test an asset is can be removed from protection
 ```powershell
-Search-ZNAsset -Fqdn dc1.zero.labs
-Test-ZNAssetsUnprotect -Items "a:a:ZgBWOMyc"
+Test-ZNAssetsUnprotect -Items (Search-ZNAsset -Fqdn WIN7.zero.labs)
 ```
 
 ```output
@@ -32,15 +37,32 @@ Test-ZNAssetsUnprotect -Items "a:a:ZgBWOMyc"
 ```
 
 This cmdlet will test if an asset is can be removed from segmentation.
+1 is ready, 0 is not ready.
 
 ## PARAMETERS
+
+### -Body
+.
+To construct, see NOTES section for BODY properties and create a hash table.
+
+```yaml
+Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetBody
+Parameter Sets: Validate
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -Items
 .
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: True
@@ -86,6 +108,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetBody
+
 ## OUTPUTS
 
 ### System.Int32
@@ -95,6 +119,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`BODY <IAssetBody>`: .
+  - `Items <String[]>`: 
 
 ## RELATED LINKS
 

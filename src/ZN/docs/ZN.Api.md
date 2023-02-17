@@ -1,7 +1,7 @@
 ---
 Module Name: ZN.Api
 Module Guid: 74b0e1e1-137d-48db-9b26-a64b09cf7db5
-Download Help Link: https://github.com/zn.api
+Download Help Link: https://github.com/zeronetworkszn.api
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -51,7 +51,16 @@ Returns a date in epoch(ms) for the next batch of AI rules.
 Get the Ansible settings in Asset Managment
 
 ### [Get-ZNAsset](Get-ZNAsset.md)
-Returns a list of assets.
+Returns the properties of an asset.
+
+### [Get-ZNAssetAnalysis](Get-ZNAssetAnalysis.md)
+Returns an object with asset analysis data.
+
+### [Get-ZNAssetAudit](Get-ZNAssetAudit.md)
+Returns a list of audits for the asset.
+
+### [Get-ZNAssetMemberOf](Get-ZNAssetMemberOf.md)
+Returns a list of groups the asset is a member of.
 
 ### [Get-ZNAssetsMonitored](Get-ZNAssetsMonitored.md)
 Returns a list of assets that are monitored.
@@ -71,26 +80,20 @@ Returns an object with asset state statistics.
 ### [Get-ZNAssetsStatistics](Get-ZNAssetsStatistics.md)
 Returns an object with asset statistics.
 
+### [Get-ZNAssetTag](Get-ZNAssetTag.md)
+Returns a list of tags for an entity.
+
 ### [Get-ZNAudit](Get-ZNAudit.md)
 Returns a list of audit events.
 
 ### [Get-ZNCustomGroup](Get-ZNCustomGroup.md)
 Returns a list of Custom groups.
 
+### [Get-ZNCustomGroupsCandidate](Get-ZNCustomGroupsCandidate.md)
+Returns a list of candidates for custom group membership.
+
 ### [Get-ZNDefaultApplicationSetting](Get-ZNDefaultApplicationSetting.md)
 Get Default SSO Application settings in Identity Providers
-
-### [Get-ZNEntity](Get-ZNEntity.md)
-Get an entity
-
-### [Get-ZNEntityAnalysis](Get-ZNEntityAnalysis.md)
-Returns an object with entity analysis data.
-
-### [Get-ZNEntityMemberOf](Get-ZNEntityMemberOf.md)
-Returns a list of groups the group is a member of.
-
-### [Get-ZNEntityTag](Get-ZNEntityTag.md)
-Returns a list of tags for an entity.
 
 ### [Get-ZNEnvironment](Get-ZNEnvironment.md)
 List the Zero Networks environments
@@ -99,7 +102,13 @@ List the Zero Networks environments
 Returns the properties of Firewall settings.
 
 ### [Get-ZNGroup](Get-ZNGroup.md)
-Returns a list of groups.
+Returns the properties of an group.
+
+### [Get-ZNGroupAudit](Get-ZNGroupAudit.md)
+Returns a list of audits for the group.
+
+### [Get-ZNGroupMemberOf](Get-ZNGroupMemberOf.md)
+Returns a list of groups the group is a member of.
 
 ### [Get-ZNGroupsMember](Get-ZNGroupsMember.md)
 Returns a list of potential members for a group.
@@ -233,6 +242,9 @@ Returns a list of excluded source candidates for outbound block rules.
 ### [Get-ZNOutboundBlockRulesSourceCandidate](Get-ZNOutboundBlockRulesSourceCandidate.md)
 Returns a list of source candidates for outbound block rules.
 
+### [Get-ZNProfile](Get-ZNProfile.md)
+
+
 ### [Get-ZNProtectionAutomationCandidatesSetting](Get-ZNProtectionAutomationCandidatesSetting.md)
 Returns a list of candidates for Protection Automation settings.
 
@@ -251,6 +263,9 @@ Returns an object with rules distribution.
 ### [Get-ZNRulesStatistics](Get-ZNRulesStatistics.md)
 Returns an object with rule statistics.
 
+### [Get-ZNSettingsAuth](Get-ZNSettingsAuth.md)
+Get the portal security settings
+
 ### [Get-ZNSystemGroup](Get-ZNSystemGroup.md)
 Returns a list of System groups.
 
@@ -261,7 +276,13 @@ Returns a list of Tags.
 Returns a list of trust servers.
 
 ### [Get-ZNUser](Get-ZNUser.md)
-Returns a list of Users.
+Returns the properties of an user.
+
+### [Get-ZNUserAudit](Get-ZNUserAudit.md)
+Returns a list of audits for the user.
+
+### [Get-ZNUserMemberOf](Get-ZNUserMemberOf.md)
+Returns a list of groups the user is a member of.
 
 ### [Get-ZNUserStatistics](Get-ZNUserStatistics.md)
 Get Users statistics
@@ -286,12 +307,6 @@ Rediscover monitored assets from Ansible
 
 ### [Invoke-ZNRediscoverMonitoredGroupSetting](Invoke-ZNRediscoverMonitoredGroupSetting.md)
 Rediscover monitored assets
-
-### [Invoke-ZNSimulateMfaOutboundPolicy](Invoke-ZNSimulateMfaOutboundPolicy.md)
-Returns a list of outbound MFA policies that would match the simulation.
-
-### [Invoke-ZNSimulateMfaPolicy](Invoke-ZNSimulateMfaPolicy.md)
-Returns a list of MFA policies that would match the simulaton.
 
 ### [New-ZNAdSecondarySetting](New-ZNAdSecondarySetting.md)
 Add a secondary AD settings in Asset Managment
@@ -332,14 +347,14 @@ Create a in-memory object for PortsList
 ### [New-ZNProtectionPolicy](New-ZNProtectionPolicy.md)
 Returns the protection policy that was created.
 
+### [New-ZNSimulateMFAPolicyParameters](New-ZNSimulateMFAPolicyParameters.md)
+Create a in-memory object for Simulation Parameters
+
 ### [Protect-ZNAsset](Protect-ZNAsset.md)
 Returns and empty object.
 
 ### [Protect-ZNAssetsOt](Protect-ZNAssetsOt.md)
 Returns an empty response.
-
-### [Remove-ZNAccessTokenId](Remove-ZNAccessTokenId.md)
-Remove machine access token
 
 ### [Remove-ZNAdSecondarySetting](Remove-ZNAdSecondarySetting.md)
 Returns an empty reponse.
@@ -401,9 +416,6 @@ Returns an empty object.
 ### [Unprotect-ZNAssetsOt](Unprotect-ZNAssetsOt.md)
 Returns and empty body.
 
-### [Update-ZNAccessTokenId](Update-ZNAccessTokenId.md)
-Regenerate machine access token
-
 ### [Update-ZNActivitiesSetting](Update-ZNActivitiesSetting.md)
 Update the Activities settings in Data Collection
 
@@ -432,7 +444,7 @@ Get the Ansible settings in Asset Managment
 Edit OT-IoT asset
 
 ### [Update-ZNCustomGroup](Update-ZNCustomGroup.md)
-Returns an empty object.
+Updates a custom group properties.
 
 ### [Update-ZNDefaultApplicationSetting](Update-ZNDefaultApplicationSetting.md)
 Update the Default SSO Application settings in Identity Providers
@@ -444,10 +456,10 @@ Returns the properties of the updated Firewall settings.
 Update identity provider settings in Identity Providers
 
 ### [Update-ZNInboundAllowRule](Update-ZNInboundAllowRule.md)
-Returns the properties of the update Inbound Allow rule.
+Updates an inbound allow rule.
 
 ### [Update-ZNInboundBlockRule](Update-ZNInboundBlockRule.md)
-Returns the properties of the updated Inbound Block rule.
+Updates an inbound block rule.
 
 ### [Update-ZNJamfCredentialsSetting](Update-ZNJamfCredentialsSetting.md)
 Returns the upddated properties of JAMF Credentials settings.
@@ -462,10 +474,10 @@ Returns an empty object.
 Returns the properties of the updated MFA detection settings.
 
 ### [Update-ZNMfaInboundPolicy](Update-ZNMfaInboundPolicy.md)
-Returns the properties of the inbound MFA policy after updating.
+Updates an inbound MFA Policy.
 
 ### [Update-ZNMfaOutboundPolicy](Update-ZNMfaOutboundPolicy.md)
-Returns the updated properties of an outbound MFA policy.
+Updates an outbound MFA Policy.
 
 ### [Update-ZNMonitoredGroupSetting](Update-ZNMonitoredGroupSetting.md)
 Update the monitored group settings in Asset Managment
@@ -474,14 +486,17 @@ Update the monitored group settings in Asset Managment
 Returns the properties of the updated Mail Notifications settings.
 
 ### [Update-ZNOutboundAllowRule](Update-ZNOutboundAllowRule.md)
-Returns the properties of the updated Outbound Allow rules.
+Updates an outbound allow rule.
 
 ### [Update-ZNOutboundBlockRule](Update-ZNOutboundBlockRule.md)
-Returns the properties of the updated outbound block rule.
+Updates an outbound block rule.
 
 ### [Update-ZNProtectionAutomationSetting](Update-ZNProtectionAutomationSetting.md)
 Returns the properties of the group that was updated for Protection Automation settings.
 
 ### [Update-ZNProtectionPolicy](Update-ZNProtectionPolicy.md)
 Returns the updated settings for the protection policy.
+
+### [Update-ZNSettingsAuth](Update-ZNSettingsAuth.md)
+Set the portal security settings
 

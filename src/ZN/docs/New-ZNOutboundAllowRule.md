@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/new-znoutboundallowrule
+online version: https://github.com/zeronetworkszn.api/new-znoutboundallowrule
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Returns the properties of the created Outbound Allow rule.
 
 ```
 New-ZNOutboundAllowRule -LocalEntityId <String> -LocalProcessesList <String[]> -PortsList <IPortsListItem[]>
- -RemoteEntityIdsList <String[]> -State <Int32> [-Description <String>] [-ExpiresAt <Int32>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -RemoteEntityIdsList <String[]> -State <Int32> [-Description <String>] [-ExcludedLocalIdsList <String[]>]
+ [-ExpiresAt <Int32>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,6 +64,21 @@ This cmdlet creates an outbound allow rule for the environment.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExcludedLocalIdsList
+.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

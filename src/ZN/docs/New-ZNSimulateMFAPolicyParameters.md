@@ -1,24 +1,25 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-znaccesstokenid
+online version: https://github.com/zeronetworks/zn.api/new-znsimulatemfainboundpolicyparameters
 schema: 2.0.0
 ---
 
-# Update-ZNAccessTokenId
+# New-ZNSimulateMFAPolicyParameters
 
 ## SYNOPSIS
-Regenerate machine access token
+Create a in-memory object for Simulation Parameters
 
 ## SYNTAX
 
 ```
-Update-ZNAccessTokenId -ClientId <String> [-Expiry <Int64>] [-PassThru] [-Confirm] [-WhatIf]
+New-ZNSimulateMFAPolicyParameters -DestinationAsset <String> -Port <Int32> -Protocol <String>
+ -SourceAsset <String> -SourceUser <String> [-DestinationProcess <String>] [-SourceProcess <String>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Regenerate machine access token
+Create a in-memory object for Simulation Parameters
 
 ## EXAMPLES
 
@@ -46,8 +47,8 @@ Regenerate machine access token
 
 ## PARAMETERS
 
-### -ClientId
-Client Id
+### -DestinationAsset
+Destination Asset
 
 ```yaml
 Type: System.String
@@ -61,11 +62,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Expiry
-Epoch Millis
+### -DestinationProcess
+Destination Process
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -76,11 +77,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -Port
+Destination Process
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Protocol
+Destination Process
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceAsset
+Source Asset
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceProcess
+Source Process
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -91,31 +137,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -SourceUser
+Source User
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -129,7 +159,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.Components1Tw47WoParametersSimulationparameterSchema
 
 ## NOTES
 

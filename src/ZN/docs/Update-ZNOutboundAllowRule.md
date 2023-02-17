@@ -1,25 +1,26 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-znoutboundallowrule
+online version: https://github.com/zeronetworks/zn.api/update-znoutboundallowrule
 schema: 2.0.0
 ---
 
 # Update-ZNOutboundAllowRule
 
 ## SYNOPSIS
-Returns the properties of the updated Outbound Allow rules.
+Updates an outbound allow rule.
 
 ## SYNTAX
 
 ```
-Update-ZNOutboundAllowRule -RuleId <String> -LocalEntityId <String> -LocalProcessesList <String[]>
- -PortsList <IPortsListItem[]> -RemoteEntityIdsList <String[]> -State <Int32> [-Description <String>]
- [-ExpiresAt <Int32>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNOutboundAllowRule -RuleId <String> [-Description <String>] [-ExcludedLocalIdsList <String[]>]
+ [-ExpiresAt <Int32>] [-LocalEntityId <String>] [-LocalProcessesList <String>] [-PortsList <PortsListItem[]>]
+ [-RemoteEntityIdsList <String[]>] [-State <Int32>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the properties of the updated Outbound Allow rules.
+Updates an outbound allow rule.
 
 ## EXAMPLES
 
@@ -61,11 +62,41 @@ This cmdlet will update an outbound allow rule for the environment.
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Description
-.
+the rule description.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExcludedLocalIdsList
+excluded source entities.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -77,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiresAt
-.
+when the rule should expiry.
 
 ```yaml
 Type: System.Int32
@@ -86,20 +117,20 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -LocalEntityId
-.
+The source asset(s).
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -107,14 +138,29 @@ Accept wildcard characters: False
 ```
 
 ### -LocalProcessesList
-.
+the source process paths.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -122,15 +168,15 @@ Accept wildcard characters: False
 ```
 
 ### -PortsList
-.
+the destination ports and protocols.
 To construct, see NOTES section for PORTSLIST properties and create a hash table.
 
 ```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]
+Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -138,14 +184,14 @@ Accept wildcard characters: False
 ```
 
 ### -RemoteEntityIdsList
-.
+the destination asset(s).
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -153,7 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### -RuleId
-The id of the rule
+rule Id
 
 ```yaml
 Type: System.String
@@ -168,14 +214,14 @@ Accept wildcard characters: False
 ```
 
 ### -State
-1=Enabled, 2=Disabled
+the rule state.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -220,9 +266,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
-
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IRule
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.Rule
 
 ## NOTES
 
@@ -233,7 +277,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`PORTSLIST <IPortsListItem[]>`: .
+`PORTSLIST <PortsListItem[]>`: the destination ports and protocols.
   - `[Ports <String>]`: 
   - `[ProtocolType <Int32?>]`: 
 

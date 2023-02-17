@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znmfapoliciesstatistics
+online version: https://github.com/zeronetworkszn.api/get-znmfapoliciesstatistics
 schema: 2.0.0
 ---
 

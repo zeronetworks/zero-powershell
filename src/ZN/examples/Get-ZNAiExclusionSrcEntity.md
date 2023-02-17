@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the AI Exclusion Setting for sources
 ```powershell
-{{ Add code here }}
+Get-ZNAiExclusionSrcEntity
 ```
 
 ```output
-{{ Add output here }}
+AssetType Domain Id           Name        ProtectionState
+--------- ------ --           ----        ---------------
+0                a:l:YjoLaKRG linuxserver 1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet returns the AI Exclusion setting for excluded sources under Data Collection.

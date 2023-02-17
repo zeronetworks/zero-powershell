@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/invoke-znqueueasset
+online version: https://github.com/zeronetworkszn.api/invoke-znqueueasset
 schema: 2.0.0
 ---
 
@@ -12,8 +12,14 @@ Returns and empty object.
 
 ## SYNTAX
 
+### QueueExpanded (Default)
 ```
 Invoke-ZNQueueAsset [-Items <String[]>] [-QueueDays <Int32>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Queue
+```
+Invoke-ZNQueueAsset -Body <IQueueBody> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,12 +36,28 @@ This cmdlet will extend the learning time of an asset in the environment.
 
 ## PARAMETERS
 
+### -Body
+.
+To construct, see NOTES section for BODY properties and create a hash table.
+
+```yaml
+Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IQueueBody
+Parameter Sets: Queue
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Items
 .
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: QueueExpanded
 Aliases:
 
 Required: False
@@ -50,7 +72,7 @@ number of days
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: QueueExpanded
 Aliases:
 
 Required: False
@@ -96,6 +118,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IQueueBody
+
 ## OUTPUTS
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
@@ -105,6 +129,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`BODY <IQueueBody>`: .
+  - `[Items <String[]>]`: 
+  - `[QueueDays <Int32?>]`: number of days
 
 ## RELATED LINKS
 

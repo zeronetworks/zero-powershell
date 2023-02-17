@@ -6,7 +6,7 @@ List the Zero Networks environments
 List the Zero Networks environments
 
 #.Link
-https://github.com/zeronetworks/zero-powershell/get-znenvironment
+https://github.com/zeronetworks/zn.api/get-znenvironment
 #>
 function Get-ZNEnvironment {
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Low')]

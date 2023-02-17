@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/remove-zncustomgroup
+online version: https://github.com/zeronetworkszn.api/remove-zncustomgroup
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ This cmdlet will delete a custom group from the environment.
 ## PARAMETERS
 
 ### -GroupId
-members id
+groupId to filter on
 
 ```yaml
 Type: System.String

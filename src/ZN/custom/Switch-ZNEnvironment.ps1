@@ -6,15 +6,20 @@ Change the Zero Networks environment token
 Change the Zero Networks environment token
 
 #.Link
-https://github.com/zeronetworks/zero-powershell/switch-znenvironment
+https://github.com/zeronetworks/zn.api/switch-znenvironment
 #>
 function Switch-ZNEnvironment {
-    [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Low')]
+    [CmdletBinding(DefaultParameterSetName = 'Name', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Low')]
     param(
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, ParameterSetName = 'EnvironmentId')]
         [System.String]
-        # EnvId
-        ${EnvironmentId}
+        # EnvironmentId
+        ${EnvironmentId},
+
+        [Parameter(Mandatory, ParameterSetName = 'Name')]
+        [System.String]
+        # Environment Name
+        ${EnvironmentName}
     )
 
     process {
@@ -23,6 +28,21 @@ function Switch-ZNEnvironment {
         $znHeaders = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
         $znHeaders.Add("Authorization",$env:ZNApiKey)
         $znHeaders.Add("Content-Type","application/json")
+        if($PSBoundParameters['EnvironmentName']){
+            $envs = Get-ZNEnvironment | where {$_.name -like "*$EnvironmentName*"}
+        }
+        if($envs -eq $null){
+            Write-Host "No environments found" -ForegroundColor Red
+            break
+        }
+        elseif($envs.Count -gt 1){
+            Write-Host "Found more than 1 environment, be more specific" -ForegroundColor Red
+            Write-Host $envs.Name
+            break
+        }
+        else{
+            $EnvironmentId = $envs.Id
+        }
 
         $body = @{
             "environmentId" = "$EnvironmentId"
@@ -36,6 +56,6 @@ function Switch-ZNEnvironment {
             throw
         }
                 
-        $env:ZNApiKey = $response.token
+        $env:ZNApiKey = $reponse.token
     }
 }

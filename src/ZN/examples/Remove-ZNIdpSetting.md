@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete an Identity Provider Setting
 ```powershell
-{{ Add code here }}
+Remove-ZNIdpSetting -IdentityProviderId azure
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet deletes an Identity Provider setting under Integrations.

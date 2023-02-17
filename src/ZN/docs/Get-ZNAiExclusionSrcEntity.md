@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znaiexclusionsrcentity
+online version: https://github.com/zeronetworkszn.api/get-znaiexclusionsrcentity
 schema: 2.0.0
 ---
 
@@ -21,27 +21,18 @@ Get AI source entities to ignore during learning.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the AI Exclusion Setting for sources
 ```powershell
-{{ Add code here }}
+Get-ZNAiExclusionSrcEntity
 ```
 
 ```output
-{{ Add output here }}
+AssetType Domain Id           Name        ProtectionState
+--------- ------ --           ----        ---------------
+0                a:l:YjoLaKRG linuxserver 1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet returns the AI Exclusion setting for excluded sources under Data Collection.
 
 ## PARAMETERS
 

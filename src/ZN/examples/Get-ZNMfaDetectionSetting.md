@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get MFA detection setting
 ```powershell
-{{ Add code here }}
+Get-ZNMfaDetectionSetting
 ```
 
 ```output
-{{ Add output here }}
+3
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet gets the MFA detection (cooldown) setting under Protection.

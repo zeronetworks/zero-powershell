@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znadsecondarysetting
+online version: https://github.com/zeronetworkszn.api/get-znadsecondarysetting
 schema: 2.0.0
 ---
 
@@ -21,27 +21,18 @@ List the secondary AD settings in Asset Managment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get Active Directory Secondary setting
 ```powershell
-{{ Add code here }}
+Get-ZNAdSecondarySetting
 ```
 
 ```output
-{{ Add output here }}
+AdInfoDomainControllerFqdn AdInfoDomainName
+-------------------------- ----------------
+dc1.zero.labs              zero.labs
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet gets the secondary Active Directory settings under Asset Management.
 
 ## PARAMETERS
 

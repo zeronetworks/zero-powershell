@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-znidpsetting
+online version: https://github.com/zeronetworkszn.api/update-znidpsetting
 schema: 2.0.0
 ---
 
@@ -22,27 +22,19 @@ Update identity provider settings in Identity Providers
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update Identity Provider
 ```powershell
-{{ Add code here }}
+$azure = Get-ZNIdpSetting | where {$_.IdentityProviderType -eq "azure"}
+Update-ZNIdpSetting -IdentityProviderId $azure.IdentityProviderType -Certificate $azure.Certificate -IdentityProvider $azure.IdentityProviderType -SloUrl $azure.SloUrl -SsoUrl $azure.SsoUrl -IsDefault
 ```
 
 ```output
-{{ Add output here }}
+Certificate
+-----------                                                                                                                                                                                                                                                                       
+MIIC8DCCA.....
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet updates an Identity Provider setting under Integrations.
 
 ## PARAMETERS
 

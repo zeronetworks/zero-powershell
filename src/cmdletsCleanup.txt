@@ -833,3 +833,18 @@ Try flatten: https://github.com/Azure/autorest/blob/main/docs/extensions/readme.
 is there a way to clean up enums like protection state
     - need to update openapi with more examples and enums.
 Format tables - nice to have
+
+
+Need custom cmdlet to build simulation params for simulator or Hide them - DONE but invoke not working?
+add support for switch-znenvironment by name - Done
+Write wrappers for Updates, hide in readme.
+    Custom Group - Done
+    InboundAllowRule -Done
+    InboundBlockRule - Done
+    MFAInboundPolicy -Done
+    MFAOutboundPolicy -Done
+    OutboundBlockRule -Done
+    OutboundAllowRule -Done
+
+
+Simulate MFA

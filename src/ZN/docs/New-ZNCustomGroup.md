@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/new-zncustomgroup
+online version: https://github.com/zeronetworkszn.api/new-zncustomgroup
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Returns an empty object.
 
 ### Example 1: Create a custom group
 ```powershell
-New-ZNCustomGroup -Name "test3" -Description "test custom group" -MembersId @((Search-ZNAsset -Fqdn dc1.zero.labs))
+New-ZNCustomGroup -Name "test3" -Description "test custom group"
 ```
 
 This cmdlet will create a new customer group in the environment.

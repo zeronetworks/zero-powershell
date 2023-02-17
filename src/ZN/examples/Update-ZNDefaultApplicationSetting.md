@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Set the default application
 ```powershell
-{{ Add code here }}
+Update-ZNDefaultApplicationSetting -Application 2
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet updates the default application setting under Identity Providers. 1 for Admin portal, 2 for Access portal.

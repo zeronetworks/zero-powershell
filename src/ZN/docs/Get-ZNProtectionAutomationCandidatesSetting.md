@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znprotectionautomationcandidatessetting
+online version: https://github.com/zeronetworkszn.api/get-znprotectionautomationcandidatessetting
 schema: 2.0.0
 ---
 
@@ -22,27 +22,40 @@ Returns a list of candidates for Protection Automation settings.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get possible candidates for Asset Monitoring Control
 ```powershell
-{{ Add code here }}
+(Get-ZNProtectionAutomationCandidatesSetting).Items
 ```
 
 ```output
-{{ Add output here }}
+Domain    HasProtectionPolicy Id           Name
+------    ------------------- --           ----
+zero.labs False               g:a:yu1gHyge Access Control Assistance Operators
+zero.labs False               g:a:LXwCiIyG Account Operators
+zero.labs False               g:a:ukYAIg2J Administrators
+zero.labs False               g:a:zpYqGY8G Allowed RODC Password Replication Group
+zero.labs False               g:a:GqUGqkiM Backup Operators
+zero.labs False               g:a:zobH4QmN Certificate Service DCOM Access
+zero.labs False               g:a:v7HrWzxU Cert Publishers
+zero.labs False               g:a:Ddd1JHS6 Cloneable Domain Controllers
+zero.labs False               g:a:vo645q5C Cryptographic Operators
+zero.labs False               g:a:mn0S6UED Denied RODC Password Replication Group
 ```
 
-{{ Add description here }}
+This cmdlet will return possbile candidates for Protection automation under Protection.
 
-### Example 2: {{ Add title here }}
+### Example 2: Search for a candidate
 ```powershell
-{{ Add code here }}
+(Get-ZNProtectionAutomationCandidatesSetting -Search "ZeroNetworksProtectedAssets").Items
 ```
 
 ```output
-{{ Add output here }}
+Domain    HasProtectionPolicy Id           Name
+------    ------------------- --           ----
+zero.labs False               g:a:zPeRnP0P ZeroNetworksProtectedAssets
 ```
 
-{{ Add description here }}
+To find a specific candidate use the search parameter with the Name to be searched.
 
 ## PARAMETERS
 

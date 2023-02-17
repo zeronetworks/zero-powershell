@@ -1,25 +1,26 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-zninboundblockrule
+online version: https://github.com/zeronetworks/zn.api/update-zninboundblockrule
 schema: 2.0.0
 ---
 
 # Update-ZNInboundBlockRule
 
 ## SYNOPSIS
-Returns the properties of the updated Inbound Block rule.
+Updates an inbound block rule.
 
 ## SYNTAX
 
 ```
-Update-ZNInboundBlockRule -RuleId <String> -LocalEntityId <String> -LocalProcessesList <String[]>
- -PortsList <IPortsListItem[]> -RemoteEntityIdsList <String[]> -State <Int32> [-Description <String>]
- [-ExpiresAt <Int32>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNInboundBlockRule -RuleId <String> [-Description <String>] [-ExcludedLocalIdsList <String[]>]
+ [-ExpiresAt <Int32>] [-LocalEntityId <String>] [-LocalProcessesList <String[]>]
+ [-PortsList <PortsListItem[]>] [-RemoteEntityIdsList <String[]>] [-State <Int32>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the properties of the updated Inbound Block rule.
+Updates an inbound block rule.
 
 ## EXAMPLES
 
@@ -28,9 +29,9 @@ Returns the properties of the updated Inbound Block rule.
 #Get the Rule
 $rule = Get-ZNInboundBlockRule | where {$_.Description -eq "Test Rule"}
 # add an asset to the source list
-$rule.RemoteEntityIdsList += (Search-ZNAsset -Fqdn fs1.zero.labs)
+$rule.RemoteEntityIdsList = (Search-ZNAsset -Fqdn fs1.zero.labs)
 #Update the rule
-Update-ZNInboundBlockRule -RuleId $rule.id -ExpiresAt $rule.ExpiresAt -LocalEntityId $rule.LocalEntityId -LocalProcessesList $rule.LocalProcessesList -PortsList $rule.PortsList -RemoteEntityIdsList $rule.RemoteEntityIdsList -State $rule.State -Description $rule.Description
+Update-ZNInboundBlockRule -RuleId $rule.id -RemoteEntityIdsList $rule.RemoteEntityIdsList
 ```
 
 ```output
@@ -42,6 +43,7 @@ ItemAction                 : 2
 ItemCreatedAt              : 1665664250443
 ItemDescription            : Test Rule
 ItemDirection              : 1
+ItemExcludedLocalIdsList   : {}
 ItemExpiresAt              : 0
 ItemId                     : c857c4e6-1c91-4e00-bf13-5bb3c702a396
 ItemLocalEntityId          : b:110002
@@ -49,23 +51,55 @@ ItemLocalProcessesList     : {*}
 ItemParentId               : 
 ItemParentType             : 0
 ItemPortsList              : {ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem}
-ItemRemoteEntityIdsList    : {b:120101010120, b:120101010220}
+ItemRemoteEntityIdsList    : {a:a:GnyWAsYs}
 ItemRemoteEntityInfos      : 
 ItemState                  : 1
-ItemUpdatedAt              : 1665664347508
+ItemUpdatedAt              : 1676343517779
 LocalEntityInfoId          : 
 LocalEntityInfoName        : 
+UpdatedById                : 39cc28f6-7bba-4310-95e6-a7e7189a3ed5
+UpdatedByName              : Nicholas DiCola
 ```
 
 This cmdlet will update an inbound block rule for the environment.
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Description
-.
+the rule description.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExcludedLocalIdsList
+excluded destination asset(s).
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -77,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiresAt
-.
+when the rule should expiry.
 
 ```yaml
 Type: System.Int32
@@ -86,20 +120,20 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -LocalEntityId
-.
+The Destination asset(s).
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -107,14 +141,29 @@ Accept wildcard characters: False
 ```
 
 ### -LocalProcessesList
-.
+the destination process paths.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -122,15 +171,15 @@ Accept wildcard characters: False
 ```
 
 ### -PortsList
-.
+the destination ports and protocols.
 To construct, see NOTES section for PORTSLIST properties and create a hash table.
 
 ```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]
+Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -138,14 +187,14 @@ Accept wildcard characters: False
 ```
 
 ### -RemoteEntityIdsList
-.
+the source asset(s).
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -153,7 +202,7 @@ Accept wildcard characters: False
 ```
 
 ### -RuleId
-The id of the rule
+rule Id
 
 ```yaml
 Type: System.String
@@ -168,14 +217,14 @@ Accept wildcard characters: False
 ```
 
 ### -State
-1=Enabled, 2=Disabled
+the rule state.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -220,9 +269,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
-
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IRule
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.Rule
 
 ## NOTES
 
@@ -233,7 +280,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`PORTSLIST <IPortsListItem[]>`: .
+`PORTSLIST <PortsListItem[]>`: the destination ports and protocols.
   - `[Ports <String>]`: 
   - `[ProtocolType <Int32?>]`: 
 

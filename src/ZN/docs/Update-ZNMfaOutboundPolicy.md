@@ -1,28 +1,28 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-znmfaoutboundpolicy
+online version: https://github.com/zeronetworks/zn.api/update-znmfaoutboundpolicy
 schema: 2.0.0
 ---
 
 # Update-ZNMfaOutboundPolicy
 
 ## SYNOPSIS
-Returns the updated properties of an outbound MFA policy.
+Updates an outbound MFA Policy.
 
 ## SYNTAX
 
 ```
-Update-ZNMfaOutboundPolicy -ReactivePolicyId <String> -AdditionalPortsList <IPortsListItem[]>
- -DstEntityInfoId <String> -DstPort <String> -FallbackToLoggedOnUser -MfaMethods <Int32[]>
- -ProtocolType <Int32> -RuleCreationMode <Int32> -RuleDuration <Int32>
- -SrcEntityInfos <IReactivePolicyOutboundBodySrcEntityInfosItem[]> -SrcProcessNames <String[]>
- -SrcUserInfos <IReactivePolicyOutboundBodySrcUserInfosItem[]> -State <Int32> [-Description <String>]
- [-DstProcessNames <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNMfaOutboundPolicy -ReactivePolicyId <String> [-AdditionalPortsList <PortsListItem[]>]
+ [-Description <String>] [-DstPort <String>] [-FallbackToLoggedOnUser] [-MfaMethods <Int32[]>]
+ [-ProtocolType <Int32>] [-RuleDuration <Int32>]
+ [-SrcEntityInfos <ReactivePolicyOutboundBodySrcEntityInfosItem[]>] [-SrcProcessNames <String[]>]
+ [-SrcUserInfos <ReactivePolicyOutboundBodySrcUserInfosItem[]>] [-State <Int32>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the updated properties of an outbound MFA policy.
+Updates an outbound MFA Policy.
 
 ## EXAMPLES
 
@@ -62,15 +62,30 @@ This cmdlet will update an outbound MFA policy
 ## PARAMETERS
 
 ### -AdditionalPortsList
-.
+extra ports to open.
 To construct, see NOTES section for ADDITIONALPORTSLIST properties and create a hash table.
 
 ```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]
+Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -78,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-.
+the policy description.
 
 ```yaml
 Type: System.String
@@ -92,41 +107,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DstEntityInfoId
-.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DstPort
-.
+[Parameter(ParameterSetName = 'UpdateExpanded')]
+[ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
+[System.String]
+ destination asset(s).
+${DstEntityInfoId},
+ destination ports.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DstProcessNames
-.
-
-```yaml
-Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -138,14 +128,19 @@ Accept wildcard characters: False
 ```
 
 ### -FallbackToLoggedOnUser
-.
+[Parameter(ParameterSetName = 'UpdateExpanded')]
+[ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
+[System.String[]]
+ source processes.
+${dstProcessNames},
+ fallback to logged on user enable/disable.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -153,14 +148,29 @@ Accept wildcard characters: False
 ```
 
 ### -MfaMethods
-.
+MFA methods.
 
 ```yaml
 Type: System.Int32[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -168,14 +178,14 @@ Accept wildcard characters: False
 ```
 
 ### -ProtocolType
-.
+protocol 6 for TCP, 17 for UDP.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -183,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReactivePolicyId
-The id of the MFA policy
+policy Id
 
 ```yaml
 Type: System.String
@@ -197,30 +207,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleCreationMode
-.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RuleDuration
-.
+the rule expiration.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -228,15 +223,15 @@ Accept wildcard characters: False
 ```
 
 ### -SrcEntityInfos
-.
+source asset(s).
 To construct, see NOTES section for SRCENTITYINFOS properties and create a hash table.
 
 ```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyOutboundBodySrcEntityInfosItem[]
+Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyOutboundBodySrcEntityInfosItem[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -244,14 +239,14 @@ Accept wildcard characters: False
 ```
 
 ### -SrcProcessNames
-.
+source processes.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -259,15 +254,15 @@ Accept wildcard characters: False
 ```
 
 ### -SrcUserInfos
-.
+source user(s).
 To construct, see NOTES section for SRCUSERINFOS properties and create a hash table.
 
 ```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyOutboundBodySrcUserInfosItem[]
+Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyOutboundBodySrcUserInfosItem[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -275,14 +270,14 @@ Accept wildcard characters: False
 ```
 
 ### -State
-1=Enabled, 2=Disabled
+the policy state.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -327,9 +322,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
-
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicy
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicy
 
 ## NOTES
 
@@ -340,14 +333,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`ADDITIONALPORTSLIST <IPortsListItem[]>`: .
+`ADDITIONALPORTSLIST <PortsListItem[]>`: extra ports to open.
   - `[Ports <String>]`: 
   - `[ProtocolType <Int32?>]`: 
 
-`SRCENTITYINFOS <IReactivePolicyOutboundBodySrcEntityInfosItem[]>`: .
+`SRCENTITYINFOS <ReactivePolicyOutboundBodySrcEntityInfosItem[]>`: source asset(s).
   - `Id <String>`: 
 
-`SRCUSERINFOS <IReactivePolicyOutboundBodySrcUserInfosItem[]>`: .
+`SRCUSERINFOS <ReactivePolicyOutboundBodySrcUserInfosItem[]>`: source user(s).
   - `Id <String>`: 
 
 ## RELATED LINKS

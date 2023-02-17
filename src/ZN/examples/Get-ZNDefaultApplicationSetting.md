@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the Default SSO application setting
 ```powershell
-{{ Add code here }}
+Get-ZNDefaultApplicationSetting
 ```
 
 ```output
-{{ Add output here }}
+1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet gets the default SSO application setting under Identity Providers.  1 is Admin Portal and 2 is Access Portal.

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-znadsetting
+online version: https://github.com/zeronetworkszn.api/update-znadsetting
 schema: 2.0.0
 ---
 
@@ -22,27 +22,12 @@ Set the AD settings in Asset Managment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update Active Directory setting
 ```powershell
-{{ Add code here }}
+Update-ZNAdSetting -Domain zero.labs -DomainControllerFqdn dc1.zero.labs -Username znremotemanagement -Password "password" -UseLdaps:$false
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet updates an AD setting under Asset Management.
 
 ## PARAMETERS
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-znmfadetectionsetting
+online version: https://github.com/zeronetworkszn.api/update-znmfadetectionsetting
 schema: 2.0.0
 ---
 
@@ -21,27 +21,16 @@ Returns the properties of the updated MFA detection settings.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update MFA protection setting
 ```powershell
-{{ Add code here }}
+Update-ZNMfaDetectionSetting -TimeoutMinutes 5
 ```
 
 ```output
-{{ Add output here }}
+5
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet updates the MFA detection setting under Protection.
 
 ## PARAMETERS
 

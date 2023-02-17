@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znmonitoredgroupsetting
+online version: https://github.com/zeronetworkszn.api/get-znmonitoredgroupsetting
 schema: 2.0.0
 ---
 
@@ -21,27 +21,18 @@ Get the monitored group settings in Asset Managment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the Asset Monitoring control setting
 ```powershell
-{{ Add code here }}
+Get-ZNMonitoredGroupSetting
 ```
 
 ```output
-{{ Add output here }}
+GroupId      GroupName                   ItemIsEnabled
+-------      ---------                   -------------
+g:a:usqapkU2 ZeroNetworksMonitoredAssets          True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet gets the Active Directory Asset Monitoring control setting under Asset Management.
 
 ## PARAMETERS
 

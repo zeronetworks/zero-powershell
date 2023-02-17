@@ -1,60 +1,75 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-znmfainboundpolicy
+online version: https://github.com/zeronetworks/zn.api/update-znmfainboundpolicy
 schema: 2.0.0
 ---
 
 # Update-ZNMfaInboundPolicy
 
 ## SYNOPSIS
-Returns the properties of the inbound MFA policy after updating.
+Updates an inbound MFA Policy.
 
 ## SYNTAX
 
 ```
-Update-ZNMfaInboundPolicy -ReactivePolicyId <String> -AdditionalPortsList <IPortsListItem[]>
- -DstEntityInfoId <String> -DstPort <String> -DstProcessNames <String[]> -FallbackToLoggedOnUser
- -MfaMethods <Int32[]> -ProtocolType <Int32> -RuleDuration <Int32>
- -SrcEntityInfos <IReactivePolicyInboundBodySrcEntityInfosItem[]> -SrcProcessNames <String[]>
- -SrcUserInfos <IReactivePolicyInboundBodySrcUserInfosItem[]> -State <Int32> [-Description <String>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNMfaInboundPolicy -ReactivePolicyId <String> [-AdditionalPortsList <PortsListItem[]>]
+ [-Description <String>] [-DstPort <String>] [-DstProcessNames <String[]>] [-FallbackToLoggedOnUser]
+ [-MfaMethods <Int32[]>] [-ProtocolType <Int32>] [-RuleDuration <Int32>]
+ [-SrcEntityInfos <ReactivePolicyInboundBodySrcEntityInfosItem[]>] [-SrcProcessNames <String[]>]
+ [-SrcUserInfos <ReactivePolicyInboundBodySrcUserInfosItem[]>] [-State <Int32>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the properties of the inbound MFA policy after updating.
+Updates an inbound MFA Policy.
 
 ## EXAMPLES
 
 ### Example 1: Update an inbound MFA policy
 ```powershell
 #Get the policy
-$mfaPolicy = Get-ZNMfaInboundPolicy -ReactivePolicyId 01d37aff-309e-4581-9f2a-c12c811b035e
+$mfaPolicy = Get-ZNMfaInboundPolicy -ReactivePolicyId e1db180f-e435-498c-ae17-59651f3c3dc3
 #add a port
 $mfaPolicy.ItemDstPort = $mfaPolicy.ItemDstPort+,",24"
-Update-ZNMfaInboundPolicy -ReactivePolicyId $mfaPolicy.ItemId -DstEntityInfoId $mfaPolicy.DstEntityInfoId -DstPort $mfaPolicy.ItemDstPort -DstProcessNames $mfaPolicy.ItemDstProcessNames -FallbackToLoggedOnUser:$false -MfaMethods $mfaPolicy.ItemMfaMethods -ProtocolType $mfaPolicy.ItemProtocolType -RuleDuration $mfaPolicy.ItemRuleDuration -SrcEntityInfos $mfaPolicy.ItemSrcEntityInfos -SrcProcessNames $mfaPolicy.ItemSrcProcessNames -SrcUserInfos $mfaPolicy.ItemSrcUserInfos -RuleCreationMode $mfaPolicy.ItemRuleCreationMode -State $mfapolicy.ItemState
+Update-ZNMfaInboundPolicy -ReactivePolicyId $mfaPolicy.ItemId -DstPort $mfaPolicy.ItemDstPort
 ```
 
 ```output
-DstEntityInfoId            : a:l:YjoLaKRG
-DstEntityInfoName          : linuxserver
-ItemCreatedAt              : 1666100652229
-ItemCreatedBy              : m:86786c2f022cf2bd7dc38f165c98b4ee736c8c3b
-ItemCreatedByName          : PowerShell
-ItemDescription            : 
-ItemDstPort                : 22-24
-ItemDstProcessNames        : {*}
-ItemFallbackToLoggedOnUser : False
-ItemId                     : 01d37aff-309e-4581-9f2a-c12c811b035e
-ItemMfaMethods             : {4}
-ItemProtocolType           : 6
-ItemRuleCreationMode       : 1
-ItemRuleDuration           : 6
-ItemSrcEntityInfos         : {Any asset}
-ItemSrcProcessNames        : {*}
-ItemSrcUserInfos           : {Any user}
-ItemState                  : 1
-ItemUpdatedAt              : 1666112928847
+DstEntityInfoAssetStatus     : 1
+DstEntityInfoAssetType       : 0
+DstEntityInfoDomain          : 
+DstEntityInfoFqdn            : linuxserver.zero.labs
+DstEntityInfoId              : a:l:YjoLaKRG
+DstEntityInfoIpv4Addresses   : {}
+DstEntityInfoIpv6Addresses   : {}
+DstEntityInfoManagers        : 
+DstEntityInfoName            : linuxserver
+DstEntityInfoOperatingSystem : 
+DstEntityInfoProtectionState : 1
+DstEntityInfoSource          : 15
+ItemAdditionalPortsList      : {}
+ItemCreatedAt                : 1666114167336
+ItemCreatedBy                : m:86786c2f022cf2bd7dc38f165c98b4ee736c8c3b
+ItemCreatedByName            : PowerShell
+ItemDescription              : 
+ItemDstPort                  : 22,24
+ItemDstProcessNames          : {*}
+ItemFallbackToLoggedOnUser   : True
+ItemId                       : e1db180f-e435-498c-ae17-59651f3c3dc3
+ItemMfaMethods               : {4}
+ItemProtocolType             : 6
+ItemRuleDuration             : 6
+ItemSrcEntityInfos           : {Any asset}
+ItemSrcProcessNames          : {*}
+ItemSrcUserInfos             : {Nicholas DiCola}
+ItemState                    : 1
+ItemUpdatedAt                : 1676343746061
+StateAssetId                 : a:l:YjoLaKRG
+StateIsAssetConnected        : False
+StateLasDisconnectedAt       : 
+StateProtectAt               : 
+StateProtectionState         : 1
 ```
 
 This cmdlet will update an inbound MFA policy
@@ -62,15 +77,30 @@ This cmdlet will update an inbound MFA policy
 ## PARAMETERS
 
 ### -AdditionalPortsList
-.
+extra ports to open.
 To construct, see NOTES section for ADDITIONALPORTSLIST properties and create a hash table.
 
 ```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]
+Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -78,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-.
+the policy description.
 
 ```yaml
 Type: System.String
@@ -92,30 +122,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DstEntityInfoId
-.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DstPort
-.
+[Parameter(ParameterSetName = 'UpdateExpanded')]
+[ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
+[System.String]
+ destination asset(s).
+${DstEntityInfoId},
+ destination ports.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -123,14 +143,14 @@ Accept wildcard characters: False
 ```
 
 ### -DstProcessNames
-.
+destination processes.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -138,14 +158,14 @@ Accept wildcard characters: False
 ```
 
 ### -FallbackToLoggedOnUser
-.
+fallback to logged on user enable/disable.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -153,14 +173,29 @@ Accept wildcard characters: False
 ```
 
 ### -MfaMethods
-.
+MFA methods.
 
 ```yaml
 Type: System.Int32[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -168,14 +203,14 @@ Accept wildcard characters: False
 ```
 
 ### -ProtocolType
-.
+protocol 6 for TCP, 17 for UDP.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -183,7 +218,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReactivePolicyId
-The id of the MFA policy
+policy Id
 
 ```yaml
 Type: System.String
@@ -198,14 +233,14 @@ Accept wildcard characters: False
 ```
 
 ### -RuleDuration
-.
+the rule expiration.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -213,15 +248,15 @@ Accept wildcard characters: False
 ```
 
 ### -SrcEntityInfos
-.
+source asset(s).
 To construct, see NOTES section for SRCENTITYINFOS properties and create a hash table.
 
 ```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyInboundBodySrcEntityInfosItem[]
+Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyInboundBodySrcEntityInfosItem[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -229,14 +264,14 @@ Accept wildcard characters: False
 ```
 
 ### -SrcProcessNames
-.
+source processes.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -244,15 +279,15 @@ Accept wildcard characters: False
 ```
 
 ### -SrcUserInfos
-.
+source user(s).
 To construct, see NOTES section for SRCUSERINFOS properties and create a hash table.
 
 ```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyInboundBodySrcUserInfosItem[]
+Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyInboundBodySrcUserInfosItem[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -260,14 +295,14 @@ Accept wildcard characters: False
 ```
 
 ### -State
-1=Enabled, 2=Disabled
+the policy state.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -312,9 +347,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
-
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicy
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicy
 
 ## NOTES
 
@@ -325,14 +358,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`ADDITIONALPORTSLIST <IPortsListItem[]>`: .
+`ADDITIONALPORTSLIST <PortsListItem[]>`: extra ports to open.
   - `[Ports <String>]`: 
   - `[ProtocolType <Int32?>]`: 
 
-`SRCENTITYINFOS <IReactivePolicyInboundBodySrcEntityInfosItem[]>`: .
+`SRCENTITYINFOS <ReactivePolicyInboundBodySrcEntityInfosItem[]>`: source asset(s).
   - `Id <String>`: 
 
-`SRCUSERINFOS <IReactivePolicyInboundBodySrcUserInfosItem[]>`: .
+`SRCUSERINFOS <ReactivePolicyInboundBodySrcUserInfosItem[]>`: source user(s).
   - `Id <String>`: 
 
 ## RELATED LINKS

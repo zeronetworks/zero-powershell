@@ -1,52 +1,43 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znentitytag
+online version: https://github.com/zeronetworkszn.api/get-zngroupmemberof
 schema: 2.0.0
 ---
 
-# Get-ZNEntityTag
+# Get-ZNGroupMemberOf
 
 ## SYNOPSIS
-Returns a list of tags for an entity.
+Returns a list of groups the group is a member of.
 
 ## SYNTAX
 
 ```
-Get-ZNEntityTag -EntityId <String> [<CommonParameters>]
+Get-ZNGroupMemberOf -GroupId <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns a list of tags for an entity.
+Returns a list of groups the group is a member of.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a groups member of
 ```powershell
-{{ Add code here }}
+Get-ZNGroupMemberOf -GroupId g:c:gP9POclU
 ```
 
 ```output
-{{ Add output here }}
+CreatedAt     Description DirectMembersCount Domain Guid                                 HasProtectionPolicy Id           Name    Role
+---------     ----------- ------------------ ------ ----                                 ------------------- --           ----    ----
+1675962079610 test3       4                  custom 1ed72a4a-8777-4cb8-86bf-4479df0179cf False               g:c:DtglBTHi NewName 3  
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet gets the groups a group is a member of
 
 ## PARAMETERS
 
-### -EntityId
-entityId to filter on
+### -GroupId
+groupId to filter on
 
 ```yaml
 Type: System.String

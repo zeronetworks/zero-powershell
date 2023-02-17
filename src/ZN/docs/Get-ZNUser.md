@@ -1,23 +1,29 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znuser
+online version: https://github.com/zeronetworkszn.api/get-znuser
 schema: 2.0.0
 ---
 
 # Get-ZNUser
 
 ## SYNOPSIS
-Returns a list of Users.
+Returns the properties of an user.
 
 ## SYNTAX
 
+### List (Default)
 ```
 Get-ZNUser [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
+### Get
+```
+Get-ZNUser -UserId <String> [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Returns a list of Users.
+Returns the properties of an user.
 
 ## EXAMPLES
 
@@ -62,6 +68,19 @@ CreatedAt     DistinguishedName                                        Domain   
 
 Use offset to get the next page of users.
 
+### Example 3: Search for a user
+```powershell
+Get-ZNUser -Search Administrator
+```
+
+```output
+CreatedAt     DistinguishedName                         Domain    Email FirstName Guid                                 Id           JobTitle LastLogon     LastName Name          OfficePhone Phone Role Sid                                          Source UserPrincipleName
+---------     -----------------                         ------    ----- --------- ----                                 --           -------- ---------     -------- ----          ----------- ----- ---- ---                                          ------ -----------------
+1646147850723 CN=Administrator,CN=Users,DC=zero,DC=labs zero.labs                 d2ac73db-cb56-4c7e-9818-ddb9e4c9a74c u:a:eTpnZu08          1661438953278          Administrator                   3    S-1-5-21-1655129710-1269081394-587607975-500 3
+```
+
+Use offset to get the next page of users.
+
 ## PARAMETERS
 
 ### -Filters
@@ -69,7 +88,7 @@ JSON string URI encoded set of fiters
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -84,7 +103,7 @@ Limit the return results
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -99,7 +118,7 @@ Used to page through results
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -114,10 +133,25 @@ Test to search for
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserId
+userId to filter on
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

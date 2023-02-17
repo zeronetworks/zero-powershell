@@ -1,7 +1,6 @@
-### Example 1: Get entity analysis
+### Example 1: Get asset analysis
 ```powershell
-$asset = Search-ZNAsset -Fqdn "dc1.zero.labs" 
-Get-ZNEntityAnalysis -EntityId $asset
+Get-ZNAssetAnalysis -AssetId a:a:ZgBWOMyc
 ```
 
 ```output
@@ -13,9 +12,7 @@ ItemByAsset         : {}
 ItemByPort          : {}
 ItemByProcess       : {}
 ItemByUser          : {}
-ItemConnectionState : 
+ItemConnectionState :
 ```
 
-Get entity analysis for an asset.
-
-
+This cmdlet gets an asset analysis.

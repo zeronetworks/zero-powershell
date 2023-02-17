@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update Ansible setting
 ```powershell
-{{ Add code here }}
+Update-ZNAnsibleSetting -ClientId "clientId" -CredentialsName ssh -DisableCertificateValidation:$false -Password "password" -Url "https:1.2.3.4" -Username "ZNAccess"
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
+This cmdlet updates the Ansible setting under Asset Management.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update using existing settings
 ```powershell
-{{ Add code here }}
+$ansible = Get-ZNAnsibleSetting
+Update-ZNAnsibleSetting -ClientId $ansible.ClientId -CredentialsName $ansible.CredentialsName -DisableCertificateValidation:$ansible.DisableCertificateValidation -Password "newpassword" -Url $ansible.Url -Username $ansible.Username -ClientSecret "clientSecret"
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
-
+Use exisitng settings to update settings.

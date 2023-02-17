@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Log out of Zero Networks
 ```powershell
-{{ Add code here }}
+Disconnect-ZN 
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet logs out of Zero Networks

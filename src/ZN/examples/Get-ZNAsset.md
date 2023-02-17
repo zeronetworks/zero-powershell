@@ -39,3 +39,27 @@ AssetStatus AssetType Domain    Fqdn              IPV4Addresses  IPV6Addresses  
 
 Use offset to get the next page of assets.
 
+### Example 3: Get an asset by Id
+```powershell
+Get-ZNAsset -AssetId a:a:ZgBWOMyc
+```
+EntityAssetStatus      : 2
+EntityAssetType        : 2
+EntityDomain           : zero.labs
+EntityFqdn             : dc1.zero.labs
+EntityId               : a:a:ZgBWOMyc
+EntityIpv4Addresses    : {192.168.10.0}
+EntityIpv6Addresses    : {fe80::8863:40e6:ced3:75a8}
+EntityManagers         : 
+EntityName             : DC1
+EntityOperatingSystem  : Windows Server 2012 R2 Datacenter
+EntityProtectionState  : 5
+EntitySource           : 3
+StateAssetId           : a:a:ZgBWOMyc
+StateIsAssetConnected  : False
+StateLasDisconnectedAt : 
+StateProtectAt         : 1678543200000
+StateProtectionState   : 5
+```output
+
+Use the id parameter get an asset's properties.

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/remove-zncustomgroupsmember
+online version: https://github.com/zeronetworkszn.api/remove-zncustomgroupsmember
 schema: 2.0.0
 ---
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -GroupId
-members id
+groupId to filter on
 
 ```yaml
 Type: System.String
@@ -164,17 +164,17 @@ To create the parameters described below, construct a hash table containing the 
   - `MembersId <String[]>`: members id
 
 `INPUTOBJECT <IApiIdentity>`: Identity Parameter
-  - `[AssetId <String>]`: The id of the asset
-  - `[ClientId <String>]`: Client Id
+  - `[AssetId <String>]`: assetId to filter on
+  - `[ClientId <String>]`: clientId to filter on
   - `[DomainId <String>]`: The fqdn of the domain
-  - `[EntityId <String>]`: entityId to filter on
   - `[ExportId <String>]`: exportId to download
-  - `[GroupId <String>]`: members id
+  - `[GroupId <String>]`: groupId to filter on
   - `[IdentityProviderId <String>]`: Identity provider Id
   - `[ProtectionPolicyId <String>]`: The id of the protection policy
   - `[ReactivePolicyId <String>]`: The id of the MFA policy
   - `[RoleEntityId <String>]`: The id of the user
   - `[RuleId <String>]`: The id of the rule
+  - `[UserId <String>]`: userId to filter on
 
 ## RELATED LINKS
 

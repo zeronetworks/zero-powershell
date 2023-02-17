@@ -4,10 +4,17 @@ Get-ZNMfaInboundPolicy
 ```
 
 ```output
-CreatedAt     CreatedBy                            CreatedByName Description DstPort DstProcessNames FallbackToLoggedOnUser Id                                   MfaMethods   ProtocolType RuleCreationMode RuleDuration SrcProcessNames State UpdatedAt
----------     ---------                            ------------- ----------- ------- --------------- ---------------------- --                                   ----------   ------------ ---------------- ------------ --------------- ----- ---------
-1649105796514 1f352ed0-86f1-454f-90a5-592c197c8000 Zero Networks             345     {*}             False                  f68d322c-1cb0-451d-aff2-c920a1a17333 {1}          6            1                6            {*}             1     1649105796514
-1646149214106 1f352ed0-86f1-454f-90a5-592c197c8000 Zero Networks             3389    {*}             False                  1bb6439f-ee73-4b7e-b555-30dbbd17418e {1, 2, 3, 4} 6            1                6            {*}             1     1646230297277
+CreatedAt     CreatedBy                                  CreatedByName Description DstPort DstProcessNames FallbackToLoggedOnUser Id                                   MfaMethods   ProtocolType RuleDuration Src
+                                                                                                                                                                                                              Pro
+                                                                                                                                                                                                              ces
+                                                                                                                                                                                                              sNa
+                                                                                                                                                                                                              mes
+---------     ---------                                  ------------- ----------- ------- --------------- ---------------------- --                                   ----------   ------------ ------------ ---
+1666114167336 m:86786c2f022cf2bd7dc38f165c98b4ee736c8c3b PowerShell                22      {*}             True                   e1db180f-e435-498c-ae17-59651f3c3dc3 {4}          6            6            {*}
+1666100652229 m:86786c2f022cf2bd7dc38f165c98b4ee736c8c3b PowerShell                22-24   {*}             False                  01d37aff-309e-4581-9f2a-c12c811b035e {4}          6            6            {*}
+1665664407052 1f352ed0-86f1-454f-90a5-592c197c8000       Zero Networks             2223    {*}             True                   4de27a4f-d351-4d40-bd82-92e5d039b890 {4}          6            6            {*}
+1649105796514 1f352ed0-86f1-454f-90a5-592c197c8000       Zero Networks             345     {*}             False                  f68d322c-1cb0-451d-aff2-c920a1a17333 {1}          6            6            {*}
+1646149214106 1f352ed0-86f1-454f-90a5-592c197c8000       Zero Networks             3389    {*}             False                  1bb6439f-ee73-4b7e-b555-30dbbd17418e {1, 2, 3, 4} 6            6            {*}
 ```
 
 This cmdlet gets inbound MFA policies from the environment.
@@ -18,7 +25,9 @@ Get-ZNMfaInboundPolicy -ReactivePolicyId "f68d322c-1cb0-451d-aff2-c920a1a17333"
 ```
 
 ```output
-ItemCreatedAt              : 1649105796514                                                                                                                                                                                                                         ItemCreatedBy              : 1f352ed0-86f1-454f-90a5-592c197c8000
+ItemAdditionalPortsList    : {}
+ItemCreatedAt              : 1649105796514
+ItemCreatedBy              : 1f352ed0-86f1-454f-90a5-592c197c8000
 ItemCreatedByName          : Zero Networks
 ItemDescription            : 
 ItemDstEntityInfos         : 
@@ -28,11 +37,10 @@ ItemFallbackToLoggedOnUser : False
 ItemId                     : f68d322c-1cb0-451d-aff2-c920a1a17333
 ItemMfaMethods             : {1}
 ItemProtocolType           : 6
-ItemRuleCreationMode       : 1
 ItemRuleDuration           : 6
-ItemSrcEntityInfos         : {}
+ItemSrcEntityInfos         : {Any asset}
 ItemSrcProcessNames        : {*}
-ItemSrcUserInfos           : {}
+ItemSrcUserInfos           : {Benny Lakunishok}
 ItemState                  : 1
 ItemUpdatedAt              : 1649105796514
 ```

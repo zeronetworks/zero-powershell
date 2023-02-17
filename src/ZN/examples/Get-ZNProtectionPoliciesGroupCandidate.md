@@ -1,11 +1,9 @@
 ### Example 1: List candidates for protection policies
 ```powershell
-Get-ZNProtectionPoliciesGroupCandidate).Items
+(Get-ZNProtectionPoliciesGroupCandidate).Items
 ```
 
 ```output
-(Get-ZNProtectionPoliciesGroupCandidate).Items
-
 Domain    HasProtectionPolicy Id           Name
 ------    ------------------- --           ----
 zero.labs False               g:a:yu1gHyge Access Control Assistance Operators

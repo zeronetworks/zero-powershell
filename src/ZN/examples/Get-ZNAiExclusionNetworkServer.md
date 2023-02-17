@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the AI Exclusion Setting for servers
 ```powershell
-{{ Add code here }}
+Get-ZNAiExclusionNetworkServer
 ```
 
 ```output
-{{ Add output here }}
+Icmp  ProcessesList TcpPorts UdpPorts
+----  ------------- -------- --------
+False {}                     
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet returns the AI Exclusion setting for servers under Data Collection.

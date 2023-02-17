@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update mail notifications
 ```powershell
-{{ Add code here }}
+Update-ZNNotificationSetting -AssetProtected:$true -AssetQueued:$false -AssetUnprotected:$true
 ```
 
 ```output
-{{ Add output here }}
+AssetProtected AssetQueued AssetUnprotected
+-------------- ----------- ----------------
+True           False       True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet updates the Mail notifications setting under System.

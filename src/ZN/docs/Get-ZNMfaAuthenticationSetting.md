@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znmfaauthenticationsetting
+online version: https://github.com/zeronetworkszn.api/get-znmfaauthenticationsetting
 schema: 2.0.0
 ---
 
@@ -21,27 +21,18 @@ Returns the properties of MFA authentication settings.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get MFA Authentication Settings
 ```powershell
-{{ Add code here }}
+Get-ZNMfaAuthenticationSetting
 ```
 
 ```output
-{{ Add output here }}
+ItemIsRequiresAuth ItemIsSsoForceAuth ItemTokenTtl
+------------------ ------------------ ------------
+              True              False           60
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet gets the MFA Authentication settings under Protection.
 
 ## PARAMETERS
 

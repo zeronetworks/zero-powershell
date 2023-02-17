@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-znaiexclusionnetworkclient
+online version: https://github.com/zeronetworkszn.api/update-znaiexclusionnetworkclient
 schema: 2.0.0
 ---
 
@@ -28,27 +28,32 @@ Set AI network exclusion for clients: lists of tcp/udp ports / ports ranges + bo
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update AI Exclusion settings for clients
 ```powershell
-{{ Add code here }}
+Update-ZNAiExclusionNetworkClient -Icmp -ProcessesList @()  -TcpPorts "" -UdpPorts ""
 ```
 
 ```output
-{{ Add output here }}
+Icmp ProcessesList TcpPorts UdpPorts
+---- ------------- -------- --------
+True {}     
 ```
 
-{{ Add description here }}
+This cmdlet updates the AI exclusions for clients under Data Collection.
 
-### Example 2: {{ Add title here }}
+### Example 2: Add a setting to the current settings.
 ```powershell
-{{ Add code here }}
+$aiSettings = Get-ZNAiExclusionNetworkClient
+Update-ZNAiExclusionNetworkClient -Icmp:$aiSettings.Icmp -ProcessesList $aiSettings.ProcessesList  -TcpPorts ($aiSettings.TcpPorts += "443") -UdpPorts $aiSettings.UdpPorts
 ```
 
 ```output
-{{ Add output here }}
+Icmp ProcessesList TcpPorts UdpPorts
+---- ------------- -------- --------
+True {}            443      
 ```
 
-{{ Add description here }}
+Use exisitng settings to update or add ports or processes.
 
 ## PARAMETERS
 

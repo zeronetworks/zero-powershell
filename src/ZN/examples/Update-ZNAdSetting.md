@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update Active Directory setting
 ```powershell
-{{ Add code here }}
+Update-ZNAdSetting -Domain zero.labs -DomainControllerFqdn dc1.zero.labs -Username znremotemanagement -Password "password" -UseLdaps:$false
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet updates an AD setting under Asset Management.

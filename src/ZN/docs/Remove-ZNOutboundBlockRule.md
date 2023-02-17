@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/remove-znoutboundblockrule
+online version: https://github.com/zeronetworkszn.api/remove-znoutboundblockrule
 schema: 2.0.0
 ---
 

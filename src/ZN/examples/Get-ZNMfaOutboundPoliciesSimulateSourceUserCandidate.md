@@ -22,7 +22,7 @@ This cmdlet will return possbile candidates for source users in an outbound MFA 
 
 ### Example 2: Search for a candidate
 ```powershell
-(Get-ZNMfaOutboundPoliciesSimulateSourceUserCandidate).Items
+(Get-ZNMfaOutboundPoliciesSimulateSourceUserCandidate -Search Administrator).Items
 ```
 
 ```output

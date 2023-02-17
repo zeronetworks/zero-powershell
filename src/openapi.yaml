@@ -7,6 +7,44 @@ servers:
   - url: 'https://portal.zeronetworks.com/api/v1'
     description: production
 paths:
+  /profile:
+    get:
+      operationId: Profile_Get
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/profileResponse'                
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+      security:
+        - api_key: []
   /activities/network:
     get:
       operationId: NetworkActivities_List
@@ -118,32 +156,8 @@ paths:
           content:
             text/csv:
               schema:
-                type: object
-                format: file
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '401':
-          description: Invalid API key
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '500':
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
+                type: string
+                format: binary
       security:
         - api_key: []
   /activities/network/filters:
@@ -334,24 +348,6 @@ paths:
               schema:
                 type: string
                 format: binary
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '401':
-          description: Invalid API key
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '500':
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
       security:
         - api_key: []
   /assets/filters:
@@ -604,12 +600,7 @@ paths:
       summary: Remove an OT asset
       description: Returns an empty object.
       parameters:
-        - name: assetId
-          in: path
-          description: The id of the asset
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/assetIdParameter'
       responses:
         '200':
           description: Successful response
@@ -671,7 +662,7 @@ paths:
                 $ref: '#/components/schemas/error'
       security:
         - api_key: []
-  /assets/ot/protect:
+  /assets/ot/actions/protect:
     post:
       operationId: AssetsOT_Protect
       tags:
@@ -720,7 +711,7 @@ paths:
       security:
         - api_key: []
       x-codegen-request-body-name: body
-  /assets/ot/unprotect:
+  /assets/ot/actions/unprotect:
     post:
       operationId: AssetsOT_Unprotect
       tags:
@@ -767,7 +758,7 @@ paths:
       security:
         - api_key: []
       x-codegen-request-body-name: body
-  /assets/protect:
+  /assets/actions/protect:
     post:
       operationId: Assets_Protect
       tags:
@@ -815,7 +806,7 @@ paths:
       security:
         - api_key: []
       x-codegen-request-body-name: body
-  /assets/protect/validate:
+  /assets/actions/protect/validate:
     post:
       operationId: AssetsProtection_Validate
       tags:
@@ -945,7 +936,7 @@ paths:
                 $ref: '#/components/schemas/error'
       security:
         - api_key: []
-  /assets/queue:
+  /assets/actions/queue:
     post:
       operationId: Assets_Queue
       tags:
@@ -1247,7 +1238,7 @@ paths:
       operationId: AssetsStatesStatistics_Get
       security:
         - api_key: []
-  /assets/unprotect:
+  /assets/actions/unprotect:
     post:
       operationId: Assets_Unprotect
       tags:
@@ -1294,7 +1285,7 @@ paths:
       security:
         - api_key: []
       x-codegen-request-body-name: body
-  /assets/unprotect/validate:
+  /assets/actions/unprotect/validate:
     post:
       operationId: AssetsUnprotect_Validate
       tags:
@@ -1455,30 +1446,6 @@ paths:
               schema:
                 type: string
                 format: binary
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '401':
-          description: Invalid API key
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '500':
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
       security:
         - api_key: []
   /audit/filters:
@@ -1515,6 +1482,91 @@ paths:
                 $ref: '#/components/schemas/error'
       security:
         - api_key: []
+  /auth/challenge:
+    post:
+      operationId: AuthChallenge_POST
+      tags: 
+        - Auth
+      summary: Challenge API to get token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/challengeBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/challengeResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+  /auth/login:
+    post:
+      operationId: AuthLogin_POST
+      tags:
+        - Auth
+      summary: Login to get token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/loginBody'
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loginResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
   /entities/encode-ip:
     get:
       operationId: Entity_EncodeIP
@@ -1530,7 +1582,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/encodedEntity"
+                $ref: '#/components/schemas/encodedEntity'
         '400':
           description: Bad Request
           content:
@@ -1572,7 +1624,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/encodedEntity"
+                $ref: '#/components/schemas/encodedEntity'
         '400':
           description: Bad Request
           content:
@@ -1618,7 +1670,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/encodedEntity"
+                $ref: '#/components/schemas/encodedEntity'
         '400':
           description: Bad Request
           content:
@@ -1645,22 +1697,22 @@ paths:
                 $ref: '#/components/schemas/error'
       security:
         - api_key: []
-  '/entity/{entityId}':
+  '/assets/{assetId}':
     get:
-      operationId: Entity_Get
+      operationId: Asset_Get
       tags:
-        - Entity
-      summary: Get an entity
-      description: Returns the properties of an entity, which could be a group, user or asset.
+        - Assets
+      summary: Get an asset
+      description: Returns the properties of an asset.
       parameters:
-        - $ref: '#/components/parameters/entityIdParameter'
+        - $ref: '#/components/parameters/assetIdParameter'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/entityResponse'
+                $ref: '#/components/schemas/assetResponse'
         '400':
           description: Bad Request
           content:
@@ -1687,15 +1739,15 @@ paths:
                 $ref: '#/components/schemas/error'
       security:
         - api_key: []
-  '/entity/{entityId}/ancestors':
+  '/assets/{assetId}/ancestors':
     get:
-      operationId: EntityMemberOf_Get
+      operationId: AssetMemberOf_Get
       tags:
-        - Entity
-      summary: Get an entity ancestors
-      description: Returns a list of groups the group is a member of. 
+        - Assets
+      summary: Get an asset ancestors
+      description: Returns a list of groups the asset is a member of.
       parameters:
-        - $ref: '#/components/parameters/entityIdParameter'
+        - $ref: '#/components/parameters/assetIdParameter'
       responses:
         '200':
           description: OK
@@ -1729,57 +1781,27 @@ paths:
                 $ref: '#/components/schemas/error'
       security:
         - api_key: []
-  '/entity/{entityId}/tags':
+  '/assets/{assetId}/audit':
     get:
-      operationId: Entity_GetTags
+      operationId: AssetAudit_Get
       tags:
-        - Entity
-      summary: Get entity tags
+        - Assets
+      summary: Get a assets audits
+      description: Returns a list of audits for the asset.
       parameters:
-        - $ref: '#/components/parameters/entityIdParameter'
+        - $ref: '#/components/parameters/assetIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/cursorParameter'
+        - $ref: '#/components/parameters/searchParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/orderParameter'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/tags'
-        '401':
-          description: Invalid API key
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-      security:
-        - api_key: []
-      description: Returns a list of tags for an entity.
-  '/entity/{entityId}/analysis':
-    get:
-      operationId: EntityAnalysis_Get
-      tags:
-        - Entity
-      summary: Get an entity analysis
-      description: Returns an object with entity analysis data.
-      parameters:
-        - $ref: '#/components/parameters/entityIdParameter'
-        - $ref: '#/components/parameters/sortParameter'
-        - $ref: '#/components/parameters/directionParameter'
-        - $ref: '#/components/parameters/connectionStateParameter'
-        - $ref: '#/components/parameters/fromParameter'
-        - $ref: '#/components/parameters/toParameter'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entityAnalysis'
+                $ref: '#/components/schemas/auditList'
         '400':
           description: Bad Request
           content:
@@ -1806,15 +1828,92 @@ paths:
                 $ref: '#/components/schemas/error'
       security:
         - api_key: []
-  '/entity/{entityId}/analysis/export':
-    post:
-      operationId: EntityAnalysis_Export
+  '/assets/{assetId}/tags':
+    get:
+      operationId: AssetTags_Get
       tags:
-        - Entity
-      summary: Export entity analysis
+        - Assets
+      summary: Get asset tags
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tags'
+        '401':
+          description: Invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+      security:
+        - api_key: []
+      description: Returns a list of tags for an entity.
+  '/assets/{assetId}/analysis':
+    get:
+      operationId: AssetAnalysis_Get
+      tags:
+        - Assets
+      summary: Get an asset analysis
+      description: Returns an object with asset analysis data.
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/directionParameter'
+        - $ref: '#/components/parameters/connectionStateParameter'
+        - $ref: '#/components/parameters/fromParameter'
+        - $ref: '#/components/parameters/toParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assetAnalysis'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+      security:
+        - api_key: []
+  '/assets/{assetId}/analysis/export':
+    post:
+      operationId: AssetAnalysis_Export
+      tags:
+        - Assets
+      summary: Export asset analysis
       description: Returns an exportId to pass into the download API.
       parameters:
-        - $ref: '#/components/parameters/entityIdParameter'
+        - $ref: '#/components/parameters/assetIdParameter'
       requestBody:
         description: 'EntityId, from, to, search, filter or date time format for export'
         content:
@@ -1855,16 +1954,16 @@ paths:
                 $ref: '#/components/schemas/error'
       security:
         - api_key: []
-  '/entity/{entityId}/analysis/export/csv/{exportId}':
+  '/assets/{assetId}/analysis/export/csv/{exportId}':
     get:
-      operationId: EntityAnalysisExport_Get
+      operationId: AssetAnalysisExport_Get
       tags:
-        - Entity
-      summary: Download entity analysis report
+        - Assets
+      summary: Download asset analysis report
       description: Returns a csv file to be downloaded.
       parameters:
         - $ref: '#/components/parameters/exportIdParameter'
-        - $ref: '#/components/parameters/entityIdParameter'
+        - $ref: '#/components/parameters/assetIdParameter'
       responses:
         '200':
           description: OK
@@ -1873,30 +1972,6 @@ paths:
               schema:
                 type: string
                 format: binary
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '401':
-          description: Invalid API key
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '500':
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
       security:
         - api_key: []
   /environments/deployments:
@@ -2036,24 +2111,6 @@ paths:
               schema:
                 type: string
                 format: binary
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '401':
-          description: Invalid API key
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '500':
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
       security:
         - api_key: []
   /groups/ad:
@@ -2303,6 +2360,7 @@ paths:
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/groupIdQueryParameter'
+        - $ref: '#/components/parameters/searchParameter'
       responses:
         '200':
           description: OK
@@ -3531,7 +3589,7 @@ paths:
         - api_key: []
   /protection/reactive-policies/inbound/simulate:
     get:
-      operationId: MFAPolicies_Simulate
+      operationId: MFAInboundPolicies_Simulate
       tags:
         - MFA Inbound
       summary: Simulate Inbound MFA access
@@ -3693,7 +3751,7 @@ paths:
       tags:
         - MFA Outbound
       summary: List Outbound MFA Policies
-      description: Returns a list of outbound MFA policies.     
+      description: Returns a list of outbound MFA policies.
       parameters:
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
@@ -4968,30 +5026,6 @@ paths:
               schema:
                 type: string
                 format: binary
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '401':
-          description: Invalid API key
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '500':
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
       security:
         - api_key: []
   /protection/rules/inbound-block:
@@ -5491,30 +5525,6 @@ paths:
               schema:
                 type: string
                 format: binary
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '401':
-          description: Invalid API key
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '500':
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
       security:
         - api_key: []
   /protection/rules/outbound-block:
@@ -6048,30 +6058,6 @@ paths:
               schema:
                 type: string
                 format: binary
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '401':
-          description: Invalid API key
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '500':
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
       security:
         - api_key: []
   /protection/rules/outbound:
@@ -6566,30 +6552,6 @@ paths:
               schema:
                 type: string
                 format: binary
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '401':
-          description: Invalid API key
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '500':
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
       security:
         - api_key: []
   /roles:
@@ -7083,9 +7045,9 @@ paths:
                 $ref: '#/components/schemas/error'
       security:
         - api_key: []
-  /settings/asset-management/ansible/rediscover:
+  /settings/asset-management/linux/rediscover:
     put:
-      summary: Rediscover monitored assets from Ansible
+      summary: Rediscover monitored assets from Linux
       tags:
         - Settings Asset Management
       responses:
@@ -7123,7 +7085,7 @@ paths:
       description: Rediscover monitored assets from Ansible
       security:
         - api_key: []
-  /settings/asset-management/linux-user:
+  /settings/asset-management/linux/user:
     get:
       summary: Get linux user settings in Asset Managment
       tags:
@@ -7573,10 +7535,6 @@ paths:
       responses:
         '200':
           description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/emptyResponse'
         '400':
           description: Bad Request
           content:
@@ -7745,12 +7703,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/identityProviderIdParameter'
       responses:
-        '200':
+        '204':
           description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/emptyResponse'
         '400':
           description: Bad Request
           content:
@@ -8431,30 +8385,6 @@ paths:
               schema:
                 type: string
                 format: binary
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '401':
-          description: Invalid API key
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '500':
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
       security:
         - api_key: []
   /users/filters:
@@ -8587,13 +8517,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      operationId: get-access-tokens
+      operationId: AccessTokens_List
       description: Get all machine access tokens
       security:
         - api_key: []
     post:
       summary: Create machine access token
-      operationId: post-access-tokens
+      operationId: AccessTokens_Create
       responses:
         '200':
           description: OK
@@ -8661,17 +8591,12 @@ paths:
         - Settings Access Tokens
       security:
         - api_key: []
-  '/access-tokens/{client-id}':
+  '/access-tokens/{clientId}':
     parameters:
-      - schema:
-          type: string
-        name: client-id
-        in: path
-        required: true
-        description: Client Id
+      - $ref: '#/components/parameters/clientIdParameter'
     put:
       summary: Regenerate machine access token
-      operationId: put-access-tokens-id
+      operationId: AccessTokens_Regenerate
       responses:
         '200':
           description: OK
@@ -8718,7 +8643,7 @@ paths:
         - Settings Access Tokens
     delete:
       summary: Delete access token
-      operationId: delete-access-tokens-id
+      operationId: AccessToken_Delete
       responses:
         '200':
           description: OK
@@ -8804,7 +8729,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      operationId: get-cloud-connector-access-tokens
+      operationId: CloudConnectorAccessTokens_List
       description: Get all cloud connector provisioning access tokens
       security:
         - api_key: []
@@ -8843,7 +8768,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      operationId: post-cloud-connector-access-tokens
+      operationId: CloudConnectorAccessTokens_Create
       description: Create cloud connector provisioning access token
       requestBody:
         content:
@@ -8865,7 +8790,7 @@ paths:
         description: ''
       security:
         - api_key: []
-  '/cloud-connector/access-tokens/{client-id}':
+  '/cloud-connector/access-tokens/{clientId}':
     put:
       summary: Regenerate cloud connector provisioning access token
       responses:
@@ -8905,7 +8830,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      operationId: put-cloud-connector-access-tokens
+      operationId: CloudConnectorAccessTokens_Regenerate
       description: Regenerate cloud connector provisioning access token
       requestBody:
         content:
@@ -8918,6 +8843,8 @@ paths:
               properties:
                 expiry:
                   $ref: '#/components/schemas/epochMillis'
+      parameters:
+        - $ref: '#/components/parameters/clientIdParameter'
       tags:
         - Settings Cloud Connector
       security:
@@ -8961,17 +8888,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      operationId: delete-cloud-connector-access-tokens
+      operationId: CloudConnectorAccessTokens_Delete
       description: Delete cloud connector provisioning access token
+      parameters:
+        - $ref: '#/components/parameters/clientIdParameter'
       security:
         - api_key: []
-    parameters:
-      - schema:
-          type: string
-        name: client-id
-        in: path
-        required: true
-        description: Client Id
   /ai/exclusion/network/client:
     get:
       summary: Your GET endpoint
@@ -9284,19 +9206,399 @@ paths:
       description: Set AI source entities to ignore during learning.
       requestBody:
         content:
-          application/xml:
-            schema:
-              type: array
-              items:
-                type: string
           application/json:
             schema:
               type: array
               items:
                 type: string
     parameters: []
+  '/users/{userId}':
+    get:
+      operationId: User_Get
+      tags:
+        - Users
+      summary: Get a user
+      description: Returns the properties of an user.
+      parameters:
+        - $ref: '#/components/parameters/userIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+      security:
+        - api_key: []
+  '/users/{userId}/ancestors':
+    get:
+      operationId: UserMemberOf_Get
+      tags:
+        - Users
+      summary: Get a users ancestors
+      description: Returns a list of groups the user is a member of.
+      parameters:
+        - $ref: '#/components/parameters/userIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ancestors'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+      security:
+        - api_key: []
+  '/users/{userId}/audit':
+    get:
+      operationId: UserAudit_Get
+      tags:
+        - Users
+      summary: Get a users audits
+      description: Returns a list of audits for the user.
+      parameters:
+        - $ref: '#/components/parameters/userIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/cursorParameter'
+        - $ref: '#/components/parameters/searchParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/orderParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auditList'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+      security:
+        - api_key: []
+  '/groups/{groupId}':
+    get:
+      operationId: Group_Get
+      tags:
+        - Groups
+      summary: Get a group
+      description: Returns the properties of an group.
+      parameters:
+        - $ref: '#/components/parameters/groupIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/groupResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+      security:
+        - api_key: []
+  '/groups/{groupId}/ancestors':
+    get:
+      operationId: GroupMemberOf_Get
+      tags:
+        - Groups
+      summary: Get a groups ancestors
+      description: Returns a list of groups the group is a member of.
+      parameters:
+        - $ref: '#/components/parameters/groupIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ancestors'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+      security:
+        - api_key: []
+  '/groups/{groupId}/audit':
+    get:
+      operationId: GroupAudit_Get
+      tags:
+        - Groups
+      summary: Get a groups audits
+      description: Returns a list of audits for the group.
+      parameters:
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/cursorParameter'
+        - $ref: '#/components/parameters/searchParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/orderParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auditList'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+      security:
+        - api_key: []
 components:
   schemas:
+    profileUser:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "1f352ed0-86f1-454f-90a5-592c197c8000"
+        fullName:
+          type: string
+          example: "Zero Networks"
+        activeEnvironmentId:
+          type: string
+          example: "17624a57-729e-4805-9703-67947d3bd888"
+        activeEnvironmentName:
+          type: string
+          example: "office-windows"
+        role:
+          $ref: '#/components/schemas/role'
+        platformType:
+          type: integer
+          example: 5
+        email:
+          type: string
+          example: "team@zeronetworks.com"
+        tenantId:
+          type: string
+          example: "3d3b45ba-4b3c-4746-b4f5-be5d83abe001"
+        phone:
+          type: string
+          example: "+14242997613"
+        type:
+          $ref: '#/components/schemas/audienceType'
+        isExperimental:
+          type: boolean
+          example: true
+        isInternalUser:
+          type: boolean
+          example: false
+    audienceType:
+      type: integer
+      enum:
+        - 0
+        - 1
+        - 2
+      description: |
+        dictionary:
+          * `0` PORTAL_AUDIENCE 
+          * `1` SSP_AUDIENCE
+          * `2` RP_AUDIENCE
+    role:
+      type: integer
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+      description: |
+        dictionary:
+          * `0` ROLE_UNSPECIFIED 
+          * `1` ROLE_ADMIN
+          * `2` ROLE_VIEWER 
+          * `3` ROLE_REGULAR  
+          * `4` ROLE_MACHINE_FULL_ACCESS
+          * `5` ROLE_MACHINE_READ_ONLY 
+          * `6` ROLE_SELF_SERVICE 
+          * `7` ROLE_CLOUD_CONNECTOR_PROVISIONING
+          * `8` ROLE_JAMF_ASSET
+          * `9` ROLE_ASSET_MANAGER
+    profileEnv:
+      type: object
+      properties:
+        isTrial:
+          type: boolean
+          example: false
+    profileResponse:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/profileUser'
+        env:
+          $ref: '#/components/schemas/profileEnv'
+    challengeBody:
+      type: object
+      properties:
+        email:
+          type: string
+        challengeMediumType:
+          $ref: '#/components/schemas/ChallengeMediumType'
+        sendSkip:
+          type: boolean
+    challengeResponse:
+      type: object
+      properties:
+        authenticatedVia:
+          type: string
+        isPhoneChallengeSupported:
+          type: boolean
+    ChallengeMediumType:
+        type: string
+        enum:
+          - email
+          - phone
+    loginBody:
+      type: object
+      properties:
+        challengeMediumType:
+          $ref: '#/components/schemas/ChallengeMediumType'
+        email:
+          type: string
+        otp:
+          type: string
+    loginResponse:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/user'
+        token:
+          type: string
     stringList:
       type: array
       items:
@@ -9530,7 +9832,7 @@ components:
             - 5
             - 6
             - 7
-          description: >
+          description: |
             Possible asset status:
               * `1` - ASSET_STATUS_UNDISCOVERED
               * `2` - ASSET_STATUS_STALKED
@@ -9622,7 +9924,7 @@ components:
             - 5
             - 6
             - 7
-          description: >
+          description: |
             Possible asset status:
               * `1` - ASSET_STATUS_UNDISCOVERED
               * `2` - ASSET_STATUS_STALKED
@@ -9699,15 +10001,15 @@ components:
     assetsStatesStatistics:
       type: object
       properties:
-        reactivePoliciesStatistics:
+        assetsStatesStatistics:
           type: object
           properties:
-            totalCount:
+            connectedAssetsCount:
               type: integer
       x-examples:
         example-1:
-          reactivePoliciesStatistics:
-            totalCount: 13
+          assetsStatesStatistics:
+            connectedAssetsCount: 13
     assetsStatistics:
       type: object
       x-examples:
@@ -9855,6 +10157,8 @@ components:
             - 5
             - 6
             - 7
+        isoTimestamp:
+          $ref: '#/components/schemas/iso8601DateTimeUTC'
     auditList:
       type: object
       properties:
@@ -10056,7 +10360,7 @@ components:
           items:
             type: string
             pattern: '^g:[c]:[a-zA-Z0-9]{8}$'
-          example: 
+          example:
             - 'g:c:ab124as2'
     customGroupMembersBody:
       type: object
@@ -10069,7 +10373,7 @@ components:
           items:
             type: string
             pattern: '^g:[c]:[a-zA-Z0-9]{8}$'
-          example: 
+          example:
             - 'g:c:ab124as2'
     deployment:
       type: object
@@ -10113,7 +10417,7 @@ components:
       properties:
         id:
           type: string
-    entityAnalysis:
+    assetAnalysis:
       type: object
       properties:
         items:
@@ -10163,11 +10467,11 @@ components:
             $ref: '#/components/schemas/entity'
         count:
           type: integer
-    entityResponse:
+    assetResponse:
       type: object
       properties:
         entity:
-          $ref: '#/components/schemas/entity'
+          $ref: '#/components/schemas/asset'
     epochMillis:
       title: epochMillis
       type: integer
@@ -10392,9 +10696,7 @@ components:
           example: User Name
         description:
           type: string
-        dstEntityInfos:
-          type: array
-          items:
+        dstEntityInfo:
             $ref: '#/components/schemas/asset'
         dstPort:
           type: string
@@ -10648,6 +10950,7 @@ components:
       required:
         - dstEntityInfo
         - dstPort
+        - dstProcessNames
         - fallbackToLoggedOnUser
         - mfaMethods
         - protocolType
@@ -10655,7 +10958,6 @@ components:
         - srcEntityInfos
         - srcProcessNames
         - srcUserInfos
-        - ruleCreationMode
         - state
         - additionalPortsList
       type: object
@@ -10682,8 +10984,6 @@ components:
           items:
             type: integer
         protocolType:
-          type: integer
-        ruleCreationMode:
           type: integer
         ruleDuration:
           type: integer
@@ -10810,8 +11110,6 @@ components:
     otAssetEditBody:
       type: object
       title: otAssetEditBody
-      x-stoplight:
-        id: b3afb357e3391
       properties:
         type:
           type: number
@@ -11028,6 +11326,9 @@ components:
         action:
           type: integer
           format: int32
+        activitiesCount:
+          type: integer
+          format: int32
         createdAt:
           $ref: '#/components/schemas/epochMillis'
         createdBy:
@@ -11037,6 +11338,10 @@ components:
         direction:
           type: integer
           format: int32
+        excludedEntityInfos:
+          type: array
+          items:
+            $ref: '#/components/schemas/idNamePair'
         excludedLocalIdsList:
           type: array
           items:
@@ -11068,6 +11373,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/idNamePair'
+        ruleClass:
+          type: integer
+          format: int32
         state:
           type: integer
           format: int32
@@ -11087,6 +11395,10 @@ components:
       properties:
         description:
           type: string
+        excludedLocalIdsList:
+          type: array
+          items:
+            type: string
         expiresAt:
           type: integer
           format: int32
@@ -11196,9 +11508,12 @@ components:
       title: settingsAuthBody
       type: object
       properties:
-        portalTokenTtl:
-          type: number
-          description: Portal session token timeout (in minutes)
+        item:
+          type: object
+          properties:
+            portalTokenTtl:
+              type: number
+              description: Portal session token timeout (in minutes)
     settingsAdInfo:
       type: object
       properties:
@@ -11292,6 +11607,7 @@ components:
         - password
         - url
         - username
+        - clientSecret
       properties:
         clientId:
           type: string
@@ -11311,6 +11627,9 @@ components:
         username:
           type: string
           description: username to access Ansible API.
+        clientSecret:
+          type: string
+          description: OAuth Client Secret
     settingsIdp:
       type: object
       properties:
@@ -11753,6 +12072,16 @@ components:
       properties:
         affectedAssetsCount:
           type: integer
+    userResponse:
+      type: object
+      properties:
+        entity:
+          $ref: '#/components/schemas/user'
+    groupResponse:
+      type: object
+      properties:
+        entity:
+          $ref: '#/components/schemas/group'
   parameters:
     connectionStateParameter:
       name: connectionstate
@@ -11785,13 +12114,14 @@ components:
       schema:
         type: string
         example: child.zeronetworks.com
-    entityIdParameter:
-      name: entityId
+    assetIdParameter:
+      name: assetId
       in: path
-      description: entityId to filter on
+      description: assetId to filter on
       required: true
       schema:
         type: string
+        pattern: '^a:[ault]:[a-zA-Z0-9]{8}$'
     entityIdQueryParameter:
       name: _entityId
       in: query
@@ -11992,11 +12322,11 @@ components:
     groupIdParameter:
       name: groupId
       in: path
-      description: members id
+      description: groupId to filter on
       required: true
       schema:
         type: string
-        pattern: '^g:[acs]:[a-zA-Z0-9]{8}$'
+        pattern: '^g:[acsot]:[a-zA-Z0-9]{8}$'
     groupIdQueryParameter:
       name: _groupId
       in: query
@@ -12011,6 +12341,21 @@ components:
       schema:
         type: string
       description: 'JSON string URI encoded object {id: string, direction: AssetDirection}'
+    userIdParameter:
+      name: userId
+      in: path
+      description: userId to filter on
+      required: true
+      schema:
+        type: string
+        pattern: '^u:[a]:[a-zA-Z0-9]{8}$'
+    clientIdParameter:
+      name: clientId
+      in: path
+      description: clientId to filter on
+      required: true
+      schema:
+        type: string
   securitySchemes:
     api_key:
       type: apiKey

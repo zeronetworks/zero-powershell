@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/invoke-znextendassetqueue
+online version: https://github.com/zeronetworkszn.api/invoke-znextendassetqueue
 schema: 2.0.0
 ---
 
@@ -12,9 +12,15 @@ Returns an empty object.
 
 ## SYNTAX
 
+### ExtendExpanded (Default)
 ```
 Invoke-ZNExtendAssetQueue [-ExtendByDays <Int32>] [-Items <String[]>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Extend
+```
+Invoke-ZNExtendAssetQueue -Body <IQueueExtendBody> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,12 +37,28 @@ This cmdlet will extend the learning time of an asset in the environment.
 
 ## PARAMETERS
 
+### -Body
+.
+To construct, see NOTES section for BODY properties and create a hash table.
+
+```yaml
+Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IQueueExtendBody
+Parameter Sets: Extend
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ExtendByDays
 number of days
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: ExtendExpanded
 Aliases:
 
 Required: False
@@ -51,7 +73,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: ExtendExpanded
 Aliases:
 
 Required: False
@@ -97,6 +119,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IQueueExtendBody
+
 ## OUTPUTS
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
@@ -106,6 +130,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`BODY <IQueueExtendBody>`: .
+  - `[ExtendByDays <Int32?>]`: number of days
+  - `[Items <String[]>]`: 
 
 ## RELATED LINKS
 

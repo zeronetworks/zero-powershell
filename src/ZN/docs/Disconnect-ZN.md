@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/disconnect-zn
+online version: https://github.com/zeronetworkszn.api/disconnect-zn
 schema: 2.0.0
 ---
 
@@ -20,31 +20,16 @@ Disconnect-ZN [-Confirm] [-WhatIf] [<CommonParameters>]
 Logout of Zero Networks
 
 #.Link
-https://github.com/zeronetworks/zero-powershell/Disconnect-zn
+https://github.com/zeronetworks/zn.api/Disconnect-zn
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Log out of Zero Networks
 ```powershell
-{{ Add code here }}
+Disconnect-ZN 
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet logs out of Zero Networks
 
 ## PARAMETERS
 

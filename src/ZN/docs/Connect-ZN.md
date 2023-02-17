@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/connect-zn
+online version: https://github.com/zeronetworkszn.api/connect-zn
 schema: 2.0.0
 ---
 
@@ -13,42 +13,36 @@ Login to Zero Networks to get a token for cmdlet use
 ## SYNTAX
 
 ```
-Connect-ZN -UserName <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Connect-ZN -Email <String> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Login to Zero Networks to get a token for cmdlet use
 
 #.Link
-https://github.com/zeronetworks/zero-powershell/connect-zn
+https://github.com/zeronetworks/zn.api/connect-zn
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Logs into Zero Networks using email otp
 ```powershell
-{{ Add code here }}
+Connect-ZN -UserName user@zeronetworks.com
 ```
 
 ```output
-{{ Add output here }}
+Please enter the OTP code recieved via email
+Code: 11111
+
+authenticatedVia          isPhoneChallengeSupported
+----------------          -------------------------
+user@zeronetworks.com                     False
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet logs into Zero Networks
 
 ## PARAMETERS
 
-### -UserName
+### -Email
 login
 
 ```yaml

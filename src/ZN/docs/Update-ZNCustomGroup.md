@@ -1,53 +1,53 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-zncustomgroup
+online version: https://github.com/zeronetworks/zn.api/update-zncustomgroup
 schema: 2.0.0
 ---
 
 # Update-ZNCustomGroup
 
 ## SYNOPSIS
-Returns an empty object.
+Updates a custom group properties.
 
 ## SYNTAX
 
 ```
-Update-ZNCustomGroup -GroupId <String> -Name <String> [-Description <String>] [-MembersId <String[]>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNCustomGroup -GroupId <String> [-Description <String>] [-Name <String>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns an empty object.
+Updates a custom group properties.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update custom group properties
 ```powershell
-{{ Add code here }}
+Update-ZNCustomGroup -GroupId g:c:DtglBTHi -Description "updated desccription"
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet updates the name or description of a custom group.
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Description
-.
+The description for the custom group.
 
 ```yaml
 Type: System.String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -GroupId
-members id
+groupId to filter on
 
 ```yaml
 Type: System.String
@@ -76,11 +76,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MembersId
-members id
+### -Name
+The name to update the custom group to.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -91,15 +91,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -144,9 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
-
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.Group
 
 ## NOTES
 

@@ -38,3 +38,16 @@ CreatedAt     DistinguishedName                                        Domain   
 ```
 
 Use offset to get the next page of users.
+
+### Example 3: Search for a user
+```powershell
+Get-ZNUser -Search Administrator
+```
+
+```output
+CreatedAt     DistinguishedName                         Domain    Email FirstName Guid                                 Id           JobTitle LastLogon     LastName Name          OfficePhone Phone Role Sid                                          Source UserPrincipleName
+---------     -----------------                         ------    ----- --------- ----                                 --           -------- ---------     -------- ----          ----------- ----- ---- ---                                          ------ -----------------
+1646147850723 CN=Administrator,CN=Users,DC=zero,DC=labs zero.labs                 d2ac73db-cb56-4c7e-9818-ddb9e4c9a74c u:a:eTpnZu08          1661438953278          Administrator                   3    S-1-5-21-1655129710-1269081394-587607975-500 3
+```
+
+Use offset to get the next page of users.

@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update secondary AD setting
 ```powershell
-{{ Add code here }}
+Update-ZNAdSecondarySetting -dc dc2.newdomain.zero.labs -DomainId newdomain.zero.labs
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet updates a secondary AD setting under Asset Management.

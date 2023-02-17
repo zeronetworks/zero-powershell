@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-znmonitoredgroupsetting
+online version: https://github.com/zeronetworkszn.api/update-znmonitoredgroupsetting
 schema: 2.0.0
 ---
 
@@ -21,27 +21,18 @@ Update the monitored group settings in Asset Managment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update Asset Monitoring setting
 ```powershell
-{{ Add code here }}
+Update-ZNMonitoredGroupSetting -GroupId (Get-ZNMonitoredGroupCandidatesSetting -Search "All AD assets").Items.Id -IsEnabled
 ```
 
 ```output
-{{ Add output here }}
+IsEnabled
+---------
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet updates the Active Direcoty Asset Monitoring control setting under Asset Management.
 
 ## PARAMETERS
 

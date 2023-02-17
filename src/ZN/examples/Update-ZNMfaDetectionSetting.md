@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update MFA protection setting
 ```powershell
-{{ Add code here }}
+Update-ZNMfaDetectionSetting -TimeoutMinutes 5
 ```
 
 ```output
-{{ Add output here }}
+5
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet updates the MFA detection setting under Protection.
 

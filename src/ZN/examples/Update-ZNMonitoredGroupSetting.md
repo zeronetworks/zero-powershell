@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update Asset Monitoring setting
 ```powershell
-{{ Add code here }}
+Update-ZNMonitoredGroupSetting -GroupId (Get-ZNMonitoredGroupCandidatesSetting -Search "All AD assets").Items.Id -IsEnabled
 ```
 
 ```output
-{{ Add output here }}
+IsEnabled
+---------
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet updates the Active Direcoty Asset Monitoring control setting under Asset Management.
 

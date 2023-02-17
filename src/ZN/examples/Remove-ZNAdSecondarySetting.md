@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a secondary AD setting
 ```powershell
-{{ Add code here }}
+Remove-ZNAdSecondarySetting -DomainId newdomain.zero.labs
 ```
 
 ```output
-{{ Add output here }}
+ZeroNetworks.PowerShell.Cmdlets.Api.Models.Any
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet deletes a secondary Active Directory setting under Asset Management.

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-znactivitiessetting
+online version: https://github.com/zeronetworkszn.api/update-znactivitiessetting
 schema: 2.0.0
 ---
 
@@ -22,27 +22,12 @@ Update the Activities settings in Data Collection
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Change Data Collection - Activities Settings
 ```powershell
-{{ Add code here }}
+Update-ZNActivitiesSetting -ShouldFilterExternalTraffic:$false
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet allows changing the Activities setting under data collection.
 
 ## PARAMETERS
 

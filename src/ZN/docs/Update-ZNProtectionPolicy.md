@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-znprotectionpolicy
+online version: https://github.com/zeronetworkszn.api/update-znprotectionpolicy
 schema: 2.0.0
 ---
 

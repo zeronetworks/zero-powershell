@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znmfaoutboundpolicy
+online version: https://github.com/zeronetworkszn.api/get-znmfaoutboundpolicy
 schema: 2.0.0
 ---
 
@@ -33,9 +33,12 @@ Get-ZNOutboundBlockRule
 ```
 
 ```output
-CreatedAt     CreatedBy                            CreatedByName Description DstPort DstProcessNames FallbackToLoggedOnUser Id                                   MfaMethods ProtocolType RuleCreationMode RuleDuration SrcProcessNames State UpdatedAt
----------     ---------                            ------------- ----------- ------- --------------- ---------------------- --                                   ---------- ------------ ---------------- ------------ --------------- ----- ---------
-1665512193635 1f352ed0-86f1-454f-90a5-592c197c8000 Zero Networks             443     {*}             False                  cff54715-454b-4309-9b70-3055d80a8379 {2}        6            1                1            {*}             1     1665512193635
+Action CreatedAt     Description                               Direction ExcludedLocalIdsList ExpiresAt Id                                   LocalEntityId LocalProcessesList ParentId ParentType RemoteEntityIds
+                                                                                                                                                                                                  List
+------ ---------     -----------                               --------- -------------------- --------- --                                   ------------- ------------------ -------- ---------- ---------------
+2      1665759335488                                           2         {}                   0         b4becec7-378d-4e8a-a8f9-fa31f644d74c b:110002      {*}                         0          {b:12010203042…
+2      1665679730342 Test Rule                                 2         {}                   0         627e3705-2f26-4cb6-b5e2-b73b76d900b2 b:110002      {*}                         0          {b:12010101012…
+2      1648736821514 Sentinel Integration - Block Malicous IPs 2         {}                   0         0faafa72-2540-4d55-9418-ed62472e0e2d b:110002      {*}                         0          {b:12ac1001012…
 ```
 
 This cmdlet gets outbound MFA policies from the environment.
@@ -46,6 +49,7 @@ Get-ZNMfaOutboundPolicy -ReactivePolicyId "cff54715-454b-4309-9b70-3055d80a8379"
 ```
 
 ```output
+ItemAdditionalPortsList    : {}
 ItemCreatedAt              : 1665512193635
 ItemCreatedBy              : 1f352ed0-86f1-454f-90a5-592c197c8000
 ItemCreatedByName          : Zero Networks
@@ -57,11 +61,10 @@ ItemFallbackToLoggedOnUser : False
 ItemId                     : cff54715-454b-4309-9b70-3055d80a8379
 ItemMfaMethods             : {2}
 ItemProtocolType           : 6
-ItemRuleCreationMode       : 1
 ItemRuleDuration           : 1
-ItemSrcEntityInfos         : {}
+ItemSrcEntityInfos         : {All protected assets}
 ItemSrcProcessNames        : {*}
-ItemSrcUserInfos           : {}
+ItemSrcUserInfos           : {Any user}
 ItemState                  : 1
 ItemUpdatedAt              : 1665512193635
 ```

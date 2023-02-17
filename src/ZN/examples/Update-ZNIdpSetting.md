@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update Identity Provider
 ```powershell
-{{ Add code here }}
+$azure = Get-ZNIdpSetting | where {$_.IdentityProviderType -eq "azure"}
+Update-ZNIdpSetting -IdentityProviderId $azure.IdentityProviderType -Certificate $azure.Certificate -IdentityProvider $azure.IdentityProviderType -SloUrl $azure.SloUrl -SsoUrl $azure.SsoUrl -IsDefault
 ```
 
 ```output
-{{ Add output here }}
+Certificate
+-----------                                                                                                                                                                                                                                                                       
+MIIC8DCCA.....
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet updates an Identity Provider setting under Integrations.

@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/invoke-znsimulatemfapolicy
+online version: https://github.com/zeronetworkszn.api/get-zncustomgroupscandidate
 schema: 2.0.0
 ---
 
-# Invoke-ZNSimulateMfaPolicy
+# Get-ZNCustomGroupsCandidate
 
 ## SYNOPSIS
-Returns a list of MFA policies that would match the simulaton.
+Returns a list of candidates for custom group membership.
 
 ## SYNTAX
 
 ```
-Invoke-ZNSimulateMfaPolicy -SimulationParams <IComponents1Tw47WoParametersSimulationparameterSchema>
- [-Limit <Int32>] [-Offset <Int32>] [<CommonParameters>]
+Get-ZNCustomGroupsCandidate [-GroupId <String>] [-Limit <Int32>] [-Offset <Int32>] [-Search <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns a list of MFA policies that would match the simulaton.
+Returns a list of candidates for custom group membership.
 
 ## EXAMPLES
 
@@ -45,6 +45,21 @@ Returns a list of MFA policies that would match the simulaton.
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -GroupId
+groupId to filter on
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Limit
 Limit the return results
@@ -76,16 +91,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SimulationParams
-Set of properties to run for the MFA simulation
-To construct, see NOTES section for SIMULATIONPARAMS properties and create a hash table.
+### -Search
+Test to search for
 
 ```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IComponents1Tw47WoParametersSimulationparameterSchema
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -101,25 +115,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IOrderedReactivePoliciesList
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroup
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`SIMULATIONPARAMS <IComponents1Tw47WoParametersSimulationparameterSchema>`: Set of properties to run for the MFA simulation
-  - `[DstAssetId <String>]`: 
-  - `[DstProcess <String>]`: 
-  - `[Port <String>]`: 
-  - `[ProtocolType <String>]`: 
-  - `[SrcAssetId <String>]`: 
-  - `[SrcProcess <String>]`: 
-  - `[SrcUserId <String>]`: 
 
 ## RELATED LINKS
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znlinuxusersetting
+online version: https://github.com/zeronetworkszn.api/get-znlinuxusersetting
 schema: 2.0.0
 ---
 
@@ -21,27 +21,16 @@ Get the linux user settings in Asset Managment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get Linux user setting
 ```powershell
-{{ Add code here }}
+Get-ZNLinuxUserSetting
 ```
 
 ```output
-{{ Add output here }}
+zn-admin
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet gets the Linux User setting under Asset Management.
 
 ## PARAMETERS
 

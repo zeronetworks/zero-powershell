@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/unprotect-znassetsot
+online version: https://github.com/zeronetworkszn.api/unprotect-znassetsot
 schema: 2.0.0
 ---
 
@@ -12,8 +12,14 @@ Returns and empty body.
 
 ## SYNTAX
 
+### UnprotectExpanded (Default)
 ```
 Unprotect-ZNAssetsOt -Items <String[]> [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Unprotect
+```
+Unprotect-ZNAssetsOt -Body <IAssetBody> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,20 +29,35 @@ Returns and empty body.
 
 ### Example 1: Remove an OT/IoT asset from segmentation
 ```powershell
-Search-ZNAsset -Fqdn switch01
-Unprotect-ZNAssetsOt -Items "a:t:oOkjcyED"
+Unprotect-ZNAssetsOt -Items (Search-ZNAsset -Fqdn switch01)
 ```
 
 This cmdlet will remove an OT/IoT asset from segemenation.
 
 ## PARAMETERS
 
+### -Body
+.
+To construct, see NOTES section for BODY properties and create a hash table.
+
+```yaml
+Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetBody
+Parameter Sets: Unprotect
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Items
 .
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UnprotectExpanded
 Aliases:
 
 Required: True
@@ -82,6 +103,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetBody
+
 ## OUTPUTS
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
@@ -91,6 +114,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`BODY <IAssetBody>`: .
+  - `Items <String[]>`: 
 
 ## RELATED LINKS
 

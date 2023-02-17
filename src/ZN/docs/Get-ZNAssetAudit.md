@@ -1,23 +1,24 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/remove-znaccesstokenid
+online version: https://github.com/zeronetworkszn.api/get-znassetaudit
 schema: 2.0.0
 ---
 
-# Remove-ZNAccessTokenId
+# Get-ZNAssetAudit
 
 ## SYNOPSIS
-Remove machine access token
+Returns a list of audits for the asset.
 
 ## SYNTAX
 
 ```
-Remove-ZNAccessTokenId -ClientId <String> [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-ZNAssetAudit -AssetId <String> [-Cursor <Int64>] [-Filters <String>] [-Limit <Int32>] [-Order <String>]
+ [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove machine access token
+Returns a list of audits for the asset.
 
 ## EXAMPLES
 
@@ -45,8 +46,8 @@ Remove machine access token
 
 ## PARAMETERS
 
-### -ClientId
-Client Id
+### -AssetId
+assetId to filter on
 
 ```yaml
 Type: System.String
@@ -60,11 +61,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -Cursor
+cursor position to start at
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -75,13 +76,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -Filters
+JSON string URI encoded set of fiters
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
 Required: False
 Position: Named
@@ -90,14 +91,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -Limit
+Limit the return results
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: wi
+Aliases:
+
+Required: False
+Position: Named
+Default value: 10
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Order
+What order to sort the results
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Search
+Test to search for
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -112,6 +142,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAuditList
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

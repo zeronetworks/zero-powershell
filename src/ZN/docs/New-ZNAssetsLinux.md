@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/new-znassetslinux
+online version: https://github.com/zeronetworkszn.api/new-znassetslinux
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ Returns the assetId of the created Linux asset.
 
 ### Example 1: Create a linux asset
 ```powershell
-New-ZNAssetsLinux -DisplayName "linuxserver" -Fqdn "linuxserver.zero.labs"
+New-ZNAssetsLinux -DisplayName "linuxservera" -Fqdn "linuxservera.zero.labs"
 ```
 
 This cmdlet will create a linux asset in the environment.

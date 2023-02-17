@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Logs into Zero Networks using email otp
 ```powershell
-{{ Add code here }}
+Connect-ZN -UserName user@zeronetworks.com
 ```
 
 ```output
-{{ Add output here }}
+Please enter the OTP code recieved via email
+Code: 11111
+
+authenticatedVia          isPhoneChallengeSupported
+----------------          -------------------------
+user@zeronetworks.com                     False
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet logs into Zero Networks

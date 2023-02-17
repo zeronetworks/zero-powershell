@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an Identity Provider setting
 ```powershell
-{{ Add code here }}
+New-ZNIdpSetting  -IdentityProvider "azure" -SloUrl "https://login.microsoftonline.com/d6eebbdd-d77c-465e-b008-4339027b4006/saml2" -SsoUrl "https://login.microsoftonline.com/d6eebbdd-d77c-465e-b008-4339027b4006/saml2" -IsDefault:$false -Certificate 'MIIC...'
 ```
 
 ```output
-{{ Add output here }}
+Certificate
+-----------                                                                                                                                                                                                                                                                       
+MIIC8DCCAd...
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet creates a new Identity Provider setting under Integrations. Allowed values for -IdentityProvider are azure, cyberark, custom, duo, or okta.

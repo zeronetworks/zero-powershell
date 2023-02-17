@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/set-znapikey
+online version: https://github.com/zeronetworkszn.api/set-znapikey
 schema: 2.0.0
 ---
 
@@ -20,7 +20,7 @@ Set-ZNApiKey -ApiKey <String> [-Confirm] [-WhatIf] [<CommonParameters>]
 Set the API key for use in all other cmdlets
 
 #.Link
-https://github.com/zn/set-znapikey
+https://github.com/zeronetworks/zn.api/set-znapikey
 
 ## EXAMPLES
 

@@ -1,22 +1,10 @@
-### Example 1: List asset statistics
+### Example 1: Get asset connected count
 ```powershell
-Get-ZNAssetsStatistics 
+Get-ZNAssetsStatesStatistics
 ```
 
 ```output
-ItemAddingProtectionCount               : 
-ItemDeletedCount                        : 0
-ItemForceAddingProtectionCount          : 
-ItemForceRemovingProtectionCount        : 
-ItemForcedUnprotectedCount              : 
-ItemMonitoredCount                      : 8
-ItemNotProtectedLink                    : {protectionStatus, status}
-ItemProtectedCount                      : 
-ItemProtectedDueToProtectionPolicyCount : 
-ItemQueuedCount                         : 
-ItemQueuedDueToProtectionPolicyCount    : 
-ItemRemovingProtectionCount             : 
-ItemTotalCount                          : 12
+10
 ```
 
-This cmdlet lists the asset statstics for the environment.
+This cmdlet returns the number of connected assets.

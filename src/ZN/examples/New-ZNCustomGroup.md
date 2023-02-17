@@ -1,6 +1,6 @@
 ### Example 1: Create a custom group
 ```powershell
-New-ZNCustomGroup -Name "test3" -Description "test custom group" -MembersId @((Search-ZNAsset -Fqdn dc1.zero.labs))
+New-ZNCustomGroup -Name "test3" -Description "test custom group"
 ```
 
 ```output

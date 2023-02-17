@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update AI Exclusion settings for servers
 ```powershell
-{{ Add code here }}
+Update-ZNAiExclusionNetworkServer -Icmp -ProcessesList @()  -TcpPorts "" -UdpPorts ""
 ```
 
 ```output
-{{ Add output here }}
+Icmp ProcessesList TcpPorts UdpPorts
+---- ------------- -------- --------
+True {}     
 ```
 
-{{ Add description here }}
+This cmdlet updates the AI exclusions for servers under Data Collection.
 
-### Example 2: {{ Add title here }}
+### Example 2: Add a setting to the current settings.
 ```powershell
-{{ Add code here }}
+$aiSettings = Get-ZNAiExclusionNetworkServer
+Update-ZNAiExclusionNetworkServer -Icmp:$aiSettings.Icmp -ProcessesList $aiSettings.ProcessesList  -TcpPorts ($aiSettings.TcpPorts += "443") -UdpPorts $aiSettings.UdpPorts
 ```
 
 ```output
-{{ Add output here }}
+Icmp ProcessesList TcpPorts UdpPorts
+---- ------------- -------- --------
+True {}            443      
 ```
 
-{{ Add description here }}
-
+Use exisitng settings to update or add ports or processes.

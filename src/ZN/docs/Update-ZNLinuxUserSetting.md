@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-znlinuxusersetting
+online version: https://github.com/zeronetworkszn.api/update-znlinuxusersetting
 schema: 2.0.0
 ---
 
@@ -22,27 +22,12 @@ Update the linux user settings in Asset Managment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update linux user setting
 ```powershell
-{{ Add code here }}
+Update-ZNLinuxUserSetting -Username zn-admin -Password "NewPassword" -PrivateKey "Key"
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet updates the Linux user setting under Asset Management.
 
 ## PARAMETERS
 

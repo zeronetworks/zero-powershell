@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update custom group properties
 ```powershell
-{{ Add code here }}
+Update-ZNCustomGroup -GroupId g:c:DtglBTHi -Description "updated desccription"
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet updates the name or description of a custom group.

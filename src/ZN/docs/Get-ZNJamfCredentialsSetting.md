@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znjamfcredentialssetting
+online version: https://github.com/zeronetworkszn.api/get-znjamfcredentialssetting
 schema: 2.0.0
 ---
 
@@ -21,27 +21,18 @@ Returns the properties for JAMF Credentials Settings.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get JAMF Credentials Setting
 ```powershell
-{{ Add code here }}
+Get-ZNJamfCredentialsSetting
 ```
 
 ```output
-{{ Add output here }}
+Host                Password        username
+--------            --------------- --------------
+host.jamfcloud.com                  devops
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet will get the JAMF credentials setting under Asset Management.
 
 ## PARAMETERS
 

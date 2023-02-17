@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znrulesdistribution
+online version: https://github.com/zeronetworkszn.api/get-znrulesdistribution
 schema: 2.0.0
 ---
 
@@ -21,27 +21,49 @@ Returns an object with rules distribution.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get hit count for a rule
 ```powershell
-{{ Add code here }}
+Get-ZNRulesDistribution -RuleId 2f9fd777-d735-4cac-99c5-5f822318e510 -RuleDirection 1
 ```
 
 ```output
-{{ Add output here }}
+ActivitiesCount Timestamp
+--------------- ---------
+0               1673308800000                                                                                
+0               1673395200000   
+0               1673481600000
+0               1673568000000
+0               1673654400000
+0               1673740800000
+0               1673827200000
+0               1673913600000
+0               1674000000000
+0               1674086400000
+0               1674172800000
+0               1674259200000
+0               1674345600000
+0               1674432000000
+0               1674518400000
+0               1674604800000
+0               1674691200000
+0               1674777600000
+0               1674864000000
+0               1674950400000
+0               1675036800000
+80              1675123200000
+25              1675209600000
+159             1675296000000
+2               1675382400000
+2               1675468800000
+0               1675555200000
+2               1675641600000
+1               1675728000000
+1               1675814400000
+1               1675900800000
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet gets the hit count for a rule.
+Rule direction is 1 for inbound rules and 2 for outbound rules.
 
 ## PARAMETERS
 

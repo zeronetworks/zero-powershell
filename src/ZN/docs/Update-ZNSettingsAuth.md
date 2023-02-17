@@ -1,46 +1,55 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn/get-znentity
+online version: https://github.com/zeronetworkszn.api/update-znsettingsauth
 schema: 2.0.0
 ---
 
-# Get-ZNEntity
+# Update-ZNSettingsAuth
 
 ## SYNOPSIS
-Get an entity
+Set the portal security settings
 
 ## SYNTAX
 
 ```
-Get-ZNEntity [-EntityId <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsAuth [-ItemPortalTokenTtl <Single>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get an entity
+Set the portal security settings
 
 ## EXAMPLES
 
-### Example 1: Get an entity
+### Example 1: {{ Add title here }}
 ```powershell
-Get-ZNEntity -EntityId a:a:ZgBWOMyc
+{{ Add code here }}
 ```
 
 ```output
-AssetStatus AssetType Domain    Fqdn          IPV4Addresses  IPV6Addresses               Id           Name OperatingSystem                   ProtectionState Source
------------ --------- ------    ----          -------------  -------------               --           ---- ---------------                   --------------- ------
-2           2         zero.labs dc1.zero.labs {192.168.10.0} {fe80::8863:40e6:ced3:75a8} a:a:ZgBWOMyc DC1  Windows Server 2012 R2 Datacenter 10              3
+{{ Add output here }}
 ```
 
-This cmdlet gets an entity for the environment.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -ItemPortalTokenTtl
+Portal session token timeout (in minutes)
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Single
 Parameter Sets: (All)
 Aliases:
 
@@ -51,23 +60,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EntityId
-the entityId to get
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -119,11 +113,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.Asset
-
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.Group
-
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.User
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
 ## NOTES
 

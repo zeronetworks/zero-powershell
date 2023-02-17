@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znmfaoutboundpoliciessimulatesourceusercandidate
+online version: https://github.com/zeronetworkszn.api/get-znmfaoutboundpoliciessimulatesourceusercandidate
 schema: 2.0.0
 ---
 
@@ -46,7 +46,7 @@ This cmdlet will return possbile candidates for source users in an outbound MFA 
 
 ### Example 2: Search for a candidate
 ```powershell
-(Get-ZNMfaOutboundPoliciesSimulateSourceUserCandidate).Items
+(Get-ZNMfaOutboundPoliciesSimulateSourceUserCandidate -Search Administrator).Items
 ```
 
 ```output

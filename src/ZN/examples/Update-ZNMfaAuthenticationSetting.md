@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update MFA Authentication setting
 ```powershell
-{{ Add code here }}
+$mfa = Get-ZNMfaAuthenticationSetting
+Update-ZNMfaAuthenticationSetting -IsRequiresAuth:$mfa.ItemIsRequiresAuth -IsSsoForceAuth:$mfa.ItemIsSsoForceAuth -TokenTtl 120
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet updates the MFA Authentication setting under Protection.

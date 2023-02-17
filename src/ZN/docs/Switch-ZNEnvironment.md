@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/switch-znenvironment
+online version: https://github.com/zeronetworkszn.api/switch-znenvironment
 schema: 2.0.0
 ---
 
@@ -12,6 +12,12 @@ Change the Zero Networks environment token
 
 ## SYNTAX
 
+### Name (Default)
+```
+Switch-ZNEnvironment -EnvironmentName <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### EnvironmentId
 ```
 Switch-ZNEnvironment -EnvironmentId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -20,40 +26,41 @@ Switch-ZNEnvironment -EnvironmentId <String> [-Confirm] [-WhatIf] [<CommonParame
 Change the Zero Networks environment token
 
 #.Link
-https://github.com/zeronetworks/zero-powershell/switch-znenvironment
+https://github.com/zeronetworks/zn.api/switch-znenvironment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Change Zero Networks Environment
 ```powershell
-{{ Add code here }}
+$env = Get-ZNEnvironment | where {$_.name -eq 'Zero Networks Demo'}
+Switch-ZNEnvironment -EnvironmentId $env.Id
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet allows switching between Zero Networks environments when managing multiple environments.
 
 ## PARAMETERS
 
 ### -EnvironmentId
-EnvId
+EnvironmentId
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: EnvironmentId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnvironmentName
+Environment Name
+
+```yaml
+Type: System.String
+Parameter Sets: Name
 Aliases:
 
 Required: True

@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get Data Collection - Activities Settings
 ```powershell
-{{ Add code here }}
+Get-ZNActivitiesSetting
 ```
 
 ```output
-{{ Add output here }}
+ConfigShouldFilterExternalTraffic
+---------------------------------
+                          True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet returns the Activities settings under Data Collection.

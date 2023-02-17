@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/remove-znapikey
+online version: https://github.com/zeronetworkszn.api/remove-znapikey
 schema: 2.0.0
 ---
 
@@ -13,40 +13,25 @@ Deletes the API key
 ## SYNTAX
 
 ```
-Remove-ZNApiKey -ApiKey <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNApiKey [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Deletes the API Key
 
 #.Link
-https://github.com/zn/remove-znapikey
+https://github.com/zeronetworks/zn.api/remove-znapikey
 
 ## EXAMPLES
 
 ### Example 1: Delete the Api Key to be used
 ```powershell
-Remove-ZNApiKey -ApiKey 'myApiKey'
+Remove-ZNApiKey
 ```
 
 This cmdlet will delete the api key.
 
 ## PARAMETERS
-
-### -ApiKey
-Api Key
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.

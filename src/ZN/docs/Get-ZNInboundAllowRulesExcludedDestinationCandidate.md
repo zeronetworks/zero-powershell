@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-zninboundallowrulesexcludeddestinationcandidate
+online version: https://github.com/zeronetworkszn.api/get-zninboundallowrulesexcludeddestinationcandidate
 schema: 2.0.0
 ---
 

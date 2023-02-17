@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/new-znmfainboundpolicy
+online version: https://github.com/zeronetworkszn.api/new-znmfainboundpolicy
 schema: 2.0.0
 ---
 

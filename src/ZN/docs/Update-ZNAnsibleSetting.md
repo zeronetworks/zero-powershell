@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/update-znansiblesetting
+online version: https://github.com/zeronetworkszn.api/update-znansiblesetting
 schema: 2.0.0
 ---
 
@@ -13,8 +13,9 @@ Get the Ansible settings in Asset Managment
 ## SYNTAX
 
 ```
-Update-ZNAnsibleSetting -ClientId <String> -CredentialsName <String> -DisableCertificateValidation
- -Password <String> -Url <String> -Username <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNAnsibleSetting -ClientId <String> -ClientSecret <String> -CredentialsName <String>
+ -DisableCertificateValidation -Password <String> -Url <String> -Username <String> [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,32 +23,40 @@ Get the Ansible settings in Asset Managment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update Ansible setting
 ```powershell
-{{ Add code here }}
+Update-ZNAnsibleSetting -ClientId "clientId" -CredentialsName ssh -DisableCertificateValidation:$false -Password "password" -Url "https:1.2.3.4" -Username "ZNAccess"
 ```
 
-```output
-{{ Add output here }}
-```
+This cmdlet updates the Ansible setting under Asset Management.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Update using existing settings
 ```powershell
-{{ Add code here }}
+$ansible = Get-ZNAnsibleSetting
+Update-ZNAnsibleSetting -ClientId $ansible.ClientId -CredentialsName $ansible.CredentialsName -DisableCertificateValidation:$ansible.DisableCertificateValidation -Password "newpassword" -Url $ansible.Url -Username $ansible.Username -ClientSecret "clientSecret"
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Use exisitng settings to update settings.
 
 ## PARAMETERS
 
 ### -ClientId
 OAuth Client Id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClientSecret
+OAuth Client Secret
 
 ```yaml
 Type: System.String

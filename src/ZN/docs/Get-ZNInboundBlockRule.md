@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-zninboundblockrule
+online version: https://github.com/zeronetworkszn.api/get-zninboundblockrule
 schema: 2.0.0
 ---
 
@@ -55,6 +55,7 @@ ItemAction                 : 2
 ItemCreatedAt              : 1665490925245
 ItemDescription            : 
 ItemDirection              : 1
+ItemExcludedLocalIdsList   : {}
 ItemExpiresAt              : 0
 ItemId                     : 9f3503cf-02ce-4231-b167-c9e2a2446311
 ItemLocalEntityId          : a:a:cxIJepiA
@@ -65,9 +66,11 @@ ItemPortsList              : {ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsLi
 ItemRemoteEntityIdsList    : {a:a:5wiknOhs}
 ItemRemoteEntityInfos      : {WIN7}
 ItemState                  : 1
-ItemUpdatedAt              : 
+ItemUpdatedAt              : 1671621569513
 LocalEntityInfoId          : a:a:cxIJepiA
 LocalEntityInfoName        : win8-1
+UpdatedById                : 
+UpdatedByName              : 
 ```
 
 Get a specific inbound block rule.

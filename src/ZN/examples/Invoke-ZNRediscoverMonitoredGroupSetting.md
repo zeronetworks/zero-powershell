@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Force rediscovery of monitored assets
 ```powershell
-{{ Add code here }}
+Invoke-ZNRediscoverMonitoredGroupSetting
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet forces rediscovery of monitored assets from Asset monitoring control.

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/get-znmfadetectionsetting
+online version: https://github.com/zeronetworkszn.api/get-znmfadetectionsetting
 schema: 2.0.0
 ---
 
@@ -21,27 +21,16 @@ Returns the properties of MFA detection settings.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get MFA detection setting
 ```powershell
-{{ Add code here }}
+Get-ZNMfaDetectionSetting
 ```
 
 ```output
-{{ Add output here }}
+3
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet gets the MFA detection (cooldown) setting under Protection.
 
 ## PARAMETERS
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zn.api/remove-znjamfcredentialssetting
+online version: https://github.com/zeronetworkszn.api/remove-znjamfcredentialssetting
 schema: 2.0.0
 ---
 
@@ -21,27 +21,12 @@ Returns an empty object.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete JAMF setting
 ```powershell
-{{ Add code here }}
+Remove-ZNJamfCredentialsSetting
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet deletes the JAMF setting under Asset Management.
 
 ## PARAMETERS
 

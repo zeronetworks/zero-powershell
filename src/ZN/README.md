@@ -171,36 +171,179 @@ directive:
           }
         }
       }
-
-      
+  - from: openapi.yaml
+    where: $.components.schemas.rolesList
+    debug: true
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "$ref": "#/components/schemas/epochMillis"
+          },
+          "description": {
+            "type": "string"
+          },
+          "distinguishedName": {
+            "type": "string"
+          },
+          "directMembersCount": {
+            "type": "integer"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "guid": {
+            "type": "string"
+          },
+          "hasProtectionPolicy": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "string"
+          },
+          "jobTitle": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "officePhone": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "role": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sid": {
+            "type": "string"
+          },
+          "source": {
+            "type": "integer"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/epochMillis"
+          },
+          "userPrincipleName": {
+            "type": "string"
+          }
+        }
+      }
+  - from: openapi.yaml
+    where: $.components.schemas.roleCandidatesList
+    debug: true
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "$ref": "#/components/schemas/epochMillis"
+          },
+          "description": {
+            "type": "string"
+          },
+          "distinguishedName": {
+            "type": "string"
+          },
+          "directMembersCount": {
+            "type": "integer"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "guid": {
+            "type": "string"
+          },
+          "hasProtectionPolicy": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "string"
+          },
+          "jobTitle": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "officePhone": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "role": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sid": {
+            "type": "string"
+          },
+          "source": {
+            "type": "integer"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/epochMillis"
+          },
+          "userPrincipleName": {
+            "type": "string"
+          }
+        }
+      }
   # Following is two common directive which are normally required
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
       variant: ^Add$|^AddViaIdentity$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Put$|^PutViaIdentity$|^Update$|^UpdateViaIdentity$
-    remove: true
+    hide: true
   # Customize
   # Remove the export cmdlets
   - where:
-      subject: ^AssetExport$|^AuditExport$|^EntityAnalysisExport$|^GroupsExport$|^InboundAllowRulesExport$|^InboundBlockRulesExport$|^NetworkActivitiesExport$|^OutboundAllowRulesExport$|^OutboundBlockRulesExport$|^UsersExport$
-    remove: true
+      subject: ^AssetExport$|^AssetAnalysisExport$|^AuditExport$|^EntityAnalysisExport$|^GroupsExport$|^InboundAllowRulesExport$|^InboundBlockRulesExport$|^NetworkActivitiesExport$|^OutboundAllowRulesExport$|^OutboundBlockRulesExport$|^UsersExport$
+    hide: true
   - where:
       verb: Export
     remove: true
+  # Remove MFA Simulation
+  - where:
+      subject: ^SimulateMfaInboundPolicy$|^SimulateMfaOutboundPolicy$|^SimulateMFAPolicyParameters$
+    hide: true
   #Remove NA cmdlets
   - where:
       subject: NetworkActivity
     remove: true
+  # Remove Role cmdlets
+  - where:
+      subject: (.*)Role$
+    remove: true
+  - where:
+      verb: Get
+      subject: RolesCandidate
+    remove: true
   #Remove filters cmdlets
   - where:
       subject: (.*)Filter$
-    remove: true
-  # remove settings cmdlets
-  - where:
-      subject: (.*)Role(.*)
-    remove: true
-  - where:
-      subject: SettingsAuth
     remove: true
   # change set to update
   - where:
@@ -215,22 +358,9 @@ directive:
         name: Limit Default
         description: Sets the limit parameter to 10
         script: '10'
-  # api bug
-  - where:
-      subject: CustomGroupsCandidate
-    remove: true
-  # remove not useful viaIdentity cmdlets
-  - where:
-      subject: EntityAnalysis
-      variant: GetViaIdentity
-    remove: true
-  - where:
-      subject: EntityMemberOf
-      variant: GetViaIdentity
-    remove: true
   # hide variants that use body
   - where:
-      variant: ^Extend$|^Queue$|^Protect&|^Validate$|^Unprotect$|^AddViaIdentityExpanded$|^DeleteViaIdentity$|^GetViaIdentity$|^PutViaIdentityExpanded$|^UpdateViaIdentityExpanded$
+      variant: ^AddViaIdentityExpanded$|^DeleteViaIdentity$|^GetViaIdentity$|^PutViaIdentityExpanded$|^UpdateViaIdentityExpanded$
     hide: true
   # set expiresAt default for rules
   - where:
@@ -240,10 +370,6 @@ directive:
         name: ExpiresAt Default
         description: Sets the expiresAt parmaeter to 0 or never.
         script: '0'
-  # Hide Get Entity for custom object
-  - where:
-      subject: Entity
-    hide: true
   # Hide remove ot (Not implemneted)
   - where:
       subject: AssetsOt
@@ -260,4 +386,100 @@ directive:
   - where:
       subject: CloudConnectorAccessToken
     remove: true
+  # Hide for Custom Wrappers
+  - where:
+      verb: Update
+      subject: CustomGroup
+    hide: true
+  - where:
+      verb: Update
+      subject: ^InboundAllowRule$|^InboundBlockRule$|^OutboundAllowRule$|^OutboundBlockRule$|^MFAInboundPolicy$|^MFAOutboundPolicy$
+    hide: true
+  - where:
+      subject: ^AuthLogin$|^AuthChallenge$
+    hide: true
+  # format Responses
+  - where:
+      model-name: Asset
+    set:
+      format-table:
+        properties:
+          - Id
+          - Fqdn
+          - IPV4Addresses
+          - IPV6Addresses
+          - Source
+          - AssetStatus
+          - ProtectionState
+  - where:
+      model-name: AssetOt
+    set:
+      format-table:
+        properties:
+          - Id
+          - Fqdn
+          - IPV4Addresses
+          - IPV6Addresses
+          - Source
+          - AssetStatus
+          - ProtectionState
+  - where:
+      model-name: Audit
+    set:
+      format-table:
+        properties:
+          - IsoTimestamp
+          - AuditType
+          - DestinationEntitiesList
+          - EnforcementSource
+          - PerformedByName
+  - where:
+      model-name: Rule
+    set:
+      format-table:
+        properties:
+          - CreatedAt
+          - RemoteEntityInfos
+          - LocalEntityInfoName
+          - ExcludedEntityInfoName
+          - RuleClass
+          - ActivitiesCount
+          - CreatedByEnforcementSource
+          - State
+          - Description
+  - where:
+      model-name: ReactivePolicy
+    set:
+      format-table:
+        properties:
+          - SrcEntityInfos
+          - SrcProcessNames
+          - SrcUserInfos
+          - DstEntityInfoName
+          - DstPort
+          - DstProcessNames
+          - RuleDuration
+          - ExtraPorts
+          - FallbackToLoggedOnUser
+          - MfaMethods
+  - where:
+      model-name: User
+    set:
+      format-table:
+        properties:
+          - Id
+          - Name
+          - Email
+          - Phone
+          - JobTitle
+          - LastLogon
+  - where:
+      model-name: Group
+    set:
+      format-table:
+        properties:
+          - Id
+          - Name
+          - Description
+          - DirectMembersCount
 ```
