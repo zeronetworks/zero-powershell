@@ -847,4 +847,6 @@ Write wrappers for Updates, hide in readme.
     OutboundAllowRule -Done
 
 
-Simulate MFA
+Hide Simulate MFA
+Hide Switch Environment
+CI Process for powershell - Eden A

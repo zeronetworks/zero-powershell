@@ -32,7 +32,7 @@ require:
 input-file:
   - $(this-folder)/../openapi.yaml
 
-module-version: 0.0.4
+module-version: 0.0.4-preview
 title: API
   
 inlining-threshold: 50
@@ -327,7 +327,7 @@ directive:
     remove: true
   # Remove MFA Simulation
   - where:
-      subject: ^SimulateMfaInboundPolicy$|^SimulateMfaOutboundPolicy$|^SimulateMFAPolicyParameters$
+      subject: ^SimulateMfaInboundPolicy$|^SimulateMfaOutboundPolicy$|^MfaInboundPoliciesSimulateDestinationCandidate$|^MfaInboundPoliciesSimulateSourceCandidate$|^MfaInboundPoliciesSimulateSourceUserCandidate$|^MfaOutboundPoliciesSimulateDesinationCandidate$|^MfaOutboundPoliciesSimulateSourceCandidate$|^MfaOutboundPoliciesSimulateSourceUserCandidate$
     hide: true
   #Remove NA cmdlets
   - where:
@@ -393,7 +393,7 @@ directive:
     hide: true
   - where:
       verb: Update
-      subject: ^InboundAllowRule$|^InboundBlockRule$|^OutboundAllowRule$|^OutboundBlockRule$|^MFAInboundPolicy$|^MFAOutboundPolicy$
+      subject: ^InboundAllowRule$|^InboundBlockRule$|^OutboundAllowRule$|^OutboundBlockRule$|^MFAInboundPolicy$|^MFAOutboundPolicy$|^AssetsOt$
     hide: true
   - where:
       subject: ^AuthLogin$|^AuthChallenge$

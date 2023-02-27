@@ -27,7 +27,7 @@ Returns an empty object.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove an Asset from protection.
 ```powershell
 Unprotect-ZNAsset -Items (Search-ZNAsset -Fqdn dc1.zero.labs)
 ```

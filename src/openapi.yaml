@@ -581,18 +581,45 @@ paths:
       security:
         - api_key: []
       x-codegen-request-body-name: body
+  '/assets/ot/{assetId}':
     put:
-      summary: Edit OT-IoT asset
-      operationId: put-assets-ot
+      summary: Edit OT/IoT asset
+      operationId: AssetsOT_Update
+      description: Returns an empty object.
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
       responses:
         '200':
-          description: OK
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/emptyResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/otAssetEditBody'
-  '/assets/ot/{assetId}':
+      security:
+        - api_key: []
     delete:
       operationId: AssetsOT_Delete
       tags:
@@ -7350,7 +7377,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/settingsAuthBody'
+                $ref: '#/components/schemas/settingsAuth'
         '400':
           description: Bad Request
           content:
@@ -11095,6 +11122,36 @@ components:
             - 28
             - 29
             - 30
+          description: |
+            dictionary:
+            * `4` CAMERA
+            * `5` TV
+            * `6` FACTORY_CONTROLLER
+            * `7` MEDICAL_DEVICE
+            * `8` PRINTER
+            * `9` SCANNER
+            * `10` SMART_CARD_READER
+            * `11` ROUTER
+            * `12` HYPERVISOR
+            * `13` PLC
+            * `14` HMI
+            * `15` SWITCH
+            * `16` TERMINAL_STATION
+            * `17` RTU
+            * `18` WIRELESS_ACCESS_POINT
+            * `19` HISTORIAN
+            * `20` GAME_CONSOLE
+            * `21` FIRE_ALARM
+            * `22` UPS
+            * `23` STORAGE_APPLIANCE
+            * `24` VIRTUALIZATION_APPLIANCE
+            * `25` FIREWALL_APPLIANCE
+            * `26` SECURITY_SCANNER
+            * `27` SECURITY_CONTROLLER
+            * `28` DOOR_LOCK
+            * `29` BIOMETRIC_ENTRY_SYSTEM
+            * `30` HVAC
+            * `31` ROOM_SCHEDULER
         displayName:
           type: string
       required:
@@ -11504,8 +11561,8 @@ components:
       required:
         - privateNetworksList
         - shouldFilterExternalTraffic
-    settingsAuthBody:
-      title: settingsAuthBody
+    settingsAuth:
+      title: settingsAuth
       type: object
       properties:
         item:
@@ -11514,6 +11571,15 @@ components:
             portalTokenTtl:
               type: number
               description: Portal session token timeout (in minutes)
+    settingsAuthBody:
+      title: settingsAuthBody
+      type: object
+      required:
+        - portalTokenTtl
+      properties:
+        portalTokenTtl:
+          type: number
+          description: Portal session token timeout (in minutes)
     settingsAdInfo:
       type: object
       properties:

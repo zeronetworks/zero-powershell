@@ -3,7 +3,8 @@
 .Synopsis
 Login to Zero Networks to get a token for cmdlet use
 .Description
-Login to Zero Networks to get a token for cmdlet use
+Login to Zero Networks to get a token for cmdlet use.
+NOTE: If your environment has a IdP set for default authentication, you cannot use this cmdlet and will need to use Set-ZNApiKey cmdlet using an API token.
 
 #.Link
 https://github.com/zeronetworks/zn.api/connect-zn

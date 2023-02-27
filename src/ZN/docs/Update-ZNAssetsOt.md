@@ -1,51 +1,57 @@
 ---
 external help file:
 Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/switch-znenvironment
+online version: https://github.com/zeronetworks/zn.api/update-znassetsot
 schema: 2.0.0
 ---
 
-# Switch-ZNEnvironment
+# Update-ZNAssetsOt
 
 ## SYNOPSIS
-Change the Zero Networks environment token
+Updates OT/IOT Asset
 
 ## SYNTAX
 
-### Name (Default)
 ```
-Switch-ZNEnvironment -EnvironmentName <String> [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### EnvironmentId
-```
-Switch-ZNEnvironment -EnvironmentId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNAssetsOt -AssetId <String> [-DisplayName <String>] [-Type <String>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Change the Zero Networks environment token
-
-#.Link
-https://github.com/zeronetworks/zn.api/switch-znenvironment
+Updates OT/IoT Asset.
 
 ## EXAMPLES
 
-### Example 1: Change Zero Networks Environment
+### Example 1: Update OT/IoT Asset
 ```powershell
-$env = Get-ZNEnvironment | where {$_.name -eq 'Zero Networks Demo'}
-Switch-ZNEnvironment -EnvironmentId $env.Id
+Update-ZNAssetsOt -AssetId "a:t:oOkjcyED" -DisplayName "switcho2" -Debug
 ```
 
-This cmdlet allows switching between Zero Networks environments when managing multiple environments.
+This cmdlet updates the OT/IoT DisplayName or type.
 
 ## PARAMETERS
 
-### -EnvironmentId
-EnvironmentId
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AssetId
+assetId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: EnvironmentId
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -55,15 +61,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnvironmentName
-Environment Name
+### -DisplayName
+The name to update for the OT/IoT Asset.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+The OT Asset type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -107,6 +143,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.Any
 
 ## NOTES
 

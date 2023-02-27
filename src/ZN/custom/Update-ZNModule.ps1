@@ -51,10 +51,13 @@ function CheckModuleLatest {
     $installed = Get-Module -ListAvailable -Name $Module
     
     # There might be multiple versions
-    if ($installed -is [array]) {
+    if($installed.Count -eq 0){
+        $installedversion = (Get-Module -Name $Module).Version
+    }
+    elseif($installed -is [array]){
         $installedversion = $installed[0].version
     }
-    else {
+    else{
         $installedversion = $installed.version
     }
     

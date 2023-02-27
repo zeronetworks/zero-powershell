@@ -95,9 +95,6 @@ Returns a list of candidates for custom group membership.
 ### [Get-ZNDefaultApplicationSetting](Get-ZNDefaultApplicationSetting.md)
 Get Default SSO Application settings in Identity Providers
 
-### [Get-ZNEnvironment](Get-ZNEnvironment.md)
-List the Zero Networks environments
-
 ### [Get-ZNFirewallSetting](Get-ZNFirewallSetting.md)
 Returns the properties of Firewall settings.
 
@@ -161,15 +158,6 @@ Returns a list of candidates for the destionation of an inbound MFA policy.
 ### [Get-ZNMfaInboundPoliciesMfamethod](Get-ZNMfaInboundPoliciesMfamethod.md)
 Returns a list of MFA methods for inbound MFA policies.
 
-### [Get-ZNMfaInboundPoliciesSimulateDestinationCandidate](Get-ZNMfaInboundPoliciesSimulateDestinationCandidate.md)
-Returns a list of destination candidates on inbound MFA simulation.
-
-### [Get-ZNMfaInboundPoliciesSimulateSourceCandidate](Get-ZNMfaInboundPoliciesSimulateSourceCandidate.md)
-Returns a list of source candidates on inbound MFA simulation.
-
-### [Get-ZNMfaInboundPoliciesSimulateSourceUserCandidate](Get-ZNMfaInboundPoliciesSimulateSourceUserCandidate.md)
-Returns a list of source user candidates on inbound MFA simulation.
-
 ### [Get-ZNMfaInboundPoliciesSourceCandidate](Get-ZNMfaInboundPoliciesSourceCandidate.md)
 Returns a list of source candidates on inbound MFA policies.
 
@@ -184,15 +172,6 @@ Returns a list of destination candidates on outbound MFA policies.
 
 ### [Get-ZNMfaOutboundPoliciesMfamethod](Get-ZNMfaOutboundPoliciesMfamethod.md)
 Returns a list of MFA methods on outbound MFA policies.
-
-### [Get-ZNMfaOutboundPoliciesSimulateDesinationCandidate](Get-ZNMfaOutboundPoliciesSimulateDesinationCandidate.md)
-Returns a list of destination candidates on outbound MFA simulation.
-
-### [Get-ZNMfaOutboundPoliciesSimulateSourceCandidate](Get-ZNMfaOutboundPoliciesSimulateSourceCandidate.md)
-Returns a list of source candidates on outbound MFA simulation.
-
-### [Get-ZNMfaOutboundPoliciesSimulateSourceUserCandidate](Get-ZNMfaOutboundPoliciesSimulateSourceUserCandidate.md)
-Returns a list of source users candidates on outbound MFA simulation.
 
 ### [Get-ZNMfaOutboundPoliciesSourceCandidate](Get-ZNMfaOutboundPoliciesSourceCandidate.md)
 Returns a list of source candidates on outbound MFA policies.
@@ -347,9 +326,6 @@ Create a in-memory object for PortsList
 ### [New-ZNProtectionPolicy](New-ZNProtectionPolicy.md)
 Returns the protection policy that was created.
 
-### [New-ZNSimulateMFAPolicyParameters](New-ZNSimulateMFAPolicyParameters.md)
-Create a in-memory object for Simulation Parameters
-
 ### [Protect-ZNAsset](Protect-ZNAsset.md)
 Returns and empty object.
 
@@ -401,9 +377,6 @@ Returns an assetId.
 ### [Set-ZNApiKey](Set-ZNApiKey.md)
 Set the API key for use in all other cmdlets
 
-### [Switch-ZNEnvironment](Switch-ZNEnvironment.md)
-Change the Zero Networks environment token
-
 ### [Test-ZNAssetsProtection](Test-ZNAssetsProtection.md)
 Returns a number of assets that are valid for protection.
 
@@ -440,8 +413,8 @@ Set AI source entities to ignore during learning.
 ### [Update-ZNAnsibleSetting](Update-ZNAnsibleSetting.md)
 Get the Ansible settings in Asset Managment
 
-### [Update-ZNAssetOt](Update-ZNAssetOt.md)
-Edit OT-IoT asset
+### [Update-ZNAssetsOt](Update-ZNAssetsOt.md)
+Updates OT/IOT Asset
 
 ### [Update-ZNCustomGroup](Update-ZNCustomGroup.md)
 Updates a custom group properties.

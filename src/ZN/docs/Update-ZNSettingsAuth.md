@@ -13,7 +13,7 @@ Set the portal security settings
 ## SYNTAX
 
 ```
-Update-ZNSettingsAuth [-ItemPortalTokenTtl <Single>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsAuth -PortalTokenTtl <Single> [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,11 +45,11 @@ Set the portal security settings
 
 ## PARAMETERS
 
-### -ItemPortalTokenTtl
-Portal session token timeout (in minutes)
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.Single
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -60,15 +60,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -PortalTokenTtl
+Portal session token timeout (in minutes)
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Single
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
