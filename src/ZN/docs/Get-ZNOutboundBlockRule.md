@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/get-znoutboundblockrule
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/get-znoutboundblockrule
 schema: 2.0.0
 ---
 

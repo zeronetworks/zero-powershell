@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/get-znassetsprotected
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/get-znassetsprotected
 schema: 2.0.0
 ---
 

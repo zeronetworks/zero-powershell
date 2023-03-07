@@ -1,16 +1,16 @@
 ---
-Module Name: ZN.Api
-Module Guid: 74b0e1e1-137d-48db-9b26-a64b09cf7db5
-Download Help Link: https://github.com/zeronetworkszn.api
+Module Name: ZeroNetworks
+Module Guid: e1524bd8-23dd-43fa-bcc0-196b3c1ef81c
+Download Help Link: https://github.com/zeronetworkszeronetworks
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# ZN.Api Module
+# ZeroNetworks Module
 ## Description
 Zero Networks PowerShell cmdlets
 
-## ZN.Api Cmdlets
+## ZeroNetworks Cmdlets
 ### [Add-ZNCustomGroupsMember](Add-ZNCustomGroupsMember.md)
 Returns an empty object.
 

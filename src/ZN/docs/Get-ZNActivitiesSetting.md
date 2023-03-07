@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/get-znactivitiessetting
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/get-znactivitiessetting
 schema: 2.0.0
 ---
 

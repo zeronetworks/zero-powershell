@@ -23,7 +23,7 @@ function CheckAndUpdateModule {
     }
     
     # Lookup the latest version online
-    $online = Find-Module -Name $Module -Repository PSGallery -ErrorAction Stop
+    $online = Find-Module -Name $Module -Repository PSGallery -AllowPrerelease -ErrorAction Stop
     $onlineversion = $online.version  
 
     # Compare the versions
@@ -63,7 +63,7 @@ function CheckModuleLatest {
     
     # Lookup the latest version online
     try {
-        $online = Find-Module -Name $Module -Repository PSGallery
+        $online = Find-Module -Name $Module -Repository PSGallery -AllowPrerelease
     }
     catch {
         Write-Host "Module was not found is PSGallery"

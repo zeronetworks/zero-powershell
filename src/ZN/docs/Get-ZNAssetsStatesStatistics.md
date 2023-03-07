@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/get-znassetsstatesstatistics
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/get-znassetsstatesstatistics
 schema: 2.0.0
 ---
 

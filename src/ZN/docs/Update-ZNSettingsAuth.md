@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/update-znsettingsauth
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/update-znsettingsauth
 schema: 2.0.0
 ---
 
@@ -21,27 +21,13 @@ Set the portal security settings
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update Portal session timeout
 ```powershell
-{{ Add code here }}
+Update-ZNSettingsAuth -PortalTokenTtl 10080
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet updates the Portal session timeout setting.
+Use minutes for the PortalTokenTtl
 
 ## PARAMETERS
 

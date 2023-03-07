@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/update-znjamfcredentialssetting
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/update-znjamfcredentialssetting
 schema: 2.0.0
 ---
 
@@ -22,27 +22,12 @@ Returns the upddated properties of JAMF Credentials settings.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update JAMF credentials
 ```powershell
-{{ Add code here }}
+Update-ZNJamfCredentialsSetting -Host1 <domain>.jamfcloud.com -Username myuser -Password mypassword
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet updates the JAMF credential in Settings under Asset Management.
 
 ## PARAMETERS
 

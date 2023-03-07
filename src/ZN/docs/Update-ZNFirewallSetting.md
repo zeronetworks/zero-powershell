@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/update-znfirewallsetting
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/update-znfirewallsetting
 schema: 2.0.0
 ---
 
