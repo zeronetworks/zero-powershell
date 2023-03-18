@@ -15,15 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNCustomGroupsMember')
 }
 
 Describe 'Remove-ZNCustomGroupsMember' {
-    It 'DeleteExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentityExpanded' -skip {
+    It 'DeleteExpanded' -skip { 
+        $name = "cgroup" + (Get-Random -Maximum 999999)
+        $cgroup =  New-ZNCustomGroup -Name $name -Description "test"
+        $asset = (Get-ZNAsset -GroupId $cgroup.ItemId -Search "dc01.posh.local").Items
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

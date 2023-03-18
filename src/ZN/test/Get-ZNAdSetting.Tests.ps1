@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAdSetting'))
 }
 
 Describe 'Get-ZNAdSetting' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        (Get-ZNAdSetting).Count | Should -Be 1
     }
 }

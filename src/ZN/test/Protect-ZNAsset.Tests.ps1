@@ -15,11 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Protect-ZNAsset'))
 }
 
 Describe 'Protect-ZNAsset' {
-    It 'ProtectExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Protect' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ProtectExpanded' {
+        $asset = (Get-ZNAsset).Items | where {$_.fqdn -eq "TS01.posh.local"}
+        { Protect-ZNAsset -Items @($asset.Id) } | Should -Not -Throw
+        Unprotect-ZNAsset -Items @($asset.Id)
     }
 }

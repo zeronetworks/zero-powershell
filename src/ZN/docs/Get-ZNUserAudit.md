@@ -13,8 +13,7 @@ Returns a list of audits for the user.
 ## SYNTAX
 
 ```
-Get-ZNUserAudit -UserId <String> [-Cursor <Int64>] [-Filters <String>] [-Limit <Int32>] [-Order <String>]
- [-Search <String>] [<CommonParameters>]
+Get-ZNUserAudit -UserId <String> [-Cursor <Int64>] [-Order <String>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,36 +47,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Filters
-JSON string URI encoded set of fiters
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Limit
-Limit the return results
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 10
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

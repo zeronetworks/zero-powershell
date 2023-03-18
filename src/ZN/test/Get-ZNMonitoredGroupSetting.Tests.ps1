@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNMonitoredGroupSetting')
 }
 
 Describe 'Get-ZNMonitoredGroupSetting' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-ZNMonitoredGroupSetting } | Should -Not -Be $null
     }
 }

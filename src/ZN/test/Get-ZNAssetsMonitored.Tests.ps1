@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetsMonitored'))
 }
 
 Describe 'Get-ZNAssetsMonitored' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { (Get-ZNAssetsMonitored).Items}  | Should -Not -Be $null
     }
 }

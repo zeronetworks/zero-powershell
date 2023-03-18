@@ -13,7 +13,7 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Remove-ZNJamfCredentialsSetting [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNJamfCredentialsSetting [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,9 +26,24 @@ Returns an empty object.
 Remove-ZNJamfCredentialsSetting
 ```
 
-This cmdlet deletes the JAMF setting under Asset Management.
+This cmdlet deletes the JAMF credential setting under Asset Management.
 
 ## PARAMETERS
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
@@ -67,8 +82,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
-
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

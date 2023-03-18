@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNActivitiesSetting'))
 }
 
 Describe 'Get-ZNActivitiesSetting' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-ZNActivitiesSetting } | Should -Not -Be $null
     }
 }

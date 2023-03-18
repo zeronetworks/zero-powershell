@@ -1,7 +1,7 @@
 # Auto-Update PowerShell
 function CheckAndUpdateModule {
     param (
-        [string]$Module = 'ZN.Api',
+        [string]$Module = 'ZeroNetworks',
         [bool]$UninstallFirst = $true
     )
 
@@ -44,7 +44,7 @@ function CheckAndUpdateModule {
 
 function CheckModuleLatest {
     param (
-        [string]$Module = 'ZN.Api'
+        [string]$Module = 'ZeroNetworks'
     )
 
     # Read the currently installed version

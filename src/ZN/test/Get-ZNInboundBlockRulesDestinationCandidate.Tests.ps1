@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNInboundBlockRulesDestin
 }
 
 Describe 'Get-ZNInboundBlockRulesDestinationCandidate' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { (Get-ZNInboundBlockRulesDestinationCandidate).Items } | Should -Not -Be $null
     }
 }

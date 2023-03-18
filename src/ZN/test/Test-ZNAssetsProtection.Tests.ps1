@@ -16,6 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-ZNAssetsProtection'))
 
 Describe 'Test-ZNAssetsProtection' {
     It 'ValidateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $asset = (Get-ZNAsset).Items | where {$_.ProtectionState -eq 1} | select -First 1
+        $test =  Test-ZNAssetsProtection -Items $asset.Id
+        $test | Should -Be 1
     }
 }

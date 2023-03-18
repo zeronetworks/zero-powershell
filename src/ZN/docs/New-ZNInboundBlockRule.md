@@ -15,7 +15,7 @@ Returns the properties of the created Inbound Block rule.
 ```
 New-ZNInboundBlockRule -LocalEntityId <String> -LocalProcessesList <String[]> -PortsList <IPortsListItem[]>
  -RemoteEntityIdsList <String[]> -State <Int32> [-Description <String>] [-ExcludedLocalIdsList <String[]>]
- [-ExpiresAt <Int32>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ExpiresAt <Int64>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.Int32
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 

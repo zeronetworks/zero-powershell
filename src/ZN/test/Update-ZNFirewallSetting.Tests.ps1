@@ -15,7 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNFirewallSetting'))
 }
 
 Describe 'Update-ZNFirewallSetting' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $setting = Get-ZNFirewallSetting
+        if($setting -eq $true){
+            $newsetting = $false
+        }
+        else{
+            $newsetting = $true
+        }
+        Update-ZNFirewallSetting -ImplicitIcmpRuleEnabled:$newsetting
+        $updatesetting = Get-ZNFirewallSetting
+        $updatesetting | Should -Be $newsetting
     }
 }

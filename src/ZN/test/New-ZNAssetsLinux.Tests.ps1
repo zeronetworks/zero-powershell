@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNAssetsLinux'))
 }
 
 Describe 'New-ZNAssetsLinux' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $name = ("linux"+(Get-Random -Maximum 999999))
+        { New-ZNAssetsLinux -DisplayName $name -Fqdn "$name.posh.local" } | Should -Not -Throw
     }
 }

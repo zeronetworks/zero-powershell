@@ -13,8 +13,8 @@ Returns a list of audits for the group.
 ## SYNTAX
 
 ```
-Get-ZNGroupAudit -GroupId <String> [-Cursor <Int64>] [-Filters <String>] [-Limit <Int32>] [-Order <String>]
- [-Search <String>] [<CommonParameters>]
+Get-ZNGroupAudit -GroupId <String> -GroupType <String> [-Cursor <Int64>] [-Order <String>] [-Search <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,21 +53,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Filters
-JSON string URI encoded set of fiters
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -GroupId
 groupId to filter on
 
@@ -83,17 +68,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Limit
-Limit the return results
+### -GroupType
+group type to filter on
 
 ```yaml
-Type: System.Int32
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: 10
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

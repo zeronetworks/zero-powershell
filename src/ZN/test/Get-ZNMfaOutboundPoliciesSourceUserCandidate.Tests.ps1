@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNMfaOutboundPoliciesSour
 }
 
 Describe 'Get-ZNMfaOutboundPoliciesSourceUserCandidate' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { (Get-ZNMfaOutboundPoliciesSourceUserCandidate).Items } | Should -Not -Be $null
     }
 }

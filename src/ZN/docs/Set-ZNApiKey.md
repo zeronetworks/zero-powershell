@@ -20,7 +20,7 @@ Set-ZNApiKey -ApiKey <String> [-Confirm] [-WhatIf] [<CommonParameters>]
 Set the API key for use in all other cmdlets
 
 #.Link
-https://github.com/zeronetworks/zn.api/set-znapikey
+https://github.com/zeronetworks/zero-powershell/set-znapikey
 
 ## EXAMPLES
 

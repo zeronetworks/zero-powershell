@@ -7,21 +7,25 @@
     .Outputs
     ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem
     .Link
-    https://github.com/zeronetworks/zn.api/new-znportslist
+    https://github.com/zeronetworks/zero-powershell/new-znportslist
     #>
     function New-ZNPortsList {
         [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem])]
         [CmdletBinding(PositionalBinding=$false)]
         Param(
     
-            [Parameter(HelpMessage="List of port numbers")]
+            [Parameter(HelpMessage="List of port numbers", ParameterSetName = 'Protocol')]
             [string]
             $Ports,
 
-            [Parameter(Mandatory, HelpMessage="Protocol")]
+            [Parameter(Mandatory, HelpMessage="Protocol", ParameterSetName = 'Protocol')]
             [ValidateSet("Any","TCP","UDP","ICMP")]
             [string]
-            $Protocol
+            $Protocol,
+
+            [Parameter(Mandatory, HelpMessage="Empty port list", ParameterSetName = 'Empty')]
+            [switch]
+            $Empty
         )
 
         process {

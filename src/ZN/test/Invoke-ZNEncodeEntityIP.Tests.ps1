@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNEncodeEntityIP'))
 }
 
 Describe 'Invoke-ZNEncodeEntityIP' {
-    It 'Encode' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Encode'  {
+        { Invoke-ZNEncodeEntityIP -Ip 1.1.1.1} | Should -Not -Be $null
     }
 }

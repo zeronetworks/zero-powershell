@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Unprotect-ZNAsset'))
 }
 
 Describe 'Unprotect-ZNAsset' {
-    It 'UnprotectExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UnprotectExpanded' {
+        $asset = (Get-ZNAsset).Items | where {$_.ProtectionState -eq 3} | select -First 1
+        { Unprotect-ZNAsset -Items $asset.Id } | Should -Not -Throw
+        Protect-ZNAsset -Items $asset.Id
     }
 }

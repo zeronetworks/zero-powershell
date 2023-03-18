@@ -13,7 +13,7 @@ Returns a list of groups the group is a member of.
 ## SYNTAX
 
 ```
-Get-ZNGroupMemberOf -GroupId <String> [<CommonParameters>]
+Get-ZNGroupMemberOf -GroupId <String> -GroupType <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +38,21 @@ This cmdlet gets the groups a group is a member of
 
 ### -GroupId
 groupId to filter on
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GroupType
+group type to filter on
 
 ```yaml
 Type: System.String

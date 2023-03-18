@@ -20,7 +20,7 @@ Remove-ZNApiKey [-Confirm] [-WhatIf] [<CommonParameters>]
 Deletes the API Key
 
 #.Link
-https://github.com/zeronetworks/zn.api/remove-znapikey
+https://github.com/zeronetworks/zero-powershell/remove-znapikey
 
 ## EXAMPLES
 

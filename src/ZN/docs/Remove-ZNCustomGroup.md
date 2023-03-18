@@ -23,10 +23,14 @@ Returns an empty object.
 
 ### Example 1: Delete a custom group
 ```powershell
-Remove-ZNCustomGroup -GroupId "g:c:h8I6V0TB"
+Remove-ZNCustomGroup -GroupId g:c:Ie1pSYgt
 ```
 
-This cmdlet will delete a custom group from the environment.
+```output
+{{ Add output here }}
+```
+
+This cmdlet deletes a custom group.
 
 ## PARAMETERS
 

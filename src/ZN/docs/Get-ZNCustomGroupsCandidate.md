@@ -22,27 +22,26 @@ Returns a list of candidates for custom group membership.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List custom group candidates
 ```powershell
-{{ Add code here }}
+Get-ZNCustomGroupsCandidate
 ```
 
 ```output
-{{ Add output here }}
+Id           Name                                      Description DirectMembersCount
+--           ----                                      ----------- ------------------
+g:a:qu04AfTz Access Control Assistance Operators                   
+g:a:XDRxcVDz Account Operators                                     
+g:a:MBAj0Xfx Administrators                                        
+g:a:u6xPbBLg Allowed RODC Password Replication Group               
+g:s:18445453 Any asset except protected OT/IoT devices             
+g:a:JjhBvgRW Backup Operators                                      
+g:o:0T445453 Biometric entry systems                               
+g:o:04445453 Cameras                                               
+g:o:0A445453 Card readers
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet list candidates for custom group membership.
 
 ## PARAMETERS
 

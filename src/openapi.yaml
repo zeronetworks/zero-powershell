@@ -159,30 +159,6 @@ paths:
               schema:
                 type: object
                 format: file
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '401':
-          description: Invalid API key
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-        '500':
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
       security:
         - api_key: []
   /activities/network/filters:
@@ -609,7 +585,7 @@ paths:
     put:
       summary: Edit OT/IoT asset
       description: Edit an OT/IoT asset.
-      operationId: AssetsOT-Update
+      operationId: AssetsOT_Update
       tags:
         - Assets OT/IoT
       responses:
@@ -654,10 +630,6 @@ paths:
       responses:
         '200':
           description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/emptyResponse'
         '400':
           description: Bad Request
           content:
@@ -1833,6 +1805,51 @@ paths:
                 $ref: '#/components/schemas/error'
       security:
         - api_key: []
+  '/assets/{assetId}/audit':
+    get:
+      operationId: AssetsAudit_Get
+      tags:
+        - Assets
+      summary: Get a assets audits
+      description: Returns a list of audits for the asset.
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+        - $ref: '#/components/parameters/cursorParameter'
+        - $ref: '#/components/parameters/searchParameter'
+        - $ref: '#/components/parameters/orderParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auditList'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+      security:
+        - api_key: []
   '/assets/{assetId}/tags':
     get:
       operationId: AssetTags_Get
@@ -2065,7 +2082,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      operationId: Assets-AssetManagers_Update
+      operationId: Assets-AssetManagers_Add
       description: Add an asset manager of asset
       parameters:
         - $ref: '#/components/parameters/assetIdParameter'
@@ -2079,10 +2096,6 @@ paths:
       responses:
         '200':
           description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/emptyResponse'
         '400':
           description: Bad Request
           content:
@@ -2387,7 +2400,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/emptyResponse'
+                type: string
         '400':
           description: Bad Request
           content:
@@ -2537,6 +2550,7 @@ paths:
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/groupIdQueryParameter'
+        - $ref: '#/components/parameters/searchParameter'
       responses:
         '200':
           description: OK
@@ -2901,7 +2915,7 @@ paths:
                 $ref: '#/components/schemas/error'
       security:
         - api_key: []
-  '/groups/{groupId}/successors':
+  '/groups/{groupType}/{groupId}/successors':
     get:
       operationId: GroupsMembers_List
       tags:
@@ -2909,6 +2923,7 @@ paths:
       summary: List Group members
       description: Returns a list of potential members for a group.
       parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
         - $ref: '#/components/parameters/groupIdParameter'
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
@@ -6986,7 +7001,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/settingsAdInfoList'
+                $ref: '#/components/schemas/settingsAdSecondaryList'
         '400':
           description: Bad Request
           content:
@@ -7526,7 +7541,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/settingsAuthBody'
+                $ref: '#/components/schemas/settingsAuth'
         '400':
           description: Bad Request
           content:
@@ -8080,10 +8095,6 @@ paths:
       responses:
         '200':
           description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/emptyResponse'
         '400':
           description: Bad Request
           content:
@@ -9074,12 +9085,12 @@ paths:
         - $ref: '#/components/parameters/clientIdParameter'
       security:
         - api_key: []
-  /ai/exclusion/network/client:
+  /settings/ai/exclusion/network/client:
     get:
       summary: Your GET endpoint
       tags:
         - Settings AI
-      operationId: get-ai-exclusion-network-client
+      operationId: AIExclusionNetworkClient_Get
       description: 'Get AI network exclusion for clients: lists of tcp/udp ports / ports ranges + boolean for icmp protocol, and a list of processes to ignore during learning.'
       responses:
         '200':
@@ -9116,7 +9127,7 @@ paths:
       tags:
         - Settings AI
       summary: ''
-      operationId: set-ai-exclusion-network-client
+      operationId: AIExclusionNetworkClient_Update
       responses:
         '200':
           description: OK
@@ -9149,7 +9160,7 @@ paths:
             schema:
               $ref: '#/components/schemas/aiExclusionInfo'
     parameters: []
-  /ai/exclusion/network/server:
+  /settings/ai/exclusion/network/server:
     get:
       summary: Your GET endpoint
       tags:
@@ -9185,11 +9196,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      operationId: get-ai-exclusion-network-server
+      operationId: AIExclusionNetworkServer_Get
       description: 'Get AI network exclusion for servers: lists of tcp/udp ports / ports ranges + boolean for icmp protocol, and a list of processes to ignore during learning.'
     put:
       summary: ''
-      operationId: put-ai-exclusion-network-server
+      operationId: AIExclusionNetworkServer_Update
       tags:
         - Settings AI
       responses:
@@ -9230,7 +9241,7 @@ paths:
             schema:
               $ref: '#/components/schemas/aiExclusionInfo'
     parameters: []
-  /ai/exclusion/network/both:
+  /settings/ai/exclusion/network/both:
     get:
       summary: Your GET endpoint
       tags:
@@ -9266,11 +9277,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      operationId: get-ai-exclusion-network-both
+      operationId: AIExclusionNetworkBoth_Get
       description: 'Get AI network exclusion for clients and servers: lists of tcp/udp ports / ports ranges + boolean for icmp protocol, and a list of processes to ignore during learning.'
     put:
       summary: ''
-      operationId: set-ai-exclusion-network-both
+      operationId: AIExclusionNetworkBoth_Update
       tags:
         - Settings AI
       responses:
@@ -9311,9 +9322,9 @@ paths:
             schema:
               $ref: '#/components/schemas/aiExclusionInfo'
     parameters: []
-  /ai/exclusion/src-entities:
+  /settings/ai/exclusion/src-entities:
     get:
-      summary: Your GET endpoint
+      summary: Get AI excluded source entity settings.
       tags:
         - Settings AI
       responses:
@@ -9349,11 +9360,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      operationId: get-ai-exclusion-src-entities
+      operationId: AIExclusionSourceEntities_Get
       description: Get AI source entities to ignore during learning.
     put:
       summary: ''
-      operationId: set-ai-exclusion-src-entities
+      operationId: AIExclusionSourceEntities_Update
       tags:
         - Settings AI
       responses:
@@ -9388,9 +9399,7 @@ paths:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                type: string
+              $ref: '#/components/schemas/assetBody'
     parameters: []
   '/users/{userId}':
     get:
@@ -9595,7 +9604,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      operationId: Users-ManagedAssets_Update
+      operationId: Users-ManagedAssets_Add
       description: Add a managed assets for user
       parameters:
         - $ref: '#/components/parameters/userIdParameter'
@@ -9609,10 +9618,6 @@ paths:
       responses:
         '200':
           description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/emptyResponse'
         '400':
           description: Bad Request
           content:
@@ -9637,7 +9642,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      operationId: Users-ManagedAsset_Delete
+      operationId: Users-ManagedAssets_Delete
       description: Remove managed asset of user
       parameters:
         - $ref: '#/components/parameters/userIdParameter'
@@ -9683,7 +9688,7 @@ paths:
         - $ref: '#/components/parameters/searchParameter'
       security:
         - api_key: []
-  '/groups/{groupId}':
+  '/groups/{groupType}/{groupId}':
     get:
       operationId: Group_Get
       tags:
@@ -9692,6 +9697,7 @@ paths:
       description: Returns the properties of an group.
       parameters:
         - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/groupTypeParameter'
       responses:
         '200':
           description: OK
@@ -9725,7 +9731,7 @@ paths:
                 $ref: '#/components/schemas/error'
       security:
         - api_key: []
-  '/groups/{groupId}/ancestors':
+  '/groups/{groupType}/{groupId}/ancestors':
     get:
       operationId: GroupMemberOf_Get
       tags:
@@ -9734,6 +9740,7 @@ paths:
       description: Returns a list of groups the group is a member of.
       parameters:
         - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/groupTypeParameter'
       responses:
         '200':
           description: OK
@@ -9767,7 +9774,7 @@ paths:
                 $ref: '#/components/schemas/error'
       security:
         - api_key: []
-  '/groups/{groupId}/audit':
+  '/groups/{groupType}/{groupId}/audit':
     get:
       operationId: GroupAudit_Get
       tags:
@@ -9775,6 +9782,7 @@ paths:
       summary: Get a groups audits
       description: Returns a list of audits for the group.
       parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
         - $ref: '#/components/parameters/groupIdParameter'
         - $ref: '#/components/parameters/cursorParameter'
         - $ref: '#/components/parameters/searchParameter'
@@ -9812,7 +9820,7 @@ paths:
                 $ref: '#/components/schemas/error'
       security:
         - api_key: []
-  '/groups/{groupId}/managed-assets':
+  '/groups/{groupType}/{groupId}/managed-assets':
     get:
       summary: Get managed assets
       tags:
@@ -9846,6 +9854,7 @@ paths:
       description: Get managed assets for group
       parameters:
         - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/groupTypeParameter'
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
       security:
@@ -9886,13 +9895,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      operationId: Groups-ManagedAssets_Update
+      operationId: Groups-ManagedAssets_Add
       description: Add a managed assets for group
       parameters:
         - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/groupTypeParameter'
       security:
         - api_key: []
-  '/groups/{groupId}/managed-assets/{groupOrAssetId}':
+  '/groups/{groupType}/{groupId}/managed-assets/{groupOrAssetId}':
     delete:
       summary: Remove asset manager
       tags:
@@ -9900,10 +9910,6 @@ paths:
       responses:
         '200':
           description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/emptyResponse'
         '400':
           description: Bad Request
           content:
@@ -9928,14 +9934,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      operationId: Groups-ManagedAsset_Delete
+      operationId: Groups-ManagedAssets_Delete
       description: Remove managed asset of group
       parameters:
         - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/groupTypeParameter'
         - $ref: '#/components/parameters/groupOrAssetIdParameter'
       security:
         - api_key: []
-  '/groups/{groupId}/managed-assets/candidates':
+  '/groups/{groupType}/{groupId}/managed-assets/candidates':
     get:
       summary: Get asset manager candidates
       tags:
@@ -9969,12 +9976,13 @@ paths:
       description: Get asset candidates to be managed by group
       parameters:
         - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/groupTypeParameter'
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/searchParameter'
       security:
         - api_key: []
-  '/groups/{groupId}/managers':
+  '/groups/{groupType}/{groupId}/managers':
     get:
       summary: Get managers of group
       tags:
@@ -10005,19 +10013,26 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      operationId: Groups-Managers_List
+      operationId: Groups-AssetManagers_List
       description: Get asset managers of group
       parameters:
         - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/groupTypeParameter'
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
       security:
         - api_key: []
-  '/groups/{groupId}/managers/{groupOrUserId}':
-    delete:
-      summary: Remove asset manager
+    post:
+      summary: Add asset manager of group
       tags:
         - Groups
+      requestBody:
+        description: Array of managers to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/assetManagersBody'
+        required: true
       responses:
         '200':
           description: Successful response
@@ -10049,14 +10064,54 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      operationId: Groups-AssetManager_Delete
+      operationId: Groups-AssetManagers_Add
+      description: Add an asset manager of a group
+      parameters:
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/groupTypeParameter'
+      security:
+        - api_key: []
+  '/groups/{groupType}/{groupId}/managers/{groupOrUserId}':
+    delete:
+      summary: Remove asset manager
+      tags:
+        - Groups
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+      operationId: Groups-AssetManagers_Delete
       description: Remove asset manager of group
       parameters:
         - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/groupTypeParameter'
         - $ref: '#/components/parameters/groupOrUserIdParameter'
       security:
         - api_key: []
-  '/groups/{groupId}/managers/candidates':
+  '/groups/{groupType}/{groupId}/managers/candidates':
     get:
       summary: Get manager candidates
       tags:
@@ -10086,10 +10141,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      operationId: Groups-ManagersCandidates_List
+      operationId: Groups-AssetManagersCandidates_List
       description: Get manager candidates for group managers
       parameters:
         - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/groupTypeParameter'
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/searchParameter'
@@ -10178,10 +10234,6 @@ paths:
       responses:
         '200':
           description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/assetManagersList'
         '401':
           description: Invalid API key
           content:
@@ -10217,6 +10269,84 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/groupIdOrUserId'
+      security:
+        - api_key: []
+  /settings/system/internal-subnets:
+    get:
+      summary: Get Internal Subnets settings in System
+      tags:
+        - Settings Internal Subnets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsInternalSubnets'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+      operationId: SettingsInternalSubnets_Get
+      description: Get Internal Subnets settings in System
+      security:
+        - api_key: []
+    put:
+      summary: Set Internal Subnets settings in System
+      tags:
+        - Settings Internal Subnets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/settingsInternalSubnetsBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/emptyResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+      operationId: SettingsInternalSubnets_Update
+      description: Update the Internal Subnets settings in System
       security:
         - api_key: []
 components:
@@ -11622,6 +11752,16 @@ components:
           items:
             type: string
             example: 'c:\test.exe'
+        enforcementSource:
+          type: integer
+        excludedSrcEntityInfos:
+          type: array
+          items:
+            type: string
+        excludedSrcProcesses:
+          type: array
+          items:
+            type: string
         fallbackToLoggedOnUser:
           type: boolean
         id:
@@ -11638,6 +11778,8 @@ components:
               - 2
               - 3
               - 4
+        overrideBuiltins:
+          type: boolean
         protocolType:
           type: integer
           description: '6=TCP, 17=UDP'
@@ -11797,6 +11939,7 @@ components:
         - dstProcessNames
         - fallbackToLoggedOnUser
         - mfaMethods
+        - overrideBuiltins
         - protocolType
         - ruleDuration
         - srcEntityInfos
@@ -11822,12 +11965,22 @@ components:
           type: array
           items:
             type: string
+        excludedSrcEntityInfos:
+          type: array
+          items:
+            type: string
+        excludedSrcProcesses:
+          type: array
+          items:
+            type: string
         fallbackToLoggedOnUser:
           type: boolean
         mfaMethods:
           type: array
           items:
             type: integer
+        overrideBuiltins:
+          type: boolean
         protocolType:
           type: integer
         ruleDuration:
@@ -11868,12 +12021,12 @@ components:
         - dstPort
         - fallbackToLoggedOnUser
         - mfaMethods
+        - overrideBuiltins
         - protocolType
         - ruleDuration
         - srcEntityInfos
         - srcProcessNames
         - srcUserInfos
-        - ruleCreationMode
         - state
         - additionalPortsList
       type: object
@@ -11893,15 +12046,23 @@ components:
           type: array
           items:
             type: string
+        excludedSrcEntityInfos:
+          type: array
+          items:
+            type: string
+        excludedSrcProcesses:
+          type: array
+          items:
+            type: string
         fallbackToLoggedOnUser:
           type: boolean
         mfaMethods:
           type: array
           items:
             type: integer
+        overrideBuiltins:
+          type: boolean
         protocolType:
-          type: integer
-        ruleCreationMode:
           type: integer
         ruleDuration:
           type: integer
@@ -12309,7 +12470,7 @@ components:
             type: string
         expiresAt:
           type: integer
-          format: int32
+          format: int64
           example: 0
         localEntityId:
           type: string
@@ -12396,21 +12557,16 @@ components:
         config:
           type: object
           properties:
-            privateNetworksList:
-              $ref: '#/components/schemas/privateNetworksList'
             shouldFilterExternalTraffic:
               type: boolean
               description: Disable/Enable external traffic collection
     settingsActivitiesBody:
       type: object
       properties:
-        privateNetworksList:
-          $ref: '#/components/schemas/privateNetworksList'
         shouldFilterExternalTraffic:
           type: boolean
           description: Disable/Enable external traffic collection
       required:
-        - privateNetworksList
         - shouldFilterExternalTraffic
     settingsAuthBody:
       title: settingsAuthBody
@@ -12419,6 +12575,16 @@ components:
         portalTokenTtl:
           type: number
           description: Portal session token timeout (in minutes)
+    settingsAuth:
+      title: settingsAuth
+      type: object
+      properties:
+        item:
+          type: object
+          properties:
+            portalTokenTtl:
+              type: number
+              description: Portal session token timeout (in minutes)
     settingsAdInfo:
       type: object
       properties:
@@ -12464,13 +12630,22 @@ components:
         useLdaps:
           type: boolean
           description: Use LDAP or LDAPs
-    settingsAdInfoList:
+    settingsAdSecondaryList:
       type: object
       properties:
         items:
           type: array
           items:
-            $ref: '#/components/schemas/settingsAdInfo'
+            $ref: '#/components/schemas/settingsAdSecondary'
+    settingsAdSecondary:
+      type: object
+      properties:
+        dc:
+          type: string
+          example: dc.child.zeronetworks.com
+        domain:
+          type: string
+          example: child.zeronetworks.com
     settingsAdInfoResponse:
       type: object
       properties:
@@ -12998,6 +13173,21 @@ components:
       properties:
         entity:
           $ref: '#/components/schemas/group'
+    settingsInternalSubnets:
+      type: object
+      properties:
+        config:
+          type: object
+          properties:
+            privateNetworksList:
+              $ref: '#/components/schemas/privateNetworksList'
+    settingsInternalSubnetsBody:
+      type: object
+      properties:
+        privateNetworksList:
+          $ref: '#/components/schemas/privateNetworksList'
+      required:
+        - privateNetworksList
   parameters:
     connectionStateParameter:
       name: connectionstate
@@ -13243,6 +13433,14 @@ components:
       schema:
         type: string
         pattern: '^g:[acsot]:[a-zA-Z0-9]{8}$'
+    groupTypeParameter:
+      name: groupType
+      in: path
+      description: group type to filter on
+      required: true
+      schema:
+        type: string
+        pattern: ^ad$|^custom$|^ot$|^system$|^tag$
     groupIdQueryParameter:
       name: _groupId
       in: query
@@ -13362,6 +13560,8 @@ tags:
     description: API calls releated to Cloud Connector settings.
   - name: Settings Identity Providers
     description: API calls related to Identity Providers settings.
+  - name: Settings Internal Subnets
+    description: API Calls related to Internal Subnets settings.
   - name: Settings Firewall
     description: API calls related to Firewall settings.
   - name: Settings Mail Notifications

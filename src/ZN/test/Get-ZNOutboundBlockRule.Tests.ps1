@@ -15,11 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNOutboundBlockRule'))
 }
 
 Describe 'Get-ZNOutboundBlockRule' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-ZNOutboundBlockRule } | Should -Not -Be $null
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $rule = Get-ZNOutboundBlockRule | Select-object -First 1
+        { Get-ZNOutboundBlockRule -RuleId $rule.Id } | Should -Not -be $null
     }
 }

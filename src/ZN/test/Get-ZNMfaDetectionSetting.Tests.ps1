@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNMfaDetectionSetting'))
 }
 
 Describe 'Get-ZNMfaDetectionSetting' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-ZNMfaDetectionSetting } | Should -Not -Be $null
     }
 }

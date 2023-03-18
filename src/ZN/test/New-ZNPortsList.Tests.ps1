@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNPortsList'))
 }
 
 Describe 'New-ZNPortsList' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $portsList = New-ZNPortsList -Protocol Any
+        $portsList.ProtocolType | Should -Be 256
     }
 }

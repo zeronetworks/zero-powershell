@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Search-ZNAsset'))
 }
 
 Describe 'Search-ZNAsset' {
-    It 'Search' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Search' {
+        { Search-ZNAsset -Fqdn "DC01.posh.local" } | Should -Not -Throw
     }
 }

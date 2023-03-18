@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNQueueAsset'))
 }
 
 Describe 'Invoke-ZNQueueAsset' {
-    It 'QueueExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'QueueExpanded' {
+        $asset = (Get-ZNAsset).Items | where {$_.ProtectionState -eq 1} | Select-Object -first 1
+        { Invoke-ZNQueueAsset -Items @($asset.id) -QueueDays 30 } | Should -Not -Be $null
+        Unprotect-ZNAsset -Items @($asset.id)
     }
 }

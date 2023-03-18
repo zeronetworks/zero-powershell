@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: ZeroNetworks
-online version: https://github.com/zeronetworks/zn.api/new-znportslist
+online version: https://github.com/zeronetworks/zero-powershell/new-znportslist
 schema: 2.0.0
 ---
 
@@ -12,8 +12,14 @@ Create a in-memory object for PortsList
 
 ## SYNTAX
 
+### Protocol (Default)
 ```
 New-ZNPortsList -Protocol <String> [-Ports <String>] [<CommonParameters>]
+```
+
+### Empty
+```
+New-ZNPortsList -Empty [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,12 +56,27 @@ This is an example of how to build a portsList with both TCP and UDP ports.
 
 ## PARAMETERS
 
+### -Empty
+Empty port list
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Empty
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Ports
 List of port numbers
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Protocol
 Aliases:
 
 Required: False
@@ -70,7 +91,7 @@ Protocol
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Protocol
 Aliases:
 
 Required: True

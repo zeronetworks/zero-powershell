@@ -11,8 +11,23 @@ Locale: en-US
 Zero Networks PowerShell cmdlets
 
 ## ZeroNetworks Cmdlets
+### [Add-ZNAssetsAssetManager](Add-ZNAssetsAssetManager.md)
+Add an asset manager of asset
+
 ### [Add-ZNCustomGroupsMember](Add-ZNCustomGroupsMember.md)
 Returns an empty object.
+
+### [Add-ZNGroupsAssetManager](Add-ZNGroupsAssetManager.md)
+Add an asset manager of a group
+
+### [Add-ZNGroupsManagedAsset](Add-ZNGroupsManagedAsset.md)
+Add a managed assets for group
+
+### [Add-ZNSettingsAssetManager](Add-ZNSettingsAssetManager.md)
+Add asset manager to entity.
+
+### [Add-ZNUsersManagedAsset](Add-ZNUsersManagedAsset.md)
+Add a managed assets for user
 
 ### [Connect-ZN](Connect-ZN.md)
 Login to Zero Networks to get a token for cmdlet use
@@ -41,7 +56,7 @@ Get AI network exclusion for clients: lists of tcp/udp ports / ports ranges + bo
 ### [Get-ZNAiExclusionNetworkServer](Get-ZNAiExclusionNetworkServer.md)
 Get AI network exclusion for servers: lists of tcp/udp ports / ports ranges + boolean for icmp protocol, and a list of processes to ignore during learning.
 
-### [Get-ZNAiExclusionSrcEntity](Get-ZNAiExclusionSrcEntity.md)
+### [Get-ZNAiExclusionSourceEntity](Get-ZNAiExclusionSourceEntity.md)
 Get AI source entities to ignore during learning.
 
 ### [Get-ZNAiNextBatch](Get-ZNAiNextBatch.md)
@@ -56,11 +71,17 @@ Returns the properties of an asset.
 ### [Get-ZNAssetAnalysis](Get-ZNAssetAnalysis.md)
 Returns an object with asset analysis data.
 
-### [Get-ZNAssetAudit](Get-ZNAssetAudit.md)
-Returns a list of audits for the asset.
-
 ### [Get-ZNAssetMemberOf](Get-ZNAssetMemberOf.md)
 Returns a list of groups the asset is a member of.
+
+### [Get-ZNAssetsAssetManager](Get-ZNAssetsAssetManager.md)
+Get asset managers of asset
+
+### [Get-ZNAssetsAssetManagersCandidate](Get-ZNAssetsAssetManagersCandidate.md)
+Get manager candidates for asset managers
+
+### [Get-ZNAssetsAudit](Get-ZNAssetsAudit.md)
+Returns a list of audits for the asset.
 
 ### [Get-ZNAssetsMonitored](Get-ZNAssetsMonitored.md)
 Returns a list of assets that are monitored.
@@ -106,6 +127,18 @@ Returns a list of audits for the group.
 
 ### [Get-ZNGroupMemberOf](Get-ZNGroupMemberOf.md)
 Returns a list of groups the group is a member of.
+
+### [Get-ZNGroupsAssetManager](Get-ZNGroupsAssetManager.md)
+Get asset managers of group
+
+### [Get-ZNGroupsAssetManagersCandidate](Get-ZNGroupsAssetManagersCandidate.md)
+Get manager candidates for group managers
+
+### [Get-ZNGroupsManagedAsset](Get-ZNGroupsManagedAsset.md)
+Get managed assets for group
+
+### [Get-ZNGroupsManagedAssetsCandidate](Get-ZNGroupsManagedAssetsCandidate.md)
+Get asset candidates to be managed by group
 
 ### [Get-ZNGroupsMember](Get-ZNGroupsMember.md)
 Returns a list of potential members for a group.
@@ -222,7 +255,7 @@ Returns a list of excluded source candidates for outbound block rules.
 Returns a list of source candidates for outbound block rules.
 
 ### [Get-ZNProfile](Get-ZNProfile.md)
-
+Get user profile
 
 ### [Get-ZNProtectionAutomationCandidatesSetting](Get-ZNProtectionAutomationCandidatesSetting.md)
 Returns a list of candidates for Protection Automation settings.
@@ -242,8 +275,14 @@ Returns an object with rules distribution.
 ### [Get-ZNRulesStatistics](Get-ZNRulesStatistics.md)
 Returns an object with rule statistics.
 
+### [Get-ZNSettingsAssetManager](Get-ZNSettingsAssetManager.md)
+List asset managers
+
 ### [Get-ZNSettingsAuth](Get-ZNSettingsAuth.md)
 Get the portal security settings
+
+### [Get-ZNSettingsInternalSubnet](Get-ZNSettingsInternalSubnet.md)
+Get Internal Subnets settings in System
 
 ### [Get-ZNSystemGroup](Get-ZNSystemGroup.md)
 Returns a list of System groups.
@@ -262,6 +301,12 @@ Returns a list of audits for the user.
 
 ### [Get-ZNUserMemberOf](Get-ZNUserMemberOf.md)
 Returns a list of groups the user is a member of.
+
+### [Get-ZNUsersManagedAsset](Get-ZNUsersManagedAsset.md)
+get managed assets for user
+
+### [Get-ZNUsersManagedAssetsCandidate](Get-ZNUsersManagedAssetsCandidate.md)
+Get asset candidates to be managed by asset managers
 
 ### [Get-ZNUserStatistics](Get-ZNUserStatistics.md)
 Get Users statistics
@@ -338,11 +383,20 @@ Returns an empty reponse.
 ### [Remove-ZNApiKey](Remove-ZNApiKey.md)
 Deletes the API key
 
+### [Remove-ZNAssetsAssetManager](Remove-ZNAssetsAssetManager.md)
+Remove an asset manager of asset
+
 ### [Remove-ZNCustomGroup](Remove-ZNCustomGroup.md)
 Returns an empty object.
 
 ### [Remove-ZNCustomGroupsMember](Remove-ZNCustomGroupsMember.md)
 Returns an empty object.
+
+### [Remove-ZNGroupsAssetManager](Remove-ZNGroupsAssetManager.md)
+Remove asset manager of group
+
+### [Remove-ZNGroupsManagedAsset](Remove-ZNGroupsManagedAsset.md)
+Remove managed asset of group
 
 ### [Remove-ZNIdpSetting](Remove-ZNIdpSetting.md)
 Returns an empty reponse.
@@ -370,6 +424,12 @@ Returns an empty object.
 
 ### [Remove-ZNProtectionPolicy](Remove-ZNProtectionPolicy.md)
 Returns and empty object.
+
+### [Remove-ZNSettingsAssetManager](Remove-ZNSettingsAssetManager.md)
+Remove asset managers
+
+### [Remove-ZNUsersManagedAsset](Remove-ZNUsersManagedAsset.md)
+Remove managed asset of user
 
 ### [Search-ZNAsset](Search-ZNAsset.md)
 Returns an assetId.
@@ -407,7 +467,7 @@ Set AI network exclusion for clients: lists of tcp/udp ports / ports ranges + bo
 ### [Update-ZNAiExclusionNetworkServer](Update-ZNAiExclusionNetworkServer.md)
 Set AI network exclusion for servers: lists of tcp/udp ports / ports ranges + boolean for icmp protocol, and a list of processes to ignore during learning.
 
-### [Update-ZNAiExclusionSrcEntity](Update-ZNAiExclusionSrcEntity.md)
+### [Update-ZNAiExclusionSourceEntity](Update-ZNAiExclusionSourceEntity.md)
 Set AI source entities to ignore during learning.
 
 ### [Update-ZNAnsibleSetting](Update-ZNAnsibleSetting.md)
@@ -472,4 +532,7 @@ Returns the updated settings for the protection policy.
 
 ### [Update-ZNSettingsAuth](Update-ZNSettingsAuth.md)
 Set the portal security settings
+
+### [Update-ZNSettingsInternalSubnet](Update-ZNSettingsInternalSubnet.md)
+Update the Internal Subnets settings in System
 

@@ -14,10 +14,11 @@ Returns the properties of the inbound MFA policy after creation.
 
 ```
 New-ZNMfaInboundPolicy -AdditionalPortsList <IPortsListItem[]> -DstEntityInfoId <String> -DstPort <String>
- -DstProcessNames <String[]> -FallbackToLoggedOnUser -MfaMethods <Int32[]> -ProtocolType <Int32>
- -RuleDuration <Int32> -SrcEntityInfos <IReactivePolicyInboundBodySrcEntityInfosItem[]>
+ -DstProcessNames <String[]> -FallbackToLoggedOnUser -MfaMethods <Int32[]> -OverrideBuiltins
+ -ProtocolType <Int32> -RuleDuration <Int32> -SrcEntityInfos <IReactivePolicyInboundBodySrcEntityInfosItem[]>
  -SrcProcessNames <String[]> -SrcUserInfos <IReactivePolicyInboundBodySrcUserInfosItem[]> -State <Int32>
- [-Description <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Description <String>] [-ExcludedSrcEntityInfos <String[]>] [-ExcludedSrcProcesses <String[]>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,6 +140,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ExcludedSrcEntityInfos
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExcludedSrcProcesses
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FallbackToLoggedOnUser
 .
 
@@ -159,6 +190,21 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Int32[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OverrideBuiltins
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

@@ -1,11 +1,10 @@
-### Example 1: Remove an outbound MFA Policy
+### Example 1: Delete outbound MFA policy
 ```powershell
-$policy = Get-ZNMfaOutboundPolicy | where {$_.Description -eq "Test Policy"}
-Remove-ZNMfaOutboundPolicy -ReactivePolicyId $policy.Id
+Remove-ZNMfaOutboundPolicy -ReactivePolicyId 18936df5-e654-46d3-8106-4af3e59e9fff
 ```
 
 ```output
 
 ```
 
-This cmdlet deletes an outbound MFA policy from the environment.
+This cmdlet deletes an outbound MFA policy.

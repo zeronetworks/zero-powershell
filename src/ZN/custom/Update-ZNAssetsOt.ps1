@@ -5,7 +5,7 @@ Updates OT/IOT Asset
 Updates OT/IoT Asset.
 
 .Link
-https://github.com/zeronetworks/zn.api/update-znassetsot
+https://github.com/zeronetworks/zero-powershell/update-znassetsot
 #>
 function Update-ZNAssetsOt {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.Any])]
@@ -85,7 +85,7 @@ function Update-ZNAssetsOt {
         try {
             #Handle Get
             $assetId = $PSBoundParameters['AssetId'].ToString()
-            $otAsset = ZN.Api\Get-ZNAsset -AssetId $assetId     
+            $otAsset = ZeroNetworks\Get-ZNAsset -AssetId $assetId     
 
             $updatedotAsset = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.otAssetEditBody]::new()
 
@@ -106,10 +106,9 @@ function Update-ZNAssetsOt {
                 $updatedotAsset.Type = $otAsset.EntityAssetType
                 $null = $PSBoundParameters.Remove('Type')
             }
-            
+            Write-Debug $updatedotAsset | Out-String
             $null = $PSBoundParameters.Add('Body', $updatedotAsset)
-            Write-Debug $PSBoundParameters | Out-String
-            ZN.Api.internal\Update-ZNAssetsOt @PSBoundParameters
+            ZeroNetworks.internal\Update-ZNAssetsOt @PSBoundParameters
         }
         catch {
             throw

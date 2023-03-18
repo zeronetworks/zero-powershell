@@ -13,7 +13,7 @@ Set the portal security settings
 ## SYNTAX
 
 ```
-Update-ZNSettingsAuth -PortalTokenTtl <Single> [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsAuth [-PortalTokenTtl <Single>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,7 +54,7 @@ Type: System.Single
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

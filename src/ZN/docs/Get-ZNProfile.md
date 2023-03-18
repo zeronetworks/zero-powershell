@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-ZNProfile
 
 ## SYNOPSIS
-
+Get user profile
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-ZNProfile [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
+Get user profile
 
 ## EXAMPLES
 

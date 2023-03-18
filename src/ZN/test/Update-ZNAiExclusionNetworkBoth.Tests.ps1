@@ -15,11 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNAiExclusionNetworkBo
 }
 
 Describe 'Update-ZNAiExclusionNetworkBoth' {
-    It 'SetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Set' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetExpanded' {
+        $setting = Get-ZNAiExclusionNetworkboth
+        $newsetting = Update-ZNAiExclusionNetworkBoth -Icmp
+        $newsetting.Icmp | Should -be $true
+        Update-ZNAiExclusionNetworkBoth -Icmp:$false
     }
 }

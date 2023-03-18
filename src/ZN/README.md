@@ -315,7 +315,7 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Add$|^AddViaIdentity$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Put$|^PutViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^Add$|^AddViaIdentity$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DeleteViaIdentityExpanded$|^Put$|^PutViaIdentity$|^Protect$|^Update$|^UpdateViaIdentity$
     hide: true
   # Customize
   # Remove the export cmdlets

@@ -115,7 +115,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
+### System.String
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

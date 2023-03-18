@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetsQueued'))
 }
 
 Describe 'Get-ZNAssetsQueued' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { (Get-ZNAssetsQueued).Items } | Should -Not -Be $null
     }
 }

@@ -21,16 +21,12 @@ Returns an empty reponse.
 
 ## EXAMPLES
 
-### Example 1: Delete a secondary AD setting
+### Example 1: Remove secondary AD setting
 ```powershell
-Remove-ZNAdSecondarySetting -DomainId newdomain.zero.labs
+Remove-ZNAdSecondarySetting -DomainId child03.posh.local
 ```
 
-```output
-ZeroNetworks.PowerShell.Cmdlets.Api.Models.Any
-```
-
-This cmdlet deletes a secondary Active Directory setting under Asset Management.
+This cmdlet removes a secondary AD setting under Asset Management.
 
 ## PARAMETERS
 

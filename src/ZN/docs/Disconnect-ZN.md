@@ -20,7 +20,7 @@ Disconnect-ZN [-Confirm] [-WhatIf] [<CommonParameters>]
 Logout of Zero Networks
 
 #.Link
-https://github.com/zeronetworks/zn.api/Disconnect-zn
+https://github.com/zeronetworks/zero-powershell/Disconnect-zn
 
 ## EXAMPLES
 

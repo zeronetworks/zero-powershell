@@ -15,7 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNProtectionPolicy'))
 }
 
 Describe 'Update-ZNProtectionPolicy' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $protectionPolicy = Get-ZNProtectionPolicy | Select -First 1
+        if($protectionPolicy.MinQueueDays -eq 30){
+            $MinQueueDays = 14
+        } else {
+            $MinQueueDays = 30
+        }
+        $updatedProtectionPolicy = Update-ZNProtectionPolicy -ProtectionPolicyId $protectionPolicy.Id -MinQueueDays $MinQueueDays
+        $updatedProtectionPolicy.ItemMinQueueDays | Should -Be $MinQueueDays
     }
 }

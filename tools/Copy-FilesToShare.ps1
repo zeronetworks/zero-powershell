@@ -1,15 +1,15 @@
 Set-Location ../src/ZN
 $files = @(
-    "ZN.Api.nupsec"
-    "ZN.Api.format.ps1xml"
-    "ZN.Api.psd1"
-    "ZN.Api.psm1"
-    "bin\ZN.Api.private.deps.json"
-    "bin\ZN.Api.private.dll"
-    "bin\ZN.Api.private.pdb"
+    "ZeroNetworks.nupsec"
+    "ZeroNetworks.format.ps1xml"
+    "ZeroNetworks.psd1"
+    "ZeroNetworks.psm1"
+    "bin\ZeroNetworks.private.deps.json"
+    "bin\ZeroNetworks.private.dll"
+    "bin\ZeroNetworks.private.pdb"
     "custom"
     "exports\ProxyCmdletDefinitions.ps1"
-    "internal\ZN.Api.internal.psm1"
+    "internal\ZeroNetworks.internal.psm1"
     "internal\ProxyCmdletDefinitions.ps1"
     "utils\Unprotect-SecureString.ps1"
 )

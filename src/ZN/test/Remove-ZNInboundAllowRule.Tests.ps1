@@ -15,7 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNInboundAllowRule'))
 }
 
 Describe 'Remove-ZNInboundAllowRule' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        [string]$ports = Get-Random -Minimum 1 -Maximum 65000
+        $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
+        $source = (Get-ZNInboundAllowRulesSourceCandidate -search "any asset").Items
+        $destination = (Get-ZNInboundAllowRulesDestinationCandidate -Search "all protected assets").Items
+        $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
+        $rule = New-ZNInboundAllowRule -LocalEntityId $destination.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
+        { Remove-ZNInboundAllowRule -RuleId $rule.ItemId  } | Should -Not -Throw
     }
 }

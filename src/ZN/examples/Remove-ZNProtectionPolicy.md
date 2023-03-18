@@ -1,10 +1,10 @@
-### Example 1: Remove a protection policy
+### Example 1: Delete a protection policy
 ```powershell
-Remove-ZNProtectionPolicy -ProtectionPolicyId "25b60e5f-3201-48b0-8f04-3df5eb4e2948"
+Remove-ZNProtectionPolicy -ProtectionPolicyId dad21429-f3ed-4a8a-a407-cae69cffc367
 ```
 
 ```output
 
 ```
 
-This cmdlet deletes a protection policy from the environment.
+This cmdlet deletes a protection policy.

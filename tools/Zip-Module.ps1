@@ -1,14 +1,14 @@
 $fileList = @(
-    "./ZN/ZN.Api.format.ps1xml"
-    "./ZN/ZN.Api.psd1"
-    "./ZN/ZN.Api.psm1"
-    "./ZN/ZN.Api.nuspec"
+    "./ZN/ZeroNetworks.format.ps1xml"
+    "./ZN/ZeroNetworks.psd1"
+    "./ZN/ZeroNetworks.psm1"
+    "./ZN/ZeroNetworks.nuspec"
     "./ZN/bin"
     "./ZN/custom"
     "./ZN/docs"
     "./ZN/exports/ProxyCmdletDefinitions.ps1"
     "./ZN/internal/ProxyCmdletDefinitions.ps1"
-    "./ZN/internal/ZN.Api.internal.psm1"
+    "./ZN/internal/ZeroNetworks.internal.psm1"
     "./ZN/utils/Unprotect-SecureString.ps1"
 )
 

@@ -21,13 +21,12 @@ Returns an empty object.
 
 ## EXAMPLES
 
-### Example 1: Remove an inbound block rule
+### Example 1: Delete inbound block rule
 ```powershell
-$rule = Get-ZNInboundBlockRule | where {$_.Description -eq "Test Rule"}
-Remove-ZNInboundBlockRule -RuleId $rule.Id
+Remove-ZNInboundBlockRule -RuleId 7d3820ef-886a-4b12-a65f-55a79c3bd2ce
 ```
 
-This cmdlet deletes an inbound block rule from the environment.
+This cmdlet deletes and inbound block rule.
 
 ## PARAMETERS
 

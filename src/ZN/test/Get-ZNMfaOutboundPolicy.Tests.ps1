@@ -15,11 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNMfaOutboundPolicy'))
 }
 
 Describe 'Get-ZNMfaOutboundPolicy' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-ZNMfaOutboundPolicy } | Should -Not -Be $null
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $policy = Get-ZNMfaOutboundPolicy | Select-Object -First 1
+        { Get-ZNMfaOutboundPolicy -ReactivePolicyId $policy.Id } | Should -Not -Be $null
     }
 }

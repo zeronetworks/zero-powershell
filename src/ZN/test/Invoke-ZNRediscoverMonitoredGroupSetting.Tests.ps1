@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNRediscoverMonitoredG
 }
 
 Describe 'Invoke-ZNRediscoverMonitoredGroupSetting' {
-    It 'Rediscover' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Rediscover' {
+        { Invoke-ZNRediscoverMonitoredGroupSetting } | Should -Not -Throw
     }
 }

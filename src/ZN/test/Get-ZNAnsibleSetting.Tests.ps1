@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAnsibleSetting'))
 }
 
 Describe 'Get-ZNAnsibleSetting' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-ZNAnsibleSetting } | Should -Not -Be $null
     }
 }

@@ -13,8 +13,8 @@ Returns a list of potential members for a group.
 ## SYNTAX
 
 ```
-Get-ZNGroupsMember -GroupId <String> -IncludeNestedMembers [-Limit <Int32>] [-Offset <Int32>]
- [<CommonParameters>]
+Get-ZNGroupsMember -GroupId <String> -GroupType <String> -IncludeNestedMembers [-Limit <Int32>]
+ [-Offset <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,6 +64,21 @@ Setting -IncludeNestedMembers to $true will get all members of the group and nes
 
 ### -GroupId
 groupId to filter on
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GroupType
+group type to filter on
 
 ```yaml
 Type: System.String

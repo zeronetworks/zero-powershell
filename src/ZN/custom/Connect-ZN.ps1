@@ -7,7 +7,7 @@ Login to Zero Networks to get a token for cmdlet use.
 NOTE: If your environment has a IdP set for default authentication, you cannot use this cmdlet and will need to use Set-ZNApiKey cmdlet using an API token.
 
 #.Link
-https://github.com/zeronetworks/zn.api/connect-zn
+https://github.com/zeronetworks/zero-powershell/connect-zn
 #>
 function Connect-ZN {
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Low')]
@@ -30,7 +30,7 @@ function Connect-ZN {
         $PSBoundParameters.Add("ChallengeMediumType", "email")
         try {
             #Invoke-RestMethod -Uri "$uri/auth/challenge" -Method POST -Body ($challengeBody | ConvertTo-Json) -ContentType application/json
-            ZN.Api.internal\Invoke-ZNAuthChallenge @PSBoundParameters
+            ZeroNetworks.internal\Invoke-ZNAuthChallenge @PSBoundParameters
         }
         catch {
             Write-Host "Unable to challenge" -ForegroundColor Red
@@ -48,7 +48,7 @@ function Connect-ZN {
         $PSBoundParameters.Add("Otp", $otp)
         try {
             #$response = Invoke-RestMethod -Uri "$uri/auth/login" -Method POST -Body ($loginBody | ConvertTo-Json) -ContentType application/json
-            $response = ZN.Api.internal\Invoke-ZNAuthLogin @PSBoundParameters
+            $response = ZeroNetworks.internal\Invoke-ZNAuthLogin @PSBoundParameters
         }
         catch {
             Write-Host "Unable to login" -ForegroundColor Red

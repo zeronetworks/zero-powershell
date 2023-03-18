@@ -15,7 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNActivitiesSetting'))
 }
 
 Describe 'Update-ZNActivitiesSetting' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $setting = Get-ZNActivitiesSetting
+        if($setting -eq $true){
+            $newsetting = $false
+        }
+        else{
+            $newsetting = $true
+        }
+        { Update-ZNActivitiesSetting -ShouldFilterExternalTraffic:$newsetting } | Should -Not -Throw
     }
 }

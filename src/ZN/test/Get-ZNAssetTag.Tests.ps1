@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetTag'))
 }
 
 Describe 'Get-ZNAssetTag' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $asset = (Get-ZNAsset).Items | Select-Object -First 1
+        { Get-ZNAssetTag -AssetId $asset.id } | Should -Not -Be $null
     }
 }

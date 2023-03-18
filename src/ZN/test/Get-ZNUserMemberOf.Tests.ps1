@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNUserMemberOf'))
 }
 
 Describe 'Get-ZNUserMemberOf' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $user = Get-ZNUser -Search "zero"
+        { Get-ZNUserMemberOf -UserId $user.Id } | Should -Not -Be $null
     }
 }
