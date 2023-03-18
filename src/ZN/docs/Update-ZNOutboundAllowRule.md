@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworks/zn.api/update-znoutboundallowrule
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworks/zero-powershell/update-znoutboundallowrule
 schema: 2.0.0
 ---
 

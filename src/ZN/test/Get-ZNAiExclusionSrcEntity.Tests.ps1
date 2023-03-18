@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAiExclusionSrcEntity'))
 }
 
 Describe 'Get-ZNAiExclusionSrcEntity' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        Get-ZNAiExclusionSrcEntity | Should -Not -Be $null
     }
 }

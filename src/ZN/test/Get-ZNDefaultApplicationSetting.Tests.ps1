@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNDefaultApplicationSetti
 }
 
 Describe 'Get-ZNDefaultApplicationSetting' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-ZNDefaultApplicationSetting } | Should -Not -Be $null
     }
 }

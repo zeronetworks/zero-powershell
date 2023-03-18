@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/connect-zn
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/connect-zn
 schema: 2.0.0
 ---
 
@@ -21,7 +21,7 @@ Login to Zero Networks to get a token for cmdlet use.
 NOTE: If your environment has a IdP set for default authentication, you cannot use this cmdlet and will need to use Set-ZNApiKey cmdlet using an API token.
 
 #.Link
-https://github.com/zeronetworks/zn.api/connect-zn
+https://github.com/zeronetworks/zero-powershell/connect-zn
 
 ## EXAMPLES
 

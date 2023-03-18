@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworks/zn.api/update-znmfaoutboundpolicy
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworks/zero-powershell/update-znmfaoutboundpolicy
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Updates an outbound MFA Policy.
 
 ```
 Update-ZNMfaOutboundPolicy -ReactivePolicyId <String> [-AdditionalPortsList <PortsListItem[]>]
- [-Description <String>] [-DstPort <String>] [-FallbackToLoggedOnUser] [-MfaMethods <Int32[]>]
+ [-Description <String>] [-DstPort <String>] [-ExcludedSrcEntityInfos <String[]>]
+ [-ExcludedSrcProcesses <String[]>] [-FallbackToLoggedOnUser] [-MfaMethods <Int32[]>] [-OverrideBuiltins]
  [-ProtocolType <Int32>] [-RuleDuration <Int32>]
  [-SrcEntityInfos <ReactivePolicyOutboundBodySrcEntityInfosItem[]>] [-SrcProcessNames <String[]>]
  [-SrcUserInfos <ReactivePolicyOutboundBodySrcUserInfosItem[]>] [-State <Int32>] [-AsJob] [-NoWait] [-Confirm]
@@ -127,13 +128,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FallbackToLoggedOnUser
+### -ExcludedSrcEntityInfos
 [Parameter(ParameterSetName = 'UpdateExpanded')]
 [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
 [System.String[]]
  source processes.
 ${dstProcessNames},
- fallback to logged on user enable/disable.
+ excluded source assets
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExcludedSrcProcesses
+Excluded source processes
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FallbackToLoggedOnUser
+fallback to logged on user enable/disable.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -164,6 +195,21 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OverrideBuiltins
+Override built in MFA policies
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

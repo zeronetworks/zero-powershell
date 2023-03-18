@@ -85,7 +85,8 @@ metadata:
 > Names 
 ``` yaml
 prefix: ZN
-module-name: $(prefix).$(service-name)
+module-name: ZeroNetworks
+#module-name: $(prefix).$(service-name)
 namespace: ZeroNetworks.PowerShell.Cmdlets.$(service-name)
 ```
 

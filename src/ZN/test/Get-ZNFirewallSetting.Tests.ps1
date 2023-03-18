@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNFirewallSetting'))
 }
 
 Describe 'Get-ZNFirewallSetting' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-ZNFirewallSetting } | Should -Not -Be $null
     }
 }

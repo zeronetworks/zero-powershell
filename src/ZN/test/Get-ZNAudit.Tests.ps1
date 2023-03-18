@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAudit'))
 }
 
 Describe 'Get-ZNAudit' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { (Get-ZNAudit).Items } | Should -Not -Be $null
     }
 }

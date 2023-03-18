@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNGroupAudit'))
 }
 
 Describe 'Get-ZNGroupAudit' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $group = Get-ZNCustomGroup | Select-Object -First 1
+        { Get-ZNGroupAudit -GroupId $group.id } | Should -Not -Be $null
     }
 }

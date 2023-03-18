@@ -5,7 +5,7 @@ Updates an inbound block rule.
 Updates an inbound block rule.
 
 .Link
-https://github.com/zeronetworks/zn.api/update-zninboundblockrule
+https://github.com/zeronetworks/zero-powershell/update-zninboundblockrule
 #>
 function Update-ZNInboundBlockRule {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.Rule])]
@@ -121,7 +121,7 @@ function Update-ZNInboundBlockRule {
         try {
             #Handle Get
             $ruleId = $PSBoundParameters['RuleId'].ToString()
-            $rule = ZN.Api\Get-ZNInboundBlockRule -RuleId $ruleId
+            $rule = ZeroNetworks\Get-ZNInboundBlockRule -RuleId $ruleId
 
             $updatedRule = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.RuleBody]::new()
             
@@ -197,9 +197,9 @@ function Update-ZNInboundBlockRule {
                 $updatedRule.Description = $rule.ItemDescription
                 $null = $PSBoundParameters.Remove('Description')
             }
-            
+            Write-Debug $updatedRule | Out-String
             $null = $PSBoundParameters.Add('Body', $updatedRule)
-            ZN.Api.internal\Update-ZNInboundBlockRule @PSBoundParameters
+            ZeroNetworks.internal\Update-ZNInboundBlockRule @PSBoundParameters
         }
         catch {
             throw

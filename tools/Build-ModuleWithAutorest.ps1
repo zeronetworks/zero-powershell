@@ -9,14 +9,6 @@ catch {
 }
 
 try{
-    Copy-Item ..\private -Destination generated -Recurse
-}
-catch{
-    Write-Host "Failed to copy private files" -ForegroundColor Red
-    exit
-}
-
-try{
     .\build-module.ps1
 }
 catch{

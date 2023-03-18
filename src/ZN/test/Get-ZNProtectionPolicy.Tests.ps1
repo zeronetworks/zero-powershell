@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNProtectionPolicy'))
 }
 
 Describe 'Get-ZNProtectionPolicy' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-ZNProtectionPolicy } | Should -Not -be $null
     }
 }

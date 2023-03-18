@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNTagGroup'))
 }
 
 Describe 'Get-ZNTagGroup' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-ZNTagGroup } | Should -Not -Be $null
     }
 }

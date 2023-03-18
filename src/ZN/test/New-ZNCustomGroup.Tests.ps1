@@ -16,6 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNCustomGroup'))
 
 Describe 'New-ZNCustomGroup' {
     It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $name = "cgroup" + (Get-Random -Maximum 999999)
+        $cgroup =  New-ZNCustomGroup -Name $name -Description "test"
+        $cgroup | Should -Not -Be $null
     }
 }

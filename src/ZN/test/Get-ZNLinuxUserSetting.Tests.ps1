@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNLinuxUserSetting'))
 }
 
 Describe 'Get-ZNLinuxUserSetting' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-ZNLinuxUserSetting } | Should -Not -Be $null
     }
 }

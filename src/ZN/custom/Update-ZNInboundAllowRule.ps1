@@ -5,7 +5,7 @@ Updates an inbound allow rule.
 Updates an inbound allow rule.
 
 .Link
-https://github.com/zeronetworks/zn.api/update-zninboundallowrule
+https://github.com/zeronetworks/zero-powershell/update-zninboundallowrule
 #>
 function Update-ZNInboundAllowRule {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.Rule])]
@@ -121,7 +121,7 @@ function Update-ZNInboundAllowRule {
         try {
             #Handle Get
             $ruleId = $PSBoundParameters['RuleId'].ToString()
-            $rule = ZN.Api\Get-ZNInboundAllowRule -RuleId $ruleId
+            $rule = ZeroNetworks\Get-ZNInboundAllowRule -RuleId $ruleId
 
             $updatedRule = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.RuleBody]::new()
             
@@ -197,9 +197,9 @@ function Update-ZNInboundAllowRule {
                 $updatedRule.Description = $rule.ItemDescription
                 $null = $PSBoundParameters.Remove('Description')
             }
-            
+            Write-Debug $updatedRule | Out-String
             $null = $PSBoundParameters.Add('Body', $updatedRule)
-            ZN.Api.internal\Update-ZNInboundAllowRule @PSBoundParameters
+            ZeroNetworks.internal\Update-ZNInboundAllowRule @PSBoundParameters
         }
         catch {
             throw

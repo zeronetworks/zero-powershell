@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/remove-znoutboundblockrule
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/remove-znoutboundblockrule
 schema: 2.0.0
 ---
 
@@ -21,13 +21,12 @@ Returns an empty object.
 
 ## EXAMPLES
 
-### Example 1: Remove an outbound block rule
+### Example 1: Delete outbound block rule
 ```powershell
-$rule = Get-ZNOutboundBlockRule | where {$_.Description -eq "Test Rule"}
-Remove-ZNOutboundBlockRule -RuleId $rule.Id
+Remove-ZNOutboundBlockRule -RuleId 2facebfb-c074-4f3a-83cd-456a8dd6df3d
 ```
 
-This cmdlet deletes an outbound block rule from the environment.
+This cmdlet deletes and outbound block rule.
 
 ## PARAMETERS
 

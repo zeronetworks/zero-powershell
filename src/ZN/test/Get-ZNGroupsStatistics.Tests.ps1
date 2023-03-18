@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNGroupsStatistics'))
 }
 
 Describe 'Get-ZNGroupsStatistics' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-ZNGroupsStatistics } | Should -Not -Be $null
     }
 }

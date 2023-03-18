@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/new-znmfaoutboundpolicy
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/new-znmfaoutboundpolicy
 schema: 2.0.0
 ---
 
@@ -14,10 +14,11 @@ Returns a the properties of outbound MFA policy created.
 
 ```
 New-ZNMfaOutboundPolicy -AdditionalPortsList <IPortsListItem[]> -DstEntityInfoId <String> -DstPort <String>
- -DstProcessNames <String[]> -FallbackToLoggedOnUser -MfaMethods <Int32[]> -ProtocolType <Int32>
- -RuleDuration <Int32> -SrcEntityInfos <IReactivePolicyOutboundBodySrcEntityInfosItem[]>
- -SrcProcessNames <String[]> -SrcUserInfos <IReactivePolicyOutboundBodySrcUserInfosItem[]> -State <Int32>
- [-Description <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -FallbackToLoggedOnUser -MfaMethods <Int32[]> -OverrideBuiltins -ProtocolType <Int32> -RuleDuration <Int32>
+ -SrcEntityInfos <IReactivePolicyOutboundBodySrcEntityInfosItem[]> -SrcProcessNames <String[]>
+ -SrcUserInfos <IReactivePolicyOutboundBodySrcUserInfosItem[]> -State <Int32> [-Description <String>]
+ [-DstProcessNames <String[]>] [-ExcludedSrcEntityInfos <String[]>] [-ExcludedSrcProcesses <String[]>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,7 +133,37 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExcludedSrcEntityInfos
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExcludedSrcProcesses
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -159,6 +190,21 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Int32[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OverrideBuiltins
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

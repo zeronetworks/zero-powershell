@@ -5,7 +5,7 @@ Updates an outbound MFA Policy.
 Updates an outbound MFA Policy.
 
 .Link
-https://github.com/zeronetworks/zn.api/update-znmfaoutboundpolicy
+https://github.com/zeronetworks/zero-powershell/update-znmfaoutboundpolicy
 #>
 function Update-ZNMfaOutboundPolicy {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicy])]
@@ -43,6 +43,18 @@ function Update-ZNMfaOutboundPolicy {
         
         [Parameter(ParameterSetName = 'UpdateExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
+        [String[]]
+        # excluded source assets
+        ${ExcludedSrcEntityInfos},
+
+        [Parameter(ParameterSetName = 'UpdateExpanded')]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
+        [String[]]
+        # Excluded source processes
+        ${ExcludedSrcProcesses},
+        
+        [Parameter(ParameterSetName = 'UpdateExpanded')]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # fallback to logged on user enable/disable.
         ${FallbackToLoggedOnUser},
@@ -52,6 +64,12 @@ function Update-ZNMfaOutboundPolicy {
         [int[]]
         # MFA methods.
         ${MfaMethods},
+
+        [Parameter(ParameterSetName = 'UpdateExpanded')]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
+        [Switch]
+        # Override built in MFA policies
+        ${OverrideBuiltins},
         
         [Parameter(ParameterSetName = 'UpdateExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
@@ -151,7 +169,7 @@ function Update-ZNMfaOutboundPolicy {
         try {
             #Handle Get
             $policyId = $PSBoundParameters['ReactivePolicyId'].ToString()
-            $policy = ZN.Api\Get-ZNMfaOutboundPolicy -ReactivePolicyId $policyId
+            $policy = ZeroNetworks\Get-ZNMfaOutboundPolicy -ReactivePolicyId $policyId
 
             $updatedPolicy = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyOutboundBody]::new()
             
@@ -177,6 +195,24 @@ function Update-ZNMfaOutboundPolicy {
             
             #$updatedPolicy.DstProcessNames = $policy.ItemDstProcessNames
 
+            if($PSBoundParameters['ExcludedSrcEntityInfos']){
+                $updatedPolicy.ExcludedSrcEntityInfos = $PSBoundParameters['ExcludedSrcEntityInfos']
+                $null = $PSBoundParameters.Remove('ExcludedSrcEntityInfos')
+            }
+            else{
+                $updatedPolicy.ExcludedSrcEntityInfos = $policy.ItemExcludedSrcEntityInfos
+                $null = $PSBoundParameters.Remove('ExcludedSrcEntityInfos')
+            }
+
+            if($PSBoundParameters['ExcludedSrcProcesses']){
+                $updatedPolicy.ExcludedSrcProcesses = $PSBoundParameters['ExcludedSrcProcesses']
+                $null = $PSBoundParameters.Remove('ExcludedSrcProcesses')
+            }
+            else{
+                $updatedPolicy.ExcludedSrcProcesses = $policy.ItemExcludedSrcProcesses
+                $null = $PSBoundParameters.Remove('ExcludedSrcProcesses')
+            }
+        
             if($PSBoundParameters['FallbackToLoggedOnUser']){
                 $updatedPolicy.FallbackToLoggedOnUser = $PSBoundParameters['FallbackToLoggedOnUser']
                 $null = $PSBoundParameters.Remove('FallbackToLoggedOnUser')
@@ -195,6 +231,15 @@ function Update-ZNMfaOutboundPolicy {
                 $null = $PSBoundParameters.Remove('MfaMethods')
             }      
         
+            if($PSBoundParameters['OverrideBuiltins']){
+                $updatedPolicy.OverrideBuiltins = $PSBoundParameters['OverrideBuiltins']
+                $null = $PSBoundParameters.Remove('OverrideBuiltins')
+            }
+            else{
+                $updatedPolicy.OverrideBuiltins = $policy.ItemOverrideBuiltins
+                $null = $PSBoundParameters.Remove('OverrideBuiltins')
+            }
+            
             if($PSBoundParameters['ProtocolType']){
                 $updatedPolicy.ProtocolType = $PSBoundParameters['ProtocolType']
                 $null = $PSBoundParameters.Remove('ProtocolType')
@@ -257,9 +302,9 @@ function Update-ZNMfaOutboundPolicy {
                 $updatedPolicy.Description = $policy.ItemDescription
                 $null = $PSBoundParameters.Remove('Description')
             }
-            
+            Write-Debug $updatedPolicy | Out-String
             $null = $PSBoundParameters.Add('Body', $updatedPolicy)
-            ZN.Api.internal\Update-ZNMfaOutboundPolicy @PSBoundParameters
+            ZeroNetworks.internal\Update-ZNMfaOutboundPolicy @PSBoundParameters
         }
         catch {
             throw

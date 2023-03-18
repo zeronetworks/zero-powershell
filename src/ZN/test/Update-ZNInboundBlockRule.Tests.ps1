@@ -15,7 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNInboundBlockRule'))
 }
 
 Describe 'Update-ZNInboundBlockRule' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        [string]$ports = Get-Random -Minimum 1 -Maximum 65000
+        $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
+        $source = Invoke-ZNEncodeEntityIP -Ip 1.1.1.1
+        $destination = (Get-ZNInboundAllowRulesDestinationCandidate -Search "all protected assets").Items
+        $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
+        $rule = New-ZNInboundBlockRule -LocalEntityId $destination.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source) -State 1 -ExpiresAt $expiresAt
+        
+        $newdescription = "new description " + (Get-Random -Minimum 1 -Maximum 100)
+        $updatedRule = Update-ZNInboundBlockRule -RuleId $rule.ItemId -Description $newdescription
+        $updatedRule.ItemDescription | Should -Be $newdescription
     }
 }

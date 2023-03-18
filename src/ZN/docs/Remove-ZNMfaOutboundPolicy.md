@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/remove-znmfaoutboundpolicy
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/remove-znmfaoutboundpolicy
 schema: 2.0.0
 ---
 
@@ -21,13 +21,12 @@ Returns an empty object.
 
 ## EXAMPLES
 
-### Example 1: Remove an outbound MFA Policy
+### Example 1: Delete outbound MFA policy
 ```powershell
-$policy = Get-ZNMfaOutboundPolicy | where {$_.Description -eq "Test Policy"}
-Remove-ZNMfaOutboundPolicy -ReactivePolicyId $policy.Id
+Remove-ZNMfaOutboundPolicy -ReactivePolicyId 18936df5-e654-46d3-8106-4af3e59e9fff
 ```
 
-This cmdlet deletes an outbound MFA policy from the environment.
+This cmdlet deletes an outbound MFA policy.
 
 ## PARAMETERS
 

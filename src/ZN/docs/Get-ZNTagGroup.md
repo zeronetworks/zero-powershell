@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/get-zntaggroup
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/get-zntaggroup
 schema: 2.0.0
 ---
 

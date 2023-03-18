@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAdGroup'))
 }
 
 Describe 'Get-ZNAdGroup' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        (Get-ZNAdGroup).Count | Should -BeGreaterThan 0
     }
 }

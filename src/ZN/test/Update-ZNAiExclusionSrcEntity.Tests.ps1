@@ -16,6 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNAiExclusionSrcEntity
 
 Describe 'Update-ZNAiExclusionSrcEntity' {
     It 'Set' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $asset = (Get-ZNAsset).Items | where {$_.ProtectionState -eq 3} | select -first 1
+        
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/remove-zncustomgroup
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/remove-zncustomgroup
 schema: 2.0.0
 ---
 
@@ -23,10 +23,14 @@ Returns an empty object.
 
 ### Example 1: Delete a custom group
 ```powershell
-Remove-ZNCustomGroup -GroupId "g:c:h8I6V0TB"
+Remove-ZNCustomGroup -GroupId g:c:Ie1pSYgt
 ```
 
-This cmdlet will delete a custom group from the environment.
+```output
+{{ Add output here }}
+```
+
+This cmdlet deletes a custom group.
 
 ## PARAMETERS
 

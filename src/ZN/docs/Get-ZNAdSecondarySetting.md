@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/get-znadsecondarysetting
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/get-znadsecondarysetting
 schema: 2.0.0
 ---
 
@@ -45,7 +45,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsAdInfo
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsAdSecondary
 
 ## NOTES
 

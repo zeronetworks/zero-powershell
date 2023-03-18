@@ -16,6 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNCustomGroup'))
 
 Describe 'Update-ZNCustomGroup' {
     It 'UpdateExpanded' -skip {
+        $random = Get-Random -Minimum 1 -Maximum 100
+        $cGroup = Get-ZNCustomGroup | select -first 1
+        $updateCGroup = Update-ZNCustomGroup -GroupId $cGroup.Id -Description ("newdescription$random")
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

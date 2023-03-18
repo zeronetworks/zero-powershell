@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/update-znactivitiessetting
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/update-znactivitiessetting
 schema: 2.0.0
 ---
 
@@ -13,8 +13,7 @@ Update the Activities settings in Data Collection
 ## SYNTAX
 
 ```
-Update-ZNActivitiesSetting -PrivateNetworksList <String[]> -ShouldFilterExternalTraffic [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNActivitiesSetting -ShouldFilterExternalTraffic [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,21 +29,6 @@ Update-ZNActivitiesSetting -ShouldFilterExternalTraffic:$false
 This cmdlet allows changing the Activities setting under data collection.
 
 ## PARAMETERS
-
-### -PrivateNetworksList
-Collection of IP subnets that are internal
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ShouldFilterExternalTraffic
 Disable/Enable external traffic collection

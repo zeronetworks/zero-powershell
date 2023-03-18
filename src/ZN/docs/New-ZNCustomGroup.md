@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/new-zncustomgroup
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/new-zncustomgroup
 schema: 2.0.0
 ---
 
@@ -115,7 +115,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
+### System.String
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

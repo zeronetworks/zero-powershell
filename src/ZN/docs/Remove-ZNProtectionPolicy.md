@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/remove-znprotectionpolicy
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/remove-znprotectionpolicy
 schema: 2.0.0
 ---
 
@@ -21,12 +21,12 @@ Returns and empty object.
 
 ## EXAMPLES
 
-### Example 1: Remove a protection policy
+### Example 1: Delete a protection policy
 ```powershell
-Remove-ZNProtectionPolicy -ProtectionPolicyId "25b60e5f-3201-48b0-8f04-3df5eb4e2948"
+Remove-ZNProtectionPolicy -ProtectionPolicyId dad21429-f3ed-4a8a-a407-cae69cffc367
 ```
 
-This cmdlet deletes a protection policy from the environment.
+This cmdlet deletes a protection policy.
 
 ## PARAMETERS
 

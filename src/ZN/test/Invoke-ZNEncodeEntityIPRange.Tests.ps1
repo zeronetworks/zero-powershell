@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNEncodeEntityIPRange'
 }
 
 Describe 'Invoke-ZNEncodeEntityIPRange' {
-    It 'Encode' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Encode' {
+        { Invoke-ZNEncodeEntityIPRange -IPRange 1.1.1.1-1.1.1.2 } | Should -Not -Be $null
     }
 }

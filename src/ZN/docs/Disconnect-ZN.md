@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/disconnect-zn
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/disconnect-zn
 schema: 2.0.0
 ---
 
@@ -20,7 +20,7 @@ Disconnect-ZN [-Confirm] [-WhatIf] [<CommonParameters>]
 Logout of Zero Networks
 
 #.Link
-https://github.com/zeronetworks/zn.api/Disconnect-zn
+https://github.com/zeronetworks/zero-powershell/Disconnect-zn
 
 ## EXAMPLES
 

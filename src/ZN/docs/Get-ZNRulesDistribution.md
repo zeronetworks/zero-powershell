@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/get-znrulesdistribution
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/get-znrulesdistribution
 schema: 2.0.0
 ---
 

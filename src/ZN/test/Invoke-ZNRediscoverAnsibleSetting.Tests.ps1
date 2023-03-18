@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNRediscoverAnsibleSet
 }
 
 Describe 'Invoke-ZNRediscoverAnsibleSetting' {
-    It 'Rediscover' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Rediscover' {
+        { Invoke-ZNRediscoverAnsibleSetting } | Should -Not -Throw
     }
 }

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNAdSecondarySetting')
 }
 
 Describe 'Update-ZNAdSecondarySetting' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { Update-ZNAdSecondarySetting -DomainId "child.posh.local" -Dc "newdc.child.posh.local"  } | Should -Not -Throw
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/remove-znidpsetting
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/remove-znidpsetting
 schema: 2.0.0
 ---
 
@@ -21,12 +21,12 @@ Returns an empty reponse.
 
 ## EXAMPLES
 
-### Example 1: Delete an Identity Provider Setting
+### Example 1: Delete identity provider
 ```powershell
-Remove-ZNIdpSetting -IdentityProviderId azure
+Remove-ZNIdpSetting -IdentityProviderId "azure"
 ```
 
-This cmdlet deletes an Identity Provider setting under Integrations.
+This cmdlet removes an identity provider from Settings.
 
 ## PARAMETERS
 

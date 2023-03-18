@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/remove-zncustomgroupsmember
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/remove-zncustomgroupsmember
 schema: 2.0.0
 ---
 
@@ -20,12 +20,6 @@ Remove-ZNCustomGroupsMember -GroupId <String> -MembersId <String[]> [-Confirm] [
 ### Delete
 ```
 Remove-ZNCustomGroupsMember -GroupId <String> -Body <ICustomGroupMembersBody> [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DeleteViaIdentityExpanded
-```
-Remove-ZNCustomGroupsMember -InputObject <IApiIdentity> -MembersId <String[]> [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -64,7 +58,7 @@ groupId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -74,28 +68,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IApiIdentity
-Parameter Sets: DeleteViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -MembersId
 members id
 
 ```yaml
 Type: System.String[]
-Parameter Sets: DeleteExpanded, DeleteViaIdentityExpanded
+Parameter Sets: DeleteExpanded
 Aliases:
 
 Required: True
@@ -141,8 +119,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IApiIdentity
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ICustomGroupMembersBody
 
 ## OUTPUTS
@@ -162,19 +138,6 @@ To create the parameters described below, construct a hash table containing the 
 
 `BODY <ICustomGroupMembersBody>`: .
   - `MembersId <String[]>`: members id
-
-`INPUTOBJECT <IApiIdentity>`: Identity Parameter
-  - `[AssetId <String>]`: assetId to filter on
-  - `[ClientId <String>]`: clientId to filter on
-  - `[DomainId <String>]`: The fqdn of the domain
-  - `[ExportId <String>]`: exportId to download
-  - `[GroupId <String>]`: groupId to filter on
-  - `[IdentityProviderId <String>]`: Identity provider Id
-  - `[ProtectionPolicyId <String>]`: The id of the protection policy
-  - `[ReactivePolicyId <String>]`: The id of the MFA policy
-  - `[RoleEntityId <String>]`: The id of the user
-  - `[RuleId <String>]`: The id of the rule
-  - `[UserId <String>]`: userId to filter on
 
 ## RELATED LINKS
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/get-zngroup
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/get-zngroup
 schema: 2.0.0
 ---
 
@@ -19,7 +19,7 @@ Get-ZNGroup [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Search <Str
 
 ### Get
 ```
-Get-ZNGroup -GroupId <String> [<CommonParameters>]
+Get-ZNGroup -GroupId <String> -GroupType <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,6 +102,21 @@ Accept wildcard characters: False
 
 ### -GroupId
 groupId to filter on
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GroupType
+group type to filter on
 
 ```yaml
 Type: System.String

@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# ZN.Api
+# ZeroNetworks
 This directory contains the PowerShell module for the Api service.
 
 ---
 ## Status
-[![ZN.Api](https://img.shields.io/powershellgallery/v/ZN.Api.svg?style=flat-square&label=ZN.Api "ZN.Api")](https://www.powershellgallery.com/packages/ZN.Api/)
+[![ZeroNetworks](https://img.shields.io/powershellgallery/v/ZeroNetworks.svg?style=flat-square&label=ZeroNetworks "ZeroNetworks")](https://www.powershellgallery.com/packages/ZeroNetworks/)
 
 ## Info
 - Modifiable: yes
@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Api service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Development
-For information on how to develop for `ZN.Api`, see [how-to.md](how-to.md).
+For information on how to develop for `ZeroNetworks`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ### AutoRest Configuration
@@ -32,8 +32,8 @@ require:
 input-file:
   - $(this-folder)/../openapi.yaml
 
-module-version: 0.0.4-preview
-title: API
+module-version: 0.0.5-preview
+title: Api
   
 inlining-threshold: 50
 
@@ -315,7 +315,7 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Add$|^AddViaIdentity$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Put$|^PutViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^Add$|^AddViaIdentity$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DeleteViaIdentityExpanded$|^Put$|^PutViaIdentity$|^Protect$|^Update$|^UpdateViaIdentity$
     hide: true
   # Customize
   # Remove the export cmdlets

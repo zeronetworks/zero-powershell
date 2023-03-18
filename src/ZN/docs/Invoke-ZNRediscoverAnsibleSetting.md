@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/invoke-znrediscoveransiblesetting
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/invoke-znrediscoveransiblesetting
 schema: 2.0.0
 ---
 

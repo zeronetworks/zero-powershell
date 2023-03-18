@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworks/zn.api/update-zncustomgroup
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworks/zero-powershell/update-zncustomgroup
 schema: 2.0.0
 ---
 

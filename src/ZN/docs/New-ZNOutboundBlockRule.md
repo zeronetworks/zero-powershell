@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/new-znoutboundblockrule
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/new-znoutboundblockrule
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Returns the properties of the created outbound block rule.
 ```
 New-ZNOutboundBlockRule -LocalEntityId <String> -LocalProcessesList <String[]> -PortsList <IPortsListItem[]>
  -RemoteEntityIdsList <String[]> -State <Int32> [-Description <String>] [-ExcludedLocalIdsList <String[]>]
- [-ExpiresAt <Int32>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ExpiresAt <Int64>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.Int32
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 

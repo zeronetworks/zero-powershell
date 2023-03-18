@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAdSecondarySetting'))
 }
 
 Describe 'Get-ZNAdSecondarySetting' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        (Get-ZNAdSecondarySetting).Count | Should -BeGreaterThan 0
     }
 }

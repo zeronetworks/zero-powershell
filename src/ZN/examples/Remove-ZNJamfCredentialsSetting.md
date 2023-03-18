@@ -7,4 +7,4 @@ Remove-ZNJamfCredentialsSetting
 
 ```
 
-This cmdlet deletes the JAMF setting under Asset Management.
+This cmdlet deletes the JAMF credential setting under Asset Management.

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNTrustServer'))
 }
 
 Describe 'Get-ZNTrustServer' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-ZNTrustServer } | Should -Not -Be $null
     }
 }

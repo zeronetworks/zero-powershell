@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNAdSecondarySetting')
 }
 
 Describe 'Remove-ZNAdSecondarySetting' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { Remove-ZNAdSecondarySetting -DomainId "child2.posh.local" } | Should -Not -Throw
     }
 }

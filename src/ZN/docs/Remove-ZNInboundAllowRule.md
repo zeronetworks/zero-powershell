@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/remove-zninboundallowrule
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/remove-zninboundallowrule
 schema: 2.0.0
 ---
 
@@ -21,13 +21,12 @@ Returns an empty object.
 
 ## EXAMPLES
 
-### Example 1: Remove an inbound allow rule
+### Example 1: Delete inbound allow rule
 ```powershell
-$rule = Get-ZNInboundAllowRule | where {$_.Description -eq "Test Rule A"}
-Remove-ZNInboundAllowRule -RuleId $rule.Id
+Remove-ZNInboundAllowRule -RuleId 4dee3e02-0bb0-4f48-8daa-751d38afd0ac
 ```
 
-This cmdlet deletes an inbound allow rule from the environment.
+This cmdlet deletes and inbound allow rule.
 
 ## PARAMETERS
 

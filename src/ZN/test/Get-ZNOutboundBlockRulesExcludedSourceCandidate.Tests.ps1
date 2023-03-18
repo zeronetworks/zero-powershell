@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNOutboundBlockRulesExclu
 }
 
 Describe 'Get-ZNOutboundBlockRulesExcludedSourceCandidate' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { (Get-ZNOutboundBlockRulesExcludedSourceCandidate).Items } | Should -Not -be $null
     }
 }

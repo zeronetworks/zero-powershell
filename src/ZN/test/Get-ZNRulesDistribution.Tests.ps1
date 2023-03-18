@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNRulesDistribution'))
 }
 
 Describe 'Get-ZNRulesDistribution' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $rule = Get-ZNInboundAllowRule | select -First 1
+        { Get-ZNRulesDistribution -RuleId $rule.Id -RuleDirection $rule.Direction } | Should -Not -be $null
     }
 }

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAiExclusionNetworkBoth'
 }
 
 Describe 'Get-ZNAiExclusionNetworkBoth' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        Get-ZNAiExclusionNetworkBoth | Should -Not -Be $null
     }
 }

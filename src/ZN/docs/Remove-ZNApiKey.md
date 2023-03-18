@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: ZN.Api
-online version: https://github.com/zeronetworkszn.api/remove-znapikey
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworkszeronetworks/remove-znapikey
 schema: 2.0.0
 ---
 
@@ -20,7 +20,7 @@ Remove-ZNApiKey [-Confirm] [-WhatIf] [<CommonParameters>]
 Deletes the API Key
 
 #.Link
-https://github.com/zeronetworks/zn.api/remove-znapikey
+https://github.com/zeronetworks/zero-powershell/remove-znapikey
 
 ## EXAMPLES
 

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAiNextBatch'))
 }
 
 Describe 'Get-ZNAiNextBatch' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+       { Get-ZNAiNextBatch }| Should -Not -Be $null
     }
 }

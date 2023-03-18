@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNProtectionPolicy'))
 }
 
 Describe 'Remove-ZNProtectionPolicy' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        $group = Get-ZNADGroup -Search "Domain Admins"
+        $protectionPolicy = New-ZNProtectionPolicy -GroupId $group.Id -MinQueueDays 30 -InitialQueueDays 30
+        $protectionPolicy.ItemId
+        { Remove-ZNProtectionPolicy -ProtectionPolicyId $protectionPolicy.ItemId } | Should -Not -Throw
     }
 }

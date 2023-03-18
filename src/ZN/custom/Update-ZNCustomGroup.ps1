@@ -5,7 +5,7 @@ Updates a custom group properties.
 Updates a custom group properties.
 
 .Link
-https://github.com/zeronetworks/zn.api/update-zncustomgroup
+https://github.com/zeronetworks/zero-powershell/update-zncustomgroup
 #>
 function Update-ZNCustomGroup {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.Group])]
@@ -85,8 +85,8 @@ function Update-ZNCustomGroup {
         try {
             #Handle Get
             $groupId = $PSBoundParameters['GroupId'].ToString()
-            $customGroup = ZN.Api\Get-ZNGroup -GroupId $groupId     
-            $customGroupMembers = ZN.Api\Get-ZNGroupsMember -GroupId $groupId -IncludeNestedMembers:$false
+            $customGroup = ZeroNetworks\Get-ZNGroup -GroupId $groupId -GroupType "Custom"
+            $customGroupMembers = ZeroNetworks\Get-ZNGroupsMember -GroupId $groupId -IncludeNestedMembers:$false -GroupType "Custom"
 
 
             $updatedCustomGroup = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.CustomGroupBody]::new()
@@ -114,9 +114,9 @@ function Update-ZNCustomGroup {
                 $MembersId += $member.Id
             }
             $updatedCustomGroup.MembersId = $MembersId
-
+            Write-Debug $updatedCustomGroup | Out-String
             $null = $PSBoundParameters.Add('Body', $updatedCustomGroup)
-            ZN.Api.internal\Update-ZNCustomGroup @PSBoundParameters
+            ZeroNetworks.internal\Update-ZNCustomGroup @PSBoundParameters
         }
         catch {
             throw
