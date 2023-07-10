@@ -12,14 +12,8 @@ Returns and empty object.
 
 ## SYNTAX
 
-### QueueExpanded (Default)
 ```
-Invoke-ZNQueueAsset [-Items <String[]>] [-QueueDays <Int32>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Queue
-```
-Invoke-ZNQueueAsset -Body <IQueueBody> [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-ZNQueueAsset -Items <String[]> -QueueDays <Int32> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,40 +21,29 @@ Returns and empty object.
 
 ## EXAMPLES
 
-### Example 1: Move an asset into learning
+### Example 1: Add an asset to learning
 ```powershell
-Invoke-ZNQueueAsset -Items @((Search-ZNAsset -Fqdn fs1.zero.labs)) -QueueDays 14
+$assetId = Search-ZNAsset -Fqdn ls01.posh.local
+Invoke-ZNQueueAsset -QueueDays 14 -Items @($assetId)
 ```
 
-This cmdlet will extend the learning time of an asset in the environment.
+```output
+
+```
+
+This cmdlet adds an asset to learning.
 
 ## PARAMETERS
-
-### -Body
-.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IQueueBody
-Parameter Sets: Queue
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -Items
 .
 
 ```yaml
 Type: System.String[]
-Parameter Sets: QueueExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -72,10 +55,10 @@ number of days
 
 ```yaml
 Type: System.Int32
-Parameter Sets: QueueExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -118,8 +101,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IQueueBody
-
 ## OUTPUTS
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
@@ -129,15 +110,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <IQueueBody>`: .
-  - `[Items <String[]>]`: 
-  - `[QueueDays <Int32?>]`: number of days
 
 ## RELATED LINKS
 

@@ -42,8 +42,8 @@ CreatedAt            : 2022-03-29T13:44:21.202Z
 CreatedBy            : 1f352ed0-86f1-454f-90a5-592c197c8000
 IdentityProviderType : azure
 IsDefault            : False
-SloUrl               : https://login.microsoftonline.com/<tenantGuid>/saml2
-SsoUrl               : https://login.microsoftonline.com/<tenantGuid>/saml2
+SloUrl               : https://login.microsoftonline.com/\<tenantGuid\>/saml2
+SsoUrl               : https://login.microsoftonline.com/\<tenantGuid\>/saml2
 UpdatedAt            : 2022-03-29T13:44:21.202Z
 UpdatedBy            : 1f352ed0-86f1-454f-90a5-592c197c8000
 

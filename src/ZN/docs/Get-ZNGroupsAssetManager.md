@@ -22,27 +22,18 @@ Get asset managers of group
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List asset managers for a group
 ```powershell
-{{ Add code here }}
+Get-ZNGroupsAssetManager -Groupid g:t:01445453 -GroupType tag
 ```
 
 ```output
-{{ Add output here }}
+ManagerId    Relation
+---------    --------
+g:a:cai6Wuyd 1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet lists the asset managers for a group.
 
 ## PARAMETERS
 

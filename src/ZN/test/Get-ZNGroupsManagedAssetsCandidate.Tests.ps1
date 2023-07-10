@@ -12,7 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-ZNGroupsManagedAssetsCandidate' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $group = Get-ZNGroup -Search clients
+        (Get-ZNGroupsManagedAssetsCandidate -GroupId $group.id -GroupType system).Items | Should -Not -Be $null
     }
 }

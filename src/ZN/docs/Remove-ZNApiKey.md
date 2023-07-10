@@ -29,6 +29,10 @@ https://github.com/zeronetworks/zero-powershell/remove-znapikey
 Remove-ZNApiKey
 ```
 
+```output
+
+```
+
 This cmdlet will delete the api key.
 
 ## PARAMETERS

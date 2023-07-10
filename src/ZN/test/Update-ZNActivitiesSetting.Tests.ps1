@@ -19,10 +19,11 @@ Describe 'Update-ZNActivitiesSetting' {
         $setting = Get-ZNActivitiesSetting
         if($setting -eq $true){
             $newsetting = $false
-        }
-        else{
+        }else{
             $newsetting = $true
         }
-        { Update-ZNActivitiesSetting -ShouldFilterExternalTraffic:$newsetting } | Should -Not -Throw
+        Update-ZNActivitiesSetting -ShouldFilterExternalTraffic:$newsetting
+        $updatedSetting = Get-ZNActivitiesSetting
+        $updatedSetting | Should -Be $newsetting
     }
 }

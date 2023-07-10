@@ -28,7 +28,6 @@ Returns the properties of Firewall settings.
 
 ```
 
-```output
 True
 ```
 

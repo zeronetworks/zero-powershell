@@ -13,7 +13,7 @@ Returns and empty object.
 ## SYNTAX
 
 ```
-Remove-ZNProtectionPolicy -ProtectionPolicyId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNProtectionPolicy -ProtectionPolicyId <String> [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,9 +26,28 @@ Returns and empty object.
 Remove-ZNProtectionPolicy -ProtectionPolicyId dad21429-f3ed-4a8a-a407-cae69cffc367
 ```
 
+```output
+
+```
+
 This cmdlet deletes a protection policy.
 
 ## PARAMETERS
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ProtectionPolicyId
 The id of the protection policy
@@ -82,8 +101,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
-
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

@@ -30,5 +30,6 @@ Describe 'Update-ZNMfaOutboundPolicy' {
         $newdescription = "new description " + (Get-Random -Minimum 1 -Maximum 100)
         $updatedPolicy = Update-ZNMfaOutboundPolicy -ReactivePolicyId $policy.ItemId -Description $newdescription
         $updatedPolicy.ItemDescription | Should -Be $newdescription
+        Remove-ZNMfaInboundPolicy -ReactivePolicyId $policy.ItemId
     }
 }

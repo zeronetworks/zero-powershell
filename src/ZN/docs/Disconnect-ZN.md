@@ -29,6 +29,10 @@ https://github.com/zeronetworks/zero-powershell/Disconnect-zn
 Disconnect-ZN 
 ```
 
+```output
+
+```
+
 This cmdlet logs out of Zero Networks
 
 ## PARAMETERS

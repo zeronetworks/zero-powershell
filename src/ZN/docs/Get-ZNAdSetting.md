@@ -45,7 +45,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsAdInfo
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsAdForest
 
 ## NOTES
 

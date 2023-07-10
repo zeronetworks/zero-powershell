@@ -24,8 +24,8 @@ Get manager candidates for asset managers
 
 ### Example 1:  List asset manager candidates
 ```powershell
-PS C:\> $asset = Search-ZNAsset -Fqdn "DC01.posh.local"
-PS C:\> (Get-ZNAssetsAssetManagersCandidate -AssetId $asset).Items
+$asset = Search-ZNAsset -Fqdn "DC01.posh.local"
+(Get-ZNAssetsAssetManagersCandidate -AssetId $asset).Items
 ```
 
 ```output

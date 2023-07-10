@@ -19,5 +19,6 @@ Describe 'New-ZNProtectionPolicy' {
         $group = Get-ZNADGroup -Search "Domain Controllers" | where {$_.Name -eq "Domain Controllers"}
         $protectionPolicy = New-ZNProtectionPolicy -GroupId $group.Id -MinQueueDays 30 -InitialQueueDays 30
         $protectionPolicy.ItemId | Should -Not -Be $null
+        Remove-ZNProtectionPolicy -ProtectionPolicyId $protectionPolicy.ItemId
     }
 }

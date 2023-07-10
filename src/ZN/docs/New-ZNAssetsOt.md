@@ -26,6 +26,10 @@ Returns an empty object.
 New-ZNAssetsOt -DisplayName webcam2 -Ipv4 "192.168.10.30" -Type 4 
 ```
 
+```output
+
+```
+
 This cmdlet will create an OT/IoT asset in the environment.
 Support Asset Types:
 4 = IP Camera

@@ -1,11 +1,11 @@
-### Example 1: Update OT/IoT Asset
+### Example 1: {{ Add title here }}
 ```powershell
-Update-ZNAssetsOt -AssetId "a:t:oOkjcyED" -DisplayName "switcho2" -Debug
+$id = 'a:t:OeG7qsVV'
+Update-ZNAssetsOt -AssetId $Id -DisplayName 'NewName' -Type 4
 ```
 
 ```output
 
 ```
 
-This cmdlet updates the OT/IoT DisplayName or type.
-
+This cmdlet updates and OT asset.

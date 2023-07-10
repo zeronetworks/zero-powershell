@@ -14,8 +14,8 @@ Returns the properties of an outbound block rule.
 
 ### List (Default)
 ```
-Get-ZNOutboundBlockRule [-EntityParams <String>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>]
- [<CommonParameters>]
+Get-ZNOutboundBlockRule [-AddAncestors] [-AddBuiltins] [-EntityParams <String>] [-Filters <String>]
+ [-Limit <Int32>] [-Offset <Int32>] [-WithCount] [<CommonParameters>]
 ```
 
 ### Get
@@ -76,6 +76,36 @@ UpdatedByName              : MS Sentinel Integration
 Get a specific outbound block rule.
 
 ## PARAMETERS
+
+### -AddAncestors
+show rules where the asset is part of a group
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: $true
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AddBuiltins
+show global rules
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -EntityParams
 JSON string URI encoded object {id: string, direction: AssetDirection}
@@ -146,6 +176,21 @@ Parameter Sets: Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WithCount
+return count of objects
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

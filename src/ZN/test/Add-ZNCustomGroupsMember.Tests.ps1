@@ -15,7 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-ZNCustomGroupsMember'))
 }
 
 Describe 'Add-ZNCustomGroupsMember' {
-    It 'AddExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'AddExpanded' {
+        New-ZNCustomGroup -Name "AddMemberTest"
+        $customGroup = Get-ZNCustomGroup -Search AddMemberTest
+        $member = Search-ZNAsset -Fqdn linux0.posh.local
+        Add-ZNCustomGroupsMember -GroupId $customGroup.Id -MembersId $member
+        $updatedcustomGroup = Get-ZNCustomGroup -Search AddMemberTest
+        (Get-ZNGroupsMember -GroupId $customGroup.id -GroupType custom -IncludeNestedMembers).Entities[0].id | Should -Be $member
+        Remove-ZNCustomGroup -GroupId $customGroup.Id
     }
 }

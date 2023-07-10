@@ -23,17 +23,72 @@ Add an asset manager of a group
 ### [Add-ZNGroupsManagedAsset](Add-ZNGroupsManagedAsset.md)
 Add a managed assets for group
 
-### [Add-ZNSettingsAssetManager](Add-ZNSettingsAssetManager.md)
-Add asset manager to entity.
-
 ### [Add-ZNUsersManagedAsset](Add-ZNUsersManagedAsset.md)
 Add a managed assets for user
 
+### [Approve-ZNAssetsInboundAllowRuleReview](Approve-ZNAssetsInboundAllowRuleReview.md)
+Approve a "pending review" rule with or without changes
+
+### [Approve-ZNAssetsInboundBlockRuleReview](Approve-ZNAssetsInboundBlockRuleReview.md)
+Approve a "pending review" rule with or without changes
+
+### [Approve-ZNAssetsOutboundAllowRuleReview](Approve-ZNAssetsOutboundAllowRuleReview.md)
+Approve a "pending review" rule with or without changes
+
+### [Approve-ZNAssetsOutboundBlockRuleReview](Approve-ZNAssetsOutboundBlockRuleReview.md)
+Approve a "pending review" rule with or without changes
+
+### [Approve-ZNInboundAllowRuleReview](Approve-ZNInboundAllowRuleReview.md)
+Approve a "pending review" rule with or without changes
+
+### [Approve-ZNInboundBlockRuleReview](Approve-ZNInboundBlockRuleReview.md)
+Approve a "pending review" rule with or without changes
+
+### [Approve-ZNOutboundAllowRuleReview](Approve-ZNOutboundAllowRuleReview.md)
+Approve a "pending review" rule with or without changes
+
+### [Approve-ZNOutboundBlockRuleReview](Approve-ZNOutboundBlockRuleReview.md)
+Approve a "pending review" rule with or without changes
+
 ### [Connect-ZN](Connect-ZN.md)
-Login to Zero Networks to get a token for cmdlet use
+Login to Zero Networks to get a token for cmdlet use.
+NOTE: If your environment has a IdP set for default authentication, you cannot use this cmdlet and will need to use Set-ZNApiKey cmdlet using an API token.
+
+#.Link
+https://github.com/zeronetworks/zero-powershell/connect-zn
+
+### [Deny-ZNAssetsInboundAllowRuleReview](Deny-ZNAssetsInboundAllowRuleReview.md)
+Reject a "pending review" rule
+
+### [Deny-ZNAssetsInboundBlockRuleReview](Deny-ZNAssetsInboundBlockRuleReview.md)
+Reject a "pending review" rule
+
+### [Deny-ZNAssetsOutboundAllowRuleReview](Deny-ZNAssetsOutboundAllowRuleReview.md)
+Reject a "pending review" rule
+
+### [Deny-ZNAssetsOutboundBlockRuleReview](Deny-ZNAssetsOutboundBlockRuleReview.md)
+Reject a "pending review" rule
+
+### [Deny-ZNInboundAllowRuleReview](Deny-ZNInboundAllowRuleReview.md)
+Reject a "pending review" rule
+
+### [Deny-ZNInboundBlockRuleReview](Deny-ZNInboundBlockRuleReview.md)
+Reject a "pending review" rule
+
+### [Deny-ZNOutboundAllowRuleReview](Deny-ZNOutboundAllowRuleReview.md)
+Reject a "pending review" rule
+
+### [Deny-ZNOutboundBlockRuleReview](Deny-ZNOutboundBlockRuleReview.md)
+Reject a "pending review" rule
 
 ### [Disconnect-ZN](Disconnect-ZN.md)
 Logout of Zero Networks
+
+#.Link
+https://github.com/zeronetworks/zero-powershell/Disconnect-zn
+
+### [Get-ZNAadSetting](Get-ZNAadSetting.md)
+Get Azure AD Settings
 
 ### [Get-ZNActivitiesSetting](Get-ZNActivitiesSetting.md)
 Get Activities settings in Data Collection
@@ -41,11 +96,14 @@ Get Activities settings in Data Collection
 ### [Get-ZNAdGroup](Get-ZNAdGroup.md)
 Returns a list of AD groups.
 
-### [Get-ZNAdSecondarySetting](Get-ZNAdSecondarySetting.md)
-List the secondary AD settings in Asset Managment
-
 ### [Get-ZNAdSetting](Get-ZNAdSetting.md)
 Get the AD settings in Asset Managment
+
+### [Get-ZNAdSettingsAutomationGroupsMonitoredCandidate](Get-ZNAdSettingsAutomationGroupsMonitoredCandidate.md)
+Get AD Candidates for monitoring in Asset Management
+
+### [Get-ZNAdSettingsAutomationGroupsProtectedCandidate](Get-ZNAdSettingsAutomationGroupsProtectedCandidate.md)
+Get AD Candidates for protection in Asset Management
 
 ### [Get-ZNAiExclusionNetworkBoth](Get-ZNAiExclusionNetworkBoth.md)
 Get AI network exclusion for clients and servers: lists of tcp/udp ports / ports ranges + boolean for icmp protocol, and a list of processes to ignore during learning.
@@ -58,6 +116,9 @@ Get AI network exclusion for servers: lists of tcp/udp ports / ports ranges + bo
 
 ### [Get-ZNAiExclusionSourceEntity](Get-ZNAiExclusionSourceEntity.md)
 Get AI source entities to ignore during learning.
+
+### [Get-ZNAiGroup](Get-ZNAiGroup.md)
+Returns a list of Ai Groups.
 
 ### [Get-ZNAiNextBatch](Get-ZNAiNextBatch.md)
 Returns a date in epoch(ms) for the next batch of AI rules.
@@ -83,11 +144,89 @@ Get manager candidates for asset managers
 ### [Get-ZNAssetsAudit](Get-ZNAssetsAudit.md)
 Returns a list of audits for the asset.
 
+### [Get-ZNAssetsInboundAllowRule](Get-ZNAssetsInboundAllowRule.md)
+Returns the properties of an Inbound Allow rule.
+
+### [Get-ZNAssetsInboundAllowRulesDestinationCandidate](Get-ZNAssetsInboundAllowRulesDestinationCandidate.md)
+Returns a list of destionation candidates for Inbound Allow rules.
+
+### [Get-ZNAssetsInboundAllowRulesExcludedDestinationCandidate](Get-ZNAssetsInboundAllowRulesExcludedDestinationCandidate.md)
+Returns a list of excluded destionation candidates for Inbound Allow rules.
+
+### [Get-ZNAssetsInboundAllowRulesSourceCandidate](Get-ZNAssetsInboundAllowRulesSourceCandidate.md)
+Returns a list of source candidates for Inbound Allow rules.
+
+### [Get-ZNAssetsInboundBlockRule](Get-ZNAssetsInboundBlockRule.md)
+Returns the properties of the Inbound Block rule.
+
+### [Get-ZNAssetsInboundBlockRulesDestinationCandidate](Get-ZNAssetsInboundBlockRulesDestinationCandidate.md)
+Returns a list of destination candidates for Inbound Block rules.
+
+### [Get-ZNAssetsInboundBlockRulesExcludedLocalCandidate](Get-ZNAssetsInboundBlockRulesExcludedLocalCandidate.md)
+Returns a list of excluded destination candidates for Inbound Block rules.
+
+### [Get-ZNAssetsInboundBlockRulesSourceCandidate](Get-ZNAssetsInboundBlockRulesSourceCandidate.md)
+Returns a list of source candidates for Inbound Block rules.
+
+### [Get-ZNAssetsMfaInboundPoliciesDestinationCandidate](Get-ZNAssetsMfaInboundPoliciesDestinationCandidate.md)
+Returns a list of candidates for the destionation of an inbound MFA policy.
+
+### [Get-ZNAssetsMfaInboundPoliciesMfamethod](Get-ZNAssetsMfaInboundPoliciesMfamethod.md)
+Returns a list of MFA methods for inbound MFA policies.
+
+### [Get-ZNAssetsMfaInboundPoliciesSourceCandidate](Get-ZNAssetsMfaInboundPoliciesSourceCandidate.md)
+Returns a list of source candidates on inbound MFA policies.
+
+### [Get-ZNAssetsMfaInboundPoliciesSourceUserCandidate](Get-ZNAssetsMfaInboundPoliciesSourceUserCandidate.md)
+Returns a list of source user candidates for inbound MFA policies.
+
+### [Get-ZNAssetsMfaInboundPolicy](Get-ZNAssetsMfaInboundPolicy.md)
+Returns a inbound MFA policy object.
+
+### [Get-ZNAssetsMfaOutboundPoliciesDestinationCandidate](Get-ZNAssetsMfaOutboundPoliciesDestinationCandidate.md)
+Returns a list of destination candidates on outbound MFA policies.
+
+### [Get-ZNAssetsMfaOutboundPoliciesMfamethod](Get-ZNAssetsMfaOutboundPoliciesMfamethod.md)
+Returns a list of MFA methods on outbound MFA policies.
+
+### [Get-ZNAssetsMfaOutboundPoliciesSourceCandidate](Get-ZNAssetsMfaOutboundPoliciesSourceCandidate.md)
+Returns a list of source candidates on outbound MFA policies.
+
+### [Get-ZNAssetsMfaOutboundPoliciesSourceUserCandidate](Get-ZNAssetsMfaOutboundPoliciesSourceUserCandidate.md)
+Returns a list of source users candidates on outbound MFA policies.
+
+### [Get-ZNAssetsMfaOutboundPolicy](Get-ZNAssetsMfaOutboundPolicy.md)
+Returns the properties of an outbound MFA policy.
+
 ### [Get-ZNAssetsMonitored](Get-ZNAssetsMonitored.md)
 Returns a list of assets that are monitored.
 
 ### [Get-ZNAssetsOt](Get-ZNAssetsOt.md)
 Returns a list of OT/IoT assets.
+
+### [Get-ZNAssetsOutboundAllowRule](Get-ZNAssetsOutboundAllowRule.md)
+Returns the properties of an Outbound Allow rule.
+
+### [Get-ZNAssetsOutboundAllowRulesDestinationCandidate](Get-ZNAssetsOutboundAllowRulesDestinationCandidate.md)
+Returns a list of destination candidates for Outbound Allow rules.
+
+### [Get-ZNAssetsOutboundAllowRulesExcludedSourceCandidate](Get-ZNAssetsOutboundAllowRulesExcludedSourceCandidate.md)
+Returns a list of excluded source candidates for Outbound Allow rules.
+
+### [Get-ZNAssetsOutboundAllowRulesSourceCandidate](Get-ZNAssetsOutboundAllowRulesSourceCandidate.md)
+Returns a list of source candidates for Outbound Allow rules.
+
+### [Get-ZNAssetsOutboundBlockRule](Get-ZNAssetsOutboundBlockRule.md)
+Returns the properties of an outbound block rule.
+
+### [Get-ZNAssetsOutboundBlockRulesDestinationCandidate](Get-ZNAssetsOutboundBlockRulesDestinationCandidate.md)
+Returns a list of destioantion candidates for outbound block rules.
+
+### [Get-ZNAssetsOutboundBlockRulesExcludedSourceCandidate](Get-ZNAssetsOutboundBlockRulesExcludedSourceCandidate.md)
+Returns a list of excluded source candidates for outbound block rules.
+
+### [Get-ZNAssetsOutboundBlockRulesSourceCandidate](Get-ZNAssetsOutboundBlockRulesSourceCandidate.md)
+Returns a list of source candidates for outbound block rules.
 
 ### [Get-ZNAssetsProtected](Get-ZNAssetsProtected.md)
 Returns a list of Protected assets.
@@ -191,6 +330,15 @@ Returns a list of candidates for the destionation of an inbound MFA policy.
 ### [Get-ZNMfaInboundPoliciesMfamethod](Get-ZNMfaInboundPoliciesMfamethod.md)
 Returns a list of MFA methods for inbound MFA policies.
 
+### [Get-ZNMfaInboundPoliciesSimulateDestinationCandidate](Get-ZNMfaInboundPoliciesSimulateDestinationCandidate.md)
+Returns a list of destination candidates on inbound MFA simulation.
+
+### [Get-ZNMfaInboundPoliciesSimulateSourceCandidate](Get-ZNMfaInboundPoliciesSimulateSourceCandidate.md)
+Returns a list of source candidates on inbound MFA simulation.
+
+### [Get-ZNMfaInboundPoliciesSimulateSourceUserCandidate](Get-ZNMfaInboundPoliciesSimulateSourceUserCandidate.md)
+Returns a list of source user candidates on inbound MFA simulation.
+
 ### [Get-ZNMfaInboundPoliciesSourceCandidate](Get-ZNMfaInboundPoliciesSourceCandidate.md)
 Returns a list of source candidates on inbound MFA policies.
 
@@ -206,6 +354,15 @@ Returns a list of destination candidates on outbound MFA policies.
 ### [Get-ZNMfaOutboundPoliciesMfamethod](Get-ZNMfaOutboundPoliciesMfamethod.md)
 Returns a list of MFA methods on outbound MFA policies.
 
+### [Get-ZNMfaOutboundPoliciesSimulateDesinationCandidate](Get-ZNMfaOutboundPoliciesSimulateDesinationCandidate.md)
+Returns a list of destination candidates on outbound MFA simulation.
+
+### [Get-ZNMfaOutboundPoliciesSimulateSourceCandidate](Get-ZNMfaOutboundPoliciesSimulateSourceCandidate.md)
+Returns a list of source candidates on outbound MFA simulation.
+
+### [Get-ZNMfaOutboundPoliciesSimulateSourceUserCandidate](Get-ZNMfaOutboundPoliciesSimulateSourceUserCandidate.md)
+Returns a list of source users candidates on outbound MFA simulation.
+
 ### [Get-ZNMfaOutboundPoliciesSourceCandidate](Get-ZNMfaOutboundPoliciesSourceCandidate.md)
 Returns a list of source candidates on outbound MFA policies.
 
@@ -220,12 +377,6 @@ Returns and object with MFA distrubiton.
 
 ### [Get-ZNMfaPoliciesStatistics](Get-ZNMfaPoliciesStatistics.md)
 Returns an object with MFA statistics.
-
-### [Get-ZNMonitoredGroupCandidatesSetting](Get-ZNMonitoredGroupCandidatesSetting.md)
-Get the monitored group candidates
-
-### [Get-ZNMonitoredGroupSetting](Get-ZNMonitoredGroupSetting.md)
-Get the monitored group settings in Asset Managment
 
 ### [Get-ZNNotificationSetting](Get-ZNNotificationSetting.md)
 Returns the properties of the Mail Notification settings.
@@ -257,12 +408,6 @@ Returns a list of source candidates for outbound block rules.
 ### [Get-ZNProfile](Get-ZNProfile.md)
 Get user profile
 
-### [Get-ZNProtectionAutomationCandidatesSetting](Get-ZNProtectionAutomationCandidatesSetting.md)
-Returns a list of candidates for Protection Automation settings.
-
-### [Get-ZNProtectionAutomationSetting](Get-ZNProtectionAutomationSetting.md)
-Returns the properties of Protection Automation settings.
-
 ### [Get-ZNProtectionPoliciesGroupCandidate](Get-ZNProtectionPoliciesGroupCandidate.md)
 Returns a list of candidates for protection policies.
 
@@ -275,11 +420,35 @@ Returns an object with rules distribution.
 ### [Get-ZNRulesStatistics](Get-ZNRulesStatistics.md)
 Returns an object with rule statistics.
 
+### [Get-ZNSession](Get-ZNSession.md)
+Returns a list of Connect sessions.
+
+### [Get-ZNSettingsAiRuleReview](Get-ZNSettingsAiRuleReview.md)
+Get AI rules review settings
+
 ### [Get-ZNSettingsAssetManager](Get-ZNSettingsAssetManager.md)
 List asset managers
 
 ### [Get-ZNSettingsAuth](Get-ZNSettingsAuth.md)
 Get the portal security settings
+
+### [Get-ZNSettingsConnectRegion](Get-ZNSettingsConnectRegion.md)
+List Connect Regions in Settings
+
+### [Get-ZNSettingsConnectServer](Get-ZNSettingsConnectServer.md)
+List Connect Servers in Settings
+
+### [Get-ZNSettingsConnectUserAccessConfig](Get-ZNSettingsConnectUserAccessConfig.md)
+List Connect User Access Configurations in Settings
+
+### [Get-ZNSettingsConnectUserAccessConfigCandidate](Get-ZNSettingsConnectUserAccessConfigCandidate.md)
+Returns a list of candidates for Connect User Access Config settings.
+
+### [Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate](Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate.md)
+Returns a list of destinations candidates for Connect User Access Config settings.
+
+### [Get-ZNSettingsConnectUserAccessConfigExcludedCandidate](Get-ZNSettingsConnectUserAccessConfigExcludedCandidate.md)
+Returns a list of excluded candidates for Connect User Access Config settings.
 
 ### [Get-ZNSettingsInternalSubnet](Get-ZNSettingsInternalSubnet.md)
 Get Internal Subnets settings in System
@@ -311,6 +480,12 @@ Get asset candidates to be managed by asset managers
 ### [Get-ZNUserStatistics](Get-ZNUserStatistics.md)
 Get Users statistics
 
+### [Invoke-ZNAssetsExtendQueueAsset](Invoke-ZNAssetsExtendQueueAsset.md)
+Extend asset learning
+
+### [Invoke-ZNAssetsQueueAsset](Invoke-ZNAssetsQueueAsset.md)
+Extend asset learning
+
 ### [Invoke-ZNEncodeEntityIP](Invoke-ZNEncodeEntityIP.md)
 Returns the assetId after encoding the IP address.
 
@@ -326,20 +501,41 @@ Returns an empty object.
 ### [Invoke-ZNQueueAsset](Invoke-ZNQueueAsset.md)
 Returns and empty object.
 
-### [Invoke-ZNRediscoverAnsibleSetting](Invoke-ZNRediscoverAnsibleSetting.md)
-Rediscover monitored assets from Ansible
-
-### [Invoke-ZNRediscoverMonitoredGroupSetting](Invoke-ZNRediscoverMonitoredGroupSetting.md)
+### [Invoke-ZNRediscoverAd](Invoke-ZNRediscoverAd.md)
 Rediscover monitored assets
+
+### [Invoke-ZNRediscoverLinux](Invoke-ZNRediscoverLinux.md)
+Rediscover monitored assets from Ansible
 
 ### [New-ZNAdSecondarySetting](New-ZNAdSecondarySetting.md)
 Add a secondary AD settings in Asset Managment
 
+### [New-ZNAdSetting](New-ZNAdSetting.md)
+Set the AD settings in Asset Managment
+
+### [New-ZNAssetsInboundAllowRule](New-ZNAssetsInboundAllowRule.md)
+Returns the properties of the created Inbound Allow rule.
+
+### [New-ZNAssetsInboundBlockRule](New-ZNAssetsInboundBlockRule.md)
+Returns the properties of the created Inbound Block rule.
+
 ### [New-ZNAssetsLinux](New-ZNAssetsLinux.md)
 Returns the assetId of the created Linux asset.
 
+### [New-ZNAssetsMfaInboundPolicy](New-ZNAssetsMfaInboundPolicy.md)
+Returns the properties of the inbound MFA policy after creation.
+
+### [New-ZNAssetsMfaOutboundPolicy](New-ZNAssetsMfaOutboundPolicy.md)
+Returns a the properties of outbound MFA policy created.
+
 ### [New-ZNAssetsOt](New-ZNAssetsOt.md)
 Returns an empty object.
+
+### [New-ZNAssetsOutboundAllowRule](New-ZNAssetsOutboundAllowRule.md)
+Returns the properties of the created Outbound Allow rule.
+
+### [New-ZNAssetsOutboundBlockRule](New-ZNAssetsOutboundBlockRule.md)
+Returns the properties of the created outbound block rule.
 
 ### [New-ZNCustomGroup](New-ZNCustomGroup.md)
 Returns an empty object.
@@ -371,6 +567,12 @@ Create a in-memory object for PortsList
 ### [New-ZNProtectionPolicy](New-ZNProtectionPolicy.md)
 Returns the protection policy that was created.
 
+### [New-ZNSettingsConnectRegion](New-ZNSettingsConnectRegion.md)
+Create a Connect region in Settings
+
+### [New-ZNSettingsConnectUserAccessConfig](New-ZNSettingsConnectUserAccessConfig.md)
+Create a Connect User Access Configuration in Settings
+
 ### [Protect-ZNAsset](Protect-ZNAsset.md)
 Returns and empty object.
 
@@ -380,11 +582,35 @@ Returns an empty response.
 ### [Remove-ZNAdSecondarySetting](Remove-ZNAdSecondarySetting.md)
 Returns an empty reponse.
 
+### [Remove-ZNAdSetting](Remove-ZNAdSetting.md)
+Remove AD forest settings.
+
 ### [Remove-ZNApiKey](Remove-ZNApiKey.md)
-Deletes the API key
+Deletes the API Key
+
+#.Link
+https://github.com/zeronetworks/zero-powershell/remove-znapikey
 
 ### [Remove-ZNAssetsAssetManager](Remove-ZNAssetsAssetManager.md)
 Remove an asset manager of asset
+
+### [Remove-ZNAssetsInboundAllowRule](Remove-ZNAssetsInboundAllowRule.md)
+Returns an empty object.
+
+### [Remove-ZNAssetsInboundBlockRule](Remove-ZNAssetsInboundBlockRule.md)
+Returns an empty object.
+
+### [Remove-ZNAssetsMfaInboundPolicy](Remove-ZNAssetsMfaInboundPolicy.md)
+Returns an empty object.
+
+### [Remove-ZNAssetsMfaOutboundPolicy](Remove-ZNAssetsMfaOutboundPolicy.md)
+Returns an empty object.
+
+### [Remove-ZNAssetsOutboundAllowRule](Remove-ZNAssetsOutboundAllowRule.md)
+Returns an empty object.
+
+### [Remove-ZNAssetsOutboundBlockRule](Remove-ZNAssetsOutboundBlockRule.md)
+Returns an empty object.
 
 ### [Remove-ZNCustomGroup](Remove-ZNCustomGroup.md)
 Returns an empty object.
@@ -425,11 +651,14 @@ Returns an empty object.
 ### [Remove-ZNProtectionPolicy](Remove-ZNProtectionPolicy.md)
 Returns and empty object.
 
-### [Remove-ZNSettingsAssetManager](Remove-ZNSettingsAssetManager.md)
-Remove asset managers
+### [Remove-ZNSettingsConnectUserAccessConfig](Remove-ZNSettingsConnectUserAccessConfig.md)
+Delete a Connect User Access Configuration in Settings
 
 ### [Remove-ZNUsersManagedAsset](Remove-ZNUsersManagedAsset.md)
 Remove managed asset of user
+
+### [Revoke-ZNSession](Revoke-ZNSession.md)
+Revoke a Connect session.
 
 ### [Search-ZNAsset](Search-ZNAsset.md)
 Returns an assetId.
@@ -437,11 +666,20 @@ Returns an assetId.
 ### [Set-ZNApiKey](Set-ZNApiKey.md)
 Set the API key for use in all other cmdlets
 
+#.Link
+https://github.com/zeronetworks/zero-powershell/set-znapikey
+
 ### [Test-ZNAssetsProtection](Test-ZNAssetsProtection.md)
 Returns a number of assets that are valid for protection.
 
 ### [Test-ZNAssetsUnprotect](Test-ZNAssetsUnprotect.md)
 Returns a number of assets that are valid to unprotect.
+
+### [Test-ZNMfaInboundPoliciesSimulate](Test-ZNMfaInboundPoliciesSimulate.md)
+Returns a list of MFA policies that would match the simulaton.
+
+### [Test-ZNMfaOutboundPoliciesSimulate](Test-ZNMfaOutboundPoliciesSimulate.md)
+Returns a list of outbound MFA policies that would match the simulation.
 
 ### [Unprotect-ZNAsset](Unprotect-ZNAsset.md)
 Returns an empty object.
@@ -456,7 +694,10 @@ Update the Activities settings in Data Collection
 Update a secondary AD settings in Asset Managment
 
 ### [Update-ZNAdSetting](Update-ZNAdSetting.md)
-Set the AD settings in Asset Managment
+Update AD forest settings.
+
+### [Update-ZNAdSettingsAutomationGroup](Update-ZNAdSettingsAutomationGroup.md)
+Update Automation Groups for an AD forest setting.
 
 ### [Update-ZNAiExclusionNetworkBoth](Update-ZNAiExclusionNetworkBoth.md)
 Set AI network exclusion for clients and servers: lists of tcp/udp ports / ports ranges + boolean for icmp protocol, and a list of processes to ignore during learning.
@@ -467,14 +708,29 @@ Set AI network exclusion for clients: lists of tcp/udp ports / ports ranges + bo
 ### [Update-ZNAiExclusionNetworkServer](Update-ZNAiExclusionNetworkServer.md)
 Set AI network exclusion for servers: lists of tcp/udp ports / ports ranges + boolean for icmp protocol, and a list of processes to ignore during learning.
 
-### [Update-ZNAiExclusionSourceEntity](Update-ZNAiExclusionSourceEntity.md)
-Set AI source entities to ignore during learning.
-
 ### [Update-ZNAnsibleSetting](Update-ZNAnsibleSetting.md)
 Get the Ansible settings in Asset Managment
 
+### [Update-ZNAssetsInboundAllowRule](Update-ZNAssetsInboundAllowRule.md)
+Updates an inbound allow rule.
+
+### [Update-ZNAssetsInboundBlockRule](Update-ZNAssetsInboundBlockRule.md)
+Updates an inbound block rule.
+
+### [Update-ZNAssetsMfaInboundPolicy](Update-ZNAssetsMfaInboundPolicy.md)
+Updates an inbound MFA Policy.
+
+### [Update-ZNAssetsMfaOutboundPolicy](Update-ZNAssetsMfaOutboundPolicy.md)
+Updates an outbound MFA Policy.
+
 ### [Update-ZNAssetsOt](Update-ZNAssetsOt.md)
-Updates OT/IOT Asset
+Edit an OT/IoT asset.
+
+### [Update-ZNAssetsOutboundAllowRule](Update-ZNAssetsOutboundAllowRule.md)
+Updates an outbound allow rule.
+
+### [Update-ZNAssetsOutboundBlockRule](Update-ZNAssetsOutboundBlockRule.md)
+Updates an outbound block rule.
 
 ### [Update-ZNCustomGroup](Update-ZNCustomGroup.md)
 Updates a custom group properties.
@@ -512,9 +768,6 @@ Updates an inbound MFA Policy.
 ### [Update-ZNMfaOutboundPolicy](Update-ZNMfaOutboundPolicy.md)
 Updates an outbound MFA Policy.
 
-### [Update-ZNMonitoredGroupSetting](Update-ZNMonitoredGroupSetting.md)
-Update the monitored group settings in Asset Managment
-
 ### [Update-ZNNotificationSetting](Update-ZNNotificationSetting.md)
 Returns the properties of the updated Mail Notifications settings.
 
@@ -524,14 +777,20 @@ Updates an outbound allow rule.
 ### [Update-ZNOutboundBlockRule](Update-ZNOutboundBlockRule.md)
 Updates an outbound block rule.
 
-### [Update-ZNProtectionAutomationSetting](Update-ZNProtectionAutomationSetting.md)
-Returns the properties of the group that was updated for Protection Automation settings.
+### [Update-ZNPreferredTrustServer](Update-ZNPreferredTrustServer.md)
+Set preferred trust server
 
 ### [Update-ZNProtectionPolicy](Update-ZNProtectionPolicy.md)
 Returns the updated settings for the protection policy.
 
+### [Update-ZNSettingsAiRuleReview](Update-ZNSettingsAiRuleReview.md)
+Update AI rule review settings
+
 ### [Update-ZNSettingsAuth](Update-ZNSettingsAuth.md)
 Set the portal security settings
+
+### [Update-ZNSettingsConnectUserAccessConfig](Update-ZNSettingsConnectUserAccessConfig.md)
+Update a Connect User Access Configuration in Settings
 
 ### [Update-ZNSettingsInternalSubnet](Update-ZNSettingsInternalSubnet.md)
 Update the Internal Subnets settings in System

@@ -27,6 +27,10 @@ Update the linux user settings in Asset Managment
 Update-ZNLinuxUserSetting -Username zn-admin -Password "NewPassword" -PrivateKey "Key"
 ```
 
+```output
+
+```
+
 This cmdlet updates the Linux user setting under Asset Management.
 
 ## PARAMETERS

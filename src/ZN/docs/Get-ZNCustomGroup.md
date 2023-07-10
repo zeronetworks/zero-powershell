@@ -43,6 +43,10 @@ This cmdlet will list custom groups for the environment.
 Get-ZNCustomGroup -offset 10
 ```
 
+```output
+
+```
+
 Use offset to get the next page of custom groups.
 
 ### Example 3: Find a custom group

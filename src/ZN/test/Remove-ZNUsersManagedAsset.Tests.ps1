@@ -12,7 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-ZNUsersManagedAsset' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        $asset = Search-ZNAsset -Fqdn linux0.posh.local
+        $user = Get-ZNUser -search test
+        Add-ZNUsersManagedAsset -UserId $user.Id -EntityIds @($asset)
+        $managedAssets = Get-ZNUsersManagedAsset -UserId $user.Id
+        { Remove-ZNUsersManagedAsset -UserId $user.Id -GroupOrAssetId $asset } | Should -Not -Throw
     }
 }

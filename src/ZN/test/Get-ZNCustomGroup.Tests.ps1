@@ -16,6 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNCustomGroup'))
 
 Describe 'Get-ZNCustomGroup' {
     It 'List' {
+        $name = "cgroup" + (Get-Random -Maximum 999999)
+        New-ZNCustomGroup -Name $name -Description "test"
+        $cgroup = Get-ZNCustomGroup | where {$_.Name -eq $name}
         (Get-ZNCustomGroup).Count | Should -BeGreaterThan 0
+        Remove-ZNCustomGroup -GroupId $cgroup.Id
     }
 }

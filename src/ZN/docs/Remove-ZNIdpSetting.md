@@ -26,6 +26,10 @@ Returns an empty reponse.
 Remove-ZNIdpSetting -IdentityProviderId "azure"
 ```
 
+```output
+
+```
+
 This cmdlet removes an identity provider from Settings.
 
 ## PARAMETERS

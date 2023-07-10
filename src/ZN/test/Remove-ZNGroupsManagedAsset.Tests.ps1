@@ -12,7 +12,13 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-ZNGroupsManagedAsset' {
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $asset = Search-ZNAsset -Fqdn linux0.posh.local
+        New-ZNCustomGroup -Name "RemoveGroupsManagedAssetTest"
+        $customGroup = Get-ZNCustomGroup -Search RemoveGroupsManagedAssetTest
+        Add-ZNGroupsManagedAsset -GroupId $customGroup.Id -GroupType Custom -EntityIds @($asset)
+        $managedAssets = Get-ZNGroupsManagedAsset -GroupId $customGroup.Id -GroupType Custom
+        { Remove-ZNGroupsManagedAsset -GroupId $customGroup.Id -GroupType Custom -GroupOrAssetId $asset } | Should -Not -Throw
+        Remove-ZNCustomGroup -GroupId $customGroup.Id
     }
 }

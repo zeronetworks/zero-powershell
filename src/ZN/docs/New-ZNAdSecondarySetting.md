@@ -13,7 +13,8 @@ Add a secondary AD settings in Asset Managment
 ## SYNTAX
 
 ```
-New-ZNAdSecondarySetting -DomainId <String> -Dc <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+New-ZNAdSecondarySetting -Forest <String> -Dc <String> -Domain <String> [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,12 +27,16 @@ Add a secondary AD settings in Asset Managment
 New-ZNAdSecondarySetting -DomainId newdomain.zero.labs -Dc dc1.newdomain.zero.labs
 ```
 
+```output
+
+```
+
 The cmdlet will create a new secondary AD domain in Active Directory under Asset Management.
 
 ## PARAMETERS
 
 ### -Dc
-The domain controller
+.
 
 ```yaml
 Type: System.String
@@ -45,8 +50,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DomainId
-The fqdn of the domain
+### -Domain
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Forest
+The forest id
 
 ```yaml
 Type: System.String

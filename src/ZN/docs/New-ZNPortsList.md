@@ -32,6 +32,10 @@ Create a in-memory object for PortsList
 $portsList = New-ZNPortsList -Protocol TCP -Ports "44,45"
 ```
 
+```output
+
+```
+
 This cmdlet creates a portsList for use in other cmdlets.
 It returns the created object.
 

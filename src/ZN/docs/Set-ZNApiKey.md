@@ -29,6 +29,10 @@ https://github.com/zeronetworks/zero-powershell/set-znapikey
 Set-ZNApiKey -ApiKey 'myApiKey'
 ```
 
+```output
+
+```
+
 This cmdlet will set the api key to be used for all other cmdlets.
 
 ## PARAMETERS

@@ -15,7 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNAdSetting'))
 }
 
 Describe 'Update-ZNAdSetting' {
-    It 'PutExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'PutExpanded' {
+        New-ZNAdSetting -ActiveDirectoryInfoDomainName 'newad.local' -ActiveDirectoryInfoDomainControllerFqdn 'dc01.newad.local' -ActiveDirectoryInfoUseLdaps:$false -ActiveDirectoryInfoUsername 'zero' -PasswordClearText 'zero@1313zero@1313'
+        $ad = Get-ZNAdSetting | where {$_.ActiveDirectoryInfoDomainName -eq 'newad.local'}
+        Update-ZNAdSetting -Forest $ad.ForestId -ActiveDirectoryInfoDomainControllerFqdn 'dc02.newad.local' -ActiveDirectoryInfoUsername $ad.ActiveDirectoryInfoUsername -ActiveDirectoryInfoDomainName $ad.ActiveDirectoryInfoDomainName -SetActiveDirectoryInfoPasswordCleartext 'zero@1313zero@1313'
+        $ad = Get-ZNAdSetting | where {$_.ActiveDirectoryInfoDomainName -eq 'newad.local'}
+        $ad.ActiveDirectoryInfoDomainControllerFqdn | Should -Be 'dc02.newad.local'
+        Remove-ZNAdSetting -Forest $ad.ForestId
     }
 }

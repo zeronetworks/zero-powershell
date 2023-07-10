@@ -16,11 +16,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNOutboundBlockRule'))
 
 Describe 'Get-ZNOutboundBlockRule' {
     It 'List' {
-        { Get-ZNOutboundBlockRule } | Should -Not -Be $null
+        $portsList = New-ZNPortsList -Protocol TCP -Ports (Get-Random -Minimum 1 -Maximum 1024)
+        $source = (Get-ZNOutboundAllowRulesSourceCandidate -search "all protected assets").Items
+        $destination = Invoke-ZNEncodeEntityIp -IP 1.2.3.4
+        $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
+        $rule = New-ZNOutboundBlockRule -LocalEntityId $source.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt
+        { (Get-ZNOutboundBlockRule).Items } | Should -Not -Be $null
     }
 
     It 'Get' {
+        $portsList = New-ZNPortsList -Protocol TCP -Ports (Get-Random -Minimum 1 -Maximum 1024)
+        $source = (Get-ZNOutboundAllowRulesSourceCandidate -search "all protected assets").Items
+        $destination = Invoke-ZNEncodeEntityIp -IP 1.2.3.4
+        $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
+        $rule = New-ZNOutboundBlockRule -LocalEntityId $source.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt
+        $rule.itemid | Should -Not -Be $null
         $rule = Get-ZNOutboundBlockRule | Select-object -First 1
-        { Get-ZNOutboundBlockRule -RuleId $rule.Id } | Should -Not -be $null
+        { (Get-ZNOutboundBlockRule -RuleId $rule.Id).ItemId } | Should -Not -be $null
     }
 }

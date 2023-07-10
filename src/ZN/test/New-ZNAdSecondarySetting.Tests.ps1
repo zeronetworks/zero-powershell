@@ -16,6 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNAdSecondarySetting'))
 
 Describe 'New-ZNAdSecondarySetting' {
     It 'CreateExpanded' {
-        { New-ZNAdSecondarySetting -DomainId child03.posh.local -Dc dc1.child03.posh.local } | Should -Not -Throw
+        $forestId = (Get-ZNAdSetting)[0].ForestId
+        { New-ZNAdSecondarySetting -Forest $forestId -Domain child03.posh.local -Dc dc1.child03.posh.local } | Should -Not -Throw
+        Remove-ZNAdSecondarySetting -forest $forestId -DomainId "child03.posh.local"
+
     }
 }

@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Unprotect-ZNAsset'))
 
 Describe 'Unprotect-ZNAsset' {
     It 'UnprotectExpanded' {
-        $asset = (Get-ZNAsset).Items | where {$_.ProtectionState -eq 3} | select -First 1
-        { Unprotect-ZNAsset -Items $asset.Id } | Should -Not -Throw
-        Protect-ZNAsset -Items $asset.Id
+        $asset = Search-ZNAsset -fqdn linux0.posh.local
+        Protect-ZNAsset -Items @($asset)
+        { Unprotect-ZNAsset -Items $asset } | Should -Not -Throw
     }
 }

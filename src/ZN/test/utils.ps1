@@ -29,43 +29,92 @@ function setupEnv() {
     $znHeader.Add("Authorization", $constants.ZNApiKey)
     $znHeader.Add("Content-Type","application/json")
 
-    #Custom Group
-    #Add Member
-    $env.Add("AddCustomGroupMemberName","PoshTestAddMember")
-    $body = @{
-        "description" = ""
-        "membersId" = @()
-        "name" = $env.AddCustomGroupMemberName
-    }
-    $result = Invoke-RestMethod -method POST -uri ($env.baseUri+"/groups/custom") -Headers $znHeader -body ($body | convertto-json)
-    $env.Add("AddCustomGroupMemberId",$result)
-
-    #Ad Secondary Settings
-    #For Get
-    $primaryAd = Invoke-RestMethod -Method Get -uri ($env.baseUri+"/settings/asset-management/active-directory") -Headers $znHeader
-    $env.Add("primaryAd",$primaryAd.adInfo.domainName)
-    $childAd = "child."+$primaryAd.adInfo.domainName
-    $env.Add("childAd01",$childAd)
-    $body = @{
-        "dc" = ("dc01"+$childAd)
-    }
-    Invoke-RestMethod -method POST -uri ($env.baseUri+"/settings/asset-management/active-directory/secondary/"+$childAd) -Headers $znHeader -body ($body | convertto-json) | Out-Null
-
-    #for Remove
-    $childAd = "child2."+$primaryAd.adInfo.domainName
-    $env.Add("childAd02",$childAd)
-    $body = @{
-        "dc" = ("dc01"+$childAd)
-    }
-    Invoke-RestMethod -method POST -uri ($env.baseUri+"/settings/asset-management/active-directory/secondary/"+$childAd) -Headers $znHeader -body ($body | convertto-json) | Out-Null
-
-    #AI Setting
-    $asset = (Invoke-RestMethod -Method GET -uri ($env.baseUri+"/assets?_limit=100&_offset=-0") -Headers $znHeader).Items | Select-Object -First 1
-    $body = "[`""+$asset.id+"`"]"
-    Invoke-RestMethod -Method Put -uri ($env.baseUri+"/settings/ai/exclusion/src-entities") -Headers $znHeader -body $body
+    $znTeamHeader = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+    $znTeamHeader.Add("Authorization", $constants.ZNTeamApiKey)
+    $znTeamHeader.Add("Content-Type","application/json")
+    $znTeamHeader.Add("zn-env-id",$constants.ZNEnvId)
 
 
-    # For any resources you created for test, you should add it to $env here.
+    $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
+    #Create Review Rules
+    #Asset
+    #InboundAllow
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1 -Maximum 1024)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-allow") -method POST -Headers $znTeamHeader -Body $rule
+
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1025 -Maximum 2048)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-allow") -method POST -Headers $znTeamHeader -Body $rule
+    
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 2049 -Maximum 3072)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-allow") -method POST -Headers $znTeamHeader -Body $rule
+    #InboundBlock
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1 -Maximum 1024)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-block") -method POST -Headers $znTeamHeader -Body $rule
+
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1025 -Maximum 2048)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-block") -method POST -Headers $znTeamHeader -Body $rule
+    
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 2049 -Maximum 3072)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-block") -method POST -Headers $znTeamHeader -Body $rule
+    #OutboundAllow
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1 -Maximum 1024)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
+
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1025 -Maximum 2048)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
+    
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 2049 -Maximum 3072)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
+    #OutboundBlock
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1 -Maximum 1024)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound-block") -method POST -Headers $znTeamHeader -Body $rule
+
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1025 -Maximum 2048)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound-block") -method POST -Headers $znTeamHeader -Body $rule
+    
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 2049 -Maximum 3072)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound-block") -method POST -Headers $znTeamHeader -Body $rule
+    
+    #Generic
+    #InboundAllow
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3073 -Maximum 4096)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-allow") -method POST -Headers $znTeamHeader -Body $rule
+
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4097 -Maximum 8192)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-allow") -method POST -Headers $znTeamHeader -Body $rule
+
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 8193 -Maximum 9216)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-allow") -method POST -Headers $znTeamHeader -Body $rule
+    #InboundBlock
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3073 -Maximum 4096)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-block") -method POST -Headers $znTeamHeader -Body $rule
+
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4097 -Maximum 8192)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-block") -method POST -Headers $znTeamHeader -Body $rule
+
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 8193 -Maximum 9216)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-block") -method POST -Headers $znTeamHeader -Body $rule
+    #OutboundAllow
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3073 -Maximum 4096)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
+
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4097 -Maximum 8192)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
+
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 8193 -Maximum 9216)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
+    #OutboundBlock
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3073 -Maximum 4096)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound-block") -method POST -Headers $znTeamHeader -Body $rule
+
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4097 -Maximum 8192)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound-block") -method POST -Headers $znTeamHeader -Body $rule
+
+    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 8193 -Maximum 9216)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound-block") -method POST -Headers $znTeamHeader -Body $rule
+
+
+# For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -85,18 +134,5 @@ function cleanupEnv() {
     $znHeader.Add("Authorization", $constants.ZNApiKey)
     $znHeader.Add("Content-Type","application/json")
 
-    #remove Custom Group
-    foreach($item in $env.GetEnumerator()){
-        if($item.Name -like "AddCustomGroupMemberId*"){
-            invoke-RestMethod -method delete -uri ($env.baseUri+"/groups/custom/"+$item.Value ) -headers $znHeader
-        }
-    }
-
-    #remove Ad secondary
-    foreach($item in $env.GetEnumerator()){
-        if($item.Name -like "childAd*"){
-            invoke-RestMethod -method delete -uri ($env.baseUri+"/settings/asset-management/active-directory/secondary/"+ $item.Value ) -headers $znHeader
-        }
-    }
-}
+}   
 

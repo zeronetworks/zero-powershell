@@ -26,6 +26,10 @@ Set the portal security settings
 Update-ZNSettingsAuth -PortalTokenTtl 10080
 ```
 
+```output
+
+```
+
 This cmdlet updates the Portal session timeout setting.
 Use minutes for the PortalTokenTtl
 

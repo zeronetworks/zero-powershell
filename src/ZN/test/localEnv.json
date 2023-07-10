@@ -1,8 +1,3 @@
 {
-  "childAd02": "child2.posh.local",
-  "AddCustomGroupMemberId": "g:c:FHHJey6F",
-  "primaryAd": "posh.local",
-  "baseUri": "https://portal.zeronetworks.com/api/v1",
-  "AddCustomGroupMemberName": "PoshTestAddMember",
-  "childAd01": "child.posh.local"
+  "baseUri": "https://portal.zeronetworks.com/api/v1"
 }

@@ -14,8 +14,8 @@ Returns the properties of the Inbound Block rule.
 
 ### List (Default)
 ```
-Get-ZNInboundBlockRule [-EntityParams <String>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>]
- [<CommonParameters>]
+Get-ZNInboundBlockRule [-AddAncestors] [-AddBuiltins] [-EntityParams <String>] [-Filters <String>]
+ [-Limit <Int32>] [-Offset <Int32>] [-WithCount] [<CommonParameters>]
 ```
 
 ### Get
@@ -76,6 +76,36 @@ UpdatedByName              :
 Get a specific inbound block rule.
 
 ## PARAMETERS
+
+### -AddAncestors
+show rules where the asset is part of a group
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: $true
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AddBuiltins
+show global rules
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -EntityParams
 JSON string URI encoded object {id: string, direction: AssetDirection}
@@ -146,6 +176,21 @@ Parameter Sets: Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WithCount
+return count of objects
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

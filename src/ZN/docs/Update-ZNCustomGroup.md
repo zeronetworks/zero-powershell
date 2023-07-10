@@ -27,6 +27,10 @@ Updates a custom group properties.
 Update-ZNCustomGroup -GroupId g:c:DtglBTHi -Description "updated desccription"
 ```
 
+```output
+
+```
+
 This cmdlet updates the name or description of a custom group.
 
 ## PARAMETERS

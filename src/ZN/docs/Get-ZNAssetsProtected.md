@@ -45,6 +45,10 @@ The cmdlet will list protected Assets for the environment.
 (Get-ZNAssetsProtected -Offset 10).Items
 ```
 
+```output
+
+```
+
 Use offset to get the next page of protected Assets.
 
 ## PARAMETERS

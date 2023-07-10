@@ -1,10 +1,11 @@
-### Example 1: Move an asset into learning
+### Example 1: Add an asset to learning
 ```powershell
-Invoke-ZNQueueAsset -Items @((Search-ZNAsset -Fqdn fs1.zero.labs)) -QueueDays 14
+$assetId = Search-ZNAsset -Fqdn ls01.posh.local
+Invoke-ZNQueueAsset -QueueDays 14 -Items @($assetId)
 ```
 
 ```output
 
 ```
 
-This cmdlet will extend the learning time of an asset in the environment.
+This cmdlet adds an asset to learning.

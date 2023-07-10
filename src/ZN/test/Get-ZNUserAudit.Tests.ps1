@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNUserAudit'))
 }
 
 Describe 'Get-ZNUserAudit' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $user = Get-ZNUser -Search zero | where{$_.Name -eq "zero"}
+        (Get-ZNUserAudit -UserId $user.id).Items | Should -Not -Be $null
     }
 }

@@ -1,4 +1,4 @@
-### Example 1: Delete outbound block rule
+### Example 1: Delete an outbound block rule
 ```powershell
 Remove-ZNOutboundBlockRule -RuleId 2facebfb-c074-4f3a-83cd-456a8dd6df3d
 ```
@@ -7,4 +7,4 @@ Remove-ZNOutboundBlockRule -RuleId 2facebfb-c074-4f3a-83cd-456a8dd6df3d
 
 ```
 
-This cmdlet deletes and outbound block rule.
+This cmdlet deletes an outbound block rule.

@@ -14,8 +14,8 @@ Returns a inbound MFA policy object.
 
 ### List (Default)
 ```
-Get-ZNMfaInboundPolicy [-EntityId <String>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>]
- [<CommonParameters>]
+Get-ZNMfaInboundPolicy [-AddAncestors] [-AddBuiltins] [-EntityId <String>] [-Filters <String>]
+ [-Limit <Int32>] [-Offset <Int32>] [<CommonParameters>]
 ```
 
 ### Get
@@ -78,6 +78,36 @@ ItemUpdatedAt              : 1649105796514
 Get a specific inbound MFA policy.
 
 ## PARAMETERS
+
+### -AddAncestors
+show rules where the asset is part of a group
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: $true
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AddBuiltins
+show global rules
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -EntityId
 entityId to filter on

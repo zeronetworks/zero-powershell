@@ -1,10 +1,11 @@
-### Example 1: Extend an asset learning time
+### Example 1: Extend an asset in learning
 ```powershell
-Invoke-ZNExtendAssetQueue -Items @((Search-ZNAsset -Fqdn fs1.zero.labs)) -ExtendByDays 14
+$assetId = Search-ZNAsset -Fqdn ls01.posh.local
+Invoke-ZNExtendQueueAsset -ExtendByDays 14 -Items @($assetId)
 ```
 
 ```output
 
 ```
 
-This cmdlet will extend the learning time of an asset in the environment.
+This cmdlet extends an asset in learning.

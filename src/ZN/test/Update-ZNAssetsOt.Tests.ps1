@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNAssetsOt'))
 }
 
 Describe 'Update-ZNAssetsOt' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $otAsset = Get-ZNAssetsOt | Select-Object -First 1
+        $name = "ot"+(Get-Random -Minimum 1000 -Maximum 2000)
+        Update-ZNAssetsOt -AssetId $otAsset.Id -DisplayName $name -Type $otAsset.AssetType
+        $updatedOtAsset = Get-ZNAssetsOt | where {$_.Id -eq $otAsset.id}
+        $updatedOtAsset.Name | Should -Be $name
     }
 }

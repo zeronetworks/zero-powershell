@@ -15,7 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNMfaAuthenticationSet
 }
 
 Describe 'Update-ZNMfaAuthenticationSetting' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $setting = Get-ZNMfaAuthenticationSetting
+        if($setting.ItemTokenTtl -eq 60){
+            $newsetting = 120
+        }else{
+            $newSetting = 60
+        }
+        Update-ZNMfaAuthenticationSetting -IsRequiresAuth:$setting.ItemIsRequiresAuth -IsSsoForceAuth:$setting.ItemIsSsoForceAuth -TokenTtl $newsetting
+        $updatedSetting = Get-ZNMfaAuthenticationSetting
+        $updatedSetting.ItemTokenTtl | Should -Be $newSetting
     }
 }

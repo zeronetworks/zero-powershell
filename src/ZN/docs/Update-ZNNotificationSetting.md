@@ -13,8 +13,8 @@ Returns the properties of the updated Mail Notifications settings.
 ## SYNTAX
 
 ```
-Update-ZNNotificationSetting -AssetProtected -AssetQueued -AssetUnprotected [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNNotificationSetting -AssetPostponed -AssetProtected -AssetQueued -AssetUnprotected [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +36,21 @@ True           False       True
 This cmdlet updates the Mail notifications setting under System.
 
 ## PARAMETERS
+
+### -AssetPostponed
+Notify asset protection postponed
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetProtected
 Notify asset added to protection

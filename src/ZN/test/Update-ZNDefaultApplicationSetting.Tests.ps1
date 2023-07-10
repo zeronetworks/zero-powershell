@@ -19,8 +19,7 @@ Describe 'Update-ZNDefaultApplicationSetting' {
         $setting = Get-ZNDefaultApplicationSetting
         if($setting -eq 1){
             $newsetting = 2
-        }
-        else{
+        }else{
             $newsetting = 1
         }
         Update-ZNDefaultApplicationSetting -Application $newsetting

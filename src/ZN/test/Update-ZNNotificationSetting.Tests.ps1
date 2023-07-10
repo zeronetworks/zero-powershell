@@ -22,7 +22,7 @@ Describe 'Update-ZNNotificationSetting' {
         }else{
             $newsetting = $true
         }
-        $updatedSetting = Update-ZNNotificationSetting -AssetProtected:$setting.AssetProtected -AssetQueued:$setting.AssetQueued -AssetUnprotected:$newsetting
+        $updatedSetting = Update-ZNNotificationSetting -AssetProtected:$setting.AssetProtected -AssetQueued:$setting.AssetQueued -AssetUnprotected:$newsetting -AssetPostponed:$setting.AssetPostponed
         $updatedSetting.AssetUnprotected | Should -Be $newsetting
     }
 }

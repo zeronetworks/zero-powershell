@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-ZNUsersManagedAssetsCandidate' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        (Get-ZNUsersManagedAssetsCandidate -UserId (Get-ZNUser | Select-Object -First 1).Id).Items | Should -Not -Be $null
     }
 }

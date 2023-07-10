@@ -27,5 +27,6 @@ Describe 'New-ZNMfaOutboundPolicy' {
         $portsList = New-ZNPortsList -Empty
         $policy = New-ZNMfaOutboundPolicy -AdditionalPortsList $portsList -DstEntityInfoId $destination.Id -DstPort $dstPort -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1 -OverrideBuiltins:$false
         $policy.ItemId | Should -Not -Be $null
+        Remove-ZNMfaOutboundPolicy -ReactivePolicyId $policy.ItemId
     }
 }

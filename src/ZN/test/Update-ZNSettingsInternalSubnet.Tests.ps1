@@ -12,7 +12,16 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-ZNSettingsInternalSubnet' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        #198.18.0.0/15
+        $setting = Get-ZNSettingsInternalSubnet
+        if($setting -contains '198.18.0.0/15'){
+            $newSetting = @('10.0.0.0/8','100.64.0.0/10','169.254.0.0/16','172.16.0.0/12','192.0.0.0/24','192.168.0.0/16')
+        }else{
+            $newSetting = @('10.0.0.0/8','100.64.0.0/10','169.254.0.0/16','172.16.0.0/12','192.0.0.0/24','192.168.0.0/16','198.18.0.0/15')
+        }
+        Update-ZNSettingsInternalSubnet -PrivateNetworksList $newSetting
+        $updatedSetting = Get-ZNSettingsInternalSubnet
+        $updatedSetting | Should -Be $newSetting
     }
 }

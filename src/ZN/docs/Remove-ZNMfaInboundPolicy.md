@@ -13,7 +13,7 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Remove-ZNMfaInboundPolicy -ReactivePolicyId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNMfaInboundPolicy -ReactivePolicyId <String> [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,9 +26,28 @@ Returns an empty object.
 Remove-ZNMfaInboundPolicy -ReactivePolicyId 8892546f-3d6d-4926-833b-a62430feb2e6
 ```
 
+```output
+
+```
+
 This cmdlet deletes an inbound MFA policy.
 
 ## PARAMETERS
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ReactivePolicyId
 The id of the MFA policy
@@ -82,8 +101,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
-
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

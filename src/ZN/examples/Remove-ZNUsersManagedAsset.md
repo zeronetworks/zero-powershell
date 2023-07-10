@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a managed asset from a user
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Remove-ZNUsersManagedAsset -UserId 'u:a:w27loY5p' -GroupOrAssetId 'a:a:OtfLGUBq'
 ```
 
-{{ Add description here }}
+```output
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+This cmdlet removes a managed asset from a user.

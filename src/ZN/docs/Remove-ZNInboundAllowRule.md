@@ -13,7 +13,7 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Remove-ZNInboundAllowRule -RuleId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNInboundAllowRule -RuleId <String> [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,9 +26,28 @@ Returns an empty object.
 Remove-ZNInboundAllowRule -RuleId 4dee3e02-0bb0-4f48-8daa-751d38afd0ac
 ```
 
-This cmdlet deletes and inbound allow rule.
+```output
+
+```
+
+This cmdlet deletes an inbound allow rule.
 
 ## PARAMETERS
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -RuleId
 The id of the rule
@@ -82,8 +101,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
-
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

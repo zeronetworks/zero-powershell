@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNGroupsAssetManagersCand
 }
 
 Describe 'Get-ZNGroupsAssetManagersCandidate' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $group = Get-ZNGroup -Search clients
+        (Get-ZNGroupsAssetManagersCandidate -GroupId $group.id -GroupType system).Items | Should -Not -Be $null
     }
 }

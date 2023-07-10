@@ -15,7 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNMfaDetectionSetting'
 }
 
 Describe 'Update-ZNMfaDetectionSetting' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $setting = Get-ZNMfaDetectionSetting
+        if($setting.ItemTokenTtl -eq 2){
+            $newsetting = 4
+        }else{
+            $newSetting = 2
+        }
+        Update-ZNMfaDetectionSetting -TimeoutMinutes $newsetting
+        $updatedSetting = Get-ZNMfaDetectionSetting
+        $updatedSetting | Should -Be $newSetting
     }
 }

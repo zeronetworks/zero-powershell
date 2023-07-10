@@ -1,4 +1,4 @@
-### Example 1: Delete outbound allow rule
+### Example 1: Delete an outbound allow rule
 ```powershell
 Remove-ZNOutboundAllowRule -RuleId 90cf60bc-64f0-48de-95ba-d0e3fadc200b
 ```
@@ -7,4 +7,4 @@ Remove-ZNOutboundAllowRule -RuleId 90cf60bc-64f0-48de-95ba-d0e3fadc200b
 
 ```
 
-This cmdlet deletes and outbound allow rule.
+This cmdlet deletes an outbound allow rule.

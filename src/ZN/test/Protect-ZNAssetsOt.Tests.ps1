@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Protect-ZNAssetsOt'))
 
 Describe 'Protect-ZNAssetsOt' {
     It 'ProtectExpanded' {
-        $asset = Get-ZNAssetsOt | where {$_.fqdn -eq "switch01"}
+        $asset = Get-ZNAssetsOt | Select-Object -First 1
         { Protect-ZNAssetsOt -Items @($asset.Id) } | Should -Not -Throw
         Unprotect-ZNAssetsOt -Items @($asset.Id)
     }

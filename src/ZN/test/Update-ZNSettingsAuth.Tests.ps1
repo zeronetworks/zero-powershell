@@ -15,14 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNSettingsAuth'))
 }
 
 Describe 'Update-ZNSettingsAuth' {
-    It 'PutExpanded' -skip {
+    It 'PutExpanded' {
         $setting = Get-ZNSettingsAuth
         if($setting -eq 10080){
             $newsetting = 8640
         } else {
             $newsetting = 10080
         }
-        $updatedSetting = Update-ZNSettingsAuth -ItemPortalTokenTtl $newsetting
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        Update-ZNSettingsAuth -PortalTokenTtl $newsetting
+        $updatedSetting = Get-ZNSettingsAuth
+        $updatedSetting | Should -Be $newsetting
     }
 }

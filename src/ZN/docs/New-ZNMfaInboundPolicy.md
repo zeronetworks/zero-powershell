@@ -35,7 +35,8 @@ $sourceEntity.Id = $source.Id
 $sourceUser = (Get-ZNMfaInboundPoliciesSourceUserCandidate -search "Any User").Items
 $sourceUserEntity = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyInboundBodySrcUserInfosItem]::new()
 $sourceUserEntity.Id = $sourceUser.Id
-New-ZNMfaInboundPolicy -DstEntityInfoId $destination.Id -DstPort "22" -DstProcessNames @("*") -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -RuleCreationMode 1 -State 1
+$portsList = New-ZNPortsList -Empty
+New-ZNMfaInboundPolicy -AdditionalPortsList $portsList -DstEntityInfoId $destination.Id -DstPort "22" -DstProcessNames @("*") -FallbackToLoggedOnUser -OverrideBuiltins -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1
 ```
 
 ```output
@@ -358,14 +359,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`ADDITIONALPORTSLIST <IPortsListItem[]>`: .
+ADDITIONALPORTSLIST <IPortsListItem[]>: .
   - `[Ports <String>]`: 
   - `[ProtocolType <Int32?>]`: 
 
-`SRCENTITYINFOS <IReactivePolicyInboundBodySrcEntityInfosItem[]>`: .
+SRCENTITYINFOS <IReactivePolicyInboundBodySrcEntityInfosItem[]>: .
   - `Id <String>`: 
 
-`SRCUSERINFOS <IReactivePolicyInboundBodySrcUserInfosItem[]>`: .
+SRCUSERINFOS <IReactivePolicyInboundBodySrcUserInfosItem[]>: .
   - `Id <String>`: 
 
 ## RELATED LINKS

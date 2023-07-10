@@ -12,15 +12,9 @@ Returns an empty object.
 
 ## SYNTAX
 
-### ExtendExpanded (Default)
 ```
-Invoke-ZNExtendAssetQueue [-ExtendByDays <Int32>] [-Items <String[]>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Extend
-```
-Invoke-ZNExtendAssetQueue -Body <IQueueExtendBody> [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-ZNExtendAssetQueue -ExtendByDays <Int32> -Items <String[]> [-RelearnReason <String>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,40 +22,29 @@ Returns an empty object.
 
 ## EXAMPLES
 
-### Example 1: Extend an asset learning time
+### Example 1: Extend an asset in learning
 ```powershell
-Invoke-ZNExtendAssetQueue -Items @((Search-ZNAsset -Fqdn fs1.zero.labs)) -ExtendByDays 14
+$assetId = Search-ZNAsset -Fqdn ls01.posh.local
+Invoke-ZNExtendQueueAsset -ExtendByDays 14 -Items @($assetId)
 ```
 
-This cmdlet will extend the learning time of an asset in the environment.
+```output
+
+```
+
+This cmdlet extends an asset in learning.
 
 ## PARAMETERS
-
-### -Body
-.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IQueueExtendBody
-Parameter Sets: Extend
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -ExtendByDays
 number of days
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ExtendExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -73,7 +56,22 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ExtendExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RelearnReason
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -119,8 +117,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IQueueExtendBody
-
 ## OUTPUTS
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
@@ -130,15 +126,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <IQueueExtendBody>`: .
-  - `[ExtendByDays <Int32?>]`: number of days
-  - `[Items <String[]>]`: 
 
 ## RELATED LINKS
 

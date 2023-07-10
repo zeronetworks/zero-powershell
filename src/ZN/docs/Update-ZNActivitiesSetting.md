@@ -13,7 +13,7 @@ Update the Activities settings in Data Collection
 ## SYNTAX
 
 ```
-Update-ZNActivitiesSetting -ShouldFilterExternalTraffic [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNActivitiesSetting -ShouldFilterExternalTraffic [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,9 +26,28 @@ Update the Activities settings in Data Collection
 Update-ZNActivitiesSetting -ShouldFilterExternalTraffic:$false
 ```
 
+```output
+
+```
+
 This cmdlet allows changing the Activities setting under data collection.
 
 ## PARAMETERS
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ShouldFilterExternalTraffic
 Disable/Enable external traffic collection
@@ -82,8 +101,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
-
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

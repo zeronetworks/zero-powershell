@@ -15,9 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNCustomGroup'))
 }
 
 Describe 'New-ZNCustomGroup' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         $name = "cgroup" + (Get-Random -Maximum 999999)
-        $cgroup =  New-ZNCustomGroup -Name $name -Description "test"
-        $cgroup | Should -Not -Be $null
+        New-ZNCustomGroup -Name $name -Description "test"
+        $cgroup = Get-ZNCustomGroup | where {$_.Name -eq $name}
+        $cgroup.Name | Should -Be $name
+        Remove-ZNCustomGroup -GroupId $cgroup.Id
     }
 }

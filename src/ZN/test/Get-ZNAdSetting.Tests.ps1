@@ -16,6 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAdSetting'))
 
 Describe 'Get-ZNAdSetting' {
     It 'Get' {
-        (Get-ZNAdSetting).Count | Should -Be 1
+        $count = (Get-ZNAdSetting).Count
+        $count | Should -Be 1
     }
 }

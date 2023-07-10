@@ -13,7 +13,7 @@ Update the Default SSO Application settings in Identity Providers
 ## SYNTAX
 
 ```
-Update-ZNDefaultApplicationSetting -Application <Int32> [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNDefaultApplicationSetting -Application <Int32> [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,6 +24,10 @@ Update the Default SSO Application settings in Identity Providers
 ### Example 1: Set the default application
 ```powershell
 Update-ZNDefaultApplicationSetting -Application 2
+```
+
+```output
+
 ```
 
 This cmdlet updates the default application setting under Identity Providers.
@@ -40,6 +44,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -83,8 +102,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
-
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

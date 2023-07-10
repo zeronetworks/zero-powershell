@@ -14,7 +14,8 @@ Returns the properties of an outbound MFA policy.
 
 ### List (Default)
 ```
-Get-ZNMfaOutboundPolicy [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [<CommonParameters>]
+Get-ZNMfaOutboundPolicy [-AddAncestors] [-AddBuiltins] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -72,6 +73,36 @@ ItemUpdatedAt              : 1665512193635
 Get a specific outbound MFA policy.
 
 ## PARAMETERS
+
+### -AddAncestors
+show rules where the asset is part of a group
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: $true
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AddBuiltins
+show global rules
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Filters
 JSON string URI encoded set of fiters

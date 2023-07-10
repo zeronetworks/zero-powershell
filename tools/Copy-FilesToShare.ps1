@@ -14,7 +14,7 @@ $files = @(
     "utils\Unprotect-SecureString.ps1"
 )
 
-$version = "0.0.5-preview"
+$version = "0.0.6-preview"
 New-Item "\\192.168.200.1\share\zero-powershell\$version" -Directory
 
 foreach($file in $files){

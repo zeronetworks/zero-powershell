@@ -16,8 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNQueueAsset'))
 
 Describe 'Invoke-ZNQueueAsset' {
     It 'QueueExpanded' {
-        $asset = (Get-ZNAsset).Items | where {$_.ProtectionState -eq 1} | Select-Object -first 1
-        { Invoke-ZNQueueAsset -Items @($asset.id) -QueueDays 30 } | Should -Not -Be $null
-        Unprotect-ZNAsset -Items @($asset.id)
+        $assetId = Search-ZNAsset -Fqdn ls01.posh.local
+        Invoke-ZNQueueAsset -Items @($assetId) -QueueDays 14
+        $asset = (Get-ZNAssetsQueued).Items | where {$_.Fqdn -eq 'ls01.posh.local'}
+        $asset.ProtectionState | Should -Be 5
+        Unprotect-ZNAsset -Items @($assetId)
     }
 }
+

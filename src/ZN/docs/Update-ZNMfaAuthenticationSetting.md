@@ -28,6 +28,10 @@ $mfa = Get-ZNMfaAuthenticationSetting
 Update-ZNMfaAuthenticationSetting -IsRequiresAuth:$mfa.ItemIsRequiresAuth -IsSsoForceAuth:$mfa.ItemIsSsoForceAuth -TokenTtl 120
 ```
 
+```output
+
+```
+
 This cmdlet updates the MFA Authentication setting under Protection.
 
 ## PARAMETERS

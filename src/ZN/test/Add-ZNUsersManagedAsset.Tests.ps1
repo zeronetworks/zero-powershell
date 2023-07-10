@@ -15,7 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-ZNUsersManagedAsset'))
 }
 
 Describe 'Add-ZNUsersManagedAsset' {
-    It 'AddExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'AddExpanded' {
+        $asset = Search-ZNAsset -Fqdn linux0.posh.local
+        $user = Get-ZNUser -search test
+        Add-ZNUsersManagedAsset -UserId $user.Id -EntityIds @($asset)
+        $managedAssets = Get-ZNUsersManagedAsset -UserId $user.Id
+        $managedAssets.EntityId | Should -Be $asset
+        Remove-ZNUsersManagedAsset -UserId $user.Id -GroupOrAssetId $asset
     }
 }

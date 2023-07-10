@@ -15,9 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNCustomGroup'))
 }
 
 Describe 'Remove-ZNCustomGroup' {
-    It 'Delete' -skip {
+    It 'Delete' {
         $name = "cgroup" + (Get-Random -Maximum 999999)
-        $cGroup = New-ZNCustomGroup -Name $name -Description "test"
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        New-ZNCustomGroup -Name $name -Description "test"
+        $customgroup = Get-ZNGroup -search $name
+        { Remove-ZNCustomGroup -GroupId $customGroup.Id } | Should -Not -Throw
     }
 }

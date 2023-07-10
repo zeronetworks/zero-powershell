@@ -13,7 +13,8 @@ Update the Internal Subnets settings in System
 ## SYNTAX
 
 ```
-Update-ZNSettingsInternalSubnet -PrivateNetworksList <String[]> [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsInternalSubnet -PrivateNetworksList <String[]> [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -21,25 +22,33 @@ Update the Internal Subnets settings in System
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update internal subnets
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Update-ZNSettingsInternalSubnet -PrivateNetworksList @("10.0.0.0/8","100.64.0.0/10","169.254.0.0/16","172.16.0.0/12","192.0.0.0/24","192.168.0.0/16","198.18.0.0/15","1.1.1.0/24")
 ```
 
-{{ Add description here }}
+```output
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This cmdlet updates the internal subnets setting under System.
 
 ## PARAMETERS
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PrivateNetworksList
 Collection of IP subnets that are internal
@@ -93,8 +102,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
-
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

@@ -15,7 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNGroupsAssetManager'))
 }
 
 Describe 'Get-ZNGroupsAssetManager' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $manager = Get-ZNUser -Search Test
+        New-ZNCustomGroup -Name "GetGroupsAssetManagerTest"
+        $customGroup = Get-ZNCustomGroup -Search GetGroupsAssetManagerTest
+        Add-ZNGroupsAssetManager -GroupId $customGroup.Id -GroupType Custom -ManagerIds $manager.id
+        $managers = Get-ZNGroupsAssetManager -GroupId $customGroup.Id -GroupType Custom
+        $managers.ManagerId | Should -Be $manager.id
+        Remove-ZNGroupsAssetManager -GroupId $customGroup.Id -GroupType Custom -GroupOrUserId $manager.id
+        Remove-ZNCustomGroup -GroupId $customGroup.Id
     }
 }

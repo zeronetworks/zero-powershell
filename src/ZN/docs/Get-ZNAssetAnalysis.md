@@ -13,7 +13,7 @@ Returns an object with asset analysis data.
 ## SYNTAX
 
 ```
-Get-ZNAssetAnalysis -AssetId <String> [-Connectionstate <Int32>] [-Direction <String>] [-From <Int32>]
+Get-ZNAssetAnalysis -AssetId <String> -Direction <Int32> [-Connectionstate <Int32>] [-From <Int32>]
  [-Sort <String>] [-To <Int32>] [<CommonParameters>]
 ```
 
@@ -74,14 +74,14 @@ Accept wildcard characters: False
 ```
 
 ### -Direction
-direction for the query
+direction for the query, 1=Inbound, 2=Outbound, 3=Both
 
 ```yaml
-Type: System.String
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -15,7 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-ZNGroupsManagedAsset'))
 }
 
 Describe 'Add-ZNGroupsManagedAsset' {
-    It 'AddExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'AddExpanded' {
+        $asset = Search-ZNAsset -Fqdn linux0.posh.local
+        New-ZNCustomGroup -Name "AddGroupsManagedAssetTest"
+        $customGroup = Get-ZNCustomGroup -Search AddGroupsManagedAssetTest
+        Add-ZNGroupsManagedAsset -GroupId $customGroup.Id -GroupType Custom -EntityIds @($asset)
+        $managedAssets = Get-ZNGroupsManagedAsset -GroupId $customGroup.Id -GroupType Custom
+        $managedAssets.EntityId | Should -Be $asset
+        Remove-ZNGroupsManagedAsset -GroupId $customGroup.Id -GroupType Custom -GroupOrAssetId $asset
+        Remove-ZNCustomGroup -GroupId $customGroup.Id
     }
 }

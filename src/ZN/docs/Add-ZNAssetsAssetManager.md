@@ -13,7 +13,8 @@ Add an asset manager of asset
 ## SYNTAX
 
 ```
-Add-ZNAssetsAssetManager -AssetId <String> [-ManagerIds <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-ZNAssetsAssetManager -AssetId <String> [-ManagerIds <String[]>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -21,27 +22,17 @@ Add an asset manager of asset
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Add an asset manager
 ```powershell
-{{ Add code here }}
+Add-ZNAssetsAssetManager -AssetId a:a:8ErCHXe8 -ManagerIds @("g:a:cai6Wuyd")
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet adds an asset manager to an asset.
+A manager can be a User or Group.
 
 ## PARAMETERS
 
@@ -65,6 +56,21 @@ managers id
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -112,8 +118,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
-
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNCustomGroupsCandidate')
 }
 
 Describe 'Get-ZNCustomGroupsCandidate' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        Get-ZNCustomGroupsCandidate | Should -Not -Be $null
     }
 }

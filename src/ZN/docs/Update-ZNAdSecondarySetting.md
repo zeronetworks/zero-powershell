@@ -13,7 +13,8 @@ Update a secondary AD settings in Asset Managment
 ## SYNTAX
 
 ```
-Update-ZNAdSecondarySetting -DomainId <String> -Dc <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNAdSecondarySetting -DomainId <String> -Forest <String> -Dc <String> [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,6 +25,10 @@ Update a secondary AD settings in Asset Managment
 ### Example 1: Update secondary AD setting
 ```powershell
 Update-ZNAdSecondarySetting -dc dc2.newdomain.zero.labs -DomainId newdomain.zero.labs
+```
+
+```output
+
 ```
 
 This cmdlet updates a secondary AD setting under Asset Management.
@@ -47,6 +52,21 @@ Accept wildcard characters: False
 
 ### -DomainId
 The fqdn of the domain
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Forest
+The forest id
 
 ```yaml
 Type: System.String

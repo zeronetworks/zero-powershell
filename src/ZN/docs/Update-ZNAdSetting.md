@@ -8,17 +8,19 @@ schema: 2.0.0
 # Update-ZNAdSetting
 
 ## SYNOPSIS
-Set the AD settings in Asset Managment
+Update AD forest settings.
 
 ## SYNTAX
 
 ```
-Update-ZNAdSetting -Domain <String> -DomainControllerFqdn <String> -Password <String> -UseLdaps
- -Username <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNAdSetting -Forest <String> [-ActiveDirectoryInfoDomainControllerFqdn <String>]
+ [-ActiveDirectoryInfoDomainName <String>] [-ActiveDirectoryInfoUseLdaps]
+ [-ActiveDirectoryInfoUsername <String>] [-SetActiveDirectoryInfoPasswordCleartext <String>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Set the AD settings in Asset Managment
+Update AD forest settings.
 
 ## EXAMPLES
 
@@ -27,26 +29,15 @@ Set the AD settings in Asset Managment
 Update-ZNAdSetting -Domain zero.labs -DomainControllerFqdn dc1.zero.labs -Username znremotemanagement -Password "password" -UseLdaps:$false
 ```
 
+```output
+
+```
+
 This cmdlet updates an AD setting under Asset Management.
 
 ## PARAMETERS
 
-### -Domain
-FQDN of the AD domain
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DomainControllerFqdn
+### -ActiveDirectoryInfoDomainControllerFqdn
 Domain Controller from AD Domain
 
 ```yaml
@@ -54,29 +45,29 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Password
-Service Acount Password
+### -ActiveDirectoryInfoDomainName
+FQDN of the AD domain
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UseLdaps
+### -ActiveDirectoryInfoUseLdaps
 Use LDAP or LDAPs
 
 ```yaml
@@ -84,14 +75,14 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Username
+### -ActiveDirectoryInfoUsername
 Service Account for Zero Networks
 
 ```yaml
@@ -99,7 +90,37 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Forest
+The forest id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SetActiveDirectoryInfoPasswordCleartext
+Service Acount Password
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -144,9 +165,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsAdInfo
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
 ## NOTES
 

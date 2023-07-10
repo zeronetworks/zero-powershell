@@ -32,7 +32,7 @@ require:
 input-file:
   - $(this-folder)/../openapi.yaml
 
-module-version: 0.0.5-preview
+module-version: 0.0.6-preview
 title: Api
   
 inlining-threshold: 50
@@ -172,7 +172,7 @@ directive:
         }
       }
   - from: openapi.yaml
-    where: $.components.schemas.rolesList
+    where: $.components.schemas.roleItem
     debug: true
     transform: >-
       return {
@@ -242,7 +242,7 @@ directive:
         }
       }
   - from: openapi.yaml
-    where: $.components.schemas.roleCandidatesList
+    where: $.components.schemas.roleCandidate
     debug: true
     transform: >-
       return {
@@ -311,24 +311,222 @@ directive:
           }
         }
       }
+  - from: openapi.yaml
+    where: $.components.schemas.userAccessConfigCandidate
+    debug: true
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "$ref": "#/components/schemas/epochMillis"
+          },
+          "description": {
+            "type": "string"
+          },
+          "distinguishedName": {
+            "type": "string"
+          },
+          "directMembersCount": {
+            "type": "integer"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "guid": {
+            "type": "string"
+          },
+          "hasProtectionPolicy": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "string"
+          },
+          "jobTitle": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "officePhone": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "role": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sid": {
+            "type": "string"
+          },
+          "source": {
+            "type": "integer"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/epochMillis"
+          },
+          "userPrincipleName": {
+            "type": "string"
+          }
+        }
+      }
+  - from: openapi.yaml
+    where: $.components.schemas.userAccessConfigDestinationsCandidate
+    debug: true
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {
+          "assetStatus": {
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          "assetType": {
+            "type": "integer",
+            "format": "int32",
+            "enum": [
+              0,
+              1,
+              2
+            ]
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/epochMillis"
+          },
+          "description": {
+            "type": "string"
+          },
+          "distinguishedName": {
+            "type": "string"
+          },
+          "directMembersCount": {
+            "type": "integer"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "fqdn": {
+            "type": "string"
+          },
+          "guid": {
+            "type": "string"
+          },
+          "hasProtectionPolicy": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "string"
+          },
+          "ipV4Addresses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ipV6Addresses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "jobTitle": {
+            "type": "string"
+          },
+          "lastLogon": {
+            "$ref": "#/components/schemas/epochMillis"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "managers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manager"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "officePhone": {
+            "type": "string"
+          },
+          "operatingSystem": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "protectionState": {
+            "type": "integer",
+            "format": "int32",
+            "enum": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "role": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sid": {
+            "type": "string"
+          },
+          "source": {
+            "type": "integer"
+          },
+          "state": {
+            "$ref": "#/components/schemas/state"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/epochMillis"
+          },
+          "userPrincipleName": {
+            "type": "string"
+          }
+        }
+      }
   # Following is two common directive which are normally required
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Add$|^AddViaIdentity$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DeleteViaIdentityExpanded$|^Put$|^PutViaIdentity$|^Protect$|^Update$|^UpdateViaIdentity$
+      variant: ^Add$|^AddViaIdentity$|^AddViaIdentityExpanded$|^Assets$|^AssetsViaIdentity$|^AssetsViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DeleteViaIdentity$|^GetViaIdentity$|^Extend$|^ExtendViaIdentity$|^ExtendViaIdentityExpanded$|^Learn$|^LearnViaIdentity$|^LearnViaIdentityExpanded$|^New$|^Protect$|^Put$|^Queue$|^QueueViaIdentity$|^QueueViaIdentityExpanded$|^RevokeViaIdentity&|^SetViaIdentity|^Unprotect$|^Update$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|^Validate$
     hide: true
   # Customize
   # Remove the export cmdlets
   - where:
-      subject: ^AssetExport$|^AssetAnalysisExport$|^AuditExport$|^EntityAnalysisExport$|^GroupsExport$|^InboundAllowRulesExport$|^InboundBlockRulesExport$|^NetworkActivitiesExport$|^OutboundAllowRulesExport$|^OutboundBlockRulesExport$|^UsersExport$
+      subject: ^AdGroupsExport$|^AssetsActivitiesExport$|^AssetsExport$|^AssetsAuditExport$|^AssetsInboundAllowRulesExport$|^AssetsInboundBlockRulesExport$|^AssetsOutboundAllowRulesExport$|^AssetsOutboundBlockRulesExport$|^AssetExport$|^AssetAnalysisExport$|^AuditExport$|^EntityAnalysisExport$|^GroupsAuditExport$|^GroupsInboundAllowRulesExport$|^GroupsInboundBlockRulesExport$|^GroupsOutboundAllowRulesExport$|^GroupsOutboundBlockRulesExport$|^GroupsExport$|^InboundAllowRulesExport$|^InboundBlockRulesExport$|^NetworkActivitiesExport$|^OutboundAllowRulesExport$|^OutboundBlockRulesExport$|^UsersExport$
     hide: true
   - where:
       verb: Export
     remove: true
-  # Remove MFA Simulation
-  - where:
-      subject: ^SimulateMfaInboundPolicy$|^SimulateMfaOutboundPolicy$|^MfaInboundPoliciesSimulateDestinationCandidate$|^MfaInboundPoliciesSimulateSourceCandidate$|^MfaInboundPoliciesSimulateSourceUserCandidate$|^MfaOutboundPoliciesSimulateDesinationCandidate$|^MfaOutboundPoliciesSimulateSourceCandidate$|^MfaOutboundPoliciesSimulateSourceUserCandidate$
-    hide: true
   #Remove NA cmdlets
   - where:
       subject: NetworkActivity
@@ -345,6 +543,15 @@ directive:
   - where:
       subject: (.*)Filter$
     remove: true
+  # Rename Queue Commands
+  - where:
+      subject: LearnAssetQueue
+    set:
+      subject: AssetsQueueAsset
+  - where:
+      subject: LearnAssetExtendQueue
+    set:
+      subject: AssetsExtendQueueAsset
   # change set to update
   - where:
       verb: Set
@@ -358,10 +565,31 @@ directive:
         name: Limit Default
         description: Sets the limit parameter to 10
         script: '10'
-  # hide variants that use body
+  # set the default directions for cmdlets
   - where:
-      variant: ^AddViaIdentityExpanded$|^DeleteViaIdentity$|^GetViaIdentity$|^PutViaIdentityExpanded$|^UpdateViaIdentityExpanded$
-    hide: true
+      subject: ^AssetsInboundAllowRule$|^AssetsInboundBlockRule$
+      parameter-name: Direction
+    set:
+      default:
+        name: Direction Default
+        description: Sets the direction parameter to 1
+        script: '1'
+  - where:
+      subject: ^AssetsOutboundAllowRule$|^AssetsOutboundBlockRule$
+      parameter-name: Direction
+    set:
+      default:
+        name: Direction Default
+        description: Sets the direction parameter to 2
+        script: '2'
+  # set AddAncestors parameter default
+  - where:
+      parameter-name: AddAncestors
+    set:
+      default:
+        name: AddAncestors Default
+        description: Sets the AddAncestors parameter to $true
+        script: '$true'
   # set expiresAt default for rules
   - where:
       parameter-name: ExpiresAt
@@ -372,8 +600,13 @@ directive:
         script: '0'
   # Hide remove ot (Not implemneted)
   - where:
-      subject: AssetsOt
       verb: Remove
+      subject: AssetsOt
+    hide: true
+  # Hide (Not Implemented)
+  - where:
+      subject: SettingsAssetManager
+      verb: ^Add$|^Remove$
     hide: true
   # Hide Rule History (not useful)
   - where:
@@ -389,14 +622,13 @@ directive:
   # Hide for Custom Wrappers
   - where:
       verb: Update
-      subject: CustomGroup
-    hide: true
-  - where:
-      verb: Update
-      subject: ^InboundAllowRule$|^InboundBlockRule$|^OutboundAllowRule$|^OutboundBlockRule$|^MFAInboundPolicy$|^MFAOutboundPolicy$|^AssetsOt$
+      subject: ^CustomGroup$|^AssetsInboundAllowRule$|^AssetsInboundBlockRule$|^AssetsMFAInboundPolicy$|^AssetsMFAOutboundPolicy$|^AssetsOutboundAllowRule$|^AssetsOutboundBlockRule$|^InboundAllowRule$|^InboundBlockRule$|^MFAInboundPolicy$|^MFAOutboundPolicy$|^OutboundAllowRule$|^OutboundBlockRule$
     hide: true
   - where:
       subject: ^AuthLogin$|^AuthChallenge$
+    hide: true
+  - where:
+      subject: ^AssetInboundAllowRuleReview$|^AssetsInboundAllowRulesReview$|^AssetInboundBlockRuleReview$|^AssetsInboundBlockRulesReview$|^AssetOutboundAllowRuleReview$|^AssetsOutboundAllowRulesReview$|^AssetOutboundBlockRuleReview$|^AssetsOutboundBlockRulesReview$|^InboundAllowRuleReview$|^InboundAllowRulesReview$|^InboundBlockRuleReview$|^InboundBlockRulesReview$|^OutboundAllowRuleReview$|^OutboundAllowRulesReview$|^OutboundBlockRuleReview$|^OutboundBlockRulesReview$
     hide: true
   # format Responses
   - where:
@@ -444,6 +676,7 @@ directive:
           - ExcludedEntityInfoName
           - RuleClass
           - ActivitiesCount
+          - Id
           - CreatedByEnforcementSource
           - State
           - Description

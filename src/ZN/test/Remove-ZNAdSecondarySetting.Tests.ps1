@@ -16,6 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNAdSecondarySetting')
 
 Describe 'Remove-ZNAdSecondarySetting' {
     It 'Delete' {
-        { Remove-ZNAdSecondarySetting -DomainId "child2.posh.local" } | Should -Not -Throw
+        $forestId = (Get-ZNAdSetting)[0].ForestId
+        New-ZNAdSecondarySetting -Forest $forestId -Domain child04.posh.local -Dc dc1.child04.posh.local
+        { Remove-ZNAdSecondarySetting -Forest $forestId -DomainId "child04.posh.local" } | Should -Not -Throw
     }
 }

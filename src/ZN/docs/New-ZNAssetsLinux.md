@@ -26,6 +26,10 @@ Returns the assetId of the created Linux asset.
 New-ZNAssetsLinux -DisplayName "linuxservera" -Fqdn "linuxservera.zero.labs"
 ```
 
+```output
+
+```
+
 This cmdlet will create a linux asset in the environment.
 
 ## PARAMETERS

@@ -39,6 +39,10 @@ List OT/IoT assets in the enviroment.
 (Get-ZNAssetsOt -Offset 10).Items
 ```
 
+```output
+
+```
+
 Use offset to get the next page of OT/IoT Assets.
 
 ## PARAMETERS

@@ -27,6 +27,10 @@ Returns the upddated properties of JAMF Credentials settings.
 Update-ZNJamfCredentialsSetting -Host1 <domain>.jamfcloud.com -Username myuser -Password mypassword
 ```
 
+```output
+
+```
+
 This cmdlet updates the JAMF credential in Settings under Asset Management.
 
 ## PARAMETERS

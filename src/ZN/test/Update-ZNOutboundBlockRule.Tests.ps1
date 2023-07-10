@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNOutboundBlockRule'))
 
 Describe 'Update-ZNOutboundBlockRule' {
     It 'UpdateExpanded' {
-        $portsList = New-ZNPortsList -Protocol Any
+        $portsList = New-ZNPortsList -Protocol TCP -Ports (Get-Random -Minimum 1 -Maximum 1024)
         $source = (Get-ZNOutboundAllowRulesSourceCandidate -search "all protected assets").Items
         $destination = Invoke-ZNEncodeEntityIp -IP 1.2.3.4
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()

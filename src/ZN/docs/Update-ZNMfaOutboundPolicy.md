@@ -379,14 +379,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`ADDITIONALPORTSLIST <PortsListItem[]>`: extra ports to open.
+ADDITIONALPORTSLIST <PortsListItem[]>: extra ports to open.
   - `[Ports <String>]`: 
   - `[ProtocolType <Int32?>]`: 
 
-`SRCENTITYINFOS <ReactivePolicyOutboundBodySrcEntityInfosItem[]>`: source asset(s).
+SRCENTITYINFOS <ReactivePolicyOutboundBodySrcEntityInfosItem[]>: source asset(s).
   - `Id <String>`: 
 
-`SRCUSERINFOS <ReactivePolicyOutboundBodySrcUserInfosItem[]>`: source user(s).
+SRCUSERINFOS <ReactivePolicyOutboundBodySrcUserInfosItem[]>: source user(s).
   - `Id <String>`: 
 
 ## RELATED LINKS

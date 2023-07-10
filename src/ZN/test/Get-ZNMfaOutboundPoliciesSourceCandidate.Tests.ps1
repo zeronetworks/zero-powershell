@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNMfaOutboundPoliciesSour
 }
 
 Describe 'Get-ZNMfaOutboundPoliciesSourceCandidate' {
-    It 'List' -skip {
-        { (Get-ZNMfaOutboundPoliciesSourceCandidate).Items } | Should -Not -Be $null
+    It 'List' {
+        (Get-ZNMfaOutboundPoliciesSourceCandidate).Items | Should -Not -Be $Null
     }
 }

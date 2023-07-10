@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: List a users managed assets
 ```powershell
-{{ Add code here }}
+Get-ZNUsersManagedAsset -UserId u:a:RVVXGo4w
 ```
 
 ```output
-{{ Add output here }}
+EntityId     Relation
+--------     --------
+a:a:8ErCHXe8 1
+g:t:01445453 3
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet lists a users managed assets.
