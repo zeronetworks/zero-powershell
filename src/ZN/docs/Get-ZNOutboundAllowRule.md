@@ -31,9 +31,6 @@ Returns the properties of an Outbound Allow rule.
 ### Example 1: List outbound allow rules
 ```powershell
 Get-ZNOutboundAllowRule
-```
-
-```output
 Action CreatedAt     Description Direction ExpiresAt Id                                   LocalEntityId LocalProcessesList ParentId ParentType RemoteEntityIdsList State UpdatedAt
 ------ ---------     ----------- --------- --------- --                                   ------------- ------------------ -------- ---------- ------------------- ----- ---------
 1      1665518196557             2         0         0a1444a2-7cb7-4319-a0de-a013d6b67402 b:110002      {*}                         0          {b:120808080820}    1   
@@ -44,9 +41,6 @@ This cmdlet gets outbound allow rules from the environment.
 ### Example 2: Get a specific outbound allow rule
 ```powershell
  Get-ZNOutboundAllowRule -RuleId "c551b646-75d1-477d-8023-367461883fd7"
-```
-
-```output
 CreatedByEnforcementSource : 0
 CreatedById                : m:86786c2f022cf2bd7dc38f165c98b4ee736c8c3b
 CreatedByName              : PowerShell

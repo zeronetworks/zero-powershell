@@ -25,9 +25,6 @@ Returns an object with asset analysis data.
 ### Example 1: Get asset analysis
 ```powershell
 Get-ZNAssetAnalysis -AssetId a:a:ZgBWOMyc
-```
-
-```output
 CountByAsset        : 0
 CountByPort         : 0
 CountByProcess      : 0

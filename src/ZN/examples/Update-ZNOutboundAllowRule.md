@@ -1,14 +1,11 @@
-### Example 1: Update outbound allow rule
+### Example 1: Update a rule
 ```powershell
-#Get the Rule
 $rule = Get-ZNOutboundAllowRule | where {$_.Description -eq "Test Rule"}
-# add an asset to the source list
 $rule.RemoteEntityIdsList += (Search-ZNAsset -Fqdn fs1.zero.labs)
-#Update the rule
 Update-ZNOutboundAllowRule -RuleId $rule.id -ExpiresAt $rule.ExpiresAt -LocalEntityId $rule.LocalEntityId -LocalProcessesList $rule.LocalProcessesList -PortsList $rule.PortsList -RemoteEntityIdsList $rule.RemoteEntityIdsList -State $rule.State -Description $rule.Description
-```
 
-```output
+ApprovedById               : 
+ApprovedByName             : 
 CreatedByEnforcementSource : 5
 CreatedById                : 1f352ed0-86f1-454f-90a5-592c197c8000
 CreatedByName              : Zero Networks
@@ -29,7 +26,9 @@ ItemRemoteEntityInfos      :
 ItemState                  : 1
 ItemUpdatedAt              : 1665679637830
 LocalEntityInfoId          : 
-LocalEntityInfoName        : 
+LocalEntityInfoName        :
+UpdatedById                : 39cc28f6-7bba-4310-95e6-a7e7189a3ed5
+UpdatedByName              : Nicholas DiCola
 ```
 
-This cmdlet will update an outbound allow rule for the environment.
+This cmdlet updates an outbound allow rule.

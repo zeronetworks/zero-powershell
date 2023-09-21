@@ -24,9 +24,6 @@ Returns a list of System groups.
 ### Example 1: List system groups
 ```powershell
 Get-ZNSystemGroup
-```
-
-```output
 CreatedAt     Description                                                                DirectMembersCount Domain Guid                                 HasProtectionPolicy Id           Name                                      Role Sid UpdatedAt
 ---------     -----------                                                                ------------------ ------ ----                                 ------------------- --           ----                                      ---- --- ---------
 1661144901938 Includes all IP ranges without protected OT/IoT devices in the environment 3                  system 0064a099-bac4-4053-86e9-b8fd0d308094 False               g:s:18276c2c Any asset except protected OT/IoT devices 3        1665512202910
@@ -43,9 +40,6 @@ This cmdlet will list systems groups for the environment.
 ### Example 2: Get the next page of system groups
 ```powershell
  Get-ZNSystemGroup -Offset 10
-```
-
-```output
 
 ```
 

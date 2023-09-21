@@ -1,9 +1,6 @@
 ### Example 1: List AD groups
 ```powershell
 Get-ZNAdGroup
-```
-
-```output
 CreatedAt     Description DirectMembersCount Domain    Guid                                 HasProtectionPolicy Id           Name
 ---------     ----------- ------------------ ------    ----                                 ------------------- --           ----       
 1646147849282             0                  zero.labs dfaca10e-9718-4d59-a471-61d3af1bd49a False               g:a:yu1gHyge Access Con…
@@ -23,9 +20,6 @@ This cmdlet will list AD groups for the environment.
 ### Example 2: Get the next page of AD groups
 ```powershell
 Get-ZNAdGroup -offset 10
-```
-
-```output
 CreatedAt     Description DirectMembersCount Domain    Guid                                 HasProtectionPolicy Id           Name                  Role Sid                                           UpdatedAt
 ---------     ----------- ------------------ ------    ----                                 ------------------- --           ----                  ---- ---                                           ---------
 1646147849178             0                  zero.labs cbd05304-0798-41cd-bfe4-983e28490890 False               g:a:IfIp7Xk6 Distributed COM Users 3    S-1-5-32-562                                  1646147976804

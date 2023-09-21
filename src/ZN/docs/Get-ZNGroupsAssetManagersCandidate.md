@@ -25,9 +25,6 @@ Get manager candidates for group managers
 ### Example 1: List asset manager candidates for a group
 ```powershell
 (Get-ZNGroupsAssetManagersCandidate -Groupid g:t:01445453 -GroupType tag).Items
-```
-
-```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
 posh.local False               g:a:qu04AfTz Access Control Assistance Operators

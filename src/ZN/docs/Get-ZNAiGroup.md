@@ -21,27 +21,27 @@ Returns a list of Ai Groups.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List AI Groups
 ```powershell
-{{ Add code here }}
+ Get-ZNAiGroup
+
+Id           Name Description DirectMembersCount
+--           ---- ----------- ------------------
+g:i:gFMSN4Mu LS   LS Servers  1
 ```
 
-```output
-{{ Add output here }}
-```
+This cmdlet lists AI groups.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Search for an AI group
 ```powershell
-{{ Add code here }}
+Get-ZNAiGroup -Search LS
+
+Id           Name Description DirectMembersCount
+--           ---- ----------- ------------------
+g:i:gFMSN4Mu LS   LS Servers  1
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet can also search by name.
 
 ## PARAMETERS
 

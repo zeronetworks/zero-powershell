@@ -2,9 +2,6 @@
 ```powershell
 $aiDate = Get-ZNAiNextBatch
 (Get-Date -Date "01-01-1970") + ([System.TimeSpan]::FromMilliseconds($ai))
-```
-
-```output
 Thursday, October 20, 2022 11:59:59 PM
 ```
 

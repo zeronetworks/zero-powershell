@@ -1,9 +1,6 @@
 ### Example 1: Set the Api Key to be used
 ```powershell
 Set-ZNApiKey -ApiKey 'myApiKey'
-```
-
-```output
 
 ```
 

@@ -1,9 +1,6 @@
 ### Example 1: Create an OT/IoT Asset
 ```powershell
 New-ZNAssetsOt -DisplayName webcam2 -Ipv4 "192.168.10.30" -Type 4 
-```
-
-```output
 
 ```
 

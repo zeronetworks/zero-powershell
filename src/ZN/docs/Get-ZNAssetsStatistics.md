@@ -24,9 +24,6 @@ Returns an object with asset statistics.
 ### Example 1: List asset statistics
 ```powershell
 Get-ZNAssetsStatistics
-```
-
-```output
 ItemAddingProtectionCount               : 
 ItemDeletedCount                        : 0
 ItemForceAddingProtectionCount          : 

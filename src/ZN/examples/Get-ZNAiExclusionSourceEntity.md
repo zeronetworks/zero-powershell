@@ -1,9 +1,6 @@
 ### Example 1: Get excluded source entities
 ```powershell
-PS C:\> Get-ZNAiExclusionSourceEntity
-```
-
-```output
+Get-ZNAiExclusionSourceEntity
 AssetType Domain     Id           Name ProtectionState
 --------- ------     --           ---- ---------------
 2         zero.labs a:a:8ErCHXe8 DC01 3

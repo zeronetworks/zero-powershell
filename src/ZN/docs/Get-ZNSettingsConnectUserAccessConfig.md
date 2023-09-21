@@ -24,9 +24,6 @@ List Connect User Access Configurations in Settings
 ### Example 1: List Connect User access configurations
 ```powershell
 Get-ZNSettingsConnectUserAccessConfig                      
-```
-
-```output
 CreatedAt     Description ForceSsoAuthentication Id           Name    SessionTtlHours
 ---------     ----------- ---------------------- --           ----    ---------------
 1685733928254             True                   v:a:0IoMjM9F Default 48

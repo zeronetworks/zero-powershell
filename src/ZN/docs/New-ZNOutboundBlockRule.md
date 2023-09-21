@@ -29,9 +29,6 @@ $portsList = New-ZNPortsList -Protocol Any
 $source = (Get-ZNOutboundAllowRulesSourceCandidate -search "all protected assets").Items
 $destination = Invoke-ZNEncodeEntityIp -IP 1.2.3.4 #MalicousIP
 New-ZNOutboundBlockRule -LocalEntityId $source.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1
-```
-
-```output
 CreatedByEnforcementSource : 0
 CreatedById                : m:86786c2f022cf2bd7dc38f165c98b4ee736c8c3b
 CreatedByName              : PowerShell
@@ -90,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiresAt
-.
+Epoch Millis
 
 ```yaml
 Type: System.Int64

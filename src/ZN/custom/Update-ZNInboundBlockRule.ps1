@@ -31,7 +31,7 @@ function Update-ZNInboundBlockRule {
 
         [Parameter(ParameterSetName = 'UpdateExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
-        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem[]]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]]
         # the destination ports and protocols.
         ${PortsList},
 
@@ -55,7 +55,7 @@ function Update-ZNInboundBlockRule {
 
         [Parameter(ParameterSetName = 'UpdateExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
-        [int]
+        [int64]
         # when the rule should expiry.
         ${ExpiresAt},
 

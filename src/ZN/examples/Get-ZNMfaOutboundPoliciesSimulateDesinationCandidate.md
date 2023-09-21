@@ -1,9 +1,6 @@
 ### Example 1: Get possible destinations for outbound MFA Policy simulation
 ```powershell
 (Get-ZNMfaOutboundPoliciesSimulateDesinationCandidate).Items
-```
-
-```output
 Domain HasProtectionPolicy Id           Name
 ------ ------------------- --           ----
                            a:t:u7QxbAUn ot193384
@@ -23,9 +20,6 @@ This cmdlet will return possbile candidates for destinations in an outbound MFA 
 ### Example 2: Search for a candidate
 ```powershell
 (Get-ZNMfaOutboundPoliciesSimulateDesinationCandidate -Search switch01).Items
-```
-
-```output
 Domain HasProtectionPolicy Id           Name
 ------ ------------------- --           ----
                            a:t:aCxJya46 switch01

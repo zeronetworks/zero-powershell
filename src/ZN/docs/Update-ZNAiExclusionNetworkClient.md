@@ -25,9 +25,6 @@ Set AI network exclusion for clients: lists of tcp/udp ports / ports ranges + bo
 ### Example 1: Update AI Exclusion settings for clients
 ```powershell
 Update-ZNAiExclusionNetworkClient -Icmp -ProcessesList @()  -TcpPorts "" -UdpPorts ""
-```
-
-```output
 Icmp ProcessesList TcpPorts UdpPorts
 ---- ------------- -------- --------
 True {}     
@@ -39,9 +36,6 @@ This cmdlet updates the AI exclusions for clients under Data Collection.
 ```powershell
 $aiSettings = Get-ZNAiExclusionNetworkClient
 Update-ZNAiExclusionNetworkClient -Icmp:$aiSettings.Icmp -ProcessesList $aiSettings.ProcessesList  -TcpPorts ($aiSettings.TcpPorts += "443") -UdpPorts $aiSettings.UdpPorts
-```
-
-```output
 Icmp ProcessesList TcpPorts UdpPorts
 ---- ------------- -------- --------
 True {}            443      

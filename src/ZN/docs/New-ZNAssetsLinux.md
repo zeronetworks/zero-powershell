@@ -24,9 +24,6 @@ Returns the assetId of the created Linux asset.
 ### Example 1: Create a linux asset
 ```powershell
 New-ZNAssetsLinux -DisplayName "linuxservera" -Fqdn "linuxservera.zero.labs"
-```
-
-```output
 
 ```
 

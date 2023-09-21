@@ -1,9 +1,6 @@
 ### Example 1: List rules statistics
 ```powershell
  Get-ZNRulesStatistics
-```
-
-```output
 AiStatisticsInboundAllowDisabledCount      : 0
 AiStatisticsInboundAllowEnabledCount       : 2
 AiStatisticsInboundBlockDisabledCount      : 0

@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'Invoke-ZNExtendAssetQueue' {
     It 'ExtendExpanded' {
         $assetId = Search-ZNAsset -Fqdn ls01.posh.local
-        Invoke-ZNAssetsQueueAsset -AssetId $assetId -QueueDays 14
+        Invoke-ZNAssetQueueAsset -AssetId $assetId -QueueDays 14
         $asset = (Get-ZNAssetsQueued).Items | where {$_.Fqdn -eq 'ls01.posh.local'}
         Invoke-ZNExtendAssetQueue -Items @($assetId) -ExtendByDays 14
         $updatedAsset = (Get-ZNAssetsQueued).Items | where {$_.Fqdn -eq 'ls01.posh.local'}

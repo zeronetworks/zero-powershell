@@ -24,9 +24,6 @@ Returns an object with asset state statistics.
 ### Example 1: Get asset connected count
 ```powershell
 Get-ZNAssetsStatesStatistics
-```
-
-```output
 10
 ```
 

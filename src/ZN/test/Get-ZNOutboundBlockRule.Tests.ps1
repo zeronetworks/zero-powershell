@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNOutboundBlockRule'))
 Describe 'Get-ZNOutboundBlockRule' {
     It 'List' {
         $portsList = New-ZNPortsList -Protocol TCP -Ports (Get-Random -Minimum 1 -Maximum 1024)
-        $source = (Get-ZNOutboundAllowRulesSourceCandidate -search "all protected assets").Items
+        $source = (Get-ZNOutboundAllowRulesSourceCandidate -search "all segmented assets").Items
         $destination = Invoke-ZNEncodeEntityIp -IP 1.2.3.4
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNOutboundBlockRule -LocalEntityId $source.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt
@@ -26,7 +26,7 @@ Describe 'Get-ZNOutboundBlockRule' {
 
     It 'Get' {
         $portsList = New-ZNPortsList -Protocol TCP -Ports (Get-Random -Minimum 1 -Maximum 1024)
-        $source = (Get-ZNOutboundAllowRulesSourceCandidate -search "all protected assets").Items
+        $source = (Get-ZNOutboundAllowRulesSourceCandidate -search "all segmented assets").Items
         $destination = Invoke-ZNEncodeEntityIp -IP 1.2.3.4
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNOutboundBlockRule -LocalEntityId $source.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt

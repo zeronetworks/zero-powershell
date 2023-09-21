@@ -1,9 +1,6 @@
 ### Example 1: Get groups an asset is a member of
 ```powershell
 Get-ZNAssetMemberOf -AssetId a:a:ZgBWOMyc
-```
-
-```output
 CreatedAt     Description                                               DirectMembersCount Domain    Guid
 ---------     -----------                                               ------------------ ------    ----                             
 1656865698131 Includes all Domain Controllers in the environment        1                  tag       1246686d-9e06-488a-ae88-414fc3fd…

@@ -67,7 +67,7 @@ function Approve-ZNInboundBlockRuleReview {
         
         [Parameter(ParameterSetName = 'ApproveWithChangesExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
-        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem[]]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]]
         # the destination ports and protocols.
         ${PortsList},
         #[-RuleInfoPortsList <IPortsListItem[]>] 

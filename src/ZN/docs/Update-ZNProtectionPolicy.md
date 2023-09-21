@@ -26,9 +26,6 @@ Returns the updated settings for the protection policy.
 ```powershell
 $pp = Get-ZNProtectionPolicy | where {$_.GroupId -eq "g:t:01276c2c"}
 Update-ZNProtectionPolicy -ProtectionPolicyId $pp.Id -MinQueueDays 30
-```
-
-```output
 CreatedByEnforcementSource   : 4
 CreatedById                  : 1f352ed0-86f1-454f-90a5-592c197c8000
 CreatedByName                : Zero Networks

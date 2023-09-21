@@ -26,9 +26,6 @@ Returns a list of potential members for a group.
 ```powershell
 $group = Get-ZNAdGroup | where{$_.Name -eq "Administrators"}
 (Get-ZNGroupsMember -GroupId $group.id -IncludeNestedMembers:$false).Entities
-```
-
-```output
 AssetStatus AssetType CreatedAt     Description DirectMembersCount DistinguishedName                         Domain    Email FirstName Fqdn Guid                                 HasProtectionPolicy IPV4Addresse
                                                                                                                                                                                                      s
 ----------- --------- ---------     ----------- ------------------ -----------------                         ------    ----- --------- ---- ----                                 ------------------- ------------
@@ -44,9 +41,6 @@ This cmdlet gets members of a group from the environment.
 ```powershell
 $group = Get-ZNAdGroup | where{$_.Name -eq "Administrators"}
 (Get-ZNGroupsMember -GroupId $group.id -IncludeNestedMembers:$true).Entities
-```
-
-```output
 AssetStatus AssetType Domain    Fqdn IPV4Addresses IPV6Addresses Id           Name              OperatingSystem ProtectionState Source
 ----------- --------- ------    ---- ------------- ------------- --           ----              --------------- --------------- ------
                       zero.labs                                  u:a:eTpnZu08 Administrator                                     3

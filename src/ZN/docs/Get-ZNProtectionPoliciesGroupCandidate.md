@@ -25,9 +25,6 @@ Returns a list of candidates for protection policies.
 ### Example 1: List candidates for protection policies
 ```powershell
 (Get-ZNProtectionPoliciesGroupCandidate).Items
-```
-
-```output
 Domain    HasProtectionPolicy Id           Name
 ------    ------------------- --           ----
 zero.labs False               g:a:yu1gHyge Access Control Assistance Operators
@@ -47,9 +44,6 @@ The cmdlet gets candidates for protection policies for the environment
 ### Example 2: Search for a candidate
 ```powershell
 (Get-ZNProtectionPoliciesGroupCandidate -Search Clients).Items
-```
-
-```output
 Domain HasProtectionPolicy Id           Name
 ------ ------------------- --           ----
 system False               g:s:04276c2c Clients

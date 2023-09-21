@@ -28,9 +28,6 @@ https://github.com/zeronetworks/zero-powershell/connect-zn
 ### Example 1: Logs into Zero Networks using email otp
 ```powershell
 Connect-ZN -UserName user@zeronetworks.com
-```
-
-```output
 Please enter the OTP code recieved via email
 Code: 11111
 

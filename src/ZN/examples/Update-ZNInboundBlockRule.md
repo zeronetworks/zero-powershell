@@ -1,14 +1,11 @@
-### Example 1: Update inbound block rule
+### Example 1: Update a rule
 ```powershell
-#Get the Rule
 $rule = Get-ZNInboundBlockRule | where {$_.Description -eq "Test Rule"}
-# add an asset to the source list
 $rule.RemoteEntityIdsList = (Search-ZNAsset -Fqdn fs1.zero.labs)
-#Update the rule
 Update-ZNInboundBlockRule -RuleId $rule.id -RemoteEntityIdsList $rule.RemoteEntityIdsList
-```
 
-```output
+ApprovedById               : 
+ApprovedByName             : 
 CreatedByEnforcementSource : 5
 CreatedById                : 1f352ed0-86f1-454f-90a5-592c197c8000
 CreatedByName              : Zero Networks
@@ -35,4 +32,4 @@ UpdatedById                : 39cc28f6-7bba-4310-95e6-a7e7189a3ed5
 UpdatedByName              : Nicholas DiCola
 ```
 
-This cmdlet will update an inbound block rule for the environment.
+This cmdlet updates an inbound block rule.

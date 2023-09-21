@@ -25,9 +25,6 @@ Returns a list of Custom groups.
 ### Example 1: List Custom Groups
 ```powershell
 Get-ZNCustomGroup
-```
-
-```output
 CreatedAt     Description        DirectMembersCount Domain Guid                                 HasProtectionPolicy Id           Name         Role Sid UpdatedAt
 ---------     -----------        ------------------ ------ ----                                 ------------------- --           ----         ---- --- ---------
 1665690993630 test               1                  custom 333e66cb-d28e-40a2-ad55-d7a0288641fb False               g:c:7laiUyLK Renamed      3        1665761503450
@@ -41,9 +38,6 @@ This cmdlet will list custom groups for the environment.
 ### Example 2: Get the next page of custom groups
 ```powershell
 Get-ZNCustomGroup -offset 10
-```
-
-```output
 
 ```
 

@@ -12,7 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-ZNSettingsConnectRegion' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { New-ZNSettingsConnectRegion -DnsServersIPAddressList @("192.168.1.1") -IPAddress "2.3.4.5" -Name NewRegion } | Should -Not -Throw
+        $region = Get-ZNSettingsConnectRegion | where {$_.Name -eq "NewRegion"}
+        Remove-ZNSettingsConnectRegion -RegionId $region.Id
     }
 }

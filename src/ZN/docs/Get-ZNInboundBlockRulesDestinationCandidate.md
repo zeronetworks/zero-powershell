@@ -25,9 +25,6 @@ Returns a list of destination candidates for Inbound Block rules.
 ### Example 1: Get possible destinations for inbound block rule
 ```powershell
 (Get-ZNInboundBlockRulesDestinationCandidate).Items
-```
-
-```output
 AssetType Domain    Id           Name                                    ProtectionState
 --------- ------    --           ----                                    ---------------
                     b:110002     All protected assets                    
@@ -58,9 +55,6 @@ This cmdlet will return possbile candidates for destinations in an inbound block
 ### Example 2: Search for a candidate
 ```powershell
 (Get-ZNInboundBlockRulesDestinationCandidate -Search DC1).Items
-```
-
-```output
 AssetType Domain    Id           Name ProtectionState
 --------- ------    --           ---- ---------------
 2         zero.labs a:a:ZgBWOMyc DC1  5

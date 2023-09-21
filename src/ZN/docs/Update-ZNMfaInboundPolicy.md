@@ -13,7 +13,7 @@ Updates an inbound MFA Policy.
 ## SYNTAX
 
 ```
-Update-ZNMfaInboundPolicy -ReactivePolicyId <String> [-AdditionalPortsList <PortsListItem[]>]
+Update-ZNMfaInboundPolicy -ReactivePolicyId <String> [-AdditionalPortsList <IPortsListItem[]>]
  [-Description <String>] [-DstPort <String>] [-DstProcessNames <String[]>]
  [-ExcludedSrcEntityInfos <String[]>] [-ExcludedSrcProcesses <String[]>] [-FallbackToLoggedOnUser]
  [-MfaMethods <Int32[]>] [-OverrideBuiltins] [-ProtocolType <Int32>] [-RuleDuration <Int32>]
@@ -29,14 +29,10 @@ Updates an inbound MFA Policy.
 
 ### Example 1: Update an inbound MFA policy
 ```powershell
-#Get the policy
 $mfaPolicy = Get-ZNMfaInboundPolicy -ReactivePolicyId e1db180f-e435-498c-ae17-59651f3c3dc3
-#add a port
 $mfaPolicy.ItemDstPort = $mfaPolicy.ItemDstPort+,",24"
 Update-ZNMfaInboundPolicy -ReactivePolicyId $mfaPolicy.ItemId -DstPort $mfaPolicy.ItemDstPort
-```
 
-```output
 DstEntityInfoAssetStatus     : 1
 DstEntityInfoAssetType       : 0
 DstEntityInfoDomain          : 
@@ -73,7 +69,7 @@ StateProtectAt               :
 StateProtectionState         : 1
 ```
 
-This cmdlet will update an inbound MFA policy
+This cmdlet will update an inbound MFA policy.
 
 ## PARAMETERS
 
@@ -82,7 +78,7 @@ extra ports to open.
 To construct, see NOTES section for ADDITIONALPORTSLIST properties and create a hash table.
 
 ```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem[]
+Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]
 Parameter Sets: (All)
 Aliases:
 
@@ -404,7 +400,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ADDITIONALPORTSLIST <PortsListItem[]>: extra ports to open.
+ADDITIONALPORTSLIST <IPortsListItem[]>: extra ports to open.
   - `[Ports <String>]`: 
   - `[ProtocolType <Int32?>]`: 
 

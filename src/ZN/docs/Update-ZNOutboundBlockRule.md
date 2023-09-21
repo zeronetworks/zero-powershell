@@ -14,8 +14,8 @@ Updates an outbound block rule.
 
 ```
 Update-ZNOutboundBlockRule -RuleId <String> [-Description <String>] [-ExcludedLocalIdsList <String[]>]
- [-ExpiresAt <Int32>] [-LocalEntityId <String>] [-LocalProcessesList <String[]>]
- [-PortsList <PortsListItem[]>] [-RemoteEntityIdsList <String[]>] [-State <Int32>] [-AsJob] [-NoWait]
+ [-ExpiresAt <Int64>] [-LocalEntityId <String>] [-LocalProcessesList <String[]>]
+ [-PortsList <IPortsListItem[]>] [-RemoteEntityIdsList <String[]>] [-State <Int32>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,17 +24,14 @@ Updates an outbound block rule.
 
 ## EXAMPLES
 
-### Example 1: Update outbound block rule
+### Example 1: Update a rule
 ```powershell
-#Get the Rule
 $rule = Get-ZNOutboundBlockRule | where {$_.Description -eq "Test Rule"}
-# add an asset to the source list
 $rule.RemoteEntityIdsList += (Invoke-ZNEncodeEntityIP -IP 1.1.1.2)
-#Update the rule
 Update-ZNOutboundBlockRule -RuleId $rule.id -ExpiresAt $rule.ExpiresAt -LocalEntityId $rule.LocalEntityId -LocalProcessesList $rule.LocalProcessesList -PortsList $rule.PortsList -RemoteEntityIdsList $rule.RemoteEntityIdsList -State $rule.State -Description $rule.Description
-```
 
-```output
+ApprovedById               : 
+ApprovedByName             : 
 CreatedByEnforcementSource : 5
 CreatedById                : 1f352ed0-86f1-454f-90a5-592c197c8000
 CreatedByName              : Zero Networks
@@ -56,9 +53,11 @@ ItemState                  : 1
 ItemUpdatedAt              : 1665679760083
 LocalEntityInfoId          : 
 LocalEntityInfoName        : 
+UpdatedById                : 39cc28f6-7bba-4310-95e6-a7e7189a3ed5
+UpdatedByName              : Nicholas DiCola
 ```
 
-This cmdlet will update an outbound block rule for the environment.
+This cmdlet updates an outbound block rule.
 
 ## PARAMETERS
 
@@ -111,7 +110,7 @@ Accept wildcard characters: False
 when the rule should expiry.
 
 ```yaml
-Type: System.Int32
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -172,7 +171,7 @@ the destination ports and protocols.
 To construct, see NOTES section for PORTSLIST properties and create a hash table.
 
 ```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem[]
+Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]
 Parameter Sets: (All)
 Aliases:
 
@@ -277,7 +276,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PORTSLIST <PortsListItem[]>: the destination ports and protocols.
+PORTSLIST <IPortsListItem[]>: the destination ports and protocols.
   - `[Ports <String>]`: 
   - `[ProtocolType <Int32?>]`: 
 

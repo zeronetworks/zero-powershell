@@ -25,9 +25,6 @@ Returns and empty object.
 ```powershell
 $assetId = Search-ZNAsset -Fqdn ls01.posh.local
 Invoke-ZNQueueAsset -QueueDays 14 -Items @($assetId)
-```
-
-```output
 
 ```
 

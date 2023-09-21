@@ -13,7 +13,7 @@ Add an asset manager of a group
 ## SYNTAX
 
 ```
-Add-ZNGroupsAssetManager -GroupId <String> -GroupType <String> [-ManagerIds <String[]>] [-PassThru] [-Confirm]
+Add-ZNGroupsAssetManager -GroupId <String> -GroupType <String> -ManagerIds <String[]> [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -25,9 +25,6 @@ Add an asset manager of a group
 ### Example 1: Add asset manager to a group
 ```powershell
 Add-ZNGroupsAssetManager -GroupId g:a:cai6Wuyd -GroupType tag -ManagerIds @("u:a:RVVXGo4w")
-```
-
-```output
 
 ```
 
@@ -74,7 +71,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

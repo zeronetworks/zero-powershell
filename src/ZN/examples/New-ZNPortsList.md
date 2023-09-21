@@ -1,9 +1,6 @@
 ### Example 1: Create a portsList for rule objects
 ```powershell
 $portsList = New-ZNPortsList -Protocol TCP -Ports "44,45"
-```
-
-```output
 
 ```
 
@@ -17,9 +14,6 @@ $udp = New-ZNPortsList -Protocol UDP -Ports "44"
 $portsList +=$tcp
 $portsList +=$udp
 $portsList
-```
-
-```output
 Ports ProtocolType
 ----- ------------
 44    6

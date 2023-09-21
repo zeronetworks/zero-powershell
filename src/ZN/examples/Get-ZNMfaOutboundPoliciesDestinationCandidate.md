@@ -1,9 +1,6 @@
 ### Example 1: Get possible destinations for outbound MFA Policy
 ```powershell
 (Get-ZNMfaOutboundPoliciesDestinationCandidate).Items
-```
-
-```output
 AssetType Domain Id           Name                     ProtectionState
 --------- ------ --           ----                     ---------------
                  g:s:17276c2c Protected OT/IoT devices 
@@ -16,9 +13,6 @@ This cmdlet will return possbile candidates for destinations in an outbound MFA 
 ### Example 2: Search for a candidate
 ```powershell
 (Get-ZNMfaOutboundPoliciesDestinationCandidate -Search webcam).Items
-```
-
-```output
 AssetType Domain Id           Name   ProtectionState
 --------- ------ --           ----   ---------------
 4                a:t:oxafRZct webcam 1

@@ -1,9 +1,6 @@
 ### Example 1: List tag groups
 ```powershell
 Get-ZNTagGroup
-```
-
-```output
 CreatedAt     Description                                                      DirectMembersCount Domain Guid                                 HasProtectionPolicy Id           Name                             Role Sid UpdatedAt
 ---------     -----------                                                      ------------------ ------ ----                                 ------------------- --           ----                             ---- --- ---------
 1664439304197 Includes all Acronis backup servers in the environment           0                  tag    e136ec7d-96be-4148-93ce-8f8c4b372e34 False               g:t:32276c2c Acronis backup                   3        1664439304197
@@ -23,9 +20,6 @@ This cmdlet will list tag groups for the environment.
 ### Example 2: Get the next page of system groups
 ```powershell
  Get-ZNTagGroup -Offset 10
-```
-
-```output
 CreatedAt     Description                                                 DirectMembersCount Domain Guid                                 HasProtectionPolicy Id           Name        Role Sid UpdatedAt
 ---------     -----------                                                 ------------------ ------ ----                                 ------------------- --           ----        ---- --- ---------
 1661144906624 Includes all DPM servers in the environment                 0                  tag    e8bf26a2-2ccb-4c55-9c12-0c08126bf8ec False               g:t:11276c2c DPM         3        1661144910063
