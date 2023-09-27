@@ -15,7 +15,7 @@ Returns the properties of an outbound block rule.
 ### List (Default)
 ```
 Get-ZNGroupsOutboundBlockRule -GroupId <String> -GroupType <String> [-AddAncestors] [-AddBuiltins]
- [-Direction <Int32>] [-EntityParams <String>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>]
+ [-Direction <String>] [-EntityParams <String>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>]
  [-WithCount] [<CommonParameters>]
 ```
 
@@ -115,10 +115,10 @@ Accept wildcard characters: False
 ```
 
 ### -Direction
-direction for the query, 1=Inbound, 2=Outbound, 3=Both
+direction for the query, incoming or outgoing
 
 ```yaml
-Type: System.Int32
+Type: System.String
 Parameter Sets: List
 Aliases:
 

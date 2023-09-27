@@ -678,7 +678,11 @@ directive:
       subject: LearnAssetExtendQueue
     set:
       subject: AssetExtendQueueAsset
-  # rename ot protect command
+  - where:
+      subject: LearnAssetOtQueue
+    set:
+      subject: AssetOtQueueAsset
+  # rename asset/ot commands
   - where:
       subject: AssetsOt
       variant: ^Protect$|^Unprotect$
@@ -706,6 +710,12 @@ directive:
       verb: Test
     set:
       subject: AssetUnprotect
+  # combine user search
+  - where:
+      subject: ^UsersByPrincipalName$|^UsersBySid$
+      verb: Search
+    set:
+      subject: Users
   # change set to update
   - where:
       verb: Set

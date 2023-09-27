@@ -12,7 +12,7 @@ Returns a number of assets that are valid to unprotect.
 
 ## SYNTAX
 
-### Validate (Default)
+### Validate1 (Default)
 ```
 Test-ZNAssetUnprotect -AssetId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -45,7 +45,7 @@ assetId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate
+Parameter Sets: Validate1
 Aliases:
 
 Required: True

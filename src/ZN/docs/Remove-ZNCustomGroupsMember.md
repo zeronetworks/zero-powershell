@@ -175,10 +175,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <ICustomGroupMembersBody>: .
+`BODY <ICustomGroupMembersBody>`: .
   - `MembersId <String[]>`: members id
 
-INPUTOBJECT <IApiIdentity>: Identity Parameter
+`INPUTOBJECT <IApiIdentity>`: Identity Parameter
   - `[AssetId <String>]`: assetId to filter on
   - `[ClientId <String>]`: clientId to filter on
   - `[ConnectServerId <String>]`: connect server id

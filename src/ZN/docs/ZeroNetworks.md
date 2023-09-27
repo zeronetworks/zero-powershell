@@ -54,11 +54,7 @@ Approve a "pending review" rule with or without changes
 Approve a "pending review" rule with or without changes
 
 ### [Connect-ZN](Connect-ZN.md)
-Login to Zero Networks to get a token for cmdlet use.
-NOTE: If your environment has a IdP set for default authentication, you cannot use this cmdlet and will need to use Set-ZNApiKey cmdlet using an API token.
-
-#.Link
-https://github.com/zeronetworks/zero-powershell/connect-zn
+Login to Zero Networks to get a token for cmdlet use
 
 ### [Deny-ZNAssetInboundAllowRuleReview](Deny-ZNAssetInboundAllowRuleReview.md)
 Reject a "pending review" rule
@@ -87,12 +83,6 @@ Reject a "pending review" rule
 ### [Disconnect-ZN](Disconnect-ZN.md)
 Logout of Zero Networks
 
-#.Link
-https://github.com/zeronetworks/zero-powershell/Disconnect-zn
-
-### [Get-ZNAdGroup](Get-ZNAdGroup.md)
-Returns a list of AD groups.
-
 ### [Get-ZNAiExclusionNetworkBoth](Get-ZNAiExclusionNetworkBoth.md)
 Get AI network exclusion for clients and servers: lists of tcp/udp ports / ports ranges + boolean for icmp protocol, and a list of processes to ignore during learning.
 
@@ -107,9 +97,6 @@ Get AI source candidates to ignore during learning.
 
 ### [Get-ZNAiExclusionSourceEntity](Get-ZNAiExclusionSourceEntity.md)
 Get AI source entities to ignore during learning.
-
-### [Get-ZNAiGroup](Get-ZNAiGroup.md)
-Returns a list of Ai Groups.
 
 ### [Get-ZNAiNextBatch](Get-ZNAiNextBatch.md)
 Returns a date in epoch(ms) for the next batch of AI rules.
@@ -194,6 +181,9 @@ Returns a list of source users candidates on outbound MFA policies.
 
 ### [Get-ZNAssetMfaOutboundPolicy](Get-ZNAssetMfaOutboundPolicy.md)
 Returns the properties of an outbound MFA policy.
+
+### [Get-ZNAssetOt](Get-ZNAssetOt.md)
+Returns the properties of an OT asset.
 
 ### [Get-ZNAssetOtAnalysis](Get-ZNAssetOtAnalysis.md)
 Returns an object with OT/IoT asset analysis data.
@@ -285,9 +275,6 @@ Returns a list of tags for an entity.
 ### [Get-ZNAudit](Get-ZNAudit.md)
 Returns a list of audit events.
 
-### [Get-ZNCustomGroup](Get-ZNCustomGroup.md)
-Returns a list of Custom groups.
-
 ### [Get-ZNCustomGroupsCandidate](Get-ZNCustomGroupsCandidate.md)
 Returns a list of candidates for custom group membership.
 
@@ -305,6 +292,9 @@ Get asset managers of group
 
 ### [Get-ZNGroupsAssetManagersCandidate](Get-ZNGroupsAssetManagersCandidate.md)
 Get manager candidates for group managers
+
+### [Get-ZNGroupsByType](Get-ZNGroupsByType.md)
+Returns a list of groups.
 
 ### [Get-ZNGroupsInboundAllowRule](Get-ZNGroupsInboundAllowRule.md)
 Returns the properties of an Inbound Allow rule.
@@ -489,9 +479,6 @@ Returns and object with MFA distrubiton.
 ### [Get-ZNMfaPoliciesStatistics](Get-ZNMfaPoliciesStatistics.md)
 Returns an object with MFA statistics.
 
-### [Get-ZNOtGroup](Get-ZNOtGroup.md)
-Returns a list of OT/IoT groups.
-
 ### [Get-ZNOutboundAllowRule](Get-ZNOutboundAllowRule.md)
 Returns the properties of an Outbound Allow rule.
 
@@ -570,6 +557,9 @@ List Connect User Access Configurations in Settings
 ### [Get-ZNSettingsConnectUserAccessConfigAllowedRegionsCandidate](Get-ZNSettingsConnectUserAccessConfigAllowedRegionsCandidate.md)
 Returns a list of candidates for user access config allowed regions.
 
+### [Get-ZNSettingsConnectUserAccessConfigAssetsCandidate](Get-ZNSettingsConnectUserAccessConfigAssetsCandidate.md)
+Returns a list of candidates for user access config excluded assets.
+
 ### [Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate](Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate.md)
 Returns a list of candidates for user access config excluded destinations.
 
@@ -603,6 +593,12 @@ Get Internal Subnets settings in System
 ### [Get-ZNSettingsJamfCredentials](Get-ZNSettingsJamfCredentials.md)
 Returns the properties for JAMF Credentials Settings.
 
+### [Get-ZNSettingsLearningConfig](Get-ZNSettingsLearningConfig.md)
+Get Learning Config settings in Network Segementation
+
+### [Get-ZNSettingsLinuxSetup](Get-ZNSettingsLinuxSetup.md)
+Get the linux setup settings in Asset Managment
+
 ### [Get-ZNSettingsLinuxUser](Get-ZNSettingsLinuxUser.md)
 Get the linux user settings in Asset Managment
 
@@ -627,12 +623,6 @@ Get Trusted Internet addresses settings in System
 ### [Get-ZNSettingsZpa](Get-ZNSettingsZpa.md)
 Get ZPA settings in Integrations
 
-### [Get-ZNSystemGroup](Get-ZNSystemGroup.md)
-Returns a list of System groups.
-
-### [Get-ZNTagGroup](Get-ZNTagGroup.md)
-Returns a list of Tags.
-
 ### [Get-ZNTrustServer](Get-ZNTrustServer.md)
 Returns a list of trust servers.
 
@@ -645,17 +635,29 @@ Returns a list of audits for the user.
 ### [Get-ZNUserMemberOf](Get-ZNUserMemberOf.md)
 Returns a list of groups the user is a member of.
 
+### [Get-ZNUsersHuman](Get-ZNUsersHuman.md)
+Returns a list of Human Users.
+
 ### [Get-ZNUsersManagedAsset](Get-ZNUsersManagedAsset.md)
 get managed assets for user
 
 ### [Get-ZNUsersManagedAssetsCandidate](Get-ZNUsersManagedAssetsCandidate.md)
 Get asset candidates to be managed by asset managers
 
+### [Get-ZNUsersServiceAccount](Get-ZNUsersServiceAccount.md)
+Returns a list of ServiceAccount Users.
+
 ### [Get-ZNUserStatistics](Get-ZNUserStatistics.md)
 Get Users statistics
 
+### [Get-ZNUsersUndetermined](Get-ZNUsersUndetermined.md)
+Returns a list of Undetermined Users.
+
 ### [Invoke-ZNAssetExtendQueueAsset](Invoke-ZNAssetExtendQueueAsset.md)
 Extend asset learning
+
+### [Invoke-ZNAssetOtQueueAsset](Invoke-ZNAssetOtQueueAsset.md)
+Add OT Asset to learning
 
 ### [Invoke-ZNAssetQueueAsset](Invoke-ZNAssetQueueAsset.md)
 Extend asset learning
@@ -673,6 +675,9 @@ Returns the assetId after encoding the IP subnet.
 Returns an empty object.
 
 ### [Invoke-ZNQueueAsset](Invoke-ZNQueueAsset.md)
+Returns and empty object.
+
+### [Invoke-ZNQueueAssetOt](Invoke-ZNQueueAssetOt.md)
 Returns and empty object.
 
 ### [Invoke-ZNRediscoverAd](Invoke-ZNRediscoverAd.md)
@@ -778,10 +783,7 @@ Returns an empty object.
 Returns an empty object.
 
 ### [Remove-ZNApiKey](Remove-ZNApiKey.md)
-Deletes the API Key
-
-#.Link
-https://github.com/zeronetworks/zero-powershell/remove-znapikey
+Deletes the API key
 
 ### [Remove-ZNAssetInboundAllowRule](Remove-ZNAssetInboundAllowRule.md)
 Returns an empty object.
@@ -900,14 +902,11 @@ Returns an assetId.
 ### [Search-ZNAssetProtected](Search-ZNAssetProtected.md)
 Given fqdn, returns assetId, if asset is found and is protected
 
-### [Search-ZNUser](Search-ZNUser.md)
+### [Search-ZNUsers](Search-ZNUsers.md)
 Provided user SID - returns user entity id
 
 ### [Set-ZNApiKey](Set-ZNApiKey.md)
 Set the API key for use in all other cmdlets
-
-#.Link
-https://github.com/zeronetworks/zero-powershell/set-znapikey
 
 ### [Test-ZNAssetProtect](Test-ZNAssetProtect.md)
 Returns a number of assets that are valid for protection.
@@ -1055,6 +1054,12 @@ Update the Internal Subnets settings in System
 
 ### [Update-ZNSettingsJamfCredentials](Update-ZNSettingsJamfCredentials.md)
 Returns the upddated properties of JAMF Credentials settings.
+
+### [Update-ZNSettingsLearningConfig](Update-ZNSettingsLearningConfig.md)
+Update Learning Config settings in Network Segementation
+
+### [Update-ZNSettingsLinuxSetup](Update-ZNSettingsLinuxSetup.md)
+Update the linux setup settings in Asset Managment
 
 ### [Update-ZNSettingsLinuxUser](Update-ZNSettingsLinuxUser.md)
 Update the linux user settings in Asset Managment

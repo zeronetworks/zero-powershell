@@ -13,7 +13,7 @@ Returns an object with OT/IoT asset analysis data.
 ## SYNTAX
 
 ```
-Get-ZNAssetOtAnalysis -AssetId <String> -Direction <Int32> [-Connectionstate <Int32>] [-From <Int32>]
+Get-ZNAssetOtAnalysis -AssetId <String> -Direction <String> [-Connectionstate <Int32>] [-From <Int32>]
  [-Sort <String>] [-To <Int32>] [<CommonParameters>]
 ```
 
@@ -73,10 +73,10 @@ Accept wildcard characters: False
 ```
 
 ### -Direction
-direction for the query, 1=Inbound, 2=Outbound, 3=Both
+direction for the query, incoming or outgoing
 
 ```yaml
-Type: System.Int32
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

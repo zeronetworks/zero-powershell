@@ -1,47 +1,44 @@
 ---
 external help file:
 Module Name: ZeroNetworks
-online version: https://github.com/zeronetworkszeronetworks/get-znaigroup
+online version: https://github.com/zeronetworkszeronetworks/get-znusersserviceaccount
 schema: 2.0.0
 ---
 
-# Get-ZNAiGroup
+# Get-ZNUsersServiceAccount
 
 ## SYNOPSIS
-Returns a list of Ai Groups.
+Returns a list of ServiceAccount Users.
 
 ## SYNTAX
 
 ```
-Get-ZNAiGroup [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
+Get-ZNUsersServiceAccount [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Search <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns a list of Ai Groups.
+Returns a list of ServiceAccount Users.
 
 ## EXAMPLES
 
-### Example 1: List AI Groups
+### Example 1: {{ Add title here }}
 ```powershell
- Get-ZNAiGroup
+PS C:\> {{ Add code here }}
 
-Id           Name Description DirectMembersCount
---           ---- ----------- ------------------
-g:i:gFMSN4Mu LS   LS Servers  1
+{{ Add output here }}
 ```
 
-This cmdlet lists AI groups.
+{{ Add description here }}
 
-### Example 2: Search for an AI group
+### Example 2: {{ Add title here }}
 ```powershell
-Get-ZNAiGroup -Search LS
+PS C:\> {{ Add code here }}
 
-Id           Name Description DirectMembersCount
---           ---- ----------- ------------------
-g:i:gFMSN4Mu LS   LS Servers  1
+{{ Add output here }}
 ```
 
-This cmdlet can also search by name.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -114,7 +111,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroup
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IUser
 
 ## NOTES
 

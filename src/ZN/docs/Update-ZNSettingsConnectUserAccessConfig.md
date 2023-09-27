@@ -15,8 +15,11 @@ Update a Connect User Access Configuration in Settings
 ```
 Update-ZNSettingsConnectUserAccessConfig -UserAccessConfigId <String> -AllowedRegions <String[]>
  -ConnectivityStateAfterReboot <String> -DstEntityIdsList <String[]> -ForceSsoAuthentication
- -MembersIdsList <String[]> -Name <String> -SessionTtlHours <Int32> [-Description <String>]
- [-ExcludedMembersIdsList <String[]>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -LoginAuthorizedEntityAllowedAssetIdsList <String[]>
+ -LoginAuthorizedEntityAllowedAssetsSourcesList <String[]>
+ -LoginAuthorizedEntityAllowedUsersIdsList <String[]> -Name <String> -SessionTtlHours <Int32>
+ [-Description <String>] [-LoginAuthorizedEntityExcludedAssetIdsList <String[]>]
+ [-LoginAuthorizedEntityExcludedUserIdsList <String[]>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,10 +31,6 @@ Update a Connect User Access Configuration in Settings
 ```powershell
 $uac = Get-ZNSettingsConnectUserAccessConfig | where {$_. Name -eq 'UAC'}
 Update-ZNSettingsConnectUserAccessConfig -UserAccessConfigId $uac.id -SessionTtlHours 24 -DstEntityIdsList @($uac.AllowedDestinations.Id) -MembersIdsList @($uac.MemberIds.Id) -Name $uac.Name
-```
-
-```output
-
 ```
 
 This cmdlet updates a User Access Config for Connect
@@ -98,21 +97,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExcludedMembersIdsList
-.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ForceSsoAuthentication
 .
 
@@ -128,7 +112,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MembersIdsList
+### -LoginAuthorizedEntityAllowedAssetIdsList
 .
 
 ```yaml
@@ -137,6 +121,66 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoginAuthorizedEntityAllowedAssetsSourcesList
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoginAuthorizedEntityAllowedUsersIdsList
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoginAuthorizedEntityExcludedAssetIdsList
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoginAuthorizedEntityExcludedUserIdsList
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

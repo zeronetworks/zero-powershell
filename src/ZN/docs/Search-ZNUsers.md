@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: ZeroNetworks
-online version: https://github.com/zeronetworkszeronetworks/search-znuser
+online version: https://github.com/zeronetworkszeronetworks/search-znusers
 schema: 2.0.0
 ---
 
-# Search-ZNUser
+# Search-ZNUsers
 
 ## SYNOPSIS
 Provided user SID - returns user entity id
@@ -14,12 +14,12 @@ Provided user SID - returns user entity id
 
 ### Search (Default)
 ```
-Search-ZNUser -Sid <String> [<CommonParameters>]
+Search-ZNUsers -PrincipalName <String> [<CommonParameters>]
 ```
 
 ### Search1
 ```
-Search-ZNUser -PrincipalName <String> [<CommonParameters>]
+Search-ZNUsers -Sid <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,23 +27,27 @@ Provided user SID - returns user entity id
 
 ## EXAMPLES
 
-### Example 1: Search for a user by prinicpal name
+### Example 1: {{ Add title here }}
 ```powershell
-Search-ZNUser -PrincipalName "posh\nicholas"
-
-u:a:w27loY5p
+{{ Add code here }}
 ```
 
-This cmdlet lets you find a user by principal name.
-
-### Example 2: Search for a user by SID
-```powershell
-Search-ZNUser -Sid "S-1-5-21-897785097-3420057113-2083682306-3601"
-
-u:a:w27loY5p
+```output
+{{ Add output here }}
 ```
 
-This cmdlet lets you find a user by principal name.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -52,7 +56,7 @@ sid to query for
 
 ```yaml
 Type: System.String
-Parameter Sets: Search1
+Parameter Sets: Search
 Aliases:
 
 Required: True
@@ -67,7 +71,7 @@ sid to query for
 
 ```yaml
 Type: System.String
-Parameter Sets: Search
+Parameter Sets: Search1
 Aliases:
 
 Required: True
