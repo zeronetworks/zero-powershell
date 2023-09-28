@@ -653,13 +653,13 @@ Get Users statistics
 ### [Get-ZNUsersUndetermined](Get-ZNUsersUndetermined.md)
 Returns a list of Undetermined Users.
 
-### [Invoke-ZNAssetExtendQueueAsset](Invoke-ZNAssetExtendQueueAsset.md)
+### [Invoke-ZNAssetExtendQueue](Invoke-ZNAssetExtendQueue.md)
 Extend asset learning
 
-### [Invoke-ZNAssetOtQueueAsset](Invoke-ZNAssetOtQueueAsset.md)
+### [Invoke-ZNAssetOtQueue](Invoke-ZNAssetOtQueue.md)
 Add OT Asset to learning
 
-### [Invoke-ZNAssetQueueAsset](Invoke-ZNAssetQueueAsset.md)
+### [Invoke-ZNAssetQueue](Invoke-ZNAssetQueue.md)
 Extend asset learning
 
 ### [Invoke-ZNEncodeEntityIP](Invoke-ZNEncodeEntityIP.md)
@@ -902,7 +902,7 @@ Returns an assetId.
 ### [Search-ZNAssetProtected](Search-ZNAssetProtected.md)
 Given fqdn, returns assetId, if asset is found and is protected
 
-### [Search-ZNUsers](Search-ZNUsers.md)
+### [Search-ZNUser](Search-ZNUser.md)
 Provided user SID - returns user entity id
 
 ### [Set-ZNApiKey](Set-ZNApiKey.md)

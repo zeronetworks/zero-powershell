@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-ZNSettingsLearningConfig' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        (get-ZNSettingsLearningConfig).AllowQueueForever | Should -Not -Be $null
     }
 }

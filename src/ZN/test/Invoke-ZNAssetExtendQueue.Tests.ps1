@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSystemGroup'))
+if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNAssetExtendQueue'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-ZNSystemGroup.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-ZNAssetExtendQueue.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSystemGroup'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-ZNSystemGroup' {
-    It 'List' {
-        { Get-ZNSystemGroup } | Should -Not -Be $null
+Describe 'Invoke-ZNAssetExtendQueue' {
+    It 'LearnExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

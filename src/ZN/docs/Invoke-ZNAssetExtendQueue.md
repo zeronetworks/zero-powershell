@@ -1,47 +1,34 @@
 ---
 external help file:
 Module Name: ZeroNetworks
-online version: https://github.com/zeronetworkszeronetworks/invoke-znassetotqueueasset
+online version: https://github.com/zeronetworkszeronetworks/invoke-znassetextendqueue
 schema: 2.0.0
 ---
 
-# Invoke-ZNAssetOtQueueAsset
+# Invoke-ZNAssetExtendQueue
 
 ## SYNOPSIS
-Add OT Asset to learning
+Extend asset learning
 
 ## SYNTAX
 
 ```
-Invoke-ZNAssetOtQueueAsset -AssetId <String> -QueueDays <Int32> [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-ZNAssetExtendQueue -AssetId <String> -ExtendByDays <Int32> [-RelearnReason <String>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Add OT Asset to learning
+Extend asset learning
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Extend learning for an asset
 ```powershell
-{{ Add code here }}
+$asset = Search-ZNAsset -Fqdn wc01.posh.local
+Invoke-ZNAssetExtendQueue -AssetId $asset -ExtendByDays 30
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet will extend learning for a specific asset.
 
 ## PARAMETERS
 
@@ -60,7 +47,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -QueueDays
+### -ExtendByDays
 number of days
 
 ```yaml
@@ -69,6 +56,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RelearnReason
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

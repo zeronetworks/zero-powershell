@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-ZNSettingsConnectUserAccessConfigAssetsCandidate' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        (Get-ZNSettingsConnectUserAccessConfigAssetsCandidate).Count | Should -BeGreaterThan 0
     }
 }

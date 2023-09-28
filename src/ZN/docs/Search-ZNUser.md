@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: ZeroNetworks
-online version: https://github.com/zeronetworkszeronetworks/search-znusers
+online version: https://github.com/zeronetworkszeronetworks/search-znuser
 schema: 2.0.0
 ---
 
-# Search-ZNUsers
+# Search-ZNUser
 
 ## SYNOPSIS
 Provided user SID - returns user entity id
@@ -14,12 +14,12 @@ Provided user SID - returns user entity id
 
 ### Search (Default)
 ```
-Search-ZNUsers -PrincipalName <String> [<CommonParameters>]
+Search-ZNUser -PrincipalName <String> [<CommonParameters>]
 ```
 
 ### Search1
 ```
-Search-ZNUsers -Sid <String> [<CommonParameters>]
+Search-ZNUser -Sid <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,27 +27,21 @@ Provided user SID - returns user entity id
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Search user by SID
 ```powershell
-{{ Add code here }}
+Search-ZNUser -Sid "S-1-5-21-897785097-3420057113-2083682306-2101"
+
 ```
 
-```output
-{{ Add output here }}
-```
+This cmdlet can search for a user by sid.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Search user by Principal Name
 ```powershell
-{{ Add code here }}
+Search-ZNUser -PrincipalName "posh\test"
+
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet can search for a user by principal name.
 
 ## PARAMETERS
 

@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Search-ZNUsers'))
+if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNAssetOtQueue'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Search-ZNUsers.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-ZNAssetOtQueue.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Search-ZNUsers'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Search-ZNUsers' {
-    It 'Search' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Search1' -skip {
+Describe 'Invoke-ZNAssetOtQueue' {
+    It 'LearnExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

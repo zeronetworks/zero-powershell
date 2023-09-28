@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: ZeroNetworks
-online version: https://github.com/zeronetworkszeronetworks/invoke-znassetqueueasset
+online version: https://github.com/zeronetworkszeronetworks/invoke-znassetqueue
 schema: 2.0.0
 ---
 
-# Invoke-ZNAssetQueueAsset
+# Invoke-ZNAssetQueue
 
 ## SYNOPSIS
 Extend asset learning
@@ -13,7 +13,7 @@ Extend asset learning
 ## SYNTAX
 
 ```
-Invoke-ZNAssetQueueAsset -AssetId <String> -QueueDays <Int32> [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-ZNAssetQueue -AssetId <String> -QueueDays <Int32> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -21,12 +21,13 @@ Extend asset learning
 
 ## EXAMPLES
 
-### Example 1: Add a specific asset to learning
+### Example 1: Add an asset to learning
 ```powershell
-Invoke-ZNAssetQueueAsset -AssetId "a:a:OtfLGUBq" -QueueDays 30
+$asset = Search-ZNAsset -Fqdn wc01.posh.local
+Invoke-ZNAssetQueue -AssetId $asset -QueueDays 30
 ```
 
-This cmdlet add an specific asset to learning.
+This cmdlet will add an asset to learning.
 
 ## PARAMETERS
 

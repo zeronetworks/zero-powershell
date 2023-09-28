@@ -673,15 +673,19 @@ directive:
   - where:
       subject: LearnAssetQueue
     set:
-      subject: AssetQueueAsset
+      subject: AssetQueue
   - where:
       subject: LearnAssetExtendQueue
     set:
-      subject: AssetExtendQueueAsset
+      subject: AssetExtendQueue
+  - where:
+      subject: AssetQueueAsset
+    set:
+      subject: AssetQueue
   - where:
       subject: LearnAssetOtQueue
     set:
-      subject: AssetOtQueueAsset
+      subject: AssetOtQueue    
   # rename asset/ot commands
   - where:
       subject: AssetsOt
@@ -715,7 +719,7 @@ directive:
       subject: ^UsersByPrincipalName$|^UsersBySid$
       verb: Search
     set:
-      subject: Users
+      subject: User
   # change set to update
   - where:
       verb: Set

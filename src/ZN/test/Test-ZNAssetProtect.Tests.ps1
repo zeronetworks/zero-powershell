@@ -13,10 +13,10 @@ while(-not $mockingPath) {
 
 Describe 'Test-ZNAssetProtect' {
     It 'Validate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        Test-ZNAssetProtect -AssetId a:a:8ErCHXe8 | Should -Not -Be $null
     }
 
-    It 'ValidateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ValidateExpanded' {
+        Test-ZNAssetProtect -Items @("a:a:8ErCHXe8") | Should -Not -Be $null
     }
 }

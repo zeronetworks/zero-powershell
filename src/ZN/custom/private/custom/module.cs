@@ -117,6 +117,8 @@ namespace ZeroNetworks.PowerShell.Cmdlets.Api
 
             // once for the pipeline that supports a proxy
             this._pipelineWithProxy.Append(AddApiKey);
+
+            this.EventListener = ZNModule.EventListener;
         }
 
         protected async Task<HttpResponseMessage> AddApiKey(HttpRequestMessage request, IEventListener callback, ISendAsync next)

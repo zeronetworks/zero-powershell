@@ -12,7 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-ZNAssetOt' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $otAsset = Search-ZNAsset -Fqdn ot1777
+        $asset = Get-ZNAssetOt -AssetId $otAsset
+        $asset.EntityId | Should -Not -Be $null
     }
 }

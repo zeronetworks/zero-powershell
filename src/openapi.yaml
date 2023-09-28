@@ -16349,7 +16349,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/settingsZpa'
+              $ref: '#/components/schemas/settingsZpaBody'
       responses:
         '200':
           description: OK
@@ -18894,15 +18894,12 @@ components:
           issuedAt: string
           createdAt: string
     accessTypeEnum:
-      type: object
-      properties:
-        id:
-          description: '1=Full Access, 2=Read Only, 3=Cloud Connector Provisioning'
-          type: integer
-          enum:
-            - 1
-            - 2
-            - 3
+      description: '1=Full Access, 2=Read Only, 3=Cloud Connector Provisioning'
+      type: integer
+      enum:
+        - 1
+        - 2
+        - 3
       title: accessTypeEnum
     aiExclusionSourceEntitiesBody:
       type: array
@@ -19065,14 +19062,7 @@ components:
           type: string
           example: Windows 10 Pro
         protectionState:
-          type: integer
-          format: int32
-          enum:
-            - 0
-            - 1
-            - 2
-            - 3
-            - 4
+          $ref: "#/components/schemas/protectionState"
         source:
           description: |
             Possible asset sources:
@@ -19123,6 +19113,7 @@ components:
             - 19
             - 20
             - 21
+            - 22
         state:
           $ref: '#/components/schemas/state'
     assetAnalysis:
@@ -19170,7 +19161,7 @@ components:
         assetType:
           type: integer
         protectionState:
-          type: integer
+          $ref: "#/components/schemas/protectionState"
         domain:
           type: string
       x-examples:
@@ -19199,7 +19190,7 @@ components:
         assetType:
           type: integer
         protectionState:
-          type: integer
+          $ref: "#/components/schemas/protectionState"
         domain:
           type: string
     assetCandidateList:
@@ -19260,14 +19251,7 @@ components:
         operatingSystem:
           type: string
         protectionState:
-          type: integer
-          format: int32
-          enum:
-            - 0
-            - 1
-            - 2
-            - 3
-            - 4
+          $ref: "#/components/schemas/protectionState"
         source:
           type: integer
           format: int32
@@ -19470,16 +19454,7 @@ components:
         details:
           type: string
         enforcementSource:
-          description: '1=ReacticePolicy, 2=Automated, 3=AccessPortal, 4=AdminPortal, 5=AI, 6=API'
-          type: integer
-          format: int32
-          enum:
-            - 1
-            - 2
-            - 3
-            - 4
-            - 5
-            - 6
+          $ref: '#/components/schemas/enforcementSource'
         performedBy:
           type: object
           properties:
@@ -19893,7 +19868,9 @@ components:
               hasProtectionPolicy:
                 type: boolean
         allowedRegions:
-          $ref: '#/components/schemas/idNamePair'
+          type: array
+          items:
+            $ref: '#/components/schemas/idNamePair'
         allowedUserIds:
           type: array
           items:
@@ -19903,7 +19880,7 @@ components:
         createdAt:
           $ref: '#/components/schemas/epochMillis'
         createdBy:
-          $ref: '#/components/schemas/userSimple'
+          type: string
         description:
           type: string
         excludedAssetIds:
@@ -19932,8 +19909,7 @@ components:
         createdBy:
           $ref: '#/components/schemas/idNamePair'
         enforcementSource:
-          type: integer
-          format: int32
+          $ref: '#/components/schemas/enforcementSource'
         userRole:
           type: integer
           format: int32
@@ -20019,6 +19995,18 @@ components:
       properties:
         id:
           type: string
+    enforcementSource:
+      description: '1=ReacticePolicy, 2=Automated, 3=AccessPortal, 4=AdminPortal, 5=AI, 6=API, 7=Setup'
+      type: integer
+      format: int32
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
     entitiesList:
       type: object
       properties:
@@ -20299,8 +20287,7 @@ components:
             createdBy:
               $ref: '#/components/schemas/idNamePair'
             enforcementSource:
-              type: integer
-              format: int32
+              $ref: '#/components/schemas/enforcementSource'
     idNamePair:
       type: object
       properties:
@@ -20601,7 +20588,7 @@ components:
             type: string
             example: 'c:\test.exe'
         enforcementSource:
-          type: integer
+          $ref: '#/components/schemas/enforcementSource'
         excludedSrcEntityInfos:
           type: array
           items:
@@ -21172,6 +21159,15 @@ components:
           default: 30
           maximum: 30
           minimum: 0
+    protectionState:
+      type: integer
+      format: int32
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
     queueBody:
       type: object
       properties:
@@ -22431,6 +22427,33 @@ components:
     settingsZpa:
       type: object
       properties:
+        config:
+          type: object
+          properties:
+            isEnabled:
+              type: boolean
+            clientOutboundSubnet:
+              $ref: '#/components/schemas/ipSubnet'
+            gatewayIpsList:
+              type: array
+              items:
+                type: string
+                pattern: '^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$'
+            portsToMfaTcp:
+              type: string
+              pattern: '^((\\d{1,5}-\\d{1,5})|\\d{1,5})(,(\\d{1,5}-\\d{1,5})|,\\d{1,5})*$'
+            portsToMfaUdp:
+              type: string
+              pattern: '^((\\d{1,5}-\\d{1,5})|\\d{1,5})(,(\\d{1,5}-\\d{1,5})|,\\d{1,5})*$'
+    settingsZpaBody:
+      type: object
+      required:
+       - isEnabled
+       - clientOutboundSubnet
+       - gatewayIpsList
+       - portsToMfaTcp
+       - portsToMfaUdp
+      properties:
         isEnabled:
           type: boolean
         clientOutboundSubnet:
@@ -22446,12 +22469,6 @@ components:
         portsToMfaUdp:
           type: string
           pattern: '^((\\d{1,5}-\\d{1,5})|\\d{1,5})(,(\\d{1,5}-\\d{1,5})|,\\d{1,5})*$'
-      required:
-        - isEnabled
-        - clientOutboundSubnet
-        - gatewayIpsList
-        - portsToMfaTcp
-        - portsToMfaUdp
     srcUserCandidate:
       type: object
       properties:
@@ -22483,13 +22500,7 @@ components:
         protectAt:
           $ref: '#/components/schemas/epochMillis'
         protectionState:
-          type: integer
-          format: int32
-          enum:
-            - 1
-            - 3
-            - 4
-            - 5
+          $ref: "#/components/schemas/protectionState"
     tags:
       type: object
       properties:
@@ -22716,12 +22727,14 @@ tags:
     description: API calls releated to Cloud Connector settings.
   - name: Settings Connect
     description: API calls related to Connect settings.
+  - name: Settings Firewall
+    description: API calls related to Firewall settings.
   - name: Settings Identity Providers
     description: API calls related to Identity Providers settings.
   - name: Settings Internal Subnets
     description: API Calls related to Internal Subnets settings.
-  - name: Settings Firewall
-    description: API calls related to Firewall settings.
+  - name: Settings Learning
+    description: API calls related to AI Learning settings.
   - name: Settings Mail Notifications
     description: API calls related to Mail Notifications settings.
   - name: Settings MFA

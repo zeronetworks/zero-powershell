@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Unprotect-ZNAssetOt' {
     It 'Unprotect1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { Unprotect-ZNAsset } | Should -Not -Throw
     }
 
     It 'UnprotectExpanded' -skip {
