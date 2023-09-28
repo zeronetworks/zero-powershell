@@ -97,6 +97,7 @@ namespace ZeroNetworks.PowerShell.Cmdlets.Api
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using ZeroNetworks.PowerShell.Cmdlets.Common;
 
 
     /// <summary>A class that contains the module-common code and data.</summary>
@@ -118,7 +119,8 @@ namespace ZeroNetworks.PowerShell.Cmdlets.Api
             // once for the pipeline that supports a proxy
             this._pipelineWithProxy.Append(AddApiKey);
 
-            this.EventListener = ZNModule.EventListener;
+            EventListener = new Znmodule().EventListener;
+
         }
 
         protected async Task<HttpResponseMessage> AddApiKey(HttpRequestMessage request, IEventListener callback, ISendAsync next)

@@ -43,7 +43,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsZpa
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsZpaConfig
 
 ## NOTES
 
