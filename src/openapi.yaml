@@ -19667,12 +19667,12 @@ components:
         isPhoneChallengeSupported:
           type: boolean
     connectivityStateAfterReboot:
-      type: string
+      type: integer
       enum:
-        - "1"
-        - "2"
-        - "3"
-        - "4"
+        - 1
+        - 2
+        - 3
+        - 4
       description: |
         dictionary:
           * `1` Previous connectivity state 
@@ -19880,7 +19880,7 @@ components:
         createdAt:
           $ref: '#/components/schemas/epochMillis'
         createdBy:
-          type: string
+          $ref: '#/components/schemas/userSimple'
         description:
           type: string
         excludedAssetIds:
