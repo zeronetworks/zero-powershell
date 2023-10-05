@@ -19,6 +19,6 @@ Describe 'Remove-ZNAssetInboundAllowRule' {
         $source = (Get-ZNAssetInboundAllowRulesSourceCandidate -AssetId $asset -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNAssetInboundAllowRule -AssetId $asset -LocalEntityId $asset -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
-        { Remove-ZNAssetInboundAllowRule -AssetId $asset -RuleId $rule.ItemId } | Should -Not -Throw
+        { Remove-ZNAssetInboundAllowRule -AssetId $asset -RuleId $rule.Id } | Should -Not -Throw
     }
 }

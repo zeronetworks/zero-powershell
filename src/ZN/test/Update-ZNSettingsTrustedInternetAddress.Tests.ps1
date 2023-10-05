@@ -12,7 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-ZNSettingsTrustedInternetAddress' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $trusted = Get-ZNSettingsTrustedInternetAddress
+        $trustednew += "1.2.4.5"
+        $trustednew += $trusted
+        { Update-ZNSettingsTrustedInternetAddress -ExternalIpsList $trustednew } | Should -Not -Throw
+        Update-ZNSettingsTrustedInternetAddress -ExternalIpsList $trusted
     }
 }

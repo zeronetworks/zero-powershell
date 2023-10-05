@@ -12,7 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-ZNSettingsConnectClientAutoUpdate' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { Update-ZNSettingsConnectClientAutoUpdate -ClientAutoUpdate:$false } | Should -Not -Throw
+        Update-ZNSettingsConnectClientAutoUpdate -ClientAutoUpdate
     }
 }

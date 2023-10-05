@@ -12,7 +12,18 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-ZNGroupsInboundAllowRule' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $group = Get-ZNGroup -Search "domain controllers" | where {$_.id -like "g:t:*"}
+        [string]$ports = Get-Random -Minimum 1 -Maximum 65000
+        $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
+        $source = (Get-ZNInboundAllowRulesSourceCandidate -search "any asset").Items
+        $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
+        $rule = New-ZNGroupsInboundAllowRule -GroupId $group.id -GroupType tag -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
+        
+        $newdescription = "new description " + (Get-Random -Minimum 1 -Maximum 100)
+        Update-ZNGroupsInboundAllowRule -GroupId $group.id -GroupType tag -RuleId $rule.Id -Description $newdescription
+        $updatedRule = Get-ZNGroupsInboundAllowRule -GroupId $group.id -GroupType tag -RuleId $rule.Id
+        $updatedRule.Description | Should -Be $newdescription
+        Remove-ZNInboundAllowRule -RuleId $rule.Id
     }
 }

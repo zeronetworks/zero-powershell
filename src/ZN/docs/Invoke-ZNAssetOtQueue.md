@@ -8,26 +8,46 @@ schema: 2.0.0
 # Invoke-ZNAssetOtQueue
 
 ## SYNOPSIS
-Add OT Asset to learning
+Returns and empty object.
 
 ## SYNTAX
 
+### QueueExpanded (Default)
+```
+Invoke-ZNAssetOtQueue -Items <String[]> -QueueDays <Int32> [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### QueueExpanded1
 ```
 Invoke-ZNAssetOtQueue -AssetId <String> -QueueDays <Int32> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Add OT Asset to learning
+Returns and empty object.
 
 ## EXAMPLES
 
-### Example 1: Extend learning for an OT asset
+### Example 1: {{ Add title here }}
 ```powershell
-$asset = Search-ZNAsset -Fqdn ot1777
-Invoke-ZNAssetOtExtendQueue -AssetId $asset -ExtendByDays 30
+{{ Add code here }}
 ```
 
-This cmdlet will extend learning for a specific OT asset.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -36,7 +56,22 @@ assetId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: QueueExpanded1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Items
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: QueueExpanded
 Aliases:
 
 Required: True

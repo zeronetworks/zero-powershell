@@ -22,23 +22,25 @@ Returns a list of groups.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List Groups by type
 ```powershell
-PS C:\> {{ Add code here }}
+Get-ZNGroupsByType -GroupType AD
 
-{{ Add output here }}
+Id           Name                                    Description DirectMembersCount
+--           ----                                    ----------- ------------------
+g:a:qu04AfTz Access Control Assistance Operators                 0
+g:a:XDRxcVDz Account Operators                                   0
+g:a:MBAj0Xfx Administrators                                      4
+g:a:u6xPbBLg Allowed RODC Password Replication Group             0
+g:a:JjhBvgRW Backup Operators                                    0
+g:a:j4oCHNuP Certificate Service DCOM Access                     0
+g:a:YeUXSDi6 Cert Publishers                                     0
+g:a:5uhxEQPp Cloneable Domain Controllers                        0
+g:a:lPQyszKw Cryptographic Operators                             0
+g:a:Ymj7i8np Denied RODC Password Replication Group              8
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet lists groups by type.
 
 ## PARAMETERS
 

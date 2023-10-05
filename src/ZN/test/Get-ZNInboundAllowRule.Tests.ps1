@@ -23,7 +23,7 @@ Describe 'Get-ZNInboundAllowRule' {
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNInboundAllowRule -LocalEntityId $destination.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
         { (Get-ZNInboundAllowRule).Items } | Should -Not -Be $null
-        Remove-ZNInboundAllowRule -RuleId $rule.ItemId
+        Remove-ZNInboundAllowRule -RuleId $rule.Id
     }
 
     It 'Get' {
@@ -34,7 +34,7 @@ Describe 'Get-ZNInboundAllowRule' {
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNInboundAllowRule -LocalEntityId $destination.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
         $rule = Get-ZNInboundAllowRule | Select-Object -First 1
-        { (Get-ZNInboundAllowRule -RuleId $rule.Id).ItemId } | Should -Not -Be $null
+        { (Get-ZNInboundAllowRule -RuleId $rule.Id).Id } | Should -Not -Be $null
         Remove-ZNInboundAllowRule -RuleId $rule.Id
     }
 }

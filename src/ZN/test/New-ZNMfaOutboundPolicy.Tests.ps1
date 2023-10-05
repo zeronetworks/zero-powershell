@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNMfaOutboundPolicy'))
 
 Describe 'New-ZNMfaOutboundPolicy' {
     It 'CreateExpanded' {
-        $destination = (Get-ZNMfaOutboundPoliciesDestinationCandidate -Search "Protected OT/IoT devices").Items
+        $destination = (Get-ZNMfaOutboundPoliciesDestinationCandidate -Search "Segmented OT/IoT devices").Items
         $source = (Get-ZNMfaOutboundPoliciesSourceCandidate -search "All segmented Assets").Items
         $sourceEntity = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyOutboundBodySrcEntityInfosItem]::new()
         $sourceEntity.Id = $source.Id

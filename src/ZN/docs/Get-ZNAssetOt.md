@@ -21,23 +21,25 @@ Returns the properties of an OT asset.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get an OT asset
 ```powershell
-PS C:\> {{ Add code here }}
+$otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
+Get-ZNAssetOt -AssetId $otasset.Id
 
-{{ Add output here }}
+EntityAssetStatus     : 5
+EntityAssetType       : 4
+EntityDomain          : 
+EntityFqdn            : ot1777
+EntityId              : a:t:OeG7qsVV
+EntityIpv4Addresses   : {230.176.229.143}
+EntityIpv6Addresses   : {}
+EntityName            : ot1777
+EntityOperatingSystem : 
+EntityProtectionState : 3
+EntitySource          : 7
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet gets an OT asset.
 
 ## PARAMETERS
 

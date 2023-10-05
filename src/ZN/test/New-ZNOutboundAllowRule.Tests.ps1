@@ -21,6 +21,6 @@ Describe 'New-ZNOutboundAllowRule' {
         $destination = Invoke-ZNEncodeEntityIp -IP 8.8.8.8
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNOutboundAllowRule -LocalEntityId $source.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt
-        $rule.ItemId | Should -Not -Be $null
+        $rule.Id | Should -Not -Be $null
     }
 }

@@ -12,7 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-ZNSettingsFirewallProfile' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { Update-ZNSettingsFirewallProfile -InboundAllowDomain -InboundAllowPublic -InboundBlockPrivate -OutboundBlockDomain -OutboundBlockPublic:$false -InboundAllowPrivate -InboundBlockDomain -InboundBlockPublic -OutboundBlockPrivate } | Should -Not -Throw
+        Update-ZNSettingsFirewallProfile -InboundAllowDomain -InboundAllowPublic -InboundBlockPrivate -OutboundBlockDomain -OutboundBlockPublic -InboundAllowPrivate -InboundBlockDomain -InboundBlockPublic -OutboundBlockPrivate
     }
 }

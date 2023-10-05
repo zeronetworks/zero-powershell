@@ -21,6 +21,6 @@ Describe 'Remove-ZNOutboundAllowRule' {
         $destination = Invoke-ZNEncodeEntityIp -IP 8.8.8.8
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNOutboundAllowRule -LocalEntityId $source.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt
-        { Remove-ZNOutboundAllowRule -RuleId $rule.ItemId } | Should -Not -Throw
+        { Remove-ZNOutboundAllowRule -RuleId $rule.Id } | Should -Not -Throw
     }
 }

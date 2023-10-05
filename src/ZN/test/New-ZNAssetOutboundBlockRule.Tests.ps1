@@ -18,6 +18,6 @@ Describe 'New-ZNAssetOutboundBlockRule' {
         $destination = Invoke-ZNEncodeEntityIp -IP 1.2.3.4
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNAssetOutboundBlockRule -AssetId $asset -LocalEntityId $asset -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt
-        $rule.itemid | Should -Not -Be $null
+        $rule.id | Should -Not -Be $null
     }
 }

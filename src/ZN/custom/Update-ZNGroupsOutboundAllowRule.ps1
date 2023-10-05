@@ -144,7 +144,7 @@ function Update-ZNGroupsOutboundAllowRule {
                 $null = $PSBoundParameters.Remove('LocalEntityId')
             }
             else{
-                $updatedRule.LocalEntityId = $rule.ItemLocalEntityId
+                $updatedRule.LocalEntityId = $rule.LocalEntityId
                 $null = $PSBoundParameters.Remove('LocalEntityId')
             }
 
@@ -153,7 +153,7 @@ function Update-ZNGroupsOutboundAllowRule {
                 $null = $PSBoundParameters.Remove('LocalProcessesList')
             }
             else{
-                $updatedRule.LocalProcessesList = $rule.ItemLocalProcessesList
+                $updatedRule.LocalProcessesList = $rule.LocalProcessesList
                 $null = $PSBoundParameters.Remove('LocalProcessesList')
             }
             
@@ -163,7 +163,7 @@ function Update-ZNGroupsOutboundAllowRule {
                 $null = $PSBoundParameters.Remove('PortsList')
             }
             else{
-                $updatedRule.PortsList = $rule.ItemPortsList
+                $updatedRule.PortsList = $rule.PortsList
                 $null = $PSBoundParameters.Remove('PortsList')
             }
             
@@ -172,7 +172,7 @@ function Update-ZNGroupsOutboundAllowRule {
                 $null = $PSBoundParameters.Remove('RemoteEntityIdsList')
             }
             else{
-                $updatedRule.RemoteEntityIdsList = $rule.ItemRemoteEntityIdsList
+                $updatedRule.RemoteEntityIdsList = $rule.RemoteEntityIdsList
                 $null = $PSBoundParameters.Remove('RemoteEntityIdsList')
             }
             
@@ -181,7 +181,7 @@ function Update-ZNGroupsOutboundAllowRule {
                 $null = $PSBoundParameters.Remove('ExcludedLocalIdsList')
             }
             else{
-                $updatedRule.ExcludedLocalIdsList = $rule.ItemExcludedLocalIdsList
+                $updatedRule.ExcludedLocalIdsList = $rule.ExcludedLocalIdsList
                 $null = $PSBoundParameters.Remove('ExcludedLocalIdsList')
             }
 
@@ -190,7 +190,7 @@ function Update-ZNGroupsOutboundAllowRule {
                 $null = $PSBoundParameters.Remove('State')
             }
             else{
-                $updatedRule.State = $rule.ItemState
+                $updatedRule.State = $rule.State
                 $null = $PSBoundParameters.Remove('State')
             }
 
@@ -199,7 +199,7 @@ function Update-ZNGroupsOutboundAllowRule {
                 $null = $PSBoundParameters.Remove('ExpiresAt')
             }
             else{
-                $updatedRule.ExpiresAt = $rule.ItemExpiresAt
+                $updatedRule.ExpiresAt = $rule.ExpiresAt
                 $null = $PSBoundParameters.Remove('ExpiresAt')
             }
             
@@ -208,7 +208,7 @@ function Update-ZNGroupsOutboundAllowRule {
                 $null = $PSBoundParameters.Remove('Description')
             }
             else{
-                $updatedRule.Description = $rule.ItemDescription
+                $updatedRule.Description = $rule.Description
                 $null = $PSBoundParameters.Remove('Description')
             }
             Write-Debug $updatedRule | Out-String

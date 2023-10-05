@@ -18,6 +18,6 @@ Describe 'Remove-ZNGroupsOutboundAllowRule' {
         $destination = Invoke-ZNEncodeEntityIp -IP 8.8.8.8
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNGroupsOutboundAllowRule -GroupId $group.id -GroupType tag -LocalEntityId $group.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt
-        { Remove-ZNGroupsOutboundAllowRule -GroupId $group.id -GroupType tag -RuleId $rule.ItemId} | Should -Not -Throw
+        { Remove-ZNGroupsOutboundAllowRule -GroupId $group.id -GroupType tag -RuleId $rule.Id} | Should -Not -Throw
     }
 }

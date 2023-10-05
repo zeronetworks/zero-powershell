@@ -18,7 +18,7 @@ Describe 'New-ZNCustomGroup' {
     It 'CreateExpanded' {
         $name = "cgroup" + (Get-Random -Maximum 999999)
         New-ZNCustomGroup -Name $name -Description "test"
-        $cgroup = Get-ZNCustomGroup | where {$_.Name -eq $name}
+        $cgroup = Get-ZNGroup  -search $name
         $cgroup.Name | Should -Be $name
         Remove-ZNCustomGroup -GroupId $cgroup.Id
     }

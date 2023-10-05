@@ -22,23 +22,13 @@ Update Learning Config settings in Network Segementation
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update AI learning settings.
 ```powershell
-PS C:\> {{ Add code here }}
+Update-ZNSettingsLearningConfig -AllowQueueForever:$true -AllowQuickLearning:$false
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet updates the AI learning settings.
 
 ## PARAMETERS
 

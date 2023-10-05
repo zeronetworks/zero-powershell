@@ -297,7 +297,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`PORTSLIST <IPortsListItem[]>`: the destination ports and protocols.
+PORTSLIST <IPortsListItem[]>: the destination ports and protocols.
   - `[Ports <String>]`: 
   - `[ProtocolType <Int32?>]`: 
 

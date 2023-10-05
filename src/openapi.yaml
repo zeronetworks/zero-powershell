@@ -793,7 +793,7 @@ paths:
         - Assets
   '/assets/{assetId}/actions/queue':
     put:
-      operationId: AssetExtendQueue_Learn
+      operationId: Asset_ExtendQueue
       summary: Extend asset learning
       description: Extend asset learning
       parameters:
@@ -825,7 +825,7 @@ paths:
       tags:
         - Assets
     post:
-      operationId: AssetQueue_Learn
+      operationId: Asset_Queue
       summary: Extend asset learning
       description: Extend asset learning
       parameters:
@@ -4491,7 +4491,7 @@ paths:
         - Assets OT/IoT
   '/assets/ot/{assetId}/actions/queue':
     post:
-      operationId: AssetOtQueue_Learn
+      operationId: AssetOt_Queue
       summary: Add OT Asset to learning
       description: Add OT Asset to learning
       parameters:
@@ -18944,6 +18944,8 @@ components:
     asset:
       type: object
       properties:
+        assetStatus:
+          $ref: '#/components/schemas/assetStatus'
         assetType:
           description: |
             Possible asset status:
@@ -19024,6 +19026,12 @@ components:
           example: laptoppc.domain.local
         guid:
           type: string
+        healthState:
+          $ref: "#/components/schemas/healthState"
+        lastLogon:
+          $ref: "#/components/schemas/epochMillis"
+        lastLogonTimestamp:
+          $ref: "#/components/schemas/epochMillis"
         id:
           type: string
           example: 'a:a:6d020055'
@@ -19036,33 +19044,18 @@ components:
           type: array
           items:
             type: string
-        assetStatus:
-          description: |
-            Possible asset status:
-              * `1` - UNDISCOVERED
-              * `2` - STALKED
-              * `3` - DELETED
-              * `4` - OS_UNSUPPORTED
-              * `5` - TYPE_UNSUPPORTED
-              * `6` - IGNORED
-              * `7` - CLOUD_CONNECTOR
-          type: integer
-          enum:
-            - 1
-            - 2
-            - 3
-            - 4
-            - 5
-            - 6
-            - 7
         name:
           type: string
           example: laptoppc
+        passwordUpdateTime: 
+          $ref: "#/components/schemas/epochMillis"
+        principalName:
+          type: string
+        protectionState:
+          $ref: "#/components/schemas/protectionState"
         operatingSystem:
           type: string
           example: Windows 10 Pro
-        protectionState:
-          $ref: "#/components/schemas/protectionState"
         source:
           description: |
             Possible asset sources:
@@ -19205,6 +19198,8 @@ components:
     assetOt:
       type: object
       properties:
+        assetStatus:
+          $ref: '#/components/schemas/assetStatus'
         assetType:
           type: integer
           format: int32
@@ -19214,6 +19209,8 @@ components:
         fqdn:
           type: string
           example: laptoppc.domain.local
+        healthState:
+          $ref: "#/components/schemas/healthState"
         id:
           type: string
           example: 'a:a:6d020055'
@@ -19226,28 +19223,11 @@ components:
           type: array
           items:
             type: string
-        assetStatus:
-          description: |
-            Possible asset status:
-              * `1` - UNDISCOVERED
-              * `2` - STALKED
-              * `3` - DELETED
-              * `4` - OS_UNSUPPORTED
-              * `5` - TYPE_UNSUPPORTED
-              * `6` - IGNORED
-              * `7` - CLOUD_CONNECTOR
-          type: integer
-          enum:
-            - 1
-            - 2
-            - 3
-            - 4
-            - 5
-            - 6
-            - 7
         name:
           type: string
           example: router
+        principalName:
+          type: string
         operatingSystem:
           type: string
         protectionState:
@@ -19255,6 +19235,8 @@ components:
         source:
           type: integer
           format: int32
+        state:
+          $ref: '#/components/schemas/state'
     assetFilter:
       type: object
       properties:
@@ -19331,6 +19313,25 @@ components:
       properties:
         entity:
           $ref: '#/components/schemas/asset'
+    assetStatus:
+      description: |
+        Possible asset status:
+          * `1` - UNDISCOVERED
+          * `2` - STALKED
+          * `3` - DELETED
+          * `4` - OS_UNSUPPORTED
+          * `5` - TYPE_UNSUPPORTED
+          * `6` - IGNORED
+          * `7` - CLOUD_CONNECTOR
+      type: integer
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
     assetsFiltersList:
       type: object
       properties:
@@ -20186,6 +20187,8 @@ components:
           type: string
         name:
           type: string
+        principalName:
+          type: string
         role:
           type: integer
           format: int32
@@ -20258,6 +20261,22 @@ components:
             adGroupsCount: 106
             customGroupsCount: 1
             protectionPoliciesCount: 2
+    healthIssue:
+      type: object
+      properties:
+        issueCode:
+          type: integer
+        details:
+          type: string
+    healthState:
+      type: object
+      properties:
+        healthStatus:
+          type: integer
+        healthIssuesList:
+          type: array
+          items:
+            $ref: '#/components/schemas/healthIssue'
     historyRule:
       type: object
       properties:
@@ -20568,6 +20587,8 @@ components:
     reactivePolicy:
       type: object
       properties:
+        additionalPortsList:
+          $ref: '#/components/schemas/portsList'
         createdAt:
           $ref: '#/components/schemas/epochMillis'
         createdBy:
@@ -20578,7 +20599,7 @@ components:
         description:
           type: string
         dstEntityInfo:
-          $ref: '#/components/schemas/asset'
+          $ref: '#/components/schemas/idNamePair'
         dstPort:
           type: string
           example: '3389'
@@ -20592,7 +20613,7 @@ components:
         excludedSrcEntityInfos:
           type: array
           items:
-            type: string
+            $ref: '#/components/schemas/idNamePair'
         excludedSrcProcesses:
           type: array
           items:
@@ -20606,13 +20627,15 @@ components:
           type: array
           items:
             type: integer
-            description: '1=SMS, 2=Email, 3=Browser, 4=Duo'
+            description: '1=SMS, 2=Email, 3=Browser, 4=Duo, 5=MicrosoftAuthenticator'
             format: int32
             enum:
               - 1
               - 2
               - 3
               - 4
+              - 5
+              - 6 
         overrideBuiltins:
           type: boolean
         protocolType:
@@ -20647,8 +20670,11 @@ components:
             - 2
         updatedAt:
           $ref: '#/components/schemas/epochMillis'
-        additionalPortsList:
-          $ref: '#/components/schemas/portsList'
+        updatedBy:
+          type: string
+        updatedByName:
+          type: string
+          example: User Name       
     reactivePolicyDistribution:
       type: object
       properties:
@@ -21405,10 +21431,11 @@ components:
           $ref: '#/components/schemas/epochMillis'
         id:
           type: string
+          format: uuid
         localEntityId:
           type: string
         localEntityInfo:
-          $ref: '#/components/schemas/idNamePair'
+          $ref: '#/components/schemas/asset'
         localProcessesList:
           type: array
           items:
@@ -22368,7 +22395,7 @@ components:
       properties:
         tcpPorts:
           $ref: '#/components/schemas/PrivilegedPorts'
-        UdpPorts:
+        udpPorts:
           $ref: '#/components/schemas/PrivilegedPorts'
     settingsProtectionAutomationResponse:
       type: object
@@ -22494,9 +22521,8 @@ components:
           type: string
         isAssetConnected:
           type: boolean
-        lasDisconnectedAt:
-          description: epoch timestamp
-          type: integer
+        lastDisconnectedAt:
+          $ref: '#/components/schemas/epochMillis'
         protectAt:
           $ref: '#/components/schemas/epochMillis'
         protectionState:
@@ -22534,6 +22560,8 @@ components:
         officePhone:
           type: string
         phone:
+          type: string
+        principalName:
           type: string
         role:
           type: integer

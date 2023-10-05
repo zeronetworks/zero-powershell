@@ -30,8 +30,8 @@ Describe 'Get-ZNOutboundBlockRule' {
         $destination = Invoke-ZNEncodeEntityIp -IP 1.2.3.4
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNOutboundBlockRule -LocalEntityId $source.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt
-        $rule.itemid | Should -Not -Be $null
+        $rule.Id | Should -Not -Be $null
         $rule = Get-ZNOutboundBlockRule | Select-object -First 1
-        { (Get-ZNOutboundBlockRule -RuleId $rule.Id).ItemId } | Should -Not -be $null
+        { (Get-ZNOutboundBlockRule -RuleId $rule.Id).Id } | Should -Not -be $null
     }
 }

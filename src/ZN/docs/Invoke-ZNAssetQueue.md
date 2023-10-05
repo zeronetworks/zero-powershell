@@ -8,16 +8,22 @@ schema: 2.0.0
 # Invoke-ZNAssetQueue
 
 ## SYNOPSIS
-Extend asset learning
+Returns and empty object.
 
 ## SYNTAX
 
+### QueueExpanded (Default)
+```
+Invoke-ZNAssetQueue -Items <String[]> -QueueDays <Int32> [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### QueueExpanded1
 ```
 Invoke-ZNAssetQueue -AssetId <String> -QueueDays <Int32> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Extend asset learning
+Returns and empty object.
 
 ## EXAMPLES
 
@@ -36,7 +42,22 @@ assetId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: QueueExpanded1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Items
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: QueueExpanded
 Aliases:
 
 Required: True

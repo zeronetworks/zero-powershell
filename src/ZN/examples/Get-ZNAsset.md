@@ -54,6 +54,6 @@ StateIsAssetConnected  : False
 StateLasDisconnectedAt : 
 StateProtectAt         : 1678543200000
 StateProtectionState   : 5
-```output
+```
 
 Use the id parameter get an asset's properties.

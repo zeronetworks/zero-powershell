@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNSettingsMfaAuthentic
 }
 
 Describe 'Update-ZNSettingsMfaAuthentication' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { Update-ZNSettingsMfaAuthentication -IsRequiresAuth:$false -IsSsoForceAuth:$false -TokenTtl 1440 } | Should -Not -Throw
+        Update-ZNSettingsMfaAuthentication -IsRequiresAuth:$true -IsSsoForceAuth:$false -TokenTtl 1440
     }
 }

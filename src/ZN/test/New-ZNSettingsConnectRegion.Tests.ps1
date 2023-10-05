@@ -13,7 +13,9 @@ while(-not $mockingPath) {
 
 Describe 'New-ZNSettingsConnectRegion' {
     It 'CreateExpanded' {
-        { New-ZNSettingsConnectRegion -DnsServersIPAddressList @("192.168.1.1") -IPAddress "2.3.4.5" -Name NewRegion } | Should -Not -Throw
+        New-ZNSettingsConnectRegion -DnsServersIPAddressList @("192.168.1.1") -IPAddress "2.3.4.5" -Name NewRegion
+        $region = Get-ZNSettingsConnectRegion | where {$_.Name -eq "NewRegion"}
+        $region.Name | Should -Be "NewRegion"
         $region = Get-ZNSettingsConnectRegion | where {$_.Name -eq "NewRegion"}
         Remove-ZNSettingsConnectRegion -RegionId $region.Id
     }

@@ -18,10 +18,10 @@ Describe 'Update-ZNCustomGroup' {
     It 'UpdateExpanded' {
         $name = "cgroup"+(Get-Random -Minimum 1 -Maximum 100)
         New-ZNCustomGroup -Name $name -Description "UpdateCustomGroupTest"
-        $customGroup = Get-ZNCustomGroup -Search $name
+        $customGroup = Get-ZNGroup -Search $name
         $newName = "cgroup"+(Get-Random -Minimum 1 -Maximum 100)
         Update-ZNCustomGroup -GroupId $customGroup.Id -Name $newName
-        $updatedGroup = Get-ZNCustomGroup -Search $newName
+        $updatedGroup = Get-ZNGroup -Search $newName
         $updatedGroup.Name | Should -Be $newName
         Remove-ZNCustomGroup -GroupId $updatedGroup.Id
     }

@@ -19,6 +19,6 @@ Describe 'Remove-ZNGroupsInboundAllowRule' {
         $source = (Get-ZNGroupsInboundAllowRulesSourceCandidate -GroupId $group.Id -GroupType tag -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNGroupsInboundAllowRule -GroupId $group.Id -GroupType tag -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
-        { Remove-ZNGroupsInboundAllowRule -GroupId $group.Id -GroupType tag -RuleId $rule.ItemId } | Should -Not -Throw
+        { Remove-ZNGroupsInboundAllowRule -GroupId $group.Id -GroupType tag -RuleId $rule.Id } | Should -Not -Throw
     }
 }

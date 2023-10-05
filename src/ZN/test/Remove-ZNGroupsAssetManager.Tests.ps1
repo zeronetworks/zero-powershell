@@ -15,7 +15,7 @@ Describe 'Remove-ZNGroupsAssetManager' {
     It 'Delete' {
         $manager = Get-ZNUser -Search Test
         New-ZNCustomGroup -Name "RemoveGroupsAssetManagerTest"
-        $customGroup = Get-ZNCustomGroup -Search RemoveGroupsAssetManagerTest
+        $customGroup = Get-ZNGroup -Search RemoveGroupsAssetManagerTest
         Add-ZNGroupsAssetManager -GroupId $customGroup.Id -GroupType Custom -ManagerIds $manager.id
         $managers = Get-ZNGroupsAssetManager -GroupId $customGroup.Id -GroupType Custom
         { Remove-ZNGroupsAssetManager -GroupId $customGroup.Id -GroupType custom -GroupOrUserId $manager.id} | Should -Not -Throw

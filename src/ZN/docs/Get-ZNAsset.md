@@ -84,7 +84,7 @@ StateIsAssetConnected  : False
 StateLasDisconnectedAt : 
 StateProtectAt         : 1678543200000
 StateProtectionState   : 5
-```output
+```
 
 Use the id parameter get an asset's properties.
 
@@ -160,7 +160,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: $true
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

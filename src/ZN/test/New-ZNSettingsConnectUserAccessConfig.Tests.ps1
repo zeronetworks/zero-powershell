@@ -16,7 +16,7 @@ Describe 'New-ZNSettingsConnectUserAccessConfig' {
         $users = Get-ZNSettingsConnectUserAccessConfigSourceUsersCandidate | Where {$_.Name -eq 'zero'}
         $destinations = Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate | where {$_.Name -eq 'Internal subnets'}
         $regions = Get-ZNSettingsConnectUserAccessConfigAllowedRegionsCandidate | where {$_.Name -eq "Any Region"}
-        New-ZNSettingsConnectUserAccessConfig -DstEntityIdsList @($destinations.id) -MembersIdsList @($users.id) -Name TestUAC -SessionTtlHours 168 -AllowedRegions @($regions.id) -ConnectivityStateAfterReboot "1"
+        New-ZNSettingsConnectUserAccessConfig -AllowedRegions @($regions.id) -ConnectivityStateAfterReboot 1 -DstEntityIdsList @($destinations.id) -ForceSsoAuthentication:$false -LoginAuthorizedEntityAllowedAssetIdsList @("b:110001") -LoginAuthorizedEntityAllowedAssetsSourcesList @("1") -LoginAuthorizedEntityAllowedUsersIdsList @($users.id) -Name TestUAC -SessionTtlHours 168
         $uac = Get-ZNSettingsConnectUserAccessConfig | where {$_. Name -eq 'TestUAC'}
         $uac.SessionTtlHours | Should -Be 168
         Remove-ZNSettingsConnectUserAccessConfig -UserAccessConfigId $uac.id

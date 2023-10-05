@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Test-ZNAssetProtect' {
-    It 'Validate' -skip {
+    It 'Validate' {
         Test-ZNAssetProtect -AssetId a:a:8ErCHXe8 | Should -Not -Be $null
     }
 

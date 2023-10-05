@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNSettingsMfaDetection
 }
 
 Describe 'Update-ZNSettingsMfaDetection' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { Update-ZNSettingsMfaDetection -TimeoutMinutes 10 } | Should -Not -Throw
+        Update-ZNSettingsMfaDetection -TimeoutMinutes 5
     }
 }

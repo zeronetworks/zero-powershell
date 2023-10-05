@@ -15,7 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNSettingsDefaultAppli
 }
 
 Describe 'Update-ZNSettingsDefaultApplication' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $setting = Get-ZNSettingsDefaultApplication
+        if($setting -eq 1){
+            $newsetting = 2
+        }else{
+            $newsetting = 1
+        }
+        Update-ZNSettingsDefaultApplication -Application $newsetting
+        $updatedSetting = Get-ZNSettingsDefaultApplication
+        $updatedSetting | Should -Be $newsetting
     }
 }

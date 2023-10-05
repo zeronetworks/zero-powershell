@@ -12,7 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-ZNSettingsFirewallIgnoredRule' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $fwrules = Get-ZNSettingsFirewallIgnoredRule
+        { Update-ZNSettingsFirewallIgnoredRule -InboundList $fwrules.InboundList -OutboundList @("newruletoignore") } | Should -Not -Throw
+        Update-ZNSettingsFirewallIgnoredRule -InboundList $fwrules.InboundList -OutboundList @()
     }
 }

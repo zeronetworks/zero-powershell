@@ -12,7 +12,16 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-ZNAssetOutboundAllowRule' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $asset = Search-ZNAsset -fqdn linux0.posh.local
+        $portsList = New-ZNPortsList -Protocol TCP -Ports (Get-Random -Minimum 1 -Maximum 1024)
+        $destination = Invoke-ZNEncodeEntityIp -IP 8.8.8.8
+        $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
+        $rule = New-ZNOutboundAllowRule -LocalEntityId $asset -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt
+        
+        $newdescription = "new description" + (Get-Random -Minimum 1 -Maximum 100)
+        Update-ZNAssetOutboundAllowRule -AssetId $asset -RuleId $rule.Id -Description $newdescription
+        $updatedRule = Get-ZNOutboundAllowRule -RuleId $rule.Id
+        $updatedRule.Description | Should -Be $newdescription
     }
 }

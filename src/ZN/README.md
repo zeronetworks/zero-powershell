@@ -645,6 +645,9 @@ directive:
   - where:
       variant: ^Add$|^AddViaIdentity$|^AddViaIdentityExpanded$|^Assets$|^AssetsViaIdentity$|^AssetsViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DeleteViaIdentity$|^GetViaIdentity$|^Extend$|^ExtendViaIdentity$|^ExtendViaIdentityExpanded$|^Learn$|^LearnViaIdentity$|^LearnViaIdentityExpanded$|^New$|^Put$|^ProtectViaIdentity$|^Queue$|^QueueViaIdentity$|^QueueViaIdentityExpanded$|^RevokeViaIdentity$|^Set$|^SetViaIdentity$|^UnprotectViaIdentity$|^Update$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|^ValidateViaIdentity$
     hide: true
+  - where:
+      variant: ^Extend$|^Extend1$|^Queue$|^Queue1$
+    remove: true
   # Customize
   # Remove the export cmdlets
   - where:
@@ -683,9 +686,17 @@ directive:
     set:
       subject: AssetQueue
   - where:
-      subject: LearnAssetOtQueue
+      subject: QueueAsset
     set:
-      subject: AssetOtQueue    
+      subject: AssetQueue
+  - where:
+      subject: ExtendAssetQueue
+    set:
+      subject: AssetExtendQueue
+  - where:
+      subject: QueueAssetOt
+    set:
+      subject: AssetOtQueue
   # rename asset/ot commands
   - where:
       subject: AssetsOt
@@ -766,6 +777,14 @@ directive:
         name: ExpiresAt Default
         description: Sets the expiresAt parmaeter to 0 or never.
         script: '0'
+  # set withCount default
+  - where:
+      parameter-name: WithCount
+    set:
+      default:
+        name: WithCount Default
+        description: Sets the WithCount parmaeter to true.
+        script: '$true'
   # Hide remove ot (Not implemneted)
   - where:
       verb: Remove
@@ -908,4 +927,14 @@ directive:
         properties:
           - identityProviderType
           - isDefault
+  - where:
+      model-name: SettingsAdForest
+    set:
+      format-table:
+        properties:
+          - ForestId
+          - ActiveDirectoryInfoDomainName
+          - ActiveDirectoryInfoDomainControllerFqdn
+          - ActiveDirectoryInfoUsername
+          - ActiveDirectoryInfoUseLdaps
 ```

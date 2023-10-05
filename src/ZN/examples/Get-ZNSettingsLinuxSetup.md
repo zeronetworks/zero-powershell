@@ -1,18 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get Linux Setup settings
 ```powershell
-PS C:\> {{ Add code here }}
+Get-ZNSettingsLinuxSetup
 
-{{ Add output here }}
+False
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet gets the Linux setup settings.

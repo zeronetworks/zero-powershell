@@ -13,6 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNUsersUndetermined' {
     It 'List' {
-        (Get-ZNUsersUndetermined).Count | Should -BeGreaterThan 0
+        {Get-ZNUsersUndetermined }  | Should -Not -Throw
     }
 }

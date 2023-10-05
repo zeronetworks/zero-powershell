@@ -12,11 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Test-ZNAssetUnprotect' {
-    It 'Validate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Validate' {
+        Test-ZNAssetUnprotect -AssetId a:a:8ErCHXe8 | Should -Not -Be $null
     }
 
-    It 'ValidateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ValidateExpanded' {
+        Test-ZNAssetUnprotect -Items @("a:a:8ErCHXe8") | Should -Not -Be $null
     }
 }

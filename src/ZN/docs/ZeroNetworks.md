@@ -54,7 +54,11 @@ Approve a "pending review" rule with or without changes
 Approve a "pending review" rule with or without changes
 
 ### [Connect-ZN](Connect-ZN.md)
-Login to Zero Networks to get a token for cmdlet use
+Login to Zero Networks to get a token for cmdlet use.
+NOTE: If your environment has a IdP set for default authentication, you cannot use this cmdlet and will need to use Set-ZNApiKey cmdlet using an API token.
+
+#.Link
+https://github.com/zeronetworks/zero-powershell/connect-zn
 
 ### [Deny-ZNAssetInboundAllowRuleReview](Deny-ZNAssetInboundAllowRuleReview.md)
 Reject a "pending review" rule
@@ -82,6 +86,9 @@ Reject a "pending review" rule
 
 ### [Disconnect-ZN](Disconnect-ZN.md)
 Logout of Zero Networks
+
+#.Link
+https://github.com/zeronetworks/zero-powershell/Disconnect-zn
 
 ### [Get-ZNAiExclusionNetworkBoth](Get-ZNAiExclusionNetworkBoth.md)
 Get AI network exclusion for clients and servers: lists of tcp/udp ports / ports ranges + boolean for icmp protocol, and a list of processes to ignore during learning.
@@ -654,13 +661,13 @@ Get Users statistics
 Returns a list of Undetermined Users.
 
 ### [Invoke-ZNAssetExtendQueue](Invoke-ZNAssetExtendQueue.md)
-Extend asset learning
+Returns an empty object.
 
 ### [Invoke-ZNAssetOtQueue](Invoke-ZNAssetOtQueue.md)
-Add OT Asset to learning
+Returns and empty object.
 
 ### [Invoke-ZNAssetQueue](Invoke-ZNAssetQueue.md)
-Extend asset learning
+Returns and empty object.
 
 ### [Invoke-ZNEncodeEntityIP](Invoke-ZNEncodeEntityIP.md)
 Returns the assetId after encoding the IP address.
@@ -670,15 +677,6 @@ Returns the assetId after encoding the IP range.
 
 ### [Invoke-ZNEncodeEntitySubnet](Invoke-ZNEncodeEntitySubnet.md)
 Returns the assetId after encoding the IP subnet.
-
-### [Invoke-ZNExtendAssetQueue](Invoke-ZNExtendAssetQueue.md)
-Returns an empty object.
-
-### [Invoke-ZNQueueAsset](Invoke-ZNQueueAsset.md)
-Returns and empty object.
-
-### [Invoke-ZNQueueAssetOt](Invoke-ZNQueueAssetOt.md)
-Returns and empty object.
 
 ### [Invoke-ZNRediscoverAd](Invoke-ZNRediscoverAd.md)
 Rediscover monitored assets
@@ -783,7 +781,10 @@ Returns an empty object.
 Returns an empty object.
 
 ### [Remove-ZNApiKey](Remove-ZNApiKey.md)
-Deletes the API key
+Deletes the API Key
+
+#.Link
+https://github.com/zeronetworks/zero-powershell/remove-znapikey
 
 ### [Remove-ZNAssetInboundAllowRule](Remove-ZNAssetInboundAllowRule.md)
 Returns an empty object.
@@ -907,6 +908,9 @@ Provided user SID - returns user entity id
 
 ### [Set-ZNApiKey](Set-ZNApiKey.md)
 Set the API key for use in all other cmdlets
+
+#.Link
+https://github.com/zeronetworks/zero-powershell/set-znapikey
 
 ### [Test-ZNAssetProtect](Test-ZNAssetProtect.md)
 Returns a number of assets that are valid for protection.

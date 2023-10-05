@@ -12,7 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-ZNSettingsLinuxSetup' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { Update-ZNSettingsLinuxSetup -AllowInstallPackages:$false } | Should -Not -Throw
+        Update-ZNSettingsLinuxSetup -AllowInstallPackages:$true
     }
 }

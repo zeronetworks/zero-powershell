@@ -23,10 +23,8 @@ Returns a list of protection policies.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
-```
+PS C:\> {{ Add code here }}
 
-```output
 {{ Add output here }}
 ```
 
@@ -34,10 +32,8 @@ Returns a list of protection policies.
 
 ### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
-```
+PS C:\> {{ Add code here }}
 
-```output
 {{ Add output here }}
 ```
 

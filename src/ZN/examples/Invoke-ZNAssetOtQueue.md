@@ -1,7 +1,22 @@
-### Example 1: Extend learning for an OT asset
+### Example 1: {{ Add title here }}
 ```powershell
-$asset = Search-ZNAsset -Fqdn ot1777
-Invoke-ZNAssetOtExtendQueue -AssetId $asset -ExtendByDays 30
+{{ Add code here }}
 ```
 
-This cmdlet will extend learning for a specific OT asset.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+

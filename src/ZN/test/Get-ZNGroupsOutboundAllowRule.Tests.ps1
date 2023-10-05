@@ -20,7 +20,7 @@ Describe 'Get-ZNGroupsOutboundAllowRule' {
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNGroupsOutboundAllowRule -GroupId $group.id -GroupType tag -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination.id) -State 1 -ExpiresAt $expiresAt
         { (Get-ZNGroupsOutboundAllowRule -GroupId $group.id -GroupType tag).Items } | Should -Not -Be $null
-        Remove-ZNGroupsOutboundAllowRule -GroupId $group.id -GroupType tag -RuleId $rule.ItemId
+        Remove-ZNGroupsOutboundAllowRule -GroupId $group.id -GroupType tag -RuleId $rule.Id
     }
 
     It 'Get' {

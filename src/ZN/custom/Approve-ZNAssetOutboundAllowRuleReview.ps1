@@ -190,7 +190,7 @@ function Approve-ZNAssetOutboundAllowRuleReview {
                         $null = $PSBoundParameters.Remove('Description')
                     }
                     else {
-                        $ruleReview.RuleInfoDescription = $rule.ItemDescription
+                        $ruleReview.RuleInfoDescription = $rule.Description
                         $null = $PSBoundParameters.Remove('Description')
                     }
 
@@ -199,7 +199,7 @@ function Approve-ZNAssetOutboundAllowRuleReview {
                         $null = $PSBoundParameters.Remove('ExcludedLocalIdsList')
                     }
                     else {
-                        $ruleReview.RuleInfoExcludedLocalIdsList = $rule.ItemExcludedLocalIdsList
+                        $ruleReview.RuleInfoExcludedLocalIdsList = $rule.ExcludedLocalIdsList
                         $null = $PSBoundParameters.Remove('ExcludedLocalIdsList')
                     }
 
@@ -208,7 +208,7 @@ function Approve-ZNAssetOutboundAllowRuleReview {
                         $null = $PSBoundParameters.Remove('ExpiresAt')
                     }
                     else {
-                        $ruleReview.RuleInfoExpiresAt = $rule.ItemExpiresAt
+                        $ruleReview.RuleInfoExpiresAt = $rule.ExpiresAt
                         $null = $PSBoundParameters.Remove('ExpiresAt')
                     }
                     
@@ -217,7 +217,7 @@ function Approve-ZNAssetOutboundAllowRuleReview {
                         $null = $PSBoundParameters.Remove('LocalEntityId')
                     }
                     else {
-                        $ruleReview.RuleInfoLocalEntityId = $rule.ItemLocalEntityId
+                        $ruleReview.RuleInfoLocalEntityId = $rule.LocalEntityId
                         $null = $PSBoundParameters.Remove('LocalEntityId')
                     }
                     
@@ -226,7 +226,7 @@ function Approve-ZNAssetOutboundAllowRuleReview {
                         $null = $PSBoundParameters.Remove('LocalProcessesList')
                     }
                     else {
-                        $ruleReview.RuleInfoLocalProcessesList = $rule.ItemLocalProcessesList
+                        $ruleReview.RuleInfoLocalProcessesList = $rule.LocalProcessesList
                         $null = $PSBoundParameters.Remove('LocalProcessesList')
                     }
 
@@ -235,7 +235,7 @@ function Approve-ZNAssetOutboundAllowRuleReview {
                         $null = $PSBoundParameters.Remove('PortsList')
                     }
                     else {
-                        $ruleReview.RuleInfoPortsList = $rule.ItemPortsList
+                        $ruleReview.RuleInfoPortsList = $rule.PortsList
                         $null = $PSBoundParameters.Remove('PortsList')
                     }
                     
@@ -244,7 +244,7 @@ function Approve-ZNAssetOutboundAllowRuleReview {
                         $null = $PSBoundParameters.Remove('RemoteEntityIdsList')
                     }
                     else {
-                        $ruleReview.RuleInfoRemoteEntityIdsList = $rule.ItemRemoteEntityIdsList
+                        $ruleReview.RuleInfoRemoteEntityIdsList = $rule.RemoteEntityIdsList
                         $null = $PSBoundParameters.Remove('RemoteEntityIdsList')
                     }
                     

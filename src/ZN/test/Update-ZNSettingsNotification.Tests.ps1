@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNSettingsNotification
 }
 
 Describe 'Update-ZNSettingsNotification' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $settings = Get-ZNSettingsNotification
+        $settings.AssetUnprotected = $false
+        { Update-ZNSettingsNotification -AssetPostponed:$settings.AssetPostponed -AssetProtected:$settings.AssetProtected -AssetQueued:$settings.AssetQueued -AssetUnprotected:$settings.AssetUnprotected } | Should -Not -Throw
+        $settings.AssetUnprotected = $true
+        Update-ZNSettingsNotification -AssetPostponed:$settings.AssetPostponed -AssetProtected:$settings.AssetProtected -AssetQueued:$settings.AssetQueued -AssetUnprotected:$settings.AssetUnprotected
     }
 }

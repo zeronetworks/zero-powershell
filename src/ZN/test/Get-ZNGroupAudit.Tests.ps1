@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNGroupAudit'))
 
 Describe 'Get-ZNGroupAudit' {
     It 'Get' {
-        $group = Get-ZNCustomGroup | Select-Object -First 1
+        $group = Get-ZNGroup | Select-Object -First 1
         { Get-ZNGroupAudit -GroupId $group.id } | Should -Not -Be $null
     }
 }

@@ -12,11 +12,23 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Unprotect-ZNAsset' {
-    It 'Unprotect1' -skip {
+    It 'Unprotect1' {
+        $asset = Search-ZNAsset -Fqdn ls01.posh.local
+        $assetFull = Get-ZNAsset -AssetId $asset
+        if($Asset.StateProtectionState -eq 1){
+            Protect-ZNAsset -AssetId $asset
+        }
         Test-ZNAssetUnprotect -AssetId a:a:8ErCHXe8 | Should -Not -Be $null
+        Unprotect-ZNAsset -AssetId $asset
     }
 
-    It 'UnprotectExpanded' -skip {
-        Test-ZNAssetUnprotect -Items @("a:a:8ErCHXe8") | Should -Not -Be $null
+    It 'UnprotectExpanded' {
+        $asset = Search-ZNAsset -Fqdn ls01.posh.local
+        $assetFull = Get-ZNAsset -AssetId $asset
+        if($Asset.StateProtectionState -eq 1){
+            Protect-ZNAsset -AssetId $asset
+        }
+        Test-ZNAssetUnprotect -Items @($asset) | Should -Not -Be $null
+        Unprotect-ZNAsset -AssetId $asset
     }
 }

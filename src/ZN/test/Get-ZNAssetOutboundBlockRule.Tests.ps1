@@ -20,7 +20,7 @@ Describe 'Get-ZNAssetOutboundBlockRule' {
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNAssetOutboundBlockRule -AssetId $asset -LocalEntityId $asset -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination.id) -State 1 -ExpiresAt $expiresAt
         { (Get-ZNAssetOutboundBlockRule -AssetId $asset).Items } | Should -Not -Be $null
-        Remove-ZNAssetOutboundBlockRule -AssetId $asset -RuleId $rule.ItemId
+        Remove-ZNAssetOutboundBlockRule -AssetId $asset -RuleId $rule.Id
     }
 
     It 'Get' { 

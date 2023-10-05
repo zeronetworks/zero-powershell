@@ -21,23 +21,16 @@ Get Learning Config settings in Network Segementation
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get AI Learning Config
 ```powershell
-PS C:\> {{ Add code here }}
+Get-ZNSettingsLearningConfig
 
-{{ Add output here }}
+AllowQueueForever AllowQuickLearning
+----------------- ------------------
+True              False
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet gets the lerarning config settings from AI.
 
 ## PARAMETERS
 

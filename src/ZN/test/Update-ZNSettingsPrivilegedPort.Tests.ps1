@@ -12,7 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-ZNSettingsPrivilegedPort' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $priv = Get-ZNSettingsPrivilegedPort
+        $privnew = $priv
+        $privnew.ItemUdpPorts = "22"
+        { Update-ZNSettingsPrivilegedPort -TcpPorts $privnew.ItemTcpPorts -UdpPorts $privnew.ItemUdpPorts } | Should -Not -Throw
+        Update-ZNSettingsPrivilegedPort -TcpPorts $priv.ItemTcpPorts -UdpPorts $priv.ItemUdpPorts
     }
 }

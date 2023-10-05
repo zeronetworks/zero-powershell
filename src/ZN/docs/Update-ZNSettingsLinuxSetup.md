@@ -21,23 +21,13 @@ Update the linux setup settings in Asset Managment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update AI learning config
 ```powershell
-PS C:\> {{ Add code here }}
+Update-ZNSettingsLinuxSetup -AllowInstallPackages:$false
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet updates the AI learning settings.
 
 ## PARAMETERS
 

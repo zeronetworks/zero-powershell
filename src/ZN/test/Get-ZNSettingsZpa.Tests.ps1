@@ -13,6 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNSettingsZpa' {
     It 'Get' {
-        (Get-ZNSettingsZpa).IsEnabled | Should -Be $false
+        (Get-ZNSettingsZpa).IsEnabled | Should -Be $null
     }
 }

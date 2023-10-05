@@ -19,6 +19,6 @@ Describe 'New-ZNAssetInboundAllowRule' {
         $source = (Get-ZNAssetInboundAllowRulesSourceCandidate -AssetId $asset -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNAssetInboundAllowRule -AssetId $asset -LocalEntityId $asset -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
-        $rule.ItemId | Should -Not -Be $null
+        $rule.Id | Should -Not -Be $null
     }
 }

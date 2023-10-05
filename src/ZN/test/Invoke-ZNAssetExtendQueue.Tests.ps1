@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNAssetExtendQueue'))
 }
 
 Describe 'Invoke-ZNAssetExtendQueue' {
-    It 'LearnExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'LearnExpanded' {
+        $asset = Search-ZNAsset -Fqdn ls01.posh.local
+        Invoke-ZNAssetQueue -AssetId $asset -QueueDays 14
+        { Invoke-ZNAssetExtendQueue -AssetId $asset -ExtendByDays 14 } | Should -Not -Throw
+        Unprotect-ZNAsset -Assetid $asset
     }
 }

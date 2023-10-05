@@ -12,7 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-ZNSettingsLearningConfig' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { Update-ZNSettingsLearningConfig -AllowQueueForever:$true -AllowQuickLearning:$true } | Should -Not -Throw
+        Update-ZNSettingsLearningConfig -AllowQueueForever:$true -AllowQuickLearning:$false
     }
 }

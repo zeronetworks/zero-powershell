@@ -23,7 +23,7 @@ Describe 'Update-ZNOutboundAllowRule' {
         $rule = New-ZNOutboundAllowRule -LocalEntityId $source.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt
         
         $newdescription = "new description" + (Get-Random -Minimum 1 -Maximum 100)
-        $updatedRule = Update-ZNOutboundAllowRule -RuleId $rule.ItemId -Description $newdescription
-        $updatedRule.ItemDescription | Should -Be $newdescription
+        $updatedRule = Update-ZNOutboundAllowRule -RuleId $rule.Id -Description $newdescription
+        $updatedRule.Description | Should -Be $newdescription
     }
 }

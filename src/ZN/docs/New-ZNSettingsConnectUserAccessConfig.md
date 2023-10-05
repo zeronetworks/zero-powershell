@@ -13,7 +13,7 @@ Create a Connect User Access Configuration in Settings
 ## SYNTAX
 
 ```
-New-ZNSettingsConnectUserAccessConfig -AllowedRegions <String[]> -ConnectivityStateAfterReboot <String>
+New-ZNSettingsConnectUserAccessConfig -AllowedRegions <String[]> -ConnectivityStateAfterReboot <Int32>
  -DstEntityIdsList <String[]> -ForceSsoAuthentication -LoginAuthorizedEntityAllowedAssetIdsList <String[]>
  -LoginAuthorizedEntityAllowedAssetsSourcesList <String[]>
  -LoginAuthorizedEntityAllowedUsersIdsList <String[]> -Name <String> -SessionTtlHours <Int32>
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 dictionary: * `1` Previous connectivity state * `2` Connected (Always-on) * `3` Disconnected * `4` Signed out
 
 ```yaml
-Type: System.String
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

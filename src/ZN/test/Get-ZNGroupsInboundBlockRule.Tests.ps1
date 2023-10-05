@@ -20,7 +20,7 @@ Describe 'Get-ZNGroupsInboundBlockRule' {
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNGroupsInboundBlockRule -GroupId $group.id -GroupType tag -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
         { Get-ZNGroupsInboundBlockRule -GroupId $group.id -GroupType tag } | Should -Not -Be $null
-        Remove-ZNGroupsInboundBlockRule -GroupId $group.id -GroupType tag -RuleId $rule.ItemId
+        Remove-ZNGroupsInboundBlockRule -GroupId $group.id -GroupType tag -RuleId $rule.Id
     }
 
     It 'Get' {

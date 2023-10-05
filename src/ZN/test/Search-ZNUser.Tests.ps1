@@ -20,6 +20,6 @@ Describe 'Search-ZNUser' {
     }
 
     It 'Search1' {
-        { Search-ZNUser -PrincipalName "posh\test" } | Should -Not -Throw
+        { Search-ZNUser -PrincipalName "posh\nicholas" } | Should -Not -Throw
     }
 }

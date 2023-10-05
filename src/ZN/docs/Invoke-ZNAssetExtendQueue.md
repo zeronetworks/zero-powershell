@@ -8,17 +8,24 @@ schema: 2.0.0
 # Invoke-ZNAssetExtendQueue
 
 ## SYNOPSIS
-Extend asset learning
+Returns an empty object.
 
 ## SYNTAX
 
+### ExtendExpanded (Default)
+```
+Invoke-ZNAssetExtendQueue -ExtendByDays <Int32> -Items <String[]> [-RelearnReason <String>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### ExtendExpanded1
 ```
 Invoke-ZNAssetExtendQueue -AssetId <String> -ExtendByDays <Int32> [-RelearnReason <String>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Extend asset learning
+Returns an empty object.
 
 ## EXAMPLES
 
@@ -37,7 +44,7 @@ assetId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ExtendExpanded1
 Aliases:
 
 Required: True
@@ -53,6 +60,21 @@ number of days
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Items
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: ExtendExpanded
 Aliases:
 
 Required: True

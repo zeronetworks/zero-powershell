@@ -1,18 +1,29 @@
-### Example 1: {{ Add title here }}
+### Example 1: List Human Users
 ```powershell
-PS C:\> {{ Add code here }}
+Get-ZNUsersHuman
 
-{{ Add output here }}
+Id           Name               Email                              Phone JobTitle
+--           ----               -----                              ----- --------
+u:a:IiObBkVQ krbtgt                                                      
+u:a:w27loY5p nicholas           nicholas+posh@zeronetworks.com           
+u:a:Tolw5kf6 test                                                        
+u:a:RVVXGo4w zero               nicholas+poshzero@zeronetworks.com       
+u:a:r6ZkL5Y0 Guest                                                       
+u:a:V61t0gZB ZNRemoteManagement                                          
+u:a:X2inJbQY nicholasam         nicholas+posham@zeronetworks.com   
 ```
 
-{{ Add description here }}
+Thsi cmdlet lists human users.
 
-### Example 2: {{ Add title here }}
+### Example 2: Search for a human user
 ```powershell
-PS C:\> {{ Add code here }}
+Get-ZNUsersHuman -Search Nicholas
 
-{{ Add output here }}
+Id           Name       Email                              Phone JobTitle
+--           ----       -----                              ----- --------
+u:a:RVVXGo4w zero       nicholas+poshzero@zeronetworks.com       
+u:a:w27loY5p nicholas   nicholas+posh@zeronetworks.com           
+u:a:X2inJbQY nicholasam nicholas+posham@zeronetworks.com
 ```
 
-{{ Add description here }}
-
+This cmdlet can also search for humans users.

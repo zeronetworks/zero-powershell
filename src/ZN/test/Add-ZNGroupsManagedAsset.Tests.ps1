@@ -18,7 +18,7 @@ Describe 'Add-ZNGroupsManagedAsset' {
     It 'AddExpanded' {
         $asset = Search-ZNAsset -Fqdn linux0.posh.local
         New-ZNCustomGroup -Name "AddGroupsManagedAssetTest"
-        $customGroup = Get-ZNCustomGroup -Search AddGroupsManagedAssetTest
+        $customGroup = Get-ZNGroup -Search AddGroupsManagedAssetTest
         Add-ZNGroupsManagedAsset -GroupId $customGroup.Id -GroupType Custom -EntityIds @($asset)
         $managedAssets = Get-ZNGroupsManagedAsset -GroupId $customGroup.Id -GroupType Custom
         $managedAssets.EntityId | Should -Be $asset

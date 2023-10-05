@@ -14,7 +14,7 @@ Update a Connect User Access Configuration in Settings
 
 ```
 Update-ZNSettingsConnectUserAccessConfig -UserAccessConfigId <String> -AllowedRegions <String[]>
- -ConnectivityStateAfterReboot <String> -DstEntityIdsList <String[]> -ForceSsoAuthentication
+ -ConnectivityStateAfterReboot <Int32> -DstEntityIdsList <String[]> -ForceSsoAuthentication
  -LoginAuthorizedEntityAllowedAssetIdsList <String[]>
  -LoginAuthorizedEntityAllowedAssetsSourcesList <String[]>
  -LoginAuthorizedEntityAllowedUsersIdsList <String[]> -Name <String> -SessionTtlHours <Int32>
@@ -31,6 +31,10 @@ Update a Connect User Access Configuration in Settings
 ```powershell
 $uac = Get-ZNSettingsConnectUserAccessConfig | where {$_. Name -eq 'UAC'}
 Update-ZNSettingsConnectUserAccessConfig -UserAccessConfigId $uac.id -SessionTtlHours 24 -DstEntityIdsList @($uac.AllowedDestinations.Id) -MembersIdsList @($uac.MemberIds.Id) -Name $uac.Name
+```
+
+```output
+
 ```
 
 This cmdlet updates a User Access Config for Connect
@@ -56,7 +60,7 @@ Accept wildcard characters: False
 dictionary: * `1` Previous connectivity state * `2` Connected (Always-on) * `3` Disconnected * `4` Signed out
 
 ```yaml
-Type: System.String
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
