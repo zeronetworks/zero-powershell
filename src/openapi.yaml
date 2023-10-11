@@ -22530,10 +22530,10 @@ components:
     tags:
       type: object
       properties:
+      items:
+        type: array
         items:
-          type: array
-          items:
-            $ref: '#/components/schemas/group'
+          $ref: '#/components/schemas/group'
     user:
       type: object
       properties:
