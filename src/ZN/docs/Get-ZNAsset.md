@@ -14,7 +14,7 @@ Returns the properties of an asset.
 
 ### List (Default)
 ```
-Get-ZNAsset [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [<CommonParameters>]
+Get-ZNAsset [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-WithCount] [<CommonParameters>]
 ```
 
 ### Get
@@ -30,9 +30,6 @@ Returns the properties of an asset.
 ### Example 1: List assets
 ```powershell
 (Get-ZNAsset).Items
-```
-
-```output
 AssetStatus AssetType Domain    Fqdn              IPV4Addresses     IPV6Addresses               Id           Name                          OperatingSystem                   ProtectionState Source
 ----------- --------- ------    ----              -------------     -------------               --           ----                          ---------------                   --------------- ------
 6           0                                     {192.168.219.218} {}                          a:u:vRZwSRpH Amir Frankel's-Windows10-8fd7                                   1               2
@@ -51,9 +48,6 @@ The cmdlet will list Assets for the environment.
 ### Example 2: List next page of assets
 ```powershell
 (Get-ZNAsset -Offset 20).Items
-```
-
-```output
 AssetStatus AssetType Domain    Fqdn              IPV4Addresses  IPV6Addresses               Id           Name    OperatingSystem                   ProtectionState Source
 ----------- --------- ------    ----              -------------  -------------               --           ----    ---------------                   --------------- ------
 2           2         zero.labs dc1.zero.labs     {192.168.10.0} {fe80::8863:40e6:ced3:75a8} a:a:ZgBWOMyc DC1     Windows Server 2012 R2 Datacenter 5               3
@@ -90,7 +84,7 @@ StateIsAssetConnected  : False
 StateLasDisconnectedAt : 
 StateProtectAt         : 1678543200000
 StateProtectionState   : 5
-```output
+```
 
 Use the id parameter get an asset's properties.
 
@@ -152,6 +146,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WithCount
+return count of objects
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: $true
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

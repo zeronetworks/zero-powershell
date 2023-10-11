@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate
 
 ## SYNOPSIS
-Returns a list of destinations candidates for Connect User Access Config settings.
+Returns a list of candidates for user access config excluded destinations.
 
 ## SYNTAX
 
@@ -18,16 +18,13 @@ Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate [-Limit <Int32>] [-Of
 ```
 
 ## DESCRIPTION
-Returns a list of destinations candidates for Connect User Access Config settings.
+Returns a list of candidates for user access config excluded destinations.
 
 ## EXAMPLES
 
 ### Example 1: List User Access Config Destination Candidates
 ```powershell
 Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate
-```
-
-```output
 AssetStatus AssetType CreatedAt Description DirectMembersCount DistinguishedName Domain     Email FirstName Fqdn Guid
 ----------- --------- --------- ----------- ------------------ ----------------- ------     ----- --------- ---- ----                   
                                                                                  system                                                 
@@ -109,9 +106,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsOrGroupsListItemsItem
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IUserAccessConfigDestinationsCandidate
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
 ## NOTES
 

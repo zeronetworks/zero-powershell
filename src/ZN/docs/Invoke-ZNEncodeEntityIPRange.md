@@ -24,9 +24,6 @@ Returns the assetId after encoding the IP range.
 ### Example 1: Encode an IP Address range
 ```powershell
 Invoke-ZNEncodeEntityIPRange -IPRange 1.1.1.1-1.1.1.2 
-```
-
-```output
 b:120101010120b:140101010101010102
 ```
 

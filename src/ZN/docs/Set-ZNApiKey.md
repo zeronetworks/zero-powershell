@@ -27,9 +27,6 @@ https://github.com/zeronetworks/zero-powershell/set-znapikey
 ### Example 1: Set the Api Key to be used
 ```powershell
 Set-ZNApiKey -ApiKey 'myApiKey'
-```
-
-```output
 
 ```
 

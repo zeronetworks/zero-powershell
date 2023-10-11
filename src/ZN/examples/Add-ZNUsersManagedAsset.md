@@ -1,9 +1,6 @@
 ### Example 1: Add managed asset to a user
 ```powershell
 Add-ZNUsersManagedAsset -UserId u:a:RVVXGo4w -EntityIds @("g:t:01445453")
-```
-
-```output
 
 ```
 

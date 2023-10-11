@@ -38,9 +38,6 @@ Returns an empty object.
 ### Example 1: Remove a member of a custom group
 ```powershell
 Remove-ZNCustomGroupsMember -GroupId "g:c:gP9POclU" -MembersId "a:a:GnyWAsYs"
-```
-
-```output
 
 ```
 
@@ -184,17 +181,19 @@ BODY <ICustomGroupMembersBody>: .
 INPUTOBJECT <IApiIdentity>: Identity Parameter
   - `[AssetId <String>]`: assetId to filter on
   - `[ClientId <String>]`: clientId to filter on
-  - `[DepId <String>]`: The deploymentId
+  - `[ConnectServerId <String>]`: connect server id
   - `[DomainId <String>]`: The fqdn of the domain
   - `[ExportId <String>]`: exportId to download
-  - `[Forest <String>]`: The forest id
+  - `[ForestId <String>]`: The forest id
   - `[GroupId <String>]`: groupId to filter on
   - `[GroupOrAssetId <String>]`: group or asset id to filter on
   - `[GroupOrUserId <String>]`: group or user id to filter on
   - `[GroupType <String>]`: group type to filter on
   - `[IdentityProviderId <String>]`: Identity provider Id
   - `[ProtectionPolicyId <String>]`: The id of the protection policy
+  - `[PushIdentityProviderId <String>]`: Push Identity provider Id
   - `[ReactivePolicyId <String>]`: The id of the MFA policy
+  - `[RegionId <String>]`: connect region id
   - `[RoleEntityId <String>]`: The id of the user
   - `[RuleId <String>]`: The id of the rule
   - `[SessionId <String>]`: The id of the session

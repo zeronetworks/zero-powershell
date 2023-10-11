@@ -24,9 +24,6 @@ Returns and object with MFA distrubiton.
 ### Example 1: List the MFA policy distribution
 ```powershell
 Get-ZNMfaPoliciesDistribution
-```
-
-```output
 Approved Rejected Timestamp
 -------- -------- ---------
 0        0        1662854400000

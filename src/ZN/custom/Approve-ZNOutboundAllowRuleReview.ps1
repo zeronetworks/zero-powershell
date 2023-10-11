@@ -67,7 +67,7 @@ function Approve-ZNOutboundAllowRuleReview {
         
         [Parameter(ParameterSetName = 'ApproveWithChangesExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
-        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem[]]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]]
         # the destination ports and protocols.
         ${PortsList},
         #[-RuleInfoPortsList <IPortsListItem[]>] 
@@ -183,7 +183,7 @@ function Approve-ZNOutboundAllowRuleReview {
                         $null = $PSBoundParameters.Remove('Description')
                     }
                     else {
-                        $ruleReview.RuleInfoDescription = $rule.ItemDescription
+                        $ruleReview.RuleInfoDescription = $rule.Description
                         $null = $PSBoundParameters.Remove('Description')
                     }
 
@@ -192,7 +192,7 @@ function Approve-ZNOutboundAllowRuleReview {
                         $null = $PSBoundParameters.Remove('ExcludedLocalIdsList')
                     }
                     else {
-                        $ruleReview.RuleInfoExcludedLocalIdsList = $rule.ItemExcludedLocalIdsList
+                        $ruleReview.RuleInfoExcludedLocalIdsList = $rule.ExcludedLocalIdsList
                         $null = $PSBoundParameters.Remove('ExcludedLocalIdsList')
                     }
 
@@ -201,7 +201,7 @@ function Approve-ZNOutboundAllowRuleReview {
                         $null = $PSBoundParameters.Remove('ExpiresAt')
                     }
                     else {
-                        $ruleReview.RuleInfoExpiresAt = $rule.ItemExpiresAt
+                        $ruleReview.RuleInfoExpiresAt = $rule.ExpiresAt
                         $null = $PSBoundParameters.Remove('ExpiresAt')
                     }
                     
@@ -210,7 +210,7 @@ function Approve-ZNOutboundAllowRuleReview {
                         $null = $PSBoundParameters.Remove('LocalEntityId')
                     }
                     else {
-                        $ruleReview.RuleInfoLocalEntityId = $rule.ItemLocalEntityId
+                        $ruleReview.RuleInfoLocalEntityId = $rule.LocalEntityId
                         $null = $PSBoundParameters.Remove('LocalEntityId')
                     }
                     
@@ -219,7 +219,7 @@ function Approve-ZNOutboundAllowRuleReview {
                         $null = $PSBoundParameters.Remove('LocalProcessesList')
                     }
                     else {
-                        $ruleReview.RuleInfoLocalProcessesList = $rule.ItemLocalProcessesList
+                        $ruleReview.RuleInfoLocalProcessesList = $rule.LocalProcessesList
                         $null = $PSBoundParameters.Remove('LocalProcessesList')
                     }
 
@@ -228,7 +228,7 @@ function Approve-ZNOutboundAllowRuleReview {
                         $null = $PSBoundParameters.Remove('PortsList')
                     }
                     else {
-                        $ruleReview.RuleInfoPortsList = $rule.ItemPortsList
+                        $ruleReview.RuleInfoPortsList = $rule.PortsList
                         $null = $PSBoundParameters.Remove('PortsList')
                     }
                     
@@ -237,7 +237,7 @@ function Approve-ZNOutboundAllowRuleReview {
                         $null = $PSBoundParameters.Remove('RemoteEntityIdsList')
                     }
                     else {
-                        $ruleReview.RuleInfoRemoteEntityIdsList = $rule.ItemRemoteEntityIdsList
+                        $ruleReview.RuleInfoRemoteEntityIdsList = $rule.RemoteEntityIdsList
                         $null = $PSBoundParameters.Remove('RemoteEntityIdsList')
                     }
                     

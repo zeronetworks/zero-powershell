@@ -27,9 +27,6 @@ Returns the protection policy that was created.
 # There are multiple groups with Domain Controllers in the name
 $group = Get-ZNADGroup -Search "Domain Controllers" | where {$_.Name -eq "Domain Controllers"}
 New-ZNProtectionPolicy -GroupId $group.Id -MinQueueDays 30 -InitialQueueDays 30
-```
-
-```output
 
 ```
 

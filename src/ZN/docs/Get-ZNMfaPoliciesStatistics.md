@@ -24,9 +24,6 @@ Returns an object with MFA statistics.
 ### Example 1: Get MFA policy statistics
 ```powershell
 Get-ZNMfaPoliciesStatistics
-```
-
-```output
 3
 ```
 

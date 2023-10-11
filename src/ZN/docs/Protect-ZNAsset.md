@@ -8,25 +8,28 @@ schema: 2.0.0
 # Protect-ZNAsset
 
 ## SYNOPSIS
-Returns and empty object.
+Returns an empty object.
 
 ## SYNTAX
 
+### Protect1 (Default)
+```
+Protect-ZNAsset -AssetId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ProtectExpanded
 ```
 Protect-ZNAsset -Items <String[]> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns and empty object.
+Returns an empty object.
 
 ## EXAMPLES
 
 ### Example 1: Move a single asset to segmented
 ```powershell
 Protect-ZNAsset -Items "a:a:ZgBWOMyc"
-```
-
-```output
 
 ```
 
@@ -35,9 +38,6 @@ This cmdlet will move an asset from learning to segemented in the envrionment.
 ### Example 2: Move all assets in learning to segmented
 ```powershell
 Protect-ZNAsset -Items ((Get-ZNAssetsQueued).Items.Id)
-```
-
-```output
 
 ```
 
@@ -45,12 +45,27 @@ This sample will move all assets currently in learning to segmented.
 
 ## PARAMETERS
 
+### -AssetId
+assetId to filter on
+
+```yaml
+Type: System.String
+Parameter Sets: Protect1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Items
 .
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: ProtectExpanded
 Aliases:
 
 Required: True

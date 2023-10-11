@@ -19,7 +19,7 @@ function Update-ZNMfaInboundPolicy {
 
         [Parameter(ParameterSetName = 'UpdateExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
-        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem[]]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]]
         # extra ports to open.
         ${AdditionalPortsList},
 

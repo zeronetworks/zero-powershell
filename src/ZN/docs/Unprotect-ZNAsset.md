@@ -12,6 +12,12 @@ Returns an empty object.
 
 ## SYNTAX
 
+### Unprotect1 (Default)
+```
+Unprotect-ZNAsset -AssetId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UnprotectExpanded
 ```
 Unprotect-ZNAsset -Items <String[]> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -21,12 +27,18 @@ Returns an empty object.
 
 ## EXAMPLES
 
-### Example 1: Remove an Asset from protection.
+### Example 1: Remove assets from protection.
 ```powershell
-Unprotect-ZNAsset -Items (Search-ZNAsset -Fqdn dc1.zero.labs)
+Unprotect-ZNAsset -Items @(Search-ZNAsset -Fqdn dc1.zero.labs)
+
 ```
 
-```output
+This cmdlet will remove assets from segementation.
+Items accepts a list of assetIds.
+
+### Example 1: Remove an Asset from protection.
+```powershell
+Unprotect-ZNAsset -AssetId (Search-ZNAsset -Fqdn dc1.zero.labs)
 
 ```
 
@@ -34,12 +46,27 @@ This cmdlet will remove an asset from segementation.
 
 ## PARAMETERS
 
+### -AssetId
+assetId to filter on
+
+```yaml
+Type: System.String
+Parameter Sets: Unprotect1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Items
 .
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UnprotectExpanded
 Aliases:
 
 Required: True

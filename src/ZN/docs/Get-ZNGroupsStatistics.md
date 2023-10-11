@@ -24,9 +24,6 @@ Returns an object with group statistics.
 ### Example 1: Get group statistics
 ```powershell
 Get-ZNGroupsStatistics
-```
-
-```output
 GroupStatisticsAdGroupsCount GroupStatisticsCustomGroupsCount GroupStatisticsProtectionPoliciesCount
 ---------------------------- -------------------------------- --------------------------------------
                           50                                1                                      0

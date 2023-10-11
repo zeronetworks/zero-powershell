@@ -31,7 +31,7 @@ function Update-ZNOutboundBlockRule {
 
         [Parameter(ParameterSetName = 'UpdateExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
-        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem[]]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]]
         # the destination ports and protocols.
         ${PortsList},
 
@@ -55,7 +55,7 @@ function Update-ZNOutboundBlockRule {
 
         [Parameter(ParameterSetName = 'UpdateExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
-        [int]
+        [int64]
         # when the rule should expiry.
         ${ExpiresAt},
 
@@ -130,7 +130,7 @@ function Update-ZNOutboundBlockRule {
                 $null = $PSBoundParameters.Remove('LocalEntityId')
             }
             else{
-                $updatedRule.LocalEntityId = $rule.ItemLocalEntityId
+                $updatedRule.LocalEntityId = $rule.LocalEntityId
                 $null = $PSBoundParameters.Remove('LocalEntityId')
             }
 
@@ -139,7 +139,7 @@ function Update-ZNOutboundBlockRule {
                 $null = $PSBoundParameters.Remove('LocalProcessesList')
             }
             else{
-                $updatedRule.LocalProcessesList = $rule.ItemLocalProcessesList
+                $updatedRule.LocalProcessesList = $rule.LocalProcessesList
                 $null = $PSBoundParameters.Remove('LocalProcessesList')
             }
             
@@ -149,7 +149,7 @@ function Update-ZNOutboundBlockRule {
                 $null = $PSBoundParameters.Remove('PortsList')
             }
             else{
-                $updatedRule.PortsList = $rule.ItemPortsList
+                $updatedRule.PortsList = $rule.PortsList
                 $null = $PSBoundParameters.Remove('PortsList')
             }
             
@@ -158,7 +158,7 @@ function Update-ZNOutboundBlockRule {
                 $null = $PSBoundParameters.Remove('RemoteEntityIdsList')
             }
             else{
-                $updatedRule.RemoteEntityIdsList = $rule.ItemRemoteEntityIdsList
+                $updatedRule.RemoteEntityIdsList = $rule.RemoteEntityIdsList
                 $null = $PSBoundParameters.Remove('RemoteEntityIdsList')
             }
             
@@ -167,7 +167,7 @@ function Update-ZNOutboundBlockRule {
                 $null = $PSBoundParameters.Remove('ExcludedLocalIdsList')
             }
             else{
-                $updatedRule.ExcludedLocalIdsList = $rule.ItemExcludedLocalIdsList
+                $updatedRule.ExcludedLocalIdsList = $rule.ExcludedLocalIdsList
                 $null = $PSBoundParameters.Remove('ExcludedLocalIdsList')
             }
 
@@ -176,7 +176,7 @@ function Update-ZNOutboundBlockRule {
                 $null = $PSBoundParameters.Remove('State')
             }
             else{
-                $updatedRule.State = $rule.ItemState
+                $updatedRule.State = $rule.State
                 $null = $PSBoundParameters.Remove('State')
             }
 
@@ -185,7 +185,7 @@ function Update-ZNOutboundBlockRule {
                 $null = $PSBoundParameters.Remove('ExpiresAt')
             }
             else{
-                $updatedRule.ExpiresAt = $rule.ItemExpiresAt
+                $updatedRule.ExpiresAt = $rule.ExpiresAt
                 $null = $PSBoundParameters.Remove('ExpiresAt')
             }
             
@@ -194,7 +194,7 @@ function Update-ZNOutboundBlockRule {
                 $null = $PSBoundParameters.Remove('Description')
             }
             else{
-                $updatedRule.Description = $rule.ItemDescription
+                $updatedRule.Description = $rule.Description
                 $null = $PSBoundParameters.Remove('Description')
             }
             Write-Debug $updatedRule | Out-String

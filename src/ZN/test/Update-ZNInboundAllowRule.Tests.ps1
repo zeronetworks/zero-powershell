@@ -19,12 +19,12 @@ Describe 'Update-ZNInboundAllowRule' {
         [string]$ports = Get-Random -Minimum 1 -Maximum 65000
         $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
         $source = (Get-ZNInboundAllowRulesSourceCandidate -search "any asset").Items
-        $destination = (Get-ZNInboundAllowRulesDestinationCandidate -Search "all protected assets").Items
+        $destination = (Get-ZNInboundAllowRulesDestinationCandidate -Search "all segmented assets").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNInboundAllowRule -LocalEntityId $destination.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
         
         $newdescription = "new description " + (Get-Random -Minimum 1 -Maximum 100)
-        $updatedRule = Update-ZNInboundAllowRule -RuleId $rule.ItemId -Description $newdescription
-        $updatedRule.ItemDescription | Should -Be $newdescription
+        $updatedRule = Update-ZNInboundAllowRule -RuleId $rule.Id -Description $newdescription
+        $updatedRule.Description | Should -Be $newdescription
     }
 }

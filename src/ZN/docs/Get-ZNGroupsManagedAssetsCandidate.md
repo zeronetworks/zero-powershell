@@ -25,9 +25,6 @@ Get asset candidates to be managed by group
 ### Example 1: List managed assets candidates for a group
 ```powershell
 (Get-ZNGroupsManagedAssetsCandidate -GroupId g:a:cai6Wuyd -GroupType AD).Items
-```
-
-```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
 posh.local False               g:a:qu04AfTz Access Control Assistance Operators

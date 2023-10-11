@@ -1,9 +1,6 @@
 ### Example 1: Get possible source users for outbound MFA Policy
 ```powershell
 (Get-ZNMfaOutboundPoliciesSourceUserCandidate).Items
-```
-
-```output
 Domain    Id           Name
 ------    --           ----
           b:111001     Any user
@@ -34,9 +31,6 @@ This cmdlet will return possbile candidates for source users in an outbound MFA 
 ### Example 2: Search for a candidate
 ```powershell
 (Get-ZNMfaOutboundPoliciesSourceUserCandidate -Search administrator).Items
-```
-
-```output
 Domain    Id           Name
 ------    --           ----
 zero.labs u:a:eTpnZu08 Administrator

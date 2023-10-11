@@ -4,9 +4,6 @@ $destination = (Get-ZNMfaOutboundPoliciesSimulateDesinationCandidate -Search swi
 $sourceAsset = (Get-ZNMfaOutboundPoliciesSimulateSourceCandidate -Search WC01).Items
 $sourceUser = (Get-ZNMfaOutboundPoliciesSimulateSourceUserCandidate -Search test).Items
 Test-ZNMfaOutboundPoliciesSimulate -DstAssetId $destination.Id -SrcAssetId $sourceAsset.Id -SrcUserId $sourceUser.Id -Port 22 -ProtocolType 6
-```
-
-```output
 DstAssetInfoAssetStatus            : 5
 DstAssetInfoAssetType              : 15
 DstAssetInfoDomain                 : 

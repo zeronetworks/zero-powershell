@@ -1,9 +1,6 @@
 ### Example 1: Get possible sources for inbound MFA Policy
 ```powershell
 (Get-ZNMfaInboundPoliciesSourceCandidate).Items
-```
-
-```output
 AssetType Domain    Id           Name                                    ProtectionState
 --------- ------    --           ----                                    ---------------
                     b:110001     Any asset                               
@@ -33,9 +30,6 @@ This cmdlet will return possbile candidates for sources in an inbound MFA policy
 ### Example 2: Search for a candidate
 ```powershell
 (Get-ZNMfaInboundPoliciesSourceCandidate -Search DC1).Items
-```
-
-```output
 AssetType Domain    Id           Name ProtectionState
 --------- ------    --           ---- ---------------
 2         zero.labs a:a:ZgBWOMyc DC1  5

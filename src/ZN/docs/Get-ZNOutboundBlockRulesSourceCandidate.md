@@ -25,9 +25,6 @@ Returns a list of source candidates for outbound block rules.
 ### Example 1: Get possible sources for outbound block rule
 ```powershell
 (Get-ZNOutboundBlockRulesSourceCandidate).Items
-```
-
-```output
 AssetType Domain    Id           Name                                    ProtectionState
 --------- ------    --           ----                                    ---------------
                     b:110002     All protected assets                    
@@ -58,9 +55,6 @@ This cmdlet will return possbile candidates for sources in an outbound block rul
 ### Example 2: Search for a candidate
 ```powershell
 (Get-ZNOutboundBlockRulesSourceCandidate -Search DC1).Items
-```
-
-```output
 AssetType Domain    Id           Name ProtectionState
 --------- ------    --           ---- ---------------
 2         zero.labs a:a:ZgBWOMyc DC1  5

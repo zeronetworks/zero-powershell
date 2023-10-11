@@ -1,9 +1,6 @@
 ### Example 1: Get possible sources for inbound MFA Policy Simulation
 ```powershell
 (Get-ZNMfaInboundPoliciesSimulateSourceCandidate).Items
-```
-
-```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
 posh.local                     a:a:8ErCHXe8 DC01
@@ -24,9 +21,6 @@ This cmdlet will return possbile candidates for sources in an inbound MFA policy
 ### Example 2: Search for a candidate
 ```powershell
 (Get-ZNMfaInboundPoliciesSimulateSourceCandidate -Search DC01).Items
-```
-
-```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
 posh.local                     a:a:8ErCHXe8 DC01

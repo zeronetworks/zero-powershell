@@ -13,9 +13,12 @@ Create a Connect User Access Configuration in Settings
 ## SYNTAX
 
 ```
-New-ZNSettingsConnectUserAccessConfig -DstEntityIdsList <String[]> -MembersIdsList <String[]> -Name <String>
- -SessionTtlHours <Int32> [-Description <String>] [-ExcludedMembersIdsList <String[]>]
- [-ForceSsoAuthentication] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-ZNSettingsConnectUserAccessConfig -AllowedRegions <String[]> -ConnectivityStateAfterReboot <Int32>
+ -DstEntityIdsList <String[]> -ForceSsoAuthentication -LoginAuthorizedEntityAllowedAssetIdsList <String[]>
+ -LoginAuthorizedEntityAllowedAssetsSourcesList <String[]>
+ -LoginAuthorizedEntityAllowedUsersIdsList <String[]> -Name <String> -SessionTtlHours <Int32>
+ [-Description <String>] [-LoginAuthorizedEntityExcludedAssetIdsList <String[]>]
+ [-LoginAuthorizedEntityExcludedUserIdsList <String[]>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,15 +31,42 @@ Create a Connect User Access Configuration in Settings
 $users = Get-ZNSettingsConnectUserAccessConfigCandidate | Where {$_.Name -eq 'zero'}
 $destinations = Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate | where {$_.Name -eq 'Internal subnets'}
 New-ZNSettingsConnectUserAccessConfig -DstEntityIdsList @($destinations.id) -MembersIdsList @($users.id) -Name UAC -SessionTtlHours 168
-```
-
-```output
 
 ```
 
 This cmldet creates a User Access Config for Connect.
 
 ## PARAMETERS
+
+### -AllowedRegions
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectivityStateAfterReboot
+dictionary: * `1` Previous connectivity state * `2` Connected (Always-on) * `3` Disconnected * `4` Signed out
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Description
 .
@@ -68,21 +98,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExcludedMembersIdsList
-.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ForceSsoAuthentication
 .
 
@@ -91,14 +106,14 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MembersIdsList
+### -LoginAuthorizedEntityAllowedAssetIdsList
 .
 
 ```yaml
@@ -107,6 +122,66 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoginAuthorizedEntityAllowedAssetsSourcesList
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoginAuthorizedEntityAllowedUsersIdsList
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoginAuthorizedEntityExcludedAssetIdsList
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoginAuthorizedEntityExcludedUserIdsList
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

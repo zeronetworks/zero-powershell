@@ -27,9 +27,6 @@ https://github.com/zeronetworks/zero-powershell/Disconnect-zn
 ### Example 1: Log out of Zero Networks
 ```powershell
 Disconnect-ZN 
-```
-
-```output
 
 ```
 

@@ -22,17 +22,14 @@ Delete a Connect User Access Configuration in Settings
 
 ## EXAMPLES
 
-### Example 1: Remove a User Access Config
+### Example 1: Delete a UAC from Connect settings
 ```powershell
-$uac = Get-ZNSettingsConnectUserAccessConfig | where {$_. Name -eq 'TestUAC'}
-Remove-ZNSettingsConnectUserAccessConfig -UserAccessConfigId $uac.id
-```
-
-```output
+$uac = Get-ZNSettingsConnectUserAccessConfig | where {$_.Name -eq "testapi"}
+Remove-ZNSettingsConnectUserAccessConfig -UserAccessConfigId $uac.Id
 
 ```
 
-This cmdlet removes a User Access Config for Connect.
+This cmdlet deletes a user access config for Connect settings.
 
 ## PARAMETERS
 

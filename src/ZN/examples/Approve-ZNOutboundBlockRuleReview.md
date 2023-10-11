@@ -1,23 +1,15 @@
-### Example 1: Approve an outbound block rule
+### Example 1: Approve a rule
 ```powershell
-Approve-ZNOutboundBlockRuleReview -RuleId abb0516d-a345-4b27-995b-74c772791cc9
-```
-
-```output
+Approve-ZNOutboundBlockRuleReview -RuleId '9d275288-4fc3-46e5-a5a0-ff0626214b87'
 
 ```
 
-This cmdlet will approve an outbound block rule without changes.
+This cmdlet approves a rule pending review.
 
-### Example 2: Approve an outbound block rule with changes
+### Example 2: Approve a rule
 ```powershell
-$ports = (Get-ZNOutboundBlockRule -RuleId abb0516d-a345-4b27-995b-74c772791cc9).ItemPortsList
-$updatedPorts = New-ZNPortsList -Protocol $ports.ProtocolType -Ports ($ports.Ports+,"1234")
-Approve-ZNOutboundAllowBlockReview -RuleId abb0516d-a345-4b27-995b-74c772791cc9 -Reason MissingPortOrProcess -PortsList $updatedPorts
-```
-
-```output
+Approve-ZNOutboundBlockRuleReview -RuleId 'e4a170be-c192-414a-9d36-380a4483583a' -Description "new description" -Reason "Other" -Details "add description"
 
 ```
 
-This cmdlet will approve an outbound block rule with changes.
+This cmdlet also supports changing the rule details upon approval.

@@ -29,9 +29,6 @@ $portsList = New-ZNPortsList -Protocol TCP -Ports "44,45"
 $source = (Get-ZNInboundAllowRulesSourceCandidate -search "any asset").Items
 $destination = (Get-ZNInboundAllowRulesDestinationCandidate -Search FS1).Items
 New-ZNInboundAllowRule -LocalEntityId $destination.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1
-```
-
-```output
 CreatedByEnforcementSource : 0
 CreatedById                : m:86786c2f022cf2bd7dc38f165c98b4ee736c8c3b
 CreatedByName              : PowerShell
@@ -90,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiresAt
-.
+Epoch Millis
 
 ```yaml
 Type: System.Int64

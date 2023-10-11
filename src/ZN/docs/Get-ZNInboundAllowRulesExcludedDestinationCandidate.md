@@ -25,9 +25,6 @@ Returns a list of excluded destionation candidates for Inbound Allow rules.
 ### Example 1: Get possible destinations to exclude for inbound allow rule
 ```powershell
 (Get-ZNInboundAllowRulesExcludedDestinationCandidate).Items
-```
-
-```output
 AssetType Domain    Id           Name                                    ProtectionState
 --------- ------    --           ----                                    ---------------
           zero.labs g:a:yu1gHyge Access Control Assistance Operators     
@@ -55,9 +52,6 @@ This cmdlet will return possbile candidates for destinations in an inbound allow
 ### Example 2: Search for a candidate to exclude
 ```powershell
 (Get-ZNInboundAllowRulesExcludedDestinationCandidate -search DC1).Items
-```
-
-```output
 AssetType Domain    Id           Name ProtectionState
 --------- ------    --           ---- ---------------
 2         zero.labs a:a:ZgBWOMyc DC1  5

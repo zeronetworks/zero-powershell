@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNMfaOutboundPolicy'))
 
 Describe 'Get-ZNMfaOutboundPolicy' {
     It 'List' {
-        $destination = (Get-ZNMfaOutboundPoliciesDestinationCandidate -Search "Protected OT/IoT devices").Items
-        $source = (Get-ZNMfaOutboundPoliciesSourceCandidate -search "All Protected Assets").Items
+        $destination = (Get-ZNMfaOutboundPoliciesDestinationCandidate -Search "Segmented OT/IoT devices").Items
+        $source = (Get-ZNMfaOutboundPoliciesSourceCandidate -search "All segmented Assets").Items
         $sourceEntity = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyOutboundBodySrcEntityInfosItem]::new()
         $sourceEntity.Id = $source.Id
         $sourceUser = (Get-ZNMfaInboundPoliciesSourceUserCandidate -search "Any User").Items
@@ -27,12 +27,13 @@ Describe 'Get-ZNMfaOutboundPolicy' {
         $portsList = New-ZNPortsList -Empty
         $policy = New-ZNMfaOutboundPolicy -AdditionalPortsList $portsList -DstEntityInfoId $destination.Id -DstPort $dstPort -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1 -OverrideBuiltins:$false
         { (Get-ZNMfaOutboundPolicy).Items } | Should -Not -Be $null
+        Remove-ZNMfaOutboundPolicy -ReactivePolicyId $policy.ItemId
         
     }
 
     It 'Get' {
-        $destination = (Get-ZNMfaOutboundPoliciesDestinationCandidate -Search "Protected OT/IoT devices").Items
-        $source = (Get-ZNMfaOutboundPoliciesSourceCandidate -search "All Protected Assets").Items
+        $destination = (Get-ZNMfaOutboundPoliciesDestinationCandidate -Search "Segmented OT/IoT devices").Items
+        $source = (Get-ZNMfaOutboundPoliciesSourceCandidate -search "All segmented Assets").Items
         $sourceEntity = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyOutboundBodySrcEntityInfosItem]::new()
         $sourceEntity.Id = $source.Id
         $sourceUser = (Get-ZNMfaInboundPoliciesSourceUserCandidate -search "Any User").Items

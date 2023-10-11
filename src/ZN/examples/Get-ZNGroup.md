@@ -1,9 +1,6 @@
 ### Example 1: List Groups
 ```powershell
 Get-ZNGroup
-```
-
-```output
 CreatedAt     Description                                                                DirectMembersCount Domain    Guid                                 HasProtectionPolicy Id           Name
 ---------     -----------                                                                ------------------ ------    ----                                 ------------------- --           ----                 
 1646147849282                                                                            0                  zero.labs dfaca10e-9718-4d59-a471-61d3af1bd49a False               g:a:yu1gHyge Access Control Assis…
@@ -23,9 +20,6 @@ The cmdlet gets all groups for the environment
 ### Example 2: Get the next page of custom groups
 ```powershell
 Get-ZNGroup -offset 10
-```
-
-```output
 CreatedAt     Description                                                      DirectMembersCount Domain    Guid                                 HasProtectionPolicy Id           Name                                   Role Sid                                          UpdatedAt
 ---------     -----------                                                      ------------------ ------    ----                                 ------------------- --           ----                                   ---- ---                                          ---------
 1646147849235                                                                  0                  zero.labs a122e408-0192-45e0-b3ca-6e5b26534981 False               g:a:zobH4QmN Certificate Service DCOM Access        3    S-1-5-32-574                                 1646147976815

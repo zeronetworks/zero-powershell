@@ -25,9 +25,6 @@ Returns an empty object.
 ```powershell
 $cgroup = Get-ZNCustomGroup | where {$_.Name -eq "test2"}
 Add-ZNCustomGroupsMember -GroupId $cgroup.Id -MembersId (Search-ZNAsset -Fqdn dc1.zero.labs)
-```
-
-```output
 
 ```
 

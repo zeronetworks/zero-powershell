@@ -13,13 +13,14 @@ while(-not $mockingPath) {
 
 Describe 'Update-ZNSettingsConnectUserAccessConfig' {
     It 'UpdateExpanded' { 
-        $users = Get-ZNSettingsConnectUserAccessConfigCandidate | Where {$_.Name -eq 'zero'}
+        $users = Get-ZNSettingsConnectUserAccessConfigSourceUsersCandidate | Where {$_.Name -eq 'zero'}
         $destinations = Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate | where {$_.Name -eq 'Internal subnets'}
-        New-ZNSettingsConnectUserAccessConfig -DstEntityIdsList @($destinations.id) -MembersIdsList @($users.id) -Name TestUAC -SessionTtlHours 168
+        $regions = Get-ZNSettingsConnectUserAccessConfigAllowedRegionsCandidate | where {$_.Name -eq "Any Region"}
+        New-ZNSettingsConnectUserAccessConfig -AllowedRegions @($regions.id) -ConnectivityStateAfterReboot 1 -DstEntityIdsList @($destinations.id) -ForceSsoAuthentication:$false -LoginAuthorizedEntityAllowedAssetIdsList @("b:110001") -LoginAuthorizedEntityAllowedAssetsSourcesList @("1") -LoginAuthorizedEntityAllowedUsersIdsList @($users.id) -Name TestUAC -SessionTtlHours 168
         $uac = Get-ZNSettingsConnectUserAccessConfig | where {$_. Name -eq 'TestUAC'}
-        Update-ZNSettingsConnectUserAccessConfig -UserAccessConfigId $uac.id -SessionTtlHours 24 -DstEntityIdsList @($uac.AllowedDestinations.Id) -MembersIdsList @($uac.MemberIds.Id) -Name $uac.Name
+        Update-ZNSettingsConnectUserAccessConfig -UserAccessConfigId $uac.id -AllowedRegions @($uac.AllowedRegions.Id) -ConnectivityStateAfterReboot 2 -DstEntityIdsList @($uac.AllowedDestinations.Id) -ForceSsoAuthentication:$uac.ForceSsoAuthentication -LoginAuthorizedEntityAllowedAssetIdsList @($uac.AllowedAssetIds.Id) -LoginAuthorizedEntityAllowedAssetsSourcesList @($uac.AllowedAssetSources.Id) -LoginAuthorizedEntityAllowedUsersIdsList @($uac.AllowedUserIds.Id) -Name $uac.Name -SessionTtlHours $uac.SessionTtlHours
         $uac = Get-ZNSettingsConnectUserAccessConfig | where {$_. Name -eq 'TestUAC'}
-        $uac.SessionTtlHours | Should -Be 24
+        $uac.ConnectivityStateAfterReboot | Should -Be 2
         Remove-ZNSettingsConnectUserAccessConfig -UserAccessConfigId $uac.id
     }
 }

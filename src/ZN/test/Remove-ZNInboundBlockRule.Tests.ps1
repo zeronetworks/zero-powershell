@@ -19,9 +19,9 @@ Describe 'Remove-ZNInboundBlockRule' {
         [string]$ports = Get-Random -Minimum 1 -Maximum 65000
         $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
         $source = Invoke-ZNEncodeEntityIP -Ip 1.1.1.1
-        $destination = (Get-ZNInboundAllowRulesDestinationCandidate -Search "all protected assets").Items
+        $destination = (Get-ZNInboundAllowRulesDestinationCandidate -Search "all segmented assets").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNInboundBlockRule -LocalEntityId $destination.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source) -State 1 -ExpiresAt $expiresAt
-        { Remove-ZNInboundBlockRule -RuleId $rule.ItemId } | Should -Not -Throw
+        { Remove-ZNInboundBlockRule -RuleId $rule.Id } | Should -Not -Throw
     }
 }

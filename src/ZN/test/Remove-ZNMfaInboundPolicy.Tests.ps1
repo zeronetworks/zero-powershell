@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNMfaInboundPolicy'))
 
 Describe 'Remove-ZNMfaInboundPolicy' {
     It 'Delete' {
-        $destination = (Get-ZNMfaInboundPoliciesDestinationCandidate -Search "All protected assets").Items
+        $destination = (Get-ZNMfaInboundPoliciesDestinationCandidate -Search "All segmented assets").Items
         $source = (Get-ZNMfaInboundPoliciesSourceCandidate -search "Any Asset").Items
         $sourceEntity = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyInboundBodySrcEntityInfosItem]::new()
         $sourceEntity.Id = $source.Id

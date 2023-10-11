@@ -4,9 +4,6 @@ $portsList = New-ZNPortsList -Protocol Any
 $source = (Get-ZNInboundBlockRulesSourceCandidate -Search "win7").Items
 $destination = (Get-ZNInboundBlockRulesDestinationCandidate -Search "all protected Assets").Items
 New-ZNInboundBlockRule -LocalEntityId $destination.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1
-```
-
-```output
 CCreatedByEnforcementSource : 0
 CreatedById                : m:86786c2f022cf2bd7dc38f165c98b4ee736c8c3b
 CreatedByName              : PowerShell

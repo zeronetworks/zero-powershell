@@ -1,9 +1,14 @@
-### Example 1: Remove an Asset from protection.
+### Example 1: Remove assets from protection.
 ```powershell
-Unprotect-ZNAsset -Items (Search-ZNAsset -Fqdn dc1.zero.labs)
+Unprotect-ZNAsset -Items @(Search-ZNAsset -Fqdn dc1.zero.labs)
+
 ```
 
-```output
+This cmdlet will remove assets from segementation.  Items accepts a list of assetIds.
+
+### Example 1: Remove an Asset from protection.
+```powershell
+Unprotect-ZNAsset -AssetId (Search-ZNAsset -Fqdn dc1.zero.labs)
 
 ```
 

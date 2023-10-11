@@ -19,7 +19,7 @@ function Update-ZNMfaOutboundPolicy {
 
         [Parameter(ParameterSetName = 'UpdateExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
-        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem[]]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]]
         # extra ports to open.
         ${AdditionalPortsList},
 
@@ -85,7 +85,7 @@ function Update-ZNMfaOutboundPolicy {
 
         [Parameter(ParameterSetName = 'UpdateExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
-        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyOutboundBodySrcEntityInfosItem[]]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyOutboundBodySrcEntityInfosItem[]]
         # source asset(s).
         ${SrcEntityInfos},
         
@@ -97,7 +97,7 @@ function Update-ZNMfaOutboundPolicy {
 
         [Parameter(ParameterSetName = 'UpdateExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
-        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyOutboundBodySrcUserInfosItem[]]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyOutboundBodySrcUserInfosItem[]]
         # source user(s).
         ${SrcUserInfos},
 

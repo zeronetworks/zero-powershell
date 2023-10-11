@@ -24,9 +24,6 @@ List Connect Regions in Settings
 ### Example 1: List Connect regions
 ```powershell
 Get-ZNSettingsConnectRegion
-```
-
-```output
 CreatedAt     CreatedBy       DnsServersIPAddressList IPAddress     Id           Name       UpdatedAt     UpdatedBy
 ---------     ---------       ----------------------- ---------     --           ----       ---------     ---------
 1685619785028 nicholas        {10.1.0.5}              13.90.119.130 r:a:qjNbW2rx azure-posh 1685619785028 nicholas

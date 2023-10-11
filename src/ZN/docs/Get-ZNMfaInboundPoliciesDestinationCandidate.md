@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-ZNMfaInboundPoliciesDestinationCandidate
 
 ## SYNOPSIS
-Returns a list of candidates for the destionation of an inbound MFA policy.
+Returns a list of candidates for the destination of an inbound MFA policy.
 
 ## SYNTAX
 
@@ -18,16 +18,13 @@ Get-ZNMfaInboundPoliciesDestinationCandidate [-Limit <Int32>] [-Offset <Int32>] 
 ```
 
 ## DESCRIPTION
-Returns a list of candidates for the destionation of an inbound MFA policy.
+Returns a list of candidates for the destination of an inbound MFA policy.
 
 ## EXAMPLES
 
 ### Example 1: Get possible destinations for inbound MFA Policy
 ```powershell
 (Get-ZNMfaInboundPoliciesDestinationCandidate).Items
-```
-
-```output
 AssetType Domain    Id           Name                                      ProtectionState
 --------- ------    --           ----                                      ---------------
                     b:110002     All protected assets                      
@@ -58,9 +55,6 @@ This cmdlet will return possbile candidates for destinations in an inbound MFA p
 ### Example 2: Search for a candidate
 ```powershell
 (Get-ZNMfaInboundPoliciesDestinationCandidate -Search DC1).Items
-```
-
-```output
 AssetType Domain    Id           Name ProtectionState
 --------- ------    --           ---- ---------------
 2         zero.labs a:a:ZgBWOMyc DC1  5

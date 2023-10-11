@@ -1,9 +1,6 @@
 ### Example 1: List users
 ```powershell
 Get-ZNUser
-```
-
-```output
 CreatedAt     DistinguishedName                                    Domain    Email                           FirstName Guid                                 Id           JobTitle LastLogon     LastName   Name             OfficePhone Phone Role Sid
 ---------     -----------------                                    ------    -----                           --------- ----                                 --           -------- ---------     --------   ----             ----------- ----- ---- ---            
 1646147850723 CN=Administrator,CN=Users,DC=zero,DC=labs            zero.labs                                           d2ac73db-cb56-4c7e-9818-ddb9e4c9a74c u:a:eTpnZu08          1661438953278            Administrator                      3    S-1-5-21-16551…
@@ -23,9 +20,6 @@ This cmdlet will list users for the environment.
 ### Example 2: Get the next page of system groups
 ```powershell
  Get-ZNUser -Offset 10
-```
-
-```output
 CreatedAt     DistinguishedName                                        Domain    Email                              FirstName          Guid                                 Id           JobTitle LastLogon     LastName       Name                 OfficePhone
 ---------     -----------------                                        ------    -----                              ---------          ----                                 --           -------- ---------     --------       ----                 -----------  
 1648643839355 CN=Nicholas DiCola,OU=Zero Networks,DC=zero,DC=labs      zero.labs nicholas@zeronetworks.com          Nicholas           89932c25-5d85-47dd-b0a2-d97ad001fb06 u:a:E6iXCia4                        DiCola         Nicholas DiCola                   
@@ -42,9 +36,6 @@ Use offset to get the next page of users.
 ### Example 3: Search for a user
 ```powershell
 Get-ZNUser -Search Administrator
-```
-
-```output
 CreatedAt     DistinguishedName                         Domain    Email FirstName Guid                                 Id           JobTitle LastLogon     LastName Name          OfficePhone Phone Role Sid                                          Source UserPrincipleName
 ---------     -----------------                         ------    ----- --------- ----                                 --           -------- ---------     -------- ----          ----------- ----- ---- ---                                          ------ -----------------
 1646147850723 CN=Administrator,CN=Users,DC=zero,DC=labs zero.labs                 d2ac73db-cb56-4c7e-9818-ddb9e4c9a74c u:a:eTpnZu08          1661438953278          Administrator                   3    S-1-5-21-1655129710-1269081394-587607975-500 3

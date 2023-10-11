@@ -24,9 +24,6 @@ Returns a list of MFA methods for inbound MFA policies.
 ### Example 1: List possible MFA methods for an inbound MFA policy
 ```powershell
 Get-ZNMfaInboundPoliciesMfamethod
-```
-
-```output
 2
 4
 3

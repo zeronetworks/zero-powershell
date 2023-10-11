@@ -17,10 +17,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNOutboundBlockRule'))
 Describe 'Remove-ZNOutboundBlockRule' {
     It 'Delete' {
         $portsList =  New-ZNPortsList -Protocol TCP -Ports (Get-Random -Minimum 1 -Maximum 1024)
-        $source = (Get-ZNOutboundAllowRulesSourceCandidate -search "all protected assets").Items
+        $source = (Get-ZNOutboundAllowRulesSourceCandidate -search "all segmented assets").Items
         $destination = Invoke-ZNEncodeEntityIp -IP 1.2.3.4
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNOutboundBlockRule -LocalEntityId $source.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt
-        { Remove-ZNOutboundBlockRule -RuleId $rule.ItemId } | Should -Not -Throw
+        { Remove-ZNOutboundBlockRule -RuleId $rule.Id } | Should -Not -Throw
     }
 }

@@ -24,9 +24,6 @@ Returns an assetId.
 ### Example 1: Find an asset by FQDN
 ```powershell
 Search-ZNAsset -Fqdn dc1.zero.labs
-```
-
-```output
 a:a:ZgBWOMyc
 ```
 
