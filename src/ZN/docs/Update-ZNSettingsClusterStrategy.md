@@ -13,7 +13,8 @@ Returns an empty response.
 ## SYNTAX
 
 ```
-Update-ZNSettingsClusterStrategy -PreferredDeploymentId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsClusterStrategy -PreferredDeploymentId <String> -Strategy <Int32> [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +37,21 @@ This cmdlet sets the preferred trust server under Segment servers.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Strategy
+.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -89,8 +105,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

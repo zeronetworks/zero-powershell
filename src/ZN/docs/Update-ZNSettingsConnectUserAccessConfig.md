@@ -33,10 +33,6 @@ $uac = Get-ZNSettingsConnectUserAccessConfig | where {$_. Name -eq 'UAC'}
 Update-ZNSettingsConnectUserAccessConfig -UserAccessConfigId $uac.id -SessionTtlHours 24 -DstEntityIdsList @($uac.AllowedDestinations.Id) -MembersIdsList @($uac.MemberIds.Id) -Name $uac.Name
 ```
 
-```output
-
-```
-
 This cmdlet updates a User Access Config for Connect
 
 ## PARAMETERS
@@ -292,8 +288,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

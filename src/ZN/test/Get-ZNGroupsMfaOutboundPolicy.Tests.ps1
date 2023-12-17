@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNGroupsMfaOutboundPolicy' {
     It 'List' {
-        $group = Get-ZNGroup -Search "card readers"
+        $group = (Get-ZNGroup -Search "card readers").Items
         $source = (Get-ZNGroupsMfaOutboundPoliciesSourceCandidate -GroupId $group.id -GroupType tag -search "All Segmented Assets").Items
         $sourceEntity = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyOutboundBodySrcEntityInfosItem]::new()
         $sourceEntity.Id = $source.Id
@@ -29,7 +29,7 @@ Describe 'Get-ZNGroupsMfaOutboundPolicy' {
     }
 
     It 'Get' {
-        $group = Get-ZNGroup -Search "card readers"
+        $group = (Get-ZNGroup -Search "card readers").Items
         $source = (Get-ZNGroupsMfaOutboundPoliciesSourceCandidate -GroupId $group.id -GroupType tag -search "All Segmented Assets").Items
         $sourceEntity = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyOutboundBodySrcEntityInfosItem]::new()
         $sourceEntity.Id = $source.Id

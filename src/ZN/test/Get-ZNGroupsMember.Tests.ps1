@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNGroupsMember'))
 
 Describe 'Get-ZNGroupsMember' {
     It 'List' {
-        $group = Get-ZNGroup -Search "Administrators" | Select-Object -first 1
+        $group = (Get-ZNGroup -Search "Administrators").Items | Select-Object -first 1
         { (Get-ZNGroupsMember -GroupId $group.id -IncludeNestedMembers:$false).Entities } | Should -Not -Be $null
     }
 }

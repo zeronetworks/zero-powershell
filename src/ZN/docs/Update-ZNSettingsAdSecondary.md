@@ -13,8 +13,9 @@ Update a secondary AD settings in Asset Managment
 ## SYNTAX
 
 ```
-Update-ZNSettingsAdSecondary -DomainId <String> -ForestId <String> -Dc <String> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNSettingsAdSecondary -DomainId <String> -ForestId <String>
+ [-SecondaryDomainConfigDomainControllerFqdn <String>] [-SecondaryDomainConfigDomainName <String>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,21 +33,6 @@ Update-ZNSettingsAdSecondary -forest $forest.ForestId -DomainId child.test.local
 This cmdlet updates the settings for a Secondary domain in AD settings.
 
 ## PARAMETERS
-
-### -Dc
-The domain controller
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DomainId
 The fqdn of the domain
@@ -72,6 +58,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecondaryDomainConfigDomainControllerFqdn
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecondaryDomainConfigDomainName
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -121,8 +137,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

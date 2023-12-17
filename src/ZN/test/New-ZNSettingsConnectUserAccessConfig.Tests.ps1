@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'New-ZNSettingsConnectUserAccessConfig' {
     It 'CreateExpanded' {
-        $users = Get-ZNSettingsConnectUserAccessConfigSourceUsersCandidate | Where {$_.Name -eq 'zero'}
+        $users = Get-ZNSettingsConnectUserAccessConfigSourceUsersCandidate | Select -First 1
         $destinations = Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate | where {$_.Name -eq 'Internal subnets'}
         $regions = Get-ZNSettingsConnectUserAccessConfigAllowedRegionsCandidate | where {$_.Name -eq "Any Region"}
         New-ZNSettingsConnectUserAccessConfig -AllowedRegions @($regions.id) -ConnectivityStateAfterReboot 1 -DstEntityIdsList @($destinations.id) -ForceSsoAuthentication:$false -LoginAuthorizedEntityAllowedAssetIdsList @("b:110001") -LoginAuthorizedEntityAllowedAssetsSourcesList @("1") -LoginAuthorizedEntityAllowedUsersIdsList @($users.id) -Name TestUAC -SessionTtlHours 168

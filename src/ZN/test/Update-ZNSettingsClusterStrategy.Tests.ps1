@@ -15,7 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNSettingsClusterStrat
 }
 
 Describe 'Update-ZNSettingsClusterStrategy' {
-    It 'SetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetExpanded' {
+        $settings = get-ZNSettingsClusterStrategy
+        if($settings.Strategy -eq 1) {
+            $newStrategy = 2
+        } else {
+            $newStrategy = 1
+        }
+        { Update-ZNSettingsClusterStrategy -PreferredDeploymentId $settings.PreferredDeploymentId -Strategy $newStrategy } | Should -Not -Throw
     }
 }

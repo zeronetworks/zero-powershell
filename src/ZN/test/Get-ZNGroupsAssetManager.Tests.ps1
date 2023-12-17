@@ -16,9 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNGroupsAssetManager'))
 
 Describe 'Get-ZNGroupsAssetManager' {
     It 'List' {
-        $manager = Get-ZNUser -Search Test
+        $manager = (Get-ZNUser).Items | Select -First 1
         New-ZNCustomGroup -Name "GetGroupsAssetManagerTest"
-        $customGroup = Get-ZNGroup -Search GetGroupsAssetManagerTest
+        $customGroup = (Get-ZNGroup -Search GetGroupsAssetManagerTest).Items
         Add-ZNGroupsAssetManager -GroupId $customGroup.Id -GroupType Custom -ManagerIds $manager.id
         $managers = Get-ZNGroupsAssetManager -GroupId $customGroup.Id -GroupType Custom
         $managers.ManagerId | Should -Be $manager.id

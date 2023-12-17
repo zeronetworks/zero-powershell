@@ -18,7 +18,7 @@ Describe 'Remove-ZNCustomGroupsMember' {
     It 'DeleteExpanded' { 
         $name = "cgroup" + (Get-Random -Maximum 999999)
         New-ZNCustomGroup -Name $name -Description "test"
-        $customGroup = Get-ZNGroup -Search $name
+        $customGroup = (Get-ZNGroup -Search $name).Items
         $asset = Search-ZNAsset -fqdn linux0.posh.local
         Add-ZNCustomGroupsMember -GroupId $customGroup.Id -MembersId @($asset)
         { Remove-ZNCustomGroupsMember -GroupId $customGroup.Id -MembersId $asset } | Should -Not -Throw

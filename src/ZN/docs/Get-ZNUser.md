@@ -14,7 +14,8 @@ Returns the properties of an user.
 
 ### List (Default)
 ```
-Get-ZNUser [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
+Get-ZNUser [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>]
+ [-Search <String>] [-WithCount] [<CommonParameters>]
 ```
 
 ### Get
@@ -119,6 +120,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Order
+What order to sort the results
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OrderColumns
+what column to order on
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Search
 Test to search for
 
@@ -149,6 +180,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WithCount
+return count of objects
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: $true
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -160,9 +206,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IUser
 
-## NOTES
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IUsersList
 
-ALIASES
+## NOTES
 
 ## RELATED LINKS
 

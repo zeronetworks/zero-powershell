@@ -15,7 +15,7 @@ Describe 'Remove-ZNGroupsManagedAsset' {
     It 'DeleteViaIdentity' {
         $asset = Search-ZNAsset -Fqdn linux0.posh.local
         New-ZNCustomGroup -Name "RemoveGroupsManagedAssetTest"
-        $customGroup = Get-ZNGroup -Search RemoveGroupsManagedAssetTest
+        $customGroup = (Get-ZNGroup -Search RemoveGroupsManagedAssetTest).Items
         Add-ZNGroupsManagedAsset -GroupId $customGroup.Id -GroupType Custom -EntityIds @($asset)
         $managedAssets = Get-ZNGroupsManagedAsset -GroupId $customGroup.Id -GroupType Custom
         { Remove-ZNGroupsManagedAsset -GroupId $customGroup.Id -GroupType Custom -GroupOrAssetId $asset } | Should -Not -Throw

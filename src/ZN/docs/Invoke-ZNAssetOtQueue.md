@@ -27,27 +27,13 @@ Returns and empty object.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Add OT asset to learning
 ```powershell
-{{ Add code here }}
+Invoke-ZNAssetOtQueue -AssetId a:t:m9m4JIHj -QueueDays 14
+
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet adds an OT asset to learning.
 
 ## PARAMETERS
 
@@ -139,8 +125,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

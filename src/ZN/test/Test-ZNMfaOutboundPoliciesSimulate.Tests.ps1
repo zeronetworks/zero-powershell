@@ -15,7 +15,7 @@ Describe 'Test-ZNMfaOutboundPoliciesSimulate' {
     It 'Test' {
         $destination = (Get-ZNMfaOutboundPoliciesSimulateDesinationCandidate -Search switch01).Items
         $sourceAsset = (Get-ZNMfaOutboundPoliciesSimulateSourceCandidate -Search WC01).Items
-        $sourceUser = (Get-ZNMfaOutboundPoliciesSimulateSourceUserCandidate -Search test).Items
+        $sourceUser = (Get-ZNMfaOutboundPoliciesSimulateSourceUserCandidate).Items | Select -First 1
         $result = Test-ZNMfaOutboundPoliciesSimulate -DstAssetId $destination.Id -SrcAssetId $sourceAsset.Id -SrcUserId $sourceUser.Id -Port 22 -ProtocolType 6
         $result.OrderedReactivePolicies | Should -Not -Be $null
 

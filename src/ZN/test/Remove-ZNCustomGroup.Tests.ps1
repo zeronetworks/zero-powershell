@@ -18,7 +18,7 @@ Describe 'Remove-ZNCustomGroup' {
     It 'Delete' {
         $name = "cgroup" + (Get-Random -Maximum 999999)
         New-ZNCustomGroup -Name $name -Description "test"
-        $customgroup = Get-ZNGroup -search $name
+        $customgroup = (Get-ZNGroup -search $name).Items
         { Remove-ZNCustomGroup -GroupId $customGroup.Id } | Should -Not -Throw
     }
 }

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNGroupsAssetManagersCand
 
 Describe 'Get-ZNGroupsAssetManagersCandidate' {
     It 'List' {
-        $group = Get-ZNGroup -Search clients
+        $group = (Get-ZNGroup -Search clients).Items
         (Get-ZNGroupsAssetManagersCandidate -GroupId $group.id -GroupType system).Items | Should -Not -Be $null
     }
 }

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsAdProtectedCand
 
 Describe 'Get-ZNSettingsAdProtectedCandidate' {
     It 'Get' {
-        $ad = Get-ZNSettingsAd
+        $ad = Get-ZNSettingsAd | where {$_.ActiveDirectoryInfoDomainName -eq "posh.local"}
         (Get-ZNSettingsAdProtectedCandidate -ForestId $ad.ForestId).Items.Count | Should -BeGreaterThan 0
     }
 }

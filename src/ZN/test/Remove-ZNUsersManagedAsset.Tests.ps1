@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'Remove-ZNUsersManagedAsset' {
     It 'Delete' {
         $asset = Search-ZNAsset -Fqdn linux0.posh.local
-        $user = Get-ZNUser -search test
+        $user = (Get-ZNUser).Items | Select -First 1
         Add-ZNUsersManagedAsset -UserId $user.Id -EntityIds @($asset)
         $managedAssets = Get-ZNUsersManagedAsset -UserId $user.Id
         { Remove-ZNUsersManagedAsset -UserId $user.Id -GroupOrAssetId $asset } | Should -Not -Throw

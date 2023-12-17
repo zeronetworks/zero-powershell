@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNAssetOtAnalysis' {
     It 'Get' {
-        $asset = Search-ZNAsset -Fqdn ot1777
+        $asset = Search-ZNAsset -Fqdn switch01
         Get-ZNAssetOtAnalysis -AssetId $asset -Direction 1 | Should -Not -Be $null
     }
 }

@@ -410,6 +410,9 @@ paths:
         - $ref: '#/components/parameters/filtersParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/showInactiveParameter'
       responses:
         '200':
           description: OK
@@ -417,6 +420,60 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/assetList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
+  /assets/actions/activate:
+    post:
+      operationId: AssetsActive_Set
+      summary: Mark assets active
+      description: Returns and empty object.
+      requestBody:
+        description: Array of assetIds to activate
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/assetsActivateBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
+  /assets/actions/inactivate:
+    post:
+      operationId: AssetsInactive_Set
+      summary: Mark assets inactive
+      description: Returns and empty object.
+      requestBody:
+        description: Array of assetIds to mark inactive
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/assetsActivateBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -440,7 +497,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/assetsActionBody'
+              $ref: '#/components/schemas/assetsProtectBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -467,7 +524,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/assetsActionBody'
+              $ref: '#/components/schemas/assetsProtectBody'
       responses:
         '200':
           description: OK
@@ -498,7 +555,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/queueBody'
+              $ref: '#/components/schemas/assetsQueueBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -550,7 +607,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/assetsActionBody'
+              $ref: '#/components/schemas/assetsUnprotectBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -577,7 +634,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/assetsActionBody'
+              $ref: '#/components/schemas/assetsUnprotectBody'
             examples: {}
       responses:
         '200':
@@ -600,7 +657,7 @@ paths:
         - Assets
   /assets/identity-actions/protect:
     post:
-      operationId: AssetsIdentitySegment_Protect
+      operationId: AssetsIdentity_Protect
       summary: Move assets from to identity segmentation.
       description: Returns and empty object.
       requestBody:
@@ -609,7 +666,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/assetsActionBody'
+              $ref: '#/components/schemas/assetsProtectBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -627,7 +684,7 @@ paths:
         - Assets
   /assets/identity-actions/protect/validate:
     post:
-      operationId: AssetsIdentitySegmentProtect_Validate
+      operationId: AssetsIdentityProtect_Validate
       summary: Validate assets for identity segmentation
       description: Returns a number of assets that are valid for identity segmentation.
       requestBody:
@@ -636,7 +693,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/assetsActionBody'
+              $ref: '#/components/schemas/assetsProtectBody'
       responses:
         '200':
           description: OK
@@ -658,7 +715,7 @@ paths:
         - Assets
   /assets/identity-actions/unprotect:
     post:
-      operationId: AssetsIdentitySegment_Unprotect
+      operationId: AssetsIdentity_Unprotect
       summary: Unprotect assets
       description: Returns an empty object.
       requestBody:
@@ -666,7 +723,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/assetsActionBody'
+              $ref: '#/components/schemas/assetsUnprotectBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -684,7 +741,7 @@ paths:
         - Assets
   /assets/identity-actions/unprotect/validate:
     post:
-      operationId: AssetsIdentitySegmentUnprotect_Validate
+      operationId: AssetsIdentityUnprotect_Validate
       summary: Validate assets for removing from identity segmentation
       description: Returns a number of assets that are valid to unprotect.
       requestBody:
@@ -693,7 +750,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/assetsActionBody'
+              $ref: '#/components/schemas/assetsUnprotectBody'
             examples: {}
       responses:
         '200':
@@ -724,6 +781,8 @@ paths:
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
         - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
       responses:
         '200':
           description: OK
@@ -765,9 +824,63 @@ paths:
         - api_key: []
       tags:
         - Assets
+  /assets/inactive:
+    get:
+      operationId: AssetsInactive_List
+      summary: Inactive Assets
+      description: Returns a list of assets that are inactive.
+      parameters:
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/showInactiveParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assetList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
+  /assets/inactive/filters:
+    get:
+      operationId: AssetsInactiveFilters_List
+      summary: List Inactive Assets Filters
+      description: Returns the filters that can be used for inactive assets.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
   /assets/rpc-actions/monitor:
     post:
-      operationId: Assets_AddRpcMonitoring
+      operationId: AssetsRpcMonitoring_Add
       summary: Add assets to RPC monitoring
       description: Returns and empty object.
       requestBody:
@@ -776,7 +889,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/assetsActionBody'
+              $ref: '#/components/schemas/assetsRpcBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -794,7 +907,7 @@ paths:
         - Assets
   /assets/rpc-actions/unmonitor:
     post:
-      operationId: Assets_RemoveRpcMonitoring
+      operationId: AssetsRpcMonitoring_Delete
       summary: Remove assets from RPC monitoring
       description: Returns and empty object.
       requestBody:
@@ -803,7 +916,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/assetsActionBody'
+              $ref: '#/components/schemas/assetsRpcBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -891,6 +1004,72 @@ paths:
         - api_key: []
       tags:
         - Assets
+  /assets/scripts/fix-wmi:
+    get:
+      operationId: AssetsScripts_FixWmi
+      summary: Get fix-wmi.sh script
+      description: Returns the script as application/octet-stream.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
+  /assets/scripts/test-udp-net-connection/powershell:
+    get:
+      operationId: AssetsScriptsPowerShellTestUdpNetConnection_Get
+      summary: Get testUdpNetConnection.ps1 script
+      description: Returns the script as application/octet-stream.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
+  /assets/scripts/test-udp-net-connection/python:
+    get:
+      operationId: AssetsScriptsPythonTestUdpNetConnection_Get
+      summary: Get testUdpNetConnection.py script
+      description: Returns the script as application/octet-stream.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: [ ]
+      tags:
+        - Assets
   /assets/linux:
     post:
       operationId: AssetsLinux_Create
@@ -936,6 +1115,62 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/assetResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Asset
+  /assets/{assetId}/actions/activate:
+    post:
+      operationId: AssetActive_Set
+      summary: Mark asset active
+      description: Returns and empty object.
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/assetActivateBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Asset
+  /assets/{assetId}/actions/inactivate:
+    post:
+      operationId: AssetInactive_Set
+      summary: Mark asset inactive
+      description: Returns and empty object.
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/assetActivateBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -1125,7 +1360,7 @@ paths:
         - Asset
   '/assets/{assetId}/rpc-actions/monitor':
     post:
-      operationId: Asset_AddRpcMonitoring
+      operationId: AssetRpcMonitoring_Add
       summary: Adds a specific asset to RPC monitoring
       description: Returns an empty object.
       parameters:
@@ -1147,7 +1382,7 @@ paths:
         - Asset
   '/assets/{assetId}/rpc-actions/unmonitor':
     post:
-      operationId: Asset_RemoveRpcMonitoring
+      operationId: AssetRpcMonitoring_Delete
       summary: Removes a specific asset from RPC monitoring
       description: Returns an empty object.
       parameters:
@@ -1906,7 +2141,7 @@ paths:
         - Asset
   /assets/{assetId}/identity-actions/protect:
     post:
-      operationId: AssetIdentity_Segment
+      operationId: AssetIdentity_Protect
       summary: Move asset to Identity Segmentation
       description: Returns and empty object.
       parameters:
@@ -1928,7 +2163,7 @@ paths:
         - Asset
   /assets/{assetId}/identity-actions/protect/validate:
     post:
-      operationId: AssetIdentitySegment_Validate
+      operationId: AssetIdentityProtect_Validate
       summary: Validate specific asset for identity segmentation
       description: Returns a number of assets that are valid for identity segmentation.
       parameters:
@@ -1954,7 +2189,7 @@ paths:
         - Asset
   /assets/{assetId}/identity-actions/unprotect:
     post:
-      operationId: AssetIdentitySegment_Unprotect
+      operationId: AssetIdentity_Unprotect
       summary: Unprotect a specific asset
       description: Returns an empty object.
       parameters:
@@ -1976,7 +2211,7 @@ paths:
         - Asset
   /assets/{assetId}/identity-actions/unprotect/validate:
     post:
-      operationId: AssetIdentitySegmentUnprotect_Validate
+      operationId: AssetIdentityUnprotect_Validate
       summary: Validate a specific asset for removing from protection
       description: Returns a number of assets that are valid to unprotect.
       parameters:
@@ -2195,9 +2430,9 @@ paths:
         - api_key: []
       tags:
         - Asset
-  /assets/{assetId}/protection/identity-rules/filters/assets-candidates:
+  /assets/{assetId}/protection/identity-rules/filters/asset-candidates:
     get:
-      operationId: AssetIdentityRulesFiltersAssetsCandidates_List
+      operationId: AssetIdentityRulesAssetsCandidatesFilters_List
       summary: Asset List Identity Rules Filters Assets Candidates
       description: Returns a list of assets candidates for filters in Identity rules.
       parameters:
@@ -2224,7 +2459,7 @@ paths:
         - Asset
   /assets/{assetId}/protection/identity-rules/filters/user-candidates:
     get:
-      operationId: AssetIdentityRulesFiltersUserCandidates_List
+      operationId: AssetIdentityRulesUserCandidatesFilters_List
       summary: Asset List Identity Rules Filters User Candidates
       description: Returns a list of user candidates for filters in Identity rules.
       parameters:
@@ -2276,7 +2511,33 @@ paths:
         - api_key: []
       tags:
         - Asset
-  /assets/{assetId}/protection/identity-rules/{ruleId}':
+  /assets/{assetId}/protection/identity-rules/{ruleId}:
+    get:
+      operationId: AssetIdentityRules_Get
+      summary: Asset Get Identity Rule
+      description: Returns the properties of an Identity rule.
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+        - $ref: '#/components/parameters/ruleIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/identityRuleItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Asset
     put:
       operationId: AssetIdentityRules_Update
       summary: Asset Update an Identity Rule
@@ -4856,6 +5117,10 @@ paths:
       parameters:
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
       responses:
         '200':
           description: OK
@@ -4906,6 +5171,10 @@ paths:
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/showInactiveParameter'
       responses:
         '200':
           description: OK
@@ -4962,7 +5231,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/assetsActionBody'
+              $ref: '#/components/schemas/assetsProtectBody'
             examples: {}
       responses:
         '200':
@@ -4990,7 +5259,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/queueBody'
+              $ref: '#/components/schemas/assetsQueueBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -5016,7 +5285,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/assetsActionBody'
+              $ref: '#/components/schemas/assetsUnprotectBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -6083,9 +6352,9 @@ paths:
         - api_key: []
       tags:
         - Asset OT/IoT
-  /assets/ot/{assetId}/protection/identity-rules/filters/assets-candidates:
+  /assets/ot/{assetId}/protection/identity-rules/filters/asset-candidates:
     get:
-      operationId: AssetOTIdentityRulesFiltersAssetsCandidates_List
+      operationId: AssetOTIdentityRulesAssetsCandidatesFilters_List
       summary: AssetOT List Identity Rules Filters Assets Candidates
       description: Returns a list of assets candidates for filters in Identity rules.
       parameters:
@@ -6112,7 +6381,7 @@ paths:
         - Asset OT/IoT
   /assets/ot/{assetId}/protection/identity-rules/filters/user-candidates:
     get:
-      operationId: AssetOTIdentityRulesFiltersUserCandidates_List
+      operationId: AssetOTIdentityRulesUserCandidatesFilters_List
       summary: AssetOT List Identity Rules Filters User Candidates
       description: Returns a list of user candidates for filters in Identity rules.
       parameters:
@@ -6164,7 +6433,33 @@ paths:
         - api_key: []
       tags:
         - Asset OT/IoT
-  /assets/ot/{assetId}/protection/identity-rules/{ruleId}':
+  /assets/ot/{assetId}/protection/identity-rules/{ruleId}:
+    get:
+      operationId: AssetOTIdentityRules_Get
+      summary: AssetOT Get Identity Rule
+      description: Returns an identity segmentation rule.
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+        - $ref: '#/components/parameters/ruleIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/identityRuleItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Asset OT/IoT
     put:
       operationId: AssetOTIdentityRules_Update
       summary: AssetOT Update an Identity Rule
@@ -8744,6 +9039,10 @@ paths:
       parameters:
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
       responses:
         '200':
           description: OK
@@ -8821,6 +9120,10 @@ paths:
       parameters:
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
       responses:
         '200':
           description: OK
@@ -9277,7 +9580,7 @@ paths:
       tags:
         - Settings
     put:
-      operationId: SettingsClusterStrategy_Set
+      operationId: SettingsClusterStrategy_Update
       summary: Set cluster strategy configurattion
       description: Returns an empty response.
       requestBody:
@@ -9617,6 +9920,7 @@ paths:
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/searchParameter'
         - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
       responses:
         '200':
           description: OK
@@ -10241,7 +10545,7 @@ paths:
         - Group
   /groups/{groupType}/{groupId}/protection/identity-rules/filters/asset-candidates:
     get:
-      operationId: GroupsIdentityRulesFiltersAssetsCandidates_List
+      operationId: GroupsIdentityRulesAssetsCandidatesFilters_List
       summary: Groups List Identity Rules Filters Assets Candidates
       description: Returns a list of assets candidates for filters in Identity rules.
       parameters:
@@ -10269,7 +10573,7 @@ paths:
         - Group
   /groups/{groupType}/{groupId}/protection/identity-rules/filters/user-candidates:
     get:
-      operationId: GroupsIdentityRulesFiltersUserCandidates_List
+      operationId: GroupsIdentityRulesUserCandidatesFilters_List
       summary: Groups List Identity Rules Filters User Candidates
       description: Returns a list of user candidates for filters in Identity rules.
       parameters:
@@ -10297,9 +10601,9 @@ paths:
         - Group
   /groups/{groupType}/{groupId}/protection/identity-rules/user-candidates:
     get:
-      operationId: GroupsIdentityRulesRemoteCandidates_List
-      summary: Groups List Identity Rules Remote Candidates
-      description: Returns a list of remote candidates for Identity rules.
+      operationId: GroupsIdentityRulesUserCandidates_List
+      summary: Groups List Identity Rules User Candidates
+      description: Returns a list of user candidates for Identity rules.
       parameters:
         - $ref: '#/components/parameters/groupTypeParameter'
         - $ref: '#/components/parameters/groupIdParameter'
@@ -10323,7 +10627,34 @@ paths:
         - api_key: []
       tags:
         - Group
-  /groups/{groupType}/{groupId}/protection/identity-rules/{ruleId}':
+  /groups/{groupType}/{groupId}/protection/identity-rules/{ruleId}:
+    get:
+      operationId: GroupsIdentityRules_Get
+      summary: Groups Get Identity Rule
+      description: Returns an identity segmentation rule.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/ruleIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/identityRuleItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Group
     put:
       operationId: GroupsIdentityRules_Update
       summary: Groups Update an Identity Rule
@@ -13264,7 +13595,7 @@ paths:
         - Rules Identity
   /protection/identity-rules/filters/asset-candidates:
     get:
-      operationId: IdentityRulesFiltersAssetsCandidates_List
+      operationId: IdentityRulesAssetsCandidatesFilters_List
       summary: List Identity Rules Filters Assets Candidates
       description: Returns a list of assets candidates for filters in Identity rules.
       parameters:
@@ -13290,7 +13621,7 @@ paths:
         - Rules Identity
   /protection/identity-rules/filters/user-candidates:
     get:
-      operationId: IdentityRulesFiltersUserCandidates_List
+      operationId: IdentityRulesUserCandidatesFilters_List
       summary: List Identity Rules Filters User Candidates
       description: Returns a list of user candidates for filters in Identity rules.
       parameters:
@@ -13340,7 +13671,32 @@ paths:
         - api_key: []
       tags:
         - Rules Identity
-  /protection/identity-rules/{ruleId}':
+  /protection/identity-rules/{ruleId}:
+    get:
+      operationId: IdentityRules_Get
+      summary: Get Identity Rule
+      description: Returns an identity segmentation rule.
+      parameters:
+        - $ref: '#/components/parameters/ruleIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/identityRuleItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Rules Identity
     put:
       operationId: IdentityRules_Update
       summary: Update an Identity Rule
@@ -16646,7 +17002,7 @@ paths:
       tags:
         - Settings Asset Management
     post:
-      operationId: SettingsAD_New
+      operationId: SettingsAD_Create
       summary: Add AD settings in Asset Managment
       description: Set the AD settings in Asset Managment
       requestBody:
@@ -16758,7 +17114,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/settingsAdInfoBodySet'
+              $ref: '#/components/schemas/settingsAdInfoBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -16833,7 +17189,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/settingsAdSecondary'
+              $ref: '#/components/schemas/settingsAdSecondaryBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -16883,7 +17239,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/settingsAdInfoSecondaryBody'
+              $ref: '#/components/schemas/settingsAdSecondaryBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -16899,7 +17255,7 @@ paths:
         - api_key: []
       tags:
         - Settings Asset Management
-  /settings/asset-managment/active-directory/sync-info:
+  /settings/asset-management/active-directory/sync-info:
     get:
       operationId: SettingsADSyncInfo_Get
       summary: Get AD sync info in Asset Management
@@ -17202,7 +17558,7 @@ paths:
       tags:
         - Settings Portal Security
     put:
-      operationId: SettingsAuth_Put
+      operationId: SettingsAuth_Update
       summary: Set portal session timeout setting
       description: Set the portal security settings
       requestBody:
@@ -17273,7 +17629,7 @@ paths:
       tags:
         - Settings Asset Management
     delete:
-      operationId: SettingsAAD_Remove
+      operationId: SettingsAAD_Delete
       summary: Remove Azure AD Settings
       description: Remove Azure AD Settings
       responses:
@@ -17292,13 +17648,13 @@ paths:
       tags:
         - Settings Asset Management
   /settings/azure-ad/resync:
-    put:
+    post:
       operationId: AzureAD_Resync
       summary: Resync Azure AD
       description: Resync Azure AD
       responses:
-        '200':
-          $ref: '#/components/responses/200_empty'
+        '204':
+          $ref: '#/components/responses/204'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -19107,6 +19463,9 @@ paths:
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/searchParameter'
         - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/orderParameter'
       responses:
         '200':
           description: OK
@@ -19196,7 +19555,7 @@ paths:
         - Users
   /users/queued:
     get:
-      operationId: UsersQueued_List
+      operationId: UsersIdentityQueued_List
       summary: List Users in learning
       description: Returns a list of users in Learning.
       parameters:
@@ -19228,7 +19587,7 @@ paths:
         - Users
   /users/queued/export:
     post:
-      operationId: UsersLearning_Export
+      operationId: UsersIdentityQueued_Export
       summary: Export users in learning
       description: Returns an exportId to pass into the download API.
       requestBody:
@@ -19259,7 +19618,7 @@ paths:
         - Users
   '/users/queued/export/csv/{exportId}':
     get:
-      operationId: UsersLearningExport_Get
+      operationId: UsersIdentityQueuedExport_Get
       summary: Download users export
       description: Returns a csv file to be downloaded.
       parameters:
@@ -19278,7 +19637,7 @@ paths:
         - Users
   /users/queued/filters:
     get:
-      operationId: UsersQueuedFilters_List
+      operationId: UsersIdentityQueuedFilters_List
       summary: List Users in Learning Filters
       description: Returns a list of filters for users in Learning.
       responses:
@@ -19302,15 +19661,16 @@ paths:
         - Users
   /users/segmented:
     get:
-      operationId: UsersSegmented_List
-      summary: List Segmented Users
-      description: Returns a list of segmented users.
+      operationId: UsersIdentitySegmented_List
+      summary: List Identity Segmented Users
+      description: Returns a list of Identity segmented users.
       parameters:
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/searchParameter'
-        - $ref: '#/components/parameters/withCountParameter'
         - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
         - $ref: '#/components/parameters/orderParameter'
       responses:
         '200':
@@ -19413,6 +19773,9 @@ paths:
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/searchParameter'
         - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/orderParameter'
       responses:
         '200':
           description: OK
@@ -19502,7 +19865,7 @@ paths:
         - Users
   /users/service-account/protect:
     post:
-      operationId: UsersIdentitySegment_Protect
+      operationId: UsersIdentity_Protect
       summary: Move users to identity segmentation.
       description: Returns and empty object.
       requestBody:
@@ -19511,7 +19874,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/userBody'
+              $ref: '#/components/schemas/usersProtectBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -19529,7 +19892,7 @@ paths:
         - Users
   /users/service-account/queue:
     post:
-      operationId: UsersIdentitySegment_Unprotect
+      operationId: UsersIdentity_Queue
       summary: Queue users
       description: Returns an empty object.
       requestBody:
@@ -19537,7 +19900,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/userBody'
+              $ref: '#/components/schemas/usersQueueBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -19555,7 +19918,7 @@ paths:
         - Users
   /users/service-account/unprotect:
     post:
-      operationId: UsersServiceAccount_Unprotect
+      operationId: UsersIdentity_Unprotect
       summary: Unprotect users
       description: Returns an empty object.
       requestBody:
@@ -19563,7 +19926,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/userBody'
+              $ref: '#/components/schemas/usersProtectBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -19631,7 +19994,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/setUserTypeBody'
+              $ref: '#/components/schemas/setUsersTypeBody'
         required: true
       responses:
         '200':
@@ -20351,7 +20714,7 @@ paths:
         - User
   /users/{userId}/protection/identity-rules/filters/asset-candidates:
     get:
-      operationId: UserIdentityRulesFiltersAssetCandidates_List
+      operationId: UserIdentityRulesAssetsCandidatesFilters_List
       summary: User List Identity Rules Filters Asset Candidates
       description: Returns a list of asset candidates for filters in Identity rules.
       parameters:
@@ -20378,7 +20741,7 @@ paths:
         - User
   /users/{userId}/protection/identity-rules/filters/user-candidates:
     get:
-      operationId: UserIdentityRulesFiltersUserCandidates_List
+      operationId: UserIdentityRulesUserCandidatesFilters_List
       summary: User List Identity Rules Filters User Candidates
       description: Returns a list of users candidates for filters in Identity rules.
       parameters:
@@ -20430,7 +20793,33 @@ paths:
         - api_key: []
       tags:
         - User
-  /users/{userId}/protection/identity-rules/{ruleId}':
+  /users/{userId}/protection/identity-rules/{ruleId}:
+    get:
+      operationId: UserIdentityRules_Get
+      summary: User Get Identity Rule
+      description: Returns an identity segmentation rule.
+      parameters:
+        - $ref: '#/components/parameters/userIdParameter'
+        - $ref: '#/components/parameters/ruleIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/identityRuleItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - User
     put:
       operationId: UserIdentityRules_Update
       summary: User Update an Identity Rule
@@ -20485,6 +20874,33 @@ paths:
         - api_key: []
       tags:
         - User
+  /users/{userId}/type:
+    put:
+      description: Set user type
+      operationId: UserType_Update
+      tags:
+        - User
+      summary: Set user type
+      parameters:
+        - $ref: '#/components/parameters/userIdParameter'
+      requestBody:
+        description: settign user type
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/setUserTypeBody'
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - api_key: []
 components:
   parameters:
     addAncestorsParameter:
@@ -20682,7 +21098,7 @@ components:
       required: true
       schema:
         type: string
-        pattern: ^ad$|^custom$|^ot$|^system$|^tag$
+        pattern: ^ad$|^custom$|^ot$|^snow$|^system$|^tag$
     identityProviderIdParameter:
       name: identityProviderId
       in: path
@@ -20859,6 +21275,13 @@ components:
       schema:
         type: string
         pattern: '^s:a:[a-zA-Z0-9]{8}$'
+    showInactiveParameter:
+      name: showInactive
+      in: query
+      description: show inactive assets
+      schema:
+        type: boolean
+        default: false
     sidParameter:
       name: sid
       in: query
@@ -21302,6 +21725,11 @@ components:
             - 22
         state:
           $ref: '#/components/schemas/state'
+    assetActivateBody:
+      type: object
+      properties:
+        comment:
+          type: string
     assetAnalysis:
       type: object
       properties:
@@ -21357,15 +21785,6 @@ components:
           assetType: 2
           protectionState: 5
           domain: dev.zn.com
-    assetsActionBody:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            type: string
-      required:
-        - items
     assetCandidate:
       type: object
       properties:
@@ -21521,6 +21940,17 @@ components:
         - 5
         - 6
         - 7
+    assetsActivateBody:
+      type: object
+      required:
+        - items
+      properties:
+        comment:
+          type: string
+        items:
+          type: array
+          items:
+            type: string
     assetsFiltersList:
       type: object
       properties:
@@ -21537,6 +21967,40 @@ components:
             anyOf:
               - $ref: '#/components/schemas/asset'
               - $ref: '#/components/schemas/group'
+    assetsProtectBody:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
+      required:
+        - items
+    assetsQueueBody:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
+        queueDays:
+          description: number of days
+          type: integer
+          enum:
+            - 14
+            - 30
+      required:
+        - items
+        - queueDays
+    assetsRpcBody:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
+      required:
+        - items
     assetsStatesStatistics:
       type: object
       properties:
@@ -21615,6 +22079,15 @@ components:
           type: string
         name:
           type: string
+    assetsUnprotectBody:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
+      required:
+        - items
     audienceType:
       description: |
         dictionary:
@@ -22253,7 +22726,7 @@ components:
           type: string
           default: en-US
       required:
-        - localDatetimeFormat
+        - localDateTimeFormat
         - _filters
         - _search
     exportBodyAnalysis:
@@ -22270,7 +22743,7 @@ components:
           type: string
           default: en-US
       required:
-        - localDatetimeFormat
+        - localDateTimeFormat
         - _filters
         - from
     exportBodyAssets:
@@ -22283,7 +22756,7 @@ components:
           type: string
           default: en-US
       required:
-        - localDatetimeFormat
+        - localDateTimeFormat
         - _filters
     exportBodyRules:
       type: object
@@ -22423,6 +22896,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/group'
+        count:
+          type: integer
     groupsOrUsersList:
       type: object
       properties:
@@ -22579,21 +23054,22 @@ components:
       required:
         - action
         - assetId
-        - description
-        - excludedAssetIds
         - identityProtectionCategoryList
-        - ruleClass
         - state
         - userIdsList
       properties:
         action:
           type: integer
           format: int32
+          enum:
+           - 1
+           - 2
+          description: '1 - Allow, 2 - Block'
         assetId:
           type: string
         description:
           type: string
-        excludedAssetsIdsList:
+        excludedAssetIdsList:
           type: array
           items:
             type: string
@@ -22611,12 +23087,14 @@ components:
               - 3
               - 4
               - 5
-        ruleclass:
-          type: integer
-          format: int32
+            description: '1-Locally, 2-Network, 3-Batch, 4-Service, 5-RDP'
         state:
           type: integer
           format: int32
+          enum:
+            - 1
+            - 2
+          description: '1 - Enabled, 2 - Disabled'
         userIdsList:
           type: array
           items:
@@ -23193,7 +23671,6 @@ components:
         - srcEntityInfos
         - srcProcessNames
         - srcUserInfos
-        - ruleCreationMode
         - state
         - additionalPortsList
     reactivePolicyItem:
@@ -23522,22 +23999,6 @@ components:
         - 3
         - 4
         - 5
-    queueBody:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            type: string
-        queueDays:
-          description: number of days
-          type: integer
-          enum:
-            - 14
-            - 30
-      required:
-        - items
-        - queueDays
     queueExtendBody:
       type: object
       properties:
@@ -23947,7 +24408,7 @@ components:
     ruleItem:
       type: object
       properties:
-        items:
+        item:
           $ref: '#/components/schemas/rule'
     ruleMatch:
       type: object
@@ -24092,11 +24553,13 @@ components:
         secondaryDomains:
           type: array
           items:
-            $ref: '#/components/schemas/settingsAdSecondary'
+            $ref: '#/components/schemas/settingsAdSecondaryBody'
+        usePrimaryUserForAllDomains:
+          type: boolean
     settingsAdInfo:
       type: object
       properties:
-        username:
+        userFqdn:
           description: Service Account for Zero Networks
           type: string
           example: znremotemanagement
@@ -24111,45 +24574,41 @@ components:
         useLdaps:
           description: Use LDAP or LDAPs
           type: boolean
-    settingsAdInfoBodySet:
-      type: object
-      required:
-        - setActiveDirectoryInfo
-      properties:
-        setActiveDirectoryInfo:
-          $ref: '#/components/schemas/settingsAdInfoBody'
     settingsAdInfoBody:
       type: object
       properties:
-        activeDirectoryInfo:
+        primaryDomainConfig:
           type: object
           properties:
-            username:
-              description: Service Account for Zero Networks
-              type: string
-              example: znremotemanagement
-            domainName:
-              description: FQDN of the AD domain
-              type: string
-              example: zeronetworks.com
             domainControllerFqdn:
               description: Domain Controller from AD Domain
               type: string
               example: dc.zeronetworks.com
+            domainName:
+              description: FQDN of the AD domain
+              type: string
+              example: zeronetworks.com
+            password:
+              type: string
+              description: password for the service account
             useLdaps:
               description: Use LDAP or LDAPs
               type: boolean
+            userFqdn:
+              description: Service Account for Zero Networks
+              type: string
+              example: znremotemanagement
           required:
-            - username
-            - domainName
             - domainControllerFqdn
+            - domainName
+            - password
             - useLdaps
-        passwordCleartext:
-          description: Service Acount Password
-          type: string
+            - userFqdn
+        usePrimaryUserForAllDomains:
+          type: boolean
       required:
-        - activeDirectoryInfo
-        - passwordCleartext
+        - primaryDomainConfig
+        - usePrimaryUserForAllDomains
     settingsAdInfoResponse:
       type: object
       properties:
@@ -24157,15 +24616,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/settingsAdForest'
-    settingsAdInfoSecondaryBody:
-      type: object
-      properties:
-        dc:
-          description: The domain controller
-          type: string
-          example: dc.child.zeronetworks.com
-      required:
-        - dc
     settingsAdSyncInfoResponse:
       type: object
       additionalProperties:
@@ -24199,18 +24649,20 @@ components:
         lastUsn:
           type: integer
           format: int32
-    settingsAdSecondary:
+    settingsAdSecondaryBody:
       type: object
       properties:
-        dc:
-          type: string
-          example: dc.child.zeronetworks.com
-        domain:
-          type: string
-          example: child.zeronetworks.com
+        secondaryDomainConfig:
+          type: object
+          properties:
+            domainControllerFqdn:
+              type: string
+              example: dc.child.zeronetworks.com
+            domainName:
+              type: string
+              example: child.zeronetworks.com
       required:
-        - dc
-        - domain
+        - secondaryDomainConfig
     settingsAiRuleReview:
       type: object
       properties:
@@ -24332,8 +24784,11 @@ components:
       properties:
         preferredDeploymentId:
           type: string
+        strategy:
+          type: integer
       required:
         - preferredDeploymentId
+        - strategy
     settingsIdp:
       type: object
       properties:
@@ -24756,7 +25211,7 @@ components:
       properties:
         tcpPorts:
           $ref: '#/components/schemas/PrivilegedPorts'
-        UdpPorts:
+        udpPorts:
           $ref: '#/components/schemas/PrivilegedPorts'
     settingsProtectionAutomationResponse:
       type: object
@@ -24860,6 +25315,15 @@ components:
     setUserTypeBody:
       type: object
       required:
+        - userType
+      properties:
+        userType:
+          type: integer
+        comment:
+          type: string
+    setUsersTypeBody:
+      type: object
+      required:
         - userIds
         - userType
         - comment
@@ -24961,7 +25425,7 @@ components:
           type: string
         userType:
           type: integer
-    userBody:
+    usersProtectBody:
       type: object
       properties:
         userIds:
@@ -24970,6 +25434,21 @@ components:
             type: string
       required:
         - userIds
+    usersQueueBody:
+      type: object
+      properties:
+        userIds:
+          type: array
+          items:
+            type: string
+        queueDays:
+          type: integer
+          enum:
+            - 14
+            - 30
+      required:
+        - userIds
+        - queueDays
     userSimple:
       type: object
       properties:
@@ -25001,6 +25480,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/user'
+        count:
+          type: integer
     userSummary:
       type: object
       properties:
@@ -25040,6 +25521,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/emptyResponse'
+    '204':
+      description: No Content
     '400':
       description: Bad Request
       content:

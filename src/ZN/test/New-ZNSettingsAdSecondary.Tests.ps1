@@ -16,9 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNSettingsAdSecondary'))
 
 Describe 'New-ZNSettingsAdSecondary' {
     It 'CreateExpanded' {
-        New-ZNSettingsAd -ActiveDirectoryInfoDomainControllerFqdn dc.test.local -ActiveDirectoryInfoDomainName test.local -ActiveDirectoryInfoUseLdaps -ActiveDirectoryInfoUsername ZNRemoteManagement -PasswordCleartext "zero@1313"
+        New-ZNSettingsAd -PrimaryDomainConfigDomainControllerFqdn dc.test.local -PrimaryDomainConfigDomainName test.local -PrimaryDomainConfigUseLdaps -PrimaryDomainConfigUserFqdn ZNRemoteManagement -PrimaryDomainConfigPassword "zero@1313" -UsePrimaryUserForAllDomains
         $forest = Get-ZNSettingsAd | where {$_.ActiveDirectoryInfoDomainName -eq "test.local"}
-        { New-ZNSettingsAdSecondary -ForestId $forest.ForestId -Dc "dc.child.test.local" -Domain "child.test.local" } | Should -Not -Throw
+        { New-ZNSettingsAdSecondary -ForestId $forest.ForestId -SecondaryDomainConfigDomainControllerFqdn "dc.child.test.local" -SecondaryDomainConfigDomainName "child.test.local" } | Should -Not -Throw
         Remove-ZNSettingsAd -ForestId $forest.ForestId
     }
 }

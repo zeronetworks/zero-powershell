@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNGroup'))
 
 Describe 'Get-ZNGroup' {
     It 'List' {
-        (Get-ZNGroup).Count | Should -BeGreaterThan 0
+        (Get-ZNGroup).Items.Count | Should -BeGreaterThan 0
     }
 }

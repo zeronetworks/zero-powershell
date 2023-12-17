@@ -180,9 +180,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroup
 
-## NOTES
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroupsList
 
-ALIASES
+## NOTES
 
 ## RELATED LINKS
 
