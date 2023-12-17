@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNGroupsInboundAllowRule' {
     It 'List' {
-        $group = Get-ZNGroup -Search "domain controllers" | where {$_.id -like "g:t:*"}
+        $group = (Get-ZNGroup -Search "domain controllers").Items | where {$_.id -like "g:t:*"}
         [string]$ports = Get-Random -Minimum 1 -Maximum 65000
         $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
         $source = (Get-ZNGroupsInboundAllowRulesSourceCandidate -GroupId $group.id -GroupType tag -search "any asset").Items
@@ -24,7 +24,7 @@ Describe 'Get-ZNGroupsInboundAllowRule' {
     }
 
     It 'Get' {
-        $group = Get-ZNGroup -Search "domain controllers" | where {$_.id -like "g:t:*"}
+        $group = (Get-ZNGroup -Search "domain controllers").Items | where {$_.id -like "g:t:*"}
         [string]$ports = Get-Random -Minimum 1 -Maximum 65000
         $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
         $source = (Get-ZNGroupsInboundAllowRulesSourceCandidate -GroupId $group.id -GroupType tag -search "any asset").Items

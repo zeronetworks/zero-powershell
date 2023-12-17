@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Remove-ZNGroupsOutboundBlockRule' {
     It 'Delete' {
-        $group = Get-ZNGroup -Search "domain controllers" | where {$_.id -like "g:t:*"}
+        $group = (Get-ZNGroup -Search "domain controllers").Items | where {$_.id -like "g:t:*"}
         $portsList = New-ZNPortsList -Protocol TCP -Ports (Get-Random -Minimum 1 -Maximum 1024)
         $destination = Invoke-ZNEncodeEntityIp -IP 8.8.8.8
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()

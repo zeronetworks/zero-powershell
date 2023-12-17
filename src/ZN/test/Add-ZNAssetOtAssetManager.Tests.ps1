@@ -13,8 +13,8 @@ while(-not $mockingPath) {
 
 Describe 'Add-ZNAssetOtAssetManager' {
     It 'AddExpanded' {
-        $asset = Search-ZNAsset -Fqdn ot1777
-        $user = Get-ZNUser -search test
+        $asset = Search-ZNAsset -Fqdn switch01
+        $user = (get-znuser).Items | select -First 1
         Add-ZNAssetOtAssetManager -AssetId $asset -ManagerIds @($user.Id)
         $managedAssets = Get-ZNUsersManagedAsset -UserId $user.Id
         $managedAssets.EntityId | Should -Be $asset

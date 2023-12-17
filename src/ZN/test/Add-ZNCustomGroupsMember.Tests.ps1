@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-ZNCustomGroupsMember'))
 Describe 'Add-ZNCustomGroupsMember' {
     It 'AddExpanded' {
         New-ZNCustomGroup -Name "AddMemberTest"
-        $customGroup = Get-ZNGroup -Search AddMemberTest
+        $customGroup = (Get-ZNGroup -Search AddMemberTest).Items
         $member = Search-ZNAsset -Fqdn linux0.posh.local
         Add-ZNCustomGroupsMember -GroupId $customGroup.Id -MembersId $member
         $updatedcustomGroup = Get-ZNGroup -Search AddMemberTest

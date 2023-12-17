@@ -16,10 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Search-ZNUser'))
 
 Describe 'Search-ZNUser' {
     It 'Search' {
-        { Search-ZNUser -Sid "S-1-5-21-897785097-3420057113-2083682306-2101"} | Should -Not -Throw
+        $user = (Get-ZNUser).Items | Where {$_.Sid -ne $null} | Select -First 1
+        { Search-ZNUser -Sid $user.Sid } | Should -Not -Throw
     }
 
     It 'Search1' {
-        { Search-ZNUser -PrincipalName "posh\nicholas" } | Should -Not -Throw
+        $user = (Get-ZNUser).Items | where {$_.PrincipalName -like "*\*"} | select -First 1
+        { Search-ZNUser -PrincipalName $user.PrincipalName } | Should -Not -Throw
     }
 }

@@ -13,9 +13,9 @@ Update AD forest settings.
 ## SYNTAX
 
 ```
-Update-ZNSettingsAd -ForestId <String> -ActiveDirectoryInfoDomainControllerFqdn <String>
- -ActiveDirectoryInfoDomainName <String> -ActiveDirectoryInfoUseLdaps -ActiveDirectoryInfoUsername <String>
- -SetActiveDirectoryInfoPasswordCleartext <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsAd -ForestId <String> -PrimaryDomainConfigDomainControllerFqdn <String>
+ -PrimaryDomainConfigDomainName <String> -PrimaryDomainConfigPassword <String> -PrimaryDomainConfigUseLdaps
+ -PrimaryDomainConfigUserFqdn <String> -UsePrimaryUserForAllDomains [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,66 +34,6 @@ This cmdlet updates AD settings.
 
 ## PARAMETERS
 
-### -ActiveDirectoryInfoDomainControllerFqdn
-Domain Controller from AD Domain
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ActiveDirectoryInfoDomainName
-FQDN of the AD domain
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ActiveDirectoryInfoUseLdaps
-Use LDAP or LDAPs
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ActiveDirectoryInfoUsername
-Service Account for Zero Networks
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ForestId
 The forest id
 
@@ -109,11 +49,86 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SetActiveDirectoryInfoPasswordCleartext
-Service Acount Password
+### -PrimaryDomainConfigDomainControllerFqdn
+Domain Controller from AD Domain
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimaryDomainConfigDomainName
+FQDN of the AD domain
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimaryDomainConfigPassword
+password for the service account
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimaryDomainConfigUseLdaps
+Use LDAP or LDAPs
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimaryDomainConfigUserFqdn
+Service Account for Zero Networks
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UsePrimaryUserForAllDomains
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -167,8 +182,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Update-ZNGroupsMfaOutboundPolicy' {
     It 'UpdateExpanded' {
-        $group = Get-ZNGroup -Search "card readers"
+        $group = (Get-ZNGroup -Search "card readers").Items
         $source = (Get-ZNMfaOutboundPoliciesSourceCandidate -search "All Segmented Assets").Items
         $sourceEntity = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyOutboundBodySrcEntityInfosItem]::new()
         $sourceEntity.Id = $source.Id

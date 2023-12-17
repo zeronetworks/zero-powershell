@@ -13,8 +13,8 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNAssetOtAssetManager' {
     It 'List' { 
-        $asset = Search-ZNAsset -Fqdn ot1777
-        $user = Get-ZNUser -search test
+        $asset = Search-ZNAsset -Fqdn switch01
+        $user = (Get-ZNUser).Items | Select -First 1
         Add-ZNAssetOtAssetManager -AssetId $asset -ManagerIds @($user.Id)
         (Get-ZNAssetOtAssetManager -AssetId $asset).Count | Should -Not -Be $null
         Remove-ZNAssetOtAssetManager -AssetId $asset -GroupOrUserId $user.Id

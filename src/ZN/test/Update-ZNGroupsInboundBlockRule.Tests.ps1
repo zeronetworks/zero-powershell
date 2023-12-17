@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Update-ZNGroupsInboundBlockRule' {
     It 'UpdateExpanded' {
-        $group = Get-ZNGroup -Search "domain controllers" | where {$_.id -like "g:t:*"}
+        $group = (Get-ZNGroup -Search "domain controllers").Items | where {$_.id -like "g:t:*"}
         [string]$ports = Get-Random -Minimum 1 -Maximum 65000
         $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
         $source = Invoke-ZNEncodeEntityIP -Ip 1.1.1.1

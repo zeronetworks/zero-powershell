@@ -32,7 +32,7 @@ require:
 input-file:
   - $(this-folder)/../openapi.yaml
 
-module-version: 0.0.7-preview
+module-version: 0.0.8-preview
 title: Api
   
 inlining-threshold: 50
@@ -643,11 +643,19 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Add$|^AddViaIdentity$|^AddViaIdentityExpanded$|^Assets$|^AssetsViaIdentity$|^AssetsViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DeleteViaIdentity$|^GetViaIdentity$|^Extend$|^ExtendViaIdentity$|^ExtendViaIdentityExpanded$|^Learn$|^LearnViaIdentity$|^LearnViaIdentityExpanded$|^New$|^Put$|^ProtectViaIdentity$|^Queue$|^QueueViaIdentity$|^QueueViaIdentityExpanded$|^RevokeViaIdentity$|^Set$|^SetViaIdentity$|^UnprotectViaIdentity$|^Update$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|^ValidateViaIdentity$
-    hide: true
-  - where:
-      variant: ^Extend$|^Extend1$|^Queue$|^Queue1$
+      variant: ^AddViaIdentity$|^AddViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DeleteViaIdentity$|^DeleteViaIdentityExpanded$|^Extend$|^Extend1$|^ExtendViaIdentity$|^ExtendViaIdentityExpanded$|^GetViaIdentity$|^Learn$|^LearnViaIdentity$|^LearnViaIdentityExpanded$|^ProtectViaIdentity$|^Queue$|^Queue1$|^QueueViaIdentity$|^QueueViaIdentityExpanded$|^RevokeViaIdentity$|^SetViaIdentity$|^SetViaIdentityExpanded$|^UnprotectViaIdentity$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|^ValidateViaIdentity$
     remove: true
+  - where:
+      subject: ^CustomGroupsMember$|^TagGroupsMember$
+      variant: Delete
+    remove: true
+  - where:
+      subject: UserType
+      variant: Update
+    remove: true
+  - where:
+      variant: ^Add$|^Update$
+    hide: true
   # Customize
   # Remove the export cmdlets
   - where:
@@ -672,6 +680,10 @@ directive:
   - where:
       subject: (.*)Filter$
     remove: true
+  # remove Ad Sync Info
+  - where:
+      subject: SettingsAdSyncInfo
+    hide: true
   # Rename Queue Commands
   - where:
       subject: LearnAssetQueue
@@ -697,7 +709,11 @@ directive:
       subject: QueueAssetOt
     set:
       subject: AssetOtQueue
-  # rename asset/ot commands
+  - where:
+      subject: QueueUserIdentity
+    set:
+      subject: UserIdentityQueue
+  # rename asset/ot/user protect/unprotect commands
   - where:
       subject: AssetsOt
       variant: ^Protect$|^Unprotect$
@@ -725,12 +741,78 @@ directive:
       verb: Test
     set:
       subject: AssetUnprotect
+  - where:
+      subject: UsersIdentity
+      variant: ^Protect$|^Unprotect$
+    hide: true
+  - where:
+      subject: UsersIdentity
+      verb: ^Protect$|^Unprotect$
+    set:
+      subject: UserIdentity
+  - where:
+      subject: AssetsIdentity
+      variant: ^Protect$|^Unprotect$
+    hide: true
+  - where:
+      subject: AssetsIdentity
+      verb: ^Protect$|^Unprotect$
+    set:
+      subject: AssetIdentity
+  - where:
+      subject: ^AssetsIdentityProtect$|^AssetsIdentityUnprotect$
+      variant: Validate
+    hide: true
+  - where:
+      subject: AssetsIdentityProtect
+      verb: Test
+    set:
+      subject: AssetIdentityProtect
+  - where:
+      subject: AssetsIdentityUnprotect
+      verb: Test
+    set:
+      subject: AssetIdentityUnprotect
   # combine user search
   - where:
       subject: ^UsersByPrincipalName$|^UsersBySid$
       verb: Search
     set:
       subject: User
+  #combine user type
+  - where:
+      subject: UsersType
+      verb: Update
+    set:
+      subject: UserType
+  #combine rpc-monitor
+  - where:
+      subject: AssetsRpcMonitoring
+      variant: ^Add$|^Delete$
+    remove: true
+  - where:
+      subject: AssetsRpcMonitoring
+    set:
+      subject: AssetRpcMonitoring
+  - where:
+      subject: AssetRpcMonitoring
+      variant: Add
+    hide: false
+  #Combine Active/Inactive
+  - where:
+      subject: ^AssetActive$|^AssetsActive$|^AssetInactive$|^AssetsInactive$
+      variant: Set
+    remove: true
+  - where:
+      subject: AssetsActive
+      variant: SetExpanded
+    set:
+      subject: AssetActive
+  - where:
+      subject: AssetsInactive
+      variant: SetExpanded
+    set:
+      subject: AssetInactive
   # change set to update
   - where:
       verb: Set
@@ -772,6 +854,7 @@ directive:
   # set expiresAt default for rules
   - where:
       parameter-name: ExpiresAt
+      subject: (.*)InboundAllowRule$|(.*)InboundBlockRule$|(.*)OutboundAllowRule$|(.*)OutboundBlockRule$
     set:
       default:
         name: ExpiresAt Default
@@ -805,6 +888,9 @@ directive:
       subject: InvokeAssetRetryHealth
       verb: Invoke
     hide: true
+  - where:
+      subject: ^AssetsScriptsPowerShellTestUdpNetConnection$|^AssetsScriptsPythonTestUdpNetConnection$|^FixAssetScriptWmi$
+    remove: true
   # Hide Rule History (not useful)
   - where:
       subject: (.*)RulesHistory$
@@ -815,7 +901,7 @@ directive:
     hide: true
   # Hide Not useful for OT assets
   - where:
-      subject: ^AssetOtInboundAllowRule$|^AssetOtInboundAllowRulesDestinationCandidate$|^AssetOtInboundAllowRulesExcludedDestinationCandidate$|^AssetOtInboundAllowRulesSourceCandidate$|^AssetOtInboundBlockRule$|^AssetOtInboundBlockRulesDestinationCandidate$|^AssetOtInboundBlockRulesExcludedDestinationCandidate$|^AssetOtInboundBlockRulesSourceCandidate$|^AssetOtmfaInboundPoliciesDestinationCandidate$|^AssetOtmfaInboundPoliciesExcludedSourceCandidate$|^AssetOtmfaInboundPoliciesMfamethod$|^AssetOtmfaInboundPoliciesSourceCandidate$|^AssetOtmfaInboundPoliciesSourceUserCandidate$|^AssetOtmfaInboundPolicy$|^AssetOtOutboundAllowRule$|^AssetOtOutboundAllowRulesDestinationCandidate$|^AssetOtOutboundAllowRulesExcludedSourceCandidate$|^AssetOtOutboundAllowRulesSourceCandidate$|^AssetOtOutboundBlockRule$|^AssetOtOutboundBlockRulesDestinationCandidate$|^AssetOtOutboundBlockRulesExcludedSourceCandidate$|^AssetOtOutboundBlockRulesSourceCandidate$
+      subject: ^AssetOtIdentityRule$|^AssetOtIdentityRulesAssetsCandidate$|^AssetOtIdentityRulesExcludedAssetsCandidate$|^AssetOtIdentityRulesUserCandidate$|^AssetOtInboundAllowRule$|^AssetOtInboundAllowRulesDestinationCandidate$|^AssetOtInboundAllowRulesExcludedDestinationCandidate$|^AssetOtInboundAllowRulesSourceCandidate$|^AssetOtInboundBlockRule$|^AssetOtInboundBlockRulesDestinationCandidate$|^AssetOtInboundBlockRulesExcludedDestinationCandidate$|^AssetOtInboundBlockRulesSourceCandidate$|^AssetOtmfaInboundPoliciesDestinationCandidate$|^AssetOtmfaInboundPoliciesExcludedSourceCandidate$|^AssetOtmfaInboundPoliciesMfamethod$|^AssetOtmfaInboundPoliciesSourceCandidate$|^AssetOtmfaInboundPoliciesSourceUserCandidate$|^AssetOtmfaInboundPolicy$|^AssetOtOutboundAllowRule$|^AssetOtOutboundAllowRulesDestinationCandidate$|^AssetOtOutboundAllowRulesExcludedSourceCandidate$|^AssetOtOutboundAllowRulesSourceCandidate$|^AssetOtOutboundBlockRule$|^AssetOtOutboundBlockRulesDestinationCandidate$|^AssetOtOutboundBlockRulesExcludedSourceCandidate$|^AssetOtOutboundBlockRulesSourceCandidate$
     hide: true
   # Remove APIs that require Human access
   - where:
@@ -827,7 +913,7 @@ directive:
   # Hide for Custom Wrappers
   - where:
       verb: Update
-      subject: ^CustomGroup$|^AssetInboundAllowRule$|^AssetInboundBlockRule$|^AssetMFAInboundPolicy$|^AssetMFAOutboundPolicy$|^AssetOutboundAllowRule$|^AssetOutboundBlockRule$|^AssetOtMFAOutboundPolicy$|^GroupsInboundAllowRule$|^GroupsInboundBlockRule$|^GroupsMFAInboundPolicy$|^GroupsMFAOutboundPolicy$|^GroupsOutboundAllowRule$|^GroupsOutboundBlockRule$|^InboundAllowRule$|^InboundBlockRule$|^MFAInboundPolicy$|^MFAOutboundPolicy$|^OutboundAllowRule$|^OutboundBlockRule$|^SettingsPushNotification$
+      subject: ^CustomGroup$|^AssetIdentityRule$|^AssetInboundAllowRule$|^AssetInboundBlockRule$|^AssetMFAInboundPolicy$|^AssetMFAOutboundPolicy$|^AssetOutboundAllowRule$|^AssetOutboundBlockRule$|^AssetOtMFAOutboundPolicy$|^GroupsIdentityRule$|^GroupsInboundAllowRule$|^GroupsInboundBlockRule$|^GroupsMFAInboundPolicy$|^GroupsMFAOutboundPolicy$|^GroupsOutboundAllowRule$|^GroupsOutboundBlockRule$|^IdentityRule$|^InboundAllowRule$|^InboundBlockRule$|^MFAInboundPolicy$|^MFAOutboundPolicy$|^OutboundAllowRule$|^OutboundBlockRule$|^SettingsPushNotification$|^UserIdentityRule$
     hide: true
   - where:
       subject: ^AuthLogin$|^AuthChallenge$
@@ -886,6 +972,22 @@ directive:
           - State
           - Description
   - where:
+      model-name: IdentityRule
+    set:
+      format-table:
+        properties:
+          - CreatedAt
+          - Id
+          - UserInfos
+          - AssetInfoName
+          - ExcludedAssetInfos
+          - IdentityProtectionCategoryList
+          - ExpiresAt
+          - Ruleclass
+          - CreatedByEnforcementSource
+          - State
+          - Description
+  - where:
       model-name: ReactivePolicy
     set:
       format-table:
@@ -937,4 +1039,32 @@ directive:
           - ActiveDirectoryInfoDomainControllerFqdn
           - ActiveDirectoryInfoUsername
           - ActiveDirectoryInfoUseLdaps
+  - where:
+      model-name: AssetsOrGroupsListItemsItem
+    set:
+      format-table:
+        properties:
+          - Id
+          - Fqdn
+          - Name
+          - Description
+          - DirectMembersCount
+          - IPV4Addresses
+          - IPV6Addresses
+          - Source
+          - AssetStatus
+          - ProtectionState
+  - where:
+      model-name: GroupsOrUsersListItemsItem
+    set:
+      format-table:
+        properties:
+          - Id
+          - Name
+          - Email
+          - Description
+          - DirectMembersCount
+          - Phone
+          - JobTitle
+          - LastLogon
 ```

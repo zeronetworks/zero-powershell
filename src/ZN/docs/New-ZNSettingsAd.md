@@ -13,9 +13,9 @@ Set the AD settings in Asset Managment
 ## SYNTAX
 
 ```
-New-ZNSettingsAd -ActiveDirectoryInfoDomainControllerFqdn <String> -ActiveDirectoryInfoDomainName <String>
- -ActiveDirectoryInfoUseLdaps -ActiveDirectoryInfoUsername <String> -PasswordCleartext <String> [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-ZNSettingsAd -PrimaryDomainConfigDomainControllerFqdn <String> -PrimaryDomainConfigDomainName <String>
+ -PrimaryDomainConfigPassword <String> -PrimaryDomainConfigUseLdaps -PrimaryDomainConfigUserFqdn <String>
+ -UsePrimaryUserForAllDomains [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +34,7 @@ This cmdlet create an AD forest setting.
 
 ## PARAMETERS
 
-### -ActiveDirectoryInfoDomainControllerFqdn
+### -PrimaryDomainConfigDomainControllerFqdn
 Domain Controller from AD Domain
 
 ```yaml
@@ -49,7 +49,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ActiveDirectoryInfoDomainName
+### -PrimaryDomainConfigDomainName
 FQDN of the AD domain
 
 ```yaml
@@ -64,7 +64,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ActiveDirectoryInfoUseLdaps
+### -PrimaryDomainConfigPassword
+password for the service account
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimaryDomainConfigUseLdaps
 Use LDAP or LDAPs
 
 ```yaml
@@ -79,7 +94,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ActiveDirectoryInfoUsername
+### -PrimaryDomainConfigUserFqdn
 Service Account for Zero Networks
 
 ```yaml
@@ -94,11 +109,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PasswordCleartext
-Service Acount Password
+### -UsePrimaryUserForAllDomains
+.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -152,8 +167,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsAdInfoBody
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

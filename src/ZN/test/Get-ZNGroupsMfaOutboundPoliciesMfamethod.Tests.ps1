@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNGroupsMfaOutboundPoliciesMfamethod' {
     It 'List' {
-        $group = Get-ZNGroup -Search "domain controllers" | where {$_.id -like "g:t:*"}
+        $group = (Get-ZNGroup -Search "domain controllers").Items | where {$_.id -like "g:t:*"}
         Get-ZNGroupsMfaOutboundPoliciesMfamethod -GroupId $group.id -GroupType tag | Should -Not -Be $null
     }
 }

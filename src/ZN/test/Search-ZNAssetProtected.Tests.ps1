@@ -13,6 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'Search-ZNAssetProtected' {
     It 'Search' {
-        { Search-ZNAssetProtected -Fqdn ot1777 } | Should -Not -Throw
+        { Search-ZNAssetProtected -Fqdn switch01 } | Should -Not -Throw
     }
 }

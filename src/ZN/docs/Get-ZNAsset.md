@@ -14,7 +14,8 @@ Returns the properties of an asset.
 
 ### List (Default)
 ```
-Get-ZNAsset [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-WithCount] [<CommonParameters>]
+Get-ZNAsset [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>]
+ [-ShowInactive] [-WithCount] [<CommonParameters>]
 ```
 
 ### Get
@@ -150,6 +151,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Order
+What order to sort the results
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OrderColumns
+what column to order on
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShowInactive
+show inactive assets
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WithCount
 return count of objects
 
@@ -179,8 +225,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNSettingsAd'))
 }
 
 Describe 'Update-ZNSettingsAd' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        New-ZNSettingsAd -PrimaryDomainConfigDomainControllerFqdn dc.test.local -PrimaryDomainConfigDomainName test.local -PrimaryDomainConfigUseLdaps -PrimaryDomainConfigUserFqdn ZNRemoteManagement -PrimaryDomainConfigPassword "zero@1313" -UsePrimaryUserForAllDomains
+        $forest = Get-ZNSettingsAd | where {$_.ActiveDirectoryInfoDomainName -eq "test.local"}
+        { Update-ZNSettingsAd -ForestId $forest.ForestId -PrimaryDomainConfigDomainControllerFqdn $forest.ActiveDirectoryInfoDomainControllerFqdn -PrimaryDomainConfigDomainName $forest.ActiveDirectoryInfoDomainName -PrimaryDomainConfigPassword "zero@1313" -PrimaryDomainConfigUseLdaps -PrimaryDomainConfigUserFqdn ZNRemoteManagement -UsePrimaryUserForAllDomains:$false} | should -not -throw
+        Remove-ZNSettingsAd -ForestId $forest.ForestId
     }
 }

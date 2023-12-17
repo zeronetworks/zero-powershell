@@ -13,8 +13,8 @@ Add a secondary AD settings in Asset Managment
 ## SYNTAX
 
 ```
-New-ZNSettingsAdSecondary -ForestId <String> -Dc <String> -Domain <String> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-ZNSettingsAdSecondary -ForestId <String> [-SecondaryDomainConfigDomainControllerFqdn <String>]
+ [-SecondaryDomainConfigDomainName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,36 +34,6 @@ This cmdlet adds a secondary domain in AD settings.
 
 ## PARAMETERS
 
-### -Dc
-.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Domain
-.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ForestId
 The forest id
 
@@ -73,6 +43,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecondaryDomainConfigDomainControllerFqdn
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecondaryDomainConfigDomainName
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -122,8 +122,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

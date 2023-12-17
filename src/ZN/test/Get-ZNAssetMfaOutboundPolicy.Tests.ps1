@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNAssetMfaOutboundPolicy' {
     It 'List' {
-        $asset = Search-ZNAsset -Fqdn ot1777
+        $asset = Search-ZNAsset -Fqdn switch01
         $source = (Get-ZNAssetMfaOutboundPoliciesSourceCandidate -AssetId $asset -search "All Segmented Assets").Items
         $sourceEntity = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyOutboundBodySrcEntityInfosItem]::new()
         $sourceEntity.Id = $source.Id
@@ -29,7 +29,7 @@ Describe 'Get-ZNAssetMfaOutboundPolicy' {
     }
 
     It 'Get' {
-        $asset = Search-ZNAsset -Fqdn ot1777
+        $asset = Search-ZNAsset -Fqdn switch01
         $source = (Get-ZNAssetMfaOutboundPoliciesSourceCandidate -AssetId $asset -search "All Segmented Assets").Items
         $sourceEntity = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyOutboundBodySrcEntityInfosItem]::new()
         $sourceEntity.Id = $source.Id

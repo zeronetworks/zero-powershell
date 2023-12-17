@@ -22,136 +22,157 @@ function setupEnv() {
     #Constants
     $constants = Get-Content .\test\constants.json | ConvertFrom-Json
     #$constants.psobject.Properties | ForEach-Object { $env[$_.Name] = $_.Value }
+    if($constants.envToTest){
+        $envToTest = $constants.envToTest
+    } else { 
+        Write-Host "Couldnt find environment to test in constants.json"
+        exit
+    }
 
-    $env.Add("baseUri", "https://portal.zeronetworks.com/api/v1")
+    $env.Add("baseUri", ($constants.$envToTest.baseURL+"/api/v1"))
 
     $znHeader = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-    $znHeader.Add("Authorization", $constants.ZNApiKey)
+    $znHeader.Add("Authorization", $constants.$envToTest.ZNApiKey)
     $znHeader.Add("Content-Type","application/json")
 
     $znTeamHeader = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-    $znTeamHeader.Add("Authorization", $constants.ZNTeamApiKey)
+    $znTeamHeader.Add("Authorization", $constants.$envToTest.ZNTeamApiKey)
     $znTeamHeader.Add("Content-Type","application/json")
-    $znTeamHeader.Add("zn-env-id",$constants.ZNEnvId)
+    $znTeamHeader.Add("zn-env-id",$constants.$envToTest.ZNEnvId)
 
 
     $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
+
+    #assets
+    $asset1 = Invoke-RestMethod ($env.baseUri+"/assets/searchId?fqdn=linux0.posh.local") -method GET -Headers $znTeamHeader
+    $asset2 = Invoke-RestMethod ($env.baseUri+"/assets/searchId?fqdn=linux1.posh.local") -method GET -Headers $znTeamHeader
+    $asset3 = Invoke-RestMethod ($env.baseUri+"/assets/searchId?fqdn=switch01") -method GET -Headers $znTeamHeader
+
     #Create Review Rules
     #Asset 1-1024, 1025-2048, 2049-3072
     #InboundAllow
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1 -Maximum 1024)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1 -Maximum 1024)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-allow") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1025 -Maximum 2048)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1025 -Maximum 2048)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-allow") -method POST -Headers $znTeamHeader -Body $rule
     
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 2049 -Maximum 3072)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 2049 -Maximum 3072)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-allow") -method POST -Headers $znTeamHeader -Body $rule
     #InboundBlock
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1 -Maximum 1024)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1 -Maximum 1024)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-block") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1025 -Maximum 2048)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1025 -Maximum 2048)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-block") -method POST -Headers $znTeamHeader -Body $rule
     
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 2049 -Maximum 3072)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 2049 -Maximum 3072)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-block") -method POST -Headers $znTeamHeader -Body $rule
     #OutboundAllow
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1 -Maximum 1024)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1 -Maximum 1024)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1025 -Maximum 2048)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1025 -Maximum 2048)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
     
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 2049 -Maximum 3072)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 2049 -Maximum 3072)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
     #OutboundBlock
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1 -Maximum 1024)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1 -Maximum 1024)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound-block") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1025 -Maximum 2048)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1025 -Maximum 2048)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound-block") -method POST -Headers $znTeamHeader -Body $rule
     
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 2049 -Maximum 3072)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 2049 -Maximum 3072)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound-block") -method POST -Headers $znTeamHeader -Body $rule
     
     #AssetOt 3073-4096, 4097-5120, 5121-6144
     #InboundAllow
-    $rule = "{""remoteEntityIdsList"":[""a:t:OeG7qsVV""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3073 -Maximum 4096)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset3.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3073 -Maximum 4096)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-allow") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""remoteEntityIdsList"":[""a:t:OeG7qsVV""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4097 -Maximum 5120)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset3.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4097 -Maximum 5120)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-allow") -method POST -Headers $znTeamHeader -Body $rule
     
-    $rule = "{""remoteEntityIdsList"":[""a:t:OeG7qsVV""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 5121 -Maximum 6144)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset3.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 5121 -Maximum 6144)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-allow") -method POST -Headers $znTeamHeader -Body $rule
     #InboundBlock
-    $rule = "{""remoteEntityIdsList"":[""a:t:OeG7qsVV""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3073 -Maximum 4096)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset3.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3073 -Maximum 4096)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-block") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""remoteEntityIdsList"":[""a:t:OeG7qsVV""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4097 -Maximum 5120)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset3.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4097 -Maximum 5120)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-block") -method POST -Headers $znTeamHeader -Body $rule
     
-    $rule = "{""remoteEntityIdsList"":[""a:t:OeG7qsVV""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 5121 -Maximum 6144)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset3.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 5121 -Maximum 6144)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-block") -method POST -Headers $znTeamHeader -Body $rule
     #OutboundAllow
-    $rule = "{""remoteEntityIdsList"":[""a:t:OeG7qsVV""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3073 -Maximum 4096)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset3.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3073 -Maximum 4096)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""remoteEntityIdsList"":[""a:t:OeG7qsVV""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4097 -Maximum 5120)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset3.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4097 -Maximum 5120)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
     
-    $rule = "{""remoteEntityIdsList"":[""a:t:OeG7qsVV""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 5121 -Maximum 6144)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset3.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 5121 -Maximum 6144)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
     #OutboundBlock
-    $rule = "{""remoteEntityIdsList"":[""a:t:OeG7qsVV""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3073 -Maximum 4096)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset3.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3073 -Maximum 4096)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound-block") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""remoteEntityIdsList"":[""a:t:OeG7qsVV""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4097 -Maximum 5120)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset3.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4097 -Maximum 5120)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound-block") -method POST -Headers $znTeamHeader -Body $rule
     
-    $rule = "{""remoteEntityIdsList"":[""a:t:OeG7qsVV""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 5121 -Maximum 6144)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset3.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 5121 -Maximum 6144)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound-block") -method POST -Headers $znTeamHeader -Body $rule
     
 
     #Generic 6145-7168, 7169-8192, 8193-9216
     #InboundAllow
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 6145 -Maximum 7168)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 6145 -Maximum 7168)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-allow") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 7169 -Maximum 8192)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 7169 -Maximum 8192)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-allow") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 8193 -Maximum 9216)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 8193 -Maximum 9216)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-allow") -method POST -Headers $znTeamHeader -Body $rule
     #InboundBlock
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 6145 -Maximum 7168)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 6145 -Maximum 7168)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-block") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 7169 -Maximum 8192)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 7169 -Maximum 8192)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-block") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 8193 -Maximum 9216)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 8193 -Maximum 9216)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound-block") -method POST -Headers $znTeamHeader -Body $rule
     #OutboundAllow
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 6145 -Maximum 7168)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 6145 -Maximum 7168)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 7169 -Maximum 8192)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 7169 -Maximum 8192)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 8193 -Maximum 9216)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 8193 -Maximum 9216)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
     #OutboundBlock
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 6145 -Maximum 7168)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 6145 -Maximum 7168)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound-block") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 7169 -Maximum 8192)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 7169 -Maximum 8192)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound-block") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""remoteEntityIdsList"":[""a:l:goXZ3fpT""],""localEntityId"":""a:l:hC8rOTo0"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 8193 -Maximum 9216)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 8193 -Maximum 9216)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound-block") -method POST -Headers $znTeamHeader -Body $rule
 
+    #$tagGroup = "g:t:27"+$constants.$envtoTest.ZNEnvId.Substring($constants.$envtoTest.ZNEnvId.Length-6)
+    #$assets = Invoke-RestMethod -Method GET -URi ($env.baseUri+"/assets/monitored?_limit=400&_offset=0&_filters=&with_count=true&order=asc&orderColumns[]=name&showInactive=false") -Headers $znTeamHeader
+    #$assetId = ($assets.items | where {$_.Name -eq "dc01"}).Id
+    #$tagbody = @{
+        #"membersId" = @(
+    #        "$assetId"
+    #    )
+    #} | ConvertTo-Json
+    #Invoke-RestMethod -Method PUT -URi ($env.baseUri+"/internal/tag-groups/"+$tagGroup+"/members") -Headers $znTeamHeader -Body $tagbody
 
 # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
@@ -165,13 +186,6 @@ function cleanupEnv() {
     
     $env = @{}
     $constants = Get-Content .\test\constants.json | ConvertFrom-Json
-    #$constants.psobject.Properties | ForEach-Object { $env[$_.Name] = $_.Value }
-
-    $env.Add("baseUri", "https://portal.zeronetworks.com/api/v1")
-
-    $znHeader = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-    $znHeader.Add("Authorization", $constants.ZNApiKey)
-    $znHeader.Add("Content-Type","application/json")
-
+    
 }   
 

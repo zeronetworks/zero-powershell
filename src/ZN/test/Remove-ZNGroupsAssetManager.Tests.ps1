@@ -13,9 +13,9 @@ while(-not $mockingPath) {
 
 Describe 'Remove-ZNGroupsAssetManager' {
     It 'Delete' {
-        $manager = Get-ZNUser -Search Test
+        $manager = (Get-ZNUser).Items | Select -First 1
         New-ZNCustomGroup -Name "RemoveGroupsAssetManagerTest"
-        $customGroup = Get-ZNGroup -Search RemoveGroupsAssetManagerTest
+        $customGroup = (Get-ZNGroup -Search RemoveGroupsAssetManagerTest).Items
         Add-ZNGroupsAssetManager -GroupId $customGroup.Id -GroupType Custom -ManagerIds $manager.id
         $managers = Get-ZNGroupsAssetManager -GroupId $customGroup.Id -GroupType Custom
         { Remove-ZNGroupsAssetManager -GroupId $customGroup.Id -GroupType custom -GroupOrUserId $manager.id} | Should -Not -Throw

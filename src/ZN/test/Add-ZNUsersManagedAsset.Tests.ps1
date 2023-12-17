@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-ZNUsersManagedAsset'))
 Describe 'Add-ZNUsersManagedAsset' {
     It 'AddExpanded' {
         $asset = Search-ZNAsset -Fqdn linux0.posh.local
-        $user = Get-ZNUser -search test
+        $user = (Get-ZNUser).Items | Select -First 1
         Add-ZNUsersManagedAsset -UserId $user.Id -EntityIds @($asset)
         $managedAssets = Get-ZNUsersManagedAsset -UserId $user.Id
         $managedAssets.EntityId | Should -Be $asset

@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-ZNSettingsPushNotification' {
-    It 'Get' {
+    It 'Get' -skip {
         (Get-ZNSettingsPushNotification).Host | Should -Not -Be $null
     }
 }

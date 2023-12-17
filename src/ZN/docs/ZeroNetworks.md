@@ -17,6 +17,9 @@ Add an asset manager of asset
 ### [Add-ZNAssetOtAssetManager](Add-ZNAssetOtAssetManager.md)
 Add an asset manager of asset
 
+### [Add-ZNAssetRpcMonitoring](Add-ZNAssetRpcMonitoring.md)
+Returns an empty object.
+
 ### [Add-ZNCustomGroupsMember](Add-ZNCustomGroupsMember.md)
 Returns an empty object.
 
@@ -54,11 +57,7 @@ Approve a "pending review" rule with or without changes
 Approve a "pending review" rule with or without changes
 
 ### [Connect-ZN](Connect-ZN.md)
-Login to Zero Networks to get a token for cmdlet use.
-NOTE: If your environment has a IdP set for default authentication, you cannot use this cmdlet and will need to use Set-ZNApiKey cmdlet using an API token.
-
-#.Link
-https://github.com/zeronetworks/zero-powershell/connect-zn
+Login to Zero Networks to get a token for cmdlet use
 
 ### [Deny-ZNAssetInboundAllowRuleReview](Deny-ZNAssetInboundAllowRuleReview.md)
 Reject a "pending review" rule
@@ -87,9 +86,6 @@ Reject a "pending review" rule
 ### [Disconnect-ZN](Disconnect-ZN.md)
 Logout of Zero Networks
 
-#.Link
-https://github.com/zeronetworks/zero-powershell/Disconnect-zn
-
 ### [Get-ZNAiExclusionNetworkBoth](Get-ZNAiExclusionNetworkBoth.md)
 Get AI network exclusion for clients and servers: lists of tcp/udp ports / ports ranges + boolean for icmp protocol, and a list of processes to ignore during learning.
 
@@ -116,6 +112,18 @@ Returns an object with asset analysis data.
 
 ### [Get-ZNAssetAudit](Get-ZNAssetAudit.md)
 Returns a list of audits for the asset.
+
+### [Get-ZNAssetIdentityRule](Get-ZNAssetIdentityRule.md)
+Returns the properties of an Identity rule.
+
+### [Get-ZNAssetIdentityRulesAssetsCandidate](Get-ZNAssetIdentityRulesAssetsCandidate.md)
+Returns a list of assets candidates for Identity rules.
+
+### [Get-ZNAssetIdentityRulesExcludedAssetsCandidate](Get-ZNAssetIdentityRulesExcludedAssetsCandidate.md)
+Returns a list of excluded assets candidates for Identity rules.
+
+### [Get-ZNAssetIdentityRulesUserCandidate](Get-ZNAssetIdentityRulesUserCandidate.md)
+Returns a list of user candidates for Identity rules.
 
 ### [Get-ZNAssetInboundAllowRule](Get-ZNAssetInboundAllowRule.md)
 Returns the properties of an Inbound Allow rule.
@@ -258,6 +266,12 @@ Returns a list of source candidates for outbound block rules.
 ### [Get-ZNAssetRulesDistribution](Get-ZNAssetRulesDistribution.md)
 Returns an object with rules distribution.
 
+### [Get-ZNAssetsIdentitySegmented](Get-ZNAssetsIdentitySegmented.md)
+Returns a list of assets that are identity segmentated.
+
+### [Get-ZNAssetsInactive](Get-ZNAssetsInactive.md)
+Returns a list of assets that are inactive.
+
 ### [Get-ZNAssetsMonitored](Get-ZNAssetsMonitored.md)
 Returns a list of assets that are monitored.
 
@@ -269,6 +283,9 @@ Returns a list of Protected assets.
 
 ### [Get-ZNAssetsQueued](Get-ZNAssetsQueued.md)
 Returns a list of assets in Learning.
+
+### [Get-ZNAssetsRpcMonitored](Get-ZNAssetsRpcMonitored.md)
+Returns a list of assets that are RPC monitored.
 
 ### [Get-ZNAssetsStatesStatistics](Get-ZNAssetsStatesStatistics.md)
 Returns an object with asset state statistics.
@@ -302,6 +319,18 @@ Get manager candidates for group managers
 
 ### [Get-ZNGroupsByType](Get-ZNGroupsByType.md)
 Returns a list of groups.
+
+### [Get-ZNGroupsIdentityRule](Get-ZNGroupsIdentityRule.md)
+Returns an identity segmentation rule.
+
+### [Get-ZNGroupsIdentityRulesAssetsCandidate](Get-ZNGroupsIdentityRulesAssetsCandidate.md)
+Returns a list of assets candidates for Identity rules.
+
+### [Get-ZNGroupsIdentityRulesExcludedAssetsCandidate](Get-ZNGroupsIdentityRulesExcludedAssetsCandidate.md)
+Returns a list of excluded Assets candidates for Identity rules.
+
+### [Get-ZNGroupsIdentityRulesUserCandidate](Get-ZNGroupsIdentityRulesUserCandidate.md)
+Returns a list of user candidates for Identity rules.
 
 ### [Get-ZNGroupsInboundAllowRule](Get-ZNGroupsInboundAllowRule.md)
 Returns the properties of an Inbound Allow rule.
@@ -401,6 +430,18 @@ Returns an object with rules distribution.
 
 ### [Get-ZNGroupsStatistics](Get-ZNGroupsStatistics.md)
 Returns an object with group statistics.
+
+### [Get-ZNIdentityRule](Get-ZNIdentityRule.md)
+Returns an identity segmentation rule.
+
+### [Get-ZNIdentityRulesAssetsCandidate](Get-ZNIdentityRulesAssetsCandidate.md)
+Returns a list of assets candidates for Identity rules.
+
+### [Get-ZNIdentityRulesExcludedAssetsCandidate](Get-ZNIdentityRulesExcludedAssetsCandidate.md)
+Returns a list of excluded assets candidates for Identity rules.
+
+### [Get-ZNIdentityRulesUserCandidate](Get-ZNIdentityRulesUserCandidate.md)
+Returns a list of user candidates for Identity rules.
 
 ### [Get-ZNInboundAllowRule](Get-ZNInboundAllowRule.md)
 Returns the properties of an Inbound Allow rule.
@@ -570,6 +611,9 @@ Returns a list of candidates for user access config excluded assets.
 ### [Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate](Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate.md)
 Returns a list of candidates for user access config excluded destinations.
 
+### [Get-ZNSettingsConnectUserAccessConfigExcludedAssetsCandidate](Get-ZNSettingsConnectUserAccessConfigExcludedAssetsCandidate.md)
+Returns a list of candidates for user access config excluded assets.
+
 ### [Get-ZNSettingsConnectUserAccessConfigExcludedSourceUsersCandidate](Get-ZNSettingsConnectUserAccessConfigExcludedSourceUsersCandidate.md)
 Returns a list of candidates for user access config excluded source users.
 
@@ -639,11 +683,26 @@ Returns the properties of an user.
 ### [Get-ZNUserAudit](Get-ZNUserAudit.md)
 Returns a list of audits for the user.
 
+### [Get-ZNUserIdentityRule](Get-ZNUserIdentityRule.md)
+Returns an identity segmentation rule.
+
+### [Get-ZNUserIdentityRulesAssetsCandidate](Get-ZNUserIdentityRulesAssetsCandidate.md)
+Returns a list of assets candidates for Identity rules.
+
+### [Get-ZNUserIdentityRulesExcludedAssetsCandidate](Get-ZNUserIdentityRulesExcludedAssetsCandidate.md)
+Returns a list of excluded assets candidates for Identity rules.
+
+### [Get-ZNUserIdentityRulesUserCandidate](Get-ZNUserIdentityRulesUserCandidate.md)
+Returns a list of user candidates for Identity rules.
+
 ### [Get-ZNUserMemberOf](Get-ZNUserMemberOf.md)
 Returns a list of groups the user is a member of.
 
-### [Get-ZNUsersHuman](Get-ZNUsersHuman.md)
-Returns a list of Human Users.
+### [Get-ZNUsersIdentityQueued](Get-ZNUsersIdentityQueued.md)
+Returns a list of users in Learning.
+
+### [Get-ZNUsersIdentitySegmented](Get-ZNUsersIdentitySegmented.md)
+Returns a list of Identity segmented users.
 
 ### [Get-ZNUsersManagedAsset](Get-ZNUsersManagedAsset.md)
 get managed assets for user
@@ -656,9 +715,6 @@ Returns a list of ServiceAccount Users.
 
 ### [Get-ZNUserStatistics](Get-ZNUserStatistics.md)
 Get Users statistics
-
-### [Get-ZNUsersUndetermined](Get-ZNUsersUndetermined.md)
-Returns a list of Undetermined Users.
 
 ### [Invoke-ZNAssetExtendQueue](Invoke-ZNAssetExtendQueue.md)
 Returns an empty object.
@@ -683,6 +739,15 @@ Rediscover monitored assets
 
 ### [Invoke-ZNRediscoverLinux](Invoke-ZNRediscoverLinux.md)
 Rediscover monitored assets from Ansible
+
+### [Invoke-ZNResyncAzureAd](Invoke-ZNResyncAzureAd.md)
+Resync Azure AD
+
+### [Invoke-ZNUserIdentityQueue](Invoke-ZNUserIdentityQueue.md)
+Returns an empty object.
+
+### [New-ZNAssetIdentityRule](New-ZNAssetIdentityRule.md)
+Returns a the identity segmentation rule.
 
 ### [New-ZNAssetInboundAllowRule](New-ZNAssetInboundAllowRule.md)
 Returns the properties of the created Inbound Allow rule.
@@ -714,6 +779,9 @@ Returns an empty object.
 ### [New-ZNCustomGroup](New-ZNCustomGroup.md)
 Returns an empty object.
 
+### [New-ZNGroupsIdentityRule](New-ZNGroupsIdentityRule.md)
+Returns a the identity segmentation rule.
+
 ### [New-ZNGroupsInboundAllowRule](New-ZNGroupsInboundAllowRule.md)
 Returns the properties of the created Inbound Allow rule.
 
@@ -731,6 +799,9 @@ Returns the properties of the created Outbound Allow rule.
 
 ### [New-ZNGroupsOutboundBlockRule](New-ZNGroupsOutboundBlockRule.md)
 Returns the properties of the created outbound block rule.
+
+### [New-ZNIdentityRule](New-ZNIdentityRule.md)
+Returns a the identity segmentation rule.
 
 ### [New-ZNInboundAllowRule](New-ZNInboundAllowRule.md)
 Returns the properties of the created Inbound Allow rule.
@@ -774,17 +845,26 @@ Create an identity provider settings in Identity Providers
 ### [New-ZNSettingsPushNotification](New-ZNSettingsPushNotification.md)
 Create an push notifications settings
 
+### [New-ZNUserIdentityRule](New-ZNUserIdentityRule.md)
+Returns a the identity segmentation rule.
+
 ### [Protect-ZNAsset](Protect-ZNAsset.md)
 Returns an empty object.
+
+### [Protect-ZNAssetIdentity](Protect-ZNAssetIdentity.md)
+Returns and empty object.
 
 ### [Protect-ZNAssetOt](Protect-ZNAssetOt.md)
 Returns an empty object.
 
-### [Remove-ZNApiKey](Remove-ZNApiKey.md)
-Deletes the API Key
+### [Protect-ZNUserIdentity](Protect-ZNUserIdentity.md)
+Returns and empty object.
 
-#.Link
-https://github.com/zeronetworks/zero-powershell/remove-znapikey
+### [Remove-ZNApiKey](Remove-ZNApiKey.md)
+Deletes the API key
+
+### [Remove-ZNAssetIdentityRule](Remove-ZNAssetIdentityRule.md)
+Returns an empty object.
 
 ### [Remove-ZNAssetInboundAllowRule](Remove-ZNAssetInboundAllowRule.md)
 Returns an empty object.
@@ -813,6 +893,9 @@ Returns an empty object.
 ### [Remove-ZNAssetOutboundBlockRule](Remove-ZNAssetOutboundBlockRule.md)
 Returns an empty object.
 
+### [Remove-ZNAssetRpcMonitoring](Remove-ZNAssetRpcMonitoring.md)
+Returns an empty object.
+
 ### [Remove-ZNCustomGroup](Remove-ZNCustomGroup.md)
 Returns an empty object.
 
@@ -821,6 +904,9 @@ Returns an empty object.
 
 ### [Remove-ZNGroupsAssetManager](Remove-ZNGroupsAssetManager.md)
 Remove asset manager of group
+
+### [Remove-ZNGroupsIdentityRule](Remove-ZNGroupsIdentityRule.md)
+Returns an empty object.
 
 ### [Remove-ZNGroupsInboundAllowRule](Remove-ZNGroupsInboundAllowRule.md)
 Returns an empty object.
@@ -841,6 +927,9 @@ Returns an empty object.
 Returns an empty object.
 
 ### [Remove-ZNGroupsOutboundBlockRule](Remove-ZNGroupsOutboundBlockRule.md)
+Returns an empty object.
+
+### [Remove-ZNIdentityRule](Remove-ZNIdentityRule.md)
 Returns an empty object.
 
 ### [Remove-ZNInboundAllowRule](Remove-ZNInboundAllowRule.md)
@@ -891,6 +980,9 @@ Returns an empty reponse.
 ### [Remove-ZNTagGroupsMember](Remove-ZNTagGroupsMember.md)
 Remove tag group members by members id.
 
+### [Remove-ZNUserIdentityRule](Remove-ZNUserIdentityRule.md)
+Returns an empty object.
+
 ### [Remove-ZNUsersManagedAsset](Remove-ZNUsersManagedAsset.md)
 Remove managed asset of user
 
@@ -909,8 +1001,11 @@ Provided user SID - returns user entity id
 ### [Set-ZNApiKey](Set-ZNApiKey.md)
 Set the API key for use in all other cmdlets
 
-#.Link
-https://github.com/zeronetworks/zero-powershell/set-znapikey
+### [Test-ZNAssetIdentityProtect](Test-ZNAssetIdentityProtect.md)
+Returns a number of assets that are valid for identity segmentation.
+
+### [Test-ZNAssetIdentityUnprotect](Test-ZNAssetIdentityUnprotect.md)
+Returns a number of assets that are valid to unprotect.
 
 ### [Test-ZNAssetProtect](Test-ZNAssetProtect.md)
 Returns a number of assets that are valid for protection.
@@ -927,7 +1022,13 @@ Returns a list of outbound MFA policies that would match the simulation.
 ### [Unprotect-ZNAsset](Unprotect-ZNAsset.md)
 Returns an empty object.
 
+### [Unprotect-ZNAssetIdentity](Unprotect-ZNAssetIdentity.md)
+Returns an empty object.
+
 ### [Unprotect-ZNAssetOt](Unprotect-ZNAssetOt.md)
+Returns an empty object.
+
+### [Unprotect-ZNUserIdentity](Unprotect-ZNUserIdentity.md)
 Returns an empty object.
 
 ### [Update-ZNAiExclusionNetworkBoth](Update-ZNAiExclusionNetworkBoth.md)
@@ -938,6 +1039,15 @@ Set AI network exclusion for clients: lists of tcp/udp ports / ports ranges + bo
 
 ### [Update-ZNAiExclusionNetworkServer](Update-ZNAiExclusionNetworkServer.md)
 Set AI network exclusion for servers: lists of tcp/udp ports / ports ranges + boolean for icmp protocol, and a list of processes to ignore during learning.
+
+### [Update-ZNAssetActive](Update-ZNAssetActive.md)
+Returns and empty object.
+
+### [Update-ZNAssetIdentityRule](Update-ZNAssetIdentityRule.md)
+Updates an identity rule.
+
+### [Update-ZNAssetInactive](Update-ZNAssetInactive.md)
+Returns and empty object.
 
 ### [Update-ZNAssetInboundAllowRule](Update-ZNAssetInboundAllowRule.md)
 Updates an inbound allow rule.
@@ -966,6 +1076,9 @@ Updates an outbound block rule.
 ### [Update-ZNCustomGroup](Update-ZNCustomGroup.md)
 Updates a custom group properties.
 
+### [Update-ZNGroupsIdentityRule](Update-ZNGroupsIdentityRule.md)
+Updates an identity rule.
+
 ### [Update-ZNGroupsInboundAllowRule](Update-ZNGroupsInboundAllowRule.md)
 Updates an inbound allow rule.
 
@@ -983,6 +1096,9 @@ Updates an outbound allow rule.
 
 ### [Update-ZNGroupsOutboundBlockRule](Update-ZNGroupsOutboundBlockRule.md)
 Updates an outbound block rule.
+
+### [Update-ZNIdentityRule](Update-ZNIdentityRule.md)
+Updates an identity rule.
 
 ### [Update-ZNInboundAllowRule](Update-ZNInboundAllowRule.md)
 Updates an inbound allow rule.
@@ -1085,4 +1201,10 @@ Set Trusted Internet addresses settings in System
 
 ### [Update-ZNSettingsZpa](Update-ZNSettingsZpa.md)
 Set ZPA settings in Integrations
+
+### [Update-ZNUserIdentityRule](Update-ZNUserIdentityRule.md)
+Updates an identity rule.
+
+### [Update-ZNUserType](Update-ZNUserType.md)
+Set users type
 
