@@ -4,17 +4,16 @@ $files = @(
     "ZeroNetworks.format.ps1xml"
     "ZeroNetworks.psd1"
     "ZeroNetworks.psm1"
-    "bin\ZeroNetworks.private.deps.json"
-    "bin\ZeroNetworks.private.dll"
-    "bin\ZeroNetworks.private.pdb"
+    "bin"
     "custom"
     "exports\ProxyCmdletDefinitions.ps1"
-    "internal\ZeroNetworks.internal.psm1"
-    "internal\ProxyCmdletDefinitions.ps1"
+    "internal"
     "utils\Unprotect-SecureString.ps1"
 )
 
-$version = "0.0.6-preview"
+$ver = Get-Content ./src/ZN/readme.md | Select-String "module-version: .*"
+$version = $ver.Matches.Value.Replace("module-version: ","")
+
 New-Item "\\192.168.200.1\share\zero-powershell\$version" -Directory
 
 foreach($file in $files){
@@ -22,8 +21,7 @@ foreach($file in $files){
     if($filePath -like "*.*"){
         write-host $filePath -ForegroundColor Green
         copy-Item "$sourceFolder/$file" -Destination "\\192.168.200.1\share\zero-powershell\$version\$file"
-    }
-    else{
+    } else{
         write-Host $filePath -ForegroundColor Yellow
         Copy-Item "$sourceFolder/$file" -Destination "\\192.168.200.1\share\zero-powershell\$version\$file" -Recurse
     }
