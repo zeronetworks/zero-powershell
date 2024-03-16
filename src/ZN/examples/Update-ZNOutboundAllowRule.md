@@ -3,7 +3,9 @@
 $rule = Get-ZNOutboundAllowRule | where {$_.Description -eq "Test Rule"}
 $rule.RemoteEntityIdsList += (Search-ZNAsset -Fqdn fs1.zero.labs)
 Update-ZNOutboundAllowRule -RuleId $rule.id -ExpiresAt $rule.ExpiresAt -LocalEntityId $rule.LocalEntityId -LocalProcessesList $rule.LocalProcessesList -PortsList $rule.PortsList -RemoteEntityIdsList $rule.RemoteEntityIdsList -State $rule.State -Description $rule.Description
+```
 
+```output
 ApprovedById               : 
 ApprovedByName             : 
 CreatedByEnforcementSource : 5

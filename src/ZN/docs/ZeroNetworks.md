@@ -20,6 +20,9 @@ Add an asset manager of asset
 ### [Add-ZNAssetRpcMonitoring](Add-ZNAssetRpcMonitoring.md)
 Returns an empty object.
 
+### [Add-ZNAssetRpcSegment](Add-ZNAssetRpcSegment.md)
+Returns and empty object.
+
 ### [Add-ZNCustomGroupsMember](Add-ZNCustomGroupsMember.md)
 Returns an empty object.
 
@@ -112,6 +115,9 @@ Returns an object with asset analysis data.
 
 ### [Get-ZNAssetAudit](Get-ZNAssetAudit.md)
 Returns a list of audits for the asset.
+
+### [Get-ZNAssetClusterInfo](Get-ZNAssetClusterInfo.md)
+Returns an object of cluster name and cluster members
 
 ### [Get-ZNAssetIdentityRule](Get-ZNAssetIdentityRule.md)
 Returns the properties of an Identity rule.
@@ -233,6 +239,21 @@ Returns a list of source users candidates on outbound MFA policies.
 ### [Get-ZNAssetOtmfaOutboundPolicy](Get-ZNAssetOtmfaOutboundPolicy.md)
 Returns the properties of an outbound MFA policy.
 
+### [Get-ZNAssetOtrpcRule](Get-ZNAssetOtrpcRule.md)
+Returns the properties of an RPC rule.
+
+### [Get-ZNAssetOtrpcRulesDestinationCandidate](Get-ZNAssetOtrpcRulesDestinationCandidate.md)
+Returns a list of destionation candidates for RPC rules.
+
+### [Get-ZNAssetOtrpcRulesExcludedDestinationCandidate](Get-ZNAssetOtrpcRulesExcludedDestinationCandidate.md)
+Returns a list of excluded destionation candidates for RPC rules.
+
+### [Get-ZNAssetOtrpcRulesSourceCandidate](Get-ZNAssetOtrpcRulesSourceCandidate.md)
+Returns a list of source candidates for RPC rules.
+
+### [Get-ZNAssetOtrpcRulesUserCandidate](Get-ZNAssetOtrpcRulesUserCandidate.md)
+Returns a list of user candidates for RPC rules.
+
 ### [Get-ZNAssetOtRulesDistribution](Get-ZNAssetOtRulesDistribution.md)
 Returns an object with rules distribution.
 
@@ -263,6 +284,21 @@ Returns a list of excluded source candidates for outbound block rules.
 ### [Get-ZNAssetOutboundBlockRulesSourceCandidate](Get-ZNAssetOutboundBlockRulesSourceCandidate.md)
 Returns a list of source candidates for outbound block rules.
 
+### [Get-ZNAssetRpcRule](Get-ZNAssetRpcRule.md)
+Returns the properties of an RPC rule.
+
+### [Get-ZNAssetRpcRulesDestinationCandidate](Get-ZNAssetRpcRulesDestinationCandidate.md)
+Returns a list of destionation candidates for RPC rules.
+
+### [Get-ZNAssetRpcRulesExcludedDestinationCandidate](Get-ZNAssetRpcRulesExcludedDestinationCandidate.md)
+Returns a list of excluded destionation candidates for RPC rules.
+
+### [Get-ZNAssetRpcRulesSourceCandidate](Get-ZNAssetRpcRulesSourceCandidate.md)
+Returns a list of source candidates for RPC rules.
+
+### [Get-ZNAssetRpcRulesUserCandidate](Get-ZNAssetRpcRulesUserCandidate.md)
+Returns a list of user candidates for RPC rules.
+
 ### [Get-ZNAssetRulesDistribution](Get-ZNAssetRulesDistribution.md)
 Returns an object with rules distribution.
 
@@ -275,17 +311,20 @@ Returns a list of assets that are inactive.
 ### [Get-ZNAssetsMonitored](Get-ZNAssetsMonitored.md)
 Returns a list of assets that are monitored.
 
+### [Get-ZNAssetsNetworkQueued](Get-ZNAssetsNetworkQueued.md)
+Returns a list of assets in network learning.
+
 ### [Get-ZNAssetsOt](Get-ZNAssetsOt.md)
 Returns a list of OT/IoT assets.
 
 ### [Get-ZNAssetsProtected](Get-ZNAssetsProtected.md)
 Returns a list of Protected assets.
 
-### [Get-ZNAssetsQueued](Get-ZNAssetsQueued.md)
-Returns a list of assets in Learning.
-
 ### [Get-ZNAssetsRpcMonitored](Get-ZNAssetsRpcMonitored.md)
 Returns a list of assets that are RPC monitored.
+
+### [Get-ZNAssetsRpcSegmented](Get-ZNAssetsRpcSegmented.md)
+Returns a list of assets that are RPC Segmented.
 
 ### [Get-ZNAssetsStatesStatistics](Get-ZNAssetsStatesStatistics.md)
 Returns an object with asset state statistics.
@@ -425,6 +464,21 @@ Returns a list of excluded source candidates for outbound block rules.
 ### [Get-ZNGroupsOutboundBlockRulesSourceCandidate](Get-ZNGroupsOutboundBlockRulesSourceCandidate.md)
 Returns a list of source candidates for outbound block rules.
 
+### [Get-ZNGroupsRpcRule](Get-ZNGroupsRpcRule.md)
+Returns the properties of an RPC rule.
+
+### [Get-ZNGroupsRpcRulesDestinationCandidate](Get-ZNGroupsRpcRulesDestinationCandidate.md)
+Returns a list of destionation candidates for RPC rules.
+
+### [Get-ZNGroupsRpcRulesExcludedDestinationCandidate](Get-ZNGroupsRpcRulesExcludedDestinationCandidate.md)
+Returns a list of excluded destionation candidates for RPC rules.
+
+### [Get-ZNGroupsRpcRulesSourceCandidate](Get-ZNGroupsRpcRulesSourceCandidate.md)
+Returns a list of source candidates for RPC rules.
+
+### [Get-ZNGroupsRpcRulesUserCandidate](Get-ZNGroupsRpcRulesUserCandidate.md)
+Returns a list of user candidates for RPC rules.
+
 ### [Get-ZNGroupsRulesDistribution](Get-ZNGroupsRulesDistribution.md)
 Returns an object with rules distribution.
 
@@ -557,11 +611,29 @@ Returns a list of candidates for protection policies.
 ### [Get-ZNProtectionPolicy](Get-ZNProtectionPolicy.md)
 Returns a list of protection policies.
 
+### [Get-ZNRpcRule](Get-ZNRpcRule.md)
+Returns the properties of an RPC rule.
+
+### [Get-ZNRpcRulesDestinationCandidate](Get-ZNRpcRulesDestinationCandidate.md)
+Returns a list of destionation candidates for RPC rules.
+
+### [Get-ZNRpcRulesExcludedDestinationCandidate](Get-ZNRpcRulesExcludedDestinationCandidate.md)
+Returns a list of excluded destionation candidates for RPC rules.
+
+### [Get-ZNRpcRulesSourceCandidate](Get-ZNRpcRulesSourceCandidate.md)
+Returns a list of source candidates for RPC rules.
+
+### [Get-ZNRpcRulesUserCandidate](Get-ZNRpcRulesUserCandidate.md)
+Returns a list of user candidates for RPC rules.
+
 ### [Get-ZNRulesDistribution](Get-ZNRulesDistribution.md)
 Returns an object with rules distribution.
 
 ### [Get-ZNRulesStatistics](Get-ZNRulesStatistics.md)
 Returns an object with rule statistics.
+
+### [Get-ZNSegmentServer](Get-ZNSegmentServer.md)
+Returns a list of segment servers.
 
 ### [Get-ZNSession](Get-ZNSession.md)
 Returns a list of Connect sessions.
@@ -586,6 +658,18 @@ List asset managers
 
 ### [Get-ZNSettingsAuth](Get-ZNSettingsAuth.md)
 Get the portal security settings
+
+### [Get-ZNSettingsBreakGlass](Get-ZNSettingsBreakGlass.md)
+Get break glass settings
+
+### [Get-ZNSettingsClientsTrustedInternet](Get-ZNSettingsClientsTrustedInternet.md)
+Get Clients Trusted Internet settings in System
+
+### [Get-ZNSettingsClientSubnet](Get-ZNSettingsClientSubnet.md)
+Get Client Subnets settings in System
+
+### [Get-ZNSettingsClientsUntrustedInternet](Get-ZNSettingsClientsUntrustedInternet.md)
+Get Clients Untrusted Internet settings in System
 
 ### [Get-ZNSettingsClusterStrategy](Get-ZNSettingsClusterStrategy.md)
 Returns cluster strategy configuration.
@@ -668,14 +752,17 @@ Get Privileged Ports settings in Network segmentation
 ### [Get-ZNSettingsPushNotification](Get-ZNSettingsPushNotification.md)
 Get Push Notifications Settings
 
+### [Get-ZNSettingsServersTrustedInternet](Get-ZNSettingsServersTrustedInternet.md)
+Get Servers Trusted Internet settings in System
+
+### [Get-ZNSettingsServersUntrustedInternet](Get-ZNSettingsServersUntrustedInternet.md)
+Get Servers Untrusted Internet settings in System
+
 ### [Get-ZNSettingsTrustedInternetAddress](Get-ZNSettingsTrustedInternetAddress.md)
 Get Trusted Internet addresses settings in System
 
 ### [Get-ZNSettingsZpa](Get-ZNSettingsZpa.md)
 Get ZPA settings in Integrations
-
-### [Get-ZNTrustServer](Get-ZNTrustServer.md)
-Returns a list of trust servers.
 
 ### [Get-ZNUser](Get-ZNUser.md)
 Returns the properties of an user.
@@ -698,6 +785,9 @@ Returns a list of user candidates for Identity rules.
 ### [Get-ZNUserMemberOf](Get-ZNUserMemberOf.md)
 Returns a list of groups the user is a member of.
 
+### [Get-ZNUserRulesDistribution](Get-ZNUserRulesDistribution.md)
+Returns an object with rules distribution.
+
 ### [Get-ZNUsersIdentityQueued](Get-ZNUsersIdentityQueued.md)
 Returns a list of users in Learning.
 
@@ -716,13 +806,22 @@ Returns a list of ServiceAccount Users.
 ### [Get-ZNUserStatistics](Get-ZNUserStatistics.md)
 Get Users statistics
 
-### [Invoke-ZNAssetExtendQueue](Invoke-ZNAssetExtendQueue.md)
-Returns an empty object.
-
-### [Invoke-ZNAssetOtQueue](Invoke-ZNAssetOtQueue.md)
+### [Initialize-ZNAssetBreakGlass](Initialize-ZNAssetBreakGlass.md)
 Returns and empty object.
 
-### [Invoke-ZNAssetQueue](Invoke-ZNAssetQueue.md)
+### [Invoke-ZNAssetDeactivateBreakGlass](Invoke-ZNAssetDeactivateBreakGlass.md)
+Returns and empty object.
+
+### [Invoke-ZNAssetNetworkExtendQueue](Invoke-ZNAssetNetworkExtendQueue.md)
+Returns an empty object.
+
+### [Invoke-ZNAssetNetworkQueue](Invoke-ZNAssetNetworkQueue.md)
+Returns and empty object.
+
+### [Invoke-ZNAssetOtNetworkExtendQueue](Invoke-ZNAssetOtNetworkExtendQueue.md)
+Returns an empty object.
+
+### [Invoke-ZNAssetOtNetworkQueue](Invoke-ZNAssetOtNetworkQueue.md)
 Returns and empty object.
 
 ### [Invoke-ZNEncodeEntityIP](Invoke-ZNEncodeEntityIP.md)
@@ -764,11 +863,17 @@ Returns a the properties of outbound MFA policy created.
 ### [New-ZNAssetOtmfaOutboundPolicy](New-ZNAssetOtmfaOutboundPolicy.md)
 Returns a the properties of outbound MFA policy created.
 
+### [New-ZNAssetOtrpcRule](New-ZNAssetOtrpcRule.md)
+Returns the properties of the create RPC rule.
+
 ### [New-ZNAssetOutboundAllowRule](New-ZNAssetOutboundAllowRule.md)
 Returns the properties of the created Outbound Allow rule.
 
 ### [New-ZNAssetOutboundBlockRule](New-ZNAssetOutboundBlockRule.md)
 Returns the properties of the created outbound block rule.
+
+### [New-ZNAssetRpcRule](New-ZNAssetRpcRule.md)
+Returns the properties of the create RPC rule.
 
 ### [New-ZNAssetsLinux](New-ZNAssetsLinux.md)
 Returns the assetId of the created Linux asset.
@@ -800,6 +905,9 @@ Returns the properties of the created Outbound Allow rule.
 ### [New-ZNGroupsOutboundBlockRule](New-ZNGroupsOutboundBlockRule.md)
 Returns the properties of the created outbound block rule.
 
+### [New-ZNGroupsRpcRule](New-ZNGroupsRpcRule.md)
+Returns the properties of the create RPC rule.
+
 ### [New-ZNIdentityRule](New-ZNIdentityRule.md)
 Returns a the identity segmentation rule.
 
@@ -827,6 +935,9 @@ Create a in-memory object for PortsList
 ### [New-ZNProtectionPolicy](New-ZNProtectionPolicy.md)
 Returns the protection policy that was created.
 
+### [New-ZNRpcRule](New-ZNRpcRule.md)
+Returns the properties of the create RPC rule.
+
 ### [New-ZNSettingsAd](New-ZNSettingsAd.md)
 Set the AD settings in Asset Managment
 
@@ -848,13 +959,13 @@ Create an push notifications settings
 ### [New-ZNUserIdentityRule](New-ZNUserIdentityRule.md)
 Returns a the identity segmentation rule.
 
-### [Protect-ZNAsset](Protect-ZNAsset.md)
-Returns an empty object.
-
 ### [Protect-ZNAssetIdentity](Protect-ZNAssetIdentity.md)
 Returns and empty object.
 
-### [Protect-ZNAssetOt](Protect-ZNAssetOt.md)
+### [Protect-ZNAssetNetworkSegment](Protect-ZNAssetNetworkSegment.md)
+Returns an empty object.
+
+### [Protect-ZNAssetOtNetworkSegment](Protect-ZNAssetOtNetworkSegment.md)
 Returns an empty object.
 
 ### [Protect-ZNUserIdentity](Protect-ZNUserIdentity.md)
@@ -887,6 +998,9 @@ Remove an asset manager of asset
 ### [Remove-ZNAssetOtmfaOutboundPolicy](Remove-ZNAssetOtmfaOutboundPolicy.md)
 Returns an empty object.
 
+### [Remove-ZNAssetOtrpcRule](Remove-ZNAssetOtrpcRule.md)
+Returns an empty object.
+
 ### [Remove-ZNAssetOutboundAllowRule](Remove-ZNAssetOutboundAllowRule.md)
 Returns an empty object.
 
@@ -895,6 +1009,12 @@ Returns an empty object.
 
 ### [Remove-ZNAssetRpcMonitoring](Remove-ZNAssetRpcMonitoring.md)
 Returns an empty object.
+
+### [Remove-ZNAssetRpcRule](Remove-ZNAssetRpcRule.md)
+Returns an empty object.
+
+### [Remove-ZNAssetRpcSegment](Remove-ZNAssetRpcSegment.md)
+Returns and empty object.
 
 ### [Remove-ZNCustomGroup](Remove-ZNCustomGroup.md)
 Returns an empty object.
@@ -929,6 +1049,9 @@ Returns an empty object.
 ### [Remove-ZNGroupsOutboundBlockRule](Remove-ZNGroupsOutboundBlockRule.md)
 Returns an empty object.
 
+### [Remove-ZNGroupsRpcRule](Remove-ZNGroupsRpcRule.md)
+Returns an empty object.
+
 ### [Remove-ZNIdentityRule](Remove-ZNIdentityRule.md)
 Returns an empty object.
 
@@ -952,6 +1075,9 @@ Returns an empty object.
 
 ### [Remove-ZNProtectionPolicy](Remove-ZNProtectionPolicy.md)
 Returns and empty object.
+
+### [Remove-ZNRpcRule](Remove-ZNRpcRule.md)
+Returns an empty object.
 
 ### [Remove-ZNSettingsAad](Remove-ZNSettingsAad.md)
 Remove Azure AD Settings
@@ -1007,10 +1133,10 @@ Returns a number of assets that are valid for identity segmentation.
 ### [Test-ZNAssetIdentityUnprotect](Test-ZNAssetIdentityUnprotect.md)
 Returns a number of assets that are valid to unprotect.
 
-### [Test-ZNAssetProtect](Test-ZNAssetProtect.md)
-Returns a number of assets that are valid for protection.
+### [Test-ZNAssetNetworkSegment](Test-ZNAssetNetworkSegment.md)
+Returns a number of assets that are valid for network segmentation.
 
-### [Test-ZNAssetUnprotect](Test-ZNAssetUnprotect.md)
+### [Test-ZNAssetNetworkUnprotect](Test-ZNAssetNetworkUnprotect.md)
 Returns a number of assets that are valid to unprotect.
 
 ### [Test-ZNMfaInboundPoliciesSimulate](Test-ZNMfaInboundPoliciesSimulate.md)
@@ -1019,13 +1145,13 @@ Returns a list of MFA policies that would match the simulaton.
 ### [Test-ZNMfaOutboundPoliciesSimulate](Test-ZNMfaOutboundPoliciesSimulate.md)
 Returns a list of outbound MFA policies that would match the simulation.
 
-### [Unprotect-ZNAsset](Unprotect-ZNAsset.md)
-Returns an empty object.
-
 ### [Unprotect-ZNAssetIdentity](Unprotect-ZNAssetIdentity.md)
 Returns an empty object.
 
-### [Unprotect-ZNAssetOt](Unprotect-ZNAssetOt.md)
+### [Unprotect-ZNAssetNetworkSegment](Unprotect-ZNAssetNetworkSegment.md)
+Returns an empty object.
+
+### [Unprotect-ZNAssetOtNetworkSegment](Unprotect-ZNAssetOtNetworkSegment.md)
 Returns an empty object.
 
 ### [Unprotect-ZNUserIdentity](Unprotect-ZNUserIdentity.md)
@@ -1067,11 +1193,17 @@ Edit an OT/IoT asset.
 ### [Update-ZNAssetOtMfaOutboundPolicy](Update-ZNAssetOtMfaOutboundPolicy.md)
 Updates an outbound MFA Policy.
 
+### [Update-ZNAssetOtRpcRule](Update-ZNAssetOtRpcRule.md)
+Updates an RPC rule.
+
 ### [Update-ZNAssetOutboundAllowRule](Update-ZNAssetOutboundAllowRule.md)
 Updates an outbound allow rule.
 
 ### [Update-ZNAssetOutboundBlockRule](Update-ZNAssetOutboundBlockRule.md)
 Updates an outbound block rule.
+
+### [Update-ZNAssetRpcRule](Update-ZNAssetRpcRule.md)
+Updates an RPC rule.
 
 ### [Update-ZNCustomGroup](Update-ZNCustomGroup.md)
 Updates a custom group properties.
@@ -1097,6 +1229,9 @@ Updates an outbound allow rule.
 ### [Update-ZNGroupsOutboundBlockRule](Update-ZNGroupsOutboundBlockRule.md)
 Updates an outbound block rule.
 
+### [Update-ZNGroupsRpcRule](Update-ZNGroupsRpcRule.md)
+Updates an RPC rule.
+
 ### [Update-ZNIdentityRule](Update-ZNIdentityRule.md)
 Updates an identity rule.
 
@@ -1121,6 +1256,9 @@ Updates an outbound block rule.
 ### [Update-ZNProtectionPolicy](Update-ZNProtectionPolicy.md)
 Returns the updated settings for the protection policy.
 
+### [Update-ZNRpcRule](Update-ZNRpcRule.md)
+Updates an RPC rule.
+
 ### [Update-ZNSettingsAd](Update-ZNSettingsAd.md)
 Update AD forest settings.
 
@@ -1135,6 +1273,18 @@ Get the Ansible settings in Asset Managment
 
 ### [Update-ZNSettingsAuth](Update-ZNSettingsAuth.md)
 Set the portal security settings
+
+### [Update-ZNSettingsBreakGlass](Update-ZNSettingsBreakGlass.md)
+Update break glass settings
+
+### [Update-ZNSettingsClientsTrustedInternet](Update-ZNSettingsClientsTrustedInternet.md)
+Set Clients Trusted Internet settings in System
+
+### [Update-ZNSettingsClientSubnet](Update-ZNSettingsClientSubnet.md)
+Update the Client Subnets settings in System
+
+### [Update-ZNSettingsClientsUntrustedInternet](Update-ZNSettingsClientsUntrustedInternet.md)
+Set Clients Untrusted Internet settings in System
 
 ### [Update-ZNSettingsClusterStrategy](Update-ZNSettingsClusterStrategy.md)
 Returns an empty response.
@@ -1195,6 +1345,12 @@ Returns the properties of the updated Mail Notifications settings.
 
 ### [Update-ZNSettingsPrivilegedPort](Update-ZNSettingsPrivilegedPort.md)
 Set Privileged Ports settings in Network segmentation
+
+### [Update-ZNSettingsServersTrustedInternet](Update-ZNSettingsServersTrustedInternet.md)
+Set Servers Trusted Internet settings in System
+
+### [Update-ZNSettingsServersUntrustedInternet](Update-ZNSettingsServersUntrustedInternet.md)
+Set Servers Untrusted Internet settings in System
 
 ### [Update-ZNSettingsTrustedInternetAddress](Update-ZNSettingsTrustedInternetAddress.md)
 Set Trusted Internet addresses settings in System

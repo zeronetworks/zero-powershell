@@ -22,23 +22,38 @@ Returns a list of candidates for user access config excluded assets.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List User Access Config Assets Candidates
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Get-ZNSettingsConnectUserAccessConfigAssetsCandidate
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+AssetStatus AssetType CreatedAt Description DirectMembersCount DistinguishedName Domain     Email FirstName Fqdn Guid
+----------- --------- --------- ----------- ------------------ ----------------- ------     ----- --------- ---- ----                   
+                                                                                 system                                                 
+                                                                                 posh.local                      502e6952-dccd-4496-bc6…
+                                                                                 posh.local                      fb6888e6-35db-4bd6-9fa…
+                                                                                 posh.local                      894d8d88-3ead-4029-9c8…
+                                                                                 posh.local                      27936def-758c-4995-88a…
+                                                                                 posh.local                      f627e13d-28e1-4344-96e…
+                                                                                 OT/IoT                          0c197f06-5693-445e-9eb…
+            2                                                                                                                           
+                                                                                 OT/IoT                          4c56f31e-9b7c-4cad-94a…
+                                                                                 OT/IoT                          86e00e6a-d9c5-4b50-aec…
+                                                                                 posh.local                      fb391482-287c-4462-920…
+                                                                                 posh.local                      b2e59d34-8cae-4e82-8a1…
+            2                                                                    posh.local                                             
+            0                                                                                                                           
+            0                                                                                                                           
+            0                                                                                                                           
+            0                                                                                                                           
+            0                                                                                                                           
+            0                                                                                                                           
+            0                                                                                                                           
+            0 
 ```
 
-{{ Add description here }}
+This cmdlet list User Access Configruation assets candidates.
 
 ## PARAMETERS
 
@@ -94,7 +109,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsOrGroupsListItemsItem
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsOrGroupsList
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

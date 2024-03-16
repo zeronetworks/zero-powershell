@@ -2,7 +2,9 @@
 ```powershell
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Domain -eq "tag"}
 Get-ZNGroupsMfaOutboundPolicy -Groupid $group.id -GroupType tag -AddBuiltins
+```
 
+```output
 SrcEntityInfos         SrcProcessNames SrcUserInfos DstEntityInfoName        DstPort DstProcessNames RuleDuration FallbackToLoggedOnUser MfaMethods
 --------------         --------------- ------------ -----------------        ------- --------------- ------------ ---------------------- ----------
 {All segmented assets} {*}             {Any user}   Segmented OT/IoT devices 80,443  {*}             6            True                   {4}
@@ -14,7 +16,9 @@ This cmdlet gets MFA policies for a specific group.
 ### Example 2: Get a specific MFA policy for a specific group
 ```powershell
 Get-ZNGroupsMfaOutboundPolicy -Groupid $group.id -GroupType tag -ReactivePolicyId 79b5ed54-16c7-45f1-9a5d-ea1022e1d710
+```
 
+```output
 DstEntityInfoAssetStatus     : 
 DstEntityInfoAssetType       : 
 DstEntityInfoDomain          : 

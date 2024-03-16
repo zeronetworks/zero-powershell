@@ -1,6 +1,9 @@
 ### Example 1: Update Connect client auto update
 ```powershell
 Update-ZNSettingsConnectClientAutoUpdate -ClientAutoUpdate:$true
+```
+
+```output
 
 ```
 

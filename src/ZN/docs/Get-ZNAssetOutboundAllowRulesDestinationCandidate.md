@@ -26,7 +26,9 @@ Returns a list of destination candidates for Outbound Allow rules.
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 (Get-ZNAssetOutboundAllowRulesDestinationCandidate -AssetId $asset).Items
+```
 
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
                                b:110001     Any asset

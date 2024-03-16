@@ -3,8 +3,9 @@
 $asset = Search-ZNAsset -fqdn WC01.posh.local
 $sourceasset = Search-ZNAsset -fqdn cs01.posh.local
 $portsList = New-ZNPortsList -Protocol ICMP
-New-ZNAssetInboundBlockRule -AssetId $asset -LocalEntityId $asset -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($sourceAsset) -State 1                                                                                                                  
-     
+New-ZNAssetInboundBlockRule -AssetId $asset -LocalEntityId $asset -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($sourceAsset) -State 1                                                                                                       ```
+
+```output
 ApprovedById               : 
 ApprovedByName             : 
 CreatedByEnforcementSource : 6

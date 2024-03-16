@@ -26,7 +26,9 @@ Returns a list of excluded destionation candidates for Inbound Allow rules.
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 (Get-ZNAssetInboundAllowRulesExcludedDestinationCandidate -AssetId $asset).Items
+```
 
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
 posh.local False               g:a:qu04AfTz Access Control Assistance Operators

@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNGroupsManagedAsset' {
     It 'List' {
-        $asset = Search-ZNAsset -Fqdn linux0.posh.local
+        $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         New-ZNCustomGroup -Name "GetGroupsManagedAssetTest"
         $customGroup = (Get-ZNGroup -Search GetGroupsManagedAssetTest).Items
         Add-ZNGroupsManagedAsset -GroupId $customGroup.Id -GroupType Custom -EntityIds @($asset)

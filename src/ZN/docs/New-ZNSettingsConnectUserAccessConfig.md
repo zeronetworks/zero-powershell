@@ -13,12 +13,14 @@ Create a Connect User Access Configuration in Settings
 ## SYNTAX
 
 ```
-New-ZNSettingsConnectUserAccessConfig -AllowedRegions <String[]> -ConnectivityStateAfterReboot <Int32>
- -DstEntityIdsList <String[]> -ForceSsoAuthentication -LoginAuthorizedEntityAllowedAssetIdsList <String[]>
- -LoginAuthorizedEntityAllowedAssetsSourcesList <String[]>
- -LoginAuthorizedEntityAllowedUsersIdsList <String[]> -Name <String> -SessionTtlHours <Int32>
- [-Description <String>] [-LoginAuthorizedEntityExcludedAssetIdsList <String[]>]
- [-LoginAuthorizedEntityExcludedUserIdsList <String[]>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-ZNSettingsConnectUserAccessConfig [-AllowedRegions <String[]>] [-ConnectivityStateAfterReboot <Int32>]
+ [-Description <String>] [-DstEntityIdsList <String[]>] [-ForceSsoAuthentication]
+ [-LoginAuthorizedEntityAllowedAssetIdsList <String[]>]
+ [-LoginAuthorizedEntityAllowedAssetsSourcesList <String[]>]
+ [-LoginAuthorizedEntityAllowedUsersIdsList <String[]>]
+ [-LoginAuthorizedEntityExcludedAssetIdsList <String[]>]
+ [-LoginAuthorizedEntityExcludedUserIdsList <String[]>] [-Name <String>] [-SessionTtlHours <Int32>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +33,6 @@ Create a Connect User Access Configuration in Settings
 $users = Get-ZNSettingsConnectUserAccessConfigCandidate | Where {$_.Name -eq 'zero'}
 $destinations = Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate | where {$_.Name -eq 'Internal subnets'}
 New-ZNSettingsConnectUserAccessConfig -DstEntityIdsList @($destinations.id) -MembersIdsList @($users.id) -Name UAC -SessionTtlHours 168
-
 ```
 
 This cmldet creates a User Access Config for Connect.
@@ -46,7 +47,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -61,7 +62,7 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -91,7 +92,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -106,7 +107,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -121,7 +122,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -136,7 +137,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,7 +152,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -196,7 +197,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -226,7 +227,7 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

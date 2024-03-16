@@ -2,7 +2,9 @@
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 (Get-ZNAssetOtmfaOutboundPoliciesSourceUserCandidate  -AssetId $otasset.id).Items
+```
 
+```output
 Domain     Id           Name
 ------     --           ----
            b:111001     Any user

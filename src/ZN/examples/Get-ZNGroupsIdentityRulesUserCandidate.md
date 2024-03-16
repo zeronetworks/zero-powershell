@@ -1,7 +1,9 @@
 ### Example 1: List user candidates for identity rules
 ```powershell
 Get-ZNGroupsIdentityRulesUserCandidate -GroupId g:t:01445453 -GroupType tag
+```
 
+```output
 Id           Name                                    Email Description DirectMembersCount Phone JobTitle LastLogon
 --           ----                                    ----- ----------- ------------------ ----- -------- ---------
 g:a:qu04AfTz Access Control Assistance Operators                                                         

@@ -26,7 +26,9 @@ Get manager candidates for asset managers
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 (Get-ZNAssetOtAssetManagersCandidate -AssetId $otasset.Id ).Items
+```
 
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
 posh.local False               g:a:qu04AfTz Access Control Assistance Operators

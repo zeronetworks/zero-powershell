@@ -33,7 +33,9 @@ Returns the properties of an outbound block rule.
 ```powershell
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Domain -eq "tag"}
 Get-ZNGroupsOutboundAllowRule -Groupid $group.Id -GroupType tag -AddBuiltins
+```
 
+```output
 CreatedAt     RemoteEntityInfos                           LocalEntityInfoName  Ruleclass ActivitiesCount Id                                   CreatedByEnforcementS
                                                                                                                                               ource
 ---------     -----------------                           -------------------  --------- --------------- --                                   ---------------------
@@ -47,7 +49,9 @@ This cmdlet gets rules for a specific group.
 ### Example 2: Get a specific rule for a specific group
 ```powershell
 Get-ZNGroupsOutboundBlockRule -Groupid $group.Id -GroupType tag -RuleId d69a32ec-a5ea-4915-a33f-297c6ec2ceec
+```
 
+```output
 ApprovedById               : 
 ApprovedByName             : 
 CreatedByEnforcementSource : 5
@@ -258,7 +262,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IRule
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IRuleItem
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IRulesList
 
 ## NOTES
 

@@ -13,18 +13,18 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNAssetOutboundAllowRule' {
     It 'List' { 
-        $asset = Search-ZNAsset -Fqdn linux0.posh.local
+        $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         [string]$ports = Get-Random -Minimum 1 -Maximum 65000
         $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
         $destination = (Get-ZNAssetOutboundAllowRulesDestinationCandidate -AssetId $asset -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNAssetOutboundAllowRule -AssetId $asset -LocalEntityId $asset -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination.id) -State 1 -ExpiresAt $expiresAt
         { (Get-ZNAssetOutboundAllowRule -AssetId $asset).Items } | Should -Not -Be $null
-        Remove-ZNAssetOutboundAllowRule -AssetId $asset -RuleId $rule.Id
+        Remove-ZNAssetOutboundAllowRule -AssetId $asset -RuleId $rule.Item.Id
     }
 
     It 'Get' {
-        $asset = Search-ZNAsset -Fqdn linux0.posh.local
+        $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         [string]$ports = Get-Random -Minimum 1 -Maximum 65000
         $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
         $destination = (Get-ZNAssetOutboundAllowRulesDestinationCandidate -AssetId $asset -search "any asset").Items

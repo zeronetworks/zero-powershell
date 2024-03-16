@@ -26,7 +26,9 @@ Returns a list of excluded assets candidates for Identity rules.
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local 
 Get-ZNAssetIdentityRulesExcludedAssetsCandidate -AssetId $asset
+```
 
+```output
 Id           Fqdn Name                                    Description DirectMembersCount IPV4Addresses IPV6Addresses Source AssetStatus ProtectionStat
                                                                                                                                         e
 --           ---- ----                                    ----------- ------------------ ------------- ------------- ------ ----------- --------------
@@ -116,7 +118,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsOrGroupsListItemsItem
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsOrGroupsList
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

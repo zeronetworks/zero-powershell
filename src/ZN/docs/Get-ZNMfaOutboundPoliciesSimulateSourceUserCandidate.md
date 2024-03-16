@@ -25,6 +25,9 @@ Returns a list of source users candidates on outbound MFA simulation.
 ### Example 1: Get possible source users for outbound MFA Policy simulation
 ```powershell
 (Get-ZNMfaOutboundPoliciesSimulateSourceUserCandidate).Items
+```
+
+```output
 Domain Id           Name
 ------ --           ----
        u:a:r6ZkL5Y0 Guest
@@ -40,6 +43,9 @@ This cmdlet will return possbile candidates for source users in an outbound MFA 
 ### Example 2: Search for a candidate
 ```powershell
 (Get-ZNMfaOutboundPoliciesSimulateSourceUserCandidate -Search zero).Items
+```
+
+```output
 Domain Id           Name
 ------ --           ----
        u:a:RVVXGo4w zero

@@ -3,7 +3,9 @@
 $rule = Get-ZNOutboundBlockRule | where {$_.Description -eq "Test Rule"}
 $rule.RemoteEntityIdsList += (Invoke-ZNEncodeEntityIP -IP 1.1.1.2)
 Update-ZNOutboundBlockRule -RuleId $rule.id -ExpiresAt $rule.ExpiresAt -LocalEntityId $rule.LocalEntityId -LocalProcessesList $rule.LocalProcessesList -PortsList $rule.PortsList -RemoteEntityIdsList $rule.RemoteEntityIdsList -State $rule.State -Description $rule.Description
+```
 
+```output
 ApprovedById               : 
 ApprovedByName             : 
 CreatedByEnforcementSource : 5

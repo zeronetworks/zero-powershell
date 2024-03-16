@@ -24,6 +24,9 @@ Returns a list of tags for an entity.
 ### Example 1: Get tags for an asset
 ```powershell
 Get-ZNAssetTag -AssetId a:a:ZgBWOMyc
+```
+
+```output
 CreatedAt     Description                                        DirectMembersCount Domain Guid                                 HasPro
                                                                                                                                 tectio
                                                                                                                                 nPolic
@@ -60,7 +63,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroup
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ITags
 
 ## NOTES
 

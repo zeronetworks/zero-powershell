@@ -1,7 +1,9 @@
 ### Example 1: List exclusion candidates for AT settings
 ```powershell
 (Get-ZNAiExclusionSourceCandidate).Items
+```
 
+```output
 AssetType Domain Id           Name        ProtectionState
 --------- ------ --           ----        ---------------
 0                a:l:K5ZTGaUI linux61067  1

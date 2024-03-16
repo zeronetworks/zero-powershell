@@ -25,7 +25,7 @@ Describe 'Update-ZNUserType' {
         { Update-ZNUserType -Comment "fix" -UserType $newType -UserIds @($user.Id) } | Should -Not -Throw
     }
     It 'UpdateExpanded' {
-        $user = (Get-ZNUser -Search user1).Items | where {$_.Name -eq "User1"}
+        $user = (Get-ZNUser).Items | select -first 1
         if($user.UserType -ne 1){
             $newType = 2
         } else {

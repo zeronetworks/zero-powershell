@@ -4,4 +4,8 @@ $forest = Get-ZNSettingsAd | where {$_.ActiveDirectoryInfoDomainName -eq "posh.l
 Remove-ZNSettingsAdSecondary -DomainId $forest.SecondaryDomains[0].Domain -ForestId $forest.ForestId
 ```
 
+```output
+
+```
+
 This cmdlet deletes a forest from AD settings.

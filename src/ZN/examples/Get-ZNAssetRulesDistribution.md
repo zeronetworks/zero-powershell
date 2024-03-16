@@ -2,7 +2,9 @@
 ```powershell
 $asset = Search-ZNAsset -Fqdn wc01.posh.local
 Get-ZNAssetRulesDistribution -AssetId $asset -RuleId d69a32ec-a5ea-4915-a33f-297c6ec2ceec -RuleDirection 2
+```
 
+```output
 ActivitiesCount Timestamp
 --------------- ---------
 0               1691798400000

@@ -25,6 +25,9 @@ Returns a list of MFA methods on outbound MFA policies.
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 Get-ZNAssetOtmfaOutboundPoliciesMfamethod  -AssetId $otasset.id        
+```
+
+```output
 1
 2
 4
@@ -57,9 +60,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Int32
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyMethods
 
 ## NOTES
 

@@ -24,7 +24,9 @@ Get the AD settings in Asset Managment
 ### Example 1: Get AD settings
 ```powershell
 Get-ZNSettingsAd
+```
 
+```output
 ForestId
 --------
 f:a:0bec706b
@@ -43,7 +45,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsAdForest
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsAdInfoResponse
 
 ## NOTES
 

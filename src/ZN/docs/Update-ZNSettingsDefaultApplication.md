@@ -13,7 +13,8 @@ Update the Default SSO Application settings in Identity Providers
 ## SYNTAX
 
 ```
-Update-ZNSettingsDefaultApplication -Application <Int32> [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsDefaultApplication [-Application <Int32>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +25,6 @@ Update the Default SSO Application settings in Identity Providers
 ### Example 1: Set the default application
 ```powershell
 Update-ZNSettingsDefaultApplication -Application 2
-
 ```
 
 This cmdlet updates the default application setting under Identity Providers.
@@ -40,7 +40,7 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

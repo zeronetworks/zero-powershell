@@ -13,9 +13,10 @@ Update AD forest settings.
 ## SYNTAX
 
 ```
-Update-ZNSettingsAd -ForestId <String> -PrimaryDomainConfigDomainControllerFqdn <String>
- -PrimaryDomainConfigDomainName <String> -PrimaryDomainConfigPassword <String> -PrimaryDomainConfigUseLdaps
- -PrimaryDomainConfigUserFqdn <String> -UsePrimaryUserForAllDomains [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsAd -ForestId <String> [-PrimaryDomainConfigDomainControllerFqdn <String>]
+ [-PrimaryDomainConfigDomainName <String>] [-PrimaryDomainConfigPassword <String>]
+ [-PrimaryDomainConfigUseLdaps] [-PrimaryDomainConfigUserFqdn <String>] [-UsePrimaryUserForAllDomains]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +28,6 @@ Update AD forest settings.
 ```powershell
 $forest = Get-ZNSettingsAd | where {$_.ActiveDirectoryInfoDomainName -eq "test.local"}
 Update-ZNSettingsAd -ForestId $forest.ForestId -ActiveDirectoryInfoDomainControllerFqdn "newdc.test.local" -ActiveDirectoryInfoDomainName $forest.ActiveDirectoryInfoDomainName -ActiveDirectoryInfoUseLdaps:$forest.ActiveDirectoryInfoUseLdaps -ActiveDirectoryInfoUsername $forest.ActiveDirectoryInfoUsername -SetActiveDirectoryInfoPasswordCleartext "newpassword"
-
 ```
 
 This cmdlet updates AD settings.
@@ -57,7 +57,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -72,7 +72,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -87,7 +87,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -102,7 +102,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -117,7 +117,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -132,7 +132,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

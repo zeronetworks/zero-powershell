@@ -3,6 +3,9 @@
 $trusted = Get-ZNSettingsTrustedInternetAddress
 $trusted += "1.2.3.5"                                                          
 Update-ZNSettingsTrustedInternetAddress -ExternalIpsList $trusted
+```
+
+```output
 
 ```
 

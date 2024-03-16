@@ -26,7 +26,9 @@ Returns a list of candidates for the excluded sources of an outbound MFA policy.
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 (Get-ZNAssetOtmfaOutboundPoliciesExcludedSourceCandidate -AssetId $otasset.id).Items
+```
 
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
 posh.local False               g:a:qu04AfTz Access Control Assistance Operators

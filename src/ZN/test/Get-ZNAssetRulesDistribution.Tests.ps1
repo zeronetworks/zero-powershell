@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNAssetRulesDistribution' {
     It 'Get' {
-        $asset = Search-ZNAsset -Fqdn linux0.posh.local
+        $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         $rule = Get-ZNAssetInboundAllowRule -AssetId $asset | select -First 1
         { Get-ZNAssetRulesDistribution -AssetId $asset -RuleId $rule.Id -RuleDirection $rule.Direction } | Should -Not -be $null
     }

@@ -1,6 +1,9 @@
 ### Example 1: Update AI learning config
 ```powershell
 Update-ZNSettingsLinuxSetup -AllowInstallPackages:$false
+```
+
+```output
 
 ```
 

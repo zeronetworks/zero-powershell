@@ -24,6 +24,9 @@ Get AI source entities to ignore during learning.
 ### Example 1: Get excluded source entities
 ```powershell
 Get-ZNAiExclusionSourceEntity
+```
+
+```output
 AssetType Domain     Id           Name ProtectionState
 --------- ------     --           ---- ---------------
 2         zero.labs a:a:8ErCHXe8 DC01 3
@@ -40,9 +43,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetBasicInfo
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPaths67UhudSettingsAiExclusionSrcEntitiesGetResponses200ContentApplicationJsonSchema
 
 ## NOTES
 

@@ -2,7 +2,9 @@
  settings
 ```powershell
 Get-ZNSettingsZpa
+```
 
+```output
 ClientOutboundSubnet GatewayIpsList IsEnabled PortsToMfaTcp PortsToMfaUdp
 -------------------- -------------- --------- ------------- -------------
                                     False                   

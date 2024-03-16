@@ -17,7 +17,7 @@ Describe 'Remove-ZNGroupsOutboundBlockRule' {
         $portsList = New-ZNPortsList -Protocol TCP -Ports (Get-Random -Minimum 1 -Maximum 1024)
         $destination = Invoke-ZNEncodeEntityIp -IP 8.8.8.8
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
-        $rule = New-ZNGroupsOutboundBlockRule -GroupId $group.id -GroupType tag -LocalEntityId $group.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt
-        { Remove-ZNGroupsOutboundBlockRule -GroupId $group.id -GroupType tag -RuleId $rule.Id} | Should -Not -Throw
+        $rule = New-ZNGroupsOutboundBlockRule -GroupId $group.id -GroupType tag -LocalEntityId $group.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination.id) -State 1 -ExpiresAt $expiresAt
+        { Remove-ZNGroupsOutboundBlockRule -GroupId $group.id -GroupType tag -RuleId $rule.Item.Id} | Should -Not -Throw
     }
 }

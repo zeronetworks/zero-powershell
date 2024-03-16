@@ -13,7 +13,7 @@ Edit an OT/IoT asset.
 ## SYNTAX
 
 ```
-Update-ZNAssetOt -AssetId <String> -DisplayName <String> -Type <Single> [-Confirm] [-WhatIf]
+Update-ZNAssetOt -AssetId <String> [-DisplayName <String>] [-Type <Single>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,6 @@ Edit an OT/IoT asset.
 ```powershell
 $asset = Search-ZNAsset -fqdn ot1777
 Update-ZNAssetsOt -AssetId $Id -DisplayName 'NewName' -Type 4
-
 ```
 
 This cmdlet updates an OT asset.
@@ -56,7 +55,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -71,7 +70,7 @@ Type: System.Single
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

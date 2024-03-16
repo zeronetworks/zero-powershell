@@ -192,7 +192,7 @@ function Update-ZNAssetIdentityRule {
                 $updatedRule.ExcludedAssetIdsList = $rule.ItemExcludedAssetIdsList
                 $null = $PSBoundParameters.Remove('ExcludedAssetIdsList')
             }
-            Write-Debug $updatedRule | Out-String
+            #Write-Debug $updatedRule | Out-String
             $null = $PSBoundParameters.Add('Body', $updatedRule)
             ZeroNetworks.internal\Update-ZNAssetIdentityRule @PSBoundParameters
         }

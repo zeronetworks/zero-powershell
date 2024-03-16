@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNAssetOtAssetManager'
 
 Describe 'Remove-ZNAssetOtAssetManager' {
     It 'Delete' {
-        $asset = Search-ZNAsset -Fqdn switch01
+        $asset= (Search-ZNAsset -Fqdn switch01).AssetId
         $user = (Get-ZNUser).Items | Select -First 1
         Add-ZNAssetOtAssetManager -AssetId $asset -ManagerIds @($user.Id)
         { Remove-ZNAssetOtAssetManager -AssetId $asset -GroupOrUserId $user.Id } | Should -Not -Throw

@@ -3,4 +3,8 @@
 Unprotect-ZNUserIdentity -UserIds @("u:a:mACDNWcW")
 ```
 
+```output
+
+```
+
 This cmdlet moves a service account from segmented to not segmented.

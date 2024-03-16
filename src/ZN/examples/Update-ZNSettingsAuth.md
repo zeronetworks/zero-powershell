@@ -1,6 +1,9 @@
 ### Example 1: Update Portal session timeout
 ```powershell
 Update-ZNSettingsAuth -PortalTokenTtl 10080
+```
+
+```output
 
 ```
 

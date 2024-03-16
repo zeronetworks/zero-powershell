@@ -12,10 +12,10 @@ Create an push notifications settings
 
 ## SYNTAX
 
-### CreateMSFT (Default)
+### CreateExpanded (Default)
 ```
-New-ZNSettingsPushNotification -PushIdentityProviderId <String> -SecretKey <String> -TenantId <String>
- [<CommonParameters>]
+New-ZNSettingsPushNotification -PushIdentityProviderId <String> [-Host1 <String>] [-Id <String>]
+ [-IdentityProvider <String>] [-SecretKey <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateDuo
@@ -24,10 +24,10 @@ New-ZNSettingsPushNotification -PushIdentityProviderId <String> -ApiHostname <St
  -SecretKey <String> [<CommonParameters>]
 ```
 
-### CreateExpanded
+### CreateMSFT
 ```
-New-ZNSettingsPushNotification -PushIdentityProviderId <String> -Id <String> -IdentityProvider <String>
- -SecretKey <String> [-Host1 <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-ZNSettingsPushNotification -PushIdentityProviderId <String> -SecretKey <String> -TenantId <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +89,7 @@ Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -104,7 +104,7 @@ Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

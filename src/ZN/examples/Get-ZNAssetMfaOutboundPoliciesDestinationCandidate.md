@@ -2,7 +2,9 @@
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 (Get-ZNAssetMfaOutboundPoliciesDestinationCandidate -AssetId $asset).Items
+```
 
+```output
 Domain HasProtectionPolicy Id           Name
 ------ ------------------- --           ----
                            g:s:17445453 Segmented OT/IoT devices

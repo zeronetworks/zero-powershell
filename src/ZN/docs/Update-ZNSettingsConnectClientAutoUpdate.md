@@ -13,7 +13,7 @@ Set Connect client auto update settings
 ## SYNTAX
 
 ```
-Update-ZNSettingsConnectClientAutoUpdate -ClientAutoUpdate [-PassThru] [-Confirm] [-WhatIf]
+Update-ZNSettingsConnectClientAutoUpdate [-ClientAutoUpdate] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,6 @@ Set Connect client auto update settings
 ### Example 1: Update Connect client auto update
 ```powershell
 Update-ZNSettingsConnectClientAutoUpdate -ClientAutoUpdate:$true
-
 ```
 
 This cmdlet updates the setting for Connect client auto updates.
@@ -40,7 +39,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

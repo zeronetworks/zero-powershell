@@ -16,11 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-ZNAssetIdentityProtect')
 
 Describe 'Test-ZNAssetIdentityProtect' {
     It 'ValidateExpanded' {
-        $asset = Search-ZNAsset -Fqdn dc01.posh.local
-        Test-ZNAssetIdentityProtect -AssetId $asset | Should -Be 1
+        $asset= (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
+        (Test-ZNAssetIdentityProtect -AssetId $asset).AffectedAssetsCount | Should -Be 1
     }
     It 'Validate' {
-        $asset = Search-ZNAsset -Fqdn dc01.posh.local
-        Test-ZNAssetIdentityProtect -Items @($asset) | Should -Be 1
+        $asset= (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
+        (Test-ZNAssetIdentityProtect -Items @($asset)).AffectedAssetsCount | Should -Be 1
     }
 }

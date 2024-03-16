@@ -4,7 +4,9 @@ $asset = Search-ZNAsset -fqdn wc01.posh.local
 $mfaPolicy = Get-ZNAssetMfaInboundPolicy -AssetId $asset -ReactivePolicyId d6e8392a-b1c8-4fa2-ae36-8093b86b0860
 $mfaPolicy.ItemDstPort = $mfaPolicy.ItemDstPort+,",24"
 Update-ZNAssetMfaInboundPolicy -AssetId $asset -ReactivePolicyId $mfaPolicy.ItemId -DstPort $mfaPolicy.ItemDstPort
+```
 
+```output
 DstEntityInfoAssetStatus     : 7
 DstEntityInfoAssetType       : 1
 DstEntityInfoDomain          : posh.local

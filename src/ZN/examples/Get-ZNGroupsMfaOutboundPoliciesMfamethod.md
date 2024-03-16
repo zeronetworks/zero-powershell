@@ -2,6 +2,9 @@
 ```powershell
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Domain -eq "tag"}
 Get-ZNGroupsMfaOutboundPoliciesMfamethod -Groupid $group.id -GroupType tag        
+```
+
+```output
 2
 4
 5

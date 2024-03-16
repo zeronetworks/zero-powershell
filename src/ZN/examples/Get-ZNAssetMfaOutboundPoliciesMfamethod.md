@@ -2,6 +2,9 @@
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 Get-ZNAssetMfaOutboundPoliciesMfamethod -AssetId $asset        
+```
+
+```output
 1
 2
 4

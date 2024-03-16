@@ -25,6 +25,9 @@ Returns a list of candidates for custom group membership.
 ### Example 1: List custom group candidates
 ```powershell
 Get-ZNCustomGroupsCandidate
+```
+
+```output
 Id           Name                                      Description DirectMembersCount
 --           ----                                      ----------- ------------------
 g:a:qu04AfTz Access Control Assistance Operators                   

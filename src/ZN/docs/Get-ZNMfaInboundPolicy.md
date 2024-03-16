@@ -31,6 +31,9 @@ Returns a inbound MFA policy object.
 ### Example 1: List inbound MFA policies
 ```powershell
 Get-ZNMfaInboundPolicy
+```
+
+```output
 CreatedAt     CreatedBy                                  CreatedByName Description DstPort DstProcessNames FallbackToLoggedOnUser Id                                   MfaMethods   ProtocolType RuleDuration Src
                                                                                                                                                                                                               Pro
                                                                                                                                                                                                               ces
@@ -49,7 +52,12 @@ This cmdlet gets inbound MFA policies from the environment.
 ### Example 2: Get a specific inbound MFA policy
 ```powershell
 Get-ZNMfaInboundPolicy -ReactivePolicyId "f68d322c-1cb0-451d-aff2-c920a1a17333"
-ItemAdditionalPortsList    : {}
+I```
+
+```
+
+```output
+temAdditionalPortsList    : {}
 ItemCreatedAt              : 1649105796514
 ItemCreatedBy              : 1f352ed0-86f1-454f-90a5-592c197c8000
 ItemCreatedByName          : Zero Networks
@@ -187,7 +195,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicy
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyList
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyResponse
 
 ## NOTES
 

@@ -1,6 +1,9 @@
 ### Example 1: Update a user type.
 ```powershell
 Update-ZNUserType -UserId u:a:4UydfhAS -UserType 3 -Comment "wrong"
+```
+
+```output
 
 ```
 

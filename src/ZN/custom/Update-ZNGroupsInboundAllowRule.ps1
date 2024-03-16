@@ -136,7 +136,8 @@ function Update-ZNGroupsInboundAllowRule {
             $groupId = $PSBoundParameters['GroupId'].ToString()
             $groupType = $PSBoundParameters['GroupType'].ToString()
             $rule = ZeroNetworks\Get-ZNGroupsInboundAllowRule -GroupId $groupId -GroupType $groupType -RuleId $ruleId
-
+            $rule = $rule.Item
+            
             $updatedRule = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.RuleBody]::new()
             
             if($PSBoundParameters['LocalEntityId']){
@@ -211,7 +212,7 @@ function Update-ZNGroupsInboundAllowRule {
                 $updatedRule.Description = $rule.Description
                 $null = $PSBoundParameters.Remove('Description')
             }
-            Write-Debug $updatedRule | Out-String
+            #Write-Debug $updatedRule | Out-String
             $null = $PSBoundParameters.Add('Body', $updatedRule)
             ZeroNetworks.internal\Update-ZNGroupsInboundAllowRule @PSBoundParameters
         }

@@ -24,7 +24,9 @@ Given fqdn, returns assetId, if asset is found and is protected
 ### Example 1: Find a segmented asset by FQDN
 ```powershell
 Search-ZNAssetProtected -Fqdn dc1.zero.labs
+```
 
+```output
 a:a:ZgBWOMyc
 ```
 
@@ -54,7 +56,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetSearchResponse
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

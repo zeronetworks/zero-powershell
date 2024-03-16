@@ -18,7 +18,7 @@ Describe 'Add-ZNCustomGroupsMember' {
     It 'AddExpanded' {
         New-ZNCustomGroup -Name "AddMemberTest"
         $customGroup = (Get-ZNGroup -Search AddMemberTest).Items
-        $member = Search-ZNAsset -Fqdn linux0.posh.local
+        $member= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         Add-ZNCustomGroupsMember -GroupId $customGroup.Id -MembersId $member
         $updatedcustomGroup = Get-ZNGroup -Search AddMemberTest
         (Get-ZNGroupsMember -GroupId $customGroup.id -GroupType custom -IncludeNestedMembers).Entities[0].id | Should -Be $member

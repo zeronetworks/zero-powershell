@@ -25,7 +25,9 @@ Returns the properties of an OT asset.
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 Get-ZNAssetOt -AssetId $otasset.Id
+```
 
+```output
 EntityAssetStatus     : 5
 EntityAssetType       : 4
 EntityDomain          : 
@@ -65,7 +67,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetOt
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetOtResponse
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

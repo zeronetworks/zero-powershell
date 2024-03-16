@@ -25,6 +25,9 @@ Get managed assets for group
 ### Example 1: List managed assets for a group
 ```powershell
 Get-ZNGroupsManagedAsset -GroupId g:a:cai6Wuyd -GroupType AD
+```
+
+```output
 EntityId     Relation
 --------     --------
 g:t:01445453 1
@@ -103,7 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IManagedAsset
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IManagedAssetsList
 
 ## NOTES
 

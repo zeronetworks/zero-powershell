@@ -1,6 +1,9 @@
 ### Example 1: Resync Azure AD
 ```powershell
 Invoke-ZNResyncAzureAd
+```
+
+```output
 
 ```
 

@@ -2,6 +2,9 @@
 ```powershell
 $region = Get-ZNSettingsConnectRegion | where {$_.Name -eq "TestRegion"}
 Remove-ZNSettingsConnectRegion -RegionId $region.Id
+```
+
+```output
 
 ```
 

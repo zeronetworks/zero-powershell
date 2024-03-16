@@ -4,6 +4,9 @@ $portsList = New-ZNPortsList -Protocol TCP -Ports "53"
 $source = (Get-ZNOutboundAllowRulesSourceCandidate -search "all protected assets").Items
 $destination = Invoke-ZNEncodeEntityIp -IP 8.8.8.8
 New-ZNOutboundAllowRule -LocalEntityId $destination.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1
+```
+
+```output
 CreatedByEnforcementSource : 0
 CreatedById                : m:86786c2f022cf2bd7dc38f165c98b4ee736c8c3b
 CreatedByName              : PowerShell

@@ -13,8 +13,8 @@ Update identity provider settings in Identity Providers
 ## SYNTAX
 
 ```
-Update-ZNSettingsIdp -IdentityProviderId <String> -Certificate <String> -IdentityProvider <String> -IsDefault
- -SloUrl <String> -SsoUrl <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsIdp -IdentityProviderId <String> [-Certificate <String>] [-IdentityProvider <String>]
+ [-IsDefault] [-SloUrl <String>] [-SsoUrl <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,9 @@ Update identity provider settings in Identity Providers
 ```powershell
 $azure = Get-ZNIdpSetting | where {$_.IdentityProviderType -eq "azure"}
 Update-ZNIdpSetting -IdentityProviderId $azure.IdentityProviderType -Certificate $azure.Certificate -IdentityProvider $azure.IdentityProviderType -SloUrl $azure.SloUrl -SsoUrl $azure.SsoUrl -IsDefault
+```
 
+```output
 Certificate
 -----------                                                                                                                                                                                                                                                                       
 MIIC8DCCA..
@@ -44,7 +46,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -59,7 +61,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -89,7 +91,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -104,7 +106,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -119,7 +121,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

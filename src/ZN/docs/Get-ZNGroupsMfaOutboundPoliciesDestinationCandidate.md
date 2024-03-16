@@ -26,7 +26,9 @@ Returns a list of destination candidates on outbound MFA policies.
 ```powershell
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Domain -eq "tag"}
 (Get-ZNGroupsMfaOutboundPoliciesDestinationCandidate -Groupid $group.id -GroupType tag).Items                 
-       
+```
+
+```output
 Domain HasProtectionPolicy Id           Name
 ------ ------------------- --           ----
                            g:s:17445453 Segmented OT/IoT devices

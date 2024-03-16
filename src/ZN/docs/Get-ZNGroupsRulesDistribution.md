@@ -26,7 +26,9 @@ Returns an object with rules distribution.
 ```powershell
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Domain -eq "tag"}
 Get-ZNGroupsRulesDistribution -GroupId $group.Id -GroupType tag -RuleId 6764bd86-f3c6-4949-a827-64e1499b1b86 -RuleDirection 1
+```
 
+```output
 ActivitiesCount Timestamp
 --------------- ---------
 667             1692057600000
@@ -133,9 +135,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IDistribution
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IRuleDistribution
 
 ## NOTES
 

@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Remove-ZNAssetOtmfaOutboundPolicy' {
     It 'Delete' {
-        $asset = Search-ZNAsset -Fqdn "switch01"
+        $asset= (Search-ZNAsset -Fqdn "switch01").AssetId
         $source = (Get-ZNAssetOtMfaOutboundPoliciesSourceCandidate -AssetId $asset -search "All segmented Assets").Items
         $sourceEntity = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyOutboundBodySrcEntityInfosItem]::new()
         $sourceEntity.Id = $source.Id

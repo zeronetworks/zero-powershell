@@ -2,7 +2,9 @@
 ```powershell
 $forest = Get-ZNSettingsAd
 (Get-ZNSettingsAdProtectedCandidate -ForestId $forest.ForestId).Items
+```
 
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
 posh.local False               g:a:qu04AfTz Access Control Assistance Operators

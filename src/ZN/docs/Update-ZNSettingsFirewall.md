@@ -13,7 +13,7 @@ Returns the properties of the updated Firewall settings.
 ## SYNTAX
 
 ```
-Update-ZNSettingsFirewall -ImplicitIcmpRuleEnabled [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsFirewall [-ImplicitIcmpRuleEnabled] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,6 @@ Returns the properties of the updated Firewall settings.
 ### Example 1: Update implicit ICMP settings
 ```powershell
 Update-ZNSettingsFirewall -ImplicitIcmpRuleEnabled:$false
- 
 ```
 
 This cmdlet gets the Firewall - Create implicit ICMP rules setting.
@@ -40,7 +39,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

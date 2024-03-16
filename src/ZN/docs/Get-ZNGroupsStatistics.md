@@ -24,7 +24,10 @@ Returns an object with group statistics.
 ### Example 1: Get group statistics
 ```powershell
 Get-ZNGroupsStatistics
-GroupStatisticsAdGroupsCount GroupStatisticsCustomGroupsCount GroupStatisticsProtectionPoliciesCount
+```
+
+```output
+roupStatisticsAdGroupsCount GroupStatisticsCustomGroupsCount GroupStatisticsProtectionPoliciesCount
 ---------------------------- -------------------------------- --------------------------------------
                           50                                1                                      0
 ```
@@ -42,7 +45,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroupsStatisticsGroupStatistics
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroupsStatistics
 
 ## NOTES
 

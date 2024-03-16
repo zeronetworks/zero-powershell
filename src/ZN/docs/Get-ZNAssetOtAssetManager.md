@@ -25,7 +25,9 @@ Get asset managers of asset
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 Get-ZNAssetOtAssetManager -AssetId $otasset.Id 
+```
 
+```output
 ManagerId    Relation
 ---------    --------
 g:a:cai6Wuyd 1
@@ -89,7 +91,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IManager
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IManagersList
 
 ## NOTES
 

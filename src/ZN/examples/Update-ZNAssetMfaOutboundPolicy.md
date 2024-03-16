@@ -4,7 +4,9 @@ $asset = Search-ZNAsset -fqdn ot1777
 $mfaPolicy = Get-ZNAssetMfaOutboundPolicy -AssetId $asset -ReactivePolicyId 58591671-003e-4b02-87ae-d696d87d732f
 $mfaPolicy.ItemDstPort = $mfaPolicy.ItemDstPort+,",24"
 Update-ZNAssetMfaOutboundPolicy -AssetId $asset -ReactivePolicyId $mfaPolicy.ItemId -DstPort $mfaPolicy.ItemDstPort
+```
 
+```output
 DstEntityInfoAssetStatus     : 5
 DstEntityInfoAssetType       : 4
 DstEntityInfoDomain          : 

@@ -26,7 +26,9 @@ Returns a list of source candidates for outbound block rules.
 ```powershell
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Domain -eq "tag"}
 (Get-ZNGroupsOutboundBlockRulesSourceCandidate -Groupid $group.id -GroupType tag).Items        
+```
 
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
                                b:110002     All segmented assets

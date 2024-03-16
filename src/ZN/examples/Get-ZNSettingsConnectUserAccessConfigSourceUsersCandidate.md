@@ -1,7 +1,9 @@
 ### Example 1: List possible source candidates
 ```powershell
 Get-ZNSettingsConnectUserAccessConfigSourceUsersCandidate        
+```
 
+```output
 CreatedAt     Description                                                                DirectMembersCount DistinguishedName                                      Domain
 ---------     -----------                                                                ------------------ -----------------                                      ------
                                                                                                                                                                          

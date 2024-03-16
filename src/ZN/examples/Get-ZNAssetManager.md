@@ -2,7 +2,9 @@
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 Get-ZNAssetManager -AssetId $asset
+```
 
+```output
 ManagerId    Relation
 ---------    --------
 g:a:cai6Wuyd 3

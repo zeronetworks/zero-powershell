@@ -21,9 +21,9 @@ Describe 'Update-ZNGroupsInboundAllowRule' {
         $rule = New-ZNGroupsInboundAllowRule -GroupId $group.id -GroupType tag -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
         
         $newdescription = "new description " + (Get-Random -Minimum 1 -Maximum 100)
-        Update-ZNGroupsInboundAllowRule -GroupId $group.id -GroupType tag -RuleId $rule.Id -Description $newdescription
-        $updatedRule = Get-ZNGroupsInboundAllowRule -GroupId $group.id -GroupType tag -RuleId $rule.Id
-        $updatedRule.Description | Should -Be $newdescription
-        Remove-ZNInboundAllowRule -RuleId $rule.Id
+        Update-ZNGroupsInboundAllowRule -GroupId $group.id -GroupType tag -RuleId $rule.Item.Id -Description $newdescription
+        $updatedRule = Get-ZNGroupsInboundAllowRule -GroupId $group.id -GroupType tag -RuleId $rule.Item.Id
+        $updatedRule.Item.Description | Should -Be $newdescription
+        Remove-ZNInboundAllowRule -RuleId $rule.Item.Id
     }
 }

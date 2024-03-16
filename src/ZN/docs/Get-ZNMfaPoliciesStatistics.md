@@ -24,6 +24,9 @@ Returns an object with MFA statistics.
 ### Example 1: Get MFA policy statistics
 ```powershell
 Get-ZNMfaPoliciesStatistics
+```
+
+```output
 3
 ```
 
@@ -40,7 +43,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePoliciesStatisticsReactivePoliciesStatistics
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePoliciesStatistics
 
 ## NOTES
 

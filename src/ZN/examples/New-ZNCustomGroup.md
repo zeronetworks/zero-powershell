@@ -1,6 +1,9 @@
 ### Example 1: Create a custom group
 ```powershell
 New-ZNCustomGroup -Name "test3" -Description "test custom group"
+```
+
+```output
 
 ```
 

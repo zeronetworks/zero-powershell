@@ -20,7 +20,7 @@ Describe 'Remove-ZNOutboundBlockRule' {
         $source = (Get-ZNOutboundAllowRulesSourceCandidate -search "all segmented assets").Items
         $destination = Invoke-ZNEncodeEntityIp -IP 1.2.3.4
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
-        $rule = New-ZNOutboundBlockRule -LocalEntityId $source.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt
-        { Remove-ZNOutboundBlockRule -RuleId $rule.Id } | Should -Not -Throw
+        $rule = New-ZNOutboundBlockRule -LocalEntityId $source.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination.id) -State 1 -ExpiresAt $expiresAt
+        { Remove-ZNOutboundBlockRule -RuleId $rule.Item.Id } | Should -Not -Throw
     }
 }

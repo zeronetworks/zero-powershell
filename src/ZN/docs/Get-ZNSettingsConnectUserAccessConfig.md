@@ -24,6 +24,9 @@ List Connect User Access Configurations in Settings
 ### Example 1: List Connect User access configurations
 ```powershell
 Get-ZNSettingsConnectUserAccessConfig                      
+```
+
+```output
 CreatedAt     Description ForceSsoAuthentication Id           Name    SessionTtlHours
 ---------     ----------- ---------------------- --           ----    ---------------
 1685733928254             True                   v:a:0IoMjM9F Default 48
@@ -70,7 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IConnectUserAccessConfig
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IConnectUserAccessConfigList
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

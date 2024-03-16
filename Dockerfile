@@ -1,5 +1,5 @@
 FROM mcr.microsoft.com/powershell:lts-7.2-ubuntu-18.04
-
+#FROM mcr.microsoft.com/powershell
 # Install dependencies and clean up
 RUN apt-get update \
     && apt-get install -y curl \

@@ -24,7 +24,9 @@ Get the linux user settings in Asset Managment
 ### Example 1: Get Linux user settings
 ```powershell
 Get-ZNSettingsLinuxUser
+```
 
+```output
 zn-admin
 ```
 
@@ -39,9 +41,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsLinuxUser
 
 ## NOTES
 

@@ -1,6 +1,9 @@
 ### Example 1: List internal subnet settings
 ```powershell
 Get-ZNSettingsInternalSubnet
+```
+
+```output
 10.0.0.0/8
 100.64.0.0/10
 169.254.0.0/16

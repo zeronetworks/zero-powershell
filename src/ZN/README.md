@@ -32,7 +32,7 @@ require:
 input-file:
   - $(this-folder)/../openapi.yaml
 
-module-version: 0.0.8-preview
+module-version: 0.0.11-preview
 title: Api
   
 inlining-threshold: 50
@@ -643,7 +643,7 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^AddViaIdentity$|^AddViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DeleteViaIdentity$|^DeleteViaIdentityExpanded$|^Extend$|^Extend1$|^ExtendViaIdentity$|^ExtendViaIdentityExpanded$|^GetViaIdentity$|^Learn$|^LearnViaIdentity$|^LearnViaIdentityExpanded$|^ProtectViaIdentity$|^Queue$|^Queue1$|^QueueViaIdentity$|^QueueViaIdentityExpanded$|^RevokeViaIdentity$|^SetViaIdentity$|^SetViaIdentityExpanded$|^UnprotectViaIdentity$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|^ValidateViaIdentity$
+      variant: ^Activate$|^ActivateViaIdentity$|^ActivateViaIdentityExpanded$|^AddViaIdentity$|^AddViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Deactivate$|^DeactivateViaIdentity$|^DeactivateViaIdentityExpanded$|^DeleteViaIdentity$|^DeleteViaIdentityExpanded$|^Extend$|^Extend1$|^ExtendViaIdentity$|^ExtendViaIdentityExpanded$|^GetViaIdentity$|^Learn$|^LearnViaIdentity$|^LearnViaIdentityExpanded$|^ProtectViaIdentity$|^Queue$|^Queue1$|^QueueViaIdentity$|^QueueViaIdentityExpanded$|^RevokeViaIdentity$|^SetViaIdentity$|^SetViaIdentityExpanded$|^UnprotectViaIdentity$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|^ValidateViaIdentity$
     remove: true
   - where:
       subject: ^CustomGroupsMember$|^TagGroupsMember$
@@ -684,63 +684,121 @@ directive:
   - where:
       subject: SettingsAdSyncInfo
     hide: true
+  # Hide remove ot (Not implemneted)
+  - where:
+      verb: Remove
+      subject: AssetOt
+    hide: true
+  # Hide (Not Implemented)
+  - where:
+      subject: SettingsAssetManager
+      verb: ^Add$|^Remove$
+    hide: true
+  # Hide (Not Implemented)
+  - where:
+      subject: AuthLogout
+      verb: Invoke
+    hide: true
+  # Hide (Not Implemented)
+  - where:
+      subject: InvokeAssetRetryHealth
+      verb: Invoke
+    hide: true
+  - where:
+      subject: ^AssetsScriptsPowerShellTestUdpNetConnection$|^AssetsScriptsPythonTestUdpNetConnection$|^FixAssetScriptWmi$|^FixAssetsScriptWmi$
+    remove: true
+  # Hide Rule History (not useful)
+  - where:
+      subject: (.*)RulesHistory$
+    hide: true
+  # Hide profile cmdlets
+  - where:
+      subject: ^ProfileEnvironment$|^Profile$
+    hide: true
+  # Hide Not useful for OT assets
+  - where:
+      subject: ^AssetOtIdentityRule$|^AssetOtIdentityRulesAssetsCandidate$|^AssetOtIdentityRulesExcludedAssetsCandidate$|^AssetOtIdentityRulesUserCandidate$|^AssetOtInboundAllowRule$|^AssetOtInboundAllowRulesDestinationCandidate$|^AssetOtInboundAllowRulesExcludedDestinationCandidate$|^AssetOtInboundAllowRulesSourceCandidate$|^AssetOtInboundBlockRule$|^AssetOtInboundBlockRulesDestinationCandidate$|^AssetOtInboundBlockRulesExcludedDestinationCandidate$|^AssetOtInboundBlockRulesSourceCandidate$|^AssetOtmfaInboundPoliciesDestinationCandidate$|^AssetOtmfaInboundPoliciesExcludedSourceCandidate$|^AssetOtmfaInboundPoliciesMfamethod$|^AssetOtmfaInboundPoliciesSourceCandidate$|^AssetOtmfaInboundPoliciesSourceUserCandidate$|^AssetOtmfaInboundPolicy$|^AssetOtOutboundAllowRule$|^AssetOtOutboundAllowRulesDestinationCandidate$|^AssetOtOutboundAllowRulesExcludedSourceCandidate$|^AssetOtOutboundAllowRulesSourceCandidate$|^AssetOtOutboundBlockRule$|^AssetOtOutboundBlockRulesDestinationCandidate$|^AssetOtOutboundBlockRulesExcludedSourceCandidate$|^AssetOtOutboundBlockRulesSourceCandidate$
+    hide: true
+  # Remove APIs that require Human access
+  - where:
+      subject: AccessToken
+    remove: true
+  - where:
+      subject: CloudConnectorAccessToken
+    remove: true
+  - where:
+      subject: ServiceNowAccessToken
+    remove: true
   # Rename Queue Commands
   - where:
-      subject: LearnAssetQueue
+      subject: QueueAssetsNetwork
     set:
-      subject: AssetQueue
+      subject: AssetNetworkQueue
   - where:
-      subject: LearnAssetExtendQueue
+      subject: QueueAssetNetwork
     set:
-      subject: AssetExtendQueue
+      subject: AssetNetworkQueue
   - where:
-      subject: AssetQueueAsset
+      subject: QueueAssetExtendNetwork
     set:
-      subject: AssetQueue
+      subject: AssetNetworkExtendQueue
   - where:
-      subject: QueueAsset
+      subject: QueueAssetsExtendNetwork
     set:
-      subject: AssetQueue
+      subject: AssetNetworkExtendQueue
   - where:
-      subject: ExtendAssetQueue
+      subject: QueueAssetOtNetwork
     set:
-      subject: AssetExtendQueue
+      subject: AssetOtNetworkQueue
   - where:
-      subject: QueueAssetOt
+      subject: QueueAssetsOtNetwork
     set:
-      subject: AssetOtQueue
+      subject: AssetOtNetworkQueue
   - where:
-      subject: QueueUserIdentity
+      subject:  QueueAssetOtExtendNetwork
+    set:
+      subject: AssetOtNetworkExtendQueue
+  - where:
+      subject: QueueAssetsOtExtendNetwork
+    set:
+      subject: AssetOtNetworkExtendQueue
+  - where:
+      subject: QueueUsersIdentity
     set:
       subject: UserIdentityQueue
-  # rename asset/ot/user protect/unprotect commands
+  # rename asset/ot/user queue/protect/unprotect commands
   - where:
-      subject: AssetsOt
+      subject: AssetsOtNetworkSegment
       variant: ^Protect$|^Unprotect$
     hide: true
   - where:
-      subject: AssetsOt
+      subject: AssetsOtNetworkSegment
       verb: ^Protect$|^Unprotect$
     set:
-      subject: AssetOt
+      subject: AssetOtNetworkSegment
   - where:
-      subject: Asset
+      subject: AssetsNetworkSegment
       variant: ^Protect$|^Unprotect$
     hide: true
+  - where:
+      subject: AssetsNetworkSegment
+      verb: ^Protect$|^Unprotect$
+    set:
+      subject: AssetNetworkSegment
   - where:
       subject: ^AssetsProtect$|^AssetsUnprotect$
       variant: Validate
     hide: true
   - where:
-      subject: AssetsProtect
+      subject: AssetsNetworkSegment
       verb: Test
     set:
-      subject: AssetProtect
+      subject: AssetNetworkSegment
   - where:
-      subject: AssetsUnprotect
+      subject: AssetsNetworkUnprotect
       verb: Test
     set:
-      subject: AssetUnprotect
+      subject: AssetNetworkUnprotect
   - where:
       subject: UsersIdentity
       variant: ^Protect$|^Unprotect$
@@ -785,9 +843,9 @@ directive:
       verb: Update
     set:
       subject: UserType
-  #combine rpc-monitor
+  #combine rpc monitor/segment
   - where:
-      subject: AssetsRpcMonitoring
+      subject: ^AssetsRpcMonitoring|^AssetRpcSegment$
       variant: ^Add$|^Delete$
     remove: true
   - where:
@@ -796,6 +854,18 @@ directive:
       subject: AssetRpcMonitoring
   - where:
       subject: AssetRpcMonitoring
+      variant: Add
+    hide: false
+  - where:
+      subject: AssetsRpcSegment
+      variant: ^Add$|^Delete$
+    remove: true
+  - where:
+      subject: AssetsRpcSegment
+    set:
+      subject: AssetRpcSegment
+  - where:
+      subject: AssetRpcSegment
       variant: Add
     hide: false
   #Combine Active/Inactive
@@ -813,6 +883,17 @@ directive:
       variant: SetExpanded
     set:
       subject: AssetInactive
+  # Combine break glass
+  - where:
+      subject: AssetsBreakGlass
+      verb: Initialize
+    set:
+      subject: AssetBreakGlass
+  - where:
+      subject: ^DeactivateAssetsBreakGlass$|^DeactivateAssetBreakGlass$
+      verb: Invoke
+    set:
+      subject: AssetDeactivateBreakGlass
   # change set to update
   - where:
       verb: Set
@@ -868,52 +949,10 @@ directive:
         name: WithCount Default
         description: Sets the WithCount parmaeter to true.
         script: '$true'
-  # Hide remove ot (Not implemneted)
-  - where:
-      verb: Remove
-      subject: AssetOt
-    hide: true
-  # Hide (Not Implemented)
-  - where:
-      subject: SettingsAssetManager
-      verb: ^Add$|^Remove$
-    hide: true
-  # Hide (Not Implemented)
-  - where:
-      subject: AuthLogout
-      verb: Invoke
-    hide: true
-  # Hide (Not Implemented)
-  - where:
-      subject: InvokeAssetRetryHealth
-      verb: Invoke
-    hide: true
-  - where:
-      subject: ^AssetsScriptsPowerShellTestUdpNetConnection$|^AssetsScriptsPythonTestUdpNetConnection$|^FixAssetScriptWmi$
-    remove: true
-  # Hide Rule History (not useful)
-  - where:
-      subject: (.*)RulesHistory$
-    hide: true
-  # Hide profile cmdlets
-  - where:
-      subject: ^ProfileEnvironment$|^Profile$
-    hide: true
-  # Hide Not useful for OT assets
-  - where:
-      subject: ^AssetOtIdentityRule$|^AssetOtIdentityRulesAssetsCandidate$|^AssetOtIdentityRulesExcludedAssetsCandidate$|^AssetOtIdentityRulesUserCandidate$|^AssetOtInboundAllowRule$|^AssetOtInboundAllowRulesDestinationCandidate$|^AssetOtInboundAllowRulesExcludedDestinationCandidate$|^AssetOtInboundAllowRulesSourceCandidate$|^AssetOtInboundBlockRule$|^AssetOtInboundBlockRulesDestinationCandidate$|^AssetOtInboundBlockRulesExcludedDestinationCandidate$|^AssetOtInboundBlockRulesSourceCandidate$|^AssetOtmfaInboundPoliciesDestinationCandidate$|^AssetOtmfaInboundPoliciesExcludedSourceCandidate$|^AssetOtmfaInboundPoliciesMfamethod$|^AssetOtmfaInboundPoliciesSourceCandidate$|^AssetOtmfaInboundPoliciesSourceUserCandidate$|^AssetOtmfaInboundPolicy$|^AssetOtOutboundAllowRule$|^AssetOtOutboundAllowRulesDestinationCandidate$|^AssetOtOutboundAllowRulesExcludedSourceCandidate$|^AssetOtOutboundAllowRulesSourceCandidate$|^AssetOtOutboundBlockRule$|^AssetOtOutboundBlockRulesDestinationCandidate$|^AssetOtOutboundBlockRulesExcludedSourceCandidate$|^AssetOtOutboundBlockRulesSourceCandidate$
-    hide: true
-  # Remove APIs that require Human access
-  - where:
-      subject: AccessToken
-    remove: true
-  - where:
-      subject: CloudConnectorAccessToken
-    remove: true
   # Hide for Custom Wrappers
   - where:
       verb: Update
-      subject: ^CustomGroup$|^AssetIdentityRule$|^AssetInboundAllowRule$|^AssetInboundBlockRule$|^AssetMFAInboundPolicy$|^AssetMFAOutboundPolicy$|^AssetOutboundAllowRule$|^AssetOutboundBlockRule$|^AssetOtMFAOutboundPolicy$|^GroupsIdentityRule$|^GroupsInboundAllowRule$|^GroupsInboundBlockRule$|^GroupsMFAInboundPolicy$|^GroupsMFAOutboundPolicy$|^GroupsOutboundAllowRule$|^GroupsOutboundBlockRule$|^IdentityRule$|^InboundAllowRule$|^InboundBlockRule$|^MFAInboundPolicy$|^MFAOutboundPolicy$|^OutboundAllowRule$|^OutboundBlockRule$|^SettingsPushNotification$|^UserIdentityRule$
+      subject: ^AssetOtRpcRule$|^AssetIdentityRule$|^AssetInboundAllowRule$|^AssetInboundBlockRule$|^AssetMFAInboundPolicy$|^AssetMFAOutboundPolicy$|^AssetOutboundAllowRule$|^AssetOutboundBlockRule$|^AssetOtMFAOutboundPolicy$|^AssetRpcRule$|^CustomGroup$|^GroupsIdentityRule$|^GroupsInboundAllowRule$|^GroupsInboundBlockRule$|^GroupsMFAInboundPolicy$|^GroupsMFAOutboundPolicy$|^GroupsOutboundAllowRule$|^GroupsOutboundBlockRule$|^GroupsRpcRule$|^IdentityRule$|^InboundAllowRule$|^InboundBlockRule$|^MFAInboundPolicy$|^MFAOutboundPolicy$|^OutboundAllowRule$|^OutboundBlockRule$|^RpcRule$|^SettingsPushNotification$|^UserIdentityRule$
     hide: true
   - where:
       subject: ^AuthLogin$|^AuthChallenge$
@@ -987,6 +1026,23 @@ directive:
           - CreatedByEnforcementSource
           - State
           - Description
+  - where:
+      model-name: RpcRule
+    set:
+      format-table:
+        properties:
+          - CreatedAt
+          - Id
+          - UserInfos
+          - RemoteAssetInfos
+          - LocalAssetInfoName
+          - ProtocolsList
+          - InterfaceUuidsList
+          - OpNumbersList
+          - Action
+          - ExpiresAt
+          - RuleClass
+          - State
   - where:
       model-name: ReactivePolicy
     set:

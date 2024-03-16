@@ -2,7 +2,9 @@
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 Get-ZNAssetOtmfaOutboundPolicy  -AssetId $otasset.id                             
+```
 
+```output
 SrcEntityInfos         SrcProcessNames SrcUserInfos DstEntityInfoName        DstPort DstProcessNames RuleDuration FallbackToLoggedOnUser MfaMethods
 --------------         --------------- ------------ -----------------        ------- --------------- ------------ ---------------------- ----------
 {All segmented assets} {*}             {Any user}   Segmented OT/IoT devices 80,443  {*}             6            True                   {4}
@@ -15,7 +17,9 @@ This cmdlet returns a list of MFA policies for an OT asset.
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 Get-ZNAssetOtmfaOutboundPolicy  -AssetId $otasset.id -ReactivePolicyId 79b5ed54-16c7-45f1-9a5d-ea1022e1d710
+```
 
+```output
 DstEntityInfoAssetStatus     : 
 DstEntityInfoAssetType       : 
 DstEntityInfoDomain          : 

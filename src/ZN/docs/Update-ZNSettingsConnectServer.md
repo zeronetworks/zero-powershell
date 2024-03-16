@@ -13,7 +13,7 @@ Update Connect Server in Settings
 ## SYNTAX
 
 ```
-Update-ZNSettingsConnectServer -ConnectServerId <String> -PublicPort <String> [-Confirm] [-WhatIf]
+Update-ZNSettingsConnectServer -ConnectServerId <String> [-PublicPort <String>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,6 @@ Update Connect Server in Settings
 ```powershell
 $server = Get-ZNSettingsConnectServer
 Update-ZNSettingsConnectServer -ConnectServerId $server.Id -PublicPort 53000
-
 ```
 
 This cmdlet updates a Connect server.
@@ -56,7 +55,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

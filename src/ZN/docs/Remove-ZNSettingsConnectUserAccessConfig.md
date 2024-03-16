@@ -26,7 +26,6 @@ Delete a Connect User Access Configuration in Settings
 ```powershell
 $uac = Get-ZNSettingsConnectUserAccessConfig | where {$_.Name -eq "testapi"}
 Remove-ZNSettingsConnectUserAccessConfig -UserAccessConfigId $uac.Id
-
 ```
 
 This cmdlet deletes a user access config for Connect settings.

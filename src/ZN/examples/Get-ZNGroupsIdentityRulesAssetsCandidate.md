@@ -1,7 +1,9 @@
 ### Example 1: List asset candidates for identity rules
 ```powershell
 Get-ZNGroupsIdentityRulesAssetsCandidate -GroupId g:t:01445453 -GroupType tag
+```
 
+```output
 Id           Fqdn Name                                    Description DirectMembersCount IPV4Addresses IPV6Addresses Sou
                                                                                                                      rce
 --           ---- ----                                    ----------- ------------------ ------------- ------------- ---

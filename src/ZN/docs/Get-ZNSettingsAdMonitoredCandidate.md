@@ -26,7 +26,9 @@ Returns a list of monitoring candidates for an AD forest.
 ```powershell
 $forest = Get-ZNSettingsAd
 (Get-ZNSettingsAdMonitoredCandidate -ForestId $forest.ForestId).Items
+```
 
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
                                b:110003     All AD assets

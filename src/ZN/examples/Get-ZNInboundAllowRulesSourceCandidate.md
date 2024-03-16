@@ -1,6 +1,9 @@
 ### Example 1: List source candidates for inbound allow rule
 ```powershell
 (Get-ZNInboundAllowRulesSourceCandidate).Items
+```
+
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
                                b:110001     Any asset

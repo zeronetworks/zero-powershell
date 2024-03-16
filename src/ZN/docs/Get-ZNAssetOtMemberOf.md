@@ -25,7 +25,9 @@ Returns a list of groups the asset is a member of.
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 Get-ZNAssetOtMemberOf -AssetId $otasset.Id
+```
 
+```output
 Id           Name                     Description                                              DirectMembersCount
 --           ----                     -----------                                              ------------------
 g:o:04445453 Cameras                  Includes all camera devices in the environment           27
@@ -59,9 +61,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAncestors
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroup
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
 ## NOTES
 

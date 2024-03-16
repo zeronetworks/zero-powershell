@@ -2,7 +2,9 @@
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 Get-ZNAssetOt -AssetId $otasset.Id
+```
 
+```output
 EntityAssetStatus     : 5
 EntityAssetType       : 4
 EntityDomain          : 

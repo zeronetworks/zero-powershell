@@ -24,7 +24,6 @@ Returns an empty object.
 ### Example 1: Create an OT/IoT Asset
 ```powershell
 New-ZNAssetsOt -DisplayName webcam2 -Ipv4 "192.168.10.30" -Type 4 
-
 ```
 
 This cmdlet will create an OT/IoT asset in the environment.
@@ -142,7 +141,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ICreateOtAssetResponse
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

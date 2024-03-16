@@ -33,7 +33,9 @@ Returns the properties of an Outbound Allow rule.
 ```powershell
 $asset = Search-ZNAsset -Fqdn wc01.posh.local
 Get-ZNAssetOutboundAllowRule -AssetId $asset -AddBuiltins
+```
 
+```output
 CreatedAt     RemoteEntityInfos                           LocalEntityInfoName  Ruleclass ActivitiesCount Id                                   CreatedByEnforcementSource State Description
 ---------     -----------------                           -------------------  --------- --------------- --                                   -------------------------- ----- -----------
 1694372599763 {ot1777}                                    All segmented assets           0               d69a32ec-a5ea-4915-a33f-297c6ec2ceec 5                          1     
@@ -47,7 +49,9 @@ This cmdlet retruns a list of rules for a specific asset.
 ```powershell
 $asset = Search-ZNAsset -Fqdn wc01.posh.local
 Get-ZNAssetOutboundAllowRule -AssetId $asset -RuleId b49360ce-3b4b-4e67-a613-42d4704d097f
+```
 
+```output
 ApprovedById               : 
 ApprovedByName             : 
 CreatedByEnforcementSource : 5
@@ -243,7 +247,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IRule
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IRuleItem
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IRulesList
 
 ## NOTES
 

@@ -3,6 +3,9 @@
 $asset = Get-ZNAssetsOt | where {$_.Fqdn -eq "test"}
 $user = Get-ZNUser -Search test
 Add-ZNAssetOtAssetManager -AssetId $asset.Id -ManagerIds @($user.Id)
+```
+
+```output
 
 ```
 

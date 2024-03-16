@@ -13,8 +13,8 @@ Set ZPA settings in Integrations
 ## SYNTAX
 
 ```
-Update-ZNSettingsZpa -ClientOutboundSubnet <String> -GatewayIpsList <String[]> -IsEnabled
- -PortsToMfaTcp <String> -PortsToMfaUdp <String> [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsZpa [-ClientOutboundSubnet <String>] [-GatewayIpsList <String[]>] [-IsEnabled]
+ [-PortsToMfaTcp <String>] [-PortsToMfaUdp <String>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,6 @@ Set ZPA settings in Integrations
 ```powershell
 $zpa = Get-ZNSettingsZpa
 Update-ZNSettingsZpa -ClientOutboundSubnet $zpa.ClientOutboundSubnet -GatewayIpsList $zpa.GatewayIpsList -IsEnabled:$zpa.IsEnabled -PortsToMfaTcp $zpa.PortsToMfaTcp -PortsToMfaUdp "21"
-
 ```
 
 This cmdlet updates the ZPA settings.
@@ -41,7 +40,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -56,7 +55,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -71,7 +70,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -101,7 +100,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -116,7 +115,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

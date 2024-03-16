@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNAssetIdentityRule'))
 
 Describe 'Update-ZNAssetIdentityRule' {
     It 'UpdateExpanded' {
-        $asset = Search-ZNAsset -Fqdn dc01.posh.local
+        $asset = (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
         $user = (Get-ZNUser -Search user1).Items | Select -First 1
         $description = "updatedtest"
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()

@@ -1,7 +1,9 @@
 ### Example 1: Get Create implicit ICMP rules settings
 ```powershell
 Get-ZNSettingsFirewall
+```
 
+```output
 True
 ```
 

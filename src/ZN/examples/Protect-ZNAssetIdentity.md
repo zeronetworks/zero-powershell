@@ -2,6 +2,9 @@
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local                      
 Protect-ZNAssetIdentity -AssetId $asset
+```
+
+```output
 
 ```
 
@@ -10,6 +13,9 @@ This cmdlet adds an asset to identity segmentation.
 ### Example 2: Add multiple assets to identity segmentation
 ```powershell
 Protect-ZNAssetIdentity -Items @("assetid","assetId")
+```
+
+```output
 
 ```
 

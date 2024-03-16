@@ -13,8 +13,8 @@ Update the linux user settings in Asset Managment
 ## SYNTAX
 
 ```
-Update-ZNSettingsLinuxUser -Password <String> -PrivateKey <String> -Username <String> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNSettingsLinuxUser [-Password <String>] [-PrivateKey <String>] [-Username <String>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,6 @@ Update the linux user settings in Asset Managment
 ### Example 1: Update linux user setting
 ```powershell
 Update-ZNLinuxUserSetting -Username zn-admin -Password "NewPassword" -PrivateKey "Key"
-
 ```
 
 This cmdlet updates the Linux user setting under Asset Management.
@@ -40,7 +39,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -55,7 +54,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -70,7 +69,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -115,9 +114,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsLinuxUser
 
 ## NOTES
 

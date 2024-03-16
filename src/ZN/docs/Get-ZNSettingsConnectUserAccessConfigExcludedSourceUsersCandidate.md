@@ -25,7 +25,9 @@ Returns a list of candidates for user access config excluded source users.
 ### Example 1: List possible excluded source candidates
 ```powershell
 Get-ZNSettingsConnectUserAccessConfigExcludedSourceUsersCandidate
+```
 
+```output
 CreatedAt     Description                                                                DirectMembersCount DistinguishedName                                      Domain
 ---------     -----------                                                                ------------------ -----------------                                      ------
 1677251756332                                                                            0                                                                         posh.…
@@ -105,7 +107,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroupsOrUsersListItemsItem
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroupsOrUsersList
 
 ## NOTES
 

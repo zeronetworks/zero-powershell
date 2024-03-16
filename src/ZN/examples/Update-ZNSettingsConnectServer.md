@@ -2,6 +2,9 @@
 ```powershell
 $server = Get-ZNSettingsConnectServer
 Update-ZNSettingsConnectServer -ConnectServerId $server.Id -PublicPort 53000
+```
+
+```output
 
 ```
 

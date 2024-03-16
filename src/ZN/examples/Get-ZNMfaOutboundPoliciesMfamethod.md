@@ -1,6 +1,9 @@
 ### Example 1: List possible MFA methods for an outbound MFA policy
 ```powershell
 Get-ZNMfaOutboundPoliciesMfamethod
+```
+
+```output
 2
 4
 3

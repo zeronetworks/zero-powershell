@@ -25,7 +25,6 @@ Delete a Connect Region in Settings
 ```powershell
 $region = Get-ZNSettingsConnectRegion | where {$_.Name -eq "TestRegion"}
 Remove-ZNSettingsConnectRegion -RegionId $region.Id
-
 ```
 
 This cmdlet deletes a region for Connect settings.

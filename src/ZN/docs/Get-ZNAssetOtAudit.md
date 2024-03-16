@@ -26,7 +26,9 @@ Returns a list of audits for the asset.
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 (Get-ZNAssetOtAudit -AssetId $otasset.id).Items
+```
 
+```output
 AuditType DestinationEntitiesList EnforcementSource PerformedByName
 --------- ----------------------- ----------------- ---------------
 74        {ot1777}                5                 Zero Networks

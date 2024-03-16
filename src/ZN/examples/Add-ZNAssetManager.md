@@ -3,6 +3,9 @@
 $asset = Search-ZNAsset -Fqdn wc01.posh.local
 $user = Get-ZNUser -Search test
 Add-ZNAssetManager -AssetId $asset -ManagerIds @($user.Id)
+```
+
+```output
 
 ```
 

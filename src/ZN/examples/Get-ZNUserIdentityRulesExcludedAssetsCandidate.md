@@ -1,7 +1,9 @@
 ### Example 1: List excluded asset candidates for identity rule
 ```powershell
 Get-ZNUserIdentityRulesExcludedAssetsCandidate -UserId u:a:4UydfhAS
+```
 
+```output
 Id           Fqdn Name                                    Description DirectMembersCount IPV4Addresses IPV6Addresses Source AssetStatus ProtectionStat
                                                                                                                                         e
 --           ---- ----                                    ----------- ------------------ ------------- ------------- ------ ----------- --------------

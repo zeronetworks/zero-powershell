@@ -26,7 +26,9 @@ Returns he properties of ignored rules for anti-tampering Firewall settings.
 ```powershell
 $settingsignore = Get-ZNSettingsFirewallIgnoredRule
 Update-ZNSettingsFirewallIgnoredRule -InboundList $settingsignore.InboundList -OutboundList @("newruletoignore")
+```
 
+```output
 InboundList OutboundList
 ----------- ------------
 {test}      {newruletoignore}

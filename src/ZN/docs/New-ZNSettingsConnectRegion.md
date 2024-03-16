@@ -13,8 +13,8 @@ Create a Connect region in Settings
 ## SYNTAX
 
 ```
-New-ZNSettingsConnectRegion -DnsServersIPAddressList <String[]> -IPAddress <String> -Name <String>
- [-DnsSuffixesList <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-ZNSettingsConnectRegion [-DnsServersIPAddressList <String[]>] [-DnsSuffixesList <String[]>]
+ [-IPAddress <String>] [-Name <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,6 @@ Create a Connect region in Settings
 ### Example 1: Create Connect Region
 ```powershell
 New-ZNSettingsConnectRegion -DnsServersIPAddressList @("192.168.3.1","192.168.3.2") -IPAddress "4.5.6.7" -Name "New Region" 
-
 ```
 
 This cmdlet creates a Connect region in settings.
@@ -40,7 +39,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -70,7 +69,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -85,7 +84,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

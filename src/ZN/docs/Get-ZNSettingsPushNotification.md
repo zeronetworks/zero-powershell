@@ -24,7 +24,9 @@ Get Push Notifications Settings
 ### Example 1: Get Push Notifications settings
 ```powershell
 Get-ZNSettingsPushNotification
+```
 
+```output
 Host                      Id                                   IdentityProvider
 ----                      --                                   ----------------
 login.microsoftonline.com 4bbf96f1-7cc5-4711-84cd-f16ba41265a8 microsoftAuthenticator
@@ -43,7 +45,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsPushNotificaitions
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsPushNotificaitionsList
 
 ## NOTES
 

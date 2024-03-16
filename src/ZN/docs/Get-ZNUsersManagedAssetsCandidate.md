@@ -25,6 +25,9 @@ Get asset candidates to be managed by asset managers
 ### Example 1: List user managed assets candidates.
 ```powershell
 (Get-ZNUsersManagedAssetsCandidate -UserId u:a:RVVXGo4w).Items
+```
+
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
 posh.local False               g:a:qu04AfTz Access Control Assistance Operators

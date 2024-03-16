@@ -2,7 +2,9 @@
 ```powershell
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Domain -eq "tag"}
 (Get-ZNGroupsOutboundBlockRulesDestinationCandidate -Groupid $group.id -GroupType tag).Items
+```
 
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
                                g:s:23445453 Untrusted Internet

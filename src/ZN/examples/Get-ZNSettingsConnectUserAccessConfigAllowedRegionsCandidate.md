@@ -1,7 +1,9 @@
 ### Example 1: Get Connect User Access Config candidates for Allowed Reagionssettings
 ```powershell
 Get-ZNSettingsConnectUserAccessConfigAllowedRegionsCandidate
+```
 
+```output
 ConnectivityStateAfterReboot CreatedAt     Description ForceSsoAuthentication Id           Name       SessionTtlHours UpdatedAt
 ---------------------------- ---------     ----------- ---------------------- --           ----       --------------- ---------
 0                                                      False                  b:110007     Any region 0               

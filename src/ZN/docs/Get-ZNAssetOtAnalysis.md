@@ -26,7 +26,9 @@ Returns an object with OT/IoT asset analysis data.
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 Get-ZNAssetOtAnalysis -AssetId $otasset.Id -Direction 1
+```
 
+```output
 CountByAsset        : 0
 CountByPort         : 0
 CountByProcess      : 0
@@ -139,7 +141,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetAnalysisItems
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetAnalysis
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

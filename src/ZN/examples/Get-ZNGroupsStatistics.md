@@ -1,7 +1,10 @@
 ### Example 1: Get group statistics
 ```powershell
 Get-ZNGroupsStatistics
-GroupStatisticsAdGroupsCount GroupStatisticsCustomGroupsCount GroupStatisticsProtectionPoliciesCount
+```
+
+```output
+roupStatisticsAdGroupsCount GroupStatisticsCustomGroupsCount GroupStatisticsProtectionPoliciesCount
 ---------------------------- -------------------------------- --------------------------------------
                           50                                1                                      0
 ```

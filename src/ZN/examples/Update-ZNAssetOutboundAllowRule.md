@@ -4,7 +4,9 @@ $asset = Search-ZNAsset -fqdn wc01.posh.local
 $rule = Get-ZNAssetOutboundAllowRule -Asset $asset | where {$_.Description -eq "Test Rule"}
 $rule.RemoteEntityIdsList += (Search-ZNAsset -Fqdn cs01.posh.local)
 Update-ZNAssetOutboundAllowRule -AssetId $asset -RuleId $rule.id -RemoteEntityIdsList $rule.RemoteEntityIdsList
+```
 
+```output
 ApprovedById               : 
 ApprovedByName             : 
 CreatedByEnforcementSource : 4

@@ -26,7 +26,9 @@ Returns a list of excluded source candidates for Outbound Allow rules.
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 (Get-ZNAssetOutboundAllowRulesExcludedSourceCandidate -AssetId $asset).Items
+```
 
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
 posh.local False               g:a:qu04AfTz Access Control Assistance Operators

@@ -18,7 +18,7 @@ Describe 'New-ZNAssetsLinux' {
     It 'CreateExpanded' {
         $name = ("linux"+(Get-Random -Maximum 999999))
         { New-ZNAssetsLinux -DisplayName $name -Fqdn "$name.posh.local" } | Should -Not -Throw
-        $asset = Search-ZNAsset -Fqdn "$name.posh.local"
+        $asset= (Search-ZNAsset -Fqdn "$name.posh.local").AssetId
         Update-ZNAssetInactive -AssetId $asset
     }
 }

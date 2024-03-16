@@ -26,7 +26,9 @@ Returns a list of assets candidates for Identity rules.
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 Get-ZNAssetIdentityRulesAssetsCandidate -AssetId $asset
+```
 
+```output
 Id           Fqdn Name                                    Description DirectMembersCount IPV4Addresses IPV6Addresses Sou
                                                                                                                      rce
 --           ---- ----                                    ----------- ------------------ ------------- ------------- ---
@@ -119,7 +121,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsOrGroupsListItemsItem
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsOrGroupsList
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

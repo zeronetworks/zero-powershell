@@ -1,7 +1,9 @@
 ### Example 1: List excluded asset candidates for user access configs
 ```powershell
 Get-ZNSettingsConnectUserAccessConfigExcludedAssetsCandidate
+```
 
+```output
 Id           Fqdn Name                                      Description DirectMembersCount IPV4Addresses IPV6Addresses S
                                                                                                                        o
                                                                                                                        u

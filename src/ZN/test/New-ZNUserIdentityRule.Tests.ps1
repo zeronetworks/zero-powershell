@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNUserIdentityRule'))
 
 Describe 'New-ZNUserIdentityRule' {
     It 'CreateExpanded' {
-        $asset = Search-ZNAsset -Fqdn dc01.posh.local
+        $asset= (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
         $user = (Get-ZNUser).Items | Select -First 1
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNUserIdentityRule -UserId $user.Id -Action 1 -AssetId $asset -IdentityProtectionCategoryList 1 -State 1 -UserIdsList @($user.Id) -ExpiresAt $expiresAt

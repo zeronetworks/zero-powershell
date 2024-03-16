@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNAssetInboundBlockRulesDestinationCandidate' {
     It 'List' {
-        $asset = Search-ZNAsset -Fqdn linux0.posh.local
+        $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         { (Get-ZNAssetInboundBlockRulesDestinationCandidate -AssetId $asset).Items } | Should -Not -Be $null
     }
 }

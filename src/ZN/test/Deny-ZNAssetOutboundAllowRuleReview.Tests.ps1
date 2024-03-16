@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Deny-ZNAssetOutboundAllowRuleReview' {
     It 'DenyExpanded' {
-        $asset = Search-ZNAsset -Fqdn linux0.posh.local
+        $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         $rule = Get-ZNAssetOutboundAllowRule -AssetId $asset | where {$_.State -eq 4} | Select-Object -First 1
         { Deny-ZNAssetOutboundAllowRuleReview -AssetId $asset -RuleId $rule.id -Reason MissingPortOrProcess } | Should -Not -Throw
     }

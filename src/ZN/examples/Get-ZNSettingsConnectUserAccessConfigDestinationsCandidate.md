@@ -1,6 +1,9 @@
 ### Example 1: List User Access Config Destination Candidates
 ```powershell
 Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate
+```
+
+```output
 AssetStatus AssetType CreatedAt Description DirectMembersCount DistinguishedName Domain     Email FirstName Fqdn Guid
 ----------- --------- --------- ----------- ------------------ ----------------- ------     ----- --------- ---- ----                   
                                                                                  system                                                 

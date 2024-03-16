@@ -19,6 +19,6 @@ Describe 'New-ZNGroupsInboundAllowRule' {
         $source = (Get-ZNGroupsInboundAllowRulesSourceCandidate -GroupId $group.Id -GroupType tag -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNGroupsInboundAllowRule -GroupId $group.Id -GroupType tag -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
-        $rule.Id | Should -Not -Be $null
+        $rule.Item.Id | Should -Not -Be $null
     }
 }

@@ -26,7 +26,9 @@ Returns a list of source user candidates for inbound MFA policies.
 ```powershell
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Domain -eq "tag"}
 (Get-ZNGroupsMfaInboundPoliciesSourceUserCandidate -Groupid $group.id -GroupType tag).Items
+```
 
+```output
 Domain     Id           Name
 ------     --           ----
            b:111001     Any user

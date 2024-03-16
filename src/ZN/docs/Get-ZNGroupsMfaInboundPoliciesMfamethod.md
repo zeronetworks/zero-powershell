@@ -25,6 +25,9 @@ Returns a list of MFA methods for inbound MFA policies.
 ```powershell
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Domain -eq "tag"}
 Get-ZNGroupsMfaInboundPoliciesMfamethod -Groupid $group.id -GroupType tag        
+```
+
+```output
 2
 4
 5
@@ -72,9 +75,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Int32
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyMethods
 
 ## NOTES
 

@@ -24,7 +24,9 @@ Returns the properties of Firewall settings.
 ### Example 1: Get Create implicit ICMP rules settings
 ```powershell
 Get-ZNSettingsFirewall
+```
 
+```output
 True
 ```
 
@@ -39,9 +41,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsFirewall
 
 ## NOTES
 

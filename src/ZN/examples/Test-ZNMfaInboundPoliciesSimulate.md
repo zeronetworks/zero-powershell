@@ -4,6 +4,9 @@ $destination = (Get-ZNMfaInboundPoliciesSimulateDestinationCandidate -Search DC0
 $sourceAsset = (Get-ZNMfaInboundPoliciesSimulateSourceCandidate -Search WC01).Items
 $sourceUser = (Get-ZNMfaInboundPoliciesSimulateSourceUserCandidate -Search test).Items
 Test-ZNMfaInboundPoliciesSimulate -DstAssetId $destination.Id -SrcAssetId $sourceAsset.Id -SrcUserId $sourceUser.Id -Port 3389 -ProtocolType 6
+```
+
+```output
 DstAssetInfoAssetStatus            : 2
 DstAssetInfoAssetType              : 2
 DstAssetInfoDomain                 : posh.local

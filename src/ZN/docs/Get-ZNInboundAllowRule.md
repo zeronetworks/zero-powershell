@@ -31,6 +31,9 @@ Returns the properties of an Inbound Allow rule.
 ### Example 1: List inbound allow rules
 ```powershell
 Get-ZNInboundAllowRule
+```
+
+```output
 Action CreatedAt     Description                                      Direction ExpiresAt Id                                   LocalEntityId LocalProcessesList ParentId ParentType RemoteEntityIdsList State UpdatedAt
 ------ ---------     -----------                                      --------- --------- --                                   ------------- ------------------ -------- ---------- ------------------- ----- ---------
 1      1652856440164 Allow communication between all nodes in cluster 1         0         be2bdc05-7837-4125-88ba-983e3ff7e763 g:c:wq1SFxhc  {*}                         0          {g:c:wq1SFxhc}      1     
@@ -42,6 +45,9 @@ This cmdlet gets inbound allow rules from the environment.
 ### Example 2: Get a specific inbound allow rule
 ```powershell
 Get-ZNInboundAllowRule -RuleId "be2bdc05-7837-4125-88ba-983e3ff7e763"
+```
+
+```output
 CreatedByEnforcementSource : 5
 CreatedById                : 1f352ed0-86f1-454f-90a5-592c197c8000
 CreatedByName              : Zero Networks
@@ -201,7 +207,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IRule
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IRuleItem
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IRulesList
 
 ## NOTES
 

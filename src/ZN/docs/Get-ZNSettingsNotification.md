@@ -24,7 +24,9 @@ Returns the properties of the Mail Notification settings.
 ### Example 1: Get notifications settings
 ```powershell
 Get-ZNSettingsNotification
+```
 
+```output
 AssetPostponed AssetProtected AssetQueued AssetUnprotected
 -------------- -------------- ----------- ----------------
 False          False          False       False

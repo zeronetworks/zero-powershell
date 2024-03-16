@@ -13,7 +13,7 @@ Set Trusted Internet addresses settings in System
 ## SYNTAX
 
 ```
-Update-ZNSettingsTrustedInternetAddress -ExternalIpsList <String[]> [-PassThru] [-Confirm] [-WhatIf]
+Update-ZNSettingsTrustedInternetAddress [-ExternalIpsList <String[]>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -27,7 +27,6 @@ Set Trusted Internet addresses settings in System
 $trusted = Get-ZNSettingsTrustedInternetAddress
 $trusted += "1.2.3.5"                                                          
 Update-ZNSettingsTrustedInternetAddress -ExternalIpsList $trusted
-
 ```
 
 This cmdlet updates the trusted internet addresses list.
@@ -42,7 +41,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

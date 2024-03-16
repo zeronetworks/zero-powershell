@@ -25,6 +25,9 @@ Returns a list of candidates for the excluded sources of an inbound MFA policy.
 ### Example 1: Get possible excluded source for inbound MFA Policy
 ```powershell
 (Get-ZNMfaInboundPoliciesExcludedSourceCandidate).Items
+```
+
+```output
 AssetType Domain    Id           Name                                      ProtectionState
 --------- ------    --           ----                                      ---------------
                     b:110002     All protected assets                      
@@ -55,6 +58,9 @@ This cmdlet will return possbile candidates for destinations in an inbound MFA p
 ### Example 2: Search for a candidate
 ```powershell
 (Get-ZNMfaInboundPoliciesExcludedSourceCandidate -Search DC1).Items
+```
+
+```output
 AssetType Domain    Id           Name ProtectionState
 --------- ------    --           ---- ---------------
 2         zero.labs a:a:ZgBWOMyc DC1  5

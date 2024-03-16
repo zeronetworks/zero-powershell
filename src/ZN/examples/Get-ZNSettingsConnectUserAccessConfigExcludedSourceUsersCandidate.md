@@ -1,7 +1,9 @@
 ### Example 1: List possible excluded source candidates
 ```powershell
 Get-ZNSettingsConnectUserAccessConfigExcludedSourceUsersCandidate
+```
 
+```output
 CreatedAt     Description                                                                DirectMembersCount DistinguishedName                                      Domain
 ---------     -----------                                                                ------------------ -----------------                                      ------
 1677251756332                                                                            0                                                                         posh.…

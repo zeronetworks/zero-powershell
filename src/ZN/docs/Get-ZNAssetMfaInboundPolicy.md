@@ -32,7 +32,9 @@ Returns a inbound MFA policy object.
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 Get-ZNAssetMfaInboundPolicy -AssetId $asset
+```
 
+```output
 SrcEntityInfos SrcProcessNames SrcUserInfos DstEntityInfoName  DstPort DstProcessNames RuleDuration FallbackToLoggedOnUser MfaMethods
 -------------- --------------- ------------ -----------------  ------- --------------- ------------ ---------------------- ----------
 {Any asset}    {*}             {Any user}   Domain controllers 9389    {*}             7            False                  {4}
@@ -216,7 +218,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicy
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyList
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyResponse
 
 ## NOTES
 

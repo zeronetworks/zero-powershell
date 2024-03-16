@@ -1,7 +1,10 @@
 ### Example 1: Get the date for the next batch of AI rules creation
 ```powershell
 $aiDate = Get-ZNAiNextBatch
-(Get-Date -Date "01-01-1970") + ([System.TimeSpan]::FromMilliseconds($ai))
+(Get-Date -Date "01-01-1970") + ([System.TimeSpan]::FromMilliseconds($aiDate))
+```
+
+```output
 Thursday, October 20, 2022 11:59:59 PM
 ```
 

@@ -24,7 +24,9 @@ Returns the properties of MFA authentication settings.
 ### Example 1: Get MFA authentication settings
 ```powershell
 Get-ZNSettingsMfaAuthentication
+```
 
+```output
 ItemIsRequiresAuth ItemIsSsoForceAuth ItemTokenTtl
 ------------------ ------------------ ------------
               True              False           60
@@ -43,7 +45,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsMfaAuthentication
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsMfaAuthenticationResponse
 
 ## NOTES
 

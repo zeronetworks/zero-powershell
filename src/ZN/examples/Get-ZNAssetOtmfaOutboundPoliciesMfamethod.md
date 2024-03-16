@@ -2,6 +2,9 @@
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 Get-ZNAssetOtmfaOutboundPoliciesMfamethod  -AssetId $otasset.id        
+```
+
+```output
 1
 2
 4

@@ -2,7 +2,9 @@
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 Get-ZNAssetOtTag -AssetId $otasset.Id
+```
 
+```output
 Id           Name                  Description                                       DirectMembersCount
 --           ----                  -----------                                       ------------------
 g:t:27445453 Network Scanners      Includes network Scanners in the environment      1

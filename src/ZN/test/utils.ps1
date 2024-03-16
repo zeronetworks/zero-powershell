@@ -20,7 +20,7 @@ function setupEnv() {
     #$env.Tenant = (Get-AzContext).Tenant.Id
 
     #Constants
-    $constants = Get-Content .\test\constants.json | ConvertFrom-Json
+    $constants = Get-Content ../../tools/constants.json | ConvertFrom-Json
     #$constants.psobject.Properties | ForEach-Object { $env[$_.Name] = $_.Value }
     if($constants.envToTest){
         $envToTest = $constants.envToTest
@@ -185,7 +185,7 @@ function cleanupEnv() {
     # Clean resources you create for testing
     
     $env = @{}
-    $constants = Get-Content .\test\constants.json | ConvertFrom-Json
+
     
 }   
 

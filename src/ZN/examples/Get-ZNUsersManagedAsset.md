@@ -1,6 +1,9 @@
 ### Example 1: List a users managed assets
 ```powershell
 Get-ZNUsersManagedAsset -UserId u:a:RVVXGo4w
+```
+
+```output
 EntityId     Relation
 --------     --------
 a:a:8ErCHXe8 1

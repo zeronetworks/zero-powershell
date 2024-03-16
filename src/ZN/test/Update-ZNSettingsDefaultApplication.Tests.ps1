@@ -16,14 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNSettingsDefaultAppli
 
 Describe 'Update-ZNSettingsDefaultApplication' {
     It 'UpdateExpanded' {
-        $setting = Get-ZNSettingsDefaultApplication
+        $setting = (Get-ZNSettingsDefaultApplication).Application
         if($setting -eq 1){
             $newsetting = 2
         }else{
             $newsetting = 1
         }
         Update-ZNSettingsDefaultApplication -Application $newsetting
-        $updatedSetting = Get-ZNSettingsDefaultApplication
+        $updatedSetting = (Get-ZNSettingsDefaultApplication).Application
         $updatedSetting | Should -Be $newsetting
     }
 }

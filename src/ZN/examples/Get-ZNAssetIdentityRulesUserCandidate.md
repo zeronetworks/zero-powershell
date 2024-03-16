@@ -2,7 +2,9 @@
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 Get-ZNAssetIdentityRulesUserCandidate -AssetId $asset
+```
 
+```output
 Id           Name                                    Email Description DirectMembersCount Phone JobTitle LastLogon
 --           ----                                    ----- ----------- ------------------ ----- -------- ---------
 g:a:qu04AfTz Access Control Assistance Operators                                                         

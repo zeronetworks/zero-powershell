@@ -13,17 +13,17 @@ while(-not $mockingPath) {
 
 Describe 'Update-ZNAssetInboundBlockRule' {
     It 'UpdateExpanded' {
-         $asset = Search-ZNAsset -fqdn linux0.posh.local
+        $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         [string]$ports = Get-Random -Minimum 1 -Maximum 65000
         $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
         $source = Invoke-ZNEncodeEntityIP -Ip 1.1.1.1
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
-        $rule = New-ZNInboundBlockRule -LocalEntityId $asset -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source) -State 1 -ExpiresAt $expiresAt
+        $rule = New-ZNInboundBlockRule -LocalEntityId $asset -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
         
         $newdescription = "new description " + (Get-Random -Minimum 1 -Maximum 100)
-        Update-ZNAssetInboundBlockRule -AssetId $asset -RuleId $rule.Id -Description $newdescription
-        $updatedRule = Get-ZNAssetInboundBlockRule -AssetId $asset -RuleId $rule.Id
-        $updatedRule.Description | Should -Be $newdescription
-        Remove-ZNInboundAllowRule -RuleId $rule.Id
+        Update-ZNAssetInboundBlockRule -AssetId $asset -RuleId $rule.Item.Id -Description $newdescription
+        $updatedRule = Get-ZNAssetInboundBlockRule -AssetId $asset -RuleId $rule.Item.Id
+        $updatedRule.Item.Description | Should -Be $newdescription
+        Remove-ZNInboundBlockRule -RuleId $rule.Item.Id
     }
 }

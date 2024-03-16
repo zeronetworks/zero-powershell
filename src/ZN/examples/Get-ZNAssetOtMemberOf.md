@@ -2,7 +2,9 @@
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 Get-ZNAssetOtMemberOf -AssetId $otasset.Id
+```
 
+```output
 Id           Name                     Description                                              DirectMembersCount
 --           ----                     -----------                                              ------------------
 g:o:04445453 Cameras                  Includes all camera devices in the environment           27

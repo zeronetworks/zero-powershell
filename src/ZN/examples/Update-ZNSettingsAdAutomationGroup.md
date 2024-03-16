@@ -3,6 +3,9 @@
 $forest = Get-ZNSettingsAd | where {$_.ActiveDirectoryInfoDomainName -eq "test.local"}
 $monitorGroup = (Get-ZNSettingsAdMonitoredCandidate -ForestId $forest.ForestId).Items | where {$_.Name -eq "All AD Assets"}
 Update-ZNSettingsAdAutomationGroup -ForestId $forest.ForestId -MonitoredGroupId $monitorGroup.Id
+```
+
+```output
 
 ```
 

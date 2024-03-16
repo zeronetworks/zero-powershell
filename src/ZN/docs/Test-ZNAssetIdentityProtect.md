@@ -31,7 +31,6 @@ Returns a number of assets that are valid for identity segmentation.
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local                      
 Test-ZNAssetIdentityProtect -AssetId $asset
-
 ```
 
 This cmdlet tests an asset for identity segmentation.
@@ -40,7 +39,6 @@ This cmdlet tests an asset for identity segmentation.
 ### Example 2: Test multiple assets for identity segmentation
 ```powershell
 Test-ZNAssetIdentityProtect -Items @("assetid","assetId")
-
 ```
 
 This cmdlet tests multiple assets to identity segmentation.
@@ -115,9 +113,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Int32
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IValidateResponse
 
 ## NOTES
 

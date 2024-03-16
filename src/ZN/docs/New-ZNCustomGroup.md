@@ -25,7 +25,6 @@ Returns an empty object.
 ### Example 1: Create a custom group
 ```powershell
 New-ZNCustomGroup -Name "test3" -Description "test custom group"
-
 ```
 
 This cmdlet will create a new customer group in the environment.
@@ -116,7 +115,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ICustomGroupResponse
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

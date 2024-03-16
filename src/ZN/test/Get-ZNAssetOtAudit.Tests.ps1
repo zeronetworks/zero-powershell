@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNAssetOtAudit' {
     It 'Get' {
-        $asset = Search-ZNAsset -Fqdn switch01
+        $asset= (Search-ZNAsset -Fqdn switch01).AssetId
         ((Get-ZNAssetOtAudit -Asset $asset).Items).Count | Should -BeGreaterThan 0
     }
 }

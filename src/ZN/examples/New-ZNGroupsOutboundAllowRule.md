@@ -3,8 +3,10 @@
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Id -like "g:t:*"}
 $sourceasset = Search-ZNAsset -fqdn cs01.posh.local
 $portsList = New-ZNPortsList -Protocol ICMP
-New-ZNGroupsOutboundAllowRule -GroupId $group.id -GroupType tag -LocalEntityId $group.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($sourceAsset) -State 1                                                                                                                  
-     
+New-ZNGroupsOutboundAllowRule -GroupId $group.id -GroupType tag -LocalEntityId $group.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($sourceAsset) -State 1
+```
+
+```output
 ApprovedById               : 
 ApprovedByName             : 
 CreatedByEnforcementSource : 6

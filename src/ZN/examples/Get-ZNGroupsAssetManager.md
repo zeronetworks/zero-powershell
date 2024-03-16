@@ -1,6 +1,9 @@
 ### Example 1: List asset managers for a group
 ```powershell
 Get-ZNGroupsAssetManager -Groupid g:t:01445453 -GroupType tag
+```
+
+```output
 ManagerId    Relation
 ---------    --------
 g:a:cai6Wuyd 1
