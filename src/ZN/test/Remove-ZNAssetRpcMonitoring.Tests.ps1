@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNAssetRpcMonitoring')
 
 Describe 'Remove-ZNAssetRpcMonitoring' {
     It 'Delete' {
-        $asset = Search-ZNAsset -Fqdn wac01.posh.local
+        $asset= (Search-ZNAsset -Fqdn ts01.posh.local).AssetId
         Add-ZNAssetRpcMonitoring -Items @($asset)
         start-sleep 30
         { Remove-ZNAssetRpcMonitoring -Items @($asset) } | Should -Not -Throw
@@ -24,7 +24,7 @@ Describe 'Remove-ZNAssetRpcMonitoring' {
     }
 
     It 'DeleteViaIdentity' {
-        $asset = Search-ZNAsset -Fqdn wac01.posh.local
+        $asset= (Search-ZNAsset -Fqdn ts01.posh.local).AssetId
         Add-ZNAssetRpcMonitoring -AssetId $asset
         start-sleep 30
         { Remove-ZNAssetRpcMonitoring -AssetId $asset } | Should -Not -Throw

@@ -2,7 +2,9 @@
  settings
 ```powershell
 Get-ZNSettingsMfaAuthentication
+```
 
+```output
 ItemIsRequiresAuth ItemIsSsoForceAuth ItemTokenTtl
 ------------------ ------------------ ------------
               True              False           60

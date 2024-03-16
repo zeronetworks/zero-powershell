@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNAssetMfaInboundPolic
 
 Describe 'Update-ZNAssetMfaInboundPolicy' {
     It 'UpdateExpanded' {
-        $asset = Search-ZNAsset -fqdn linux0.posh.local
+        $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         $source = (Get-ZNMfaInboundPoliciesSourceCandidate -search "Any Asset").Items
         $sourceEntity = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyInboundBodySrcEntityInfosItem]::new()
         $sourceEntity.Id = $source.Id

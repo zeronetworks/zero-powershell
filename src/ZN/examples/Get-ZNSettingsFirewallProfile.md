@@ -1,7 +1,9 @@
 ### Example 1: Get Firewall Profiles settings
 ```powershell
 Get-ZNSettingsFirewallProfile    
+```
 
+```output
 InboundAllowDomain   : True
 InboundAllowPrivate  : True
 InboundAllowPublic   : False

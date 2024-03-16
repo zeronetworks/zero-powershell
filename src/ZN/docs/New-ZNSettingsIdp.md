@@ -13,8 +13,8 @@ Create an identity provider settings in Identity Providers
 ## SYNTAX
 
 ```
-New-ZNSettingsIdp -Certificate <String> -IdentityProvider <String> -IsDefault -SloUrl <String>
- -SsoUrl <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+New-ZNSettingsIdp [-Certificate <String>] [-IdentityProvider <String>] [-IsDefault] [-SloUrl <String>]
+ [-SsoUrl <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,6 @@ Create an identity provider settings in Identity Providers
 ### Example 1: Create an IDP setting
 ```powershell
 New-ZNSettingsIdp -Certificate "certificatestring" -IdentityProvider azure -IsDefault -SloUrl "https://login.microsoftonline.com/4bbf96f1-7cc5-4711-84cd-f16ba41265456/saml2" -SsoUrl "https://login.microsoftonline.com/4bbf96f1-7cc5-4711-84cd-f16ba4126456/saml2"
-
 ```
 
 This cmdlet create an Idp Setting.
@@ -40,7 +39,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -55,7 +54,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -70,7 +69,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -85,7 +84,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -100,7 +99,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

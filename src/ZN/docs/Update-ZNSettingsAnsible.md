@@ -13,9 +13,9 @@ Get the Ansible settings in Asset Managment
 ## SYNTAX
 
 ```
-Update-ZNSettingsAnsible -ClientId <String> -ClientSecret <String> -CredentialsName <String>
- -DisableCertificateValidation -Password <String> -Url <String> -Username <String> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNSettingsAnsible [-ClientId <String>] [-ClientSecret <String>] [-CredentialsName <String>]
+ [-DisableCertificateValidation] [-Password <String>] [-Url <String>] [-Username <String>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,6 @@ Get the Ansible settings in Asset Managment
 ### Example 1: Update Ansible setting
 ```powershell
 Update-ZNAnsibleSetting -ClientId "clientId" -CredentialsName ssh -DisableCertificateValidation:$false -Password "password" -Url "https:1.2.3.4" -Username "ZNAccess"
-
 ```
 
 This cmdlet updates the Ansible setting under Asset Management.
@@ -41,7 +40,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -56,7 +55,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -71,7 +70,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -86,7 +85,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -101,7 +100,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -116,7 +115,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -131,7 +130,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

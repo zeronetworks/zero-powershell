@@ -24,6 +24,9 @@ Returns and object with MFA distrubiton.
 ### Example 1: List the MFA policy distribution
 ```powershell
 Get-ZNMfaPoliciesDistribution
+```
+
+```output
 Approved Rejected Timestamp
 -------- -------- ---------
 0        0        1662854400000
@@ -73,7 +76,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyDistributionMfaDistributionItem
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyDistribution
 
 ## NOTES
 

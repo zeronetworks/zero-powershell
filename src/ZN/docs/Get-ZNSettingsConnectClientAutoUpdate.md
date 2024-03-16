@@ -24,7 +24,9 @@ Get Connect client auto update in Settings
 ### Example 1: Get Connect Client auto update settings
 ```powershell
 Get-ZNSettingsConnectClientAutoUpdate  
+```
 
+```output
 False                
 ```
 
@@ -39,9 +41,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsConnectClientAutoUpdate
 
 ## NOTES
 

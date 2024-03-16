@@ -26,7 +26,9 @@ Returns a list of excluded source candidates for outbound block rules.
 ```powershell
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Domain -eq "tag"}
 (Get-ZNGroupsOutboundBlockRulesExcludedSourceCandidate -Groupid $group.id -GroupType tag).Items
+```
 
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
 posh.local False               g:a:qu04AfTz Access Control Assistance Operators

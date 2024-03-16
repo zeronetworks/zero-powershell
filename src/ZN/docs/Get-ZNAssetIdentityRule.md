@@ -32,7 +32,9 @@ Returns the properties of an Identity rule.
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local 
 (Get-ZNAssetIdentityRule -AssetId $asset).ITems
+```
 
+```output
 CreatedAt     Id                                   UserInfos       AssetInfoName      ExcludedAssetInfos IdentityProtectionCategoryList ExpiresAt Rule
                                                                                                                                                   clas
                                                                                                                                                   s
@@ -45,7 +47,9 @@ This cmdlet lists identity rules for an asset.
 ### Example 2: Get an identity rule for an asset.
 ```powershell
 Get-ZNAssetIdentityRule -AssetId $asset -RuleId ff9cc79c-21b6-4363-82e1-da6bc6bbdaf0
+```
 
+```output
 AssetInfoId                        : 
 AssetInfoName                      : 
 CreatedByEmail                     : 
@@ -224,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IIdentityRule
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IIdentityRuleItem
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IIdentityRulesList
 

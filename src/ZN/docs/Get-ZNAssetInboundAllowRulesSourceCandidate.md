@@ -26,7 +26,9 @@ Returns a list of source candidates for Inbound Allow rules.
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 (Get-ZNAssetInboundAllowRulesSourceCandidate -AssetId $asset).Items             
+```
 
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
                                b:110001     Any asset

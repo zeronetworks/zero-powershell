@@ -20,10 +20,10 @@ Describe 'Update-ZNOutboundBlockRule' {
         $source = (Get-ZNOutboundAllowRulesSourceCandidate -search "all segmented assets").Items
         $destination = Invoke-ZNEncodeEntityIp -IP 1.2.3.4
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
-        $rule = New-ZNOutboundBlockRule -LocalEntityId $source.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt
+        $rule = New-ZNOutboundBlockRule -LocalEntityId $source.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination.id) -State 1 -ExpiresAt $expiresAt
         
         $newdescription = "new description" + (Get-Random -Minimum 1 -Maximum 100)
-        $updatedRule = Update-ZNOutboundBlockRule -RuleId $rule.Id -Description $newdescription
-        $updatedRule.Description | Should -Be $newdescription
+        $updatedRule = Update-ZNOutboundBlockRule -RuleId $rule.Item.Id -Description $newdescription
+        $updatedRule.Item.Description | Should -Be $newdescription
     }
 }

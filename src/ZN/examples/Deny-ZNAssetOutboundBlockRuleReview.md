@@ -2,6 +2,9 @@
 ```powershell
 $asset = Search-ZNAsset -Fqdn linux0.posh.local
 Deny-ZNAssetOutboundBlockRuleReview -AssetId $asset -RuleId '9d275288-4fc3-46e5-a5a0-ff0626214b87' -Reason 'RedundantRule'
+```
+
+```output
 
 ```
 

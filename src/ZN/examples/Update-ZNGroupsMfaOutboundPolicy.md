@@ -4,7 +4,9 @@ $group = Get-ZNGroup -Search "Door locks" | where {$_.Id -like "g:o:*"}
 $mfaPolicy = Get-ZNGroupsMfaOutboundPolicy -GroupId $group.Id -GroupType ot -ReactivePolicyId f093f91b-aaea-4c00-9042-b074410ab9f0
 $mfaPolicy.ItemDstPort = $mfaPolicy.ItemDstPort+,",24"
 Update-ZNGroupsMfaOutboundPolicy -GroupId $group.Id -GroupType ot -ReactivePolicyId $mfaPolicy.ItemId -DstPort $mfaPolicy.ItemDstPort
+```
 
+```output
 DstEntityInfoAssetStatus     : 
 DstEntityInfoAssetType       : 
 DstEntityInfoDomain          : 

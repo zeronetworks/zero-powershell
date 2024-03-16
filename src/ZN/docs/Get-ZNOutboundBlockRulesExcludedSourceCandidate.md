@@ -25,6 +25,9 @@ Returns a list of excluded source candidates for outbound block rules.
 ### Example 1: Get possible sources to exclude for outbound block rule
 ```powershell
 (Get-ZNOutboundBlockRulesExcludedSourceCandidate).Items
+```
+
+```output
 AssetType Domain    Id           Name                                    ProtectionState
 --------- ------    --           ----                                    ---------------
           zero.labs g:a:yu1gHyge Access Control Assistance Operators     
@@ -52,7 +55,10 @@ This cmdlet will return possbile candidates for destinations in an outbound allo
 ### Example 2: Search for a candidate to exclude
 ```powershell
 (Get-ZNOutboundBlockRulesExcludedSourceCandidate -Search DC1).Items
-AssetType Domain    Id           Name ProtectionState
+```
+
+```output
+Asset     Domain    Id           Name ProtectionState
 --------- ------    --           ---- ---------------
 2         zero.labs a:a:ZgBWOMyc DC1  5
 ```

@@ -25,7 +25,9 @@ Returns a list of candidates for user access config excluded assets.
 ### Example 1: List excluded asset candidates for user access configs
 ```powershell
 Get-ZNSettingsConnectUserAccessConfigExcludedAssetsCandidate
+```
 
+```output
 Id           Fqdn Name                                      Description DirectMembersCount IPV4Addresses IPV6Addresses S
                                                                                                                        o
                                                                                                                        u
@@ -111,7 +113,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsOrGroupsListItemsItem
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsOrGroupsList
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

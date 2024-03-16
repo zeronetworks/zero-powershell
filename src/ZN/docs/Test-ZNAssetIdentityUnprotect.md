@@ -31,7 +31,6 @@ Returns a number of assets that are valid to unprotect.
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local                      
 Test-ZNAssetIdentityUnprotect -AssetId $asset
-
 ```
 
 This cmdlet tests an asset for removal from identity segmentation.
@@ -40,7 +39,6 @@ This cmdlet tests an asset for removal from identity segmentation.
 ### Example 2: Test multiple assets for removal from identity segmentation
 ```powershell
 Test-ZNAssetIdentityUnprotect -Items @("assetid","assetId")
-
 ```
 
 This cmdlet tests multiple assets for removal from identity segmentation.
@@ -115,9 +113,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Int32
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IValidateResponse
 
 ## NOTES
 

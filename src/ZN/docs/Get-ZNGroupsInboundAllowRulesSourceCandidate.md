@@ -26,7 +26,9 @@ Returns a list of source candidates for Inbound Allow rules.
 ```powershell
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Domain -eq "tag"}
 (Get-ZNGroupsInboundAllowRulesSourceCandidate -Groupid $group.id -GroupType tag).Items             
+```
 
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
                                b:110001     Any asset

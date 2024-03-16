@@ -2,7 +2,9 @@
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 Get-ZNAssetOtRulesDistribution -AssetId $otasset.id -RuleId d69a32ec-a5ea-4915-a33f-297c6ec2ceec -RuleDirection 2
+```
 
+```output
 ActivitiesCount Timestamp
 --------------- ---------
 0               1691798400000

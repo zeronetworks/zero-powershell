@@ -2,6 +2,9 @@
 ```powershell
 $forest = Get-ZNSettingsAd | where {$_.ActiveDirectoryInfoDomainName -eq "test.local"}
 Update-ZNSettingsAdSecondary -forest $forest.ForestId -DomainId child.test.local -Dc newdc.child.test.local
+```
+
+```output
 
 ```
 

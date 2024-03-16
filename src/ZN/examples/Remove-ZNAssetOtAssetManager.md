@@ -2,6 +2,9 @@
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 Remove-ZNAssetOtManager -AssetId $otasset.Id -GroupOrUserId "u:a:X2inJbQY"
+```
+
+```output
 
 ```
 

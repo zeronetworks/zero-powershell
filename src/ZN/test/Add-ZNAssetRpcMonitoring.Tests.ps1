@@ -16,14 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-ZNAssetRpcMonitoring'))
 
 Describe 'Add-ZNAssetRpcMonitoring' {
     It 'Add' {
-        $asset = Search-ZNAsset -Fqdn wac01.posh.local
+        $asset= (Search-ZNAsset -Fqdn ts01.posh.local).AssetId
         { Add-ZNAssetRpcMonitoring -AssetId $asset } | Should -Not -Throw
         start-sleep 30
         Remove-ZNAssetRpcMonitoring -AssetId $asset
         start-sleep 30
     }
     It 'AddExpanded' {
-        $asset = Search-ZNAsset -Fqdn wac01.posh.local
+        $asset= (Search-ZNAsset -Fqdn ts01.posh.local).AssetId
         { Add-ZNAssetRpcMonitoring -Items @($asset) } | Should -Not -Throw
         start-sleep 30
         Remove-ZNAssetRpcMonitoring -Items @($asset)

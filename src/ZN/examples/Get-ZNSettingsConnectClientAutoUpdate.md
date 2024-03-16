@@ -1,7 +1,9 @@
 ### Example 1: Get Connect Client auto update settings
 ```powershell
 Get-ZNSettingsConnectClientAutoUpdate  
+```
 
+```output
 False                
 ```
 

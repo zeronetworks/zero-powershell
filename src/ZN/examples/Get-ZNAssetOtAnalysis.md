@@ -2,7 +2,9 @@
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 Get-ZNAssetOtAnalysis -AssetId $otasset.Id -Direction 1
+```
 
+```output
 CountByAsset        : 0
 CountByPort         : 0
 CountByProcess      : 0

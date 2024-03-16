@@ -31,6 +31,9 @@ Returns the properties of an outbound MFA policy.
 ### Example 1: List outbound MFA policies
 ```powershell
 Get-ZNOutboundBlockRule
+```
+
+```output
 Action CreatedAt     Description                               Direction ExcludedLocalIdsList ExpiresAt Id                                   LocalEntityId LocalProcessesList ParentId ParentType RemoteEntityIds
                                                                                                                                                                                                   List
 ------ ---------     -----------                               --------- -------------------- --------- --                                   ------------- ------------------ -------- ---------- ---------------
@@ -44,6 +47,9 @@ This cmdlet gets outbound MFA policies from the environment.
 ### Example 2: Get a specific outbound MFA policy
 ```powershell
 Get-ZNMfaOutboundPolicy -ReactivePolicyId "cff54715-454b-4309-9b70-3055d80a8379"
+```
+
+```output
 ItemAdditionalPortsList    : {}
 ItemCreatedAt              : 1665512193635
 ItemCreatedBy              : 1f352ed0-86f1-454f-90a5-592c197c8000
@@ -167,7 +173,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicy
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyList
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyResponse
 
 ## NOTES
 

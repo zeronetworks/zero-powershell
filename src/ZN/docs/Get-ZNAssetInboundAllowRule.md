@@ -33,7 +33,9 @@ Returns the properties of an Inbound Allow rule.
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 Get-ZNAssetInboundAllowRule -AssetId $asset  
+```
 
+```output
 CreatedAt     RemoteEntityInfos LocalEntityInfoName Ruleclass ActivitiesCount Id                                   CreatedByEnforcementSource State Description
 ---------     ----------------- ------------------- --------- --------------- --                                   -------------------------- ----- -----------
 1677252137875 {Any asset}       Domain controllers            17941           6764bd86-f3c6-4949-a827-64e1499b1b86 5                          1     Auto-gener…
@@ -45,7 +47,9 @@ This cmdlet gets rules for a specific asset.
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 Get-ZNAssetInboundAllowRule -AssetId $asset -RuleId 6764bd86-f3c6-4949-a827-64e1499b1b86
+```
 
+```output
 ApprovedById               : 
 ApprovedByName             : 
 CreatedByEnforcementSource : 5
@@ -241,7 +245,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IRule
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IRuleItem
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IRulesList
 
 ## NOTES
 

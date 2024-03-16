@@ -25,6 +25,9 @@ Returns an object with asset analysis data.
 ### Example 1: Get asset analysis
 ```powershell
 Get-ZNAssetAnalysis -AssetId a:a:ZgBWOMyc
+```
+
+```output
 CountByAsset        : 0
 CountByPort         : 0
 CountByProcess      : 0
@@ -137,7 +140,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetAnalysisItems
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetAnalysis
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

@@ -31,7 +31,6 @@ Returns an empty object.
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local                      
 Unprotect-ZNAssetIdentity -AssetId $asset
-
 ```
 
 This cmdlet removes an asset from identity segmentation.
@@ -39,7 +38,6 @@ This cmdlet removes an asset from identity segmentation.
 ### Example 2: Remove multiple assets from identity segmentation
 ```powershell
 Unprotect-ZNAssetIdentity -Items @("assetid","assetId")
-
 ```
 
 This cmdlet removes multiple assets from identity segmentation.

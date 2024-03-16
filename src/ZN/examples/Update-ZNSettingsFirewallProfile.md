@@ -2,7 +2,9 @@
 ```powershell
 $fwprofiles = Get-ZNSettingsFirewallProfile
 Update-ZNSettingsFirewallProfile -InboundAllowDomain:$fwprofiles.InboundAllowDomain -InboundAllowPrivate:$fwprofiles.InboundAllowPrivate -InboundAllowPublic:$true -InboundBlockDomain:$fwprofiles.InboundBlockDomain -InboundBlockPrivate:$fwprofiles.InboundBlockPrivate -InboundBlockPublic:$fwprofiles.InboundBlockPublic -OutboundBlockDomain:$fwprofiles.OutboundBlockDomain -OutboundBlockPrivate:$fwprofiles.OutboundBlockPrivate -OutboundBlockPublic:$fwprofiles.OutboundBlockPublic 
+```
 
+```output
 InboundAllowDomain   : True
 InboundAllowPrivate  : True
 InboundAllowPublic   : True

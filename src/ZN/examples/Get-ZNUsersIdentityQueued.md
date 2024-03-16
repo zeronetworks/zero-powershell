@@ -1,7 +1,9 @@
 ### Example 1: List users in learning
 ```powershell
 Get-ZNUsersIdentityQueued
+```
 
+```output
 Id           Name               Email Phone JobTitle LastLogon
 --           ----               ----- ----- -------- ---------
 u:a:V61t0gZB ZNRemoteManagement                      1699819368941

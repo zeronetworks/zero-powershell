@@ -24,7 +24,9 @@ Returns the properties of MFA detection settings.
 ### Example 1: Get MFA detection
 ```powershell
 Get-ZNSettingsMfaDetection
+```
 
+```output
 2
 ```
 
@@ -41,7 +43,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsMfaDetection
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsMfaDetectionResponse
 
 ## NOTES
 

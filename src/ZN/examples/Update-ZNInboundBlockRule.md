@@ -3,7 +3,9 @@
 $rule = Get-ZNInboundBlockRule | where {$_.Description -eq "Test Rule"}
 $rule.RemoteEntityIdsList = (Search-ZNAsset -Fqdn fs1.zero.labs)
 Update-ZNInboundBlockRule -RuleId $rule.id -RemoteEntityIdsList $rule.RemoteEntityIdsList
+```
 
+```output
 ApprovedById               : 
 ApprovedByName             : 
 CreatedByEnforcementSource : 5

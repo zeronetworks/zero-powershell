@@ -1,6 +1,9 @@
 ### Example 1: Get possible source users for inbound MFA Policy simulation
 ```powershell
 (Get-ZNMfaInboundPoliciesSimulateSourceUserCandidate).Items
+```
+
+```output
 Domain Id           Name
 ------ --           ----
        u:a:r6ZkL5Y0 Guest
@@ -16,6 +19,9 @@ This cmdlet will return possbile candidates for source users in an inbound MFA p
 ### Example 2: Search for a candidate
 ```powershell
 (Get-ZNMfaInboundPoliciesSimulateSourceUserCandidate -Search zero).Items
+```
+
+```output
 Domain Id           Name
 ------ --           ----
        u:a:RVVXGo4w zero

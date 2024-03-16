@@ -16,12 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetIdentityRule'))
 
 Describe 'Get-ZNAssetIdentityRule' {
     It 'List' {
-        $asset = Search-ZNAsset -Fqdn dc01.posh.local
+        $asset= (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
         $rules = Get-ZNAssetIdentityRule -Asset $asset -AddBuiltins
         $rules.Count | Should -BeGreaterThan 0
     }
     It 'Get' {
-        $asset = Search-ZNAsset -Fqdn dc01.posh.local
+        $asset= (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
         $rules = Get-ZNAssetIdentityRule -Asset $asset -AddBuiltins
         $ruleId = $rules.Items[0].id
         $rule = Get-ZNAssetIdentityRule -Asset $asset -RuleId $ruleId

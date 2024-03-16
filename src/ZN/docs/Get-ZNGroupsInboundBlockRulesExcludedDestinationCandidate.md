@@ -26,7 +26,9 @@ Returns a list of excluded destination candidates for Inbound Block rules.
 ```powershell
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Domain -eq "tag"}
 (Get-ZNGroupsInboundBlockRulesExcludedDestinationCandidate -Groupid $group.id -GroupType tag).Items
+```
 
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
                                b:110002     All segmented assets

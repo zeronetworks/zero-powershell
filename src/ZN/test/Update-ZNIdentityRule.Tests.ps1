@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNIdentityRule'))
 Describe 'Update-ZNIdentityRule' {
     It 'UpdateExpanded' {
         $group = (Get-ZNGroup -Search "domain controllers").Items | where {$_.id -like "g:t:*"}
-        $user = (Get-ZNUser -Search user1).Items | where {$_.Name -eq "User1"}
+        $user = (Get-ZNUser -Search user1).Items | where {$_.Name -eq "zUser1"}
         $description = "updatedtest"
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNIdentityRule -Action 1 -AssetId $group.Id -IdentityProtectionCategoryList @(2,3) -State 1 -UserIdsList @($user.Id) -Description "test" -ExpiresAt $expiresAt

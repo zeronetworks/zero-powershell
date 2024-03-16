@@ -13,9 +13,9 @@ Returns the properties of firewall profiles in Firewall settings.
 ## SYNTAX
 
 ```
-Update-ZNSettingsFirewallProfile -InboundAllowDomain -InboundAllowPrivate -InboundAllowPublic
- -InboundBlockDomain -InboundBlockPrivate -InboundBlockPublic -OutboundBlockDomain -OutboundBlockPrivate
- -OutboundBlockPublic [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsFirewallProfile [-InboundAllowDomain] [-InboundAllowPrivate] [-InboundAllowPublic]
+ [-InboundBlockDomain] [-InboundBlockPrivate] [-InboundBlockPublic] [-OutboundBlockDomain]
+ [-OutboundBlockPrivate] [-OutboundBlockPublic] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +27,9 @@ Returns the properties of firewall profiles in Firewall settings.
 ```powershell
 $fwprofiles = Get-ZNSettingsFirewallProfile
 Update-ZNSettingsFirewallProfile -InboundAllowDomain:$fwprofiles.InboundAllowDomain -InboundAllowPrivate:$fwprofiles.InboundAllowPrivate -InboundAllowPublic:$true -InboundBlockDomain:$fwprofiles.InboundBlockDomain -InboundBlockPrivate:$fwprofiles.InboundBlockPrivate -InboundBlockPublic:$fwprofiles.InboundBlockPublic -OutboundBlockDomain:$fwprofiles.OutboundBlockDomain -OutboundBlockPrivate:$fwprofiles.OutboundBlockPrivate -OutboundBlockPublic:$fwprofiles.OutboundBlockPublic 
+```
 
+```output
 InboundAllowDomain   : True
 InboundAllowPrivate  : True
 InboundAllowPublic   : True
@@ -51,7 +53,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -66,7 +68,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -81,7 +83,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -96,7 +98,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -111,7 +113,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -126,7 +128,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -141,7 +143,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -156,7 +158,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -171,7 +173,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

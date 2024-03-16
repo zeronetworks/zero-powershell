@@ -2,6 +2,9 @@
 ```powershell
 $region = Get-ZNSettingsConnectRegion | where {$_.Name -eq "test"}
 Update-ZNSettingsConnectRegion -RegionId $region.Id -DnsServersIPAddressList $region.DnsServersIPAddressList -IPAddress $region.IPAddress -DnsSuffixesList @("test.local") -Name $region.Name
+```
+
+```output
 
 ```
 

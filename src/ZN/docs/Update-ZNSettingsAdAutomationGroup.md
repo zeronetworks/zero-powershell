@@ -27,7 +27,6 @@ Update Automation Groups for an AD forest setting.
 $forest = Get-ZNSettingsAd | where {$_.ActiveDirectoryInfoDomainName -eq "test.local"}
 $monitorGroup = (Get-ZNSettingsAdMonitoredCandidate -ForestId $forest.ForestId).Items | where {$_.Name -eq "All AD Assets"}
 Update-ZNSettingsAdAutomationGroup -ForestId $forest.ForestId -MonitoredGroupId $monitorGroup.Id
-
 ```
 
 This cmdlet updates the monitor or protection automation group controls.

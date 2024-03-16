@@ -25,7 +25,9 @@ Returns a list of candidates for user access config allowed regions.
 ### Example 1: Get Connect User Access Config candidates for Allowed Reagionssettings
 ```powershell
 Get-ZNSettingsConnectUserAccessConfigAllowedRegionsCandidate
+```
 
+```output
 ConnectivityStateAfterReboot CreatedAt     Description ForceSsoAuthentication Id           Name       SessionTtlHours UpdatedAt
 ---------------------------- ---------     ----------- ---------------------- --           ----       --------------- ---------
 0                                                      False                  b:110007     Any region 0               
@@ -89,7 +91,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IConnectUserAccessConfig
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IConnectUserAccessConfigList
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

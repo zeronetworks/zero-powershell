@@ -25,6 +25,9 @@ Returns a list of source candidates for Inbound Block rules.
 ### Example 1: Find candidates for inbound block rule sources
 ```powershell
 (Get-ZNInboundBlockRulesSourceCandidate).Items
+```
+
+```output
 AssetType Domain    Id           Name                                    ProtectionState
 --------- ------    --           ----                                    ---------------
           zero.labs g:a:yu1gHyge Access Control Assistance Operators     
@@ -53,6 +56,9 @@ This cmdlet will list source candidates for an inbound block rule in the environ
 ### Example 2: Search for an inbound block rule source
 ```powershell
 (Get-ZNInboundBlockRulesSourceCandidate -Search "FS1").Items
+```
+
+```output
 AssetType Domain    Id           Name ProtectionState
 --------- ------    --           ---- ---------------
 2         zero.labs a:a:GnyWAsYs FS1  3

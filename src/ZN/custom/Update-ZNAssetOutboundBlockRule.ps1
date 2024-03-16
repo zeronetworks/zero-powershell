@@ -129,7 +129,8 @@ function Update-ZNAssetOutboundBlockRule {
             $ruleId = $PSBoundParameters['RuleId'].ToString()
             $assetId = $PSBoundParameters['AssetId'].ToString()
             $rule = ZeroNetworks\Get-ZNAssetOutboundBlockRule -AssetId $assetId -RuleId $ruleId
-
+            $rule = $rule.Item
+            
             $updatedRule = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.RuleBody]::new()
             
             if($PSBoundParameters['LocalEntityId']){
@@ -204,7 +205,7 @@ function Update-ZNAssetOutboundBlockRule {
                 $updatedRule.Description = $rule.Description
                 $null = $PSBoundParameters.Remove('Description')
             }
-            Write-Debug $updatedRule | Out-String
+            #Write-Debug $updatedRule | Out-String
             $null = $PSBoundParameters.Add('Body', $updatedRule)
             ZeroNetworks.internal\Update-ZNAssetOutboundBlockRule @PSBoundParameters
         }

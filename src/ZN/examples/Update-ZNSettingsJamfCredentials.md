@@ -1,6 +1,9 @@
 ### Example 1: Update JAMF credentials
 ```powershell
 Update-ZNJamfCredentialsSetting -Host1 <domain>.jamfcloud.com -Username myuser -Password mypassword
+```
+
+```output
 
 ```
 

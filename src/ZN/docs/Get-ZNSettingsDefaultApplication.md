@@ -24,7 +24,9 @@ Get Default SSO Application settings in Identity Providers
 ### Example 1: Get Default SSO application settings
 ```powershell
 Get-ZNSettingsDefaultApplication
+```
 
+```output
 1
 ```
 
@@ -39,9 +41,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Int32
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsIdpDefaultApplication1
 
 ## NOTES
 

@@ -1,7 +1,9 @@
 ### Example 1: List identity rules for a user
 ```powershell
 (Get-ZNUserIdentityRule -UserId u:a:mACDNWcW).Items
+```
 
+```output
 CreatedAt     Id                                   UserInfos AssetInfoName ExcludedAssetInfos IdentityProtectionCategory
                                                                                               List
 ---------     --                                   --------- ------------- ------------------ --------------------------
@@ -15,7 +17,8 @@ This cmdlet lists identity rules for a user.
 Get-ZNUserIdentityRule -UserId "u:a:mACDNWcW" -RuleId ff9cc79c-21b6-4363-82e1-da6bc6bbdaf0 -Debug
 ```
 
- AssetInfoId                        : 
+```output
+AssetInfoId                        : 
 AssetInfoName                      : 
 CreatedByEmail                     : 
 CreatedByEnforcementSource         : 6

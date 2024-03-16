@@ -1,6 +1,9 @@
 ### Example 1: Delete a push notificiations settings
 ```powershell
 Remove-ZNSettingsPushNotification -PushIdentityProviderId duo
+```
+
+```output
 
 ```
 

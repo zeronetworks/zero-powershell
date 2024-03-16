@@ -25,7 +25,9 @@ Returns a list of assets candidates for Identity rules.
 ### Example 1: List asset candidates for identity rules
 ```powershell
 Get-ZNUserIdentityRulesAssetsCandidate -UserId u:a:4UydfhAS
+```
 
+```output
 Id           Fqdn Name                                    Description DirectMembersCount IPV4Addresses IPV6Addresses Sou
                                                                                                                      rce
 --           ---- ----                                    ----------- ------------------ ------------- ------------- ---
@@ -118,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsOrGroupsListItemsItem
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsOrGroupsList
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

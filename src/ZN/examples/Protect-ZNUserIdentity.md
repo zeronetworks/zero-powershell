@@ -3,4 +3,8 @@
 Protect-ZNUserIdentity -UserIds @("u:a:mACDNWcW")
 ```
 
+```output
+
+```
+
 This cmdlet moves a service account from learning to segmented.

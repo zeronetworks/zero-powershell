@@ -24,7 +24,6 @@ Returns the assetId of the created Linux asset.
 ### Example 1: Create a linux asset
 ```powershell
 New-ZNAssetsLinux -DisplayName "linuxservera" -Fqdn "linuxservera.zero.labs"
-
 ```
 
 This cmdlet will create a linux asset in the environment.
@@ -99,9 +98,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetId
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ILinuxResponse
 
 ## NOTES
 

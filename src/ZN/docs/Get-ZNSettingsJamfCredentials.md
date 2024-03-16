@@ -24,7 +24,6 @@ Returns the properties for JAMF Credentials Settings.
 ### Example 1: Get JAMF settings
 ```powershell
 Get-ZNSettingsJamfCredentials
-
 ```
 
 This cmdlet returns the Jamf settings.

@@ -1,6 +1,9 @@
 ### Example 1: Get possible destinations for outbound block rule
 ```powershell
 (Get-ZNOutboundBlockRulesDestinationCandidate).Items
+```
+
+```output
 AssetType Domain    Id           Name                                    ProtectionState
 --------- ------    --           ----                                    ---------------
           zero.labs g:a:yu1gHyge Access Control Assistance Operators     
@@ -29,6 +32,9 @@ This cmdlet will return possbile candidates for destinations in an outbound bloc
 ### Example 2: Search for a candidate
 ```powershell
 (Get-ZNOutboundBlockRulesDestinationCandidate -Search DC1).Items
+```
+
+```output
 AssetType Domain    Id           Name ProtectionState
 --------- ------    --           ---- ---------------
 2         zero.labs a:a:ZgBWOMyc DC1  5

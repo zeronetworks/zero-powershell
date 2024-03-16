@@ -10,7 +10,9 @@ $sourceUserEntity = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyOu
 $sourceUserEntity.Id = $sourceUser.Id
 $portsList = New-ZNPortsList -Empty
 New-ZNGroupsMfaOutboundPolicy -GroupId $group.Id -GroupType ot -AdditionalPortsList $portsList -DstEntityInfoId $destination.Id -DstPort "443" -FallbackToLoggedOnUser -MfaMethods @(4) -OverrideBuiltins -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1     
+```
 
+```output
 DstEntityInfoAssetStatus     : 
 DstEntityInfoAssetType       : 
 DstEntityInfoDomain          : 

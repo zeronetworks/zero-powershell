@@ -31,6 +31,9 @@ Returns the properties of an asset.
 ### Example 1: List assets
 ```powershell
 (Get-ZNAsset).Items
+```
+
+```output
 AssetStatus AssetType Domain    Fqdn              IPV4Addresses     IPV6Addresses               Id           Name                          OperatingSystem                   ProtectionState Source
 ----------- --------- ------    ----              -------------     -------------               --           ----                          ---------------                   --------------- ------
 6           0                                     {192.168.219.218} {}                          a:u:vRZwSRpH Amir Frankel's-Windows10-8fd7                                   1               2
@@ -49,6 +52,9 @@ The cmdlet will list Assets for the environment.
 ### Example 2: List next page of assets
 ```powershell
 (Get-ZNAsset -Offset 20).Items
+```
+
+```output
 AssetStatus AssetType Domain    Fqdn              IPV4Addresses  IPV6Addresses               Id           Name    OperatingSystem                   ProtectionState Source
 ----------- --------- ------    ----              -------------  -------------               --           ----    ---------------                   --------------- ------
 2           2         zero.labs dc1.zero.labs     {192.168.10.0} {fe80::8863:40e6:ced3:75a8} a:a:ZgBWOMyc DC1     Windows Server 2012 R2 Datacenter 5               3
@@ -68,6 +74,7 @@ Use offset to get the next page of assets.
 Get-ZNAsset -AssetId a:a:ZgBWOMyc
 ```
 
+```output
 EntityAssetStatus      : 2
 EntityAssetType        : 2
 EntityDomain           : zero.labs
@@ -218,9 +225,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAsset
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetList
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetResponse
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

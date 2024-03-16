@@ -2,7 +2,9 @@
 ```powershell
 $settingsgpo = Get-ZNSettingsFirewallIgnoredGpo
 Update-ZNSettingsFirewallIgnoredGpo -InboundList $settingsgpo.InboundList -OutboundList @("newruletoignore")
+```
 
+```output
 InboundList OutboundList
 ----------- ------------
 {test}      {newruletoignore}

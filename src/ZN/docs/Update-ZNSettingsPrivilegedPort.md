@@ -13,7 +13,7 @@ Set Privileged Ports settings in Network segmentation
 ## SYNTAX
 
 ```
-Update-ZNSettingsPrivilegedPort -TcpPorts <String> -UdpPorts <String> [-PassThru] [-Confirm] [-WhatIf]
+Update-ZNSettingsPrivilegedPort [-TcpPorts <String>] [-UdpPorts <String>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,9 @@ Set Privileged Ports settings in Network segmentation
 ```powershell
 $privports = Get-ZNSettingsPrivilegedPort
 Update-ZNSettingsPrivilegedPort -TcpPorts $privports.ItemTcpPorts -UdpPorts "1234"
+```
 
+```output
 ItemTcpPorts                  ItemUdpPorts
 ------------                  ------------
 21-23,445,3389,5985-5986,9389 1234
@@ -59,7 +61,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -74,7 +76,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

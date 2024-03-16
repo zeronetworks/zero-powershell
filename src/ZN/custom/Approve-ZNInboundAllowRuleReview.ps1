@@ -148,7 +148,8 @@ function Approve-ZNInboundAllowRuleReview {
                     #Handle Get
                     $ruleId = $PSBoundParameters['RuleId'].ToString()
                     $rule = ZeroNetworks\Get-ZNInboundAllowRule -RuleId $ruleId
-
+                    $rule = $rule.Item
+                    
                     $ruleReview = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.RuleReviewApproveWithChanges]::new()
 
                     if ($PSBoundParameters['Reason']) {
@@ -251,7 +252,7 @@ function Approve-ZNInboundAllowRuleReview {
                     }
 
                     $null = $PSBoundParameters.Add('Body', $ruleReview)
-                    ZeroNetworks.internal\Approve-ZNInboundAllowRuleReview @PSBoundParameters
+                    ZeroNetworks.internal\Approve-ZNInboundAllowRulesReview @PSBoundParameters
                 }
             }
         }

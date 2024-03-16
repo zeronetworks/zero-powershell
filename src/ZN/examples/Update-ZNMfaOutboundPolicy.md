@@ -3,7 +3,9 @@
 $mfaPolicy = Get-ZNMfaOutboundPolicy -ReactivePolicyId b307438a-5a02-49a0-a8e3-944c0558f0fe 
 $mfaPolicy.ItemDstPort = $mfaPolicy.ItemDstPort+,",23"
 Update-ZNMfaOutboundPolicy -ReactivePolicyId $mfaPolicy.ItemId -DstEntityInfoId $mfaPolicy.DstEntityInfoId -DstPort $mfaPolicy.ItemDstPort -FallbackToLoggedOnUser:$false -MfaMethods $mfaPolicy.ItemMfaMethods -ProtocolType $mfaPolicy.ItemProtocolType -RuleCreationMode $mfaPolicy.ItemRuleCreationMode -RuleDuration $mfaPolicy.ItemRuleDuration -SrcEntityInfos $mfaPolicy.ItemSrcEntityInfos -SrcProcessNames $mfaPolicy.ItemSrcProcessNames  -SrcUserInfos $mfaPolicy.ItemSrcUserInfos -State $mfaPolicy.ItemState
+```
 
+```output
 DstEntityInfoAssetStatus     : 1
 DstEntityInfoAssetType       : 0
 DstEntityInfoDomain          : 

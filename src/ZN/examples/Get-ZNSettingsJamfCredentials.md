@@ -1,6 +1,9 @@
 ### Example 1: Get JAMF settings
 ```powershell
 Get-ZNSettingsJamfCredentials
+```
+
+```output
 
 ```
 

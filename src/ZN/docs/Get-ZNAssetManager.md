@@ -25,7 +25,9 @@ Get asset managers of asset
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 Get-ZNAssetManager -AssetId $asset
+```
 
+```output
 ManagerId    Relation
 ---------    --------
 g:a:cai6Wuyd 3
@@ -89,7 +91,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IManager
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IManagersList
 
 ## NOTES
 

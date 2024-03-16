@@ -1,6 +1,9 @@
 ### Example 1: List custom group candidates
 ```powershell
 Get-ZNCustomGroupsCandidate
+```
+
+```output
 Id           Name                                      Description DirectMembersCount
 --           ----                                      ----------- ------------------
 g:a:qu04AfTz Access Control Assistance Operators                   

@@ -26,7 +26,9 @@ Returns a list of source users candidates on outbound MFA policies.
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 (Get-ZNAssetMfaOutboundPoliciesSourceUserCandidate -AssetId $asset).Items
+```
 
+```output
 Domain     Id           Name
 ------     --           ----
            b:111001     Any user

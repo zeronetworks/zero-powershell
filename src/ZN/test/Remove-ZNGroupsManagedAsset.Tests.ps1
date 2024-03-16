@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Remove-ZNGroupsManagedAsset' {
     It 'DeleteViaIdentity' {
-        $asset = Search-ZNAsset -Fqdn linux0.posh.local
+        $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         New-ZNCustomGroup -Name "RemoveGroupsManagedAssetTest"
         $customGroup = (Get-ZNGroup -Search RemoveGroupsManagedAssetTest).Items
         Add-ZNGroupsManagedAsset -GroupId $customGroup.Id -GroupType Custom -EntityIds @($asset)

@@ -24,7 +24,9 @@ Get Trusted Internet addresses settings in System
 ### Example 1: Get Trusted Internet settings
 ```powershell
 Get-ZNSettingsTrustedInternetAddress
+```
 
+```output
 1.1.1.1
 ```
 
@@ -41,7 +43,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsTrustedInternetAddressesConfig
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsTrustedInternetAddresses
 
 ## NOTES
 

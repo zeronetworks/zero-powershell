@@ -13,7 +13,7 @@ Update Learning Config settings in Network Segementation
 ## SYNTAX
 
 ```
-Update-ZNSettingsLearningConfig -AllowQueueForever -AllowQuickLearning [-PassThru] [-Confirm] [-WhatIf]
+Update-ZNSettingsLearningConfig [-AllowQueueForever] [-AllowQuickLearning] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,6 @@ Update Learning Config settings in Network Segementation
 ### Example 1: Update AI learning settings.
 ```powershell
 Update-ZNSettingsLearningConfig -AllowQueueForever:$true -AllowQuickLearning:$false
-
 ```
 
 This cmdlet updates the AI learning settings.
@@ -40,7 +39,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -55,7 +54,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

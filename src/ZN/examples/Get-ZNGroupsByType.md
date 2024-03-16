@@ -1,7 +1,9 @@
 ### Example 1: List Groups by type
 ```powershell
 Get-ZNGroupsByType -GroupType AD
+```
 
+```output
 Id           Name                                    Description DirectMembersCount
 --           ----                                    ----------- ------------------
 g:a:qu04AfTz Access Control Assistance Operators                 0

@@ -2,6 +2,9 @@
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local                      
 Unprotect-ZNAssetIdentity -AssetId $asset
+```
+
+```output
 
 ```
 
@@ -10,6 +13,9 @@ This cmdlet removes an asset from identity segmentation.
 ### Example 2: Remove multiple assets from identity segmentation
 ```powershell
 Unprotect-ZNAssetIdentity -Items @("assetid","assetId")
+```
+
+```output
 
 ```
 

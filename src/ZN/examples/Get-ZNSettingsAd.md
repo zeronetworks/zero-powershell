@@ -1,7 +1,9 @@
 ### Example 1: Get AD settings
 ```powershell
 Get-ZNSettingsAd
+```
 
+```output
 ForestId
 --------
 f:a:0bec706b

@@ -2,7 +2,9 @@
  settings
 ```powershell
 Get-ZNSettingsMfaDetection
+```
 
+```output
 2
 ```
 

@@ -2,7 +2,9 @@
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 Get-ZNAssetMfaOutboundPolicy -AssetId $otasset.Id       
+```
 
+```output
 SrcEntityInfos         SrcProcessNames SrcUserInfos DstEntityInfoName        DstPort DstProcessNames RuleDuration FallbackToLoggedOnUser MfaMethod
                                                                                                                                          s
 --------------         --------------- ------------ -----------------        ------- --------------- ------------ ---------------------- ---------
@@ -15,7 +17,9 @@ This cmdlet lists the outbound MFA policies for a specific asset.
 ### Example 2: Get a specific outbound MFA policy for a specific asset
 ```powershell
 Get-ZNAssetMfaOutboundPolicy -AssetId $otasset.Id -ReactivePolicyId 79b5ed54-16c7-45f1-9a5d-ea1022e1d710
+```
 
+```output
 DstEntityInfoAssetStatus     : 
 DstEntityInfoAssetType       : 
 DstEntityInfoDomain          : 

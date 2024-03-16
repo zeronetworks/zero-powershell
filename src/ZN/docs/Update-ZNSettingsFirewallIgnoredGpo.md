@@ -26,7 +26,9 @@ Returns the properties of ignored GPO rules Firewall settings.
 ```powershell
 $settingsgpo = Get-ZNSettingsFirewallIgnoredGpo
 Update-ZNSettingsFirewallIgnoredGpo -InboundList $settingsgpo.InboundList -OutboundList @("newruletoignore")
+```
 
+```output
 InboundList OutboundList
 ----------- ------------
 {test}      {newruletoignore}

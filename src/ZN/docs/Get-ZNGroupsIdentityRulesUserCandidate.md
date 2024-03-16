@@ -25,7 +25,9 @@ Returns a list of user candidates for Identity rules.
 ### Example 1: List user candidates for identity rules
 ```powershell
 Get-ZNGroupsIdentityRulesUserCandidate -GroupId g:t:01445453 -GroupType tag
+```
 
+```output
 Id           Name                                    Email Description DirectMembersCount Phone JobTitle LastLogon
 --           ----                                    ----- ----------- ------------------ ----- -------- ---------
 g:a:qu04AfTz Access Control Assistance Operators                                                         
@@ -138,7 +140,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroupsOrUsersListItemsItem
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroupsOrUsersList
 
 ## NOTES
 

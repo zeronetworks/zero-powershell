@@ -2,6 +2,9 @@
 ```powershell
 $asset = Search-ZNAsset -Fqdn wc01.posh.local
 Remove-ZNAssetManager -AssetId $asset -GroupOrUserId "u:a:Tolw5kf6"
+```
+
+```output
 
 ```
 

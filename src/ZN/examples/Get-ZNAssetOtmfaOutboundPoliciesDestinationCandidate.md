@@ -2,7 +2,9 @@
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
  (Get-ZNAssetOtmfaOutboundPoliciesDestinationCandidate -AssetId $otasset.id).Items
+```
 
+```output
 Domain HasProtectionPolicy Id           Name
 ------ ------------------- --           ----
                            g:s:17445453 Segmented OT/IoT devices

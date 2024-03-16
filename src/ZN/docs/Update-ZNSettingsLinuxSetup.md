@@ -13,7 +13,7 @@ Update the linux setup settings in Asset Managment
 ## SYNTAX
 
 ```
-Update-ZNSettingsLinuxSetup -AllowInstallPackages [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsLinuxSetup [-AllowInstallPackages] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,6 @@ Update the linux setup settings in Asset Managment
 ### Example 1: Update AI learning config
 ```powershell
 Update-ZNSettingsLinuxSetup -AllowInstallPackages:$false
-
 ```
 
 This cmdlet updates the AI learning settings.
@@ -39,7 +38,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -84,9 +83,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsLinuxSetup
 
 ## NOTES
 

@@ -2,7 +2,9 @@
 ```powershell
 $asset = Search-ZNAsset -Fqdn wc01.posh.local
 Get-ZNAssetOutboundBlockRule -AssetId $assetGet-ZNAssetOutboundBlockRule -AssetId $asset -AddBuiltins
+```
 
+```output
 CreatedAt     RemoteEntityInfos      LocalEntityInfoName  Ruleclass ActivitiesCount Id                                   CreatedByEnforcementSource State Description
 ---------     -----------------      -------------------  --------- --------------- --                                   -------------------------- ----- -----------
 1694455805574 {1.2.3.4, badsite.com} All segmented assets           0               a33ae68e-0c9e-4d0c-a20c-433aa0563d36 4                          1

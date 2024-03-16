@@ -4,7 +4,9 @@ $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Id -like "g:t:*"}
 $mfaPolicy = Get-ZNGroupsMfaInboundPolicy -GroupId $group.Id -GroupType tag -ReactivePolicyId 244d0d8a-beb1-45f1-a2c4-e3372d605646
 $mfaPolicy.ItemDstPort = $mfaPolicy.ItemDstPort+,",24"
 Update-ZNGroupsMfaInboundPolicy -GroupId $group.Id -GroupType tag -ReactivePolicyId $mfaPolicy.ItemId -DstPort $mfaPolicy.ItemDstPort
+```
 
+```output
 DstEntityInfoAssetStatus     : 
 DstEntityInfoAssetType       : 
 DstEntityInfoDomain          : 

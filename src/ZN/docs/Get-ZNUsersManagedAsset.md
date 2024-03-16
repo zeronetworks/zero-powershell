@@ -24,6 +24,9 @@ get managed assets for user
 ### Example 1: List a users managed assets
 ```powershell
 Get-ZNUsersManagedAsset -UserId u:a:RVVXGo4w
+```
+
+```output
 EntityId     Relation
 --------     --------
 a:a:8ErCHXe8 1
@@ -88,7 +91,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IManagedAsset
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IManagedAssetsList
 
 ## NOTES
 

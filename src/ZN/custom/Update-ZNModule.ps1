@@ -50,16 +50,17 @@ function CheckModuleLatest {
     # Read the currently installed version
     $installed = Get-Module -ListAvailable -Name $Module
     
+
     # There might be multiple versions
-    if($installed.Count -eq 0){
-        $installedversion = (Get-Module -Name $Module).Version
+    if($installed.Count -eq 1){
+        $installedModule = Get-Module -Name $Module
+    } elseif($installed.Count -eq 0){
+        $installedModule = Get-Module -Name $Module
+    } else {
+        $installedModule = $installed[0]
     }
-    elseif($installed -is [array]){
-        $installedversion = $installed[0].version
-    }
-    else{
-        $installedversion = $installed.version
-    }
+
+    [version]$installedVersion = $installedModule.Version.ToString().replace("-preview","")
     
     # Lookup the latest version online
     try {
@@ -69,7 +70,7 @@ function CheckModuleLatest {
         Write-Host "Module was not found is PSGallery"
     }
     
-    $onlineversion = $online.version
+    [version]$onlineversion = $online.version.replace("-preview","")
 
     # Compare the versions
     if ($onlineversion -gt $installedversion) {

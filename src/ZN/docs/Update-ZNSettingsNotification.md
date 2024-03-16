@@ -25,7 +25,9 @@ Returns the properties of the updated Mail Notifications settings.
 ### Example 1: Update mail notifications
 ```powershell
 Update-ZNNotificationSetting -AssetProtected:$true -AssetQueued:$false -AssetUnprotected:$true -AssetPostponed:$true
+```
 
+```output
 AssetProtected AssetProtected AssetQueued AssetUnprotected
 -------------- -------------- ----------- ----------------
 True           False          True        True

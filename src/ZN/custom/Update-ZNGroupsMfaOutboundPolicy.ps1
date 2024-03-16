@@ -214,7 +214,7 @@ function Update-ZNGroupsMfaOutboundPolicy {
                 $null = $PSBoundParameters.Remove('ExcludedSrcEntityInfos')
             }
             else{
-                $updatedPolicy.ExcludedSrcEntityInfos = $policy.ItemExcludedSrcEntityInfos
+                $updatedPolicy.ExcludedSrcEntityInfos = @($policy.ItemExcludedSrcEntityInfos)
                 $null = $PSBoundParameters.Remove('ExcludedSrcEntityInfos')
             }
 
@@ -277,7 +277,7 @@ function Update-ZNGroupsMfaOutboundPolicy {
                 $null = $PSBoundParameters.Remove('SrcEntityInfos')
             }
             else{
-                $updatedPolicy.SrcEntityInfos = $policy.ItemSrcEntityInfos
+                $updatedPolicy.SrcEntityInfos = @($policy.ItemSrcEntityInfos)
                 $null = $PSBoundParameters.Remove('SrcEntityInfos')
             }
             
@@ -295,7 +295,7 @@ function Update-ZNGroupsMfaOutboundPolicy {
                 $null = $PSBoundParameters.Remove('SrcUserInfos')
             }
             else{
-                $updatedPolicy.SrcUserInfos = $policy.ItemSrcUserInfos
+                $updatedPolicy.SrcUserInfos = @($policy.ItemSrcUserInfos)
                 $null = $PSBoundParameters.Remove('SrcUserInfos')
             }
             
@@ -316,7 +316,7 @@ function Update-ZNGroupsMfaOutboundPolicy {
                 $updatedPolicy.Description = $policy.ItemDescription
                 $null = $PSBoundParameters.Remove('Description')
             }
-            Write-Debug $updatedPolicy | Out-String
+            #Write-Debug $updatedPolicy | Out-String
             $null = $PSBoundParameters.Add('Body', $updatedPolicy)
             ZeroNetworks.internal\Update-ZNGroupsMfaOutboundPolicy @PSBoundParameters
         }

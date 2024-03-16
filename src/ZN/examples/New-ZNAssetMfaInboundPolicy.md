@@ -10,7 +10,9 @@ $sourceUserEntity = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyIn
 $sourceUserEntity.Id = $sourceUser.Id
 $portsList = New-ZNPortsList -Empty
 New-ZNAssetMfaInboundPolicy -AssetId $asset -AdditionalPortsList $portsList -DstEntityInfoId $destination.Id -DstPort "22" -DstProcessNames @("*") -FallbackToLoggedOnUser -OverrideBuiltins -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1
-     
+```
+
+```output   
 DstEntityInfoAssetStatus     : 7
 DstEntityInfoAssetType       : 1
 DstEntityInfoDomain          : posh.local

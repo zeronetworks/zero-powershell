@@ -2,7 +2,9 @@
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 Get-ZNAssetIdentityRulesAssetsCandidate -AssetId $asset
+```
 
+```output
 Id           Fqdn Name                                    Description DirectMembersCount IPV4Addresses IPV6Addresses Sou
                                                                                                                      rce
 --           ---- ----                                    ----------- ------------------ ------------- ------------- ---

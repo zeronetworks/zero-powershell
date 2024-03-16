@@ -24,6 +24,9 @@ Returns the assetId after encoding the IP range.
 ### Example 1: Encode an IP Address range
 ```powershell
 Invoke-ZNEncodeEntityIPRange -IPRange 1.1.1.1-1.1.1.2 
+```
+
+```output
 b:120101010120b:140101010101010102
 ```
 
@@ -53,7 +56,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IEncodedEntity
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

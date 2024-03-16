@@ -24,7 +24,9 @@ Returns the properties of the updated MFA detection settings.
 ### Example 1: Update MFA detection setting
 ```powershell
 Update-ZNMfaDetectionSetting -TimeoutMinutes 5
+```
 
+```output
 5
 ```
 
@@ -87,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsMfaDetection
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsMfaDetectionResponse
 
 ## NOTES
 

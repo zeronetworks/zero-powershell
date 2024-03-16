@@ -1,6 +1,9 @@
 ### Example 1: List monitored assets
 ```powershell
 (Get-ZNAssetsMonitored).Items
+```
+
+```output
 AssetStatus AssetType Domain    Fqdn              IPV4Addresses  IPV6Addresses               Id           Name    OperatingSystem                   ProtectionState Source
 ----------- --------- ------    ----              -------------  -------------               --           ----    ---------------                   --------------- ------
 2           2         zero.labs dc1.zero.labs     {192.168.10.0} {fe80::8863:40e6:ced3:75a8} a:a:ZgBWOMyc DC1     Windows Server 2012 R2 Datacenter 5               3
@@ -18,6 +21,9 @@ The cmdlet will list monitored Assets for the environment.
 ### Example 2: List next page of monitored assets
 ```powershell
 (Get-ZNAssetsMonitored -Offset 10).Items
+```
+
+```output
 AssetStatus AssetType Domain    Fqdn              IPV4Addresses  IPV6Addresses               Id           Name    OperatingSystem                   ProtectionState Source
 ----------- --------- ------    ----              -------------  -------------               --           ----    ---------------                   --------------- ------
 2           2         zero.labs dc1.zero.labs     {192.168.10.0} {fe80::8863:40e6:ced3:75a8} a:a:ZgBWOMyc DC1     Windows Server 2012 R2 Datacenter 5               3

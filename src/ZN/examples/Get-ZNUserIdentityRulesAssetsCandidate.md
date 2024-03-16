@@ -1,7 +1,9 @@
 ### Example 1: List asset candidates for identity rules
 ```powershell
 Get-ZNUserIdentityRulesAssetsCandidate -UserId u:a:4UydfhAS
+```
 
+```output
 Id           Fqdn Name                                    Description DirectMembersCount IPV4Addresses IPV6Addresses Sou
                                                                                                                      rce
 --           ---- ----                                    ----------- ------------------ ------------- ------------- ---

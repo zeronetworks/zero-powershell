@@ -2,7 +2,9 @@
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 Get-ZNAssetListeningPort -AssetId $asset
+```
 
+```output
 ProcessId ProcessName                                               Username
 --------- -----------                                               --------
 4         System                                                    NT AUTHORITY\SYSTEM

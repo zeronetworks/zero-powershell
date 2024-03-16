@@ -1,6 +1,9 @@
 ### Example 1: List user statistics
 ```powershell
 Get-ZNUserStatistics
+```
+
+```output
 UserStatisticsAdminsCount UserStatisticsTotalCount UserStatisticsViewersCount
 ------------------------- ------------------------ --------------------------
                        13                       17                          0

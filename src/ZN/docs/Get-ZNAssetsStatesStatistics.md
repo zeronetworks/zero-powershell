@@ -24,6 +24,9 @@ Returns an object with asset state statistics.
 ### Example 1: Get asset connected count
 ```powershell
 Get-ZNAssetsStatesStatistics
+```
+
+```output
 10
 ```
 
@@ -38,7 +41,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsStatesStatisticsAssetsStatesStatistics
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsStatesStatistics
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

@@ -25,7 +25,9 @@ Returns a list of tags for an entity.
 ```powershell
 $otasset = Get-ZNAssetsOt | where {$_.Fqdn -eq "ot1777"}
 Get-ZNAssetOtTag -AssetId $otasset.Id
+```
 
+```output
 Id           Name                  Description                                       DirectMembersCount
 --           ----                  -----------                                       ------------------
 g:t:27445453 Network Scanners      Includes network Scanners in the environment      1
@@ -60,7 +62,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroup
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ITags
 
 ## NOTES
 

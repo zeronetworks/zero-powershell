@@ -3,7 +3,9 @@
 $mfaPolicy = Get-ZNMfaInboundPolicy -ReactivePolicyId e1db180f-e435-498c-ae17-59651f3c3dc3
 $mfaPolicy.ItemDstPort = $mfaPolicy.ItemDstPort+,",24"
 Update-ZNMfaInboundPolicy -ReactivePolicyId $mfaPolicy.ItemId -DstPort $mfaPolicy.ItemDstPort
+```
 
+```output
 DstEntityInfoAssetStatus     : 1
 DstEntityInfoAssetType       : 0
 DstEntityInfoDomain          : 

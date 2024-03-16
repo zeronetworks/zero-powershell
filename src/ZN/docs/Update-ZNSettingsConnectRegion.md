@@ -13,8 +13,9 @@ Update a Connect Region in Settings
 ## SYNTAX
 
 ```
-Update-ZNSettingsConnectRegion -RegionId <String> -DnsServersIPAddressList <String[]> -IPAddress <String>
- -Name <String> [-DnsSuffixesList <String[]>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsConnectRegion -RegionId <String> [-DnsServersIPAddressList <String[]>]
+ [-DnsSuffixesList <String[]>] [-IPAddress <String>] [-Name <String>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +27,6 @@ Update a Connect Region in Settings
 ```powershell
 $region = Get-ZNSettingsConnectRegion | where {$_.Name -eq "test"}
 Update-ZNSettingsConnectRegion -RegionId $region.Id -DnsServersIPAddressList $region.DnsServersIPAddressList -IPAddress $region.IPAddress -DnsSuffixesList @("test.local") -Name $region.Name
-
 ```
 
 This cmdlet updates a Connect region setting.
@@ -41,7 +41,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -71,7 +71,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -86,7 +86,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

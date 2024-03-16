@@ -1,7 +1,9 @@
 ### Example 1: List user candidates for identity rules
 ```powershell
 Get-ZNUserIdentityRulesUserCandidate -UserId u:a:4UydfhAS
+```
 
+```output
 Id           Name                                    Email Description DirectMembersCount Phone JobTitle LastLogon
 --           ----                                    ----- ----------- ------------------ ----- -------- ---------
 g:a:qu04AfTz Access Control Assistance Operators                                                         

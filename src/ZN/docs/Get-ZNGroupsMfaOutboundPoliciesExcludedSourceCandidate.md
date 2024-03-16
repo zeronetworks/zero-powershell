@@ -26,7 +26,9 @@ Returns a list of candidates for the excluded sources of an outbound MFA policy.
 ```powershell
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Domain -eq "tag"}
 (Get-ZNGroupsMfaOutboundPoliciesExcludedSourceCandidate -Groupid $group.id -GroupType tag).Items              
-       
+```
+
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
 posh.local False               g:a:qu04AfTz Access Control Assistance Operators

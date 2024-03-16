@@ -2,7 +2,9 @@
 ```powershell
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Domain -eq "tag"}
 Get-ZNGroupsInboundAllowRule -Groupid $group.Id -GroupType tag
+```
 
+```output
 CreatedAt     RemoteEntityInfos LocalEntityInfoName Ruleclass ActivitiesCount Id                                   CreatedByEnforcementSource State Description
 ---------     ----------------- ------------------- --------- --------------- --                                   -------------------------- ----- -----------
 1677252137875 {Any asset}       Domain controllers            17296           6764bd86-f3c6-4949-a827-64e1499b1b86 5                          1     Auto-generated rule for tag groups
@@ -13,7 +15,9 @@ This cmdlet gets rules for a specific group.
 ### Example 2: Get a specific rule for a specific group
 ```powershell
 Get-ZNGroupsInboundAllowRule -Groupid $group.Id -GroupType tag -RuleId 6764bd86-f3c6-4949-a827-64e1499b1b86
+```
 
+```output
 ApprovedById               : 
 ApprovedByName             : 
 CreatedByEnforcementSource : 5

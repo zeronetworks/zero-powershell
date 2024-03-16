@@ -25,6 +25,9 @@ Returns a list of candidates for user access config excluded destinations.
 ### Example 1: List User Access Config Destination Candidates
 ```powershell
 Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate
+```
+
+```output
 AssetStatus AssetType CreatedAt Description DirectMembersCount DistinguishedName Domain     Email FirstName Fqdn Guid
 ----------- --------- --------- ----------- ------------------ ----------------- ------     ----- --------- ---- ----                   
                                                                                  system                                                 
@@ -106,7 +109,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsOrGroupsListItemsItem
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsOrGroupsList
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

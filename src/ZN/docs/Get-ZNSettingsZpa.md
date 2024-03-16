@@ -24,7 +24,9 @@ Get ZPA settings in Integrations
 ### Example 1: Get ZPA settings
 ```powershell
 Get-ZNSettingsZpa
+```
 
+```output
 ClientOutboundSubnet GatewayIpsList IsEnabled PortsToMfaTcp PortsToMfaUdp
 -------------------- -------------- --------- ------------- -------------
                                     False                   
@@ -43,7 +45,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsZpaConfig
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsZpa
 
 ## NOTES
 

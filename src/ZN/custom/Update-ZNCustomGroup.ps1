@@ -114,7 +114,7 @@ function Update-ZNCustomGroup {
                 $MembersId += $member.Id
             }
             $updatedCustomGroup.MembersId = $MembersId
-            Write-Debug $updatedCustomGroup | Out-String
+            #Write-Debug $updatedCustomGroup | Out-String
             $null = $PSBoundParameters.Add('Body', $updatedCustomGroup)
             ZeroNetworks.internal\Update-ZNCustomGroup @PSBoundParameters
         }

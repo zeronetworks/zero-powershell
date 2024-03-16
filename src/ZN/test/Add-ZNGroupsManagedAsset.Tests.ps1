@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-ZNGroupsManagedAsset'))
 
 Describe 'Add-ZNGroupsManagedAsset' {
     It 'AddExpanded' {
-        $asset = Search-ZNAsset -Fqdn linux0.posh.local
+        $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         New-ZNCustomGroup -Name "AddGroupsManagedAssetTest"
         $customGroup = (Get-ZNGroup -Search AddGroupsManagedAssetTest).Items
         Add-ZNGroupsManagedAsset -GroupId $customGroup.Id -GroupType Custom -EntityIds @($asset)

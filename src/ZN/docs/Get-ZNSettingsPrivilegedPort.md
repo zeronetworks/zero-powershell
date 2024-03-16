@@ -24,7 +24,9 @@ Get Privileged Ports settings in Network segmentation
 ### Example 1: Get privileged ports settings
 ```powershell
 Get-ZNSettingsPrivilegedPort
+```
 
+```output
 ItemTcpPorts                  ItemUdpPorts
 ------------                  ------------
 21-23,445,3389,5985-5986,9389 
@@ -43,7 +45,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsPrivilegedPortsItem
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsPrivilegedPorts
 
 ## NOTES
 

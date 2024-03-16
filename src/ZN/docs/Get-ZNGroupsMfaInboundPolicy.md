@@ -33,7 +33,9 @@ Returns a inbound MFA policy object.
 ```powershell
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Domain -eq "tag"}
 Get-ZNGroupsMfaInboundPolicy -Groupid $group.id -GroupType tag                             
+```
 
+```output
 SrcEntityInfos SrcProcessNames SrcUserInfos DstEntityInfoName  DstPort DstProcessNames RuleDuration FallbackToLoggedOnUser MfaMethods
 -------------- --------------- ------------ -----------------  ------- --------------- ------------ ---------------------- ----------
 {Any asset}    {*}             {Any user}   Domain controllers 9389    {*}             7            False                  {4}
@@ -44,7 +46,9 @@ This cmdlet gets MFA policies for a specific group.
 ### Example 2: Get a specific MFA policy for a specific group
 ```powershell
 Get-ZNGroupsMfaInboundPolicy -Groupid $group.id -GroupType tag -ReactivePolicyId aec46c4f-4512-4896-91a2-fd360d67c9d2
+```
 
+```output
 DstEntityInfoAssetStatus     : 
 DstEntityInfoAssetType       : 
 DstEntityInfoDomain          : 
@@ -232,7 +236,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicy
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyList
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyResponse
 
 ## NOTES
 

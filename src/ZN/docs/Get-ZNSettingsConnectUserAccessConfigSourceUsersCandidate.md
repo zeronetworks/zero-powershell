@@ -25,7 +25,9 @@ Returns a list of candidates for user access config source users.
 ### Example 1: List possible source candidates
 ```powershell
 Get-ZNSettingsConnectUserAccessConfigSourceUsersCandidate        
+```
 
+```output
 CreatedAt     Description                                                                DirectMembersCount DistinguishedName                                      Domain
 ---------     -----------                                                                ------------------ -----------------                                      ------
                                                                                                                                                                          
@@ -106,7 +108,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroupsOrUsersListItemsItem
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroupsOrUsersList
 
 ## NOTES
 

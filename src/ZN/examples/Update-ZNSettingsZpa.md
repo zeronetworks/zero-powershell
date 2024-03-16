@@ -2,6 +2,9 @@
 ```powershell
 $zpa = Get-ZNSettingsZpa
 Update-ZNSettingsZpa -ClientOutboundSubnet $zpa.ClientOutboundSubnet -GatewayIpsList $zpa.GatewayIpsList -IsEnabled:$zpa.IsEnabled -PortsToMfaTcp $zpa.PortsToMfaTcp -PortsToMfaUdp "21"
+```
+
+```output
 
 ```
 

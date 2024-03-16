@@ -1,7 +1,9 @@
 ### Example 1: List excluded asset candidates for identity rule
 ```powershell
 Get-ZNGroupsIdentityRulesExcludedAssetsCandidate -Groupid g:t:01445453 -GroupType tag
+```
 
+```output
 Id           Fqdn Name                                    Description DirectMembersCount IPV4Addresses IPV6Addresses Source AssetStatus ProtectionStat
                                                                                                                                         e
 --           ---- ----                                    ----------- ------------------ ------------- ------------- ------ ----------- --------------

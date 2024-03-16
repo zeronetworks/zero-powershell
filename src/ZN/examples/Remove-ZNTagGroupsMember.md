@@ -2,6 +2,9 @@
 ```powershell
 group = Get-ZNGroup -Search "Network scanners"
 Remove-ZNTagGroupsMember -GroupId $group.Id -MembersId 'a:a:OtfLGUBq'
+```
+
+```output
 
 ```
 

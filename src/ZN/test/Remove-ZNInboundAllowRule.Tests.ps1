@@ -22,6 +22,6 @@ Describe 'Remove-ZNInboundAllowRule' {
         $destination = (Get-ZNInboundAllowRulesDestinationCandidate -Search "all segmented assets").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNInboundAllowRule -LocalEntityId $destination.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
-        { Remove-ZNInboundAllowRule -RuleId $rule.Id  } | Should -Not -Throw
+        { Remove-ZNInboundAllowRule -RuleId $rule.Item.Id  } | Should -Not -Throw
     }
 }

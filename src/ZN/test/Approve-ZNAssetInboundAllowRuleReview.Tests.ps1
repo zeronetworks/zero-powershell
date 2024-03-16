@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Approve-ZNAssetInboundAllowRu
 
 Describe 'Approve-ZNAssetInboundAllowRuleReview' {
     It 'ApproveExpanded' {
-        $asset = Search-ZNAsset -Fqdn linux0.posh.local
+        $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         $rule = Get-ZNAssetInboundAllowRule -AssetId $asset | where {$_.State -eq 4} | Select-Object -First 1
         Approve-ZNAssetInboundAllowRuleReview -AssetId $asset -RuleId $rule.id
         $updatedRule = Get-ZNAssetInboundAllowRule -AssetId $asset | where {$_.Id -eq $rule.id}
@@ -25,7 +25,7 @@ Describe 'Approve-ZNAssetInboundAllowRuleReview' {
     }
 
     It 'ApproveWithChangesExpanded' {
-        $asset = Search-ZNAsset -Fqdn linux0.posh.local
+        $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         $rule = Get-ZNAssetInboundAllowRule -AssetId $asset | where {$_.State -eq 4} | Select-Object -First 1
         Approve-ZNAssetInboundAllowRuleReview -AssetId $asset -RuleId $rule.id -Description "updatedapproval" -Reason MissingPortOrProcess
         $updatedRule = Get-ZNAssetInboundAllowRule -AssetId $asset | where {$_.Id -eq $rule.id}

@@ -19,6 +19,6 @@ Describe 'Remove-ZNGroupsInboundBlockRule' {
         $source = (Get-ZNGroupsInboundBlockRulesSourceCandidate -GroupId $group.Id -GroupType tag -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNGroupsInboundBlockRule -GroupId $group.Id -GroupType tag -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
-        { Remove-ZNGroupsInboundBlockRule -GroupId $group.Id -GroupType tag -RuleId $rule.Id } | Should -Not -Throw
+        { Remove-ZNGroupsInboundBlockRule -GroupId $group.Id -GroupType tag -RuleId $rule.Item.Id } | Should -Not -Throw
     }
 }

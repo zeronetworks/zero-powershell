@@ -24,7 +24,9 @@ Get the linux setup settings in Asset Managment
 ### Example 1: Get Linux Setup settings
 ```powershell
 Get-ZNSettingsLinuxSetup
+```
 
+```output
 False
 ```
 
@@ -39,9 +41,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsLinuxSetup
 
 ## NOTES
 

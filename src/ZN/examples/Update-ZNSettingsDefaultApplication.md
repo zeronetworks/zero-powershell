@@ -1,6 +1,9 @@
 ### Example 1: Set the default application
 ```powershell
 Update-ZNSettingsDefaultApplication -Application 2
+```
+
+```output
 
 ```
 

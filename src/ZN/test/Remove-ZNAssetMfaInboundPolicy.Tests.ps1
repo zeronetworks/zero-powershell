@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNAssetMfaInboundPolic
 
 Describe 'Remove-ZNAssetMfaInboundPolicy' {
     It 'Delete' {
-        $asset = Search-ZNAsset -Fqdn "linux0.posh.local"
+        $asset= (Search-ZNAsset -Fqdn "linux0.posh.local").AssetId
         $source = (Get-ZNAssetMfaInboundPoliciesSourceCandidate -AssetId $asset -search "Any Asset").Items
         $sourceEntity = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyInboundBodySrcEntityInfosItem]::new()
         $sourceEntity.Id = $source.Id

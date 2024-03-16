@@ -4,7 +4,9 @@ $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Id -like "g:t:*"}
 $rule = Get-ZNGroupsInboundBlockRule -GroupId $group.Id -GroupType Tag | where {$_.Description -eq "Test Rule"}
 $rule.RemoteEntityIdsList += (Search-ZNAsset -Fqdn cs01.posh.local)
 Update-ZNGroupsInboundBlockRule -GroupId $group.Id -GroupType tag -RuleId $rule.id -RemoteEntityIdsList $rule.RemoteEntityIdsList
+```
 
+```output
 ApprovedById               : 
 ApprovedByName             : 
 CreatedByEnforcementSource : 4

@@ -1,7 +1,9 @@
 ### Example 1: List identity rules
 ```powershell
 (Get-ZNIdentityRule).Items
+```
 
+```output
 CreatedAt     Id                                   UserInfos                    AssetInfoName        ExcludedAssetInfos
 ---------     --                                   ---------                    -------------        ------------------
 1700752866802 ff9cc79c-21b6-4363-82e1-da6bc6bbdaf0 {svc1}                       dc01                 {}                
@@ -14,7 +16,9 @@ This cmdlet lists identity rules.
 ### Example 2: Get an identity rule
 ```powershell
 Get-ZNIdentityRule -RuleId ff9cc79c-21b6-4363-82e1-da6bc6bbdaf0
+```
 
+```output
 AssetInfoId                        : 
 AssetInfoName                      : 
 CreatedByEmail                     : 

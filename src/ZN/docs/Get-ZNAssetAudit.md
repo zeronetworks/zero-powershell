@@ -25,7 +25,9 @@ Returns a list of audits for the asset.
 ```powershell
 $asset = Search-ZNAsset -Fqdn "wc01.posh.local"
 Get-ZNAssetAudit -AssetId $asset).items
+```
 
+```output
 AuditType DestinationEntitiesList EnforcementSource PerformedByName
 --------- ----------------------- ----------------- ---------------
 74        {WC01}                  6                 ModuleTesting

@@ -2,6 +2,9 @@
 ```powershell
 $uac = Get-ZNSettingsConnectUserAccessConfig | where {$_.Name -eq "testapi"}
 Remove-ZNSettingsConnectUserAccessConfig -UserAccessConfigId $uac.Id
+```
+
+```output
 
 ```
 

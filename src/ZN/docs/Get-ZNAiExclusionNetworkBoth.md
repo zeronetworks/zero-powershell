@@ -24,6 +24,10 @@ Get AI network exclusion for clients and servers: lists of tcp/udp ports / ports
 ### Example 1: Get the AI Exclusion Setting for all asset types
 ```powershell
 Get-ZNAiExclusionNetworkBoth
+```
+
+```output
+
 Icmp  ProcessesList TcpPorts UdpPorts
 ----  ------------- -------- --------
 False {}

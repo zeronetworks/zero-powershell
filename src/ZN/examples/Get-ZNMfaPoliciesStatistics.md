@@ -1,6 +1,9 @@
 ### Example 1: Get MFA policy statistics
 ```powershell
 Get-ZNMfaPoliciesStatistics
+```
+
+```output
 3
 ```
 

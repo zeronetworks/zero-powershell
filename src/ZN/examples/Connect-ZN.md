@@ -3,7 +3,9 @@
 Connect-ZN -UserName user@zeronetworks.com
 Please enter the OTP code recieved via email
 Code: 11111
+```
 
+```output
 authenticatedVia          isPhoneChallengeSupported
 ----------------          -------------------------
 user@zeronetworks.com                     False

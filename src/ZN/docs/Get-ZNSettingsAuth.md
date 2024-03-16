@@ -24,6 +24,9 @@ Get the portal security settings
 ### Example 1: Get portal security setting
 ```powershell
 Get-ZNSettingsAuth
+```
+
+```output
 10080
 ```
 
@@ -40,7 +43,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsAuthItem
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsAuth
 
 ## NOTES
 

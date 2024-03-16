@@ -9,6 +9,9 @@ $sourceUserEntity = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyIn
 $sourceUserEntity.Id = $sourceUser.Id
 $portsList = New-ZNPortsList -Empty
 New-ZNMfaInboundPolicy -AdditionalPortsList $portsList -DstEntityInfoId $destination.Id -DstPort "22" -DstProcessNames @("*") -FallbackToLoggedOnUser -OverrideBuiltins -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1
+```
+
+```output
 DstEntityInfoId            : a:l:YjoLaKRG
 DstEntityInfoName          : linuxserver
 ItemCreatedAt              : 1666114167336

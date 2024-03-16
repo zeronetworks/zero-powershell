@@ -27,7 +27,6 @@ Add an asset manager of asset
 $asset = Search-ZNAsset -Fqdn wc01.posh.local
 $user = Get-ZNUser -Search test
 Add-ZNAssetManager -AssetId $asset -ManagerIds @($user.Id)
-
 ```
 
 This cmdlet adds an asset manager to an asset.

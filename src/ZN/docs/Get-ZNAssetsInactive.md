@@ -25,7 +25,9 @@ Returns a list of assets that are inactive.
 ### Example 1: List inactive assets
 ```powershell
 (Get-ZNAssetsInactive).Items                                 
-                               
+```
+
+```output
 Id           Fqdn                              IPV4Addresses IPV6Addresses Source AssetStatus ProtectionState
 --           ----                              ------------- ------------- ------ ----------- ---------------
 a:a:af4yeaHY zadcomp9.posh.local (inactive)    {}            {}            3      12          1

@@ -24,6 +24,9 @@ Returns an object with rules distribution.
 ### Example 1: Get hit count for a rule
 ```powershell
 Get-ZNRulesDistribution -RuleId 2f9fd777-d735-4cac-99c5-5f822318e510 -RuleDirection 1
+```
+
+```output
 ActivitiesCount Timestamp
 --------------- ---------
 0               1673308800000                                                                                
@@ -101,9 +104,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IDistribution
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IRuleDistribution
 
 ## NOTES
 

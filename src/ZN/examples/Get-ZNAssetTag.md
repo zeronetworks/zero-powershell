@@ -1,6 +1,9 @@
 ### Example 1: Get tags for an asset
 ```powershell
 Get-ZNAssetTag -AssetId a:a:ZgBWOMyc
+```
+
+```output
 CreatedAt     Description                                        DirectMembersCount Domain Guid                                 HasPro
                                                                                                                                 tectio
                                                                                                                                 nPolic

@@ -24,7 +24,9 @@ Get identity provider settings in Identity Providers
 ### Example 1: Get Idp settings
 ```powershell
 Get-ZNSettingsIdp
+```
 
+```output
 IdentityProviderType IsDefault
 -------------------- ---------
 azure                False
@@ -43,7 +45,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsIdp
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsIdpList
 
 ## NOTES
 

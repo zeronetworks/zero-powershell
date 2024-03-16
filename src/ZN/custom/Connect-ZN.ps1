@@ -27,7 +27,7 @@ function Connect-ZN {
             "challengeMediumType" = "email"
             "email" = "$UserName"
         }
-        $PSBoundParameters.Add("ChallengeMediumType", "email")
+        #$PSBoundParameters.Add("email", $email)
         try {
             #Invoke-RestMethod -Uri "$uri/auth/challenge" -Method POST -Body ($challengeBody | ConvertTo-Json) -ContentType application/json
             ZeroNetworks.internal\Invoke-ZNAuthChallenge @PSBoundParameters

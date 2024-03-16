@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Approve-ZNOutboundBlockRuleReview' {
     It 'ApproveExpanded' {
-        $asset = Search-ZNAsset -Fqdn linux0.posh.local
+        $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         $rule = Get-ZNOutboundBlockRule | where {$_.State -eq 4} | Select-Object -First 1
         Approve-ZNOutboundBlockRuleReview -RuleId $rule.id
         $updatedRule = Get-ZNOutboundBlockRule | where {$_.Id -eq $rule.id}
@@ -22,7 +22,7 @@ Describe 'Approve-ZNOutboundBlockRuleReview' {
     }
 
     It 'ApproveWithChangesExpanded' {
-        $asset = Search-ZNAsset -Fqdn linux0.posh.local
+        $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         $rule = Get-ZNOutboundBlockRule | where {$_.State -eq 4} | Select-Object -First 1
         Approve-ZNOutboundBlockRuleReview -RuleId $rule.id -Description "updatedapproval" -Reason MissingPortOrProcess
         $updatedRule = Get-ZNOutboundBlockRule | where {$_.Id -eq $rule.id}

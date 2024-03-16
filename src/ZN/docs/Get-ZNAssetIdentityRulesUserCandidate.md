@@ -26,7 +26,9 @@ Returns a list of user candidates for Identity rules.
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
 Get-ZNAssetIdentityRulesUserCandidate -AssetId $asset
+```
 
+```output
 Id           Name                                    Email Description DirectMembersCount Phone JobTitle LastLogon
 --           ----                                    ----- ----------- ------------------ ----- -------- ---------
 g:a:qu04AfTz Access Control Assistance Operators                                                         
@@ -124,7 +126,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroupsOrUsersListItemsItem
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroupsOrUsersList
 
 ## NOTES
 

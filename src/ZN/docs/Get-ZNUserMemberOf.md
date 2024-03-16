@@ -24,6 +24,9 @@ Returns a list of groups the user is a member of.
 ### Example 1: Get users groups
 ```powershell
 Get-ZNUserMemberOf -UserId u:a:E6iXCia4
+```
+
+```output
 CreatedAt     Description DirectMembersCount Domain    Guid                                 HasProtectionPolicy Id           Name
 ---------     ----------- ------------------ ------    ----                                 ------------------- --           ----     
 1648475326021             0                  zero.labs 3bcfa592-7310-4f1e-9b76-5fc1c6ac4ee9 False               g:a:04fLbS1I DUO      
@@ -58,9 +61,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAncestors
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroup
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
 ## NOTES
 

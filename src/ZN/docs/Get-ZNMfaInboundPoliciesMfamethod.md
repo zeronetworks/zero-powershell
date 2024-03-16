@@ -24,6 +24,9 @@ Returns a list of MFA methods for inbound MFA policies.
 ### Example 1: List possible MFA methods for an inbound MFA policy
 ```powershell
 Get-ZNMfaInboundPoliciesMfamethod
+```
+
+```output
 2
 4
 3
@@ -48,9 +51,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Int32
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IReactivePolicyMethods
 
 ## NOTES
 

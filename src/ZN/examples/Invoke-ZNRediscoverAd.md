@@ -1,6 +1,9 @@
 ### Example 1: Force AD rediscover
 ```powershell
 Invoke-ZNRediscoverAd
+```
+
+```output
 
 ```
 

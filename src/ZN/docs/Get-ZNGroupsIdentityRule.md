@@ -31,7 +31,9 @@ Returns an identity segmentation rule.
 ### Example 1: Get identity rules for a group
 ```powershell
 (Get-ZNGroupsIdentityRule -GroupId g:t:018cf3ae -GroupType tag).Items
+```
 
+```output
 CreatedAt     Id                                   UserInfos       AssetInfoName      ExcludedAssetInfos IdentityProtect
                                                                                                          ionCategoryList
 ---------     --                                   ---------       -------------      ------------------ ---------------
@@ -43,7 +45,9 @@ This cmdlet lists identity rules for a group.
 ### Example 2: Get an identity rule for a group
 ```powershell
 Get-ZNGroupsIdentityRule -GroupId g:t:018cf3ae -GroupType tag -RuleId 9b3b398c-e5d6-47f9-831f-617752549d1f
+```
 
+```output
 AssetInfoId                        : 
 AssetInfoName                      : 
 CreatedByEmail                     : 
@@ -237,7 +241,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IIdentityRule
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IIdentityRuleItem
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IIdentityRulesList
 

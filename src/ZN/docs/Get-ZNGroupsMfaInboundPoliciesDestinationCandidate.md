@@ -26,7 +26,9 @@ Returns a list of candidates for the destionation of an inbound MFA policy.
 ```powershell
 $group = Get-ZNGroup -Search "Domain controllers" | where {$_.Domain -eq "tag"}
 (Get-ZNGroupsMfaInboundPoliciesDestinationCandidate -Groupid $group.id -GroupType tag).Items
+```
 
+```output
 Domain     HasProtectionPolicy Id           Name
 ------     ------------------- --           ----
                                b:110002     All segmented assets
