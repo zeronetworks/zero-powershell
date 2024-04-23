@@ -14,7 +14,8 @@ Returns the properties of an group.
 
 ### List (Default)
 ```
-Get-ZNGroup [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
+Get-ZNGroup [-Cursor <Int64>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Search <String>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -84,6 +85,21 @@ CreatedAt     Description        DirectMembersCount Domain Guid                 
 Use the search parameter to search by Name property.
 
 ## PARAMETERS
+
+### -Cursor
+cursor position to start at
+
+```yaml
+Type: System.Int64
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Filters
 JSON string URI encoded set of fiters
@@ -186,7 +202,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroupResponse
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroupsList
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISearchGroupsResponse
 
 ## NOTES
 

@@ -32,7 +32,7 @@ require:
 input-file:
   - $(this-folder)/../openapi.yaml
 
-module-version: 0.0.11-preview
+module-version: 0.0.12-preview
 title: Api
   
 inlining-threshold: 50
@@ -711,13 +711,21 @@ directive:
   - where:
       subject: (.*)RulesHistory$
     hide: true
+  # hide simulate (not useful)
+  - where:
+      subject: (.*)PoliciesSimulate.*
+    hide: true
+  # hide linux scripts (not useful)
+  - where:
+      subject: ^AssetsLinuxScript$|^AssetsLinuxScriptAvailable$
+    hide: true
   # Hide profile cmdlets
   - where:
       subject: ^ProfileEnvironment$|^Profile$
     hide: true
   # Hide Not useful for OT assets
   - where:
-      subject: ^AssetOtIdentityRule$|^AssetOtIdentityRulesAssetsCandidate$|^AssetOtIdentityRulesExcludedAssetsCandidate$|^AssetOtIdentityRulesUserCandidate$|^AssetOtInboundAllowRule$|^AssetOtInboundAllowRulesDestinationCandidate$|^AssetOtInboundAllowRulesExcludedDestinationCandidate$|^AssetOtInboundAllowRulesSourceCandidate$|^AssetOtInboundBlockRule$|^AssetOtInboundBlockRulesDestinationCandidate$|^AssetOtInboundBlockRulesExcludedDestinationCandidate$|^AssetOtInboundBlockRulesSourceCandidate$|^AssetOtmfaInboundPoliciesDestinationCandidate$|^AssetOtmfaInboundPoliciesExcludedSourceCandidate$|^AssetOtmfaInboundPoliciesMfamethod$|^AssetOtmfaInboundPoliciesSourceCandidate$|^AssetOtmfaInboundPoliciesSourceUserCandidate$|^AssetOtmfaInboundPolicy$|^AssetOtOutboundAllowRule$|^AssetOtOutboundAllowRulesDestinationCandidate$|^AssetOtOutboundAllowRulesExcludedSourceCandidate$|^AssetOtOutboundAllowRulesSourceCandidate$|^AssetOtOutboundBlockRule$|^AssetOtOutboundBlockRulesDestinationCandidate$|^AssetOtOutboundBlockRulesExcludedSourceCandidate$|^AssetOtOutboundBlockRulesSourceCandidate$
+      subject: ^AssetOtAnalysis$|^AssetOtIdentityRule$|^AssetOtIdentityRulesAssetsCandidate$|^AssetOtIdentityRulesExcludedAssetsCandidate$|^AssetOtIdentityRulesUserCandidate$|^AssetOtInboundRule$|^AssetOtInboundRulesDestinationCandidate$|^AssetOtInboundRulesExcludedDestinationCandidate$|^AssetOtInboundRulesSourceCandidate$|^AssetOtmfaIdentityPoliciesDestinationCandidate$|^AssetOtmfaIdentityPoliciesExcludedSourceCandidate$|^AssetOtmfaIdentityPoliciesMfamethod$|^AssetOtmfaIdentityPoliciesSourceCandidate$|^AssetOtmfaIdentityPoliciesSourceUserCandidate$|^AssetOtmfaIdentityPolicy$|^AssetOtmfaInboundPoliciesDestinationCandidate$|^AssetOtmfaInboundPoliciesExcludedSourceCandidate$|^AssetOtmfaInboundPoliciesMfamethod$|^AssetOtmfaInboundPoliciesSourceCandidate$|^AssetOtmfaInboundPoliciesSourceUserCandidate$|^AssetOtmfaInboundPolicy$|^AssetOtOutboundRule$|^AssetOtmfaOutboundPoliciesDestinationCandidate$|^AssetOtmfaOutboundPoliciesExcludedSourceCandidate$|^AssetOtmfaOutboundPoliciesMfamethod$|^AssetOtmfaOutboundPoliciesSourceCandidate$|^AssetOtmfaOutboundPoliciesSourceUserCandidate$|^AssetOtmfaOutboundPolicy$|^AssetOtOutboundRulesDestinationCandidate$|^AssetOtOutboundRulesExcludedSourceCandidate$|^AssetOtOutboundRulesSourceCandidate$|^AssetOtrpcRule$|^AssetOtrpcRulesDestinationCandidate$|^AssetOtrpcRulesExcludedDestinationCandidate$|^AssetOtrpcRulesSourceCandidate$|^AssetOtrpcRulesUserCandidate$|^AssetOtRulesDistribution$
     hide: true
   # Remove APIs that require Human access
   - where:
@@ -909,7 +917,7 @@ directive:
         script: '10'
   # set the default directions for cmdlets
   - where:
-      subject: ^AssetInboundAllowRule$|^AssetInboundBlockRule$|^AssetOtOutboundAllowRule$|^AssetOtOutboundBlockRule$|^GroupsInboundAllowRule$|^GroupsInboundBlockRule$
+      subject: ^AssetInboundRule$|^AssetOtOutboundRule$|^GroupsInboundRule$
       parameter-name: Direction
     set:
       default:
@@ -917,7 +925,7 @@ directive:
         description: Sets the direction parameter to 1
         script: '1'
   - where:
-      subject: ^AssetOutboundAllowRule$|^AssetOutboundBlockRule$|^AssetOtInboundAllowRule$|^AssetOtInboundBlockRule$|^GroupsOutboundAllowRule$|^GroupsOutboundBlockRule$
+      subject: ^AssetOutboundRule$|^AssetOtInboundRule$|^GroupsOutboundRule$
       parameter-name: Direction
     set:
       default:
@@ -935,7 +943,7 @@ directive:
   # set expiresAt default for rules
   - where:
       parameter-name: ExpiresAt
-      subject: (.*)InboundAllowRule$|(.*)InboundBlockRule$|(.*)OutboundAllowRule$|(.*)OutboundBlockRule$
+      subject: (.*)InboundRule$|(.*)OutboundRule$
     set:
       default:
         name: ExpiresAt Default
@@ -952,7 +960,7 @@ directive:
   # Hide for Custom Wrappers
   - where:
       verb: Update
-      subject: ^AssetOtRpcRule$|^AssetIdentityRule$|^AssetInboundAllowRule$|^AssetInboundBlockRule$|^AssetMFAInboundPolicy$|^AssetMFAOutboundPolicy$|^AssetOutboundAllowRule$|^AssetOutboundBlockRule$|^AssetOtMFAOutboundPolicy$|^AssetRpcRule$|^CustomGroup$|^GroupsIdentityRule$|^GroupsInboundAllowRule$|^GroupsInboundBlockRule$|^GroupsMFAInboundPolicy$|^GroupsMFAOutboundPolicy$|^GroupsOutboundAllowRule$|^GroupsOutboundBlockRule$|^GroupsRpcRule$|^IdentityRule$|^InboundAllowRule$|^InboundBlockRule$|^MFAInboundPolicy$|^MFAOutboundPolicy$|^OutboundAllowRule$|^OutboundBlockRule$|^RpcRule$|^SettingsPushNotification$|^UserIdentityRule$
+      subject: ^AssetIdentityRule$|^AssetInboundRule$|^AssetMfaIdentityPolicy$|^AssetMFAInboundPolicy$|^AssetMFAOutboundPolicy$|^AssetOutboundRule$|^AssetOtMFAOutboundPolicy$|^AssetRpcRule$|^CustomGroup$|^GroupsIdentityRule$|^GroupsInboundRule$|^GroupsMfaIdentityPolicy$|^GroupsMFAInboundPolicy$|^GroupsMFAOutboundPolicy$|^GroupsOutboundRule$|^GroupsRpcRule$|^IdentityRule$|^InboundRule$|^MfaIdentityPolicy$|^MFAInboundPolicy$|^MFAOutboundPolicy$|^OutboundRule$|^RpcRule$|^SettingsPushNotification$|^UserIdentityRule$|^UserMfaIdentityPolicy$
     hide: true
   - where:
       subject: ^AuthLogin$|^AuthChallenge$

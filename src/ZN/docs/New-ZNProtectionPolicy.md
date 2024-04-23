@@ -13,7 +13,7 @@ Returns the protection policy that was created.
 ## SYNTAX
 
 ```
-New-ZNProtectionPolicy -GroupId <String> -InitialQueueDays <Int32> -MinQueueDays <Int32>
+New-ZNProtectionPolicy -GroupId <String> -InitialQueueDays <Int32> -NewMembersLearningDays <Int32>
  [-Description <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -79,7 +79,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MinQueueDays
+### -NewMembersLearningDays
 .
 
 ```yaml

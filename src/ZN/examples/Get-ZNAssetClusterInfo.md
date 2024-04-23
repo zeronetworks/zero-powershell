@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get Asset cluster information
 ```powershell
-{{ Add code here }}
+Get-ZNAssetClusterInfo -AssetId a:a:P0GVm1iZ
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ClusterInfoClusterMembersList ClusterInfoClusterName
+----------------------------- ----------------------
+{fs01, fs02}                  FS
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This cmdlet gets cluster information for an asset.

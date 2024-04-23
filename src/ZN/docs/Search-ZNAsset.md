@@ -56,7 +56,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetSearchResponse
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetIdSearch
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

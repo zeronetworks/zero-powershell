@@ -16,9 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNProtectionPolicy'))
 
 Describe 'Remove-ZNProtectionPolicy' {
     It 'Delete' {
-        $group = (Get-ZNGroup -Search "Domain Admins").Items
-        $protectionPolicy = New-ZNProtectionPolicy -GroupId $group.Id -MinQueueDays 30 -InitialQueueDays 30
-        $protectionPolicy.ItemId
+        $group = (Get-ZNGroup -Search "ProtectionPolicy").Items
+        $protectionPolicy = New-ZNProtectionPolicy -GroupId $group.Id -newMembersLearningDays 30 -InitialQueueDays 30
         { Remove-ZNProtectionPolicy -ProtectionPolicyId $protectionPolicy.ItemId } | Should -Not -Throw
     }
 }

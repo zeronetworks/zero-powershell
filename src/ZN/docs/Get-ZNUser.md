@@ -14,8 +14,8 @@ Returns the properties of an user.
 
 ### List (Default)
 ```
-Get-ZNUser [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>]
- [-Search <String>] [-WithCount] [<CommonParameters>]
+Get-ZNUser [-Cursor <Int64>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>]
+ [-OrderColumns <String>] [-Search <String>] [-WithCount] [<CommonParameters>]
 ```
 
 ### Get
@@ -83,6 +83,21 @@ CreatedAt     DistinguishedName                         Domain    Email FirstNam
 Use offset to get the next page of users.
 
 ## PARAMETERS
+
+### -Cursor
+cursor position to start at
+
+```yaml
+Type: System.Int64
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Filters
 JSON string URI encoded set of fiters
@@ -213,9 +228,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IUserResponse
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISearchUsersResponse
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IUsersList
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IUserResponse
 
 ## NOTES
 

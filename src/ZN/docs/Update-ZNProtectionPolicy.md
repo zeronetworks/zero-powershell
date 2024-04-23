@@ -13,8 +13,8 @@ Returns the updated settings for the protection policy.
 ## SYNTAX
 
 ```
-Update-ZNProtectionPolicy -ProtectionPolicyId <String> [-MinQueueDays <Int32>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNProtectionPolicy -ProtectionPolicyId <String> -NewMembersLearningDays <Int32> [-Description <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +49,22 @@ This cmdlet will update a protection policy for the environment.
 
 ## PARAMETERS
 
-### -MinQueueDays
+### -Description
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NewMembersLearningDays
 .
 
 ```yaml
@@ -57,7 +72,7 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

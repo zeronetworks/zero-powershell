@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReactivePolicyId
-The id of the rule
+The id of the MFA policy
 
 ```yaml
 Type: System.String

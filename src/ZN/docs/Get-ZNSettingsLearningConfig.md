@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-ZNSettingsLearningConfig
 
 ## SYNOPSIS
-Get Learning Config settings in Network Segementation
+Get Learning Config settings in Network Segmentation
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-ZNSettingsLearningConfig [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get Learning Config settings in Network Segementation
+Get Learning Config settings in Network Segmentation
 
 ## EXAMPLES
 

@@ -14,8 +14,8 @@ Returns the properties of an asset.
 
 ### List (Default)
 ```
-Get-ZNAsset [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>]
- [-ShowInactive] [-WithCount] [<CommonParameters>]
+Get-ZNAsset [-Cursor <Int64>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>]
+ [-OrderColumns <String>] [-ShowInactive] [-WithCount] [<CommonParameters>]
 ```
 
 ### Get
@@ -107,6 +107,21 @@ Parameter Sets: Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Cursor
+cursor position to start at
+
+```yaml
+Type: System.Int64
+Parameter Sets: List
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -225,11 +240,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetList
-
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetResponse
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISearchAssetsResponse
 
 ## NOTES
 

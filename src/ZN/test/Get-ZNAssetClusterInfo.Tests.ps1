@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetClusterInfo'))
 }
 
 Describe 'Get-ZNAssetClusterInfo' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $clusterInfo = Get-ZNAssetClusterInfo -AssetId a:a:P0GVm1iZ
+        $clusterInfo.ClusterInfoClusterName | Should -Not -Be $null
     }
 }

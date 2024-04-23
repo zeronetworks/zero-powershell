@@ -9,6 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Returns a list of groups.
+Pass the returned 'nextCursor' as the '_cursor' query param of the next request for batches, when the '_offset' param is not used.
 
 ## SYNTAX
 
@@ -19,6 +20,7 @@ Get-ZNGroupsByType -GroupType <String> [-Filters <String>] [-Limit <Int32>] [-Of
 
 ## DESCRIPTION
 Returns a list of groups.
+Pass the returned 'nextCursor' as the '_cursor' query param of the next request for batches, when the '_offset' param is not used.
 
 ## EXAMPLES
 
@@ -145,7 +147,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroupsList
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISearchGroupsResponse
 
 ## NOTES
 

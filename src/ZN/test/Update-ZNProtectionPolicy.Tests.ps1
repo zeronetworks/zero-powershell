@@ -16,16 +16,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNProtectionPolicy'))
 
 Describe 'Update-ZNProtectionPolicy' {
     It 'UpdateExpanded' {
-        $group = (Get-ZNProtectionPoliciesGroupCandidate).Items | Select-Object -First 1
-        New-ZNProtectionPolicy -GroupId $group.Id -InitialQueueDays 30 -MinQueueDays 30 -Description "Update-ZNProtectionPolicy Test"
+        $group = (Get-ZNGroup -Search "ProtectionPolicy").Items
+        $protectionPolicy = New-ZNProtectionPolicy -GroupId $group.Id -newMembersLearningDays 30 -InitialQueueDays 30
         $protectionPolicy = Get-ZNProtectionPolicy | Select -First 1
-        if($protectionPolicy.MinQueueDays -eq 30){
-            $MinQueueDays = 14
+        if($protectionPolicy.newMembersLearningDays -eq 30){
+            $newMembersLearningDays = 14
         } else {
-            $MinQueueDays = 30
+            $newMembersLearningDays = 30
         }
-        $updatedProtectionPolicy = Update-ZNProtectionPolicy -ProtectionPolicyId $protectionPolicy.Id -MinQueueDays $MinQueueDays
-        $updatedProtectionPolicy.ItemMinQueueDays | Should -Be $MinQueueDays
+        $updatedProtectionPolicy = Update-ZNProtectionPolicy -ProtectionPolicyId $protectionPolicy.Id -newMembersLearningDays $newMembersLearningDays
+        $updatedProtectionPolicy.ItemnewMembersLearningDays | Should -Be $newMembersLearningDays
         Remove-ZNProtectionPolicy -ProtectionPolicyId $protectionPolicy.Id
     }
 }
