@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-ZNSettingsLearningConfig
 
 ## SYNOPSIS
-Update Learning Config settings in Network Segementation
+Update Learning Config settings in Network Segmentation
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Update-ZNSettingsLearningConfig [-AllowQueueForever] [-AllowQuickLearning] [-Pas
 ```
 
 ## DESCRIPTION
-Update Learning Config settings in Network Segementation
+Update Learning Config settings in Network Segmentation
 
 ## EXAMPLES
 

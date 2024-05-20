@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'Get-ZNGroupsRulesDistribution' {
     It 'Get' {
         $group = (Get-ZNGroup -Search "domain controllers").Items | where {$_.id -like "g:t:*"}
-        $rule = Get-ZNGroupsInboundAllowRule -GroupId $group.id -GroupType tag | select -First 1
+        $rule = Get-ZNGroupsInboundRule -GroupId $group.id -GroupType tag | select -First 1
         { Get-ZNGroupsRulesDistribution -GroupId $group.id -GroupType tag -RuleId $rule.Id -RuleDirection $rule.Direction } | Should -Not -be $null
     }
 }

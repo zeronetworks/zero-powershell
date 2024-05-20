@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNProtectionPolicy'))
 
 Describe 'New-ZNProtectionPolicy' {
     It 'CreateExpanded' {
-        $group = (Get-ZNGroup -Search "Domain Controllers").Items | where {$_.Id -Like "g:a:*" -and $_.Name -eq "Domain Controllers"}
-        $protectionPolicy = New-ZNProtectionPolicy -GroupId $group.Id -MinQueueDays 30 -InitialQueueDays 30
+        $group = (Get-ZNGroup -Search "ProtectionPolicy").Items
+        $protectionPolicy = New-ZNProtectionPolicy -GroupId $group.Id -initialQueueDays 30 -newMembersLearningDays 30
         $protectionPolicy.ItemId | Should -Not -Be $null
         Remove-ZNProtectionPolicy -ProtectionPolicyId $protectionPolicy.ItemId
     }

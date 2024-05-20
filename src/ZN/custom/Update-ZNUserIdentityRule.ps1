@@ -205,9 +205,11 @@ function Update-ZNUserIdentityRule {
                 $updatedRule.ExcludedAssetIdsList = $rule.ItemExcludedAssetIdsList
                 $null = $PSBoundParameters.Remove('ExcludedAssetIdsList')
             }
+
+            $PSBoundParameters.Remove('UserId')
             #Write-Debug $updatedRule | Out-String
             $null = $PSBoundParameters.Add('Body', $updatedRule)
-            ZeroNetworks.internal\Update-ZNUserIdentityRule @PSBoundParameters
+            ZeroNetworks.internal\Update-ZNIdentityRule @PSBoundParameters
         }
         catch {
             throw
