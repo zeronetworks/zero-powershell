@@ -39,6 +39,12 @@ function Approve-ZNAssetOutboundRuleReview {
         
         [Parameter(ParameterSetName = 'ApproveWithChangesExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
+        [int32]
+        # Action
+        ${Action},
+        
+        [Parameter(ParameterSetName = 'ApproveWithChangesExpanded')]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
         [System.String]
         # the rule description.
         ${Description},
@@ -56,7 +62,13 @@ function Approve-ZNAssetOutboundRuleReview {
         [Int64]
         # when the rule should expiry.
         ${ExpiresAt},
-        #[-RuleInfoExpiresAt <Int64>] 
+        #[-RuleInfoExpiresAt <Int64>]
+
+        [Parameter(ParameterSetName = 'ApproveWithChangesExpanded')]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
+        [int32]
+        # ip sec configuration
+        ${IpSecOpt},
 
         [Parameter(ParameterSetName = 'ApproveWithChangesExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
@@ -155,7 +167,6 @@ function Approve-ZNAssetOutboundRuleReview {
                     #Handle Get
                     $ruleId = $PSBoundParameters['RuleId'].ToString()
                     $rule = ZeroNetworks\Get-ZNOutboundRule -RuleId $ruleId
-                    $rule = $rule.Item
                     
                     $ruleReview = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.RuleReviewApproveWithChanges]::new()
 
@@ -183,15 +194,23 @@ function Approve-ZNAssetOutboundRuleReview {
                         $null = $PSBoundParameters.Remove('Details')
                     }
 
-                    $ruleReview.RuleInfoAction = 1
                     $ruleReview.RuleInfoDirection = 2
+
+                    if ($PSBoundParameters['Action']) {
+                        $ruleReview.RuleInfoAction = $PSBoundParameters['Action']
+                        $null = $PSBoundParameters.Remove('Action')
+                    }
+                    else {
+                        $ruleReview.RuleInfoAction = $rule.ItemAction
+                        $null = $PSBoundParameters.Remove('Action')
+                    }
 
                     if ($PSBoundParameters['Description']) {
                         $ruleReview.RuleInfoDescription = $PSBoundParameters['Description']
                         $null = $PSBoundParameters.Remove('Description')
                     }
                     else {
-                        $ruleReview.RuleInfoDescription = $rule.Description
+                        $ruleReview.RuleInfoDescription = $rule.ItemDescription
                         $null = $PSBoundParameters.Remove('Description')
                     }
 
@@ -200,7 +219,7 @@ function Approve-ZNAssetOutboundRuleReview {
                         $null = $PSBoundParameters.Remove('ExcludedLocalIdsList')
                     }
                     else {
-                        $ruleReview.RuleInfoExcludedLocalIdsList = $rule.ExcludedLocalIdsList
+                        $ruleReview.RuleInfoExcludedLocalIdsList = $rule.ItemExcludedLocalIdsList
                         $null = $PSBoundParameters.Remove('ExcludedLocalIdsList')
                     }
 
@@ -209,8 +228,17 @@ function Approve-ZNAssetOutboundRuleReview {
                         $null = $PSBoundParameters.Remove('ExpiresAt')
                     }
                     else {
-                        $ruleReview.RuleInfoExpiresAt = $rule.ExpiresAt
+                        $ruleReview.RuleInfoExpiresAt = $rule.ItemExpiresAt
                         $null = $PSBoundParameters.Remove('ExpiresAt')
+                    }
+                    
+                    if ($PSBoundParameters['IpSecOpt']) {
+                        $ruleReview.RuleInfoIpSecOpt = $PSBoundParameters['IpSecOpt']
+                        $null = $PSBoundParameters.Remove('IpSecOpt')
+                    }
+                    else {
+                        $ruleReview.RuleInfoIpSecOpt = $rule.ItemIpSecOpt
+                        $null = $PSBoundParameters.Remove('IpSecOpt')
                     }
                     
                     if ($PSBoundParameters['LocalEntityId']) {
@@ -218,7 +246,7 @@ function Approve-ZNAssetOutboundRuleReview {
                         $null = $PSBoundParameters.Remove('LocalEntityId')
                     }
                     else {
-                        $ruleReview.RuleInfoLocalEntityId = $rule.LocalEntityId
+                        $ruleReview.RuleInfoLocalEntityId = $rule.ItemLocalEntityId
                         $null = $PSBoundParameters.Remove('LocalEntityId')
                     }
                     
@@ -227,7 +255,7 @@ function Approve-ZNAssetOutboundRuleReview {
                         $null = $PSBoundParameters.Remove('LocalProcessesList')
                     }
                     else {
-                        $ruleReview.RuleInfoLocalProcessesList = $rule.LocalProcessesList
+                        $ruleReview.RuleInfoLocalProcessesList = $rule.ItemLocalProcessesList
                         $null = $PSBoundParameters.Remove('LocalProcessesList')
                     }
 
@@ -236,7 +264,7 @@ function Approve-ZNAssetOutboundRuleReview {
                         $null = $PSBoundParameters.Remove('PortsList')
                     }
                     else {
-                        $ruleReview.RuleInfoPortsList = $rule.PortsList
+                        $ruleReview.RuleInfoPortsList = $rule.ItemPortsList
                         $null = $PSBoundParameters.Remove('PortsList')
                     }
                     
@@ -245,7 +273,7 @@ function Approve-ZNAssetOutboundRuleReview {
                         $null = $PSBoundParameters.Remove('RemoteEntityIdsList')
                     }
                     else {
-                        $ruleReview.RuleInfoRemoteEntityIdsList = $rule.RemoteEntityIdsList
+                        $ruleReview.RuleInfoRemoteEntityIdsList = $rule.ItemRemoteEntityIdsList
                         $null = $PSBoundParameters.Remove('RemoteEntityIdsList')
                     }
                     

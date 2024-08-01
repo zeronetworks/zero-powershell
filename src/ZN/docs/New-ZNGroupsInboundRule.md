@@ -15,8 +15,8 @@ Returns the properties of the created Inbound rule.
 ```
 New-ZNGroupsInboundRule -GroupId <String> -GroupType <String> -Action <Int32> -LocalEntityId <String>
  -LocalProcessesList <String[]> -PortsList <IPortsListItem[]> -RemoteEntityIdsList <String[]> -State <Int32>
- [-Description <String>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Description <String>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>] [-IPSecOpt <Int32>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,6 +153,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IPSecOpt
+* For allow rule only.* '1' - Off* '2' - Null encapsulation connections* '3' - Authenticated and integrity-protected connections* '4' - Encrypted connections and dynamically negotiate encryption (inbound rule only)* '5' - Encrypted connections
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

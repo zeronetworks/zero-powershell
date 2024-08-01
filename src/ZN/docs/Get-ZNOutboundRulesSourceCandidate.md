@@ -13,7 +13,7 @@ Returns a list of source candidates for Outbound rules.
 ## SYNTAX
 
 ```
-Get-ZNOutboundRulesSourceCandidate [-Cursor <Int64>] [-Limit <Int32>] [-Search <String>] [<CommonParameters>]
+Get-ZNOutboundRulesSourceCandidate [-Cursor <String>] [-Limit <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +73,7 @@ To find a specific candidate use the search parameter with the Name to be search
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

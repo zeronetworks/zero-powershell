@@ -19,7 +19,7 @@ Describe 'Update-ZNRpcRule' {
         $asset = (Search-ZNAsset -Fqdn switch03).AssetId
         $group = (Get-ZNGroup -Search 'domain controllers').Items | where {$_.Id -like 'g:t:*'}
         $user = (Get-ZNRpcRulesUserCandidate -Search 'Any User').Id
-        $rule = New-ZNRpcRule -Action 1 -Description "New RPC Rule" -ExcludedAssetIdsList @() -InterfaceUuidsList @() -LocalAssetId $group.Id -OpNumbersList @() -ProtocolsList @() -RemoteAssetIdsList @($asset) -State 1 -UserIdsList @($user)
+        $rule = New-ZNRpcRule -Action 1 -Description "New RPC Rule" -ExcludedAssetIdsList @() -InterfaceUuidsList @('rpcAnyInterfaceId') -LocalAssetId $group.Id -OpNumbersList @() -ProtocolsList @() -RemoteAssetIdsList @($asset) -State 1 -UserIdsList @($user)
         $description = "description" + (Get-Random -Minimum 1 -Maximum 50)
         $updatedRule = Update-ZNRpcRule -RuleId $rule.ItemId -Description $description
         $updatedRule.ItemDescription | Should -Be $description

@@ -13,7 +13,7 @@ Update the Client Subnets settings in System
 ## SYNTAX
 
 ```
-Update-ZNSettingsClientSubnet [-PrivateNetworksList <String[]>] [-PassThru] [-Confirm] [-WhatIf]
+Update-ZNSettingsClientSubnet [-PrivateIpv4NetworksList <String[]>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -46,8 +46,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrivateNetworksList
-Collection of IP subnets that are internal
+### -PrivateIpv4NetworksList
+Collection of IPv4 subnets that are internal
 
 ```yaml
 Type: System.String[]

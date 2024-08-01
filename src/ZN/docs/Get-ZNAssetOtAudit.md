@@ -13,7 +13,7 @@ Returns a list of audits for the asset.
 ## SYNTAX
 
 ```
-Get-ZNAssetOtAudit -AssetId <String> [-Cursor <Int64>] [-Order <String>] [-Search <String>]
+Get-ZNAssetOtAudit -AssetId <String> [-Cursor <String>] [-Order <String>] [-Search <String>]
  [<CommonParameters>]
 ```
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

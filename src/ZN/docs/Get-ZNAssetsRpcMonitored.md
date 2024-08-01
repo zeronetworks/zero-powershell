@@ -13,8 +13,8 @@ Returns a list of assets that are RPC monitored.
 ## SYNTAX
 
 ```
-Get-ZNAssetsRpcMonitored [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>]
- [-OrderColumns <String>] [-WithCount] [<CommonParameters>]
+Get-ZNAssetsRpcMonitored [-Cursor <String>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>]
+ [-Order <String>] [-OrderColumns <String>] [-WithCount] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +36,21 @@ a:a:TeGEW52g dc01.posh.local {10.0.0.4}    {fe80::c60b:6dd:cd7a:2581} 3      2  
 This cmdlet lists RPC monitored assets.
 
 ## PARAMETERS
+
+### -Cursor
+cursor position to start at
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Filters
 JSON string URI encoded set of fiters

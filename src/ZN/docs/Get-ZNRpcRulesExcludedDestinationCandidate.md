@@ -13,7 +13,7 @@ Returns a list of excluded destionation candidates for RPC rules.
 ## SYNTAX
 
 ```
-Get-ZNRpcRulesExcludedDestinationCandidate [-Cursor <Int64>] [-Limit <Int32>] [-Search <String>]
+Get-ZNRpcRulesExcludedDestinationCandidate [-Cursor <String>] [-Limit <Int32>] [-Search <String>]
  [<CommonParameters>]
 ```
 
@@ -60,7 +60,7 @@ This cmdlet gets the possible excluded destination candidates for a rpc rule for
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

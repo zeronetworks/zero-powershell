@@ -13,7 +13,7 @@ Returns a list of OT/IoT assets.
 ## SYNTAX
 
 ```
-Get-ZNAssetsOt [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>]
+Get-ZNAssetsOt [-Cursor <String>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>]
  [-OrderColumns <String>] [-ShowInactive] [-WithCount] [<CommonParameters>]
 ```
 
@@ -43,6 +43,21 @@ List OT/IoT assets in the enviroment.
 Use offset to get the next page of OT/IoT Assets.
 
 ## PARAMETERS
+
+### -Cursor
+cursor position to start at
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Filters
 JSON string URI encoded set of fiters

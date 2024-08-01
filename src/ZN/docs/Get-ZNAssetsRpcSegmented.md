@@ -13,8 +13,8 @@ Returns a list of assets that are RPC Segmented.
 ## SYNTAX
 
 ```
-Get-ZNAssetsRpcSegmented [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>]
- [-OrderColumns <String>] [-WithCount] [<CommonParameters>]
+Get-ZNAssetsRpcSegmented [-Cursor <String>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>]
+ [-Order <String>] [-OrderColumns <String>] [-WithCount] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,12 +38,26 @@ The cmdlet will list Assets in RPC segmentation for the environment.
 ### Example 2: List next page of assets in RPC segmentation
 ```powershell
 (Get-ZNAssetsRpcSegmented -Offset 10).Items
-
 ```
 
 Use offset to get the next page of Assets in RPC segmentation.
 
 ## PARAMETERS
+
+### -Cursor
+cursor position to start at
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Filters
 JSON string URI encoded set of fiters

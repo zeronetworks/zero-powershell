@@ -21,7 +21,7 @@ Describe 'New-ZNInboundRule' {
         $source = (Get-ZNInboundRulesSourceCandidate -RuleType 1 -search "any asset").Items
         $destination = (Get-ZNInboundRulesDestinationCandidate -Search "all segmented assets").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
-        $rule = New-ZNInboundRule -Action 1 -LocalEntityId $destination.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
-        $rule.Item.Id | Should -Not -Be $null
+        $rule = New-ZNInboundRule -Action 1 -LocalEntityId $destination.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt -IPSecOpt 1
+        $rule.ItemId | Should -Not -Be $null
     }
 }

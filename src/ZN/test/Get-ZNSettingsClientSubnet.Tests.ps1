@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsClientSubnet'))
 
 Describe 'Get-ZNSettingsClientSubnet' {
     It 'Get' {
-        (Get-ZNSettingsClientSubnet).ConfigPrivateNetworksList | Should -Not -Be $null
+        (Get-ZNSettingsClientSubnet).ConfigPrivateIpv4NetworksList | Should -Not -Be $null
     }
 }

@@ -13,7 +13,7 @@ Returns a list of audit events.
 ## SYNTAX
 
 ```
-Get-ZNAudit [-Cursor <Int64>] [-EntityId <String>] [-Filters <String>] [-From <Int32>] [-Limit <Int32>]
+Get-ZNAudit [-Cursor <String>] [-EntityId <String>] [-Filters <String>] [-From <Int32>] [-Limit <Int32>]
  [-Order <String>] [-Search <String>] [-To <Int32>] [<CommonParameters>]
 ```
 
@@ -74,7 +74,7 @@ scrollCurosor is the epochtime (ms) of the last event and can be used to get the
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

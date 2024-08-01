@@ -13,7 +13,7 @@ Returns a list of destionation candidates for Inbound rules.
 ## SYNTAX
 
 ```
-Get-ZNInboundRulesDestinationCandidate [-Cursor <Int64>] [-Limit <Int32>] [-Search <String>]
+Get-ZNInboundRulesDestinationCandidate [-Cursor <String>] [-Limit <Int32>] [-Search <String>]
  [<CommonParameters>]
 ```
 
@@ -74,7 +74,7 @@ To find a specific candidate use the search parameter with the Name to be search
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

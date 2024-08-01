@@ -13,8 +13,8 @@ Edit an OT/IoT asset.
 ## SYNTAX
 
 ```
-Update-ZNAssetOt -AssetId <String> [-DisplayName <String>] [-Type <Single>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNAssetOt -AssetId <String> [-DisplayName <String>] [-Fqdn <String>] [-Type <Single>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,6 +48,21 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Fqdn
 .
 
 ```yaml

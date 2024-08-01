@@ -32,7 +32,7 @@ require:
 input-file:
   - $(this-folder)/../openapi.yaml
 
-module-version: 0.0.12-preview
+module-version: 0.0.13-preview
 title: Api
   
 inlining-threshold: 50
@@ -774,6 +774,30 @@ directive:
       subject: QueueUsersIdentity
     set:
       subject: UserIdentityQueue
+  - where:
+      subject: QueueAssetsRpc
+    set:
+      subject: AssetRpcQueue
+  - where:
+      subject: QueueAssetsExtendRpc
+    set:
+      subject: AssetRpcExtendQueue
+  - where:
+      subject: QueueAssetsIdentity
+    set:
+      subject: AssetIdentityQueue
+  - where:
+      subject: QueueAssetsExtendIdentity
+    set:
+      subject: AssetIdentityExtendQueue
+  - where:
+      subject: QueueAssetIdentity
+    set:
+      subject: AssetIdentityQueue
+  - where:
+      subject: QueueAssetExtendIdentity
+    set:
+      subject: AssetIdentityExtendQueue
   # rename asset/ot/user queue/protect/unprotect commands
   - where:
       subject: AssetsOtNetworkSegment
@@ -839,6 +863,23 @@ directive:
       verb: Test
     set:
       subject: AssetIdentityUnprotect
+  # Rename Protection Policy Cmdlets
+  - where:
+      subject: IdentityProtectionPolicy
+    set:
+      subject: SettingsIdentityProtectionPolicy
+  - where:
+      subject: IdentityProtectionPoliciesGroupCandidate
+    set:
+      subject: SettingsIdentityProtectionPoliciesCandidate
+  - where:
+      subject: NetworkProtectionPolicy
+    set:
+      subject: SettingsNetworkProtectionPolicy
+  - where:
+      subject: NetworkProtectionPoliciesCandidate
+    set:
+      subject: SettingsNetworkProtectionPoliciesCandidate
   # combine user search
   - where:
       subject: ^UsersByPrincipalName$|^UsersBySid$

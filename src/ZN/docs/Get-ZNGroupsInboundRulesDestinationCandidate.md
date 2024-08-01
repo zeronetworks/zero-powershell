@@ -13,7 +13,7 @@ Returns a list of destionation candidates for Inbound rules.
 ## SYNTAX
 
 ```
-Get-ZNGroupsInboundRulesDestinationCandidate -GroupId <String> -GroupType <String> [-Cursor <Int64>]
+Get-ZNGroupsInboundRulesDestinationCandidate -GroupId <String> -GroupType <String> [-Cursor <String>]
  [-Limit <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
@@ -64,7 +64,7 @@ This cmdlet gets the possible destination candidates for a rule for a specific g
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

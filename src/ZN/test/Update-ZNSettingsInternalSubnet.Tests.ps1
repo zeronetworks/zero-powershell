@@ -20,8 +20,8 @@ Describe 'Update-ZNSettingsInternalSubnet' {
         }else{
             $newSetting = @('10.0.0.0/8','100.64.0.0/10','169.254.0.0/16','172.16.0.0/12','192.0.0.0/24','192.168.0.0/16','198.18.0.0/15')
         }
-        Update-ZNSettingsInternalSubnet -PrivateNetworksList $newSetting
-        $updatedSetting = (Get-ZNSettingsInternalSubnet).ConfigPrivateNetworksList
+        Update-ZNSettingsInternalSubnet -PrivateIpv4NetworksList $newSetting
+        $updatedSetting = (Get-ZNSettingsInternalSubnet).ConfigPrivateIpv4NetworksList
         $updatedSetting | Should -Be $newSetting
     }
 }

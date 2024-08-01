@@ -20,11 +20,11 @@ Describe 'Update-ZNAssetOutboundRule' {
         $portsList = New-ZNPortsList -Protocol TCP -Ports (Get-Random -Minimum 1 -Maximum 1024)
         $destination = Invoke-ZNEncodeEntityIp -IP 8.8.8.8
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
-        $rule = New-ZNOutboundRule -Action 1 -LocalEntityId $asset -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination.id) -State 1 -ExpiresAt $expiresAt
+        $rule = New-ZNOutboundRule -Action 1 -LocalEntityId $asset -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination.id) -State 1 -ExpiresAt $expiresAt  -IPSecOpt 1
         
         $newdescription = "new description" + (Get-Random -Minimum 1 -Maximum 100)
-        Update-ZNAssetOutboundRule -AssetId $asset -RuleId $rule.Item.Id -Description $newdescription
-        $updatedRule = Get-ZNOutboundRule -RuleId $rule.Item.Id
-        $updatedRule.Item.Description | Should -Be $newdescription
+        Update-ZNAssetOutboundRule -AssetId $asset -RuleId $rule.ItemId -Description $newdescription
+        $updatedRule = Get-ZNOutboundRule -RuleId $rule.ItemId
+        $updatedRule.ItemDescription | Should -Be $newdescription
     }
 }

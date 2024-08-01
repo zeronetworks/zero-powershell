@@ -13,7 +13,7 @@ Returns a list of monitoring candidates for an AD forest.
 ## SYNTAX
 
 ```
-Get-ZNSettingsAdMonitoredCandidate -ForestId <String> [-Cursor <Int64>] [-Limit <Int32>] [-Search <String>]
+Get-ZNSettingsAdMonitoredCandidate -ForestId <String> [-Cursor <String>] [-Limit <Int32>] [-Search <String>]
  [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ This cmdlet lists possible candidates for monitoring control in Active Directory
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

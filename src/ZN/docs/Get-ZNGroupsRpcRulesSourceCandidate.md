@@ -13,7 +13,7 @@ Returns a list of source candidates for RPC rules.
 ## SYNTAX
 
 ```
-Get-ZNGroupsRpcRulesSourceCandidate -GroupId <String> -GroupType <String> [-Cursor <Int64>] [-Limit <Int32>]
+Get-ZNGroupsRpcRulesSourceCandidate -GroupId <String> -GroupType <String> [-Cursor <String>] [-Limit <Int32>]
  [-Search <String>] [<CommonParameters>]
 ```
 
@@ -61,7 +61,7 @@ This cmdlet gets the possible source candidates for a rpc rule for a specific gr
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

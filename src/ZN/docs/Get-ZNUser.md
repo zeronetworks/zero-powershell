@@ -14,7 +14,7 @@ Returns the properties of an user.
 
 ### List (Default)
 ```
-Get-ZNUser [-Cursor <Int64>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>]
+Get-ZNUser [-Cursor <String>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>]
  [-OrderColumns <String>] [-Search <String>] [-WithCount] [<CommonParameters>]
 ```
 
@@ -88,7 +88,7 @@ Use offset to get the next page of users.
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: List
 Aliases:
 

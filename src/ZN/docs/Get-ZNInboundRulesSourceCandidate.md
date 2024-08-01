@@ -13,7 +13,7 @@ Returns a list of source candidates for Inbound rules.
 ## SYNTAX
 
 ```
-Get-ZNInboundRulesSourceCandidate -RuleType <Int32> [-Cursor <Int64>] [-Limit <Int32>] [-Search <String>]
+Get-ZNInboundRulesSourceCandidate -RuleType <Int32> [-Cursor <String>] [-Limit <Int32>] [-Search <String>]
  [<CommonParameters>]
 ```
 
@@ -59,7 +59,7 @@ This cmdlet lists the source candidates for an inbound rule.
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -13,7 +13,7 @@ Returns a list of excluded destionation candidates for Inbound rules.
 ## SYNTAX
 
 ```
-Get-ZNGroupsInboundRulesExcludedDestinationCandidate -GroupId <String> -GroupType <String> [-Cursor <Int64>]
+Get-ZNGroupsInboundRulesExcludedDestinationCandidate -GroupId <String> -GroupType <String> [-Cursor <String>]
  [-Limit <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
@@ -61,7 +61,7 @@ This cmdlet gets the possible excluded destination candidates for a rule for a s
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

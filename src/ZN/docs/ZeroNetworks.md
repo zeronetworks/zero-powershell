@@ -239,6 +239,9 @@ Returns a list of user candidates for RPC rules.
 ### [Get-ZNAssetRulesDistribution](Get-ZNAssetRulesDistribution.md)
 Returns an object with rules distribution.
 
+### [Get-ZNAssetsIdentityQueued](Get-ZNAssetsIdentityQueued.md)
+Returns a list of assets that are identity learning.
+
 ### [Get-ZNAssetsIdentitySegmented](Get-ZNAssetsIdentitySegmented.md)
 Returns a list of assets that are identity segmentated.
 
@@ -259,6 +262,9 @@ Returns a list of Protected assets.
 
 ### [Get-ZNAssetsRpcMonitored](Get-ZNAssetsRpcMonitored.md)
 Returns a list of assets that are RPC monitored.
+
+### [Get-ZNAssetsRpcQueued](Get-ZNAssetsRpcQueued.md)
+Returns a list of assets in RPC learning.
 
 ### [Get-ZNAssetsRpcSegmented](Get-ZNAssetsRpcSegmented.md)
 Returns a list of assets that are RPC Segmented.
@@ -513,12 +519,6 @@ Returns a list of excluded source candidates for Outbound rules.
 ### [Get-ZNOutboundRulesSourceCandidate](Get-ZNOutboundRulesSourceCandidate.md)
 Returns a list of source candidates for Outbound rules.
 
-### [Get-ZNProtectionPoliciesGroupCandidate](Get-ZNProtectionPoliciesGroupCandidate.md)
-Returns a list of candidates for protection policies.
-
-### [Get-ZNProtectionPolicy](Get-ZNProtectionPolicy.md)
-Returns a list of protection policies.
-
 ### [Get-ZNRpcRule](Get-ZNRpcRule.md)
 Returns the properties of an RPC rule.
 
@@ -627,6 +627,12 @@ Returns the properties of ignored rules for anti-tampering Firewall settings.
 ### [Get-ZNSettingsFirewallProfile](Get-ZNSettingsFirewallProfile.md)
 Returns the properties of firewall profiles in Firewall settings.
 
+### [Get-ZNSettingsIdentityProtectionPoliciesCandidate](Get-ZNSettingsIdentityProtectionPoliciesCandidate.md)
+Returns a list of candidates for identity protection policies.
+
+### [Get-ZNSettingsIdentityProtectionPolicy](Get-ZNSettingsIdentityProtectionPolicy.md)
+Returns a list of identity protection policies.
+
 ### [Get-ZNSettingsIdp](Get-ZNSettingsIdp.md)
 Get identity provider settings in Identity Providers
 
@@ -654,8 +660,20 @@ Get the linux user settings in Asset Managment
 ### [Get-ZNSettingsMfaAuthentication](Get-ZNSettingsMfaAuthentication.md)
 Returns the properties of MFA authentication settings.
 
+### [Get-ZNSettingsMfaCache](Get-ZNSettingsMfaCache.md)
+Returns a list of MFA Cache Policies.
+
+### [Get-ZNSettingsMfaCacheCandidate](Get-ZNSettingsMfaCacheCandidate.md)
+Returns a list of candidates for MFA Cache Policy.
+
 ### [Get-ZNSettingsMfaDetection](Get-ZNSettingsMfaDetection.md)
 Returns the properties of MFA detection settings.
+
+### [Get-ZNSettingsNetworkProtectionPoliciesCandidate](Get-ZNSettingsNetworkProtectionPoliciesCandidate.md)
+Returns a list of candidates for a network protection policy.
+
+### [Get-ZNSettingsNetworkProtectionPolicy](Get-ZNSettingsNetworkProtectionPolicy.md)
+Returns a list of network protection policies.
 
 ### [Get-ZNSettingsNotification](Get-ZNSettingsNotification.md)
 Returns the properties of the Mail Notification settings.
@@ -747,6 +765,12 @@ Returns and empty object.
 ### [Invoke-ZNAssetDeactivateBreakGlass](Invoke-ZNAssetDeactivateBreakGlass.md)
 Returns and empty object.
 
+### [Invoke-ZNAssetIdentityExtendQueue](Invoke-ZNAssetIdentityExtendQueue.md)
+Returns an empty object.
+
+### [Invoke-ZNAssetIdentityQueue](Invoke-ZNAssetIdentityQueue.md)
+Returns and empty object.
+
 ### [Invoke-ZNAssetNetworkExtendQueue](Invoke-ZNAssetNetworkExtendQueue.md)
 Returns an empty object.
 
@@ -757,6 +781,12 @@ Returns and empty object.
 Returns an empty object.
 
 ### [Invoke-ZNAssetOtNetworkQueue](Invoke-ZNAssetOtNetworkQueue.md)
+Returns and empty object.
+
+### [Invoke-ZNAssetRpcExtendQueue](Invoke-ZNAssetRpcExtendQueue.md)
+Returns an empty object.
+
+### [Invoke-ZNAssetRpcQueue](Invoke-ZNAssetRpcQueue.md)
 Returns and empty object.
 
 ### [Invoke-ZNDownloadCloudConnectorInstaller](Invoke-ZNDownloadCloudConnectorInstaller.md)
@@ -864,9 +894,6 @@ Returns the properties of the created Outbound rule.
 ### [New-ZNPortsList](New-ZNPortsList.md)
 Create a in-memory object for PortsList
 
-### [New-ZNProtectionPolicy](New-ZNProtectionPolicy.md)
-Returns the protection policy that was created.
-
 ### [New-ZNRpcRule](New-ZNRpcRule.md)
 Returns the properties of the create RPC rule.
 
@@ -882,8 +909,17 @@ Create a Connect region in Settings
 ### [New-ZNSettingsConnectUserAccessConfig](New-ZNSettingsConnectUserAccessConfig.md)
 Create a Connect User Access Configuration in Settings
 
+### [New-ZNSettingsIdentityProtectionPolicy](New-ZNSettingsIdentityProtectionPolicy.md)
+Returns the identity protection policy that was created.
+
 ### [New-ZNSettingsIdp](New-ZNSettingsIdp.md)
 Create an identity provider settings in Identity Providers
+
+### [New-ZNSettingsMfaCache](New-ZNSettingsMfaCache.md)
+Creates a MFA Cache Policy.
+
+### [New-ZNSettingsNetworkProtectionPolicy](New-ZNSettingsNetworkProtectionPolicy.md)
+Returns the network protection policy that was created.
 
 ### [New-ZNSettingsPushNotification](New-ZNSettingsPushNotification.md)
 Create an push notifications settings
@@ -993,9 +1029,6 @@ Returns an empty object.
 ### [Remove-ZNOutboundRule](Remove-ZNOutboundRule.md)
 Returns an empty object.
 
-### [Remove-ZNProtectionPolicy](Remove-ZNProtectionPolicy.md)
-Returns and empty object.
-
 ### [Remove-ZNRpcRule](Remove-ZNRpcRule.md)
 Returns an empty object.
 
@@ -1014,11 +1047,20 @@ Delete a Connect Region in Settings
 ### [Remove-ZNSettingsConnectUserAccessConfig](Remove-ZNSettingsConnectUserAccessConfig.md)
 Delete a Connect User Access Configuration in Settings
 
+### [Remove-ZNSettingsIdentityProtectionPolicy](Remove-ZNSettingsIdentityProtectionPolicy.md)
+Returns and empty object.
+
 ### [Remove-ZNSettingsIdp](Remove-ZNSettingsIdp.md)
 Returns an empty reponse.
 
 ### [Remove-ZNSettingsJamfCredentials](Remove-ZNSettingsJamfCredentials.md)
 Returns an empty object.
+
+### [Remove-ZNSettingsMfaCache](Remove-ZNSettingsMfaCache.md)
+deletes a MFA Cache Policy.
+
+### [Remove-ZNSettingsNetworkProtectionPolicy](Remove-ZNSettingsNetworkProtectionPolicy.md)
+Returns and empty object.
 
 ### [Remove-ZNSettingsPushNotification](Remove-ZNSettingsPushNotification.md)
 Returns an empty reponse.
@@ -1155,11 +1197,11 @@ Updates an inbound MFA Policy.
 ### [Update-ZNMfaOutboundPolicy](Update-ZNMfaOutboundPolicy.md)
 Updates an outbound MFA Policy.
 
+### [Update-ZNOSType](Update-ZNOSType.md)
+Set the OS type (Windows/Linux/Mac) for multiple assets
+
 ### [Update-ZNOutboundRule](Update-ZNOutboundRule.md)
 Updates an outbound  rule.
-
-### [Update-ZNProtectionPolicy](Update-ZNProtectionPolicy.md)
-Returns the updated settings for the protection policy.
 
 ### [Update-ZNRpcRule](Update-ZNRpcRule.md)
 Updates an RPC rule.
@@ -1221,6 +1263,9 @@ Returns he properties of ignored rules for anti-tampering Firewall settings.
 ### [Update-ZNSettingsFirewallProfile](Update-ZNSettingsFirewallProfile.md)
 Returns the properties of firewall profiles in Firewall settings.
 
+### [Update-ZNSettingsIdentityProtectionPolicy](Update-ZNSettingsIdentityProtectionPolicy.md)
+Returns the updated settings for the identity protection policy.
+
 ### [Update-ZNSettingsIdp](Update-ZNSettingsIdp.md)
 Update identity provider settings in Identity Providers
 
@@ -1247,6 +1292,9 @@ Returns an empty object.
 
 ### [Update-ZNSettingsMfaDetection](Update-ZNSettingsMfaDetection.md)
 Returns the properties of the updated MFA detection settings.
+
+### [Update-ZNSettingsNetworkProtectionPolicy](Update-ZNSettingsNetworkProtectionPolicy.md)
+Returns the updated settings for the network protection policy.
 
 ### [Update-ZNSettingsNotification](Update-ZNSettingsNotification.md)
 Returns the properties of the updated Mail Notifications settings.

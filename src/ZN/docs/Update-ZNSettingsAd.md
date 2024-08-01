@@ -13,10 +13,11 @@ Update AD forest settings.
 ## SYNTAX
 
 ```
-Update-ZNSettingsAd -ForestId <String> [-PrimaryDomainConfigDomainControllerFqdn <String>]
- [-PrimaryDomainConfigDomainName <String>] [-PrimaryDomainConfigPassword <String>]
- [-PrimaryDomainConfigUseLdaps] [-PrimaryDomainConfigUserFqdn <String>] [-UsePrimaryUserForAllDomains]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsAd -ForestId <String> [-AllowNtlmFallback]
+ [-PrimaryDomainConfigDomainControllerFqdn <String>] [-PrimaryDomainConfigDomainName <String>]
+ [-PrimaryDomainConfigPassword <String>] [-PrimaryDomainConfigUseLdaps]
+ [-PrimaryDomainConfigUserFqdn <String>] [-UsePrimaryUserForAllDomains] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +34,21 @@ Update-ZNSettingsAd -ForestId $forest.ForestId -ActiveDirectoryInfoDomainControl
 This cmdlet updates AD settings.
 
 ## PARAMETERS
+
+### -AllowNtlmFallback
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ForestId
 The forest id

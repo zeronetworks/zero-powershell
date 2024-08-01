@@ -14,7 +14,7 @@ Returns a list of source candidates for Inbound rules.
 
 ```
 Get-ZNGroupsInboundRulesSourceCandidate -GroupId <String> -GroupType <String> -RuleType <Int32>
- [-Cursor <Int64>] [-Limit <Int32>] [-Search <String>] [<CommonParameters>]
+ [-Cursor <String>] [-Limit <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +62,7 @@ This cmdlet gets the possible source candidates for a rule for a specific group.
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

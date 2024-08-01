@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNSettingsClientSubnet
 Describe 'Update-ZNSettingsClientSubnet' {
     It 'UpdateExpanded' {
         $setting = Get-ZNSettingsClientSubnet
-        { Update-ZNSettingsClientSubnet -PrivateNetworksList @("192.168.1.0/24") } | Should -Not -Throw
-        Update-ZNSettingsClientSubnet -PrivateNetworksList $setting.ConfigPrivateNetworksList
+        { Update-ZNSettingsClientSubnet -PrivateIpv4NetworksList @("192.168.1.0/24") } | Should -Not -Throw
+        Update-ZNSettingsClientSubnet -PrivateIpv4NetworksList $setting.ConfigPrivatIpv4NetworksList
     }
 }

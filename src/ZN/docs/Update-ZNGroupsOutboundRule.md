@@ -14,9 +14,10 @@ Updates an outbound  rule.
 
 ```
 Update-ZNGroupsOutboundRule -GroupId <String> -GroupType <String> -RuleId <String> [-Action <String>]
- [-Description <String>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>] [-LocalEntityId <String>]
- [-LocalProcessesList <String[]>] [-PortsList <IPortsListItem[]>] [-RemoteEntityIdsList <String[]>]
- [-State <Int32>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Description <String>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>] [-IPSecOpt <String[]>]
+ [-LocalEntityId <String>] [-LocalProcessesList <String[]>] [-PortsList <IPortsListItem[]>]
+ [-RemoteEntityIdsList <String[]>] [-State <Int32>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -168,6 +169,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IPSecOpt
+IpSec Config
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

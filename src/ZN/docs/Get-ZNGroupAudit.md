@@ -13,7 +13,7 @@ Returns a list of audits for the group.
 ## SYNTAX
 
 ```
-Get-ZNGroupAudit -GroupId <String> -GroupType <String> [-Cursor <Int64>] [-Order <String>] [-Search <String>]
+Get-ZNGroupAudit -GroupId <String> -GroupType <String> [-Cursor <String>] [-Order <String>] [-Search <String>]
  [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ This cmdlet get the audits for a group.
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

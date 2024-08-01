@@ -21,9 +21,9 @@ Describe 'Get-ZNAssetInboundRule' {
         $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
         $source = (Get-ZNAssetInboundRulesSourceCandidate -AssetId $asset -RuleType 1 -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
-        $rule = New-ZNAssetInboundRule -AssetId $asset -LocalEntityId $asset -Action 1 -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
+        $rule = New-ZNAssetInboundRule -AssetId $asset -LocalEntityId $asset -Action 1 -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt -IPSecOpt 1
         { Get-ZNAssetInboundRule -AssetId $asset } | Should -Not -Be $null
-        Remove-ZNAssetInboundRule -AssetId $asset -RuleId $rule.Item.Id
+        Remove-ZNAssetInboundRule -AssetId $asset -RuleId $rule.ItemId
     }
 
     It 'Get' {
@@ -32,7 +32,7 @@ Describe 'Get-ZNAssetInboundRule' {
         $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
         $source = (Get-ZNInboundRulesSourceCandidate -RuleType 1 -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
-        $rule = New-ZNAssetInboundRule -AssetId $asset -LocalEntityId $asset -Action 1 -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
+        $rule = New-ZNAssetInboundRule -AssetId $asset -LocalEntityId $asset -Action 1 -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt -IPSecOpt 1
         $rule = Get-ZNAssetInboundRule -AssetId $asset | Select-Object -First 1
         { (Get-ZNAssetInboundRule -AssetId $asset -RuleId $rule.Id).ItemId } | Should -Not -Be $null
         Remove-ZNAssetInboundRule -AssetId $asset -RuleId $rule.Id

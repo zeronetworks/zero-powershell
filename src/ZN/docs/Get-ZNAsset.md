@@ -14,7 +14,7 @@ Returns the properties of an asset.
 
 ### List (Default)
 ```
-Get-ZNAsset [-Cursor <Int64>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>]
+Get-ZNAsset [-Cursor <String>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>]
  [-OrderColumns <String>] [-ShowInactive] [-WithCount] [<CommonParameters>]
 ```
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: List
 Aliases:
 

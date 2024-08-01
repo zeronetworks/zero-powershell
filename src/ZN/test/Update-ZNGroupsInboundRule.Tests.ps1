@@ -21,12 +21,12 @@ Describe 'Update-ZNGroupsInboundRule' {
         $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
         $source = (Get-ZNInboundRulesSourceCandidate -RuleType 1 -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
-        $rule = New-ZNGroupsInboundRule -GroupId $group.id -GroupType tag -Action 1 -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
+        $rule = New-ZNGroupsInboundRule -GroupId $group.id -GroupType tag -Action 1 -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt -IPSecOpt 1
         
         $newdescription = "new description " + (Get-Random -Minimum 1 -Maximum 100)
-        Update-ZNGroupsInboundRule -GroupId $group.id -GroupType tag -RuleId $rule.Item.Id -Description $newdescription
-        $updatedRule = Get-ZNGroupsInboundRule -GroupId $group.id -GroupType tag -RuleId $rule.Item.Id
-        $updatedRule.Item.Description | Should -Be $newdescription
-        Remove-ZNInboundRule -RuleId $rule.Item.Id
+        Update-ZNGroupsInboundRule -GroupId $group.id -GroupType tag -RuleId $rule.ItemId -Description $newdescription
+        $updatedRule = Get-ZNGroupsInboundRule -GroupId $group.id -GroupType tag -RuleId $rule.ItemId
+        $updatedRule.ItemDescription | Should -Be $newdescription
+        Remove-ZNInboundRule -RuleId $rule.ItemId
     }
 }
