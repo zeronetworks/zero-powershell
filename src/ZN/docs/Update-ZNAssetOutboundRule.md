@@ -14,7 +14,7 @@ Updates an outbound  rule.
 
 ```
 Update-ZNAssetOutboundRule -AssetId <String> -RuleId <String> [-Action <String>] [-Description <String>]
- [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>] [-LocalEntityId <String>]
+ [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>] [-IPSecOpt <String[]>] [-LocalEntityId <String>]
  [-LocalProcessesList <String[]>] [-PortsList <IPortsListItem[]>] [-RemoteEntityIdsList <String[]>]
  [-SrcUsersList <SrcUsersListItem>] [-State <Int32>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -150,6 +150,21 @@ when the rule should expiry.
 
 ```yaml
 Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IPSecOpt
+IpSec Config
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

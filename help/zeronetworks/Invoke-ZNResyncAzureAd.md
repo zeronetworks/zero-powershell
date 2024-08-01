@@ -1,11 +1,19 @@
 ---
 external help file:
 Module Name: ZeroNetworks
+<<<<<<<< HEAD:help/zeronetworks/Invoke-ZNResyncAzureAd.md
 online version: https://github.com/zeronetworks/zero-powershell/tree/master/src/help/zeronetworks/invoke-znresyncazuread
 schema: 2.0.0
 ---
 
 # Invoke-ZNResyncAzureAd
+========
+online version: https://github.com/zeronetworkszeronetworks/remove-znsettingsnetworkprotectionpolicy
+schema: 2.0.0
+---
+
+# Remove-ZNSettingsNetworkProtectionPolicy
+>>>>>>>> b291f81 (v0.0.13-preview):src/ZN/docs/Remove-ZNSettingsNetworkProtectionPolicy.md
 
 ## SYNOPSIS
 Resync Azure AD
@@ -13,7 +21,12 @@ Resync Azure AD
 ## SYNTAX
 
 ```
+<<<<<<<< HEAD:help/zeronetworks/Invoke-ZNResyncAzureAd.md
 Invoke-ZNResyncAzureAd [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+========
+Remove-ZNSettingsNetworkProtectionPolicy -ProtectionPolicyId <String> [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+>>>>>>>> b291f81 (v0.0.13-preview):src/ZN/docs/Remove-ZNSettingsNetworkProtectionPolicy.md
 ```
 
 ## DESCRIPTION
@@ -21,12 +34,21 @@ Resync Azure AD
 
 ## EXAMPLES
 
+<<<<<<<< HEAD:help/zeronetworks/Invoke-ZNResyncAzureAd.md
 ### Example 1: Resync Azure AD
 ```powershell
 Invoke-ZNResyncAzureAd
 ```
 
 This cmdlet starts an Azure AD resync.
+========
+### Example 1: Remove Network segmentation policy
+```powershell
+Remove-ZNSettingsNetworkProtectionPolicy -ProtectionPolicyId d63cf8e2-b21e-4097-98f3-137549de62c1
+```
+
+This cmdlet removes a Network segemntation policy.
+>>>>>>>> b291f81 (v0.0.13-preview):src/ZN/docs/Remove-ZNSettingsNetworkProtectionPolicy.md
 
 ## PARAMETERS
 

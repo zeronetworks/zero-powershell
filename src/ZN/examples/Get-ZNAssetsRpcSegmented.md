@@ -14,7 +14,6 @@ The cmdlet will list Assets in RPC segmentation for the environment.
 ### Example 2: List next page of assets in RPC segmentation
 ```powershell
 (Get-ZNAssetsRpcSegmented -Offset 10).Items
-
 ```
 
 Use offset to get the next page of Assets in RPC segmentation.

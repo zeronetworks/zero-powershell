@@ -1,6 +1,7 @@
 ---
 external help file:
 Module Name: ZeroNetworks
+<<<<<<<< HEAD:help/zeronetworks/Get-ZNOtRule.md
 online version: https://github.com/zeronetworks/zero-powershell/tree/master/src/help/zeronetworks/get-znotrule
 schema: 2.0.0
 ---
@@ -9,39 +10,48 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Returns a list of switch rules.
+========
+online version: https://github.com/zeronetworkszeronetworks/get-znsettingsmfacache
+schema: 2.0.0
+---
+
+# Get-ZNSettingsMfaCache
+
+## SYNOPSIS
+Returns a list of MFA Cache Policies.
+>>>>>>>> b291f81 (v0.0.13-preview):src/ZN/docs/Get-ZNSettingsMfaCache.md
 
 ## SYNTAX
 
 ```
+<<<<<<<< HEAD:help/zeronetworks/Get-ZNOtRule.md
 Get-ZNOtRule [-AccountName <String>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Returns a list of switch rules.
+========
+Get-ZNSettingsMfaCache [-Limit <Int32>] [-Offset <Int32>] [-WithCount] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Returns a list of MFA Cache Policies.
+>>>>>>>> b291f81 (v0.0.13-preview):src/ZN/docs/Get-ZNSettingsMfaCache.md
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List MFA Cache policies
 ```powershell
-{{ Add code here }}
+(Get-ZNSettingsMfaCache).Items
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AssetLimit EntityId     EntityInfo                                                            TtlMinutes
+---------- --------     ----------                                                            ----------
+        10 g:a:3U1Z38mF ZeroNetworks.PowerShell.Cmdlets.Api.Models.SettingsMfaCacheEntityInfo        720
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This cmdlet lists MFA cache policies.
 
 ## PARAMETERS
 
@@ -75,6 +85,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WithCount
+return count of objects
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: $true
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -84,6 +109,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
+<<<<<<<< HEAD:help/zeronetworks/Get-ZNOtRule.md
+========
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsMfaCacheList
+
+>>>>>>>> b291f81 (v0.0.13-preview):src/ZN/docs/Get-ZNSettingsMfaCache.md
 ## NOTES
 
 ## RELATED LINKS

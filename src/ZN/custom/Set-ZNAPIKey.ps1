@@ -33,7 +33,14 @@ function Set-ZNApiKey {
             $env:ZNApiKey = $ApiKey
         }
         catch {
-            throw
+            throw "Failed to Set API Key"
+        }
+
+        try {
+            invoke-restmethod -uri "https://portal.zeronetworks.com/api/v1/assets?_limit=1" -method get -headers @{"Authorization"=$ApiKey} | out-null
+        }
+        catch {
+            throw "Failed to Set API Key, API Key is incorrect or failed."
         }
     }
 }
