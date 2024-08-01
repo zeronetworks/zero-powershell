@@ -14,7 +14,7 @@ Returns a list of destination candidates for Outbound rules.
 
 ```
 Get-ZNGroupsOutboundRulesDestinationCandidate -GroupId <String> -GroupType <String> -RuleType <Int32>
- [-Cursor <Int64>] [-Limit <Int32>] [-Search <String>] [<CommonParameters>]
+ [-Cursor <String>] [-Limit <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +62,7 @@ This cmdlet gets the possible destination candidates for a rule for a specific g
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

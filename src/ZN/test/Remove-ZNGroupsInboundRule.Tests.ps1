@@ -21,7 +21,7 @@ Describe 'Remove-ZNGroupsInboundRule' {
         $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
         $source = (Get-ZNGroupsInboundRulesSourceCandidate -GroupId $group.Id -GroupType tag -RuleType 1 -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
-        $rule = New-ZNGroupsInboundRule -GroupId $group.Id -GroupType tag -Action 1 -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
-        { Remove-ZNGroupsInboundRule -GroupId $group.Id -GroupType tag -RuleId $rule.Item.Id } | Should -Not -Throw
+        $rule = New-ZNGroupsInboundRule -GroupId $group.Id -GroupType tag -Action 1 -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt -IPSecOpt 1
+        { Remove-ZNGroupsInboundRule -GroupId $group.Id -GroupType tag -RuleId $rule.ItemId } | Should -Not -Throw
     }
 }

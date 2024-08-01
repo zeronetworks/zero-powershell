@@ -13,8 +13,8 @@ Returns a list of assets that are monitored.
 ## SYNTAX
 
 ```
-Get-ZNAssetsMonitored [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>]
- [-OrderColumns <String>] [-WithCount] [<CommonParameters>]
+Get-ZNAssetsMonitored [-Cursor <String>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>]
+ [-Order <String>] [-OrderColumns <String>] [-WithCount] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,6 +63,21 @@ AssetStatus AssetType Domain    Fqdn              IPV4Addresses  IPV6Addresses  
 Use offset to get the next page of monitored Assets.
 
 ## PARAMETERS
+
+### -Cursor
+cursor position to start at
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Filters
 JSON string URI encoded set of fiters

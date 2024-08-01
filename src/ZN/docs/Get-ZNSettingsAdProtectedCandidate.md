@@ -13,7 +13,7 @@ Returns a list of protection candidates for an AD forest.
 ## SYNTAX
 
 ```
-Get-ZNSettingsAdProtectedCandidate -ForestId <String> [-Cursor <Int64>] [-Limit <Int32>] [-Search <String>]
+Get-ZNSettingsAdProtectedCandidate -ForestId <String> [-Cursor <String>] [-Limit <Int32>] [-Search <String>]
  [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ This cmdlet lists possible candidates for protected control in Active Directory 
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

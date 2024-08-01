@@ -13,7 +13,7 @@ Returns a list of excluded source candidates for Outbound rules.
 ## SYNTAX
 
 ```
-Get-ZNAssetOutboundRulesExcludedSourceCandidate -AssetId <String> [-Cursor <Int64>] [-Limit <Int32>]
+Get-ZNAssetOutboundRulesExcludedSourceCandidate -AssetId <String> [-Cursor <String>] [-Limit <Int32>]
  [-Search <String>] [<CommonParameters>]
 ```
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

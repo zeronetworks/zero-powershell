@@ -13,8 +13,8 @@ Returns a list of assets in network learning.
 ## SYNTAX
 
 ```
-Get-ZNAssetsNetworkQueued [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>]
- [-OrderColumns <String>] [-WithCount] [<CommonParameters>]
+Get-ZNAssetsNetworkQueued [-Cursor <String>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>]
+ [-Order <String>] [-OrderColumns <String>] [-WithCount] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +43,21 @@ The cmdlet will list Assets in learning for the environment.
 Use offset to get the next page of Assets in learning.
 
 ## PARAMETERS
+
+### -Cursor
+cursor position to start at
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Filters
 JSON string URI encoded set of fiters

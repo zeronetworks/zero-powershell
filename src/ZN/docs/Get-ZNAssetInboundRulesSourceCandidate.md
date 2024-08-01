@@ -13,7 +13,7 @@ Returns a list of source candidates for Inbound rules.
 ## SYNTAX
 
 ```
-Get-ZNAssetInboundRulesSourceCandidate -AssetId <String> -RuleType <Int32> [-Cursor <Int64>] [-Limit <Int32>]
+Get-ZNAssetInboundRulesSourceCandidate -AssetId <String> -RuleType <Int32> [-Cursor <String>] [-Limit <Int32>]
  [-Search <String>] [<CommonParameters>]
 ```
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

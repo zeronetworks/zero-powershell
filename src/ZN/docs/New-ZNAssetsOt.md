@@ -13,7 +13,8 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-New-ZNAssetsOt -DisplayName <String> -Ipv4 <String> -Type <Single> [-Confirm] [-WhatIf] [<CommonParameters>]
+New-ZNAssetsOt -DisplayName <String> -Fqdn <String> -Ipv4 <String> -Type <Single> [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,6 +60,21 @@ Support Asset Types:
 ## PARAMETERS
 
 ### -DisplayName
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Fqdn
 .
 
 ```yaml

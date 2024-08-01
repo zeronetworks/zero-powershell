@@ -14,7 +14,7 @@ Returns an identity segmentation rule.
 
 ### List (Default)
 ```
-Get-ZNUserIdentityRule -UserId <String> [-AddAncestors] [-AddBuiltins] [-Cursor <Int64>] [-Filters <String>]
+Get-ZNUserIdentityRule -UserId <String> [-AddAncestors] [-AddBuiltins] [-Cursor <String>] [-Filters <String>]
  [-Limit <Int32>] [-Search <String>] [-WithCount] [<CommonParameters>]
 ```
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: List
 Aliases:
 

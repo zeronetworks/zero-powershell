@@ -13,7 +13,7 @@ Returns a list of source candidates for Outbound rules.
 ## SYNTAX
 
 ```
-Get-ZNAssetOutboundRulesSourceCandidate -AssetId <String> [-Cursor <Int64>] [-Limit <Int32>]
+Get-ZNAssetOutboundRulesSourceCandidate -AssetId <String> [-Cursor <String>] [-Limit <Int32>]
  [-Search <String>] [<CommonParameters>]
 ```
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

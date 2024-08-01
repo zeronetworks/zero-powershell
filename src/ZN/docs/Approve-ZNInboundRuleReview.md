@@ -19,10 +19,11 @@ Approve-ZNInboundRuleReview -RuleId <String> [-AsJob] [-NoWait] [-Confirm] [-Wha
 
 ### ApproveWithChangesExpanded
 ```
-Approve-ZNInboundRuleReview -RuleId <String> -Reason <Object> [-Description <String>] [-Details <String>]
- [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>] [-LocalEntityId <String>]
- [-LocalProcessesList <String[]>] [-PortsList <IPortsListItem[]>] [-RemoteEntityIdsList <String[]>]
- [-State <Int32>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Approve-ZNInboundRuleReview -RuleId <String> -Reason <Object> [-Action <Int32>] [-Description <String>]
+ [-Details <String>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>] [-IpSecOpt <Int32>]
+ [-LocalEntityId <String>] [-LocalProcessesList <String[]>] [-PortsList <IPortsListItem[]>]
+ [-RemoteEntityIdsList <String[]>] [-State <Int32>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +46,21 @@ Approve-ZNInboundRuleReview -RuleId 'e4a170be-c192-414a-9d36-380a4483583a' -Desc
 This cmdlet also supports changing the rule details upon approval.
 
 ## PARAMETERS
+
+### -Action
+Action
+
+```yaml
+Type: System.Int32
+Parameter Sets: ApproveWithChangesExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -123,9 +139,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LocalEntityId
+### -IpSecOpt
 [-RuleInfoExpiresAt \<Int64\>] 
- The Destination asset(s).
+ ip sec configuration
+
+```yaml
+Type: System.Int32
+Parameter Sets: ApproveWithChangesExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LocalEntityId
+The Destination asset(s).
 
 ```yaml
 Type: System.String

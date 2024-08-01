@@ -21,12 +21,11 @@ Describe 'Update-ZNAssetInboundRule' {
         $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
         $source = (Get-ZNInboundRulesSourceCandidate -RuleType 1 -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
-        $rule = New-ZNAssetInboundRule -AssetId $asset -Action 1 -LocalEntityId $asset -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
+        $rule = New-ZNAssetInboundRule -AssetId $asset -Action 1 -LocalEntityId $asset -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt -IPSecOpt 1 
         
         $newdescription = "new description " + (Get-Random -Minimum 1 -Maximum 100)
-        Update-ZNAssetInboundRule -AssetId $asset -RuleId $rule.Item.Id -Description $newdescription
-        $updatedRule = Get-ZNAssetInboundRule -AssetId $asset -RuleId $rule.Item.Id
-        $updatedRule.Item.Description | Should -Be $newdescription
-        Remove-ZNInboundRule -RuleId $rule.Item.Id
+        Update-ZNAssetInboundRule -AssetId $asset -RuleId $rule.ItemId -Description $newdescription
+        $updatedRule = Get-ZNAssetInboundRule -AssetId $asset -RuleId $rule.ItemId
+        $updatedRule.ItemDescription | Should -Be $newdescription
     }
 }

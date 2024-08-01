@@ -5,7 +5,7 @@ info:
   description: APIs for Zero Networks
 servers:
   - url: 'https://portal.zeronetworks.com/api/v1'
-    description: productioN
+    description: production
 paths:
   /activities/logon:
     get:
@@ -784,6 +784,33 @@ paths:
         - api_key: [ ]
       tags:
         - Assets
+  /assets/actions/os-type:
+    put:
+      operationId: OSType_Update
+      summary: Set OS type
+      description: Set the OS type (Windows/Linux/Mac) for multiple assets
+      requestBody:
+        description: OS type and Array of assetIds to set to
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/setOSType'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: [ ]
+      tags:
+        - Assets
   /assets/identity-actions/protect:
     post:
       operationId: AssetsIdentity_Protect
@@ -832,6 +859,63 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/validateResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
+  /assets/identity-actions/queue:
+    post:
+      operationId: AssetsIdentity_Queue
+      summary: Move asset from monitored to Identity learning
+      description: Returns and empty object.
+      requestBody:
+        description: Array of assetIds to move to Identity learning
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/assetsIdentityQueueBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
+    put:
+      operationId: AssetsExtendIdentity_Queue
+      summary: Extend asset Identity learning period
+      description: Returns an empty object.
+      requestBody:
+        description: Array of assetIds to extend Identity learning
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/queueExtendIdentityBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -908,7 +992,7 @@ paths:
         - api_key: []
       tags:
         - Assets
-  /assets/identity-protected:
+  /assets/identity/protected:
     get:
       operationId: AssetsIdentitySegmented_List
       summary: Identity Segmented Assets
@@ -941,7 +1025,7 @@ paths:
         - api_key: []
       tags:
         - Assets
-  /assets/identity-protected/export:
+  /assets/identity/protected/export:
     post:
       operationId: AssetsIdentityProtected_Export
       summary: Export identity protected assets
@@ -974,7 +1058,7 @@ paths:
         - api_key: []
       tags:
         - Assets
-  '/assets/identity-protected/export/csv/{exportId}':
+  '/assets/identity/protected/export/csv/{exportId}':
     get:
       operationId: AssetsIdentityProtectedExport_Get
       summary: Download identity protected assets export
@@ -993,11 +1077,120 @@ paths:
         - api_key: []
       tags:
         - Assets
-  /assets/identity-protected/filters:
+  /assets/identity/protected/filters:
     get:
       operationId: AssetsIdentitySegmentedFilters_List
       summary: List Identity Segmented Assets Filters
       description: Returns the filters that can be used for identity segmented assets.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
+  /assets/identity/queued:
+    get:
+      operationId: AssetsIdentityQueued_List
+      summary: Identity Learning Assets
+      description: Returns a list of assets that are identity learning.
+      parameters:
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchAssetsResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
+  /assets/identity/queued/export:
+    post:
+      operationId: AssetsIdentityQueued_Export
+      summary: Export identity learning assets
+      description: Returns an exportId to pass into the download API.
+      requestBody:
+        description: 'EntityId, from, to, search, filter or date time format for export'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/exportBodyAssets'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exportId'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
+  '/assets/identity/queued/export/csv/{exportId}':
+    get:
+      operationId: AssetsIdentityQueuedExport_Get
+      summary: Download identity learning assets export
+      description: Returns a csv file to be downloaded.
+      parameters:
+        - $ref: '#/components/parameters/exportIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+      security:
+        - api_key: []
+      tags:
+        - Assets
+  /assets/identity/queued/filters:
+    get:
+      operationId: AssetsIdentityQueuedFilters_List
+      summary: List Identity learning Assets Filters
+      description: Returns the filters that can be used for identity learning assets.
       responses:
         '200':
           description: OK
@@ -1127,6 +1320,118 @@ paths:
         - api_key: []
       tags:
         - Assets
+  /assets/rpc/queued:
+    get:
+      operationId: AssetsRPCQueued_List
+      summary: List Assets in RPC learning
+      description: Returns a list of assets in RPC learning.
+      parameters:
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/optionalOffsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/entityCursorParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/optionalOrderParameter'
+        - $ref: '#/components/parameters/optionalOrderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchAssetsResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
+  /assets/rpc/queued/export:
+    post:
+      operationId: AssetsRPCQueued_Export
+      summary: Export RPC Queued assets
+      description: Returns an exportId to pass into the download API.
+      requestBody:
+        description: 'EntityId, from, to, search, filter or date time format for export'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/exportBodyAssets'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exportId'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
+  '/assets/rpc/queued/export/csv/{exportId}':
+    get:
+      operationId: AssetsRPCQueuedExport_Get
+      summary: Download RPC Queued assets export
+      description: Returns a csv file to be downloaded.
+      parameters:
+        - $ref: '#/components/parameters/exportIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+      security:
+        - api_key: []
+      tags:
+        - Assets
+  /assets/rpc/queued/filters:
+    get:
+      operationId: AssetsRPCQueuedFilters_List
+      summary: List Assets in RPC learning Filters
+      description: Returns a list of filters for assets in RPC learning.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
   /assets/rpc-actions/monitor:
     post:
       operationId: AssetsRpcMonitoring_Add
@@ -1168,6 +1473,63 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/assetsRpcBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
+  /assets/rpc-actions/queue:
+    post:
+      operationId: AssetsRPC_Queue
+      summary: Move asset from monitored to RPC learning
+      description: Returns and empty object.
+      requestBody:
+        description: Array of assetIds to move to RPC learning
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/assetsRPCQueueBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
+    put:
+      operationId: AssetsExtendRPC_Queue
+      summary: Extend asset RPC learning period
+      description: Returns an empty object.
+      requestBody:
+        description: Array of assetIds to extend RPC learning
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/queueExtendRPCBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -1864,6 +2226,53 @@ paths:
         - api_key: []
       tags:
         - Asset
+  /assets/{assetId}/rpc-actions/queue:
+    post:
+      operationId: AssetRPC_Queue
+      summary: Move asset from monitored to RPC learning
+      description: Returns and empty object.
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Asset
+    put:
+      operationId: AssetExtendRPC_Queue
+      summary: Extend asset RPC learning period
+      description: Returns an empty object.
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Asset
   '/assets/{assetId}/rpc-actions/unmonitor':
     post:
       operationId: AssetRpcMonitoring_Delete
@@ -2528,8 +2937,8 @@ paths:
           content:
             text/csv:
               schema:
-                type: string
-                format: binary
+                type: object
+                format: file
       security:
         - api_key: []
       tags:
@@ -2780,6 +3189,67 @@ paths:
         - api_key: []
       tags:
         - Asset
+  /assets/{assetId}/identity-actions/queue:
+    post:
+      operationId: AssetIdentity_Queue
+      summary: Move asset from monitored to Identity learning
+      description: Returns and empty object.
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+      requestBody:
+        description: Array of assetIds to move to Identity learning
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/queueAssetIdentityBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
+    put:
+      operationId: AssetExtendIdentity_Queue
+      summary: Extend asset Identity learning period
+      description: Returns an empty object.
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+      requestBody:
+        description: Array of assetIds to extend Identity learning
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/queueAssetIdentityExtendBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets
   '/assets/{assetId}/identity-actions/unprotect':
     post:
       operationId: AssetIdentity_Unprotect
@@ -6197,11 +6667,12 @@ paths:
       description: Returns a list of assets that are monitored.
       parameters:
         - $ref: '#/components/parameters/limitParameter'
-        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/optionalOffsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/entityCursorParameter'
         - $ref: '#/components/parameters/withCountParameter'
-        - $ref: '#/components/parameters/orderParameter'
-        - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/optionalOrderParameter'
+        - $ref: '#/components/parameters/optionalOrderColumnParameter'
       responses:
         '200':
           description: OK
@@ -6306,11 +6777,12 @@ paths:
       description: Returns a list of OT/IoT assets.
       parameters:
         - $ref: '#/components/parameters/limitParameter'
-        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/optionalOffsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/entityCursorParameter'
         - $ref: '#/components/parameters/withCountParameter'
-        - $ref: '#/components/parameters/orderParameter'
-        - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/optionalOrderParameter'
+        - $ref: '#/components/parameters/optionalOrderColumnParameter'
         - $ref: '#/components/parameters/showInactiveParameter'
       responses:
         '200':
@@ -10809,11 +11281,12 @@ paths:
       description: Returns a list of Protected assets.
       parameters:
         - $ref: '#/components/parameters/limitParameter'
-        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/optionalOffsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/entityCursorParameter'
         - $ref: '#/components/parameters/withCountParameter'
-        - $ref: '#/components/parameters/orderParameter'
-        - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/optionalOrderParameter'
+        - $ref: '#/components/parameters/optionalOrderColumnParameter'
       responses:
         '200':
           description: OK
@@ -10948,11 +11421,12 @@ paths:
       description: Returns a list of assets in network learning.
       parameters:
         - $ref: '#/components/parameters/limitParameter'
-        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/optionalOffsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/entityCursorParameter'
         - $ref: '#/components/parameters/withCountParameter'
-        - $ref: '#/components/parameters/orderParameter'
-        - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/optionalOrderParameter'
+        - $ref: '#/components/parameters/optionalOrderColumnParameter'
       responses:
         '200':
           description: OK
@@ -11059,11 +11533,12 @@ paths:
       description: Returns a list of assets that are RPC monitored.
       parameters:
         - $ref: '#/components/parameters/limitParameter'
-        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/optionalOffsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/entityCursorParameter'
         - $ref: '#/components/parameters/withCountParameter'
-        - $ref: '#/components/parameters/orderParameter'
-        - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/optionalOrderParameter'
+        - $ref: '#/components/parameters/optionalOrderColumnParameter'
       responses:
         '200':
           description: OK
@@ -11168,11 +11643,12 @@ paths:
       description: Returns a list of assets that are RPC Segmented.
       parameters:
         - $ref: '#/components/parameters/limitParameter'
-        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/optionalOffsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/entityCursorParameter'
         - $ref: '#/components/parameters/withCountParameter'
-        - $ref: '#/components/parameters/orderParameter'
-        - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/optionalOrderParameter'
+        - $ref: '#/components/parameters/optionalOrderColumnParameter'
       responses:
         '200':
           description: OK
@@ -12155,7 +12631,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/groupTypeParameter'
         - $ref: '#/components/parameters/limitParameter'
-        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/optionalOffsetParameter'
+        - $ref: '#/components/parameters/cursorParameter'
         - $ref: '#/components/parameters/searchParameter'
         - $ref: '#/components/parameters/filtersParameter'
         - $ref: '#/components/parameters/withCountParameter'
@@ -17817,7 +18294,7 @@ paths:
         - MFA Outbound
   /protection/reactive-policies/outbound/simulate/dst-candidates:
     get:
-      operationId: MFAOutboundPoliciesSimulateDesinationCandidates_List
+      operationId: MFAOutboundPoliciesSimulateDestinationCandidates_List
       summary: Get Outbound MFA Simulation Destination Candidates
       description: Returns a list of destination candidates on outbound MFA simulation.
       parameters:
@@ -19563,7 +20040,7 @@ paths:
                 name:
                   type: string
                 expiry:
-                  $ref: '#/components/schemas/epochMillis'
+                  $ref: '#/components/schemas/iso8601DateTimeUTC'
                 accessType:
                   $ref: '#/components/schemas/accessTypeEnum'
               x-examples:
@@ -19577,19 +20054,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  expiry:
-                    type: string
-                  accessType:
-                    $ref: '#/components/schemas/accessTypeEnum'
-                x-examples:
-                  example-1:
-                    name: Read only access token
-                    expiry: '2024-06-27T08:45:14.129Z'
-                    accessType: 2
+                $ref: '#/components/schemas/accessToken'
         '201':
           description: Created
         '400':
@@ -20751,7 +21216,7 @@ paths:
                 name:
                   type: string
                 expiry:
-                  $ref: '#/components/schemas/epochMillis'
+                  $ref: '#/components/schemas/iso8601DateTimeUTC'
                 accessType:
                   type: integer
               x-examples:
@@ -22176,11 +22641,146 @@ paths:
         - api_key: []
       tags:
         - Settings Mail Notifications
-  /settings/protection-policies:
+  /settings/occasional-mfa:
     get:
-      operationId: ProtectionPolicies_List
-      summary: List protection policies
-      description: Returns a list of protection policies.
+      operationId: SettingsMFACache_List
+      summary: List MFA Cache Policies
+      description: Returns a list of MFA Cache Policies.
+      parameters:
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsMfaCacheList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings MFA Cache
+    post:
+      operationId: SettingsMFACache_Create
+      summary: Create MFA Cache Policy
+      description: Creates a MFA Cache Policy.
+      requestBody:
+        description: MFA Cache Policy properties
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/settingsMfaCacheBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsMfaCacheItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings MFA Cache
+  /settings/occasional-mfa/candidates:
+    get:
+      operationId: SettingsMFACacheCandidates_List
+      summary: Get candiates for MFA Cache policy.
+      description: Returns a list of candidates for MFA Cache Policy.
+      parameters:
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/groupsOrUsersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings MFA Cache
+  /settings/occasional-mfa/{entityId}:
+    put:
+      operationId: SettingsMFACache_Update
+      summary: Update MFA Cache Policy
+      description: Returns an MFA Cache Policy.
+      parameters:
+        - $ref: '#/components/parameters/entityIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsMfaCacheItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings MFA Cache
+    delete:
+      operationId: SettingsMFACache_Delete
+      summary: Deleted MFA Cache Policy
+      description: deletes a MFA Cache Policy.
+      parameters:
+        - $ref: '#/components/parameters/entityIdParameter'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings MFA Cache
+  /settings/protection-policies/network:
+    get:
+      operationId: NetworkProtectionPolicies_List
+      summary: List network protection policies
+      description: Returns a list of network protection policies.
       parameters:
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
@@ -22206,9 +22806,9 @@ paths:
       tags:
         - Settings Protection Policies
     post:
-      operationId: ProtectionPolicies_Create
-      summary: Add protection policy
-      description: Returns the protection policy that was created.
+      operationId: NetworkProtectionPolicies_Create
+      summary: Add network protection policy
+      description: Returns the network protection policy that was created.
       requestBody:
         description: Protection Policy properties
         required: true
@@ -22237,11 +22837,11 @@ paths:
         - api_key: []
       tags:
         - Settings Protection Policies
-  /settings/protection-policies/group-candidates:
+  /settings/protection-policies/network/group-candidates:
     get:
-      operationId: ProtectionPoliciesGroupCandidates_List
-      summary: Get groups for protection policy
-      description: Returns a list of candidates for protection policies.
+      operationId: NetworkProtectionPoliciesCandidates_List
+      summary: Get candidates for Network Protection Policies.
+      description: Returns a list of candidates for a network protection policy.
       parameters:
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
@@ -22267,10 +22867,10 @@ paths:
         - api_key: []
       tags:
         - Settings Protection Policies
-  '/settings/protection-policies/{protectionPolicyId}':
+  '/settings/protection-policies/network/{protectionPolicyId}':
     delete:
-      operationId: ProtectionPolicies_Delete
-      summary: Remove protection policy
+      operationId: NetworkProtectionPolicies_Delete
+      summary: Remove network protection policy
       description: Returns and empty object.
       parameters:
         - $ref: '#/components/parameters/protectionPolicyIdParameter'
@@ -22292,13 +22892,162 @@ paths:
       tags:
         - Settings Protection Policies
     put:
-      operationId: ProtectionPolicies_Update
-      summary: Update protection policy
-      description: Returns the updated settings for the protection policy.
+      operationId: NetworkProtectionPolicies_Update
+      summary: Update network protection policy
+      description: Returns the updated settings for the network protection policy.
       parameters:
         - $ref: '#/components/parameters/protectionPolicyIdParameter'
       requestBody:
-        description: Protection Policy properties
+        description: Network Protection Policy properties
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/protectionPolicyUpdateBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/protectionPolicyResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Protection Policies
+  /settings/protection-policies/identity:
+    get:
+      operationId: IdentityProtectionPolicies_List
+      summary: List identity protection policies
+      description: Returns a list of identity protection policies.
+      parameters:
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/protectionPoliciesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Protection Policies
+    post:
+      operationId: IdentityProtectionPolicies_Create
+      summary: Add identity protection policy
+      description: Returns the identity protection policy that was created.
+      requestBody:
+        description: Identity Protection Policy properties
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/protectionPolicyBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/protectionPolicyResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Protection Policies
+  /settings/protection-policies/identity/group-candidates:
+    get:
+      operationId: IdentityProtectionPoliciesGroupCandidates_List
+      summary: Get groups for identity protection policy
+      description: Returns a list of candidates for identity protection policies.
+      parameters:
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/groupCandidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Protection Policies
+  '/settings/protection-policies/identity/{protectionPolicyId}':
+    delete:
+      operationId: IdentityProtectionPolicies_Delete
+      summary: Remove identity protection policy
+      description: Returns and empty object.
+      parameters:
+        - $ref: '#/components/parameters/protectionPolicyIdParameter'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Protection Policies
+    put:
+      operationId: IdentityProtectionPolicies_Update
+      summary: Update identity protection policy
+      description: Returns the updated settings for the identity protection policy.
+      parameters:
+        - $ref: '#/components/parameters/protectionPolicyIdParameter'
+      requestBody:
+        description: Identity Protection Policy properties
         required: true
         content:
           application/json:
@@ -25152,10 +25901,8 @@ components:
       in: query
       description: cursor position to start at
       schema:
-        type: integer
-        format: int64
-        pattern: '^\d{13}$'
-      example: 1647305854366
+        type: string
+      example: '1647305854366'
     directionParameter:
       name: direction
       in: query
@@ -25183,6 +25930,13 @@ components:
       name: dstProcess
       in: query
       description: Dest process
+      schema:
+        type: string
+    entityIdParameter:
+      name: entityId
+      in: path
+      description: The id of the user or group
+      required: true
       schema:
         type: string
     entityIdQueryParameter:
@@ -25281,7 +26035,7 @@ components:
       required: true
       schema:
         type: string
-        pattern: ^ad$|^custom$|^ot$|^snow$|^system$|^tag$
+        pattern: ^ad$|^custom$|^ot$|^snow$|^system$|^tag$|^inactive$
     identityProviderIdParameter:
       name: identityProviderId
       in: path
@@ -25362,7 +26116,7 @@ components:
       schema:
         type: integer
         maximum: 1000000000
-        minimum: 0    
+        minimum: 0
     entityCursorParameter:
       name: _cursor
       in: query
@@ -25466,7 +26220,7 @@ components:
     roleEntityIdParameter:
       name: roleEntityId
       in: path
-      description: The id of the user
+      description: The id of the user or group
       required: true
       schema:
         type: string
@@ -25878,9 +26632,7 @@ components:
           type: array
           items:
             type: string
-        lastLogon:
-          $ref: '#/components/schemas/epochMillis'
-        lastLogonTimestamp:
+        lastLogonReplicated:
           $ref: '#/components/schemas/epochMillis'
         name:
           type: string
@@ -25906,6 +26658,44 @@ components:
           $ref: '#/components/schemas/source'
         state:
           $ref: '#/components/schemas/state'
+        sid:
+          type: string
+        guid:
+          type: string
+        userAccountControl:
+          type: integer
+        servicePrincipleNames:
+          type: array
+          items:
+            type: string
+        distinguishedName:
+          type: string
+        addedAt:
+          $ref: '#/components/schemas/epochMillis'
+        addedBy:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+              example: User Name
+        protectedAt:
+          $ref: '#/components/schemas/epochMillis'
+        identityProtectAt:
+          $ref: '#/components/schemas/epochMillis'
+        rpcProtectAt:
+          $ref: '#/components/schemas/epochMillis'
+        rpcProtectedAt:
+          $ref: '#/components/schemas/epochMillis'
+        assignedDeployment:
+          $ref: '#/components/schemas/idNamePair'
+        preferredDeployment:
+          $ref: '#/components/schemas/idNamePair'
+        inactiveSince:
+          $ref: '#/components/schemas/epochMillis'
+        environmentGroup:
+          $ref: '#/components/schemas/idNamePair'
     assetActivateBody:
       type: object
       properties:
@@ -26004,6 +26794,18 @@ components:
           $ref: "#/components/schemas/nonOtAssetType"
       required:
         - type
+    setOSType:
+      type: object
+      properties:
+        assetIds:
+          type: array
+          items:
+            type: string
+        osType:
+          $ref: "#/components/schemas/manageableOSType"
+      required:
+        - assetIds
+        - osType
     assetOt:
       type: object
       properties:
@@ -26155,6 +26957,7 @@ components:
     assetType:
       description: |
         Possible asset status:
+          * `0' - Unknown
           * `1' - Client
           * `2' - Server
           * `3' - Virtual cluster
@@ -26192,6 +26995,7 @@ components:
       type: integer
       format: int32
       enum:
+            - 0
             - 1
             - 2
             - 3
@@ -26235,6 +27039,18 @@ components:
       enum:
         - 1
         - 2
+    manageableOSType:
+      description: |
+        Possible osType:
+          * `1' - Windows
+          * `2' - Linux
+          * `3' - Mac
+      type: integer
+      format: int32
+      enum:
+        - 1
+        - 2
+        - 3
     assetsActivateBody:
       type: object
       required:
@@ -26293,6 +27109,8 @@ components:
           enum:
             - 14
             - 30
+            - 60
+            - 90
       required:
         - items
         - queueDays
@@ -26305,6 +27123,42 @@ components:
             type: string
       required:
         - items
+    assetsIdentityQueueBody:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
+        queueDays:
+          description: number of days
+          type: integer
+          enum:
+            - 14
+            - 30
+            - 60
+            - 90
+      required:
+        - items
+        - queueDays
+    assetsRPCQueueBody:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
+        queueDays:
+          description: number of days
+          type: integer
+          enum:
+            - 14
+            - 30
+            - 60
+            - 90
+      required:
+        - items
+        - queueDays
     assetsStatesStatistics:
       type: object
       properties:
@@ -26395,7 +27249,7 @@ components:
     audienceType:
       description: |
         dictionary:
-          * `0` PORTAL_AUDIENCE 
+          * `0` PORTAL_AUDIENCE
           * `1` SSP_AUDIENCE
           * `2` RP_AUDIENCE
       type: integer
@@ -26895,7 +27749,7 @@ components:
         - 4
       description: |
         dictionary:
-          * `1` Previous connectivity state 
+          * `1` Previous connectivity state
           * `2` Connected (Always-on)
           * `3` Disconnected
           * `4` Signed out
@@ -27202,6 +28056,16 @@ components:
           type: string
         updatedAt:
           $ref: '#/components/schemas/epochMillis'
+        addedAt:
+          $ref: '#/components/schemas/epochMillis'
+        addedBy:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+              example: User Name
     tagGroupBody:
       type: object
       properties:
@@ -27288,7 +28152,7 @@ components:
     entitiesList:
       type: object
       properties:
-        entities:
+        items:
           type: array
           items:
             $ref: '#/components/schemas/entity'
@@ -27297,9 +28161,9 @@ components:
     entity:
       type: object
       anyOf:
-        - $ref: '#/components/schemas/group'
-        - $ref: '#/components/schemas/user'
         - $ref: '#/components/schemas/asset'
+        - $ref: '#/components/schemas/user'
+        - $ref: '#/components/schemas/group'
     epochMillis:
       description: Epoch Millis
       type: integer
@@ -27472,6 +28336,16 @@ components:
           type: string
         updatedAt:
           $ref: '#/components/schemas/epochMillis'
+        addedAt:
+          $ref: '#/components/schemas/epochMillis'
+        addedBy:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+              example: User Name
     groupCandidate:
       type: object
       properties:
@@ -27567,6 +28441,7 @@ components:
       properties:
         healthStatus:
           description: |
+            * '0' - Unspecified
             * '1' - Healthy
             * '2' - Error
             * '3' - Warning
@@ -27575,6 +28450,7 @@ components:
           type: integer
           format: int32
           enum:
+            - 0
             - 1
             - 2
             - 3
@@ -27617,14 +28493,16 @@ components:
     identityProtectionState:
       description: |
         Possible asset status:
+          * '0' - Unspecified
           * '1' - Unsegmented
-          * '2' - Segmented
-          * '3' - In learning
+          * '3' - Segmented
+          * '5' - In learning
       type: integer
       enum:
+        - 0
         - 1
-        - 2
         - 3
+        - 5
     identityReactivePolicy:
       type: object
       properties:
@@ -27934,6 +28812,7 @@ components:
         * '2' - Manually set as inactive
         * '3' - None
         * '4' - Disabled in asset repository
+        * '5' - Inactive in asset repository
       type: integer
       format: int32
       enum:
@@ -27941,6 +28820,23 @@ components:
         - 2
         - 3
         - 4
+        - 5
+    ipSecOpt:
+      description: |
+        * For allow rule only.
+        * '1' - Off
+        * '2' - Null encapsulation connections
+        * '3' - Authenticated and integrity-protected connections
+        * '4' - Encrypted connections and dynamically negotiate encryption (inbound rule only)
+        * '5' - Encrypted connections
+      type: integer
+      format: int32
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
     ipSubnet:
       type: string
       example: 192.168.1.0/24
@@ -28185,15 +29081,6 @@ components:
     envConfig:
       type: object
       properties:
-        activitiesConfig:
-          type: object
-          properties:
-            networkActivitiesDays:
-              type: integer
-            rpcActivitiesDays:
-              type: integer
-            logonActivitiesDays:
-              type: integer
         isTrial:
           type: boolean
           example: false
@@ -28210,7 +29097,7 @@ components:
         features:
           type: array
           items:
-            type: integer
+            type: string
     profileUser:
       type: object
       properties:
@@ -28776,6 +29663,8 @@ components:
           enum:
             - 14
             - 30
+            - 60
+            - 90
       required:
         - queueDays
     queueAssetExtendBody:
@@ -28787,6 +29676,36 @@ components:
           enum:
             - 14
             - 30
+            - 60
+            - 90
+        relearnReason:
+          type: string
+      required:
+        - extendByDays
+    queueAssetIdentityBody:
+      type: object
+      properties:
+        queueDays:
+          description: number of days
+          type: integer
+          enum:
+            - 14
+            - 30
+            - 60
+            - 90
+      required:
+        - queueDays
+    queueAssetIdentityExtendBody:
+      type: object
+      properties:
+        extendByDays:
+          description: number of days
+          type: integer
+          enum:
+            - 14
+            - 30
+            - 60
+            - 90
         relearnReason:
           type: string
       required:
@@ -29237,10 +30156,13 @@ components:
             - 30
         displayName:
           type: string
+        fqdn:
+          type: string
       required:
         - ipv4
         - type
         - displayName
+        - fqdn
       title: otAssetBody
       x-examples:
         example-1:
@@ -29283,9 +30205,12 @@ components:
             - 30
         displayName:
           type: string
+        fqdn:
+          type: string
       required:
         - type
         - displayName
+        - fqdn
       title: otAssetEditBody
     portsList:
       type: array
@@ -29308,12 +30233,18 @@ components:
               $ref: '#/components/schemas/protocol'
             port:
               type: integer
-    privateNetworksList:
-      description: Collection of IP subnets that are internal
+    privateIpv4NetworksList:
+      description: Collection of IPv4 subnets that are internal
       type: array
       items:
         type: string
         example: 192.168.0.0/24
+    privateIpv6NetworksList:
+      description: Collection of IPv6 subnets that are internal
+      type: array
+      items:
+        type: string
+        example: fd12:3456:789a:1::/64
     PrivilegedPorts:
       type: string
       x-example: '1,3,4,5-8'
@@ -29340,9 +30271,14 @@ components:
           $ref: '#/components/schemas/createdBy'
         description:
           type: string
+        enabled:
+          type: boolean
+        enforceBlocks:
+          type: boolean
         existingMembersLearningDays:
           type: integer
           enum:
+            - -1
             - 0
             - 14
             - 30
@@ -29357,7 +30293,9 @@ components:
               type: string
             guid:
               type: string
-            hasProtectionPolicy:
+            hasIdentityProtectionPolicy:
+              type: boolean
+            hasNetworkProtectionPolicy:
               type: boolean
             id:
               type: string
@@ -29370,11 +30308,14 @@ components:
         newMembersLearningDays:
           type: integer
           enum:
+            - -1
             - 0
             - 14
             - 30
             - 60
             - 90
+        policyType:
+          type: integer
         updatedAt:
           $ref: '#/components/schemas/epochMillis'
     protectionPolicyBody:
@@ -29382,29 +30323,35 @@ components:
       properties:
         description:
           type: string
-        groupId:
-          type: string
-        initialQueueDays:
+        enabled:
+          type: boolean
+        enforceBlocks:
+          type: boolean
+        existingMembersLearningDays:
           type: integer
           default: 30
           enum:
+            - -1
             - 0
             - 14
             - 30
             - 60
             - 90
+        groupId:
+          type: string
         newMembersLearningDays:
           type: integer
           default: 30
           enum:
+            - -1
             - 0
             - 14
             - 30
             - 60
             - 90
       required:
+        - existingMembersLearningDays
         - groupId
-        - initialQueueDays
         - newMembersLearningDays
     protectionPolicyResponse:
       type: object
@@ -29414,21 +30361,47 @@ components:
     protectionPolicyUpdateBody:
       type: object
       properties:
-        newMembersLearningDays:
+        description:
+          type: string
+        enabled:
+          type: boolean
+        existingMembersLearningDays:
           type: integer
           default: 30
           enum:
+            - -1
             - 0
             - 14
             - 30
             - 60
             - 90
-        description:
+        id:
           type: string
+        newMembersLearningDays:
+          type: integer
+          default: 30
+          enum:
+            - -1
+            - 0
+            - 14
+            - 30
+            - 60
+            - 90
+        policyType:
+          type: integer
+          default: 1
+          enum:
+          - 0
+          - 1
+          - 2
       required:
+        - existingMembersLearningDays
         - newMembersLearningDays
+        - policyType
     protectionState:
       description: |
+        * '0' - Unspecified
+        * '1' - Unsegmented
         * '2' - Unsegmenting
         * '3' - Segmented
         * '4' - Segmenting
@@ -29442,6 +30415,8 @@ components:
       type: integer
       format: int32
       enum:
+        - 0
+        - 1
         - 2
         - 3
         - 4
@@ -29452,6 +30427,19 @@ components:
         - 10
         - 11
         - 12
+    userProtectionState:
+      description: |
+        * '1' - Unsegmented
+        * '3' - Segmented
+        * '5' - Learning until
+        * '6' - Learning done
+      type: integer
+      format: int32
+      enum:
+        - 1
+        - 3
+        - 5
+        - 6
     queueExtendBody:
       type: object
       properties:
@@ -29465,6 +30453,48 @@ components:
           enum:
             - 14
             - 30
+            - 60
+            - 90
+        relearnReason:
+          type: string
+      required:
+        - items
+        - extendByDays
+    queueExtendIdentityBody:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
+        extendByDays:
+          description: number of days
+          type: integer
+          enum:
+            - 14
+            - 30
+            - 60
+            - 90
+        relearnReason:
+          type: string
+      required:
+        - items
+        - extendByDays
+    queueExtendRPCBody:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
+        extendByDays:
+          description: number of days
+          type: integer
+          enum:
+            - 14
+            - 30
+            - 60
+            - 90
         relearnReason:
           type: string
       required:
@@ -29489,13 +30519,13 @@ components:
     role:
       description: |
         dictionary:
-          * `0` ROLE_UNSPECIFIED 
+          * `0` ROLE_UNSPECIFIED
           * `1` ROLE_ADMIN
-          * `2` ROLE_VIEWER 
-          * `3` ROLE_REGULAR  
+          * `2` ROLE_VIEWER
+          * `3` ROLE_REGULAR
           * `4` ROLE_MACHINE_FULL_ACCESS
-          * `5` ROLE_MACHINE_READ_ONLY 
-          * `6` ROLE_SELF_SERVICE 
+          * `5` ROLE_MACHINE_READ_ONLY
+          * `6` ROLE_SELF_SERVICE
           * `7` ROLE_CLOUD_CONNECTOR_PROVISIONING
           * `8` ROLE_JAMF_ASSET
           * `9` ROLE_ASSET_MANAGER
@@ -29647,6 +30677,15 @@ components:
         * NULL - Any
         * '1' - Rules RPC over SMB
         * '2' - Rules RPC over TCP
+    interfaceUuidsList:
+      type: array
+      items:
+        type: string
+        format: uuid or string
+      description: |
+        one of the following: 
+        * "rpcAnyInterface" for any interface 
+        * List of interface uuids for explicit interfaces
     rpcRule:
       type: object
       properties:
@@ -29671,10 +30710,7 @@ components:
         id:
           type: string
         interfaceUuidsList:
-          type: array
-          items:
-            type: string
-            format: uuid
+          $ref: '#/components/schemas/interfaceUuidsList'
         localAssetId:
           type: string
         localAssetInfo:
@@ -29726,10 +30762,7 @@ components:
         expiresAt:
           $ref: '#/components/schemas/epochMillis'
         interfaceUuidsList:
-          type: array
-          items:
-            type: string
-            format: uuid
+          $ref: '#/components/schemas/interfaceUuidsList'
         localAssetId:
           type: string
         opNumbersList:
@@ -29806,6 +30839,8 @@ components:
         id:
           type: string
           format: uuid
+        ipSecOpt:
+          $ref: '#/components/schemas/ipSecOpt'
         localEntityId:
           type: string
         localEntityInfo:
@@ -29873,6 +30908,8 @@ components:
             type: string
         state:
           $ref: '#/components/schemas/ruleState'
+        ipSecOpt:
+          $ref: '#/components/schemas/ipSecOpt'
       required:
         - action
         - localEntityId
@@ -29949,6 +30986,8 @@ components:
             type: string
         expiresAt:
           $ref: '#/components/schemas/epochMillis'
+        ipSecOpt:
+          $ref: '#/components/schemas/ipSecOpt'
         localEntityId:
           type: string
         localProcessesList:
@@ -30010,11 +31049,13 @@ components:
       description: |
         * '1' - Inbound
         * '2' - Outbound
+        * '3' - Both
       type: integer
       format: int32
       enum:
         - 1
         - 2
+        - 3
     ruleDistribution:
       type: object
       properties:
@@ -30243,6 +31284,8 @@ components:
         useLdaps:
           description: Use LDAP or LDAPs
           type: boolean
+        allowNtlmFallback:
+          type: boolean
     settingsAdInfoBody:
       type: object
       properties:
@@ -30275,9 +31318,12 @@ components:
             - userFqdn
         usePrimaryUserForAllDomains:
           type: boolean
+        allowNtlmFallback:
+          type: boolean
       required:
         - primaryDomainConfig
         - usePrimaryUserForAllDomains
+        - allowNtlmFallback
     settingsAdInfoResponse:
       type: object
       properties:
@@ -30502,15 +31548,15 @@ components:
         config:
           type: object
           properties:
-            privateNetworksList:
-              $ref: '#/components/schemas/privateNetworksList'
+            privateIpv4NetworksList:
+              $ref: '#/components/schemas/privateIpv4NetworksList'
     settingsClientSubnetsBody:
       type: object
       properties:
-        privateNetworksList:
-          $ref: '#/components/schemas/privateNetworksList'
+        privateIpv4NetworksList:
+          $ref: '#/components/schemas/privateIpv4NetworksList'
       required:
-        - privateNetworksList
+        - privateIpv4NetworksList
     settingsClusterStrategy:
       type: object
       properties:
@@ -30841,15 +31887,20 @@ components:
         config:
           type: object
           properties:
-            privateNetworksList:
-              $ref: '#/components/schemas/privateNetworksList'
+            privateIpv4NetworksList:
+               $ref: '#/components/schemas/privateIpv4NetworksList'
+            privateIpv6NetworksList:
+               $ref: '#/components/schemas/privateIpv6NetworksList'
     settingsInternalSubnetsBody:
       type: object
       properties:
-        privateNetworksList:
-          $ref: '#/components/schemas/privateNetworksList'
+        privateIpv4NetworksList:
+          $ref: '#/components/schemas/privateIpv4NetworksList'
+        privateIpv6NetworksList:
+          $ref: '#/components/schemas/privateIpv4NetworksList'
       required:
-        - privateNetworksList
+        - privateIpv4NetworksList
+        - privateIpv6NetworksList
     settingsJamfCredentials:
       type: object
       properties:
@@ -30997,6 +32048,53 @@ components:
       properties:
         item:
           $ref: '#/components/schemas/settingsMfaAuthentication'
+    settingsMfaCache:
+      type: object
+      properties:
+        assetLimit:
+          type: integer
+        entityId:
+          type: string
+        entityInfo:
+          anyOf:
+            - $ref: '#/components/schemas/user'
+            - $ref: '#/components/schemas/group'
+        ttlMinutes: 
+          type: integer
+    settingsMfaCacheBody:
+      type: object
+      properties:
+        assetLimit:
+          type: integer
+        entityId:
+          type: string
+        ttlMinutes: 
+          type: integer
+      required:
+        - assetLimit
+        - entityId
+        - ttlMinutes
+    settingsMfaCacheItem:
+      type: object
+      properties:
+        item:
+          type: object
+          properties:
+            assetLimit:
+              type: integer
+            entityId:
+              type: string
+            ttlMinutes: 
+              type: integer
+    settingsMfaCacheList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/settingsMfaCache'
+        count:
+          type: integer
     settingsMfaDetection:
       type: object
       properties:
@@ -31133,10 +32231,10 @@ components:
                 pattern: '^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$'
             portsToMfaTcp:
               type: string
-              pattern: '^((\\d{1,5}-\\d{1,5})|\\d{1,5})(,(\\d{1,5}-\\d{1,5})|,\\d{1,5})*$'
+              pattern: '^((\d{1,5}-\d{1,5})|\d{1,5})(,(\d{1,5}-\d{1,5})|,\d{1,5})*$'
             portsToMfaUdp:
               type: string
-              pattern: '^((\\d{1,5}-\\d{1,5})|\\d{1,5})(,(\\d{1,5}-\\d{1,5})|,\\d{1,5})*$'
+              pattern: '^((\d{1,5}-\d{1,5})|\d{1,5})(,(\d{1,5}-\d{1,5})|,\d{1,5})*$'
     settingsZpaBody:
       type: object
       required:
@@ -31157,10 +32255,10 @@ components:
             pattern: '^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$'
         portsToMfaTcp:
           type: string
-          pattern: '^((\\d{1,5}-\\d{1,5})|\\d{1,5})(,(\\d{1,5}-\\d{1,5})|,\\d{1,5})*$'
+          pattern: '^((\d{1,5}-\d{1,5})|\d{1,5})(,(\d{1,5}-\d{1,5})|,\d{1,5})*$'
         portsToMfaUdp:
           type: string
-          pattern: '^((\\d{1,5}-\\d{1,5})|\\d{1,5})(,(\\d{1,5}-\\d{1,5})|,\\d{1,5})*$'
+          pattern: '^((\d{1,5}-\d{1,5})|\d{1,5})(,(\d{1,5}-\d{1,5})|,\d{1,5})*$'
     setUserTypeBody:
       type: object
       required:
@@ -31234,8 +32332,11 @@ components:
     source:
       description: |
         Possible asset sources:
-          * '2' - Access portal
+          * '1' - Access portal
+          * '2' - SSP
           * '3' - Active directory
+          * '4' - Custom
+          * '5' - System
           * '6' - Ansible
           * '7' - Manual OT/IoT
           * '8' - Workgroup
@@ -31292,6 +32393,16 @@ components:
           $ref: '#/components/schemas/epochMillis'
         protectionState:
           $ref: '#/components/schemas/protectionState'
+        protectAt:
+          $ref: '#/components/schemas/epochMillis'
+        identityProtectAt:
+          $ref: '#/components/schemas/epochMillis'
+        rpcProtectionState:
+          $ref: '#/components/schemas/protectionState'
+        rpcProtectAt:
+          $ref: '#/components/schemas/epochMillis'
+        rpcProtectedAt:
+          $ref: '#/components/schemas/epochMillis'
     tags:
       type: object
       properties:
@@ -31320,7 +32431,7 @@ components:
           type: string
         jobTitle:
           type: string
-        lastLogon:
+        lastLogonReplicated:
           $ref: '#/components/schemas/epochMillis'
         lastName:
           type: string
@@ -31333,7 +32444,7 @@ components:
         principalName:
           type: string
         protectionState:
-          $ref: '#/components/schemas/protectionState'
+          $ref: '#/components/schemas/userProtectionState'
         role:
           type: integer
         sid:
@@ -31344,6 +32455,14 @@ components:
           type: string
         userType:
           type: integer
+        protectAt:
+          $ref: '#/components/schemas/epochMillis'
+        protectedAt:
+          $ref: '#/components/schemas/epochMillis'
+        addedAt:
+          $ref: '#/components/schemas/epochMillis'
+        addedBy:
+          $ref: '#/components/schemas/epochMillis'
     usersProtectBody:
       type: object
       properties:
@@ -31370,6 +32489,7 @@ components:
         - queueDays
     userRole:
       description: |
+        * '0' - Unspecified
         * '1' - Admin
         * '2' - Viewer
         * '3' - Regular
@@ -31384,6 +32504,7 @@ components:
       type: integer
       format: int32
       enum:
+        - 0
         - 1
         - 2
         - 3
@@ -31549,6 +32670,8 @@ tags:
     description: API calls related to Tag Groups.
   - name: MFA
     description: API calls related to MFA policies.
+  - name: MFA Identity
+    description: API Calls related to MFA Identity settings.
   - name: MFA Inbound
     description: API calls related to Inbound MFA policies.
   - name: MFA Outbound
@@ -31605,8 +32728,8 @@ tags:
     description: API calls related to Mail Notifications settings.
   - name: Settings MFA
     description: API Calls related to MFA settings.
-  - name: MFA Identity
-    description: API Calls related to MFA Identity settings.
+  - name: Settings MFA Cache
+    description: API Calls related to MFA Cache settings.
   - name: Settings Portal Security
     description: API calls related to Portal Security settings.
   - name: Settings Privileged Ports

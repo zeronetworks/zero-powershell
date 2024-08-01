@@ -21,9 +21,9 @@ Describe 'Get-ZNGroupsInboundRule' {
         $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
         $source = (Get-ZNGroupsInboundRulesSourceCandidate -GroupId $group.id -GroupType tag -RuleType 1 -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
-        $rule = New-ZNGroupsInboundRule -GroupId $group.id -GroupType tag -Action 1 -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
+        $rule = New-ZNGroupsInboundRule -GroupId $group.id -GroupType tag -Action 1 -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt -IPSecOpt 1
         { Get-ZNGroupsInboundRule -GroupId $group.id -GroupType tag } | Should -Not -Be $null
-        Remove-ZNGroupsInboundRule -GroupId $group.id -GroupType tag -RuleId $rule.Item.Id
+        Remove-ZNGroupsInboundRule -GroupId $group.id -GroupType tag -RuleId $rule.ItemId
     }
 
     It 'Get' {
@@ -32,7 +32,7 @@ Describe 'Get-ZNGroupsInboundRule' {
         $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
         $source = (Get-ZNGroupsInboundRulesSourceCandidate -GroupId $group.id -GroupType tag -RuleType 1 -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
-        $rule = New-ZNGroupsInboundRule -GroupId $group.id -GroupType tag -Action 1 -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
+        $rule = New-ZNGroupsInboundRule -GroupId $group.id -GroupType tag -Action 1 -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt -IPSecOpt 1
         $rule = Get-ZNGroupsInboundRule -GroupId $group.id -GroupType tag | Select-Object -First 1
         { (Get-ZNGroupsInboundRule -GroupId $group.id -GroupType tag -RuleId $rule.Id).ItemId } | Should -Not -Be $null
         Remove-ZNGroupsInboundRule -GroupId $group.id -GroupType tag -RuleId $rule.Id

@@ -14,7 +14,7 @@ Returns the properties of an group.
 
 ### List (Default)
 ```
-Get-ZNGroup [-Cursor <Int64>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Search <String>]
+Get-ZNGroup [-Cursor <String>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Search <String>]
  [<CommonParameters>]
 ```
 
@@ -90,7 +90,7 @@ Use the search parameter to search by Name property.
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: List
 Aliases:
 

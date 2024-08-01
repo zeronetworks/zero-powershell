@@ -13,7 +13,7 @@ Returns a list of source candidates for Outbound rules.
 ## SYNTAX
 
 ```
-Get-ZNGroupsOutboundRulesSourceCandidate -GroupId <String> -GroupType <String> [-Cursor <Int64>]
+Get-ZNGroupsOutboundRulesSourceCandidate -GroupId <String> -GroupType <String> [-Cursor <String>]
  [-Limit <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
@@ -64,7 +64,7 @@ This cmdlet gets the possible destination candidates for a rule for a specific g
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

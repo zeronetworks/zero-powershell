@@ -13,10 +13,10 @@ Set the AD settings in Asset Managment
 ## SYNTAX
 
 ```
-New-ZNSettingsAd [-PrimaryDomainConfigDomainControllerFqdn <String>] [-PrimaryDomainConfigDomainName <String>]
- [-PrimaryDomainConfigPassword <String>] [-PrimaryDomainConfigUseLdaps]
- [-PrimaryDomainConfigUserFqdn <String>] [-UsePrimaryUserForAllDomains] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-ZNSettingsAd [-AllowNtlmFallback] [-PrimaryDomainConfigDomainControllerFqdn <String>]
+ [-PrimaryDomainConfigDomainName <String>] [-PrimaryDomainConfigPassword <String>]
+ [-PrimaryDomainConfigUseLdaps] [-PrimaryDomainConfigUserFqdn <String>] [-UsePrimaryUserForAllDomains]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +32,21 @@ New-ZNSettingsAd -ActiveDirectoryInfoDomainControllerFqdn dc01.newforest.local -
 This cmdlet create an AD forest setting.
 
 ## PARAMETERS
+
+### -AllowNtlmFallback
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PrimaryDomainConfigDomainControllerFqdn
 Domain Controller from AD Domain

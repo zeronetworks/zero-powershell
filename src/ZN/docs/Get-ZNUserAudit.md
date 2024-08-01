@@ -13,7 +13,7 @@ Returns a list of audits for the user.
 ## SYNTAX
 
 ```
-Get-ZNUserAudit -UserId <String> [-Cursor <Int64>] [-Filters <String>] [-Limit <Int32>] [-Order <String>]
+Get-ZNUserAudit -UserId <String> [-Cursor <String>] [-Filters <String>] [-Limit <Int32>] [-Order <String>]
  [-Search <String>] [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ This cmdlet gets the audits for a user.
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

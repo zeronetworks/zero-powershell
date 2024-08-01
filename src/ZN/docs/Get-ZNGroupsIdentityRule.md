@@ -15,7 +15,7 @@ Returns an identity segmentation rule.
 ### List (Default)
 ```
 Get-ZNGroupsIdentityRule -GroupId <String> -GroupType <String> [-AddAncestors] [-AddBuiltins]
- [-Cursor <Int64>] [-Filters <String>] [-Limit <Int32>] [-Search <String>] [-WithCount] [<CommonParameters>]
+ [-Cursor <String>] [-Filters <String>] [-Limit <Int32>] [-Search <String>] [-WithCount] [<CommonParameters>]
 ```
 
 ### Get
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 cursor position to start at
 
 ```yaml
-Type: System.Int64
+Type: System.String
 Parameter Sets: List
 Aliases:
 

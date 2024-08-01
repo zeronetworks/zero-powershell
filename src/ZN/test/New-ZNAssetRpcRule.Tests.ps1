@@ -19,7 +19,7 @@ Describe 'New-ZNAssetRpcRule' {
         $asset = (Search-ZNAsset -Fqdn as01.posh.local).AssetId
         $group = (Get-ZNGroup -Search 'domain controllers').Items | where {$_.Id -like 'g:t:*'}
         $user = (Get-ZNAssetRpcRulesUserCandidate -AssetId $asset -Search 'Any User').Id
-        $rule = New-ZNAssetRpcRule -AssetId $asset -Action 1 -Description "New RPC Rule" -ExcludedAssetIdsList @() -InterfaceUuidsList @() -LocalAssetId $group.Id -OpNumbersList @() -ProtocolsList @() -RemoteAssetIdsList @($asset) -State 1 -UserIdsList @($user)
+        $rule = New-ZNAssetRpcRule -AssetId $asset -Action 1 -Description "New RPC Rule" -ExcludedAssetIdsList @() -InterfaceUuidsList @('rpcAnyInterfaceId') -LocalAssetId $group.Id -OpNumbersList @() -ProtocolsList @() -RemoteAssetIdsList @($asset) -State 1 -UserIdsList @($user)
         $rule.ItemId | Should -Not -Be $null
         Remove-ZNAssetRpcRule -AssetId $asset -RuleId $rule.ItemId
     }

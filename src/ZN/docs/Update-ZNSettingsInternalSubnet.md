@@ -13,8 +13,8 @@ Update the Internal Subnets settings in System
 ## SYNTAX
 
 ```
-Update-ZNSettingsInternalSubnet [-PrivateNetworksList <String[]>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNSettingsInternalSubnet [-PrivateIpv4NetworksList <String[]>] [-PrivateIpv6NetworksList <String[]>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,8 +46,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrivateNetworksList
-Collection of IP subnets that are internal
+### -PrivateIpv4NetworksList
+Collection of IPv4 subnets that are internal
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateIpv6NetworksList
+Collection of IPv4 subnets that are internal
 
 ```yaml
 Type: System.String[]

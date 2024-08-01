@@ -21,7 +21,7 @@ Describe 'New-ZNGroupsInboundRule' {
         $portsList = New-ZNPortsList -Protocol TCP -Ports $ports
         $source = (Get-ZNGroupsInboundRulesSourceCandidate -GroupId $group.Id -GroupType tag -RuleType 1 -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
-        $rule = New-ZNGroupsInboundRule -GroupId $group.Id -GroupType tag -Action 1 -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt
-        $rule.Item.Id | Should -Not -Be $null
+        $rule = New-ZNGroupsInboundRule -GroupId $group.Id -GroupType tag -Action 1 -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt  -IPSecOpt 1
+        $rule.ItemId | Should -Not -Be $null
     }
 }

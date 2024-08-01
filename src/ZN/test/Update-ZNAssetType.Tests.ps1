@@ -25,6 +25,6 @@ Describe 'Update-ZNAssetType' {
         }
         Update-ZNAssetType -AssetId $asset -Type $newvalue
         $updatedAssetProperties = Get-ZNAsset -AssetId $asset
-        $updatedAssetProperties.EntityAssetType | Should -Be $newvalue
+        $updatedAssetProperties.Entity.AssetType | Should -Be $newvalue
     }
 }

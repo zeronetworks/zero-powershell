@@ -20,10 +20,11 @@ Approve-ZNAssetInboundRuleReview -AssetId <String> -RuleId <String> [-AsJob] [-N
 
 ### ApproveWithChangesExpanded
 ```
-Approve-ZNAssetInboundRuleReview -AssetId <String> -RuleId <String> -Reason <Object> [-Description <String>]
- [-Details <String>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>] [-LocalEntityId <String>]
- [-LocalProcessesList <String[]>] [-PortsList <IPortsListItem[]>] [-RemoteEntityIdsList <String[]>]
- [-State <Int32>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Approve-ZNAssetInboundRuleReview -AssetId <String> -RuleId <String> -Reason <Object> [-Action <Int32>]
+ [-Description <String>] [-Details <String>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>]
+ [-IpSecOpt <Int32>] [-LocalEntityId <String>] [-LocalProcessesList <String[]>]
+ [-PortsList <IPortsListItem[]>] [-RemoteEntityIdsList <String[]>] [-State <Int32>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +48,21 @@ Approve-ZNAssetInboundRuleReview -AssetId $asset -RuleId 'e4a170be-c192-414a-9d3
 This cmdlet also supports changing the rule details upon approval.
 
 ## PARAMETERS
+
+### -Action
+Action
+
+```yaml
+Type: System.Int32
+Parameter Sets: ApproveWithChangesExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -140,9 +156,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IpSecOpt
+[-RuleInfoExpiresAt \<Int64\>]
+ ip sec configuration
+
+```yaml
+Type: System.Int32
+Parameter Sets: ApproveWithChangesExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LocalEntityId
-[-RuleInfoExpiresAt \<Int64\>] 
- The Destination asset(s).
+The Destination asset(s).
 
 ```yaml
 Type: System.String
