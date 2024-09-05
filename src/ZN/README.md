@@ -32,7 +32,7 @@ require:
 input-file:
   - $(this-folder)/../openapi.yaml
 
-module-version: 0.0.13-preview
+module-version: 0.0.14-preview
 title: Api
   
 inlining-threshold: 50
