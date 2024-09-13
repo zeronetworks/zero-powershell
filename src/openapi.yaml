@@ -31030,13 +31030,18 @@ components:
         }
       type: object
       properties:
-        reason:
-          type: integer
-        details:
-          description: 'Optional if reason != OTHER(7), mandatory if reason == OTHER(7)'
-          type: string
+        review:
+          type: object
+          properties:
+            reason:
+              type: integer
+            details:
+              description: 'Optional if reason != OTHER(7), mandatory if reason == OTHER(7)'
+              type: string
+          required:
+            - reason
       required:
-        - reason
+        - review
       x-examples:
         example-1:
           review:

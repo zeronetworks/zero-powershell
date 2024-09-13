@@ -102,12 +102,12 @@ function Deny-ZNInboundRuleReview {
                     'TrafficShouldBeBlocked' { $intReason = 6 }
                     "Other" { $intReason = 7 }
                 }
-                $ruleReview.Reason = $intReason
+                $ruleReview.ReviewReason = $intReason
                 $null = $PSBoundParameters.Remove('Reason')
             }
 
             if ($PSBoundParameters['Details']) {
-                $ruleReview.Details = $PSBoundParameters['Details']
+                $ruleReview.ReviewDetails = $PSBoundParameters['Details']
                 $null = $PSBoundParameters.Remove('Details')
             }
 
