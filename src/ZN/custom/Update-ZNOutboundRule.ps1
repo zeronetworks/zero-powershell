@@ -60,6 +60,11 @@ function Update-ZNOutboundRule {
         ${SrcUsersList},
 
         [Parameter(ParameterSetName = 'UpdateExpanded')]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Models.SrcUsersListItem]
+        # the source users.
+        ${SrcUsersList},
+
+        [Parameter(ParameterSetName = 'UpdateExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
         [int]
         # the rule state.
