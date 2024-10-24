@@ -15,9 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNAssetsOt'))
 }
 
 Describe 'New-ZNAssetsOt' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' { 
         $name = ("ot"+(Get-Random -Maximum 999999))
         [string]$ip = (Get-Random -Minimum 1 -Maximum 254).ToString() + "." + (Get-Random -Minimum 1 -Maximum 254).ToString() + "." + (Get-Random -Minimum 1 -Maximum 254).ToString() + "." + (Get-Random -Minimum 1 -Maximum 254).ToString()
-        {  New-ZNAssetsOt -DisplayName $name -Ipv4  $ip -Type 4 } | Should -Not -Throw
+        {  New-ZNAssetsOt -DisplayName $name -Fqdn ($name+"posh.local") -Ipv4 $ip -Type 4 } | Should -Not -Throw
     }
 }

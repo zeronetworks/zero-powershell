@@ -21,7 +21,7 @@ Describe 'Add-ZNCustomGroupsMember' {
         $member= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         Add-ZNCustomGroupsMember -GroupId $customGroup.Id -MembersId $member
         $updatedcustomGroup = Get-ZNGroup -Search AddMemberTest
-        (Get-ZNGroupsMember -GroupId $customGroup.id -GroupType custom -IncludeNestedMembers).Entities[0].id | Should -Be $member
+        (Get-ZNGroupsMember -GroupId $customGroup.id -GroupType custom -IncludeNestedMembers).Items[0].id | Should -Be $member
         Remove-ZNCustomGroup -GroupId $customGroup.Id
     }
 }

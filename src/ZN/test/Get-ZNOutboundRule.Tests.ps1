@@ -21,7 +21,7 @@ Describe 'Get-ZNOutboundRule' {
         $destination = Invoke-ZNEncodeEntityIp -IP 8.8.8.8
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNOutboundRule -Action 1 -LocalEntityId $source.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt
-        { (Get-ZNOutboundRule).Items } | Should -Not -Be $null
+        { (Get-ZNOutboundRule).Items } | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' {
@@ -31,6 +31,6 @@ Describe 'Get-ZNOutboundRule' {
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNOutboundRule -Action 1 -LocalEntityId $source.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination) -State 1 -ExpiresAt $expiresAt
         $rule = Get-ZNOutboundRule | Select-Object -First 1
-        { (Get-ZNOutboundRule -RuleId $rule.Id).ItemsId } | Should -Not -Be $null
+        { (Get-ZNOutboundRule -RuleId $rule.Id).ItemsId } | Should -Not -BeNullOrEmpty
     }
 }

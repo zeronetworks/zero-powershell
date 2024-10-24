@@ -32,7 +32,7 @@ require:
 input-file:
   - $(this-folder)/../openapi.yaml
 
-module-version: 0.0.12-preview
+module-version: 0.0.15-preview
 title: Api
   
 inlining-threshold: 50
@@ -643,7 +643,7 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Activate$|^ActivateViaIdentity$|^ActivateViaIdentityExpanded$|^AddViaIdentity$|^AddViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Deactivate$|^DeactivateViaIdentity$|^DeactivateViaIdentityExpanded$|^DeleteViaIdentity$|^DeleteViaIdentityExpanded$|^Extend$|^Extend1$|^ExtendViaIdentity$|^ExtendViaIdentityExpanded$|^GetViaIdentity$|^Learn$|^LearnViaIdentity$|^LearnViaIdentityExpanded$|^ProtectViaIdentity$|^Queue$|^Queue1$|^QueueViaIdentity$|^QueueViaIdentityExpanded$|^RevokeViaIdentity$|^SetViaIdentity$|^SetViaIdentityExpanded$|^UnprotectViaIdentity$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|^ValidateViaIdentity$
+      variant: ^Activate$|^ActivateViaIdentity$|^ActivateViaIdentityExpanded$|^AddViaIdentity$|^AddViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Deactivate$|^DeactivateViaIdentity$|^DeactivateViaIdentityExpanded$|^DeleteViaIdentity$|^DeleteViaIdentityExpanded$|^Enable$|^EnableViaIdentity$|^EnableViaIdentityExpanded$|^ExpandViaIdentity$|^Extend$|^Extend1$|^ExtendViaIdentity$|^ExtendViaIdentityExpanded$|^GetViaIdentity$|^Learn$|^LearnViaIdentity$|^LearnViaIdentityExpanded$|^Mirror$|^Mirror1$|^MirrorViaIdentity$|^MirrorViaIdentityExpanded$|^ProtectViaIdentity$|^ProtectViaIdentityExpanded$|^Queue$|^Queue1$|^QueueViaIdentity$|^QueueViaIdentityExpanded$|^RevokeViaIdentity$|^SearchViaIdentity$|^SetViaIdentity$|^SetViaIdentityExpanded$|^UnprotectViaIdentity$|^UnprotectViaIdentityExpanded$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|^ValidateViaIdentity$
     remove: true
   - where:
       subject: ^CustomGroupsMember$|^TagGroupsMember$
@@ -715,6 +715,9 @@ directive:
   - where:
       subject: (.*)PoliciesSimulate.*
     hide: true
+  - where:
+      subject: GroupsSimulateSegmentation.*
+    remove: true
   # hide linux scripts (not useful)
   - where:
       subject: ^AssetsLinuxScript$|^AssetsLinuxScriptAvailable$
@@ -723,9 +726,13 @@ directive:
   - where:
       subject: ^ProfileEnvironment$|^Profile$
     hide: true
+  #hide OTv2
+  - where:
+      subject: ^OtRule$|^Switch$|^SwitchInterface$
+    remove: true
   # Hide Not useful for OT assets
   - where:
-      subject: ^AssetOtAnalysis$|^AssetOtIdentityRule$|^AssetOtIdentityRulesAssetsCandidate$|^AssetOtIdentityRulesExcludedAssetsCandidate$|^AssetOtIdentityRulesUserCandidate$|^AssetOtInboundRule$|^AssetOtInboundRulesDestinationCandidate$|^AssetOtInboundRulesExcludedDestinationCandidate$|^AssetOtInboundRulesSourceCandidate$|^AssetOtmfaIdentityPoliciesDestinationCandidate$|^AssetOtmfaIdentityPoliciesExcludedSourceCandidate$|^AssetOtmfaIdentityPoliciesMfamethod$|^AssetOtmfaIdentityPoliciesSourceCandidate$|^AssetOtmfaIdentityPoliciesSourceUserCandidate$|^AssetOtmfaIdentityPolicy$|^AssetOtmfaInboundPoliciesDestinationCandidate$|^AssetOtmfaInboundPoliciesExcludedSourceCandidate$|^AssetOtmfaInboundPoliciesMfamethod$|^AssetOtmfaInboundPoliciesSourceCandidate$|^AssetOtmfaInboundPoliciesSourceUserCandidate$|^AssetOtmfaInboundPolicy$|^AssetOtOutboundRule$|^AssetOtmfaOutboundPoliciesDestinationCandidate$|^AssetOtmfaOutboundPoliciesExcludedSourceCandidate$|^AssetOtmfaOutboundPoliciesMfamethod$|^AssetOtmfaOutboundPoliciesSourceCandidate$|^AssetOtmfaOutboundPoliciesSourceUserCandidate$|^AssetOtmfaOutboundPolicy$|^AssetOtOutboundRulesDestinationCandidate$|^AssetOtOutboundRulesExcludedSourceCandidate$|^AssetOtOutboundRulesSourceCandidate$|^AssetOtrpcRule$|^AssetOtrpcRulesDestinationCandidate$|^AssetOtrpcRulesExcludedDestinationCandidate$|^AssetOtrpcRulesSourceCandidate$|^AssetOtrpcRulesUserCandidate$|^AssetOtRulesDistribution$
+      subject: ^AssetOtAnalysis$|^AssetOtIdentityRule$|^AssetOtIdentityRulesAssetsCandidate$|^AssetOtIdentityRulesExcludedAssetsCandidate$|^AssetOtIdentityRulesUserCandidate$|^AssetOtInboundRule$|^AssetOtInboundRulesDestinationCandidate$|^AssetOtInboundRulesExcludedDestinationCandidate$|^AssetOtInboundRulesSourceCandidate$|^AssetOtmfaIdentityPoliciesDestinationCandidate$|^AssetOtmfaIdentityPoliciesExcludedSourceCandidate$|^AssetOtmfaIdentityPoliciesMfamethod$|^AssetOtmfaIdentityPoliciesSourceCandidate$|^AssetOtmfaIdentityPoliciesSourceUserCandidate$|^AssetOtmfaIdentityPolicy$|^AssetOtmfaInboundPoliciesDestinationCandidate$|^AssetOtmfaInboundPoliciesExcludedSourceCandidate$|^AssetOtmfaInboundPoliciesMfamethod$|^AssetOtmfaInboundPoliciesSourceCandidate$|^AssetOtmfaInboundPoliciesSourceUserCandidate$|^AssetOtmfaInboundPolicy$|^AssetOtOutboundRule$|^AssetOtmfaOutboundPoliciesDestinationCandidate$|^AssetOtmfaOutboundPoliciesExcludedSourceCandidate$|^AssetOtmfaOutboundPoliciesMfamethod$|^AssetOtmfaOutboundPoliciesSourceCandidate$|^AssetOtmfaOutboundPoliciesSourceUserCandidate$|^AssetOtmfaOutboundPolicy$|^AssetOtOutboundRulesDestinationCandidate$|^AssetOtOutboundRulesExcludedSourceCandidate$|^AssetOtOutboundRulesSourceCandidate$|^AssetOtOutboundRulesUserCandidate$|^AssetOtrpcRule$|^AssetOtrpcRulesDestinationCandidate$|^AssetOtrpcRulesExcludedDestinationCandidate$|^AssetOtrpcRulesSourceCandidate$|^AssetOtrpcRulesUserCandidate$|^AssetOtRulesDistribution$
     hide: true
   # Remove APIs that require Human access
   - where:
@@ -737,48 +744,51 @@ directive:
   - where:
       subject: ServiceNowAccessToken
     remove: true
+  - where:
+      subject: SettingsCustomUser
+    remove: true
   # Rename Queue Commands
   - where:
-      subject: QueueAssetsNetwork
+      subject: ^QueueAssetsNetwork$|^QueueAssetNetwork$
     set:
       subject: AssetNetworkQueue
   - where:
-      subject: QueueAssetNetwork
-    set:
-      subject: AssetNetworkQueue
-  - where:
-      subject: QueueAssetExtendNetwork
+      subject: ^QueueAssetsExtendNetwork$|^QueueAssetExtendNetwork$
     set:
       subject: AssetNetworkExtendQueue
   - where:
-      subject: QueueAssetsExtendNetwork
-    set:
-      subject: AssetNetworkExtendQueue
-  - where:
-      subject: QueueAssetOtNetwork
+      subject: ^QueueAssetOtNetwork$|^QueueAssetsOtNetwork$
     set:
       subject: AssetOtNetworkQueue
   - where:
-      subject: QueueAssetsOtNetwork
-    set:
-      subject: AssetOtNetworkQueue
-  - where:
-      subject:  QueueAssetOtExtendNetwork
-    set:
-      subject: AssetOtNetworkExtendQueue
-  - where:
-      subject: QueueAssetsOtExtendNetwork
+      subject:  ^QueueAssetOtExtendNetwork$|^QueueAssetsOtExtendNetwork$
     set:
       subject: AssetOtNetworkExtendQueue
   - where:
       subject: QueueUsersIdentity
     set:
       subject: UserIdentityQueue
+  - where:
+      subject: ^QueueAssetIdentity$|^QueueAssetsIdentity$
+    set:
+      subject: AssetIdentityQueue
+  - where:
+      subject: ^QueueAssetExtendIdentity$|^QueueAssetsExtendIdentity$
+    set:
+      subject: AssetIdentityExtendQueue
+  - where:
+      subject: QueueAssetsRpc
+    set:
+      subject: AssetRpcQueue
+  - where:
+      subject: QueueAssetsExtendRpc
+    set:
+      subject: AssetRpcExtendQueue
   # rename asset/ot/user queue/protect/unprotect commands
   - where:
       subject: AssetsOtNetworkSegment
       variant: ^Protect$|^Unprotect$
-    hide: true
+    remove: true
   - where:
       subject: AssetsOtNetworkSegment
       verb: ^Protect$|^Unprotect$
@@ -787,7 +797,7 @@ directive:
   - where:
       subject: AssetsNetworkSegment
       variant: ^Protect$|^Unprotect$
-    hide: true
+    remove: true
   - where:
       subject: AssetsNetworkSegment
       verb: ^Protect$|^Unprotect$
@@ -808,23 +818,32 @@ directive:
     set:
       subject: AssetNetworkUnprotect
   - where:
-      subject: UsersIdentity
+      subject: UsersIdentitySegment
       variant: ^Protect$|^Unprotect$
-    hide: true
+    remove: true
   - where:
-      subject: UsersIdentity
+      subject: UsersIdentitySegment
       verb: ^Protect$|^Unprotect$
     set:
-      subject: UserIdentity
+      subject: UserIdentitySegment
   - where:
-      subject: AssetsIdentity
+      subject: AssetsIdentitySegment
       variant: ^Protect$|^Unprotect$
-    hide: true
+    remove: true
   - where:
-      subject: AssetsIdentity
+      subject: AssetsIdentitySegment
       verb: ^Protect$|^Unprotect$
     set:
-      subject: AssetIdentity
+      subject: AssetIdentitySegment
+  - where:
+      subject: ^AssetsRpcSegment$|^AssetRpcSegment$
+      variant: ^Protect$|^Unprotect$
+    remove: true
+  - where:
+      subject: AssetsRpcSegment
+      verb: ^Protect$|^Unprotect$
+    set:
+      subject: AssetRpcSegment
   - where:
       subject: ^AssetsIdentityProtect$|^AssetsIdentityUnprotect$
       variant: Validate
@@ -839,6 +858,32 @@ directive:
       verb: Test
     set:
       subject: AssetIdentityUnprotect
+  - where:
+      subject: AssetsQuarantine
+      verb: Enable
+    set:
+      subject: AssetQuarantine
+  - where:
+      subject: AssetsOSType
+    set:
+      subject: AssetOSType
+  - where:
+      subject: AssetsOutboundRestriction
+    set:
+      subject: AssetOutboundRestriction
+  - where:
+      subject: AssetsOutboundRestriction
+    set:
+      subject: AssetOutboundRestriction
+  - where:
+      subject: AssetsMirror
+    set:
+      subject: AssetMirror
+  # combine assets/asset
+  - where:
+      subject: AssetsPreferredSegmentServer
+    set:
+      subject: AssetPreferredSegmentServer
   # combine user search
   - where:
       subject: ^UsersByPrincipalName$|^UsersBySid$
@@ -915,6 +960,20 @@ directive:
         name: Limit Default
         description: Sets the limit parameter to 10
         script: '10'
+  - where:
+      parameter-name: Offset
+    set:
+      default:
+        name: Offset Default
+        description: Sets the offset parameter to 0
+        script: '0'
+  - where:
+      parameter-name: AccountName
+    set:
+      default:
+        name: AccountName Default
+        description: Set the acccount name paramater to an environment variable
+        script: '(Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]'
   # set the default directions for cmdlets
   - where:
       subject: ^AssetInboundRule$|^AssetOtOutboundRule$|^GroupsInboundRule$
@@ -957,10 +1016,35 @@ directive:
         name: WithCount Default
         description: Sets the WithCount parmaeter to true.
         script: '$true'
+  #Set default policy type for onboarding policies
+  - where:
+      subject: IdentityOnboardingPolicy
+      verb: Update
+      parameter-name: PolicyType
+    set:
+      default:
+        name: PolicyType Default
+        description: Sets the PolicyType parmaeter to 2.
+        script: '2'
+  - where:
+      subject: NetworkOnboardingPolicy
+      verb: Update
+      parameter-name: PolicyType
+    set:
+      default:
+        name: PolicyType Default
+        description: Sets the PolicyType parmaeter to 1.
+        script: '1'
+  # Hide
+  - where:
+      verb: Get
+      subject: AssetPreferredSegmentServer
+      variant: Get
+    hide: true
   # Hide for Custom Wrappers
   - where:
       verb: Update
-      subject: ^AssetIdentityRule$|^AssetInboundRule$|^AssetMfaIdentityPolicy$|^AssetMFAInboundPolicy$|^AssetMFAOutboundPolicy$|^AssetOutboundRule$|^AssetOtMFAOutboundPolicy$|^AssetRpcRule$|^CustomGroup$|^GroupsIdentityRule$|^GroupsInboundRule$|^GroupsMfaIdentityPolicy$|^GroupsMFAInboundPolicy$|^GroupsMFAOutboundPolicy$|^GroupsOutboundRule$|^GroupsRpcRule$|^IdentityRule$|^InboundRule$|^MfaIdentityPolicy$|^MFAInboundPolicy$|^MFAOutboundPolicy$|^OutboundRule$|^RpcRule$|^SettingsPushNotification$|^UserIdentityRule$|^UserMfaIdentityPolicy$
+      subject: ^AssetExternalAccessPolicy$|^AssetIdentityRule$|^AssetInboundRule$|^AssetMfaIdentityPolicy$|^AssetMFAInboundPolicy$|^AssetMFAOutboundPolicy$|^AssetOutboundRule$|^AssetOtMFAOutboundPolicy$|^AssetRpcRule$|^CustomGroup$|^ExternalAccessPolicy$|^GroupsExternalAccessPolicy$|^GroupsIdentityRule$|^GroupsInboundRule$|^GroupsMfaIdentityPolicy$|^GroupsMFAInboundPolicy$|^GroupsMFAOutboundPolicy$|^GroupsOutboundRule$|^GroupsRpcRule$|^IdentityRule$|^InboundRule$|^MfaIdentityPolicy$|^MFAInboundPolicy$|^MFAOutboundPolicy$|^OutboundRule$|^RpcRule$|^SettingsPushNotification$|^UserExternalAccessPolicy$|^UserIdentityRule$|^UserMfaIdentityPolicy$
     hide: true
   - where:
       subject: ^AuthLogin$|^AuthChallenge$

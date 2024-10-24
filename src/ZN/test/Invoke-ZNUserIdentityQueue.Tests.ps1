@@ -19,6 +19,6 @@ Describe 'Invoke-ZNUserIdentityQueue' {
         $svcAccount = ((Get-ZNUsersServiceAccount).Items | where {$_.ProtectionState -eq 1})[0]
         Invoke-ZNUserIdentityQueue -QueueDays 30 -UserIds @($svcAccount.Id)
         (Get-ZNUser -UserId $svcAccount.id).EntityProtectionState | Should -Be 5
-        Unprotect-ZNUserIdentity -UserIds @($svcAccount.Id)
+        Unprotect-ZNUserIdentitySegment -UserIds @($svcAccount.Id)
     }
 }

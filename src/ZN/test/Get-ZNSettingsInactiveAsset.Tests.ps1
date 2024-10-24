@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsInactiveAsset')
 
 Describe 'Get-ZNSettingsInactiveAsset' {
     It 'List' {
-        { (Get-ZNSettingsInactiveAsset).LastActiveDurationInMonths } | Should -Not -Be $null
+        { (Get-ZNSettingsInactiveAsset).LastActiveDurationInMonths } | Should -Not -BeNullOrEmpty
     }
 }

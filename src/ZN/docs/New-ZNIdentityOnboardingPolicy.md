@@ -1,0 +1,225 @@
+---
+external help file:
+Module Name: ZeroNetworks
+online version: https://github.com/zeronetworks/zero-powershell/tree/master/src/help/zeronetworks/new-znidentityonboardingpolicy
+schema: 2.0.0
+---
+
+# New-ZNIdentityOnboardingPolicy
+
+## SYNOPSIS
+Returns the identity onboarding policy that was created.
+
+## SYNTAX
+
+```
+New-ZNIdentityOnboardingPolicy -ExistingMembersLearningDays <Int32> -GroupId <String>
+ -NewMembersLearningDays <Int32> [-AccountName <String>] [-Description <String>] [-Enabled] [-EnforceBlocks]
+ [-MaintenanceWindowId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Returns the identity onboarding policy that was created.
+
+## EXAMPLES
+
+### Example 1: Create an Identity onboarding policy
+```powershell
+New-ZNIdentityOnboardingPolicy -GroupId g:s:03669ce2 -ExistingMembersLearningDays 30 -NewMembersLearningDays 30 -Enabled:$false
+```
+
+```output
+CreatedByEmail                       : 
+CreatedByEnforcementSource           : 6
+CreatedById                          : m:ea53c6e1d0072c5974ceec597b64989274b7ba5f
+CreatedByName                        : powershell
+CreatedByUserRole                    : 4
+GroupInfoDomain                      : system
+GroupInfoGuid                        : 56779f63-9c03-4c5a-9312-cfc7964fc827
+GroupInfoHasIdentityProtectionPolicy : False
+GroupInfoHasNetworkProtectionPolicy  : False
+GroupInfoId                          : g:s:03669ce2
+GroupInfoName                        : Servers
+ItemCreatedAt                        : -62135596800000
+ItemDescription                      : 
+ItemEnabled                          : False
+ItemEnforceBlocks                    : 
+ItemExistingMembersLearningDays      : 30
+ItemGroupId                          : g:s:03669ce2
+ItemId                               : 97fa4e50-c665-44e9-8261-d07c543d9d80
+ItemInitialProtectAt                 : 1728665381822
+ItemNewMembersLearningDays           : 30
+ItemPolicyType                       : 2
+ItemUpdatedAt                        : 
+```
+
+This cmdlet creates an identity onboarding learning policy
+
+## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Enabled
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnforceBlocks
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExistingMembersLearningDays
+.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GroupId
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaintenanceWindowId
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NewMembersLearningDays
+.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IProtectionPolicyResponse
+
+## NOTES
+
+## RELATED LINKS
+

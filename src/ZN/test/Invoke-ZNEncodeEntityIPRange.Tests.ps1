@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNEncodeEntityIPRange'
 
 Describe 'Invoke-ZNEncodeEntityIPRange' {
     It 'Encode' {
-        { Invoke-ZNEncodeEntityIPRange -IPRange 1.1.1.1-1.1.1.2 } | Should -Not -Be $null
+        { Invoke-ZNEncodeEntityIPRange -IPRange 1.1.1.1-1.1.1.2 } | Should -Not -BeNullOrEmpty
     }
 }

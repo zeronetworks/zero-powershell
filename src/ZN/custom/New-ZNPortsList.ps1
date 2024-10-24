@@ -7,7 +7,7 @@
     .Outputs
     ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem
     .Link
-    https://github.com/zeronetworks/zero-powershell/new-znportslist
+    https://github.com/zeronetworks/zero-powershell/tree/master/src/help/zeronetworks/new-znportslist
     #>
     function New-ZNPortsList {
         [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem])]

@@ -16,11 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNMfaIdentityPolicy'))
 
 Describe 'Get-ZNMfaIdentityPolicy' {
     It 'List' {
-        { (Get-ZNMfaIdentityPolicy).Items } | Should -Not -Be $null
+        { (Get-ZNMfaIdentityPolicy).Items } | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' {
         $policy = (Get-ZNMfaIdentityPolicy).Items | select -first 1
-        { (Get-ZNMfaIdentityPolicy -ReactivePolicyId $policy.ItemId).ItemId } | Should -Not -Be $null
+        { (Get-ZNMfaIdentityPolicy -ReactivePolicyId $policy.ItemId).ItemId } | Should -Not -BeNullOrEmpty
     }
 }

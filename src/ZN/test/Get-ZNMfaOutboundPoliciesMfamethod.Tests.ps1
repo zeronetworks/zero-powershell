@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNMfaOutboundPoliciesMfam
 
 Describe 'Get-ZNMfaOutboundPoliciesMfamethod' {
     It 'List' {
-        { Get-ZNMfaOutboundPoliciesMfamethod } | Should -Not -Be $null
+        { Get-ZNMfaOutboundPoliciesMfamethod } | Should -Not -BeNullOrEmpty
     }
 }

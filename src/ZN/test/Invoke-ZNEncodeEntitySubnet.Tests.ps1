@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNEncodeEntitySubnet')
 
 Describe 'Invoke-ZNEncodeEntitySubnet' {
     It 'Encode' {
-        { Invoke-ZNEncodeEntitySubnet -Subnet 1.1.1.0/24 } | Should -Not -Be $null
+        { Invoke-ZNEncodeEntitySubnet -Subnet 1.1.1.0/24 } | Should -Not -BeNullOrEmpty
     }
 }

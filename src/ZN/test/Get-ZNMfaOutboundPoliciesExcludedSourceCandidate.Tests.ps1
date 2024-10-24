@@ -13,6 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNMfaOutboundPoliciesExcludedSourceCandidate' {
     It 'List' {
-        { (Get-ZNMfaOutboundPoliciesExcludedSourceCandidate).Items } | Should -Not -Be $null
+        { (Get-ZNMfaOutboundPoliciesExcludedSourceCandidate).Items } | Should -Not -BeNullOrEmpty
     }
 }

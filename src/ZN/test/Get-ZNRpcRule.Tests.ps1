@@ -22,6 +22,6 @@ Describe 'Get-ZNRpcRule' {
     It 'Get' {
         $rules = (Get-ZNRpcRule -AddBuiltins).Items
         $rule = Get-ZNRpcRule -RuleId $rules[0].Id
-        $rule.ItemId | Should -Not -Be $null
+        $rule.ItemId | Should -Not -BeNullOrEmpty
     }
 }

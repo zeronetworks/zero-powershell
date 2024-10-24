@@ -20,8 +20,8 @@ Describe 'New-ZNAssetMfaIdentityPolicy' {
         $group = (Get-ZNMfaIdentityPoliciesDestinationCandidate -Search "domain controllers").items | where {$_.Id -like "g:t:*"}
         $source = (Get-ZNMfaIdentityPoliciesSourceCandidate -Search "Any Asset").items
         $users = (Get-ZNMfaIdentityPoliciesSourceUserCandidate -Search "Domain Admins").items
-        $policy = New-ZNAssetMfaIdentityPolicy -AssetId $asset -DstAssetId $group.id -FallbackToSingleLoggedOnUser:$true -IdentityProtectionCategoryList @(5) -MfaMethodsList @(4) -OverrideBuiltins:$false -RuleDuration 6 -SrcAssetIdsList @($source.id) -SrcUserIdsList @($users.id) -State 1
-        $policy.ItemId | Should -Not -Be $null
+        $policy = New-ZNAssetMfaIdentityPolicy -AssetId $asset -DstAssetId $asset -FallbackToSingleLoggedOnUser:$true -IdentityProtectionCategoryList @(5) -MfaMethodsList @(4) -OverrideBuiltins:$false -RuleDuration 6 -SrcAssetIdsList @($source.id) -SrcUserIdsList @($users.id) -State 1
+        $policy.ItemId | Should -Not -BeNullOrEmpty
         Remove-ZNMfaIdentityPolicy -ReactivePolicyId $policy.ItemId
     }
 }

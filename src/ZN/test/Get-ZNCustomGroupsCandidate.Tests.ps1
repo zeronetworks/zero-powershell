@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNCustomGroupsCandidate')
 
 Describe 'Get-ZNCustomGroupsCandidate' {
     It 'List' {
-        Get-ZNCustomGroupsCandidate | Should -Not -Be $null
+        Get-ZNCustomGroupsCandidate | Should -Not -BeNullOrEmpty
     }
 }

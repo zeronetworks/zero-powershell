@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNGroupsMfaIdentityPolici
 Describe 'Get-ZNGroupsMfaIdentityPoliciesSourceUserCandidate' {
     It 'List' {
         $group = (Get-ZNGroup -Search "domain controllers").Items | where {$_.id -like "g:t:*"}
-        { (Get-ZNGroupsMfaIdentityPoliciesSourceUserCandidate -GroupId $group.id -GroupType tag).Items } | Should -Not -Be $null
+        { (Get-ZNGroupsMfaIdentityPoliciesSourceUserCandidate -GroupId $group.id -GroupType tag).Items } | Should -Not -BeNullOrEmpty
     }
 }

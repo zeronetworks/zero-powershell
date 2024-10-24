@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetIdentityRulesExclu
 Describe 'Get-ZNAssetIdentityRulesExcludedAssetsCandidate' {
     It 'List' {
         $asset= (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
-        { Get-ZNAssetIdentityRulesExcludedAssetsCandidate -AssetId $asset } | Should -Not -Be $null
+        { Get-ZNAssetIdentityRulesExcludedAssetsCandidate -AssetId $asset } | Should -Not -BeNullOrEmpty
     }
 }

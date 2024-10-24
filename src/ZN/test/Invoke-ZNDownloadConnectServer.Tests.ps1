@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNDownloadConnectServe
 
 Describe 'Invoke-ZNDownloadConnectServer' {
     It 'Download' {
-        { (invoke-ZNDownloadConnectServer).Url } | Should -Not -Be $null
+        { (invoke-ZNDownloadConnectServer).Url } | Should -Not -BeNullOrEmpty
     }
 }

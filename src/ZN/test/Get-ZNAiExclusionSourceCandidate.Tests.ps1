@@ -13,6 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNAiExclusionSourceCandidate' {
     It 'Get' {
-        (Get-ZNAiExclusionSourceCandidate).Items | Should -Not -Be $null
+        (Get-ZNAiExclusionSourceCandidate).Items | Should -Not -BeNullOrEmpty
     }
 }

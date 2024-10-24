@@ -13,6 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNSettingsLearningConfig' {
     It 'Get' {
-        (get-ZNSettingsLearningConfig).AllowQueueForever | Should -Not -Be $null
+        (get-ZNSettingsLearningConfig).AllowQueueForever | Should -Not -BeNullOrEmpty
     }
 }

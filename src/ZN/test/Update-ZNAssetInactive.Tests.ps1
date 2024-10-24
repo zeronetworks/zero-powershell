@@ -16,19 +16,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNAssetInactive'))
 
 Describe 'Update-ZNAssetInactive' {
     It 'SetExpanded' {
-        $asset = (Get-ZNAsset -Order desc -OrderColumns name -offset 0).Items | Where {$_.StateIsAssetConnected -eq $false} | select -First 1
+        $asset = (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         Update-ZNAssetInactive -Items @($asset.Id)
-        $inactiveAsset = Get-ZNAsset -AssetId $asset.Id
-        $inactiveAsset.EntityAssetStatus | Should -Be 12
-        Update-ZNAssetActive -Items @($asset.Id)        
+        $inactiveAsset = Get-ZNAsset -AssetId $asset
+        $inactiveAsset.Entity.AssetStatus | Should -Be 12
+        Update-ZNAssetActive -Items @($asset)        
     }
 
     It 'Set' {
-        $asset = (Get-ZNAsset -Order desc -OrderColumns name -offset 0).Items | Where {$_.StateIsAssetConnected -eq $false} | select -First 1
-        Update-ZNAssetInactive -AssetId $asset.Id
-        $inactiveAsset = Get-ZNAsset -AssetId $asset.Id
-        $inactiveAsset.EntityAssetStatus | Should -Be 12
-        Update-ZNAssetActive -AssetId $asset.Id        
+        $asset = (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
+        Update-ZNAssetInactive -AssetId $asset
+        $inactiveAsset = Get-ZNAsset -AssetId $asset
+        $inactiveAsset.Entity.AssetStatus | Should -Be 12
+        Update-ZNAssetActive -AssetId $asset       
     }
 
 }

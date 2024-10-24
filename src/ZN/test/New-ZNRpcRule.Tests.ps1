@@ -19,8 +19,8 @@ Describe 'New-ZNRpcRule' {
         $asset = (Search-ZNAsset -Fqdn switch03).AssetId
         $group = (Get-ZNGroup -Search 'domain controllers').Items | where {$_.Id -like 'g:t:*'}
         $user = (Get-ZNRpcRulesUserCandidate -Search 'Any User').Id
-        $rule = New-ZNRpcRule -Action 1 -Description "New RPC Rule" -ExcludedAssetIdsList @() -InterfaceUuidsList @() -LocalAssetId $group.Id -OpNumbersList @() -ProtocolsList @() -RemoteAssetIdsList @($asset) -State 1 -UserIdsList @($user)
-        $rule.ItemId | Should -Not -Be $null
+        $rule = New-ZNRpcRule -Action 1 -Description "New RPC Rule" -ExcludedAssetIdsList @() -InterfaceUuidsList @("rpcAnyInterfaceId") -LocalAssetId $group.Id -OpNumbersList @() -ProtocolsList @() -RemoteAssetIdsList @($asset) -State 1 -UserIdsList @($user)
+        $rule.ItemId | Should -Not -BeNullOrEmpty
         Remove-ZNRpcRule -RuleId $rule.ItemId
     }
 }

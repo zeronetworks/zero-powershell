@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetsStatesStatistics'
 
 Describe 'Get-ZNAssetsStatesStatistics' {
     It 'Get' {
-        { Get-ZNAssetsStatesStatistics } | Should -Not -Be $null
+        { Get-ZNAssetsStatesStatistics } | Should -Not -BeNullOrEmpty
     }
 }

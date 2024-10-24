@@ -25,7 +25,7 @@ Describe 'Update-ZNMfaOutboundPolicy' {
         $sourceUserEntity.Id = $sourceUser.Id
         [string]$dstPort = Get-Random -Minimum 1 -Maximum 65000
         $portsList = New-ZNPortsList -Empty
-        $policy = New-ZNMfaOutboundPolicy -AdditionalPortsList $portsList -DstEntityInfoId $destination.Id -DstPort $dstPort -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1 -OverrideBuiltins:$false
+        $policy = New-ZNMfaOutboundPolicy -AdditionalPortsList $portsList -DstEntityInfoId $destination.Id -DstPort $dstPort -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1 -OverrideBuiltins:$false -RestrictLoginToOriginatingUser:$false
         
         $newdescription = "new description " + (Get-Random -Minimum 1 -Maximum 100)
         $updatedPolicy = Update-ZNMfaOutboundPolicy -ReactivePolicyId $policy.ItemId -Description $newdescription

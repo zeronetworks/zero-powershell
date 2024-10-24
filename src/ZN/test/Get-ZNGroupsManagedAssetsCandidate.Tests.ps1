@@ -14,6 +14,6 @@ while(-not $mockingPath) {
 Describe 'Get-ZNGroupsManagedAssetsCandidate' {
     It 'List' {
         $group = (Get-ZNGroup -Search clients).Items | select -first 1
-        (Get-ZNGroupsManagedAssetsCandidate -GroupId $group.id -GroupType system).Items | Should -Not -Be $null
+        (Get-ZNGroupsManagedAssetsCandidate -GroupId $group.id -GroupType system).Items | Should -Not -BeNullOrEmpty
     }
 }

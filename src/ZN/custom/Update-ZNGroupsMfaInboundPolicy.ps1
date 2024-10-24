@@ -5,7 +5,7 @@ Updates an inbound MFA Policy.
 Updates an inbound MFA Policy.
 
 .Link
-https://github.com/zeronetworks/zero-powershell/update-zngroupsmfainboundpolicy
+https://github.com/zeronetworks/zero-powershell/tree/master/src/help/zeronetworks/update-zngroupsmfainboundpolicy
 #>
 function Update-ZNGroupsMfaInboundPolicy {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicy])]
@@ -89,6 +89,12 @@ function Update-ZNGroupsMfaInboundPolicy {
         # protocol 6 for TCP, 17 for UDP.
         ${ProtocolType},
 
+        [Parameter(ParameterSetName = 'UpdateExpanded')]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
+        [Switch]
+        # Restrict login to originating user
+        ${RestrictLoginToOriginatingUser},
+        
         [Parameter(ParameterSetName = 'UpdateExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
         [int]
@@ -271,6 +277,15 @@ function Update-ZNGroupsMfaInboundPolicy {
                 $null = $PSBoundParameters.Remove('ProtocolType')
             }
         
+            if($PSBoundParameters['RestrictLoginToOriginatingUser']){
+                $updatedPolicy.RestrictLoginToOriginatingUser = $PSBoundParameters['RestrictLoginToOriginatingUser']
+                $null = $PSBoundParameters.Remove('RestrictLoginToOriginatingUser')
+            }
+            else{
+                $updatedPolicy.RestrictLoginToOriginatingUser = $policy.ItemRestrictLoginToOriginatingUser
+                $null = $PSBoundParameters.Remove('RestrictLoginToOriginatingUser')
+            }
+            
             if($PSBoundParameters['RuleDuration']){
                 $updatedPolicy.RuleDuration = $PSBoundParameters['RuleDuration']
                 $null = $PSBoundParameters.Remove('RuleDuration')

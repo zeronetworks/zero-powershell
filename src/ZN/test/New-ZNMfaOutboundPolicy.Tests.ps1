@@ -25,8 +25,8 @@ Describe 'New-ZNMfaOutboundPolicy' {
         $sourceUserEntity.Id = $sourceUser.Id
         [string]$dstPort = Get-Random -Minimum 1 -Maximum 65000
         $portsList = New-ZNPortsList -Empty
-        $policy = New-ZNMfaOutboundPolicy -AdditionalPortsList $portsList -DstEntityInfoId $destination.Id -DstPort $dstPort -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1 -OverrideBuiltins:$false
-        $policy.ItemId | Should -Not -Be $null
+        $policy = New-ZNMfaOutboundPolicy -AdditionalPortsList $portsList -DstEntityInfoId $destination.Id -DstPort $dstPort -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1 -OverrideBuiltins:$false -RestrictLoginToOriginatingUser:$false
+        $policy.ItemId | Should -Not -BeNullOrEmpty
         Remove-ZNMfaOutboundPolicy -ReactivePolicyId $policy.ItemId
     }
 }

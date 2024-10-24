@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNMfaIdentityPoliciesExcl
 
 Describe 'Get-ZNMfaIdentityPoliciesExcludedSourceCandidate' {
     It 'List' {
-        { (Get-ZNMfaIdentityPoliciesExcludedSourceCandidate).ITems } | Should -Not -Be $null
+        { (Get-ZNMfaIdentityPoliciesExcludedSourceCandidate).ITems } | Should -Not -BeNullOrEmpty
     }
 }

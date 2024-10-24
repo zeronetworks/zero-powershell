@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNTagGroupsCandidate'))
 Describe 'Get-ZNTagGroupsCandidate' {
     It 'List' {
         $group = (Get-ZNGroup -Search "domain controllers").Items | where {$_.id -like "g:t:*"}
-        { (Get-ZNTagGroupsCandidate -GroupId $group.Id).Items } | Should -Not -Be $null
+        { (Get-ZNTagGroupsCandidate -GroupId $group.Id).Items } | Should -Not -BeNullOrEmpty
     }
 }

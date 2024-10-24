@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAiExclusionNetworkClien
 
 Describe 'Get-ZNAiExclusionNetworkClient' {
     It 'Get' {
-        Get-ZNAiExclusionNetworkClient | Should -Not -Be $null
+        Get-ZNAiExclusionNetworkClient | Should -Not -BeNullOrEmpty
     }
 }

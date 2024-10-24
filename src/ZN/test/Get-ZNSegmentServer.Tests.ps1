@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSegmentServer'))
 
 Describe 'Get-ZNSegmentServer' {
     It 'List' {
-        { Get-ZNSegmentServer } | Should -Not -Be $null
+        { Get-ZNSegmentServer } | Should -Not -BeNullOrEmpty
     }
 }

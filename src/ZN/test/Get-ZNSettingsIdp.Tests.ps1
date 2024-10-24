@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsIdp'))
 
 Describe 'Get-ZNSettingsIdp' {
     It 'Get' {
-        (Get-ZNSettingsIdp).IdentityProviderType | Should -Not -Be $null
+        (Get-ZNSettingsIdp).IdentityProviderType | Should -Not -BeNullOrEmpty
     }
 }

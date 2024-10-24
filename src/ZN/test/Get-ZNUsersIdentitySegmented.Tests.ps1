@@ -17,8 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNUsersIdentitySegmented'
 Describe 'Get-ZNUsersIdentitySegmented' {
     It 'List' {
         $svcAccount = ((Get-ZNUsersServiceAccount).Items | where {$_.ProtectionState -eq 1})[0]
-        Protect-ZNUserIdentity -UserIds @($svcAccount.Id)
+        Protect-ZNUserIdentitySegment -UserIds @($svcAccount.Id)
         (Get-ZNUsersIdentitySegmented).Items.Count | Should -BeGreaterThan 0
-        Unprotect-ZNUserIdentity -UserIds @($svcAccount.Id)
+        Unprotect-ZNUserIdentitySegment -UserIds @($svcAccount.Id)
     }
 }

@@ -6,7 +6,7 @@ Logout of Zero Networks
 Logout of Zero Networks
 
 #.Link
-https://github.com/zeronetworks/zero-powershell/Disconnect-zn
+https://github.com/zeronetworks/zero-powershell/tree/master/src/help/zeronetworks/Disconnect-zn
 #>
 function Disconnect-ZN {
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Low')]

@@ -5,7 +5,7 @@ Updates an inbound  rule.
 Updates an inbound  rule.
 
 .Link
-https://github.com/zeronetworks/zero-powershell/update-znGroupsinboundrule
+https://github.com/zeronetworks/zero-powershell/tree/master/src/help/zeronetworks/update-znGroupsinboundrule
 #>
 function Update-ZNGroupsInboundRule {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.Rule])]
@@ -142,7 +142,7 @@ function Update-ZNGroupsInboundRule {
             $groupId = $PSBoundParameters['GroupId'].ToString()
             $groupType = $PSBoundParameters['GroupType'].ToString()
             $rule = ZeroNetworks\Get-ZNGroupsInboundRule -GroupId $groupId -GroupType $groupType -RuleId $ruleId
-            $rule = $rule.Item
+            #$rule = $rule.ItemItem
             
             $updatedRule = [ZeroNetworks.PowerShell.Cmdlets.Api.Models.RuleBody]::new()
             
@@ -151,7 +151,7 @@ function Update-ZNGroupsInboundRule {
                 $null = $PSBoundParameters.Remove('LocalEntityId')
             }
             else{
-                $updatedRule.LocalEntityId = $rule.LocalEntityId
+                $updatedRule.LocalEntityId = $rule.ItemLocalEntityId
                 $null = $PSBoundParameters.Remove('LocalEntityId')
             }
 
@@ -160,7 +160,7 @@ function Update-ZNGroupsInboundRule {
                 $null = $PSBoundParameters.Remove('LocalProcessesList')
             }
             else{
-                $updatedRule.LocalProcessesList = $rule.LocalProcessesList
+                $updatedRule.LocalProcessesList = $rule.ItemLocalProcessesList
                 $null = $PSBoundParameters.Remove('LocalProcessesList')
             }
             
@@ -170,7 +170,7 @@ function Update-ZNGroupsInboundRule {
                 $null = $PSBoundParameters.Remove('PortsList')
             }
             else{
-                $updatedRule.PortsList = $rule.PortsList
+                $updatedRule.PortsList = $rule.ItemPortsList
                 $null = $PSBoundParameters.Remove('PortsList')
             }
             
@@ -179,7 +179,7 @@ function Update-ZNGroupsInboundRule {
                 $null = $PSBoundParameters.Remove('RemoteEntityIdsList')
             }
             else{
-                $updatedRule.RemoteEntityIdsList = $rule.RemoteEntityIdsList
+                $updatedRule.RemoteEntityIdsList = $rule.ItemRemoteEntityIdsList
                 $null = $PSBoundParameters.Remove('RemoteEntityIdsList')
             }
             
@@ -188,7 +188,7 @@ function Update-ZNGroupsInboundRule {
                 $null = $PSBoundParameters.Remove('ExcludedLocalIdsList')
             }
             else{
-                $updatedRule.ExcludedLocalIdsList = $rule.ExcludedLocalIdsList
+                $updatedRule.ExcludedLocalIdsList = $rule.ItemExcludedLocalIdsList
                 $null = $PSBoundParameters.Remove('ExcludedLocalIdsList')
             }
 
@@ -197,7 +197,7 @@ function Update-ZNGroupsInboundRule {
                 $null = $PSBoundParameters.Remove('State')
             }
             else{
-                $updatedRule.State = $rule.State
+                $updatedRule.State = $rule.ItemState
                 $null = $PSBoundParameters.Remove('State')
             }
 
@@ -206,7 +206,7 @@ function Update-ZNGroupsInboundRule {
                 $null = $PSBoundParameters.Remove('ExpiresAt')
             }
             else{
-                $updatedRule.ExpiresAt = $rule.ExpiresAt
+                $updatedRule.ExpiresAt = $rule.ItemExpiresAt
                 $null = $PSBoundParameters.Remove('ExpiresAt')
             }
             
@@ -215,7 +215,7 @@ function Update-ZNGroupsInboundRule {
                 $null = $PSBoundParameters.Remove('Description')
             }
             else{
-                $updatedRule.Description = $rule.Description
+                $updatedRule.Description = $rule.ItemDescription
                 $null = $PSBoundParameters.Remove('Description')
             }
 
@@ -224,7 +224,7 @@ function Update-ZNGroupsInboundRule {
                 $null = $PSBoundParameters.Remove('Action')
             }
             else{
-                $updatedRule.Action = $rule.Action
+                $updatedRule.Action = $rule.ItemAction
                 $null = $PSBoundParameters.Remove('Action')
             }
             #Write-Debug $updatedRule | Out-String

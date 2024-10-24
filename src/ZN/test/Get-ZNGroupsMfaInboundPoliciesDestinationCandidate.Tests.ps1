@@ -14,6 +14,6 @@ while(-not $mockingPath) {
 Describe 'Get-ZNGroupsMfaInboundPoliciesDestinationCandidate' {
     It 'List' {
         $group = (Get-ZNGroup -Search "domain controllers").Items | where {$_.id -like "g:t:*"}
-        (Get-ZNGroupsMfaInboundPoliciesDestinationCandidate -GroupId $group.id -GroupType tag).Items | Should -Not -Be $null
+        (Get-ZNGroupsMfaInboundPoliciesDestinationCandidate -GroupId $group.id -GroupType tag).Items | Should -Not -BeNullOrEmpty
     }
 }

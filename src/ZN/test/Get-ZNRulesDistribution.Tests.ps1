@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNRulesDistribution'))
 Describe 'Get-ZNRulesDistribution' {
     It 'Get' {
         $rule = Get-ZNInboundRule | select -First 1
-        { Get-ZNRulesDistribution -RuleId $rule.Id -RuleDirection $rule.Direction } | Should -Not -be $null
+        { Get-ZNRulesDistribution -RuleId $rule.Id -RuleDirection $rule.Direction } | Should -Not -BeNullOrEmpty
     }
 }

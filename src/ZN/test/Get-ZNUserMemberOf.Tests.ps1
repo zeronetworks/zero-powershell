@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNUserMemberOf'))
 
 Describe 'Get-ZNUserMemberOf' {
     It 'Get' {
-        $user = Get-ZNUser -Search "zero"
-        { Get-ZNUserMemberOf -UserId $user.Id } | Should -Not -Be $null
+        $user = (Get-ZNUser -Search "zero").ITems | Where {$_.Name -eq "Zero"}
+        { Get-ZNUserMemberOf -UserId $user.Id } | Should -Not -BeNullOrEmpty
     }
 }

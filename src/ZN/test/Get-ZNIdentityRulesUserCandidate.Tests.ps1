@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNIdentityRulesUserCandid
 
 Describe 'Get-ZNIdentityRulesUserCandidate' {
     It 'List' {
-        { Get-ZNIdentityRulesUserCandidate } | Should -Not -Be $null
+        { Get-ZNIdentityRulesUserCandidate } | Should -Not -BeNullOrEmpty
     }
 }

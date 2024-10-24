@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetAnalysis'))
 Describe 'Get-ZNAssetAnalysis' {
     It 'Get' {
         $asset = (Get-ZNAsset).Items | Select-Object -First 1
-        { Get-ZNAssetAnalysis -AssetId $asset.id } | Should -Not -Be $null
+        { Get-ZNAssetAnalysis -AssetId $asset.id } | Should -Not -BeNullOrEmpty
     }
 }

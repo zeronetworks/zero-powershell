@@ -17,12 +17,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetMfaIdentityPolicy'
 Describe 'Get-ZNAssetMfaIdentityPolicy' {
     It 'List' {
         $asset= (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
-        { (Get-ZNAssetMfaIdentityPolicy -AssetId $asset).Items } | Should -Not -Be $null
+        { (Get-ZNAssetMfaIdentityPolicy -AssetId $asset).Items } | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' {
         $asset= (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
         $policy = (Get-ZNAssetMfaIdentityPolicy -AssetId $asset).Items | select -First 1
-        { Get-ZNAssetMfaIdentityPolicy -AssetId $asset -ReactivePolicyId $policy.itemId } | Should -Not -Be $null
+        { Get-ZNAssetMfaIdentityPolicy -AssetId $asset -ReactivePolicyId $policy.itemId } | Should -Not -BeNullOrEmpty
     }
 }

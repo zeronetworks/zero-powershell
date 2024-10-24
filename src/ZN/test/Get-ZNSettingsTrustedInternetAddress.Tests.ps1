@@ -13,6 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNSettingsTrustedInternetAddress' {
     It 'Get' {
-        ZNSettingsTrustedInternetAddress | Should -Not -Be $null
+        ZNSettingsTrustedInternetAddress | Should -Not -BeNullOrEmpty
     }
 }

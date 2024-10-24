@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNInboundRulesDestination
 
 Describe 'Get-ZNInboundRulesDestinationCandidate' {
     It 'List' {
-        { (Get-ZNInboundRulesDestinationCandidate).Items } | Should -Not -Be $null
+        { (Get-ZNInboundRulesDestinationCandidate).Items } | Should -Not -BeNullOrEmpty
     }
 }

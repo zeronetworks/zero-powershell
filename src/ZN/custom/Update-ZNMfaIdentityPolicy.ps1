@@ -5,7 +5,7 @@ Updates an identity MFA Policy.
 Updates an identity MFA Policy.
 
 .Link
-https://github.com/zeronetworks/zero-powershell/update-znmfaidentitypolicy
+https://github.com/zeronetworks/zero-powershell/tree/master/src/help/zeronetworks/update-znmfaidentitypolicy
 #>
 function Update-ZNMfaIdentityPolicy {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.IdentityReactivePolicy])]
@@ -47,6 +47,12 @@ function Update-ZNMfaIdentityPolicy {
         # Override built in MFA policies
         ${OverrideBuiltins},
 
+        [Parameter(ParameterSetName = 'UpdateExpanded')]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
+        [Switch]
+        # Restrict login to originating user
+        ${RestrictLoginToOriginatingUser},
+        
         [Parameter(ParameterSetName = 'UpdateExpanded')]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Body')]
         [int]
@@ -193,6 +199,15 @@ function Update-ZNMfaIdentityPolicy {
                 $null = $PSBoundParameters.Remove('OverrideBuiltins')
             }
 
+            if($PSBoundParameters['RestrictLoginToOriginatingUser']){
+                $updatedPolicy.RestrictLoginToOriginatingUser = $PSBoundParameters['RestrictLoginToOriginatingUser']
+                $null = $PSBoundParameters.Remove('RestrictLoginToOriginatingUser')
+            }
+            else{
+                $updatedPolicy.RestrictLoginToOriginatingUser = $policy.ItemRestrictLoginToOriginatingUser
+                $null = $PSBoundParameters.Remove('RestrictLoginToOriginatingUser')
+            }
+            
             if($PSBoundParameters['RuleDuration']){
                 $updatedPolicy.RuleDuration = $PSBoundParameters['RuleDuration']
                 $null = $PSBoundParameters.Remove('RuleDuration')

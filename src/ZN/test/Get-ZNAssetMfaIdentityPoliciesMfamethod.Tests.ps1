@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetMfaIdentityPolicie
 Describe 'Get-ZNAssetMfaIdentityPoliciesMfamethod' {
     It 'List' {
         $asset= (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
-        { Get-ZNAssetMfaIdentityPoliciesMfamethod -AssetId $asset } | Should -Not -Be $null
+        { Get-ZNAssetMfaIdentityPoliciesMfamethod -AssetId $asset } | Should -Not -BeNullOrEmpty
     }
 }

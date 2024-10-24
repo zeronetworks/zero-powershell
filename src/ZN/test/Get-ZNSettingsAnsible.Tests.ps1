@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsAnsible'))
 
 Describe 'Get-ZNSettingsAnsible' {
     It 'Get' {
-        (Get-ZNSettingsAnsible).ClientId | Should -Not -Be $null
+        (Get-ZNSettingsAnsible).ClientId | Should -Not -BeNullOrEmpty
     }
 }

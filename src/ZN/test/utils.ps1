@@ -5,6 +5,45 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+
+function Decode-JWTToken {
+ 
+    [cmdletbinding()]
+    param([Parameter(Mandatory=$true)][string]$token)
+ 
+    #Validate as per https://tools.ietf.org/html/rfc7519
+    #Access and ID tokens are fine, Refresh tokens will not work
+    if (!$token.Contains(".") -or !$token.StartsWith("eyJ")) { Write-Error "Invalid token" -ErrorAction Stop }
+ 
+    #Header
+    $tokenheader = $token.Split(".")[0].Replace('-', '+').Replace('_', '/')
+    #Fix padding as needed, keep adding "=" until string length modulus 4 reaches 0
+    while ($tokenheader.Length % 4) { Write-Verbose "Invalid length for a Base-64 char array or string, adding ="; $tokenheader += "=" }
+    Write-Verbose "Base64 encoded (padded) header:"
+    Write-Verbose $tokenheader
+    #Convert from Base64 encoded string to PSObject all at once
+    Write-Verbose "Decoded header:"
+    #[System.Text.Encoding]::ASCII.GetString([system.convert]::FromBase64String($tokenheader)) | ConvertFrom-Json | fl | Out-Default
+ 
+    #Payload
+    $tokenPayload = $token.Split(".")[1].Replace('-', '+').Replace('_', '/')
+    #Fix padding as needed, keep adding "=" until string length modulus 4 reaches 0
+    while ($tokenPayload.Length % 4) { Write-Verbose "Invalid length for a Base-64 char array or string, adding ="; $tokenPayload += "=" }
+    Write-Verbose "Base64 encoded (padded) payoad:"
+    Write-Verbose $tokenPayload
+    #Convert to Byte array
+    $tokenByteArray = [System.Convert]::FromBase64String($tokenPayload)
+    #Convert to string array
+    $tokenArray = [System.Text.Encoding]::ASCII.GetString($tokenByteArray)
+    Write-Verbose "Decoded array in JSON format:"
+    Write-Verbose $tokenArray
+    #Convert from JSON to PSObject
+    $tokobj = $tokenArray | ConvertFrom-Json
+    Write-Verbose "Decoded Payload:"
+    
+    return $tokobj
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -18,6 +57,9 @@ function setupEnv() {
     # as default. You could change them if needed.
     #$env.SubscriptionId = (Get-AzContext).Subscription.Id
     #$env.Tenant = (Get-AzContext).Tenant.Id
+    if(Get-Module Az.Accounts){} else {
+        Install-Module Az.Accounts -Force
+    }
 
     #Constants
     $constants = Get-Content ../../tools/constants.json | ConvertFrom-Json
@@ -29,14 +71,54 @@ function setupEnv() {
         exit
     }
 
+    Connect-AzAccount -UseDeviceAuthentication -Subscription 51a36d38-3b14-471f-8dde-a5867f5e51eb
+    $azToken = "Bearer "+(Get-AzAccessToken -ResourceUrl  https://znapikeys.vault.azure.net).Token
+    $azHeaders = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+    $azHeaders.Add("Authorization", $azToken)
+    $azHeaders.Add("Content-Type","application/json")
+    if($envToTest -eq "prd"){
+        $poshSecret = (Invoke-Restmethod -Method Get -Uri https://znapikeys.vault.azure.net/secrets/Posh-PRD-ApiKey?api-version=7.4 -Headers $azHeaders).value
+        $teamSecret = (Invoke-Restmethod -Method Get -Uri https://znapikeys.vault.azure.net/secrets/TeamToken?api-version=7.4 -Headers $azHeaders).value
+    } elseif($envToTest -eq "stg"){
+        $poshSecret = (Invoke-Restmethod -Method Get -Uri https://znapikeys.vault.azure.net/secrets/Posh-STG-ApiKey?api-version=7.4 -Headers $azHeaders).value
+        $teamSecret = (Invoke-Restmethod -Method Get -Uri https://znapikeys.vault.azure.net/secrets/TeamToken-Stg?api-version=7.4 -Headers $azHeaders).value
+    } elseif($envToTest -eq "dev"){
+        $poshSecret = (Invoke-Restmethod -Method Get -Uri https://znapikeys.vault.azure.net/secrets/Posh-DEV-ApiKey?api-version=7.4 -Headers $azHeaders).value
+        $teamSecret = (Invoke-Restmethod -Method Get -Uri https://znapikeys.vault.azure.net/secrets/TeamToken-Dev?api-version=7.4 -Headers $azHeaders).value
+    } else {
+        Write-Host "Couldnt find environment to test in constants.json"
+        exit
+    }
+
+
+    try {
+        $decodedToken = Decode-JWTToken $poshSecret
+        $env:ZNAccountName = $decodedToken.aud.Split(".zeronetworks.com")[0]
+        $ZNAccountName = $decodedToken.aud.Split(".zeronetworks.com")[0]
+    }
+    catch {
+        throw
+    }
+
+    try {
+        $env:ZNApiKey = $poshSecret
+    }
+    catch {
+        throw
+    }
+
+    
+
     $env.Add("baseUri", ($constants.$envToTest.baseURL+"/api/v1"))
 
     $znHeader = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-    $znHeader.Add("Authorization", $constants.$envToTest.ZNApiKey)
+    #$znHeader.Add("Authorization", $constants.$envToTest.ZNApiKey)
+    $znHeader.Add("Authorization", $poshSecret)
     $znHeader.Add("Content-Type","application/json")
 
     $znTeamHeader = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-    $znTeamHeader.Add("Authorization", $constants.$envToTest.ZNTeamApiKey)
+    #$znTeamHeader.Add("Authorization", $constants.$envToTest.ZNTeamApiKey)
+    $znTeamHeader.Add("Authorization", $teamSecret)
     $znTeamHeader.Add("Content-Type","application/json")
     $znTeamHeader.Add("zn-env-id",$constants.$envToTest.ZNEnvId)
 

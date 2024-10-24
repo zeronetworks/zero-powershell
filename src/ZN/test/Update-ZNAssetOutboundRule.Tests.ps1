@@ -23,8 +23,9 @@ Describe 'Update-ZNAssetOutboundRule' {
         $rule = New-ZNOutboundRule -Action 1 -LocalEntityId $asset -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination.id) -State 1 -ExpiresAt $expiresAt
         
         $newdescription = "new description" + (Get-Random -Minimum 1 -Maximum 100)
-        Update-ZNAssetOutboundRule -AssetId $asset -RuleId $rule.Item.Id -Description $newdescription
-        $updatedRule = Get-ZNOutboundRule -RuleId $rule.Item.Id
-        $updatedRule.Item.Description | Should -Be $newdescription
+        Update-ZNAssetOutboundRule -AssetId $asset -RuleId $rule.ItemId -Description $newdescription
+        $updatedRule = Get-ZNOutboundRule -RuleId $rule.ItemId
+        $updatedRule.ItemDescription | Should -Be $newdescription
+        Remove-ZNOutboundRule -RuleId $rule.ItemId
     }
 }

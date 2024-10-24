@@ -14,6 +14,6 @@ while(-not $mockingPath) {
 Describe 'Get-ZNAssetMfaOutboundPoliciesDestinationCandidate' {
     It 'List' {
         $asset= (Search-ZNAsset -Fqdn switch01).AssetId
-        (get-ZNAssetMfaOutboundPoliciesDestinationCandidate -AssetId $asset).Items | Should -Not -Be $null
+        (get-ZNAssetMfaOutboundPoliciesDestinationCandidate -AssetId $asset).Items | Should -Not -BeNullOrEmpty
     }
 }

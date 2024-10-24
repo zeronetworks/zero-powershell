@@ -19,7 +19,7 @@ Describe 'Get-ZNGroupsAssetManager' {
         $manager = (Get-ZNUser).Items | Select -First 1
         New-ZNCustomGroup -Name "GetGroupsAssetManagerTest"
         $customGroup = (Get-ZNGroup -Search GetGroupsAssetManagerTest).Items
-        Add-ZNGroupsAssetManager -GroupId $customGroup.Id -GroupType Custom -ManagerIds $manager.id
+        Add-ZNGroupsAssetManager -GroupId $customGroup.Id -GroupType Custom -ManagerIds $manager.id -Permission 3
         $managers = Get-ZNGroupsAssetManager -GroupId $customGroup.Id -GroupType Custom
         $managers.ManagerId | Should -Be $manager.id
         Remove-ZNGroupsAssetManager -GroupId $customGroup.Id -GroupType Custom -GroupOrUserId $manager.id

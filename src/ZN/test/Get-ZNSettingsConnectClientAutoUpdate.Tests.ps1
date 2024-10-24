@@ -13,6 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNSettingsConnectClientAutoUpdate' {
     It 'Get' {
-        ZNSettingsConnectClientAutoUpdate | Should -Not -Be $null
+        ZNSettingsConnectClientAutoUpdate | Should -Not -BeNullOrEmpty
     }
 }

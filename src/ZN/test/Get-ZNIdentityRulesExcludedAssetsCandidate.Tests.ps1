@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNIdentityRulesExcludedAs
 
 Describe 'Get-ZNIdentityRulesExcludedAssetsCandidate' {
     It 'List' {
-        { Get-ZNIdentityRulesExcludedAssetsCandidate } | Should -Not -Be $null
+        { Get-ZNIdentityRulesExcludedAssetsCandidate } | Should -Not -BeNullOrEmpty
     }
 }

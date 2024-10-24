@@ -15,6 +15,6 @@ Describe 'Get-ZNAssetOt' {
     It 'Get' {
         $Asset= (Search-ZNAsset -Fqdn switch01).AssetId
         $asset = Get-ZNAssetOt -AssetId $Asset
-        $asset.EntityId | Should -Not -Be $null
+        $asset.EntityId | Should -Not -BeNullOrEmpty
     }
 }

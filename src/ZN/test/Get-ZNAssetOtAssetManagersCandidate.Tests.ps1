@@ -14,6 +14,6 @@ while(-not $mockingPath) {
 Describe 'Get-ZNAssetOtAssetManagersCandidate' {
     It 'List'  {
         $asset= (Search-ZNAsset -Fqdn switch01).AssetId
-        (Get-ZNAssetOtAssetManagersCandidate -AssetId $asset).Count | Should -Not -Be $null
+        (Get-ZNAssetOtAssetManagersCandidate -AssetId $asset).Count | Should -Not -BeNullOrEmpty
     }
 }

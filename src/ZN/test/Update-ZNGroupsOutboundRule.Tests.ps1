@@ -23,8 +23,9 @@ Describe 'Update-ZNGroupsOutboundRule' {
         $rule = New-ZNGroupsOutboundRule -GroupId $group.id -GroupType tag -Action 1 -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination.id) -State 1 -ExpiresAt $expiresAt
         
         $newdescription = "new description" + (Get-Random -Minimum 1 -Maximum 100)
-        Update-ZNGroupsOutboundRule -GroupId $group.id -GroupType tag -RuleId $rule.Item.Id -Description $newdescription
-        $updatedRule = Get-ZNOutboundRule -RuleId $rule.Item.Id
-        $updatedRule.Item.Description | Should -Be $newdescription
+        Update-ZNGroupsOutboundRule -GroupId $group.id -GroupType tag -RuleId $rule.ItemId -Description $newdescription
+        $updatedRule = Get-ZNOutboundRule -RuleId $rule.ItemId
+        $updatedRule.ItemDescription | Should -Be $newdescription
+        Remove-ZNOutboundRule -RuleId $rule.ItemId
     }
 }

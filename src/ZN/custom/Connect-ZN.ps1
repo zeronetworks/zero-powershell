@@ -7,11 +7,16 @@ Login to Zero Networks to get a token for cmdlet use.
 NOTE: If your environment has a IdP set for default authentication, you cannot use this cmdlet and will need to use Set-ZNApiKey cmdlet using an API token.
 
 #.Link
-https://github.com/zeronetworks/zero-powershell/connect-zn
+https://github.com/zeronetworks/zero-powershell/tree/master/src/help/zeronetworks/Connect-ZN
 #>
 function Connect-ZN {
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Low')]
     param(
+        [Parameter(Mandatory)]
+        [System.String]
+        # Domain
+        ${AccountName},
+
         [Parameter(Mandatory)]
         [System.String]
         # login
@@ -21,7 +26,9 @@ function Connect-ZN {
     process {
         CheckModuleLatest
 
-        $uri = "https://portal.zeronetworks.com/api/v1"
+        $env:ZNAccountName = $AccountName
+
+        #$uri = "https://portal.zeronetworks.com/api/v1"
             
         $challengeBody = @{
             "challengeMediumType" = "email"

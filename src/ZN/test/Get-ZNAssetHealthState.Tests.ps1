@@ -18,6 +18,6 @@ Describe 'Get-ZNAssetHealthState' {
     It 'Get' {
         $asset = (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
         $health = Get-ZNAssetHealthState -AssetId $asset
-        $health.HealthStateHealthStatus | Should -Not -Be $null
+        $health.HealthStateHealthStatus | Should -Not -BeNullOrEmpty
     }
 }

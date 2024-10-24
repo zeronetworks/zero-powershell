@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsConnectUserAcce
 
 Describe 'Get-ZNSettingsConnectUserAccessConfigExcludedAssetsCandidate' {
     It 'List' {
-        { Get-ZNSettingsConnectUserAccessConfigExcludedAssetsCandidate } | Should -Not -Be $null
+        { Get-ZNSettingsConnectUserAccessConfigExcludedAssetsCandidate } | Should -Not -BeNullOrEmpty
     }
 }

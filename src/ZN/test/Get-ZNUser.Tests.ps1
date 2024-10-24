@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNUser'))
 
 Describe 'Get-ZNUser' {
     It 'List' {
-        { Get-ZNUser } | Should -Not -Be $null
+        { Get-ZNUser } | Should -Not -BeNullOrEmpty
     }
 }

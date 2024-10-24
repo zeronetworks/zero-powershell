@@ -22,8 +22,8 @@ Describe 'New-ZNGroupsMfaOutboundPolicy' {
         $sourceUserEntity.Id = $sourceUser.Id
         [string]$dstPorts = Get-Random -Minimum 1 -Maximum 65000
         $portsList = New-ZNPortsList -Empty
-        $policy = New-ZNGroupsMfaOutboundPolicy -GroupId $group.Id -GroupType tag -AdditionalPortsList $portsList -DstEntityInfoId $group.Id -DstPort $dstPorts -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1 -OverrideBuiltins:$false
-        $policy.ItemId | Should -Not -Be $null
+        $policy = New-ZNGroupsMfaOutboundPolicy -GroupId $group.Id -GroupType tag -AdditionalPortsList $portsList -DstEntityInfoId $group.Id -DstPort $dstPorts -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1 -OverrideBuiltins:$false -RestrictLoginToOriginatingUser:$false
+        $policy.ItemId | Should -Not -BeNullOrEmpty
         Remove-ZNGroupsMfaOutboundPolicy -GroupId $group.Id -GroupType tag -ReactivePolicyId $policy.Itemid
     }
 }

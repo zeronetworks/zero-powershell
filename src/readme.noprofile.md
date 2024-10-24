@@ -4,7 +4,7 @@
 ``` yaml
 azure: false
 powershell: true
-help-link-prefix: https://github.com/zeronetworks
+help-link-prefix: https://github.com/zeronetworks/zero-powershell/tree/master/src/help/
 license-header: 'Work: Zero Networks PowerShell Module
   License: Zero Networks PowerShell Module
   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION

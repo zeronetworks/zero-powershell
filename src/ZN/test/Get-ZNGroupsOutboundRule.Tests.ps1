@@ -22,8 +22,8 @@ Describe 'Get-ZNGroupsOutboundRule' {
         $destination = (Get-ZNGroupsOutboundRulesDestinationCandidate -GroupId $group.id -GroupType tag -RuleType 3 -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNGroupsOutboundRule -GroupId $group.id -GroupType tag -Action 1 -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination.id) -State 1 -ExpiresAt $expiresAt
-        { (Get-ZNGroupsOutboundRule -GroupId $group.id -GroupType tag).Items } | Should -Not -Be $null
-        Remove-ZNGroupsOutboundRule -GroupId $group.id -GroupType tag -RuleId $rule.Item.Id
+        { (Get-ZNGroupsOutboundRule -GroupId $group.id -GroupType tag).Items } | Should -Not -BeNullOrEmpty
+        Remove-ZNGroupsOutboundRule -GroupId $group.id -GroupType tag -RuleId $rule.ItemId
     }
 
     It 'Get' {
@@ -34,7 +34,7 @@ Describe 'Get-ZNGroupsOutboundRule' {
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNGroupsOutboundRule -GroupId $group.id -GroupType tag -Action 1 -LocalEntityId $group.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination.id) -State 1 -ExpiresAt $expiresAt
         $rule = Get-ZNGroupsOutboundRule -GroupId $group.id -GroupType tag | Select-Object -First 1
-        { (Get-ZNGroupsOutboundRule -GroupId $group.id -GroupType tag -RuleId $rule.Id).ItemId } | Should -Not -Be $null
+        { (Get-ZNGroupsOutboundRule -GroupId $group.id -GroupType tag -RuleId $rule.Id).ItemId } | Should -Not -BeNullOrEmpty
         Remove-ZNGroupsOutboundRule -GroupId $group.id -GroupType tag -RuleId $rule.Id
     }
 }

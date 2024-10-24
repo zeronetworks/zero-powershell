@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetInboundRulesExclud
 Describe 'Get-ZNAssetInboundRulesExcludedDestinationCandidate' {
     It 'List' {
         $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
-        { (Get-ZNAssetInboundRulesExcludedDestinationCandidate -AssetId $asset).Items } | Should -Not -Be $null
+        { (Get-ZNAssetInboundRulesExcludedDestinationCandidate -AssetId $asset).Items } | Should -Not -BeNullOrEmpty
     }
 }

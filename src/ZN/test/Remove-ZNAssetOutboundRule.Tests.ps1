@@ -21,6 +21,6 @@ Describe 'Remove-ZNAssetOutboundRule' {
         $destination = Invoke-ZNEncodeEntityIp -IP 8.8.8.8
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNAssetOutboundRule -AssetId $asset -Action 1 -LocalEntityId $asset -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination.id) -State 1 -ExpiresAt $expiresAt
-        { Remove-ZNAssetOutboundRule -AssetId $asset -RuleId $rule.Item.Id } | Should -Not -Throw
+        { Remove-ZNAssetOutboundRule -AssetId $asset -RuleId $rule.ItemId } | Should -Not -Throw
     }
 }

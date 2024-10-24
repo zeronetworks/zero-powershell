@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAiNextBatch'))
 
 Describe 'Get-ZNAiNextBatch' {
     It 'Get' {
-       { Get-ZNAiNextBatch }| Should -Not -Be $null
+       { Get-ZNAiNextBatch }| Should -Not -BeNullOrEmpty
     }
 }

@@ -13,6 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNSettingsAssetManager' {
     It 'List' {
-         Get-ZNSettingsAssetManager | Should -Not -Be $null
+         Get-ZNSettingsAssetManager | Should -Not -BeNullOrEmpty
     }
 }

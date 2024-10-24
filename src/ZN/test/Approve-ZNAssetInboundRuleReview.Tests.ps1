@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Approve-ZNAssetInboundRuleRev
 Describe 'Approve-ZNAssetInboundRuleReview' {
     It 'ApproveExpanded' { 
         $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
-        $rule = Get-ZNAssetInboundRule -AssetId $asset | where {$_.State -eq 4} | Select-Object -First 1
+        $rule = Get-ZNAssetInboundRule -AssetId $asset -Limit 100 | where {$_.State -eq 4} | Select-Object -First 1
         Approve-ZNAssetInboundRuleReview -AssetId $asset -RuleId $rule.id
         $updatedRule = Get-ZNAssetInboundRule -AssetId $asset | where {$_.Id -eq $rule.id}
         $updatedRule.State | Should -Be 1
