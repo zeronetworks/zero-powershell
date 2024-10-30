@@ -13,7 +13,7 @@ Returns a list of groups the asset is a member of.
 ## SYNTAX
 
 ```
-Get-ZNAssetOtMemberOf -AssetId <String> [<CommonParameters>]
+Get-ZNAssetOtMemberOf -AssetId <String> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +38,21 @@ g:s:17445453 Segmented OT/IoT devices Includes all segmented OT/IoT devices in t
 This cmdlet returns groups the asset is a member of for an OT asset.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetId
 assetId to filter on

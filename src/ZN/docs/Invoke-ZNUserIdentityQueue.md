@@ -13,7 +13,8 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Invoke-ZNUserIdentityQueue -QueueDays <Int32> -UserIds <String[]> [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-ZNUserIdentityQueue -QueueDays <Int32> -UserIds <String[]> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +30,21 @@ Invoke-ZNUserIdentityQueue -UserId @("u:a:4UydfhAS") -QueueDays 14
 This cmdlet adds a user to identity learning.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -QueueDays
 .

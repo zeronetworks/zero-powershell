@@ -13,8 +13,8 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Remove-ZNAssetInboundRule -AssetId <String> -RuleId <String> [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-ZNAssetInboundRule -AssetId <String> -RuleId <String> [-AccountName <String>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ Remove-ZNAssetInboundRule -AssetId $asset -RuleId 724697fa-2db4-4330-b3f0-b157d2
 This cmdlet deletes an inbound rule.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetId
 assetId to filter on

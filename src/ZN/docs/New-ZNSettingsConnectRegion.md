@@ -13,8 +13,9 @@ Create a Connect region in Settings
 ## SYNTAX
 
 ```
-New-ZNSettingsConnectRegion [-DnsServersIPAddressList <String[]>] [-DnsSuffixesList <String[]>]
- [-IPAddress <String>] [-Name <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-ZNSettingsConnectRegion [-AccountName <String>] [-DnsServersIPAddressList <String[]>]
+ [-DnsSuffixesList <String[]>] [-IPAddress <String>] [-Name <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,21 @@ New-ZNSettingsConnectRegion -DnsServersIPAddressList @("192.168.3.1","192.168.3.
 This cmdlet creates a Connect region in settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DnsServersIPAddressList
 .

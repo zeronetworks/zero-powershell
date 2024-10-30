@@ -13,8 +13,8 @@ Returns a list of source user candidates for Identity MFA policies.
 ## SYNTAX
 
 ```
-Get-ZNGroupsMfaIdentityPoliciesSourceUserCandidate -GroupId <String> -GroupType <String> [-Limit <Int32>]
- [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
+Get-ZNGroupsMfaIdentityPoliciesSourceUserCandidate -GroupId <String> -GroupType <String>
+ [-AccountName <String>] [-Limit <Int32>] [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +55,21 @@ system     g:s:82445453 Zero Networks Viewers
 This cmdlet lists the source user candidates for an inbound MFA policy.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on
@@ -111,7 +126,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

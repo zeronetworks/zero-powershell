@@ -13,7 +13,7 @@ Returns a temporary url to the Connect client zip.
 ## SYNTAX
 
 ```
-Invoke-ZNDownloadConnectClient -Platform <Int32> [<CommonParameters>]
+Invoke-ZNDownloadConnectClient -Platform <Int32> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +36,21 @@ This cmdlet gets the download url for connect client.
 1 = Windows, 2 = Mac (amd64), 3 = Mac (arm64)
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Platform
 connect client platform

@@ -13,8 +13,8 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Invoke-ZNAssetRpcExtendQueue -ExtendByDays <Int32> -Items <String[]> [-RelearnReason <String>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-ZNAssetRpcExtendQueue -ExtendByDays <Int32> -Items <String[]> [-AccountName <String>]
+ [-RelearnReason <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ Invoke-ZNAssetRpcExtendQueue -Items @($asset.AssetId) -ExtendByDays 14
 This cmdlet extends RPC learning for assets.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ExtendByDays
 number of days

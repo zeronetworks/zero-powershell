@@ -13,7 +13,8 @@ Update inactive assets settings configuration
 ## SYNTAX
 
 ```
-Update-ZNSettingsInactiveAsset [-LastActiveDurationInMonths <Int32>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsInactiveAsset [-AccountName <String>] [-LastActiveDurationInMonths <Int32>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +30,21 @@ Update-ZNSettingsInactiveAsset -LastActiveDurationInMonths 6
 This cmdlet updates the inactive asset setting.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -LastActiveDurationInMonths
 .

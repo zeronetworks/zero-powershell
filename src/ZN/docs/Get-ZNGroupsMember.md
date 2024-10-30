@@ -13,8 +13,8 @@ Returns a list of potential members for a group.
 ## SYNTAX
 
 ```
-Get-ZNGroupsMember -GroupId <String> -GroupType <String> -IncludeNestedMembers [-Limit <Int32>]
- [-Offset <Int32>] [<CommonParameters>]
+Get-ZNGroupsMember -GroupId <String> -GroupType <String> -IncludeNestedMembers [-AccountName <String>]
+ [-Limit <Int32>] [-Offset <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,6 +61,21 @@ AssetStatus AssetType Domain    Fqdn IPV4Addresses IPV6Addresses Id           Na
 Setting -IncludeNestedMembers to $true will get all members of the group and nested members.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on
@@ -132,7 +147,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

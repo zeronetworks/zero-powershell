@@ -13,9 +13,10 @@ Returns the properties of firewall profiles in Firewall settings.
 ## SYNTAX
 
 ```
-Update-ZNSettingsFirewallProfile [-InboundAllowDomain] [-InboundAllowPrivate] [-InboundAllowPublic]
- [-InboundBlockDomain] [-InboundBlockPrivate] [-InboundBlockPublic] [-OutboundBlockDomain]
- [-OutboundBlockPrivate] [-OutboundBlockPublic] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsFirewallProfile [-AccountName <String>] [-InboundAllowDomain] [-InboundAllowPrivate]
+ [-InboundAllowPublic] [-InboundBlockDomain] [-InboundBlockPrivate] [-InboundBlockPublic]
+ [-OutboundBlockDomain] [-OutboundBlockPrivate] [-OutboundBlockPublic] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +45,21 @@ OutboundBlockPublic  : True
 This cmdlet updates the Firewall profiles settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InboundAllowDomain
 .

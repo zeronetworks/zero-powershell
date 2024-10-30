@@ -13,8 +13,8 @@ Remove managed asset of user
 ## SYNTAX
 
 ```
-Remove-ZNUsersManagedAsset -GroupOrAssetId <String> -UserId <String> [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-ZNUsersManagedAsset -GroupOrAssetId <String> -UserId <String> [-AccountName <String>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,21 @@ Remove-ZNUsersManagedAsset -UserId 'u:a:w27loY5p' -GroupOrAssetId 'a:a:OtfLGUBq'
 This cmdlet removes a managed asset from a user.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupOrAssetId
 group or asset id to filter on

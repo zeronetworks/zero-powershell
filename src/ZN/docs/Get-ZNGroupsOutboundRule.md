@@ -14,14 +14,16 @@ Returns the properties of an Outbound rule.
 
 ### List (Default)
 ```
-Get-ZNGroupsOutboundRule -GroupId <String> -GroupType <String> [-AddAncestors] [-AddBuiltins]
- [-Direction <String>] [-EntityParams <String>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>]
- [-WithCount] [<CommonParameters>]
+Get-ZNGroupsOutboundRule -GroupId <String> -GroupType <String> [-AccountName <String>] [-AddAncestors]
+ [-AddBuiltins] [-Direction <String>] [-EnrichRemoteIps] [-EntityParams <String>] [-Filters <String>]
+ [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>] [-WithCount]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-ZNGroupsOutboundRule -GroupId <String> -GroupType <String> -RuleId <String> [<CommonParameters>]
+Get-ZNGroupsOutboundRule -GroupId <String> -GroupType <String> -RuleId <String> [-AccountName <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,6 +90,21 @@ This cmdlet can get a specific rule for a specific group.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AddAncestors
 show rules where the asset is part of a group
 
@@ -133,6 +150,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnrichRemoteIps
+enrich remote IPs
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EntityParams
 JSON string URI encoded object {id: string, direction: AssetDirection}
 
@@ -149,7 +181,7 @@ Accept wildcard characters: False
 ```
 
 ### -Filters
-JSON string URI encoded set of fiters
+JSON string URI encoded set of filters
 
 ```yaml
 Type: System.String
@@ -213,6 +245,36 @@ Used to page through results
 
 ```yaml
 Type: System.Int32
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Order
+What order to sort the results
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OrderColumns
+what column to order on
+
+```yaml
+Type: System.String
 Parameter Sets: List
 Aliases:
 

@@ -13,8 +13,8 @@ Update the Client Subnets settings in System
 ## SYNTAX
 
 ```
-Update-ZNSettingsClientSubnet [-PrivateIpv4NetworksList <String[]>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNSettingsClientSubnet [-AccountName <String>] [-PrivateIpv4NetworksList <String[]>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,21 @@ Update-ZNSettingsClientSubnet -PrivateNetworksList @('192.168.0.0/24')
 This cmdlet updates client subnet settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PassThru
 Returns true when the command succeeds

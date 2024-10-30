@@ -8,18 +8,18 @@ schema: 2.0.0
 # Update-ZNSettingsAnsible
 
 ## SYNOPSIS
-Get the Ansible settings in Asset Managment
+Get the Ansible settings in Asset Management
 
 ## SYNTAX
 
 ```
-Update-ZNSettingsAnsible [-ClientId <String>] [-ClientSecret <String>] [-CredentialsName <String>]
- [-DisableCertificateValidation] [-Password <String>] [-Url <String>] [-Username <String>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsAnsible [-AccountName <String>] [-ClientId <String>] [-ClientSecret <String>]
+ [-CredentialsName <String>] [-DisableCertificateValidation] [-Password <String>] [-Url <String>]
+ [-Username <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the Ansible settings in Asset Managment
+Get the Ansible settings in Asset Management
 
 ## EXAMPLES
 
@@ -31,6 +31,21 @@ Update-ZNAnsibleSetting -ClientId "clientId" -CredentialsName ssh -DisableCertif
 This cmdlet updates the Ansible setting under Asset Management.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ClientId
 OAuth Client Id

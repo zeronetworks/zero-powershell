@@ -13,8 +13,8 @@ Returns a list of audit events.
 ## SYNTAX
 
 ```
-Get-ZNAudit [-Cursor <String>] [-EntityId <String>] [-Filters <String>] [-From <Int32>] [-Limit <Int32>]
- [-Order <String>] [-Search <String>] [-To <Int32>] [<CommonParameters>]
+Get-ZNAudit [-AccountName <String>] [-Cursor <Int64>] [-EntityId <String>] [-Filters <String>] [-From <Int32>]
+ [-Limit <Int32>] [-Order <String>] [-Search <String>] [-To <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,11 +70,26 @@ scrollCurosor is the epochtime (ms) of the last event and can be used to get the
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Cursor
 cursor position to start at
 
 ```yaml
-Type: System.String
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -Filters
-JSON string URI encoded set of fiters
+JSON string URI encoded set of filters
 
 ```yaml
 Type: System.String

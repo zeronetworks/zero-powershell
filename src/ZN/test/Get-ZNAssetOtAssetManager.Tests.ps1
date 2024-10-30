@@ -15,8 +15,8 @@ Describe 'Get-ZNAssetOtAssetManager' {
     It 'List' { 
         $asset= (Search-ZNAsset -Fqdn switch01).AssetId
         $user = (Get-ZNUser).Items | Select -First 1
-        Add-ZNAssetOtAssetManager -AssetId $asset -ManagerIds @($user.Id)
-        (Get-ZNAssetOtAssetManager -AssetId $asset).Count | Should -Not -Be $null
+        Add-ZNAssetOtAssetManager -AssetId $asset -ManagerIds @($user.Id) -Permission 3
+        (Get-ZNAssetOtAssetManager -AssetId $asset).Count | Should -Not -BeNullOrEmpty
         Remove-ZNAssetOtAssetManager -AssetId $asset -GroupOrUserId $user.Id
     }
 }

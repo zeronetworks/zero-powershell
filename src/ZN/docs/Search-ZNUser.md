@@ -14,12 +14,12 @@ Provided user SID - returns user entity id
 
 ### Search (Default)
 ```
-Search-ZNUser -PrincipalName <String> [<CommonParameters>]
+Search-ZNUser -PrincipalName <String> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ### Search1
 ```
-Search-ZNUser -Sid <String> [<CommonParameters>]
+Search-ZNUser -Sid <String> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +42,21 @@ Search-ZNUser -PrincipalName "posh\test"
 This cmdlet can search for a user by principal name.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PrincipalName
 sid to query for

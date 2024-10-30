@@ -13,9 +13,9 @@ Create a Connect User Access Configuration in Settings
 ## SYNTAX
 
 ```
-New-ZNSettingsConnectUserAccessConfig [-AllowedRegions <String[]>] [-ConnectivityStateAfterReboot <Int32>]
- [-Description <String>] [-DstEntityIdsList <String[]>] [-ForceSsoAuthentication]
- [-LoginAuthorizedEntityAllowedAssetIdsList <String[]>]
+New-ZNSettingsConnectUserAccessConfig [-AccountName <String>] [-AllowedRegions <String[]>]
+ [-ConnectivityStateAfterReboot <Int32>] [-Description <String>] [-DstEntityIdsList <String[]>]
+ [-ForceSsoAuthentication] [-LoginAuthorizedEntityAllowedAssetIdsList <String[]>]
  [-LoginAuthorizedEntityAllowedAssetsSourcesList <String[]>]
  [-LoginAuthorizedEntityAllowedUsersIdsList <String[]>]
  [-LoginAuthorizedEntityExcludedAssetIdsList <String[]>]
@@ -38,6 +38,21 @@ New-ZNSettingsConnectUserAccessConfig -DstEntityIdsList @($destinations.id) -Mem
 This cmldet creates a User Access Config for Connect.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AllowedRegions
 .

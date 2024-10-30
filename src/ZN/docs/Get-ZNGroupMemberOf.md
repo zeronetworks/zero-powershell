@@ -13,7 +13,7 @@ Returns a list of groups the group is a member of.
 ## SYNTAX
 
 ```
-Get-ZNGroupMemberOf -GroupId <String> -GroupType <String> [<CommonParameters>]
+Get-ZNGroupMemberOf -GroupId <String> -GroupType <String> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +35,21 @@ CreatedAt     Description DirectMembersCount Domain Guid                        
 This cmdlet gets the groups a group is a member of
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on

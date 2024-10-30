@@ -15,8 +15,8 @@ Describe 'Get-ZNAssetManager' {
     It 'List' {
         $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         $user = (Get-ZNUser).Items | Select -First 1
-        Add-ZNAssetManager -AssetId $asset -ManagerIds @($user.Id)
-        (Get-ZNAssetManager -AssetId $asset).Count | Should -Not -Be $null
+        Add-ZNAssetManager -AssetId $asset -ManagerIds @($user.Id) -Permission 3
+        (Get-ZNAssetManager -AssetId $asset).Count | Should -Not -BeNullOrEmpty
         Remove-ZNAssetManager -AssetId $asset -GroupOrUserId $user.Id
     }
 }

@@ -13,8 +13,8 @@ Remove asset manager of group
 ## SYNTAX
 
 ```
-Remove-ZNGroupsAssetManager -GroupId <String> -GroupOrUserId <String> -GroupType <String> [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNGroupsAssetManager -GroupId <String> -GroupOrUserId <String> -GroupType <String>
+ [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,21 @@ Remove-ZNGroupsAssetManager -Groupid g:t:01445453 -GroupOrUserId g:a:cai6Wuyd -G
 This cmdlet deletes an asset manager from a group.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on

@@ -13,7 +13,7 @@ Returns an object with rules distribution.
 ## SYNTAX
 
 ```
-Get-ZNRulesDistribution -RuleId <String> -RuleDirection <Int32> [<CommonParameters>]
+Get-ZNRulesDistribution -RuleId <String> -RuleDirection <Int32> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +66,21 @@ This cmdlet gets the hit count for a rule.
 Rule direction is 1 for inbound rules and 2 for outbound rules.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -RuleDirection
 direction of the rule (1-Inbound, 2-Outbound)

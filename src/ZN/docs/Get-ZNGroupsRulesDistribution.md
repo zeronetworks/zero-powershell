@@ -14,7 +14,7 @@ Returns an object with rules distribution.
 
 ```
 Get-ZNGroupsRulesDistribution -GroupId <String> -GroupType <String> -RuleId <String> -RuleDirection <Int32>
- [<CommonParameters>]
+ [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,6 +67,21 @@ ActivitiesCount Timestamp
 This cmdlet returns the rules distribution for a rule for an group.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on

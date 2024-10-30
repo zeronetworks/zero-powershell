@@ -25,8 +25,8 @@ Describe 'New-ZNAssetMfaInboundPolicy' {
         $sourceUserEntity.Id = $sourceUser.Id
         [string]$dstPorts = Get-Random -Minimum 1 -Maximum 65000
         $portsList = New-ZNPortsList -Empty
-        $policy = New-ZNAssetMfaInboundPolicy -AssetId $asset -AdditionalPortsList $portsList -DstEntityInfoId $asset -DstPort $dstPorts -DstProcessNames @("*") -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1 -OverrideBuiltins:$false
-        $policy.ItemId | Should -Not -Be $null
+        $policy = New-ZNAssetMfaInboundPolicy -AssetId $asset -AdditionalPortsList $portsList -DstEntityInfoId $asset -DstPort $dstPorts -DstProcessNames @("*") -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1 -OverrideBuiltins:$false -RestrictLoginToOriginatingUser:$false
+        $policy.ItemId | Should -Not -BeNullOrEmpty
         Remove-ZNAssetMfaInboundPolicy -AssetId $asset -ReactivePolicyId $policy.Itemid
     }
 }

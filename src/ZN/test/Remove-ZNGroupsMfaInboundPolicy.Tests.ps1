@@ -25,7 +25,7 @@ Describe 'Remove-ZNGroupsMfaInboundPolicy' {
         $sourceUserEntity.Id = $sourceUser.Id
         [string]$dstPorts = Get-Random -Minimum 1 -Maximum 65000
         $portsList = New-ZNPortsList -Empty
-        $policy = New-ZNGroupsMfaInboundPolicy -GroupId $group.Id -GroupType tag -AdditionalPortsList $portsList -DstEntityInfoId $group.Id -DstPort $dstPorts -DstProcessNames @("*") -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1 -OverrideBuiltins:$false
+        $policy = New-ZNGroupsMfaInboundPolicy -GroupId $group.Id -GroupType tag -AdditionalPortsList $portsList -DstEntityInfoId $group.Id -DstPort $dstPorts -DstProcessNames @("*") -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1 -OverrideBuiltins:$false -RestrictLoginToOriginatingUser:$false
         { Remove-ZNGroupsMfaInboundPolicy -GroupId $group.Id -GroupType tag -ReactivePolicyId $policy.Itemid } | Should -Not -Throw
     }
 }

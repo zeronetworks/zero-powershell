@@ -15,8 +15,8 @@ Returns the properties of the create RPC rule.
 ```
 New-ZNAssetRpcRule -AssetId <String> -Action <Int32> -Description <String> -ExcludedAssetIdsList <String[]>
  -InterfaceUuidsList <String[]> -LocalAssetId <String> -OpNumbersList <Int32[]> -ProtocolsList <Int32[]>
- -RemoteAssetIdsList <String[]> -State <Int32> -UserIdsList <String[]> [-ExpiresAt <Int64>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -RemoteAssetIdsList <String[]> -State <Int32> -UserIdsList <String[]> [-AccountName <String>]
+ [-ExpiresAt <Int64>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,6 +62,21 @@ UpdatedByName              :
 This cmdlet creates a RPC rule for a specific asset.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Action
 * '1' - Allow* '2' - Block

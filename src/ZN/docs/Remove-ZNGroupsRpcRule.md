@@ -13,8 +13,8 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Remove-ZNGroupsRpcRule -GroupId <String> -GroupType <String> -RuleId <String> [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-ZNGroupsRpcRule -GroupId <String> -GroupType <String> -RuleId <String> [-AccountName <String>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,21 @@ Remove-ZNGroupsRpcRule -GroupType tag -GroupId 'g:t:01669ce2' -RuleId '52aca064-
 This cmdlet deletes a RPC rule for a specific group.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on

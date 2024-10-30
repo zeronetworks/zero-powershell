@@ -8,17 +8,17 @@ schema: 2.0.0
 # Remove-ZNSettingsPushNotification
 
 ## SYNOPSIS
-Returns an empty reponse.
+Returns an empty response.
 
 ## SYNTAX
 
 ```
-Remove-ZNSettingsPushNotification -PushIdentityProviderId <String> [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-ZNSettingsPushNotification -PushIdentityProviderId <String> [-AccountName <String>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns an empty reponse.
+Returns an empty response.
 
 ## EXAMPLES
 
@@ -30,6 +30,21 @@ Remove-ZNSettingsPushNotification -PushIdentityProviderId duo
 This cmdlet deletes a push notificiations settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PassThru
 Returns true when the command succeeds

@@ -13,7 +13,7 @@ Get AI source entities to ignore during learning.
 ## SYNTAX
 
 ```
-Get-ZNAiExclusionSourceEntity [<CommonParameters>]
+Get-ZNAiExclusionSourceEntity [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +35,21 @@ AssetType Domain     Id           Name ProtectionState
 This cmdlet lists the excluded source entities for AI settings under Data Collection.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

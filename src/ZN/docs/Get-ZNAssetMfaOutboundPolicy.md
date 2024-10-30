@@ -14,13 +14,14 @@ Returns the properties of an outbound MFA policy.
 
 ### List (Default)
 ```
-Get-ZNAssetMfaOutboundPolicy -AssetId <String> [-AddAncestors] [-AddBuiltins] [-Filters <String>]
- [-Limit <Int32>] [-Offset <Int32>] [<CommonParameters>]
+Get-ZNAssetMfaOutboundPolicy -AssetId <String> [-AccountName <String>] [-AddAncestors] [-AddBuiltins]
+ [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-ZNAssetMfaOutboundPolicy -AssetId <String> -ReactivePolicyId <String> [<CommonParameters>]
+Get-ZNAssetMfaOutboundPolicy -AssetId <String> -ReactivePolicyId <String> [-AccountName <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,6 +94,21 @@ This cmdlet lists a specific outbound MFA policies for a specific asset.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AddAncestors
 show rules where the asset is part of a group
 
@@ -139,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -Filters
-JSON string URI encoded set of fiters
+JSON string URI encoded set of filters
 
 ```yaml
 Type: System.String
@@ -178,7 +194,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -13,7 +13,7 @@ List Connect Regions in Settings
 ## SYNTAX
 
 ```
-Get-ZNSettingsConnectRegion [-Limit <Int32>] [-Offset <Int32>] [<CommonParameters>]
+Get-ZNSettingsConnectRegion [-AccountName <String>] [-Limit <Int32>] [-Offset <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +36,21 @@ CreatedAt     CreatedBy       DnsServersIPAddressList IPAddress     Id          
 This cmdlet lists the Connect regsion settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Limit
 Limit the return results
@@ -62,7 +77,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -13,8 +13,8 @@ Creates a MFA Cache Policy.
 ## SYNTAX
 
 ```
-New-ZNSettingsMfaCache -AssetLimit <Int32> -EntityId <String> -TtlMinutes <Int32> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-ZNSettingsMfaCache -AssetLimit <Int32> -EntityId <String> -TtlMinutes <Int32> [-AccountName <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +37,21 @@ ItemAssetLimit ItemEntityId ItemTtlMinutes
 This cmdlet creates a MFA cache policy.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetLimit
 .

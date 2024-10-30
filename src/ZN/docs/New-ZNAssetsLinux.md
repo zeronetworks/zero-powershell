@@ -13,7 +13,8 @@ Returns the assetId of the created Linux asset.
 ## SYNTAX
 
 ```
-New-ZNAssetsLinux -DisplayName <String> -Fqdn <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+New-ZNAssetsLinux -DisplayName <String> -Fqdn <String> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +30,21 @@ New-ZNAssetsLinux -DisplayName "linuxservera" -Fqdn "linuxservera.zero.labs"
 This cmdlet will create a linux asset in the environment.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DisplayName
 .

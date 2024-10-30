@@ -14,12 +14,14 @@ Returns and empty object.
 
 ### ActivateExpanded (Default)
 ```
-Initialize-ZNAssetBreakGlass -Items <String[]> [-Confirm] [-WhatIf] [<CommonParameters>]
+Initialize-ZNAssetBreakGlass -AssetId <String> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ActivateExpanded1
 ```
-Initialize-ZNAssetBreakGlass -AssetId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Initialize-ZNAssetBreakGlass -Items <String[]> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,12 +45,27 @@ This cmdlet enables cloud break glass on an asset.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AssetId
 assetId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: ActivateExpanded1
+Parameter Sets: ActivateExpanded
 Aliases:
 
 Required: True
@@ -63,7 +80,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ActivateExpanded
+Parameter Sets: ActivateExpanded1
 Aliases:
 
 Required: True

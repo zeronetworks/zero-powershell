@@ -8,16 +8,17 @@ schema: 2.0.0
 # Update-ZNSettingsLinuxSetup
 
 ## SYNOPSIS
-Update the linux setup settings in Asset Managment
+Update the linux setup settings in Asset Management
 
 ## SYNTAX
 
 ```
-Update-ZNSettingsLinuxSetup [-AllowInstallPackages] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsLinuxSetup [-AccountName <String>] [-AllowInstallPackages] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update the linux setup settings in Asset Managment
+Update the linux setup settings in Asset Management
 
 ## EXAMPLES
 
@@ -29,6 +30,21 @@ Update-ZNSettingsLinuxSetup -AllowInstallPackages:$false
 This cmdlet updates the AI learning settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AllowInstallPackages
 .

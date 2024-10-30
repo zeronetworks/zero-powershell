@@ -13,8 +13,8 @@ Update Learning Config settings in Network Segmentation
 ## SYNTAX
 
 ```
-Update-ZNSettingsLearningConfig [-AllowQueueForever] [-AllowQuickLearning] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNSettingsLearningConfig [-AccountName <String>] [-AllowQueueForever] [-AllowQuickLearning] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,21 @@ Update-ZNSettingsLearningConfig -AllowQueueForever:$true -AllowQuickLearning:$fa
 This cmdlet updates the AI learning settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AllowQueueForever
 .

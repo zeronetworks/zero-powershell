@@ -13,8 +13,8 @@ Returns a list of destination candidates on outbound MFA policies.
 ## SYNTAX
 
 ```
-Get-ZNGroupsMfaOutboundPoliciesDestinationCandidate -GroupId <String> -GroupType <String> [-Limit <Int32>]
- [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
+Get-ZNGroupsMfaOutboundPoliciesDestinationCandidate -GroupId <String> -GroupType <String>
+ [-AccountName <String>] [-Limit <Int32>] [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,6 +57,21 @@ OT/IoT False               g:o:0E445453 HMIs
 This cmdlet returns possible destination candidates for a MFA policy for a group.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on
@@ -113,7 +128,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -1,0 +1,22 @@
+if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNGroupMemberOfGroupCandidate'))
+{
+  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+  if (-Not (Test-Path -Path $loadEnvPath)) {
+      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+  }
+  . ($loadEnvPath)
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-ZNGroupMemberOfGroupCandidate.Recording.json'
+  $currentPath = $PSScriptRoot
+  while(-not $mockingPath) {
+      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+      $currentPath = Split-Path -Path $currentPath -Parent
+  }
+  . ($mockingPath | Select-Object -First 1).FullName
+}
+
+Describe 'Get-ZNGroupMemberOfGroupCandidate' {
+    It 'Get' {
+        $group = (Get-ZNGroup -Search "Domain Admins" | Select-Object -first 1).Items[0]
+        (Get-ZNGroupMemberOfGroupCandidate -GroupId $group.id -GroupType ad).Count | Should -BeGreaterThan 0
+    }
+}

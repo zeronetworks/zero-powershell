@@ -13,7 +13,8 @@ Set the asset type (Client/server)
 ## SYNTAX
 
 ```
-Update-ZNAssetType -AssetId <String> -Type <Int32> [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNAssetType -AssetId <String> -Type <Int32> [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,21 @@ Update-ZNAssetType -AssetId $asset -Type 1
 This cmdlet updates an asset type to either client or server.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetId
 assetId to filter on

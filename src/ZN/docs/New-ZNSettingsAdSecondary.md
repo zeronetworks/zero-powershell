@@ -8,17 +8,18 @@ schema: 2.0.0
 # New-ZNSettingsAdSecondary
 
 ## SYNOPSIS
-Add a secondary AD settings in Asset Managment
+Add a secondary AD settings in Asset Management
 
 ## SYNTAX
 
 ```
-New-ZNSettingsAdSecondary -ForestId <String> [-SecondaryDomainConfigDomainControllerFqdn <String>]
- [-SecondaryDomainConfigDomainName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-ZNSettingsAdSecondary -ForestId <String> [-AccountName <String>]
+ [-SecondaryDomainConfigDomainControllerFqdn <String>] [-SecondaryDomainConfigDomainName <String>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Add a secondary AD settings in Asset Managment
+Add a secondary AD settings in Asset Management
 
 ## EXAMPLES
 
@@ -31,6 +32,21 @@ New-ZNSettingsAdSecondary -ForestId $$forest.ForestId -Dc dc.child.newforest.loc
 This cmdlet adds a secondary domain in AD settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ForestId
 The forest id

@@ -14,7 +14,8 @@ Returns a list of candidates for the excluded sources of an Identity MFA policy.
 
 ```
 Get-ZNGroupsMfaIdentityPoliciesExcludedSourceCandidate -GroupId <String> -GroupType <String>
- [-IsSrcAssetUnmonitored] [-Limit <Int32>] [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
+ [-AccountName <String>] [-IsSrcAssetUnmonitored] [-Limit <Int32>] [-Offset <Int32>] [-Search <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +47,21 @@ system                   False g:s:29669ce2 Client subnets
 This cmdlet lists excluded sources candidates for Identity MFA.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on
@@ -117,7 +133,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

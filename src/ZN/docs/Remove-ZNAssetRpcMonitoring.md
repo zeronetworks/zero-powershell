@@ -14,12 +14,14 @@ Returns an empty object.
 
 ### Delete (Default)
 ```
-Remove-ZNAssetRpcMonitoring -AssetId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNAssetRpcMonitoring -AssetId <String> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteExpanded
 ```
-Remove-ZNAssetRpcMonitoring -Items <String[]> [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNAssetRpcMonitoring -Items <String[]> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +44,21 @@ Remove-ZNAssetRpcMonitoring -AssetId 'a:a:JZgxbNLi'
 This cmdlet removes an asset to RPC monitoring.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetId
 assetId to filter on

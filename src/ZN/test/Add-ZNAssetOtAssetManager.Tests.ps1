@@ -15,7 +15,7 @@ Describe 'Add-ZNAssetOtAssetManager' {
     It 'AddExpanded' {
         $asset = (Search-ZNAsset -Fqdn switch01).AssetId
         $user = (get-znuser).Items | select -First 1
-        Add-ZNAssetOtAssetManager -AssetId $asset -ManagerIds @($user.Id)
+        Add-ZNAssetOtAssetManager -AssetId $asset -ManagerIds @($user.Id) -Permission 3
         $managedAssets = Get-ZNUsersManagedAsset -UserId $user.Id
         $managedAssets.EntityId | Should -Be $asset
         Remove-ZNAssetOtAssetManager -AssetId $asset -GroupOrUserId $user.Id

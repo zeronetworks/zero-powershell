@@ -13,8 +13,8 @@ Update the Default SSO Application settings in Identity Providers
 ## SYNTAX
 
 ```
-Update-ZNSettingsDefaultApplication [-Application <Int32>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNSettingsDefaultApplication [-AccountName <String>] [-Application <Int32>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ This cmdlet updates the default application setting under Identity Providers.
 1 for Admin portal, 2 for Access portal.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Application
 1-Admin Portal, 2-Access Portal

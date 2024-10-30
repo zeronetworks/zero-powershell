@@ -22,8 +22,8 @@ Describe 'Get-ZNGroupsMfaOutboundPolicy' {
         $sourceUserEntity.Id = $sourceUser.Id
         [string]$dstPort = Get-Random -Minimum 1 -Maximum 65000
         $portsList = New-ZNPortsList -Empty
-        $policy = New-ZNGroupsMfaOutboundPolicy -GroupId $group.id -GroupType tag -AdditionalPortsList $portsList -DstEntityInfoId $group.id -DstPort $dstPort -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1 -OverrideBuiltins:$false
-        { Get-ZNGroupsMfaOutboundPolicy -GroupId $group.id -GroupType tag } | Should -Not -Be $null
+        $policy = New-ZNGroupsMfaOutboundPolicy -GroupId $group.id -GroupType tag -AdditionalPortsList $portsList -DstEntityInfoId $group.id -DstPort $dstPort -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1 -OverrideBuiltins:$false -RestrictLoginToOriginatingUser:$false
+        { Get-ZNGroupsMfaOutboundPolicy -GroupId $group.id -GroupType tag } | Should -Not -BeNullOrEmpty
         Remove-ZNGroupsMfaOutboundPolicy -GroupId $group.id -GroupType tag -ReactivePolicyId $policy.ItemId
         
     }
@@ -38,9 +38,9 @@ Describe 'Get-ZNGroupsMfaOutboundPolicy' {
         $sourceUserEntity.Id = $sourceUser.Id
         [string]$dstPort = Get-Random -Minimum 1 -Maximum 65000
         $portsList = New-ZNPortsList -Empty
-        $policy = New-ZNGroupsMfaOutboundPolicy -GroupId $group.id -GroupType tag -AdditionalPortsList $portsList -DstEntityInfoId $group.id -DstPort $dstPort -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1 -OverrideBuiltins:$false
+        $policy = New-ZNGroupsMfaOutboundPolicy -GroupId $group.id -GroupType tag -AdditionalPortsList $portsList -DstEntityInfoId $group.id -DstPort $dstPort -FallbackToLoggedOnUser -MfaMethods @(4) -ProtocolType 6 -RuleDuration 6 -SrcEntityInfos @($sourceEntity) -SrcProcessNames @("*") -SrcUserInfos @($sourceUserEntity) -State 1 -OverrideBuiltins:$false -RestrictLoginToOriginatingUser:$false
         $policy = Get-ZNGroupsMfaOutboundPolicy -GroupId $group.id -GroupType tag| Select-Object -First 1
-        { (Get-ZNGroupsMfaOutboundPolicy -GroupId $group.id -GroupType tag -ReactivePolicyId $policy.Id).ItemId } | Should -Not -Be $null
+        { (Get-ZNGroupsMfaOutboundPolicy -GroupId $group.id -GroupType tag -ReactivePolicyId $policy.Id).ItemId } | Should -Not -BeNullOrEmpty
         Remove-ZNGroupsMfaOutboundPolicy -GroupId $group.id -GroupType tag -ReactivePolicyId $policy.Id
     }
 }

@@ -16,14 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNAssetIdentityQueue')
 
 Describe 'Invoke-ZNAssetIdentityQueue' {
     It 'QueueExpanded' {
-        $asset = (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
+        $asset = (Search-ZNAsset -Fqdn fs01.posh.local).AssetId
         { Invoke-ZNAssetIdentityQueue -Items @($asset) -QueueDays 14 } | Should -Not -Throw
-        Unprotect-ZNAssetIdentity -Items @($asset)
+        Unprotect-ZNAssetIdentitySegment -Items @($asset)
     }
 
     It 'QueueExpanded1' {
-        $asset = (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
-        { Invoke-ZNAssetIdentityQueue -AssetId $asset -QueueDays 14} | Should -Not -Throw
-        Unprotect-ZNAssetIdentity -Assetid $asset
+        $asset = (Search-ZNAsset -Fqdn fs01.posh.local).AssetId
+        { Invoke-ZNAssetIdentityQueue -AssetId $asset -QueueDays 14 } | Should -Not -Throw
+        Unprotect-ZNAssetIdentitySegment -Assetid $asset
     }
 }

@@ -13,8 +13,8 @@ Get managed assets for group
 ## SYNTAX
 
 ```
-Get-ZNGroupsManagedAsset -GroupId <String> -GroupType <String> [-Limit <Int32>] [-Offset <Int32>]
- [<CommonParameters>]
+Get-ZNGroupsManagedAsset -GroupId <String> -GroupType <String> [-AccountName <String>] [-Limit <Int32>]
+ [-Offset <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +36,21 @@ g:t:01445453 1
 This cmdlet lists managed assets for a group.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on
@@ -92,7 +107,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

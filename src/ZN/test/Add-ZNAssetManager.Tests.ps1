@@ -15,7 +15,7 @@ Describe 'Add-ZNAssetManager' {
     It 'AddExpanded' {
         $asset = (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         $user = (get-znuser).Items | select -First 1
-        Add-ZNAssetManager -AssetId $asset -ManagerIds @($user.Id)
+        Add-ZNAssetManager -AssetId $asset -ManagerIds @($user.Id) -Permission 3
         $managedAssets = Get-ZNUsersManagedAsset -UserId $user.Id
         $managedAssets.EntityId | Should -Be $asset
         Remove-ZNAssetManager -AssetId $asset -GroupOrUserId $user.Id

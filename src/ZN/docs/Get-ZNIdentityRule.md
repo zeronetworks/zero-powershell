@@ -14,13 +14,13 @@ Returns an identity segmentation rule.
 
 ### List (Default)
 ```
-Get-ZNIdentityRule [-AddAncestors] [-AddBuiltins] [-Cursor <String>] [-Filters <String>] [-Limit <Int32>]
- [-Search <String>] [-WithCount] [<CommonParameters>]
+Get-ZNIdentityRule [-AccountName <String>] [-AddAncestors] [-AddBuiltins] [-Cursor <Int64>]
+ [-Filters <String>] [-Limit <Int32>] [-Search <String>] [-WithCount] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-ZNIdentityRule -RuleId <String> [<CommonParameters>]
+Get-ZNIdentityRule -RuleId <String> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,6 +83,21 @@ This cmdlet gets an identity rule.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AddAncestors
 show rules where the asset is part of a group
 
@@ -117,7 +132,7 @@ Accept wildcard characters: False
 cursor position to start at
 
 ```yaml
-Type: System.String
+Type: System.Int64
 Parameter Sets: List
 Aliases:
 
@@ -129,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -Filters
-JSON string URI encoded set of fiters
+JSON string URI encoded set of filters
 
 ```yaml
 Type: System.String

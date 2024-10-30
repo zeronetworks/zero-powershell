@@ -13,7 +13,8 @@ Delete a Connect Region in Settings
 ## SYNTAX
 
 ```
-Remove-ZNSettingsConnectRegion -RegionId <String> [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNSettingsConnectRegion -RegionId <String> [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,21 @@ Remove-ZNSettingsConnectRegion -RegionId $region.Id
 This cmdlet deletes a region for Connect settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PassThru
 Returns true when the command succeeds

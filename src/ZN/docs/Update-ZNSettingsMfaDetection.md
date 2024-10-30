@@ -13,7 +13,8 @@ Returns the properties of the updated MFA detection settings.
 ## SYNTAX
 
 ```
-Update-ZNSettingsMfaDetection -TimeoutMinutes <Int32> [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsMfaDetection -TimeoutMinutes <Int32> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +34,21 @@ Update-ZNMfaDetectionSetting -TimeoutMinutes 5
 This cmdlet updates the MFA detection setting.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -TimeoutMinutes
 access policy cooldown

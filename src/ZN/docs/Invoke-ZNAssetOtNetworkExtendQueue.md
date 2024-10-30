@@ -8,24 +8,24 @@ schema: 2.0.0
 # Invoke-ZNAssetOtNetworkExtendQueue
 
 ## SYNOPSIS
-Returns an empty object.
+Extend OT asset learning
 
 ## SYNTAX
 
 ### QueueExpanded (Default)
 ```
-Invoke-ZNAssetOtNetworkExtendQueue -ExtendByDays <Int32> -Items <String[]> [-RelearnReason <String>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-ZNAssetOtNetworkExtendQueue -AssetId <String> -ExtendByDays <Int32> [-AccountName <String>]
+ [-RelearnReason <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### QueueExpanded1
 ```
-Invoke-ZNAssetOtNetworkExtendQueue -AssetId <String> -ExtendByDays <Int32> [-RelearnReason <String>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-ZNAssetOtNetworkExtendQueue -ExtendByDays <Int32> -Items <String[]> [-AccountName <String>]
+ [-RelearnReason <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns an empty object.
+Extend OT asset learning
 
 ## EXAMPLES
 
@@ -46,12 +46,27 @@ This cmdlet will extend network learning for a specific asset.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AssetId
 assetId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: QueueExpanded1
+Parameter Sets: QueueExpanded
 Aliases:
 
 Required: True
@@ -81,7 +96,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: QueueExpanded
+Parameter Sets: QueueExpanded1
 Aliases:
 
 Required: True

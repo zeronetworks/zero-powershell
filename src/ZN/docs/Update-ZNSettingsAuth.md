@@ -13,7 +13,8 @@ Set the portal security settings
 ## SYNTAX
 
 ```
-Update-ZNSettingsAuth [-PortalTokenTtl <Single>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsAuth [-AccountName <String>] [-PortalTokenTtl <Single>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,21 @@ This cmdlet updates the Portal session timeout setting.
 Use minutes for the PortalTokenTtl
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PassThru
 Returns true when the command succeeds

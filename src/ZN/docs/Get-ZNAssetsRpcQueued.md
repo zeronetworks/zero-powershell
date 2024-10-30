@@ -13,8 +13,8 @@ Returns a list of assets in RPC learning.
 ## SYNTAX
 
 ```
-Get-ZNAssetsRpcQueued [-Cursor <String>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>]
- [-Order <String>] [-OrderColumns <String>] [-WithCount] [<CommonParameters>]
+Get-ZNAssetsRpcQueued [-AccountName <String>] [-Cursor <Int64>] [-Filters <String>] [-Limit <Int32>]
+ [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>] [-WithCount] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,11 +99,26 @@ Use offset to get the next page of Assets in RPC learning.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Cursor
 cursor position to start at
 
 ```yaml
-Type: System.String
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -115,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -Filters
-JSON string URI encoded set of fiters
+JSON string URI encoded set of filters
 
 ```yaml
 Type: System.String
@@ -154,7 +169,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

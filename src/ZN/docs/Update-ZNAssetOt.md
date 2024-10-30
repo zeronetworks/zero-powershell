@@ -13,8 +13,8 @@ Edit an OT/IoT asset.
 ## SYNTAX
 
 ```
-Update-ZNAssetOt -AssetId <String> [-DisplayName <String>] [-Fqdn <String>] [-Type <Single>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-ZNAssetOt -AssetId <String> [-AccountName <String>] [-DisplayName <String>] [-Fqdn <String>]
+ [-Type <Single>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ Update-ZNAssetsOt -AssetId $Id -DisplayName 'NewName' -Type 4
 This cmdlet updates an OT asset.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetId
 assetId to filter on

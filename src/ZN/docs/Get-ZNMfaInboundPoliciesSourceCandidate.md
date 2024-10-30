@@ -13,8 +13,8 @@ Returns a list of source candidates on inbound MFA policies.
 ## SYNTAX
 
 ```
-Get-ZNMfaInboundPoliciesSourceCandidate [-Limit <Int32>] [-Offset <Int32>] [-Search <String>]
- [<CommonParameters>]
+Get-ZNMfaInboundPoliciesSourceCandidate [-AccountName <String>] [-Limit <Int32>] [-Offset <Int32>]
+ [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,6 +69,21 @@ To find a specific candidate use the search parameter with the Name to be search
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Limit
 Limit the return results
 
@@ -94,7 +109,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

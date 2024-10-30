@@ -13,7 +13,8 @@ Revoke a Connect session.
 ## SYNTAX
 
 ```
-Revoke-ZNSession -SessionId <String> [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Revoke-ZNSession -SessionId <String> [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +30,21 @@ Revoke-ZNSession -SessionId s:a:YQmFrXJx
 This cmdlet revokes a Connect session.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PassThru
 Returns true when the command succeeds

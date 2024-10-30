@@ -13,8 +13,8 @@ Returns a list of candidates for user access config allowed regions.
 ## SYNTAX
 
 ```
-Get-ZNSettingsConnectUserAccessConfigAllowedRegionsCandidate [-Limit <Int32>] [-Offset <Int32>]
- [-Search <String>] [<CommonParameters>]
+Get-ZNSettingsConnectUserAccessConfigAllowedRegionsCandidate [-AccountName <String>] [-Limit <Int32>]
+ [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +38,21 @@ ConnectivityStateAfterReboot CreatedAt     Description ForceSsoAuthentication Id
 This cmdlet returns the possible candidates for allowed regions in the user access configurations.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Limit
 Limit the return results
@@ -64,7 +79,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

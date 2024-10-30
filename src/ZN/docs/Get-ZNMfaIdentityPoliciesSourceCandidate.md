@@ -13,8 +13,8 @@ Returns a list of source candidates on Identity MFA policies.
 ## SYNTAX
 
 ```
-Get-ZNMfaIdentityPoliciesSourceCandidate [-Limit <Int32>] [-Offset <Int32>] [-Search <String>]
- [<CommonParameters>]
+Get-ZNMfaIdentityPoliciesSourceCandidate [-AccountName <String>] [-Limit <Int32>] [-Offset <Int32>]
+ [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +46,21 @@ This cmdlet gets source candidates for Identity MFA.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Limit
 Limit the return results
 
@@ -71,7 +86,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -14,12 +14,12 @@ Returns an empty object.
 
 ### Add (Default)
 ```
-Add-ZNAssetRpcMonitoring -AssetId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-ZNAssetRpcMonitoring -AssetId <String> [-AccountName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddExpanded
 ```
-Add-ZNAssetRpcMonitoring -Items <String[]> [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-ZNAssetRpcMonitoring -Items <String[]> [-AccountName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +42,21 @@ Add-ZNAssetRpcMonitoring -AssetId 'a:a:JZgxbNLi'
 This cmdlet adds an asset to RPC monitoring.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetId
 assetId to filter on

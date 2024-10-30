@@ -13,8 +13,8 @@ Returns a list of protection candidates for an AD forest.
 ## SYNTAX
 
 ```
-Get-ZNSettingsAdProtectedCandidate -ForestId <String> [-Cursor <String>] [-Limit <Int32>] [-Search <String>]
- [<CommonParameters>]
+Get-ZNSettingsAdProtectedCandidate -ForestId <String> [-AccountName <String>] [-Cursor <Int64>]
+ [-Limit <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,11 +47,26 @@ This cmdlet lists possible candidates for protected control in Active Directory 
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Cursor
 cursor position to start at
 
 ```yaml
-Type: System.String
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 

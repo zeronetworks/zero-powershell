@@ -14,12 +14,14 @@ Returns and empty object.
 
 ### SetExpanded (Default)
 ```
-Update-ZNAssetInactive -Items <String[]> [-Comment <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNAssetInactive -AssetId <String> [-AccountName <String>] [-Comment <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SetExpanded1
 ```
-Update-ZNAssetInactive -AssetId <String> [-Comment <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNAssetInactive -Items <String[]> [-AccountName <String>] [-Comment <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,12 +45,27 @@ This cmdlet updates an active assets to mark it inactive.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AssetId
 assetId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded1
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -78,7 +95,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded1
 Aliases:
 
 Required: True

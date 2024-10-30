@@ -13,7 +13,7 @@ Resync Azure AD
 ## SYNTAX
 
 ```
-Invoke-ZNResyncAzureAd [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-ZNResyncAzureAd [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +29,21 @@ Invoke-ZNResyncAzureAd
 This cmdlet starts an Azure AD resync.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PassThru
 Returns true when the command succeeds

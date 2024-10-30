@@ -13,8 +13,8 @@ Returns a list of user candidates for RPC rules.
 ## SYNTAX
 
 ```
-Get-ZNGroupsRpcRulesUserCandidate -GroupId <String> -GroupType <String> [-Limit <Int32>] [-Offset <Int32>]
- [-Search <String>] [<CommonParameters>]
+Get-ZNGroupsRpcRulesUserCandidate -GroupId <String> -GroupType <String> [-AccountName <String>]
+ [-Limit <Int32>] [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +56,21 @@ u:a:JnQxZS6j nicholas-ad                             nicholas+poshprd@zeronetwor
 This cmdlet gets the possible user candidates for a rpc rule for a specific group.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on
@@ -112,7 +127,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -8,22 +8,24 @@ schema: 2.0.0
 # Invoke-ZNAssetNetworkQueue
 
 ## SYNOPSIS
-Returns and empty object.
+Extend asset learning
 
 ## SYNTAX
 
 ### QueueExpanded (Default)
 ```
-Invoke-ZNAssetNetworkQueue -Items <String[]> -QueueDays <Int32> [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-ZNAssetNetworkQueue -AssetId <String> -QueueDays <Int32> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### QueueExpanded1
 ```
-Invoke-ZNAssetNetworkQueue -AssetId <String> -QueueDays <Int32> [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-ZNAssetNetworkQueue -Items <String[]> -QueueDays <Int32> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns and empty object.
+Extend asset learning
 
 ## EXAMPLES
 
@@ -44,12 +46,27 @@ This cmdlet will enable network learning for a specific asset.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AssetId
 assetId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: QueueExpanded1
+Parameter Sets: QueueExpanded
 Aliases:
 
 Required: True
@@ -64,7 +81,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: QueueExpanded
+Parameter Sets: QueueExpanded1
 Aliases:
 
 Required: True

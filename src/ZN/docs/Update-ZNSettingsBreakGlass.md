@@ -13,9 +13,9 @@ Update break glass settings
 ## SYNTAX
 
 ```
-Update-ZNSettingsBreakGlass [-AgentConfigAllowIdentity] [-AgentConfigAllowInbound] [-AgentConfigAllowOutbound]
- [-TrustConfigAllowIdentity] [-TrustConfigAllowInbound] [-TrustConfigAllowOutbound] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsBreakGlass [-AccountName <String>] [-AgentConfigAllowIdentity] [-AgentConfigAllowInbound]
+ [-AgentConfigAllowOutbound] [-TrustConfigAllowIdentity] [-TrustConfigAllowInbound]
+ [-TrustConfigAllowOutbound] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ Update-ZNSettingsBreakGlass -AgentConfigAllowIdentity -AgentConfigAllowInbound -
 This cmdlet updates the cloud break glass settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AgentConfigAllowIdentity
 .

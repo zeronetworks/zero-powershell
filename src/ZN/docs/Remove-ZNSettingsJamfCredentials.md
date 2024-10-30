@@ -13,7 +13,7 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Remove-ZNSettingsJamfCredentials [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNSettingsJamfCredentials [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +29,21 @@ Remove-ZNSettingsJamfCredentials
 This cmdlet deletes a JAMF settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PassThru
 Returns true when the command succeeds

@@ -13,8 +13,8 @@ Returns he properties of ignored rules for anti-tampering Firewall settings.
 ## SYNTAX
 
 ```
-Update-ZNSettingsFirewallIgnoredRule [-InboundList <String[]>] [-OutboundList <String[]>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNSettingsFirewallIgnoredRule [-AccountName <String>] [-InboundList <String[]>]
+ [-OutboundList <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +37,21 @@ InboundList OutboundList
 This cmdlet updates the rules to ignore for Antitampering.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InboundList
 .

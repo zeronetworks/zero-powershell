@@ -13,8 +13,8 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Update-ZNSettingsMfaAuthentication -IsRequiresAuth -IsSsoForceAuth -TokenTtl <Int32> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNSettingsMfaAuthentication -IsRequiresAuth -IsSsoForceAuth -TokenTtl <Int32> [-AccountName <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,8 +32,23 @@ This cmdlet updates the MFA Authentication setting.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IsRequiresAuth
-Authentication Reqiured
+Authentication Required
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -63,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -TokenTtl
-Token time to tive in minutes
+Token time to live in minutes
 
 ```yaml
 Type: System.Int32

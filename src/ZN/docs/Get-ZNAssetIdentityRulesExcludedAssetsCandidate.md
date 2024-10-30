@@ -13,8 +13,8 @@ Returns a list of excluded assets candidates for Identity rules.
 ## SYNTAX
 
 ```
-Get-ZNAssetIdentityRulesExcludedAssetsCandidate -AssetId <String> [-Limit <Int32>] [-Offset <Int32>]
- [-Search <String>] [<CommonParameters>]
+Get-ZNAssetIdentityRulesExcludedAssetsCandidate -AssetId <String> [-AccountName <String>] [-Limit <Int32>]
+ [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +50,21 @@ g:c:gZryzkFa      cgroup35
 This cmdlet lists excluded asset candidates for identity rules for a specific asset.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetId
 assetId to filter on
@@ -91,7 +106,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -13,8 +13,8 @@ Add an asset manager of asset
 ## SYNTAX
 
 ```
-Add-ZNAssetManager -AssetId <String> -ManagerIds <String[]> [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Add-ZNAssetManager -AssetId <String> -ManagerIds <String[]> -Permission <Int32> [-AccountName <String>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +32,21 @@ Add-ZNAssetManager -AssetId $asset -ManagerIds @($user.Id)
 This cmdlet adds an asset manager to an asset.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetId
 assetId to filter on
@@ -72,6 +87,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Permission
+2 - Viewer, 3 - Manager
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

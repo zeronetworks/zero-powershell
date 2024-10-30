@@ -13,8 +13,8 @@ Update Connect Server in Settings
 ## SYNTAX
 
 ```
-Update-ZNSettingsConnectServer -ConnectServerId <String> [-PublicPort <String>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNSettingsConnectServer -ConnectServerId <String> [-AccountName <String>] [-PublicPort <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ Update-ZNSettingsConnectServer -ConnectServerId $server.Id -PublicPort 53000
 This cmdlet updates a Connect server.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ConnectServerId
 connect server id

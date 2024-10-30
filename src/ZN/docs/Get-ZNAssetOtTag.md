@@ -13,7 +13,7 @@ Returns a list of tags for an entity.
 ## SYNTAX
 
 ```
-Get-ZNAssetOtTag -AssetId <String> [<CommonParameters>]
+Get-ZNAssetOtTag -AssetId <String> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +37,21 @@ g:t:30445453 Offensive Cyber tools Includes offensive cyber tools in the environ
 This cmdlet lists tags for an OT asset.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetId
 assetId to filter on

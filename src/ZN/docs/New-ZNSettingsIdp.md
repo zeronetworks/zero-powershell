@@ -13,8 +13,8 @@ Create an identity provider settings in Identity Providers
 ## SYNTAX
 
 ```
-New-ZNSettingsIdp [-Certificate <String>] [-IdentityProvider <String>] [-IsDefault] [-SloUrl <String>]
- [-SsoUrl <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-ZNSettingsIdp [-AccountName <String>] [-Certificate <String>] [-IdentityProvider <String>] [-IsDefault]
+ [-SloUrl <String>] [-SsoUrl <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,21 @@ New-ZNSettingsIdp -Certificate "certificatestring" -IdentityProvider azure -IsDe
 This cmdlet create an Idp Setting.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Certificate
 Identity Provider certificate

@@ -14,13 +14,14 @@ Returns a Identity MFA policy object.
 
 ### List (Default)
 ```
-Get-ZNMfaIdentityPolicy [-AddAncestors] [-AddBuiltins] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>]
- [-Order <String>] [-OrderColumns <String>] [-WithCount] [<CommonParameters>]
+Get-ZNMfaIdentityPolicy [-AccountName <String>] [-AddAncestors] [-AddBuiltins] [-Filters <String>]
+ [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>] [-WithCount]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-ZNMfaIdentityPolicy -ReactivePolicyId <String> [<CommonParameters>]
+Get-ZNMfaIdentityPolicy -ReactivePolicyId <String> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,6 +109,21 @@ This cmdlet gets an Identity MFA policy.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AddAncestors
 show rules where the asset is part of a group
 
@@ -139,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -Filters
-JSON string URI encoded set of fiters
+JSON string URI encoded set of filters
 
 ```yaml
 Type: System.String
@@ -178,7 +194,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -14,8 +14,9 @@ Returns a the identity segmentation rule.
 
 ```
 New-ZNAssetIdentityRule -AssetId <String> -Action <Int32> -AssetId1 <String>
- -IdentityProtectionCategoryList <Int32[]> -State <Int32> -UserIdsList <String[]> [-Description <String>]
- [-ExcludedAssetIdsList <String[]>] [-ExpiresAt <Int64>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -IdentityProtectionCategoryList <Int32[]> -State <Int32> -UserIdsList <String[]> [-AccountName <String>]
+ [-Description <String>] [-ExcludedAssetIdsList <String[]>] [-ExpiresAt <Int64>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +33,21 @@ New-ZNAssetIdentityRule -AssetId $asset -Action 1 -AssetId1 $asset -Description 
 This cmdlet creates an identity rule.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Action
 1 - Allow, 2 - Block

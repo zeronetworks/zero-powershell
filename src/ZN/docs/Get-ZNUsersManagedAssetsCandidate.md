@@ -13,8 +13,8 @@ Get asset candidates to be managed by asset managers
 ## SYNTAX
 
 ```
-Get-ZNUsersManagedAssetsCandidate -UserId <String> [-Limit <Int32>] [-Offset <Int32>] [-Search <String>]
- [<CommonParameters>]
+Get-ZNUsersManagedAssetsCandidate -UserId <String> [-AccountName <String>] [-Limit <Int32>] [-Offset <Int32>]
+ [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +56,21 @@ This cmdlet lists possible candidates for managed assets for a specific user.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Limit
 Limit the return results
 
@@ -81,7 +96,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

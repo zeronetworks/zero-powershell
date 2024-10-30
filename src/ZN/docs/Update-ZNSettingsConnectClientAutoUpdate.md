@@ -13,8 +13,8 @@ Set Connect client auto update settings
 ## SYNTAX
 
 ```
-Update-ZNSettingsConnectClientAutoUpdate [-ClientAutoUpdate] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNSettingsConnectClientAutoUpdate [-AccountName <String>] [-ClientAutoUpdate] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,21 @@ Update-ZNSettingsConnectClientAutoUpdate -ClientAutoUpdate:$true
 This cmdlet updates the setting for Connect client auto updates.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ClientAutoUpdate
 .

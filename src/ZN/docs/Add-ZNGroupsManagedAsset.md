@@ -13,8 +13,8 @@ Add a managed assets for group
 ## SYNTAX
 
 ```
-Add-ZNGroupsManagedAsset -GroupId <String> -GroupType <String> [-EntityIds <String[]>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Add-ZNGroupsManagedAsset -GroupId <String> -GroupType <String> [-AccountName <String>] [-EntityIds <String[]>]
+ [-Permission <Int32>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ This cmdlet adds a managed asset to a group.
 A managed asset can be a group or asset.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -EntityIds
 managed asset ids
@@ -82,6 +97,21 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Permission
+.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
