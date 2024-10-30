@@ -16,8 +16,9 @@ Returns the properties of the identity MFA policy after creation.
 New-ZNGroupsMfaIdentityPolicy -GroupId <String> -GroupType <String> -DstAssetId <String>
  -FallbackToSingleLoggedOnUser -IdentityProtectionCategoryList <Int32[]> -MfaMethodsList <Int32[]>
  -OverrideBuiltins -RuleDuration <Int32> -SrcAssetIdsList <String[]> -SrcUserIdsList <String[]> -State <Int32>
- [-Description <String>] [-ExcludedDstAssetIdsList <String[]>] [-ExcludedSrcAssetIdsList <String[]>]
- [-ExtraIdentityProtectionCategoryList <Int32[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AccountName <String>] [-Description <String>] [-ExcludedDstAssetIdsList <String[]>]
+ [-ExcludedSrcAssetIdsList <String[]>] [-ExtraIdentityProtectionCategoryList <Int32[]>]
+ [-RestrictLoginToOriginatingUser] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,6 +69,21 @@ UpdatedByName                           :
 This cmdlet creates an identity MFA policy.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Description
 .
@@ -228,6 +244,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestrictLoginToOriginatingUser
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

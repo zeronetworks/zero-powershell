@@ -8,18 +8,18 @@ schema: 2.0.0
 # Update-ZNSettingsAdSecondary
 
 ## SYNOPSIS
-Update a secondary AD settings in Asset Managment
+Update a secondary AD settings in Asset Management
 
 ## SYNTAX
 
 ```
-Update-ZNSettingsAdSecondary -DomainId <String> -ForestId <String>
+Update-ZNSettingsAdSecondary -DomainId <String> -ForestId <String> [-AccountName <String>]
  [-SecondaryDomainConfigDomainControllerFqdn <String>] [-SecondaryDomainConfigDomainName <String>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a secondary AD settings in Asset Managment
+Update a secondary AD settings in Asset Management
 
 ## EXAMPLES
 
@@ -32,6 +32,21 @@ Update-ZNSettingsAdSecondary -forest $forest.ForestId -DomainId child.test.local
 This cmdlet updates the settings for a Secondary domain in AD settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DomainId
 The fqdn of the domain

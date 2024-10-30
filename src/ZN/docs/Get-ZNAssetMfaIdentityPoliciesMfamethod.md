@@ -13,7 +13,7 @@ Returns a list of MFA methods for Identity MFA policies.
 ## SYNTAX
 
 ```
-Get-ZNAssetMfaIdentityPoliciesMfamethod -AssetId <String> [<CommonParameters>]
+Get-ZNAssetMfaIdentityPoliciesMfamethod -AssetId <String> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +36,21 @@ Get-ZNAssetMfaIdentityPoliciesMfamethod -AssetId $asset.AssetId
 This cmdlet lists MFA methods for Identity MFA.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetId
 assetId to filter on

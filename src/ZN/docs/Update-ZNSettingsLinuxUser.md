@@ -8,17 +8,17 @@ schema: 2.0.0
 # Update-ZNSettingsLinuxUser
 
 ## SYNOPSIS
-Update the linux user settings in Asset Managment
+Update the linux user settings in Asset Management
 
 ## SYNTAX
 
 ```
-Update-ZNSettingsLinuxUser [-Password <String>] [-PrivateKey <String>] [-Username <String>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsLinuxUser [-AccountName <String>] [-Password <String>] [-PrivateKey <String>]
+ [-Username <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update the linux user settings in Asset Managment
+Update the linux user settings in Asset Management
 
 ## EXAMPLES
 
@@ -30,6 +30,21 @@ Update-ZNLinuxUserSetting -Username zn-admin -Password "NewPassword" -PrivateKey
 This cmdlet updates the Linux user setting under Asset Management.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Password
 password for the linux user

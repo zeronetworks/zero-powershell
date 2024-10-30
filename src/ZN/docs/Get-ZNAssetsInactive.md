@@ -13,8 +13,8 @@ Returns a list of assets that are inactive.
 ## SYNTAX
 
 ```
-Get-ZNAssetsInactive [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>]
- [-OrderColumns <String>] [-ShowInactive] [-WithCount] [<CommonParameters>]
+Get-ZNAssetsInactive [-AccountName <String>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>]
+ [-Order <String>] [-OrderColumns <String>] [-ShowInactive] [-WithCount] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,8 +46,23 @@ Use offset to get the next page of inactive Assets.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Filters
-JSON string URI encoded set of fiters
+JSON string URI encoded set of filters
 
 ```yaml
 Type: System.String
@@ -86,7 +101,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

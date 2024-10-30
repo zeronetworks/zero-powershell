@@ -13,8 +13,8 @@ Returns a list of source candidates on inbound MFA policies.
 ## SYNTAX
 
 ```
-Get-ZNAssetMfaInboundPoliciesSourceCandidate -AssetId <String> [-Limit <Int32>] [-Offset <Int32>]
- [-Search <String>] [<CommonParameters>]
+Get-ZNAssetMfaInboundPoliciesSourceCandidate -AssetId <String> [-AccountName <String>] [-Limit <Int32>]
+ [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +60,21 @@ This cmdlet lists the source candidates for an inbound MFA policy for a specific
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AssetId
 assetId to filter on
 
@@ -100,7 +115,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

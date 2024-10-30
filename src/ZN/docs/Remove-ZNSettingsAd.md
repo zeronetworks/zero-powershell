@@ -13,7 +13,7 @@ Delete AD forest settings.
 ## SYNTAX
 
 ```
-Remove-ZNSettingsAd -ForestId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNSettingsAd -ForestId <String> [-AccountName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,21 @@ Remove-ZNSettingsAd -ForestId $forest.ForestId
 This cmdlet deletes a forest from AD settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ForestId
 The forest id

@@ -13,7 +13,7 @@ List listening ports of an asset
 ## SYNTAX
 
 ```
-Get-ZNAssetListeningPort -AssetId <String> [<CommonParameters>]
+Get-ZNAssetListeningPort -AssetId <String> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +53,21 @@ ProcessId ProcessName                                               Username
 This cmdlet lists the listening ports for an asset.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetId
 assetId to filter on

@@ -13,8 +13,8 @@ Set AI network exclusion for servers: lists of tcp/udp ports / ports ranges + bo
 ## SYNTAX
 
 ```
-Update-ZNAiExclusionNetworkServer [-Icmp] [-ProcessesList <String[]>] [-TcpPorts <String>]
- [-UdpPorts <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNAiExclusionNetworkServer [-AccountName <String>] [-Icmp] [-ProcessesList <String[]>]
+ [-TcpPorts <String>] [-UdpPorts <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +50,21 @@ True {}            443
 Use exisitng settings to update or add ports or processes.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Icmp
 .

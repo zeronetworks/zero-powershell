@@ -13,8 +13,8 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-New-ZNCustomGroup -Name <String> [-Description <String>] [-MembersId <String[]>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-ZNCustomGroup -Name <String> [-AccountName <String>] [-Description <String>] [-MembersId <String[]>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ This cmdlet will create a new customer group in the environment.
 The MembersId is an array of assetIds to add to the group.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Description
 .

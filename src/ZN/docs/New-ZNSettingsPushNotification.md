@@ -14,8 +14,8 @@ Create an push notifications settings
 
 ### CreateExpanded (Default)
 ```
-New-ZNSettingsPushNotification -PushIdentityProviderId <String> [-Host1 <String>] [-Id <String>]
- [-IdentityProvider <String>] [-SecretKey <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-ZNSettingsPushNotification -PushIdentityProviderId <String> [-AccountName <String>] [-Host <String>]
+ [-Id <String>] [-IdentityProvider <String>] [-SecretKey <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateDuo
@@ -51,6 +51,21 @@ This cmdlet creates a Duo push notifications settings.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ApiHostname
 Api Hostname
 
@@ -66,7 +81,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Host1
+### -Host
 empty for microsoftAuthentictor
 
 ```yaml
@@ -213,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsPushNotificaitions
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsPushNotifications
 
 ## NOTES
 

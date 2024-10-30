@@ -13,8 +13,8 @@ Set Privileged Ports settings in Network segmentation
 ## SYNTAX
 
 ```
-Update-ZNSettingsPrivilegedPort [-TcpPorts <String>] [-UdpPorts <String>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNSettingsPrivilegedPort [-AccountName <String>] [-TcpPorts <String>] [-UdpPorts <String>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +37,21 @@ ItemTcpPorts                  ItemUdpPorts
 This cmdlet updates privileged port settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PassThru
 Returns true when the command succeeds

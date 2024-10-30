@@ -13,8 +13,8 @@ Returns a list of candidates for the destination of an identity MFA policy.
 ## SYNTAX
 
 ```
-Get-ZNAssetMfaIdentityPoliciesDestinationCandidate -AssetId <String> [-Limit <Int32>] [-Offset <Int32>]
- [-Search <String>] [<CommonParameters>]
+Get-ZNAssetMfaIdentityPoliciesDestinationCandidate -AssetId <String> [-AccountName <String>] [-Limit <Int32>]
+ [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,6 +49,21 @@ posh.local False               g:a:leHDIXAw Cloneable Domain Controllers
 This cmdlet lists destination candidates for Identity MFA.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetId
 assetId to filter on
@@ -90,7 +105,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -13,8 +13,8 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Remove-ZNUserIdentityRule -RuleId <String> -UserId <String> [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-ZNUserIdentityRule -RuleId <String> -UserId <String> [-AccountName <String>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ Remove-ZNUserIdentityRule -UserId $user -RuleId 724697fa-2db4-4330-b3f0-b157d2e2
 This cmdlet deletes an identity rule.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PassThru
 Returns true when the command succeeds

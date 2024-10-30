@@ -13,7 +13,8 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Remove-ZNRpcRule -RuleId <String> [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNRpcRule -RuleId <String> [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +30,21 @@ Remove-ZNRpcRule -RuleId '9d607d06-73cf-4ab6-a9dc-0ccf72e146f3'
 This cmdlet removes a RPC rule.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PassThru
 Returns true when the command succeeds

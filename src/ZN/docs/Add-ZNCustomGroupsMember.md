@@ -13,7 +13,8 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Add-ZNCustomGroupsMember -GroupId <String> -MembersId <String[]> [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-ZNCustomGroupsMember -GroupId <String> -MembersId <String[]> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,21 @@ Add-ZNCustomGroupsMember -GroupId $cgroup.Id -MembersId (Search-ZNAsset -Fqdn dc
 This cmdlet adds a member to the custom group in the environment.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on

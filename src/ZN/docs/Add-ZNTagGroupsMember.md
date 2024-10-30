@@ -13,8 +13,8 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Add-ZNTagGroupsMember -GroupId <String> -MembersId <String[]> [-Comment <String>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Add-ZNTagGroupsMember -GroupId <String> -MembersId <String[]> [-AccountName <String>] [-Comment <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +32,21 @@ Add-ZNTagGroupsMember -GroupId $tagGroup.id -MembersId @($asset)
 This cmdlet adds members to a tag group.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Comment
 .

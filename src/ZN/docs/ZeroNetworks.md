@@ -20,9 +20,6 @@ Add an asset manager of asset
 ### [Add-ZNAssetRpcMonitoring](Add-ZNAssetRpcMonitoring.md)
 Returns an empty object.
 
-### [Add-ZNAssetRpcSegment](Add-ZNAssetRpcSegment.md)
-Returns and empty object.
-
 ### [Add-ZNCustomGroupsMember](Add-ZNCustomGroupsMember.md)
 Returns an empty object.
 
@@ -68,6 +65,15 @@ Reject a "pending review" rule
 ### [Disconnect-ZN](Disconnect-ZN.md)
 Logout of Zero Networks
 
+### [Enable-ZNAssetQuarantine](Enable-ZNAssetQuarantine.md)
+Returns an empty object.
+
+### [Get-ZNAeExclusionsInbound](Get-ZNAeExclusionsInbound.md)
+Returns a list of AE exclusions.
+
+### [Get-ZNAeExclusionsOutbound](Get-ZNAeExclusionsOutbound.md)
+Returns a list of AE exclusions.
+
 ### [Get-ZNAiExclusionNetworkBoth](Get-ZNAiExclusionNetworkBoth.md)
 Get AI network exclusion for clients and servers: lists of tcp/udp ports / ports ranges + boolean for icmp protocol, and a list of processes to ignore during learning.
 
@@ -98,6 +104,18 @@ Returns a list of audits for the asset.
 ### [Get-ZNAssetClusterInfo](Get-ZNAssetClusterInfo.md)
 Returns an object of cluster name and cluster members
 
+### [Get-ZNAssetExternalAccessPolicy](Get-ZNAssetExternalAccessPolicy.md)
+Returns an external access policy.
+
+### [Get-ZNAssetExternalAccessPolicyDestinationAssetsCandidate](Get-ZNAssetExternalAccessPolicyDestinationAssetsCandidate.md)
+Returns a list of destunation assets candidates for an external access policy.
+
+### [Get-ZNAssetExternalAccessPolicySourceUserCandidate](Get-ZNAssetExternalAccessPolicySourceUserCandidate.md)
+Returns a list of source user candidates for external access policies.
+
+### [Get-ZNAssetExternalAccessPolicyStatistics](Get-ZNAssetExternalAccessPolicyStatistics.md)
+Returns statistics for an external access policy.
+
 ### [Get-ZNAssetHealthState](Get-ZNAssetHealthState.md)
 Get asset health state
 
@@ -117,10 +135,10 @@ Returns a list of user candidates for Identity rules.
 Returns the properties of an Inbound rule.
 
 ### [Get-ZNAssetInboundRulesDestinationCandidate](Get-ZNAssetInboundRulesDestinationCandidate.md)
-Returns a list of destionation candidates for Inbound rules.
+Returns a list of destination candidates for Inbound rules.
 
 ### [Get-ZNAssetInboundRulesExcludedDestinationCandidate](Get-ZNAssetInboundRulesExcludedDestinationCandidate.md)
-Returns a list of excluded destionation candidates for Inbound rules.
+Returns a list of excluded destination candidates for Inbound rules.
 
 ### [Get-ZNAssetInboundRulesSourceCandidate](Get-ZNAssetInboundRulesSourceCandidate.md)
 Returns a list of source candidates for Inbound rules.
@@ -136,6 +154,9 @@ Get manager candidates for asset managers
 
 ### [Get-ZNAssetMemberOf](Get-ZNAssetMemberOf.md)
 Returns a list of groups the asset is a member of.
+
+### [Get-ZNAssetMemberOfGroupCandidate](Get-ZNAssetMemberOfGroupCandidate.md)
+Returns a list of groups the asset can be a member of.
 
 ### [Get-ZNAssetMfaIdentityPoliciesDestinationCandidate](Get-ZNAssetMfaIdentityPoliciesDestinationCandidate.md)
 Returns a list of candidates for the destination of an identity MFA policy.
@@ -156,7 +177,7 @@ Returns a list of source user candidates for Identity MFA policies.
 Returns a Identity MFA policy object.
 
 ### [Get-ZNAssetMfaInboundPoliciesDestinationCandidate](Get-ZNAssetMfaInboundPoliciesDestinationCandidate.md)
-Returns a list of candidates for the destionation of an inbound MFA policy.
+Returns a list of candidates for the destination of an inbound MFA policy.
 
 ### [Get-ZNAssetMfaInboundPoliciesExcludedSourceCandidate](Get-ZNAssetMfaInboundPoliciesExcludedSourceCandidate.md)
 Returns a list of candidates for the excluded sources of an inbound MFA policy.
@@ -206,6 +227,9 @@ Returns a list of audits for the asset.
 ### [Get-ZNAssetOtMemberOf](Get-ZNAssetOtMemberOf.md)
 Returns a list of groups the asset is a member of.
 
+### [Get-ZNAssetOtMemberOfGroupCandidate](Get-ZNAssetOtMemberOfGroupCandidate.md)
+Returns a list of groups the asset can be a member of.
+
 ### [Get-ZNAssetOtTag](Get-ZNAssetOtTag.md)
 Returns a list of tags for an entity.
 
@@ -221,14 +245,20 @@ Returns a list of excluded source candidates for Outbound rules.
 ### [Get-ZNAssetOutboundRulesSourceCandidate](Get-ZNAssetOutboundRulesSourceCandidate.md)
 Returns a list of source candidates for Outbound rules.
 
+### [Get-ZNAssetOutboundRulesUserCandidate](Get-ZNAssetOutboundRulesUserCandidate.md)
+Returns a list of users candidates for Outbound rules.
+
+### [Get-ZNAssetPreferredSegmentServer](Get-ZNAssetPreferredSegmentServer.md)
+Returns the preferred segment server id.
+
 ### [Get-ZNAssetRpcRule](Get-ZNAssetRpcRule.md)
 Returns the properties of an RPC rule.
 
 ### [Get-ZNAssetRpcRulesDestinationCandidate](Get-ZNAssetRpcRulesDestinationCandidate.md)
-Returns a list of destionation candidates for RPC rules.
+Returns a list of destination candidates for RPC rules.
 
 ### [Get-ZNAssetRpcRulesExcludedDestinationCandidate](Get-ZNAssetRpcRulesExcludedDestinationCandidate.md)
-Returns a list of excluded destionation candidates for RPC rules.
+Returns a list of excluded destination candidates for RPC rules.
 
 ### [Get-ZNAssetRpcRulesSourceCandidate](Get-ZNAssetRpcRulesSourceCandidate.md)
 Returns a list of source candidates for RPC rules.
@@ -243,7 +273,7 @@ Returns an object with rules distribution.
 Returns a list of assets that are identity learning.
 
 ### [Get-ZNAssetsIdentitySegmented](Get-ZNAssetsIdentitySegmented.md)
-Returns a list of assets that are identity segmentated.
+Returns a list of assets that are identity segmented.
 
 ### [Get-ZNAssetsInactive](Get-ZNAssetsInactive.md)
 Returns a list of assets that are inactive.
@@ -254,11 +284,11 @@ Returns a list of assets that are monitored.
 ### [Get-ZNAssetsNetworkQueued](Get-ZNAssetsNetworkQueued.md)
 Returns a list of assets in network learning.
 
+### [Get-ZNAssetsNetworkSegmented](Get-ZNAssetsNetworkSegmented.md)
+Returns a list of Protected assets.
+
 ### [Get-ZNAssetsOt](Get-ZNAssetsOt.md)
 Returns a list of OT/IoT assets.
-
-### [Get-ZNAssetsProtected](Get-ZNAssetsProtected.md)
-Returns a list of Protected assets.
 
 ### [Get-ZNAssetsRpcMonitored](Get-ZNAssetsRpcMonitored.md)
 Returns a list of assets that are RPC monitored.
@@ -284,6 +314,18 @@ Returns a list of audit events.
 ### [Get-ZNCustomGroupsCandidate](Get-ZNCustomGroupsCandidate.md)
 Returns a list of candidates for custom group membership.
 
+### [Get-ZNExternalAccessPolicy](Get-ZNExternalAccessPolicy.md)
+Returns an external access policy.
+
+### [Get-ZNExternalAccessPolicyDestinationAssetsCandidate](Get-ZNExternalAccessPolicyDestinationAssetsCandidate.md)
+Returns a list of destunation assets candidates for an external access policy.
+
+### [Get-ZNExternalAccessPolicySourceUserCandidate](Get-ZNExternalAccessPolicySourceUserCandidate.md)
+Returns a list of source user candidates for external access policies.
+
+### [Get-ZNExternalAccessPolicyStatistics](Get-ZNExternalAccessPolicyStatistics.md)
+Returns statistics for an external access policy.
+
 ### [Get-ZNGroup](Get-ZNGroup.md)
 Returns the properties of an group.
 
@@ -292,6 +334,9 @@ Returns a list of audits for the group.
 
 ### [Get-ZNGroupMemberOf](Get-ZNGroupMemberOf.md)
 Returns a list of groups the group is a member of.
+
+### [Get-ZNGroupMemberOfGroupCandidate](Get-ZNGroupMemberOfGroupCandidate.md)
+Returns a list of groups the asset can be a member of.
 
 ### [Get-ZNGroupsAssetManager](Get-ZNGroupsAssetManager.md)
 Get asset managers of group
@@ -302,6 +347,18 @@ Get manager candidates for group managers
 ### [Get-ZNGroupsByType](Get-ZNGroupsByType.md)
 Returns a list of groups.
 Pass the returned 'nextCursor' as the '_cursor' query param of the next request for batches, when the '_offset' param is not used.
+
+### [Get-ZNGroupsExternalAccessPolicy](Get-ZNGroupsExternalAccessPolicy.md)
+Returns an external access policy.
+
+### [Get-ZNGroupsExternalAccessPolicyDestinationAssetsCandidate](Get-ZNGroupsExternalAccessPolicyDestinationAssetsCandidate.md)
+Returns a list of destunation assets candidates for an external access policy.
+
+### [Get-ZNGroupsExternalAccessPolicySourceUserCandidate](Get-ZNGroupsExternalAccessPolicySourceUserCandidate.md)
+Returns a list of source user candidates for external access policies.
+
+### [Get-ZNGroupsExternalAccessPolicyStatistics](Get-ZNGroupsExternalAccessPolicyStatistics.md)
+Returns statistics for an external access policy.
 
 ### [Get-ZNGroupsIdentityRule](Get-ZNGroupsIdentityRule.md)
 Returns an identity segmentation rule.
@@ -319,10 +376,10 @@ Returns a list of user candidates for Identity rules.
 Returns the properties of an Inbound rule.
 
 ### [Get-ZNGroupsInboundRulesDestinationCandidate](Get-ZNGroupsInboundRulesDestinationCandidate.md)
-Returns a list of destionation candidates for Inbound rules.
+Returns a list of destination candidates for Inbound rules.
 
 ### [Get-ZNGroupsInboundRulesExcludedDestinationCandidate](Get-ZNGroupsInboundRulesExcludedDestinationCandidate.md)
-Returns a list of excluded destionation candidates for Inbound rules.
+Returns a list of excluded destination candidates for Inbound rules.
 
 ### [Get-ZNGroupsInboundRulesSourceCandidate](Get-ZNGroupsInboundRulesSourceCandidate.md)
 Returns a list of source candidates for Inbound rules.
@@ -355,7 +412,7 @@ Returns a list of source user candidates for Identity MFA policies.
 Returns a Identity MFA policy object.
 
 ### [Get-ZNGroupsMfaInboundPoliciesDestinationCandidate](Get-ZNGroupsMfaInboundPoliciesDestinationCandidate.md)
-Returns a list of candidates for the destionation of an inbound MFA policy.
+Returns a list of candidates for the destination of an inbound MFA policy.
 
 ### [Get-ZNGroupsMfaInboundPoliciesExcludedSourceCandidate](Get-ZNGroupsMfaInboundPoliciesExcludedSourceCandidate.md)
 Returns a list of candidates for the excluded sources of an inbound MFA policy.
@@ -402,14 +459,17 @@ Returns a list of excluded source candidates for Outbound rules.
 ### [Get-ZNGroupsOutboundRulesSourceCandidate](Get-ZNGroupsOutboundRulesSourceCandidate.md)
 Returns a list of source candidates for Outbound rules.
 
+### [Get-ZNGroupsOutboundRulesUserCandidate](Get-ZNGroupsOutboundRulesUserCandidate.md)
+Returns a list of users candidates for Outbound rules.
+
 ### [Get-ZNGroupsRpcRule](Get-ZNGroupsRpcRule.md)
 Returns the properties of an RPC rule.
 
 ### [Get-ZNGroupsRpcRulesDestinationCandidate](Get-ZNGroupsRpcRulesDestinationCandidate.md)
-Returns a list of destionation candidates for RPC rules.
+Returns a list of destination candidates for RPC rules.
 
 ### [Get-ZNGroupsRpcRulesExcludedDestinationCandidate](Get-ZNGroupsRpcRulesExcludedDestinationCandidate.md)
-Returns a list of excluded destionation candidates for RPC rules.
+Returns a list of excluded destination candidates for RPC rules.
 
 ### [Get-ZNGroupsRpcRulesSourceCandidate](Get-ZNGroupsRpcRulesSourceCandidate.md)
 Returns a list of source candidates for RPC rules.
@@ -422,6 +482,12 @@ Returns an object with rules distribution.
 
 ### [Get-ZNGroupsStatistics](Get-ZNGroupsStatistics.md)
 Returns an object with group statistics.
+
+### [Get-ZNIdentityOnboardingPoliciesGroupCandidate](Get-ZNIdentityOnboardingPoliciesGroupCandidate.md)
+Returns a list of candidates for identity onboarding policies.
+
+### [Get-ZNIdentityOnboardingPolicy](Get-ZNIdentityOnboardingPolicy.md)
+Returns a list of identity onboarding policies.
 
 ### [Get-ZNIdentityRule](Get-ZNIdentityRule.md)
 Returns an identity segmentation rule.
@@ -439,10 +505,10 @@ Returns a list of user candidates for Identity rules.
 Returns the properties of an Inbound rule.
 
 ### [Get-ZNInboundRulesDestinationCandidate](Get-ZNInboundRulesDestinationCandidate.md)
-Returns a list of destionation candidates for Inbound rules.
+Returns a list of destination candidates for Inbound rules.
 
 ### [Get-ZNInboundRulesExcludedDestinationCandidate](Get-ZNInboundRulesExcludedDestinationCandidate.md)
-Returns a list of excluded destionation candidates for Inbound rules.
+Returns a list of excluded destination candidates for Inbound rules.
 
 ### [Get-ZNInboundRulesSourceCandidate](Get-ZNInboundRulesSourceCandidate.md)
 Returns a list of source candidates for Inbound rules.
@@ -502,10 +568,16 @@ Returns a list of source users candidates on outbound MFA policies.
 Returns the properties of an outbound MFA policy.
 
 ### [Get-ZNMfaPoliciesDistribution](Get-ZNMfaPoliciesDistribution.md)
-Returns and object with MFA distrubiton.
+Returns and object with MFA distribution.
 
 ### [Get-ZNMfaPoliciesStatistics](Get-ZNMfaPoliciesStatistics.md)
 Returns an object with MFA statistics.
+
+### [Get-ZNNetworkOnboardingPoliciesGroupCandidate](Get-ZNNetworkOnboardingPoliciesGroupCandidate.md)
+Returns a list of candidates for a network onboarding policy.
+
+### [Get-ZNNetworkOnboardingPolicy](Get-ZNNetworkOnboardingPolicy.md)
+Returns a list of network onboarding policies.
 
 ### [Get-ZNOutboundRule](Get-ZNOutboundRule.md)
 Returns the properties of an Outbound rule.
@@ -519,14 +591,17 @@ Returns a list of excluded source candidates for Outbound rules.
 ### [Get-ZNOutboundRulesSourceCandidate](Get-ZNOutboundRulesSourceCandidate.md)
 Returns a list of source candidates for Outbound rules.
 
+### [Get-ZNOutboundRulesUserCandidate](Get-ZNOutboundRulesUserCandidate.md)
+Returns a list of users candidates for Outbound rules.
+
 ### [Get-ZNRpcRule](Get-ZNRpcRule.md)
 Returns the properties of an RPC rule.
 
 ### [Get-ZNRpcRulesDestinationCandidate](Get-ZNRpcRulesDestinationCandidate.md)
-Returns a list of destionation candidates for RPC rules.
+Returns a list of destination candidates for RPC rules.
 
 ### [Get-ZNRpcRulesExcludedDestinationCandidate](Get-ZNRpcRulesExcludedDestinationCandidate.md)
-Returns a list of excluded destionation candidates for RPC rules.
+Returns a list of excluded destination candidates for RPC rules.
 
 ### [Get-ZNRpcRulesSourceCandidate](Get-ZNRpcRulesSourceCandidate.md)
 Returns a list of source candidates for RPC rules.
@@ -550,7 +625,7 @@ Returns a list of Connect sessions.
 Get Azure AD Settings
 
 ### [Get-ZNSettingsAd](Get-ZNSettingsAd.md)
-Get the AD settings in Asset Managment
+Get the AD settings in Asset Management
 
 ### [Get-ZNSettingsAdMonitoredCandidate](Get-ZNSettingsAdMonitoredCandidate.md)
 Returns a list of monitoring candidates for an AD forest.
@@ -559,7 +634,7 @@ Returns a list of monitoring candidates for an AD forest.
 Returns a list of protection candidates for an AD forest.
 
 ### [Get-ZNSettingsAnsible](Get-ZNSettingsAnsible.md)
-Get the Ansible settings in Asset Managment
+Get the Ansible settings in Asset Management
 
 ### [Get-ZNSettingsAssetManager](Get-ZNSettingsAssetManager.md)
 List asset managers
@@ -627,12 +702,6 @@ Returns the properties of ignored rules for anti-tampering Firewall settings.
 ### [Get-ZNSettingsFirewallProfile](Get-ZNSettingsFirewallProfile.md)
 Returns the properties of firewall profiles in Firewall settings.
 
-### [Get-ZNSettingsIdentityProtectionPoliciesCandidate](Get-ZNSettingsIdentityProtectionPoliciesCandidate.md)
-Returns a list of candidates for identity protection policies.
-
-### [Get-ZNSettingsIdentityProtectionPolicy](Get-ZNSettingsIdentityProtectionPolicy.md)
-Returns a list of identity protection policies.
-
 ### [Get-ZNSettingsIdp](Get-ZNSettingsIdp.md)
 Get identity provider settings in Identity Providers
 
@@ -652,10 +721,13 @@ Get Learning Config settings in Network Segmentation
 Get Subscription Licenses
 
 ### [Get-ZNSettingsLinuxSetup](Get-ZNSettingsLinuxSetup.md)
-Get the linux setup settings in Asset Managment
+Get the linux setup settings in Asset Management
 
 ### [Get-ZNSettingsLinuxUser](Get-ZNSettingsLinuxUser.md)
-Get the linux user settings in Asset Managment
+Get the linux user settings in Asset Management
+
+### [Get-ZNSettingsMaintenanceWindow](Get-ZNSettingsMaintenanceWindow.md)
+Returns the maintenance window properties
 
 ### [Get-ZNSettingsMfaAuthentication](Get-ZNSettingsMfaAuthentication.md)
 Returns the properties of MFA authentication settings.
@@ -668,12 +740,6 @@ Returns a list of candidates for MFA Cache Policy.
 
 ### [Get-ZNSettingsMfaDetection](Get-ZNSettingsMfaDetection.md)
 Returns the properties of MFA detection settings.
-
-### [Get-ZNSettingsNetworkProtectionPoliciesCandidate](Get-ZNSettingsNetworkProtectionPoliciesCandidate.md)
-Returns a list of candidates for a network protection policy.
-
-### [Get-ZNSettingsNetworkProtectionPolicy](Get-ZNSettingsNetworkProtectionPolicy.md)
-Returns a list of network protection policies.
 
 ### [Get-ZNSettingsNotification](Get-ZNSettingsNotification.md)
 Returns the properties of the Mail Notification settings.
@@ -705,6 +771,18 @@ Returns the properties of an user.
 ### [Get-ZNUserAudit](Get-ZNUserAudit.md)
 Returns a list of audits for the user.
 
+### [Get-ZNUserExternalAccessPolicy](Get-ZNUserExternalAccessPolicy.md)
+Returns an external access policy.
+
+### [Get-ZNUserExternalAccessPolicyDestinationAssetsCandidate](Get-ZNUserExternalAccessPolicyDestinationAssetsCandidate.md)
+Returns a list of destunation assets candidates for an external access policy.
+
+### [Get-ZNUserExternalAccessPolicySourceUserCandidate](Get-ZNUserExternalAccessPolicySourceUserCandidate.md)
+Returns a list of source user candidates for external access policies.
+
+### [Get-ZNUserExternalAccessPolicyStatistics](Get-ZNUserExternalAccessPolicyStatistics.md)
+Returns statistics for an external access policy.
+
 ### [Get-ZNUserIdentityRule](Get-ZNUserIdentityRule.md)
 Returns an identity segmentation rule.
 
@@ -719,6 +797,9 @@ Returns a list of user candidates for Identity rules.
 
 ### [Get-ZNUserMemberOf](Get-ZNUserMemberOf.md)
 Returns a list of groups the user is a member of.
+
+### [Get-ZNUserMemberOfGroupCandidate](Get-ZNUserMemberOfGroupCandidate.md)
+Returns a list of groups the user can be a member of.
 
 ### [Get-ZNUserMfaIdentityPoliciesDestinationCandidate](Get-ZNUserMfaIdentityPoliciesDestinationCandidate.md)
 Returns a list of candidates for the destination of an identity MFA policy.
@@ -747,11 +828,18 @@ Returns a list of users in Learning.
 ### [Get-ZNUsersIdentitySegmented](Get-ZNUsersIdentitySegmented.md)
 Returns a list of Identity segmented users.
 
+### [Get-ZNUsersInactive](Get-ZNUsersInactive.md)
+Returns a list of Users.
+Pass the returned 'nextCursor' as the '_cursor' query param of the next request for batches, when the '_offset' param is not used.
+
 ### [Get-ZNUsersManagedAsset](Get-ZNUsersManagedAsset.md)
 get managed assets for user
 
 ### [Get-ZNUsersManagedAssetsCandidate](Get-ZNUsersManagedAssetsCandidate.md)
 Get asset candidates to be managed by asset managers
+
+### [Get-ZNUsersPrivileged](Get-ZNUsersPrivileged.md)
+Returns a list of Privileged Users.
 
 ### [Get-ZNUsersServiceAccount](Get-ZNUsersServiceAccount.md)
 Returns a list of ServiceAccount Users.
@@ -772,16 +860,16 @@ Returns an empty object.
 Returns and empty object.
 
 ### [Invoke-ZNAssetNetworkExtendQueue](Invoke-ZNAssetNetworkExtendQueue.md)
-Returns an empty object.
+Extend asset learning
 
 ### [Invoke-ZNAssetNetworkQueue](Invoke-ZNAssetNetworkQueue.md)
-Returns and empty object.
+Extend asset learning
 
 ### [Invoke-ZNAssetOtNetworkExtendQueue](Invoke-ZNAssetOtNetworkExtendQueue.md)
-Returns an empty object.
+Extend OT asset learning
 
 ### [Invoke-ZNAssetOtNetworkQueue](Invoke-ZNAssetOtNetworkQueue.md)
-Returns and empty object.
+Add OT Asset to learning
 
 ### [Invoke-ZNAssetRpcExtendQueue](Invoke-ZNAssetRpcExtendQueue.md)
 Returns an empty object.
@@ -810,6 +898,9 @@ Returns the assetId after encoding the IP range.
 ### [Invoke-ZNEncodeEntitySubnet](Invoke-ZNEncodeEntitySubnet.md)
 Returns the assetId after encoding the IP subnet.
 
+### [Invoke-ZNMirrorAsset](Invoke-ZNMirrorAsset.md)
+Returns and empty object.
+
 ### [Invoke-ZNRediscoverAd](Invoke-ZNRediscoverAd.md)
 Rediscover monitored assets
 
@@ -821,6 +912,9 @@ Resync Azure AD
 
 ### [Invoke-ZNUserIdentityQueue](Invoke-ZNUserIdentityQueue.md)
 Returns an empty object.
+
+### [New-ZNAssetExternalAccessPolicy](New-ZNAssetExternalAccessPolicy.md)
+Returns a the external access policy
 
 ### [New-ZNAssetIdentityRule](New-ZNAssetIdentityRule.md)
 Returns a the identity segmentation rule.
@@ -852,6 +946,12 @@ Returns an empty object.
 ### [New-ZNCustomGroup](New-ZNCustomGroup.md)
 Returns an empty object.
 
+### [New-ZNExternalAccessPolicy](New-ZNExternalAccessPolicy.md)
+Returns a the external access policy
+
+### [New-ZNGroupsExternalAccessPolicy](New-ZNGroupsExternalAccessPolicy.md)
+Returns a the external access policy
+
 ### [New-ZNGroupsIdentityRule](New-ZNGroupsIdentityRule.md)
 Returns a the identity segmentation rule.
 
@@ -873,6 +973,9 @@ Returns the properties of the created Outbound rule.
 ### [New-ZNGroupsRpcRule](New-ZNGroupsRpcRule.md)
 Returns the properties of the create RPC rule.
 
+### [New-ZNIdentityOnboardingPolicy](New-ZNIdentityOnboardingPolicy.md)
+Returns the identity onboarding policy that was created.
+
 ### [New-ZNIdentityRule](New-ZNIdentityRule.md)
 Returns a the identity segmentation rule.
 
@@ -888,6 +991,9 @@ Returns the properties of the inbound MFA policy after creation.
 ### [New-ZNMfaOutboundPolicy](New-ZNMfaOutboundPolicy.md)
 Returns a the properties of outbound MFA policy created.
 
+### [New-ZNNetworkOnboardingPolicy](New-ZNNetworkOnboardingPolicy.md)
+Returns the network onboarding policy that was created.
+
 ### [New-ZNOutboundRule](New-ZNOutboundRule.md)
 Returns the properties of the created Outbound rule.
 
@@ -898,10 +1004,10 @@ Create a in-memory object for PortsList
 Returns the properties of the create RPC rule.
 
 ### [New-ZNSettingsAd](New-ZNSettingsAd.md)
-Set the AD settings in Asset Managment
+Set the AD settings in Asset Management
 
 ### [New-ZNSettingsAdSecondary](New-ZNSettingsAdSecondary.md)
-Add a secondary AD settings in Asset Managment
+Add a secondary AD settings in Asset Management
 
 ### [New-ZNSettingsConnectRegion](New-ZNSettingsConnectRegion.md)
 Create a Connect region in Settings
@@ -909,20 +1015,20 @@ Create a Connect region in Settings
 ### [New-ZNSettingsConnectUserAccessConfig](New-ZNSettingsConnectUserAccessConfig.md)
 Create a Connect User Access Configuration in Settings
 
-### [New-ZNSettingsIdentityProtectionPolicy](New-ZNSettingsIdentityProtectionPolicy.md)
-Returns the identity protection policy that was created.
-
 ### [New-ZNSettingsIdp](New-ZNSettingsIdp.md)
 Create an identity provider settings in Identity Providers
+
+### [New-ZNSettingsMaintenanceWindow](New-ZNSettingsMaintenanceWindow.md)
+Returns the maintenance window properties
 
 ### [New-ZNSettingsMfaCache](New-ZNSettingsMfaCache.md)
 Creates a MFA Cache Policy.
 
-### [New-ZNSettingsNetworkProtectionPolicy](New-ZNSettingsNetworkProtectionPolicy.md)
-Returns the network protection policy that was created.
-
 ### [New-ZNSettingsPushNotification](New-ZNSettingsPushNotification.md)
 Create an push notifications settings
+
+### [New-ZNUserExternalAccessPolicy](New-ZNUserExternalAccessPolicy.md)
+Returns a the external access policy
 
 ### [New-ZNUserIdentityRule](New-ZNUserIdentityRule.md)
 Returns a the identity segmentation rule.
@@ -930,7 +1036,7 @@ Returns a the identity segmentation rule.
 ### [New-ZNUserMfaIdentityPolicy](New-ZNUserMfaIdentityPolicy.md)
 Returns the properties of the identity MFA policy after creation.
 
-### [Protect-ZNAssetIdentity](Protect-ZNAssetIdentity.md)
+### [Protect-ZNAssetIdentitySegment](Protect-ZNAssetIdentitySegment.md)
 Returns and empty object.
 
 ### [Protect-ZNAssetNetworkSegment](Protect-ZNAssetNetworkSegment.md)
@@ -939,11 +1045,26 @@ Returns an empty object.
 ### [Protect-ZNAssetOtNetworkSegment](Protect-ZNAssetOtNetworkSegment.md)
 Returns an empty object.
 
-### [Protect-ZNUserIdentity](Protect-ZNUserIdentity.md)
+### [Protect-ZNAssetRpcSegment](Protect-ZNAssetRpcSegment.md)
 Returns and empty object.
+
+### [Protect-ZNUserIdentitySegment](Protect-ZNUserIdentitySegment.md)
+Returns and empty object.
+
+### [Read-ZNJWTtoken](Read-ZNJWTtoken.md)
+
+
+### [Remove-ZNAeExclusionsInbound](Remove-ZNAeExclusionsInbound.md)
+Returns an empty object.
+
+### [Remove-ZNAeExclusionsOutbound](Remove-ZNAeExclusionsOutbound.md)
+Returns an empty object.
 
 ### [Remove-ZNApiKey](Remove-ZNApiKey.md)
 Deletes the API key
+
+### [Remove-ZNAssetExternalAccessPolicy](Remove-ZNAssetExternalAccessPolicy.md)
+Returns an empty object.
 
 ### [Remove-ZNAssetIdentityRule](Remove-ZNAssetIdentityRule.md)
 Returns an empty object.
@@ -975,17 +1096,20 @@ Returns an empty object.
 ### [Remove-ZNAssetRpcRule](Remove-ZNAssetRpcRule.md)
 Returns an empty object.
 
-### [Remove-ZNAssetRpcSegment](Remove-ZNAssetRpcSegment.md)
-Returns and empty object.
-
 ### [Remove-ZNCustomGroup](Remove-ZNCustomGroup.md)
 Returns an empty object.
 
 ### [Remove-ZNCustomGroupsMember](Remove-ZNCustomGroupsMember.md)
 Returns an empty object.
 
+### [Remove-ZNExternalAccessPolicy](Remove-ZNExternalAccessPolicy.md)
+Returns an empty object.
+
 ### [Remove-ZNGroupsAssetManager](Remove-ZNGroupsAssetManager.md)
 Remove asset manager of group
+
+### [Remove-ZNGroupsExternalAccessPolicy](Remove-ZNGroupsExternalAccessPolicy.md)
+Returns an empty object.
 
 ### [Remove-ZNGroupsIdentityRule](Remove-ZNGroupsIdentityRule.md)
 Returns an empty object.
@@ -1011,6 +1135,9 @@ Returns an empty object.
 ### [Remove-ZNGroupsRpcRule](Remove-ZNGroupsRpcRule.md)
 Returns an empty object.
 
+### [Remove-ZNIdentityOnboardingPolicy](Remove-ZNIdentityOnboardingPolicy.md)
+Returns and empty object.
+
 ### [Remove-ZNIdentityRule](Remove-ZNIdentityRule.md)
 Returns an empty object.
 
@@ -1026,6 +1153,9 @@ Returns an empty object.
 ### [Remove-ZNMfaOutboundPolicy](Remove-ZNMfaOutboundPolicy.md)
 Returns an empty object.
 
+### [Remove-ZNNetworkOnboardingPolicy](Remove-ZNNetworkOnboardingPolicy.md)
+Returns and empty object.
+
 ### [Remove-ZNOutboundRule](Remove-ZNOutboundRule.md)
 Returns an empty object.
 
@@ -1038,35 +1168,41 @@ Remove Azure AD Settings
 ### [Remove-ZNSettingsAd](Remove-ZNSettingsAd.md)
 Delete AD forest settings.
 
+### [Remove-ZNSettingsAdLinux](Remove-ZNSettingsAdLinux.md)
+Returns an empty response.
+
 ### [Remove-ZNSettingsAdSecondary](Remove-ZNSettingsAdSecondary.md)
-Returns an empty reponse.
+Returns an empty response.
 
 ### [Remove-ZNSettingsConnectRegion](Remove-ZNSettingsConnectRegion.md)
 Delete a Connect Region in Settings
 
+### [Remove-ZNSettingsConnectServer](Remove-ZNSettingsConnectServer.md)
+Delete Connect Server in Settings
+
 ### [Remove-ZNSettingsConnectUserAccessConfig](Remove-ZNSettingsConnectUserAccessConfig.md)
 Delete a Connect User Access Configuration in Settings
 
-### [Remove-ZNSettingsIdentityProtectionPolicy](Remove-ZNSettingsIdentityProtectionPolicy.md)
-Returns and empty object.
-
 ### [Remove-ZNSettingsIdp](Remove-ZNSettingsIdp.md)
-Returns an empty reponse.
+Returns an empty response.
 
 ### [Remove-ZNSettingsJamfCredentials](Remove-ZNSettingsJamfCredentials.md)
 Returns an empty object.
 
+### [Remove-ZNSettingsMaintenanceWindow](Remove-ZNSettingsMaintenanceWindow.md)
+Returns an empty object
+
 ### [Remove-ZNSettingsMfaCache](Remove-ZNSettingsMfaCache.md)
 deletes a MFA Cache Policy.
 
-### [Remove-ZNSettingsNetworkProtectionPolicy](Remove-ZNSettingsNetworkProtectionPolicy.md)
-Returns and empty object.
-
 ### [Remove-ZNSettingsPushNotification](Remove-ZNSettingsPushNotification.md)
-Returns an empty reponse.
+Returns an empty response.
 
 ### [Remove-ZNTagGroupsMember](Remove-ZNTagGroupsMember.md)
 Remove tag group members by members id.
+
+### [Remove-ZNUserExternalAccessPolicy](Remove-ZNUserExternalAccessPolicy.md)
+Returns an empty object.
 
 ### [Remove-ZNUserIdentityRule](Remove-ZNUserIdentityRule.md)
 Returns an empty object.
@@ -1083,8 +1219,11 @@ Revoke a Connect session.
 ### [Search-ZNAsset](Search-ZNAsset.md)
 Returns an assetId.
 
-### [Search-ZNAssetProtected](Search-ZNAssetProtected.md)
+### [Search-ZNAssetsNetworkSegmented](Search-ZNAssetsNetworkSegmented.md)
 Given fqdn, returns assetId, if asset is found and is protected
+
+### [Search-ZNGroupsExternalId](Search-ZNGroupsExternalId.md)
+Returns a group.
 
 ### [Search-ZNUser](Search-ZNUser.md)
 Provided user SID - returns user entity id
@@ -1104,7 +1243,7 @@ Returns a number of assets that are valid for network segmentation.
 ### [Test-ZNAssetNetworkUnprotect](Test-ZNAssetNetworkUnprotect.md)
 Returns a number of assets that are valid to unprotect.
 
-### [Unprotect-ZNAssetIdentity](Unprotect-ZNAssetIdentity.md)
+### [Unprotect-ZNAssetIdentitySegment](Unprotect-ZNAssetIdentitySegment.md)
 Returns an empty object.
 
 ### [Unprotect-ZNAssetNetworkSegment](Unprotect-ZNAssetNetworkSegment.md)
@@ -1113,7 +1252,10 @@ Returns an empty object.
 ### [Unprotect-ZNAssetOtNetworkSegment](Unprotect-ZNAssetOtNetworkSegment.md)
 Returns an empty object.
 
-### [Unprotect-ZNUserIdentity](Unprotect-ZNUserIdentity.md)
+### [Unprotect-ZNAssetRpcSegment](Unprotect-ZNAssetRpcSegment.md)
+Returns and empty object.
+
+### [Unprotect-ZNUserIdentitySegment](Unprotect-ZNUserIdentitySegment.md)
 Returns an empty object.
 
 ### [Update-ZNAiExclusionNetworkBoth](Update-ZNAiExclusionNetworkBoth.md)
@@ -1128,6 +1270,9 @@ Set AI network exclusion for servers: lists of tcp/udp ports / ports ranges + bo
 ### [Update-ZNAssetActive](Update-ZNAssetActive.md)
 Returns and empty object.
 
+### [Update-ZNAssetExternalAccessPolicy](Update-ZNAssetExternalAccessPolicy.md)
+Updates an external access policy.
+
 ### [Update-ZNAssetIdentityRule](Update-ZNAssetIdentityRule.md)
 Updates an identity rule.
 
@@ -1136,6 +1281,9 @@ Returns and empty object.
 
 ### [Update-ZNAssetInboundRule](Update-ZNAssetInboundRule.md)
 Updates an inbound  rule.
+
+### [Update-ZNAssetManager](Update-ZNAssetManager.md)
+Update an asset manager of asset
 
 ### [Update-ZNAssetMfaIdentityPolicy](Update-ZNAssetMfaIdentityPolicy.md)
 Updates an identity MFA Policy.
@@ -1146,11 +1294,23 @@ Updates an inbound MFA Policy.
 ### [Update-ZNAssetMfaOutboundPolicy](Update-ZNAssetMfaOutboundPolicy.md)
 Updates an outbound MFA Policy.
 
+### [Update-ZNAssetOSType](Update-ZNAssetOSType.md)
+Set the OS type (Windows/Linux/Mac) for multiple assets
+
 ### [Update-ZNAssetOt](Update-ZNAssetOt.md)
 Edit an OT/IoT asset.
 
+### [Update-ZNAssetOtAssetManager](Update-ZNAssetOtAssetManager.md)
+Update an asset manager of asset
+
+### [Update-ZNAssetOutboundRestriction](Update-ZNAssetOutboundRestriction.md)
+Set the outbound restriction (Enable Internal, Enable External, Enable Both, Disable) for multiple assets
+
 ### [Update-ZNAssetOutboundRule](Update-ZNAssetOutboundRule.md)
 Updates an outbound  rule.
+
+### [Update-ZNAssetPreferredSegmentServer](Update-ZNAssetPreferredSegmentServer.md)
+Returns and empty object.
 
 ### [Update-ZNAssetRpcRule](Update-ZNAssetRpcRule.md)
 Updates an RPC rule.
@@ -1161,11 +1321,23 @@ Set the asset type (Client/server)
 ### [Update-ZNCustomGroup](Update-ZNCustomGroup.md)
 Updates a custom group properties.
 
+### [Update-ZNExternalAccessPolicy](Update-ZNExternalAccessPolicy.md)
+Updates an external access policy.
+
+### [Update-ZNGroupsAssetManager](Update-ZNGroupsAssetManager.md)
+Update an asset manager of group
+
+### [Update-ZNGroupsExternalAccessPolicy](Update-ZNGroupsExternalAccessPolicy.md)
+Updates an external access policy.
+
 ### [Update-ZNGroupsIdentityRule](Update-ZNGroupsIdentityRule.md)
 Updates an identity rule.
 
 ### [Update-ZNGroupsInboundRule](Update-ZNGroupsInboundRule.md)
 Updates an inbound  rule.
+
+### [Update-ZNGroupsManagedAsset](Update-ZNGroupsManagedAsset.md)
+Update a managed assets for group
 
 ### [Update-ZNGroupsMfaIdentityPolicy](Update-ZNGroupsMfaIdentityPolicy.md)
 Updates an identity MFA Policy.
@@ -1182,6 +1354,9 @@ Updates an outbound  rule.
 ### [Update-ZNGroupsRpcRule](Update-ZNGroupsRpcRule.md)
 Updates an RPC rule.
 
+### [Update-ZNIdentityOnboardingPolicy](Update-ZNIdentityOnboardingPolicy.md)
+Returns the updated settings for the identity onboarding policy.
+
 ### [Update-ZNIdentityRule](Update-ZNIdentityRule.md)
 Updates an identity rule.
 
@@ -1197,8 +1372,8 @@ Updates an inbound MFA Policy.
 ### [Update-ZNMfaOutboundPolicy](Update-ZNMfaOutboundPolicy.md)
 Updates an outbound MFA Policy.
 
-### [Update-ZNOSType](Update-ZNOSType.md)
-Set the OS type (Windows/Linux/Mac) for multiple assets
+### [Update-ZNNetworkOnboardingPolicy](Update-ZNNetworkOnboardingPolicy.md)
+Returns the updated settings for the network onboarding policy.
 
 ### [Update-ZNOutboundRule](Update-ZNOutboundRule.md)
 Updates an outbound  rule.
@@ -1209,14 +1384,20 @@ Updates an RPC rule.
 ### [Update-ZNSettingsAd](Update-ZNSettingsAd.md)
 Update AD forest settings.
 
-### [Update-ZNSettingsAdAutomationGroup](Update-ZNSettingsAdAutomationGroup.md)
-Update Automation Groups for an AD forest setting.
+### [Update-ZNSettingsAdLinux](Update-ZNSettingsAdLinux.md)
+Adds or updates linux config for a domain.
+
+### [Update-ZNSettingsAdLinuxAutomationGroup](Update-ZNSettingsAdLinuxAutomationGroup.md)
+Update Linux_Rediscover Automation Groups for an AD forest setting.
 
 ### [Update-ZNSettingsAdSecondary](Update-ZNSettingsAdSecondary.md)
-Update a secondary AD settings in Asset Managment
+Update a secondary AD settings in Asset Management
+
+### [Update-ZNSettingsAdWindowsAutomationGroup](Update-ZNSettingsAdWindowsAutomationGroup.md)
+Update Windows Automation Groups for an AD forest setting.
 
 ### [Update-ZNSettingsAnsible](Update-ZNSettingsAnsible.md)
-Get the Ansible settings in Asset Managment
+Get the Ansible settings in Asset Management
 
 ### [Update-ZNSettingsAuth](Update-ZNSettingsAuth.md)
 Set the portal security settings
@@ -1263,9 +1444,6 @@ Returns he properties of ignored rules for anti-tampering Firewall settings.
 ### [Update-ZNSettingsFirewallProfile](Update-ZNSettingsFirewallProfile.md)
 Returns the properties of firewall profiles in Firewall settings.
 
-### [Update-ZNSettingsIdentityProtectionPolicy](Update-ZNSettingsIdentityProtectionPolicy.md)
-Returns the updated settings for the identity protection policy.
-
 ### [Update-ZNSettingsIdp](Update-ZNSettingsIdp.md)
 Update identity provider settings in Identity Providers
 
@@ -1276,25 +1454,25 @@ Update inactive assets settings configuration
 Update the Internal Subnets settings in System
 
 ### [Update-ZNSettingsJamfCredentials](Update-ZNSettingsJamfCredentials.md)
-Returns the upddated properties of JAMF Credentials settings.
+Returns the updated properties of JAMF Credentials settings.
 
 ### [Update-ZNSettingsLearningConfig](Update-ZNSettingsLearningConfig.md)
 Update Learning Config settings in Network Segmentation
 
 ### [Update-ZNSettingsLinuxSetup](Update-ZNSettingsLinuxSetup.md)
-Update the linux setup settings in Asset Managment
+Update the linux setup settings in Asset Management
 
 ### [Update-ZNSettingsLinuxUser](Update-ZNSettingsLinuxUser.md)
-Update the linux user settings in Asset Managment
+Update the linux user settings in Asset Management
+
+### [Update-ZNSettingsMaintenanceWindow](Update-ZNSettingsMaintenanceWindow.md)
+Returns the maintenance window properties
 
 ### [Update-ZNSettingsMfaAuthentication](Update-ZNSettingsMfaAuthentication.md)
 Returns an empty object.
 
 ### [Update-ZNSettingsMfaDetection](Update-ZNSettingsMfaDetection.md)
 Returns the properties of the updated MFA detection settings.
-
-### [Update-ZNSettingsNetworkProtectionPolicy](Update-ZNSettingsNetworkProtectionPolicy.md)
-Returns the updated settings for the network protection policy.
 
 ### [Update-ZNSettingsNotification](Update-ZNSettingsNotification.md)
 Returns the properties of the updated Mail Notifications settings.
@@ -1314,12 +1492,18 @@ Set Trusted Internet addresses settings in System
 ### [Update-ZNSettingsZpa](Update-ZNSettingsZpa.md)
 Set ZPA settings in Integrations
 
+### [Update-ZNUserExternalAccessPolicy](Update-ZNUserExternalAccessPolicy.md)
+Updates an external access policy.
+
 ### [Update-ZNUserIdentityRule](Update-ZNUserIdentityRule.md)
 Updates an identity rule.
 
 ### [Update-ZNUserMfaIdentityPolicy](Update-ZNUserMfaIdentityPolicy.md)
 Updates an identity MFA Policy.
 
+### [Update-ZNUsersManagedAsset](Update-ZNUsersManagedAsset.md)
+Update a managed asset for user
+
 ### [Update-ZNUserType](Update-ZNUserType.md)
-Set users type
+Set user type
 

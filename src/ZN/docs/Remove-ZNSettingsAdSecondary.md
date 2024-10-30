@@ -8,17 +8,17 @@ schema: 2.0.0
 # Remove-ZNSettingsAdSecondary
 
 ## SYNOPSIS
-Returns an empty reponse.
+Returns an empty response.
 
 ## SYNTAX
 
 ```
-Remove-ZNSettingsAdSecondary -DomainId <String> -ForestId <String> [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-ZNSettingsAdSecondary -DomainId <String> -ForestId <String> [-AccountName <String>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns an empty reponse.
+Returns an empty response.
 
 ## EXAMPLES
 
@@ -31,6 +31,21 @@ Remove-ZNSettingsAdSecondary -DomainId $forest.SecondaryDomains[0].Domain -Fores
 This cmdlet deletes a forest from AD settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DomainId
 The fqdn of the domain

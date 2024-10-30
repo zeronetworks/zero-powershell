@@ -12,14 +12,16 @@ Returns an empty object.
 
 ## SYNTAX
 
-### Unprotect1 (Default)
+### Unprotect (Default)
 ```
-Unprotect-ZNAssetOtNetworkSegment -AssetId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Unprotect-ZNAssetOtNetworkSegment -AssetId <String> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UnprotectExpanded
 ```
-Unprotect-ZNAssetOtNetworkSegment -Items <String[]> [-Confirm] [-WhatIf] [<CommonParameters>]
+Unprotect-ZNAssetOtNetworkSegment -Items <String[]> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,12 +38,27 @@ This cmdlet will remove an asset from network segemented in the envrionment.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AssetId
 assetId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: Unprotect1
+Parameter Sets: Unprotect
 Aliases:
 
 Required: True

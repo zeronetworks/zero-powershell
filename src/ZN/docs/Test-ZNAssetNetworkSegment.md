@@ -12,19 +12,20 @@ Returns a number of assets that are valid for network segmentation.
 
 ## SYNTAX
 
-### Validate1 (Default)
+### Validate (Default)
 ```
-Test-ZNAssetNetworkSegment -AssetId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-ZNAssetNetworkSegment -AssetId <String> [-AccountName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Validate
+### Validate1
 ```
-Test-ZNAssetNetworkSegment -Body <IAssetsProtectBody> [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-ZNAssetNetworkSegment -Body <IAssetsProtectBody> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ValidateExpanded
 ```
-Test-ZNAssetNetworkSegment -Items <String[]> [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-ZNAssetNetworkSegment -Items <String[]> [-AccountName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,12 +48,27 @@ This cmdlet tests if an asset is ready for network segmentation.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AssetId
 assetId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1
+Parameter Sets: Validate
 Aliases:
 
 Required: True
@@ -68,7 +84,7 @@ To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsProtectBody
-Parameter Sets: Validate
+Parameter Sets: Validate1
 Aliases:
 
 Required: True

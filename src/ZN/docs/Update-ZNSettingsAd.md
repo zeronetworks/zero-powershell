@@ -13,7 +13,7 @@ Update AD forest settings.
 ## SYNTAX
 
 ```
-Update-ZNSettingsAd -ForestId <String> [-AllowNtlmFallback]
+Update-ZNSettingsAd -ForestId <String> [-AccountName <String>] [-AllowNtlmFallback]
  [-PrimaryDomainConfigDomainControllerFqdn <String>] [-PrimaryDomainConfigDomainName <String>]
  [-PrimaryDomainConfigPassword <String>] [-PrimaryDomainConfigUseLdaps]
  [-PrimaryDomainConfigUserFqdn <String>] [-UsePrimaryUserForAllDomains] [-Confirm] [-WhatIf]
@@ -34,6 +34,21 @@ Update-ZNSettingsAd -ForestId $forest.ForestId -ActiveDirectoryInfoDomainControl
 This cmdlet updates AD settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AllowNtlmFallback
 .

@@ -13,8 +13,8 @@ Get manager candidates for asset managers
 ## SYNTAX
 
 ```
-Get-ZNAssetOtAssetManagersCandidate -AssetId <String> [-Limit <Int32>] [-Offset <Int32>] [-Search <String>]
- [<CommonParameters>]
+Get-ZNAssetOtAssetManagersCandidate -AssetId <String> [-AccountName <String>] [-Limit <Int32>]
+ [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +52,21 @@ posh.local                     u:a:V61t0gZB ZNRemoteManagement
 This cmdlet lists the asset manager candidates for an OT asset.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetId
 assetId to filter on
@@ -93,7 +108,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

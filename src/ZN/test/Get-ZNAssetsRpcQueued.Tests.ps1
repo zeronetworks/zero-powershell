@@ -19,6 +19,6 @@ Describe 'Get-ZNAssetsRpcQueued' {
         $asset = Search-ZNAsset -Fqdn dc01.posh.local
         Invoke-ZNAssetRpcQueue -items @($asset.AssetId) -QueueDays 90
         (Get-ZNAssetsRpcQueued).Items.Count | Should -BeGreaterThan 0
-         Remove-ZNAssetRpcSegment -Items @($asset.AssetId)
+        Unprotect-ZNAssetRpcSegment -Items @($asset.AssetId)
     }
 }

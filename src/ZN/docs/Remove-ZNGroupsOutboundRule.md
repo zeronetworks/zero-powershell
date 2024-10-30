@@ -13,8 +13,8 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Remove-ZNGroupsOutboundRule -GroupId <String> -GroupType <String> -RuleId <String> [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-ZNGroupsOutboundRule -GroupId <String> -GroupType <String> -RuleId <String> [-AccountName <String>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ Remove-ZNGroupsOutboundRule -GroupId $group.Id -GroupType tag -RuleId 64a9dbab-4
 This cmdlet deletes an outbound rule.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on

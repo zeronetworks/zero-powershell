@@ -13,8 +13,8 @@ Update the Internal Subnets settings in System
 ## SYNTAX
 
 ```
-Update-ZNSettingsInternalSubnet [-PrivateIpv4NetworksList <String[]>] [-PrivateIpv6NetworksList <String[]>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsInternalSubnet [-AccountName <String>] [-PrivateIpv4NetworksList <String[]>]
+ [-PrivateIpv6NetworksList <String[]>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,21 @@ Update-ZNSettingsInternalSubnet -PrivateNetworksList @("10.0.0.0/8","100.64.0.0/
 This cmdlet updates the internal subnets setting under System.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PassThru
 Returns true when the command succeeds

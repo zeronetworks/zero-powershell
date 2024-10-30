@@ -8,16 +8,16 @@ schema: 2.0.0
 # Get-ZNMfaPoliciesDistribution
 
 ## SYNOPSIS
-Returns and object with MFA distrubiton.
+Returns and object with MFA distribution.
 
 ## SYNTAX
 
 ```
-Get-ZNMfaPoliciesDistribution [<CommonParameters>]
+Get-ZNMfaPoliciesDistribution [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns and object with MFA distrubiton.
+Returns and object with MFA distribution.
 
 ## EXAMPLES
 
@@ -66,6 +66,21 @@ This cmdlet lists the MFA policy distribution.
 There is a count for accepted, rejected and a timestamp (epoch(ms)) for each.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

@@ -16,8 +16,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNAssetRpcQueue'))
 
 Describe 'Invoke-ZNAssetRpcQueue' {
     It 'QueueExpanded' {
-        $asset = Search-ZNAsset -Fqdn dc01.posh.local
-        { Invoke-ZNAssetRpcQueue -items @($asset.AssetId) -QueueDays 90 } | Should -Not -Throw
-        Remove-ZNAssetRpcSegment -Items @($asset.AssetId)
+        $asset = (Search-ZNAsset -Fqdn ts01.posh.local).AssetId
+        $monitored = (Get-ZNAssetsRpcMonitored).Items | where {$_.Id -eq $asset}
+        if($monitored.Count -eq 0){
+            Add-ZNAssetRpcMonitoring -AssetId $asset
+            start-sleep 30
+        }
+        { Invoke-ZNAssetRpcQueue -Items @($asset) -QueueDays 14 } | Should -Not -Throw
+        Unprotect-ZNAssetRpcSegment -Items @($asset)
     }
 }

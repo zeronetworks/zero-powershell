@@ -13,7 +13,8 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Remove-ZNCustomGroup -GroupId <String> [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNCustomGroup -GroupId <String> [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +30,21 @@ Remove-ZNCustomGroup -GroupId "g:c:eIj5XC45"
 This cmdlet deletes a custom group.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on

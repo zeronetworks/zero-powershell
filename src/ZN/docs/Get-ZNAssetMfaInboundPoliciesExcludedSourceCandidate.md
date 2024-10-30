@@ -13,8 +13,8 @@ Returns a list of candidates for the excluded sources of an inbound MFA policy.
 ## SYNTAX
 
 ```
-Get-ZNAssetMfaInboundPoliciesExcludedSourceCandidate -AssetId <String> [-IsSrcAssetUnmonitored]
- [-Limit <Int32>] [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
+Get-ZNAssetMfaInboundPoliciesExcludedSourceCandidate -AssetId <String> [-AccountName <String>]
+ [-IsSrcAssetUnmonitored] [-Limit <Int32>] [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,6 +59,21 @@ VPN        False               g:v:2IoMjM9F Default's excluded members group
 This cmdlet lists the excluded source candidates for an inbound MFA policy for a specific asset.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetId
 assetId to filter on
@@ -115,7 +130,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

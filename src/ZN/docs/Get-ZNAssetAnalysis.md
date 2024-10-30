@@ -13,8 +13,8 @@ Returns an object with asset analysis data.
 ## SYNTAX
 
 ```
-Get-ZNAssetAnalysis -AssetId <String> -Direction <String> [-Connectionstate <Int32>] [-From <Int32>]
- [-Sort <String>] [-To <Int32>] [<CommonParameters>]
+Get-ZNAssetAnalysis -AssetId <String> -Direction <String> [-AccountName <String>] [-Connectionstate <Int32>]
+ [-From <Int32>] [-Sort <String>] [-To <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +43,21 @@ This cmdlet gets an asset analysis.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AssetId
 assetId to filter on
 
@@ -59,7 +74,7 @@ Accept wildcard characters: False
 ```
 
 ### -Connectionstate
-connnection state for the query
+connection state for the query
 
 ```yaml
 Type: System.Int32

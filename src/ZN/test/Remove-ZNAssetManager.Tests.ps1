@@ -18,7 +18,7 @@ Describe 'Remove-ZNAssetManager' {
     It 'Delete' {
         $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         $user = (Get-ZNUser).Items | Select -First 1
-        Add-ZNAssetManager -AssetId $asset -ManagerIds @($user.Id)
+        Add-ZNAssetManager -AssetId $asset -ManagerIds @($user.Id) -Permission 3
         { Remove-ZNAssetManager -AssetId $asset -GroupOrUserId $user.Id } | Should -Not -Throw
     }
 }

@@ -13,7 +13,8 @@ get managed assets for user
 ## SYNTAX
 
 ```
-Get-ZNUsersManagedAsset -UserId <String> [-Limit <Int32>] [-Offset <Int32>] [<CommonParameters>]
+Get-ZNUsersManagedAsset -UserId <String> [-AccountName <String>] [-Limit <Int32>] [-Offset <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +37,21 @@ g:t:01445453 3
 This cmdlet lists a users managed assets.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Limit
 Limit the return results
@@ -62,7 +78,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

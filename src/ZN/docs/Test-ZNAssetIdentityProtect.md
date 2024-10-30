@@ -12,14 +12,16 @@ Returns a number of assets that are valid for identity segmentation.
 
 ## SYNTAX
 
-### Validate1 (Default)
+### Validate (Default)
 ```
-Test-ZNAssetIdentityProtect -AssetId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-ZNAssetIdentityProtect -AssetId <String> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ValidateExpanded
 ```
-Test-ZNAssetIdentityProtect -Items <String[]> [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-ZNAssetIdentityProtect -Items <String[]> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,12 +47,27 @@ This cmdlet tests multiple assets to identity segmentation.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AssetId
 assetId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1
+Parameter Sets: Validate
 Aliases:
 
 Required: True

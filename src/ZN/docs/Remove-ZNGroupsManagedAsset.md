@@ -13,8 +13,8 @@ Remove managed asset of group
 ## SYNTAX
 
 ```
-Remove-ZNGroupsManagedAsset -GroupId <String> -GroupOrAssetId <String> -GroupType <String> [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNGroupsManagedAsset -GroupId <String> -GroupOrAssetId <String> -GroupType <String>
+ [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,21 @@ Remove-ZNGroupsManagedAsset -GroupId g:t:01445453 -GroupType tag -GroupOrAssetId
 This cmdlet deletes a managed asset from a group.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on

@@ -8,17 +8,17 @@ schema: 2.0.0
 # Update-ZNSettingsJamfCredentials
 
 ## SYNOPSIS
-Returns the upddated properties of JAMF Credentials settings.
+Returns the updated properties of JAMF Credentials settings.
 
 ## SYNTAX
 
 ```
-Update-ZNSettingsJamfCredentials -Host1 <String> -Password <String> -Username <String> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNSettingsJamfCredentials -Host <String> -Password <String> -Username <String> [-AccountName <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the upddated properties of JAMF Credentials settings.
+Returns the updated properties of JAMF Credentials settings.
 
 ## EXAMPLES
 
@@ -31,7 +31,22 @@ This cmdlet updates the JAMF credential in Settings under Asset Management.
 
 ## PARAMETERS
 
-### -Host1
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Host
 JAMF url
 
 ```yaml

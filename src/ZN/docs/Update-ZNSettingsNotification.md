@@ -13,8 +13,8 @@ Returns the properties of the updated Mail Notifications settings.
 ## SYNTAX
 
 ```
-Update-ZNSettingsNotification -AssetPostponed -AssetProtected -AssetQueued -AssetUnprotected [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsNotification -AssetPostponed -AssetProtected -AssetQueued -AssetUnprotected
+ [-AccountName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +36,21 @@ True           False          True        True
 This cmdlet updates the Mail notifications setting under System.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetPostponed
 .

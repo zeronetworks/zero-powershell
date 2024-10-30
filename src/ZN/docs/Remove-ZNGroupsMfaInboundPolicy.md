@@ -13,8 +13,8 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Remove-ZNGroupsMfaInboundPolicy -GroupId <String> -GroupType <String> -ReactivePolicyId <String> [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNGroupsMfaInboundPolicy -GroupId <String> -GroupType <String> -ReactivePolicyId <String>
+ [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ Returns an empty object.
 This cmdlet deletes an outbound MFA policy.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on

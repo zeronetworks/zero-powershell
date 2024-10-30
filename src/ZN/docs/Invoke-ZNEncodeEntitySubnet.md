@@ -13,7 +13,7 @@ Returns the assetId after encoding the IP subnet.
 ## SYNTAX
 
 ```
-Invoke-ZNEncodeEntitySubnet -Subnet <String> [<CommonParameters>]
+Invoke-ZNEncodeEntitySubnet -Subnet <String> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +33,21 @@ b:120101010018
 This cmdlet encodes an IP subnet to ZNSegement entityId for use in rules and policies.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Subnet
 IP Subnet

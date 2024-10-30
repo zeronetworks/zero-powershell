@@ -13,8 +13,8 @@ Delete a Connect User Access Configuration in Settings
 ## SYNTAX
 
 ```
-Remove-ZNSettingsConnectUserAccessConfig -UserAccessConfigId <String> [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-ZNSettingsConnectUserAccessConfig -UserAccessConfigId <String> [-AccountName <String>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ Remove-ZNSettingsConnectUserAccessConfig -UserAccessConfigId $uac.Id
 This cmdlet deletes a user access config for Connect settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PassThru
 Returns true when the command succeeds

@@ -13,7 +13,7 @@ Remove Azure AD Settings
 ## SYNTAX
 
 ```
-Remove-ZNSettingsAad [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNSettingsAad [-AccountName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +29,21 @@ Remove-ZNSettingsAad
 This cmdlet deletes the AAD settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.

@@ -13,7 +13,8 @@ Returns the properties of the updated Firewall settings.
 ## SYNTAX
 
 ```
-Update-ZNSettingsFirewall [-ImplicitIcmpRuleEnabled] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsFirewall [-AccountName <String>] [-ImplicitIcmpRuleEnabled] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,21 @@ This cmdlet gets the Firewall - Create implicit ICMP rules setting.
 True is "on" and False is "off".
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ImplicitIcmpRuleEnabled
 .

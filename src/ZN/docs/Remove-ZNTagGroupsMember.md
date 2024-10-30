@@ -13,8 +13,8 @@ Remove tag group members by members id.
 ## SYNTAX
 
 ```
-Remove-ZNTagGroupsMember -GroupId <String> -MembersId <String[]> [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-ZNTagGroupsMember -GroupId <String> -MembersId <String[]> [-AccountName <String>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ Remove-ZNTagGroupsMember -GroupId $group.Id -MembersId 'a:a:OtfLGUBq'
 This cmdlet removes an asset from a group.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on

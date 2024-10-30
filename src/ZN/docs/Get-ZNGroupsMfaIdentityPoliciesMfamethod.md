@@ -13,7 +13,8 @@ Returns a list of MFA methods for Identity MFA policies.
 ## SYNTAX
 
 ```
-Get-ZNGroupsMfaIdentityPoliciesMfamethod -GroupId <String> -GroupType <String> [<CommonParameters>]
+Get-ZNGroupsMfaIdentityPoliciesMfamethod -GroupId <String> -GroupType <String> [-AccountName <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +36,21 @@ $group = (Get-ZNGroup -Search "Domain controllers").Items | where {$_.Domain -eq
 This cmdlet lists MFA methods for Identity MFA.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on

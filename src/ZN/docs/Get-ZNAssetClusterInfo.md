@@ -13,7 +13,7 @@ Returns an object of cluster name and cluster members
 ## SYNTAX
 
 ```
-Get-ZNAssetClusterInfo -AssetId <String> [<CommonParameters>]
+Get-ZNAssetClusterInfo -AssetId <String> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +35,21 @@ ClusterInfoClusterMembersList ClusterInfoClusterName
 This cmdlet gets cluster information for an asset.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetId
 assetId to filter on

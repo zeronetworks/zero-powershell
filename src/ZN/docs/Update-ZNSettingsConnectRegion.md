@@ -13,9 +13,9 @@ Update a Connect Region in Settings
 ## SYNTAX
 
 ```
-Update-ZNSettingsConnectRegion -RegionId <String> [-DnsServersIPAddressList <String[]>]
- [-DnsSuffixesList <String[]>] [-IPAddress <String>] [-Name <String>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNSettingsConnectRegion -RegionId <String> [-AccountName <String>]
+ [-DnsServersIPAddressList <String[]>] [-DnsSuffixesList <String[]>] [-IPAddress <String>] [-Name <String>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +32,21 @@ Update-ZNSettingsConnectRegion -RegionId $region.Id -DnsServersIPAddressList $re
 This cmdlet updates a Connect region setting.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DnsServersIPAddressList
 .

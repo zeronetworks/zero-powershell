@@ -8,19 +8,20 @@ schema: 2.0.0
 # New-ZNSettingsAd
 
 ## SYNOPSIS
-Set the AD settings in Asset Managment
+Set the AD settings in Asset Management
 
 ## SYNTAX
 
 ```
-New-ZNSettingsAd [-AllowNtlmFallback] [-PrimaryDomainConfigDomainControllerFqdn <String>]
- [-PrimaryDomainConfigDomainName <String>] [-PrimaryDomainConfigPassword <String>]
- [-PrimaryDomainConfigUseLdaps] [-PrimaryDomainConfigUserFqdn <String>] [-UsePrimaryUserForAllDomains]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-ZNSettingsAd [-AccountName <String>] [-AllowNtlmFallback]
+ [-PrimaryDomainConfigDomainControllerFqdn <String>] [-PrimaryDomainConfigDomainName <String>]
+ [-PrimaryDomainConfigPassword <String>] [-PrimaryDomainConfigUseLdaps]
+ [-PrimaryDomainConfigUserFqdn <String>] [-UsePrimaryUserForAllDomains] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Set the AD settings in Asset Managment
+Set the AD settings in Asset Management
 
 ## EXAMPLES
 
@@ -32,6 +33,21 @@ New-ZNSettingsAd -ActiveDirectoryInfoDomainControllerFqdn dc01.newforest.local -
 This cmdlet create an AD forest setting.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AllowNtlmFallback
 .

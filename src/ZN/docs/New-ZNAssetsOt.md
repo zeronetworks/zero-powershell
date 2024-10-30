@@ -13,8 +13,8 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-New-ZNAssetsOt -DisplayName <String> -Fqdn <String> -Ipv4 <String> -Type <Single> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-ZNAssetsOt -DisplayName <String> -Fqdn <String> -Ipv4 <String> -Type <Single> [-AccountName <String>]
+ [-InterfaceName <String>] [-SwitchId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,6 +59,21 @@ Support Asset Types:
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DisplayName
 .
 
@@ -89,6 +104,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InterfaceName
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Ipv4
 .
 
@@ -98,6 +128,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SwitchId
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

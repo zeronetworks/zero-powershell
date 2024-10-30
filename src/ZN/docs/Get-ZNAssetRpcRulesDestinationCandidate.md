@@ -8,17 +8,17 @@ schema: 2.0.0
 # Get-ZNAssetRpcRulesDestinationCandidate
 
 ## SYNOPSIS
-Returns a list of destionation candidates for RPC rules.
+Returns a list of destination candidates for RPC rules.
 
 ## SYNTAX
 
 ```
-Get-ZNAssetRpcRulesDestinationCandidate -AssetId <String> [-Cursor <String>] [-Limit <Int32>]
- [-Search <String>] [<CommonParameters>]
+Get-ZNAssetRpcRulesDestinationCandidate -AssetId <String> [-AccountName <String>] [-Cursor <Int64>]
+ [-Limit <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns a list of destionation candidates for RPC rules.
+Returns a list of destination candidates for RPC rules.
 
 ## EXAMPLES
 
@@ -59,6 +59,21 @@ This cmdlet gets the possible destination candidates for a rpc rule for a specif
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AssetId
 assetId to filter on
 
@@ -78,7 +93,7 @@ Accept wildcard characters: False
 cursor position to start at
 
 ```yaml
-Type: System.String
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 

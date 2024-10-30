@@ -13,8 +13,9 @@ Set ZPA settings in Integrations
 ## SYNTAX
 
 ```
-Update-ZNSettingsZpa [-ClientOutboundSubnet <String>] [-GatewayIpsList <String[]>] [-IsEnabled]
- [-PortsToMfaTcp <String>] [-PortsToMfaUdp <String>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsZpa [-AccountName <String>] [-ClientOutboundSubnet <String>] [-GatewayIpsList <String[]>]
+ [-IsEnabled] [-PortsToMfaTcp <String>] [-PortsToMfaUdp <String>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +32,21 @@ Update-ZNSettingsZpa -ClientOutboundSubnet $zpa.ClientOutboundSubnet -GatewayIps
 This cmdlet updates the ZPA settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ClientOutboundSubnet
 .

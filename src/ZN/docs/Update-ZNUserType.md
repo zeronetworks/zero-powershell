@@ -8,24 +8,24 @@ schema: 2.0.0
 # Update-ZNUserType
 
 ## SYNOPSIS
-Set users type
+Set user type
 
 ## SYNTAX
 
-### UpdateExpanded1 (Default)
+### UpdateExpanded (Default)
 ```
-Update-ZNUserType -UserId <String> -UserType <Int32> [-Comment <String>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNUserType -UserId <String> -UserType <Int32> [-AccountName <String>] [-Comment <String>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateExpanded
+### UpdateExpanded1
 ```
-Update-ZNUserType -Comment <String> -UserIds <String[]> -UserType <Int32> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNUserType -Comment <String> -UserIds <String[]> -UserType <Int32> [-AccountName <String>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Set users type
+Set user type
 
 ## EXAMPLES
 
@@ -38,6 +38,21 @@ This cmdlet updates the user type.
 UNDETERMINED = 1, HUMAN = 2, SERVICE ACCOUNT = 3, SHARED 4, SYSTEM = 5, OTHER = 6
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Comment
 .
@@ -59,7 +74,7 @@ userId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -74,7 +89,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: True

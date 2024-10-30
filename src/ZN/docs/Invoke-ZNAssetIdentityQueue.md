@@ -14,12 +14,14 @@ Returns and empty object.
 
 ### QueueExpanded (Default)
 ```
-Invoke-ZNAssetIdentityQueue -Items <String[]> -QueueDays <Int32> [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-ZNAssetIdentityQueue -AssetId <String> -QueueDays <Int32> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### QueueExpanded1
 ```
-Invoke-ZNAssetIdentityQueue -AssetId <String> -QueueDays <Int32> [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-ZNAssetIdentityQueue -Items <String[]> -QueueDays <Int32> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,12 +46,27 @@ This cmdlet will enable identity learning for a specific asset.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AssetId
 assetId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: QueueExpanded1
+Parameter Sets: QueueExpanded
 Aliases:
 
 Required: True
@@ -64,7 +81,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: QueueExpanded
+Parameter Sets: QueueExpanded1
 Aliases:
 
 Required: True

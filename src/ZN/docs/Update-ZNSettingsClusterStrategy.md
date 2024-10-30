@@ -13,8 +13,8 @@ Returns an empty response.
 ## SYNTAX
 
 ```
-Update-ZNSettingsClusterStrategy [-PreferredDeploymentId <String>] [-Strategy <Int32>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNSettingsClusterStrategy [-AccountName <String>] [-PreferredDeploymentId <String>] [-Strategy <Int32>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,21 @@ Update-ZNSettingsClusterStrategy -PreferredDeploymentId b41212f2-8f17-4d2b-ad2c-
 This cmdlet sets the preferred trust server under Segment servers.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -PreferredDeploymentId
 .

@@ -8,16 +8,17 @@ schema: 2.0.0
 # Remove-ZNSettingsIdp
 
 ## SYNOPSIS
-Returns an empty reponse.
+Returns an empty response.
 
 ## SYNTAX
 
 ```
-Remove-ZNSettingsIdp -IdentityProviderId <String> [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-ZNSettingsIdp -IdentityProviderId <String> [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns an empty reponse.
+Returns an empty response.
 
 ## EXAMPLES
 
@@ -29,6 +30,21 @@ Remove-ZNSettingsIdp -IdentityProviderId azure
 This cmdlet deletes a IDP settings.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -IdentityProviderId
 Identity provider Id

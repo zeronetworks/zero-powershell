@@ -13,8 +13,8 @@ Add an asset manager of a group
 ## SYNTAX
 
 ```
-Add-ZNGroupsAssetManager -GroupId <String> -GroupType <String> -ManagerIds <String[]> [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Add-ZNGroupsAssetManager -GroupId <String> -GroupType <String> -ManagerIds <String[]> -Permission <Int32>
+ [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ This cmdlet adds an asset manager to a group.
 An asset manager can be a group or user.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on
@@ -86,6 +101,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Permission
+2 - Viewer, 3 - Manager
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

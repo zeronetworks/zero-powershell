@@ -13,7 +13,7 @@ Returns an assetId.
 ## SYNTAX
 
 ```
-Search-ZNAsset [-Fqdn <String>] [<CommonParameters>]
+Search-ZNAsset [-AccountName <String>] [-Fqdn <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,8 +34,23 @@ This cmdlet will search the assets using FQDN to return the assetId.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Fqdn
-fully qualifed domain name
+fully qualified domain name
 
 ```yaml
 Type: System.String

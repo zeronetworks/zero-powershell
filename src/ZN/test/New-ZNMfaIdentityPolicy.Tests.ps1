@@ -16,11 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNMfaIdentityPolicy'))
 
 Describe 'New-ZNMfaIdentityPolicy' {
     It 'CreateExpanded' {
-        $group = (Get-ZNMfaIdentityPoliciesDestinationCandidate -Search "domain controllers").items | where {$_.Id -like "g:t:*"}
+        $group = (Get-ZNMfaIdentityPoliciesDestinationCandidate -Search "databases").items | where {$_.Id -like "g:t:*"}
         $source = (Get-ZNMfaIdentityPoliciesSourceCandidate -Search "Any Asset").items
         $users = (Get-ZNMfaIdentityPoliciesSourceUserCandidate -Search "Domain Admins").items
         $policy = New-ZNMfaIdentityPolicy -DstAssetId $group.id -FallbackToSingleLoggedOnUser:$true -IdentityProtectionCategoryList @(5) -MfaMethodsList @(4) -OverrideBuiltins:$false -RuleDuration 6 -SrcAssetIdsList @($source.id) -SrcUserIdsList @($users.id) -State 1
-        $policy.ItemId | Should -Not -Be $null
+        $policy.ItemId | Should -Not -BeNullOrEmpty
         Remove-ZNMfaIdentityPolicy -ReactivePolicyId $policy.ItemId
     }
 }

@@ -12,19 +12,22 @@ Returns a number of assets that are valid to unprotect.
 
 ## SYNTAX
 
-### Validate1 (Default)
+### Validate (Default)
 ```
-Test-ZNAssetNetworkUnprotect -AssetId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-ZNAssetNetworkUnprotect -AssetId <String> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### Validate
+### Validate1
 ```
-Test-ZNAssetNetworkUnprotect -Body <IAssetsUnprotectBody> [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-ZNAssetNetworkUnprotect -Body <IAssetsUnprotectBody> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ValidateExpanded
 ```
-Test-ZNAssetNetworkUnprotect -Items <String[]> [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-ZNAssetNetworkUnprotect -Items <String[]> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,12 +50,27 @@ This cmdlet tests if an asset is ready for removal from network segmentation.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AssetId
 assetId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate1
+Parameter Sets: Validate
 Aliases:
 
 Required: True
@@ -68,7 +86,7 @@ To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsUnprotectBody
-Parameter Sets: Validate
+Parameter Sets: Validate1
 Aliases:
 
 Required: True

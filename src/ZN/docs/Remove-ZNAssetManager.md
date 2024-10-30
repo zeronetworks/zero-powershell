@@ -13,8 +13,8 @@ Remove an asset manager of asset
 ## SYNTAX
 
 ```
-Remove-ZNAssetManager -AssetId <String> -GroupOrUserId <String> [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-ZNAssetManager -AssetId <String> -GroupOrUserId <String> [-AccountName <String>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ Remove-ZNAssetManager -AssetId $asset -GroupOrUserId "u:a:Tolw5kf6"
 This cmdlet deletes and asset manager from an asset.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AssetId
 assetId to filter on

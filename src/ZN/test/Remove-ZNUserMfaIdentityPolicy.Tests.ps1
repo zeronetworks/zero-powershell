@@ -18,7 +18,7 @@ Describe 'Remove-ZNUserMfaIdentityPolicy' {
     It 'Delete' {
         $user = (Get-ZNUser).Items | Select -First 1
         $asset = (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
-        $group = (Get-ZNMfaIdentityPoliciesDestinationCandidate -Search "domain controllers").items | where {$_.Id -like "g:t:*"}
+        $group = (Get-ZNMfaIdentityPoliciesDestinationCandidate -Search "databases").items | where {$_.Id -like "g:t:*"}
         $source = (Get-ZNMfaIdentityPoliciesSourceCandidate -Search "Any Asset").items
         $users = (Get-ZNMfaIdentityPoliciesSourceUserCandidate -Search "Domain Admins").items
         $policy = New-ZNUserMfaIdentityPolicy -UserId $user.id -DstAssetId $group.id -FallbackToSingleLoggedOnUser:$true -IdentityProtectionCategoryList @(5) -MfaMethodsList @(4) -OverrideBuiltins:$false -RuleDuration 6 -SrcAssetIdsList @($source.id) -SrcUserIdsList @($users.id) -State 1

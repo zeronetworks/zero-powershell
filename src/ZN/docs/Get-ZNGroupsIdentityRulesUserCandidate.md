@@ -13,8 +13,8 @@ Returns a list of user candidates for Identity rules.
 ## SYNTAX
 
 ```
-Get-ZNGroupsIdentityRulesUserCandidate -GroupId <String> -GroupType <String> [-Limit <Int32>]
- [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
+Get-ZNGroupsIdentityRulesUserCandidate -GroupId <String> -GroupType <String> [-AccountName <String>]
+ [-Limit <Int32>] [-Offset <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +55,21 @@ u:a:hC3Ylccx User79
 This cmdlet lists the user candidates for identity rules.
 
 ## PARAMETERS
+
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GroupId
 groupId to filter on
@@ -111,7 +126,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

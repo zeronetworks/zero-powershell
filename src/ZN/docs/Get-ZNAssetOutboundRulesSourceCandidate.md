@@ -13,8 +13,8 @@ Returns a list of source candidates for Outbound rules.
 ## SYNTAX
 
 ```
-Get-ZNAssetOutboundRulesSourceCandidate -AssetId <String> [-Cursor <String>] [-Limit <Int32>]
- [-Search <String>] [<CommonParameters>]
+Get-ZNAssetOutboundRulesSourceCandidate -AssetId <String> [-AccountName <String>] [-Cursor <Int64>]
+ [-Limit <Int32>] [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +60,21 @@ This cmdlet gets the possible source candidates for a rule for a specific asset.
 
 ## PARAMETERS
 
+### -AccountName
+this value is per customer / partner
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AssetId
 assetId to filter on
 
@@ -79,7 +94,7 @@ Accept wildcard characters: False
 cursor position to start at
 
 ```yaml
-Type: System.String
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
