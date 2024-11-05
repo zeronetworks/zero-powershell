@@ -32,7 +32,7 @@ require:
 input-file:
   - $(this-folder)/../openapi.yaml
 
-module-version: 0.0.15-preview
+module-version: 0.0.16-preview
 title: Api
   
 inlining-threshold: 50
@@ -999,15 +999,6 @@ directive:
         name: AddAncestors Default
         description: Sets the AddAncestors parameter to $true
         script: '$true'
-  # set expiresAt default for rules
-  - where:
-      parameter-name: ExpiresAt
-      subject: (.*)InboundRule$|(.*)OutboundRule$
-    set:
-      default:
-        name: ExpiresAt Default
-        description: Sets the expiresAt parmaeter to 0 or never.
-        script: '0'
   # set withCount default
   - where:
       parameter-name: WithCount
