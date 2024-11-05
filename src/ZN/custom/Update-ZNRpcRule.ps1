@@ -5,7 +5,7 @@ Updates an RPC rule.
 Updates an RPC rule.
 
 .Link
-https://github.com/zeronetworks/zero-powershell/update-znrpcrule
+https://github.com/zeronetworks/zero-powershell/zeronetworks/update-znrpcrule
 #>
 function Update-ZNRpcRule {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.RpcRuleResponse])]
