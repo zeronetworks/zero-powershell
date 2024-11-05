@@ -7,7 +7,7 @@
     .Outputs
     ZeroNetworks.PowerShell.Cmdlets.Api.Models.Any
     .Link
-    https://github.com/zeronetworks/zero-powershell/New-ZNSettingsPushNotification
+    https://github.com/zeronetworks/zero-powershell/zeronetworks/New-ZNSettingsPushNotification
     #>
     function New-ZNSettingsPushNotification {
         [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.Any])]

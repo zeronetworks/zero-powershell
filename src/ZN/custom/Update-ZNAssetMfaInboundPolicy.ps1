@@ -5,7 +5,7 @@ Updates an inbound MFA Policy.
 Updates an inbound MFA Policy.
 
 .Link
-https://github.com/zeronetworks/zero-powershell/update-znassetmfainboundpolicy
+https://github.com/zeronetworks/zero-powershell/zeronetworks/update-znassetmfainboundpolicy
 #>
 function Update-ZNAssetMfaInboundPolicy {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicy])]

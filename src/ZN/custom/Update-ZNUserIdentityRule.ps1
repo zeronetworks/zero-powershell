@@ -5,7 +5,7 @@ Updates an identity rule.
 Updates an identity rule.
 
 .Link
-https://github.com/zeronetworks/zero-powershell/update-znuseridentityrule
+https://github.com/zeronetworks/zero-powershell/zeronetworks/update-znuseridentityrule
 #>
 function Update-ZNUserIdentityRule {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.IdentityRule])]

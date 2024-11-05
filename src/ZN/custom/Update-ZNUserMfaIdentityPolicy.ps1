@@ -5,7 +5,7 @@ Updates an identity MFA Policy.
 Updates an identity MFA Policy.
 
 .Link
-https://github.com/zeronetworks/zero-powershell/update-znusermfaidentitypolicy
+https://github.com/zeronetworks/zero-powershell/zeronetworks/update-znusermfaidentitypolicy
 #>
 function Update-ZNUserMfaIdentityPolicy {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.IdentityReactivePolicy])]

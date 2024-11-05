@@ -5,7 +5,7 @@ Reject a "pending review" rule
 Reject a "pending review" rule
 
 .Link
-https://github.com/zeronetworks/zero-powershell/Deny-ZNInboundRuleReview
+https://github.com/zeronetworks/zero-powershell/zeronetworks/Deny-ZNInboundRuleReview
 #>
 function Deny-ZNInboundRuleReview {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.Any])]

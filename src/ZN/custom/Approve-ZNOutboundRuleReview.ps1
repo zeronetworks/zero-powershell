@@ -5,7 +5,7 @@ Approve a "pending review" rule with or without changes
 Approve a "pending review" rule with or without changes
 
 .Link
-https://github.com/zeronetworks/zero-powershell/Approve-ZNOutboundRuleReview
+https://github.com/zeronetworks/zero-powershell/zeronetworks/Approve-ZNOutboundRuleReview
 #>
 function Approve-ZNOutboundRuleReview {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.Any])]

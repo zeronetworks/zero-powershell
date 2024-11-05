@@ -5,7 +5,7 @@ Updates an external access policy.
 Updates an external access policy.
 
 .Link
-https://github.com/zeronetworks/zero-powershell/tree/master/src/help/zeronetworks/update-znassetexternalaccesspolicy
+https://github.com/zeronetworks/zero-powershell/zeronetworks/tree/master/src/help/zeronetworks/update-znassetexternalaccesspolicy
 #>
 function Update-ZNAssetExternalAccessPolicy {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.ExternalAccessPolicyItem])]

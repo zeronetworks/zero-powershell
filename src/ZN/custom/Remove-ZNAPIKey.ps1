@@ -6,7 +6,7 @@ Deletes the API key
 Deletes the API Key
 
 #.Link
-https://github.com/zeronetworks/zero-powershell/remove-znapikey
+https://github.com/zeronetworks/zero-powershell/zeronetworks/remove-znapikey
 #>
 function Remove-ZNApiKey {
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Low')]

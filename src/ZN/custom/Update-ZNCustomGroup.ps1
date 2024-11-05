@@ -5,7 +5,7 @@ Updates a custom group properties.
 Updates a custom group properties.
 
 .Link
-https://github.com/zeronetworks/zero-powershell/update-zncustomgroup
+https://github.com/zeronetworks/zero-powershell/zeronetworks/update-zncustomgroup
 #>
 function Update-ZNCustomGroup {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.Group])]

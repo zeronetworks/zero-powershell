@@ -6,7 +6,7 @@ Set the API key for use in all other cmdlets
 Set the API key for use in all other cmdlets
 
 #.Link
-https://github.com/zeronetworks/zero-powershell/tree/master/src/help/zeronetworks/set-znapikey
+https://github.com/zeronetworks/zero-powershell/zeronetworks/tree/master/src/help/zeronetworks/set-znapikey
 #>
 function Set-ZNApiKey {
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Low')]

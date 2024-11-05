@@ -5,7 +5,7 @@ Updates an outbound  rule.
 Updates an outbound  rule.
 
 .Link
-https://github.com/zeronetworks/zero-powershell/update-zngroupsoutboundrule
+https://github.com/zeronetworks/zero-powershell/zeronetworks/update-zngroupsoutboundrule
 #>
 function Update-ZNGroupsOutboundRule {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.Rule])]

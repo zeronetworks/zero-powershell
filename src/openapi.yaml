@@ -30742,7 +30742,7 @@ paths:
         - api_key: []
   /users/segmented:
     get:
-      operationId: UsersIdentityIdentitySegmented_List
+      operationId: UsersIdentitySegmented_List
       summary: List Identity Segmented Users
       description: Returns a list of Identity segmented users.
       parameters:
