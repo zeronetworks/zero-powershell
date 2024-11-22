@@ -768,6 +768,9 @@ Returns a list of candidates for tag group membership.
 ### [Get-ZNUser](Get-ZNUser.md)
 Returns the properties of an user.
 
+### [Get-ZNUserAnalysis](Get-ZNUserAnalysis.md)
+Returns an object with asset analysis data.
+
 ### [Get-ZNUserAudit](Get-ZNUserAudit.md)
 Returns a list of audits for the user.
 
@@ -794,6 +797,10 @@ Returns a list of excluded assets candidates for Identity rules.
 
 ### [Get-ZNUserIdentityRulesUserCandidate](Get-ZNUserIdentityRulesUserCandidate.md)
 Returns a list of user candidates for Identity rules.
+
+### [Get-ZNUserInactive](Get-ZNUserInactive.md)
+Returns a list of Users.
+Pass the returned 'nextCursor' as the '_cursor' query param of the next request for batches, when the '_offset' param is not used.
 
 ### [Get-ZNUserMemberOf](Get-ZNUserMemberOf.md)
 Returns a list of groups the user is a member of.
@@ -827,10 +834,6 @@ Returns a list of users in Learning.
 
 ### [Get-ZNUsersIdentitySegmented](Get-ZNUsersIdentitySegmented.md)
 Returns a list of Identity segmented users.
-
-### [Get-ZNUsersInactive](Get-ZNUsersInactive.md)
-Returns a list of Users.
-Pass the returned 'nextCursor' as the '_cursor' query param of the next request for batches, when the '_offset' param is not used.
 
 ### [Get-ZNUsersManagedAsset](Get-ZNUsersManagedAsset.md)
 get managed assets for user
@@ -1492,11 +1495,17 @@ Set Trusted Internet addresses settings in System
 ### [Update-ZNSettingsZpa](Update-ZNSettingsZpa.md)
 Set ZPA settings in Integrations
 
+### [Update-ZNUserActive](Update-ZNUserActive.md)
+Returns and empty object.
+
 ### [Update-ZNUserExternalAccessPolicy](Update-ZNUserExternalAccessPolicy.md)
 Updates an external access policy.
 
 ### [Update-ZNUserIdentityRule](Update-ZNUserIdentityRule.md)
 Updates an identity rule.
+
+### [Update-ZNUserInactive](Update-ZNUserInactive.md)
+Returns and empty object.
 
 ### [Update-ZNUserMfaIdentityPolicy](Update-ZNUserMfaIdentityPolicy.md)
 Updates an identity MFA Policy.

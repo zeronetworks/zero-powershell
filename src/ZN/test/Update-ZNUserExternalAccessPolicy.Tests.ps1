@@ -21,9 +21,9 @@ Describe 'Update-ZNUserExternalAccessPolicy' {
         $dstAsset = (Search-ZNAsset -Fqdn ls01.posh.local).AssetId
         $Policy = New-ZNUserExternalAccessPolicy -UserId $userId -DstAssetId $dstAsset -DstPortsList $portsList -DstProcessNamesList @("*") -Name "ExternalUpdateUserTest" -RuleDuration 4 -SrcUserIdsList @($userId) -State 1 -Url "https://external.posh.local"
         
-        $updatedPolicy = Update-ZNExternalAccessPolicy -UserId $userId -PolicyId $Policy.ItemId -Name "ExternalTestUpdateUser" -Url "https://external.posh.local/updated"
+        $updatedPolicy = Update-ZNUserExternalAccessPolicy -UserId $userId -PolicyId $Policy.ItemId -Name "ExternalTestUpdateUser" -Url "https://external.posh.local/updated"
         
-        $Policy.ItemUrl | Should -Be "https://external.posh.local/updated"
+        $updatedPolicy.ItemUrl | Should -Be "https://external.posh.local/updated"
         Remove-ZNUserExternalAccessPolicy -UserId $userId -PolicyId $Policy.ItemId
     }
 }

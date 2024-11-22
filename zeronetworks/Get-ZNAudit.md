@@ -13,8 +13,8 @@ Returns a list of audit events.
 ## SYNTAX
 
 ```
-Get-ZNAudit [-AccountName <String>] [-Cursor <Int64>] [-EntityId <String>] [-Filters <String>] [-From <Int32>]
- [-Limit <Int32>] [-Order <String>] [-Search <String>] [-To <Int32>] [<CommonParameters>]
+Get-ZNAudit [-AccountName <String>] [-Cursor <Int64>] [-EntityId <String>] [-Filters <String>] [-From <Int64>]
+ [-Limit <Int32>] [-Order <String>] [-Search <String>] [-To <Int64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 startTime in epoch(ms)
 
 ```yaml
-Type: System.Int32
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 endTime in epoch(ms)
 
 ```yaml
-Type: System.Int32
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 

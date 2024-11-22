@@ -15,12 +15,12 @@ Returns a the properties of outbound MFA policy created.
 ```
 New-ZNGroupsMfaOutboundPolicy -GroupId <String> -GroupType <String> -AdditionalPortsList <IPortsListItem[]>
  -DstEntityInfoId <String> -DstPort <String> -FallbackToLoggedOnUser -MfaMethods <Int32[]> -OverrideBuiltins
- -ProtocolType <Int32> -RestrictLoginToOriginatingUser -RuleDuration <Int32>
- -SrcEntityInfos <IReactivePolicyOutboundBodySrcEntityInfosItem[]> -SrcProcessNames <String[]>
- -SrcUserInfos <IReactivePolicyOutboundBodySrcUserInfosItem[]> -State <Int32> [-AccountName <String>]
- [-Description <String>] [-DstProcessNames <String[]>]
+ -ProtocolType <Int32> -RuleDuration <Int32> -SrcEntityInfos <IReactivePolicyOutboundBodySrcEntityInfosItem[]>
+ -SrcProcessNames <String[]> -SrcUserInfos <IReactivePolicyOutboundBodySrcUserInfosItem[]> -State <Int32>
+ [-AccountName <String>] [-Description <String>] [-DstProcessNames <String[]>]
  [-ExcludedSrcEntityInfos <IReactivePolicyOutboundBodyExcludedSrcEntityInfosItem[]>]
- [-ExcludedSrcProcesses <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ExcludedSrcProcesses <String[]>] [-RestrictLoginToOriginatingUser] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -306,7 +306,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

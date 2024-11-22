@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetClusterInfo'))
 
 Describe 'Get-ZNAssetClusterInfo' {
     It 'Get' {
-        $asset = (Search-ZNAsset -Fqdn fs01.posh.local).AssetId
+        $asset = (Search-ZNAsset -Fqdn fs02.posh.local).AssetId
         $clusterInfo = Get-ZNAssetClusterInfo -AssetId $asset
         $clusterInfo.ClusterInfoClusterName | Should -Not -BeNullOrEmpty
     }

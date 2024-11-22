@@ -14,7 +14,7 @@ Edit an OT/IoT asset.
 
 ```
 Update-ZNAssetOt -AssetId <String> [-AccountName <String>] [-DisplayName <String>] [-Fqdn <String>]
- [-Type <Single>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-InterfaceName <String>] [-SwitchId <String>] [-Type <Single>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,6 +78,36 @@ Accept wildcard characters: False
 ```
 
 ### -Fqdn
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InterfaceName
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SwitchId
 .
 
 ```yaml

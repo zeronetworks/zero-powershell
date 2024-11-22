@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNAssetInactive'))
 Describe 'Update-ZNAssetInactive' {
     It 'SetExpanded' {
         $asset = (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
-        Update-ZNAssetInactive -Items @($asset.Id)
+        Update-ZNAssetInactive -Items @($asset)
         $inactiveAsset = Get-ZNAsset -AssetId $asset
         $inactiveAsset.Entity.AssetStatus | Should -Be 12
         Update-ZNAssetActive -Items @($asset)        

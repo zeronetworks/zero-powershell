@@ -15,7 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNAssetOtAssetManager'
 }
 
 Describe 'Update-ZNAssetOtAssetManager' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $asset = Get-ZNAssetsOt -Limit 400 | where {$_.Name -eq 'switch01'}
+        $user = (get-znuser).Items | select -First 1
+        Add-ZNAssetOtAssetManager -AssetId $asset.id -ManagerIds @($user.Id) -Permission 3
+
+        Update-ZNAssetOtAssetManager -AssetId $asset.id -ManagerId $user.id -Permission 2
+        $assetManager = Get-ZNAssetOtAssetManager -AssetId $asset.id
+        $assetManager.Permission | Should -Be 2
+        Remove-ZNAssetOtAssetManager -AssetId $asset.id -GroupOrUserId $user.Id
     }
 }

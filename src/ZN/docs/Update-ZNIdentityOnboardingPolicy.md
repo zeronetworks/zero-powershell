@@ -13,9 +13,9 @@ Returns the updated settings for the identity onboarding policy.
 ## SYNTAX
 
 ```
-Update-ZNIdentityOnboardingPolicy -OnboardingPolicyId <String> -ExistingMembersLearningDays <Int32>
- -NewMembersLearningDays <Int32> [-AccountName <String>] [-Description <String>] [-Enabled] [-Id <String>]
- [-PolicyType <Int32>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNIdentityOnboardingPolicy -OnboardingPolicyId <String> -EnforceBlocks
+ -ExistingMembersLearningDays <Int32> -NewMembersLearningDays <Int32> [-AccountName <String>]
+ [-Description <String>] [-Enabled] [-Id <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,6 +102,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnforceBlocks
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExistingMembersLearningDays
 .
 
@@ -158,21 +173,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicyType
-.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 2
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

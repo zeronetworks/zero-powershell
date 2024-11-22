@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNUsersManagedAsset'))
 }
 
 Describe 'Update-ZNUsersManagedAsset' {
-    It 'UpdateExpanded' -skip {
+    It 'UpdateExpanded' {
         $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         $user = (Get-ZNUser).Items | Select -First 1
         Add-ZNUsersManagedAsset -UserId $user.Id -EntityIds @($asset) -Permission 3
