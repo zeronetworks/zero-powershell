@@ -1,22 +1,32 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update External access policy
 ```powershell
-{{ Add code here }}
+$userid = 'u:a:hOLnvx4y'
+$policy = Get-ZNUserExternalAccessPolicy -UserId $userid -PolicyId 'p:e:JgmjPjxK'
+Update-ZNUserExternalAccessPolicy -UserId $userid -PolicyId 'p:e:JgmjPjxK' -RuleDuration 8
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+CreatedByEmail             : 
+CreatedByEnforcementSource : 6
+CreatedById                : m:b7a85d794b3bb820413309acefe94adcb8767c16
+CreatedByName              : powershell
+CreatedByUserRole          : 4
+ItemCreatedAt              : 1730141436885
+ItemDescription            : 
+ItemDstAssetId             : a:l:2UxufVFE
+ItemDstAssetInfo           : ZeroNetworks.PowerShell.Cmdlets.Api.Models.Asset
+ItemDstPortsList           : {ZeroNetworks.PowerShell.Cmdlets.Api.Models.PortsListItem}
+ItemDstProcessNamesList    : {*}
+ItemId                     : p:e:diwDLSSB
+ItemName                   : ExternalUpdateUserTest
+ItemRuleDuration           : 8
+ItemSrcUserIdsList         : {u:a:hOLnvx4y}
+ItemSrcUserInfos           : {zero}
+ItemState                  : 1
+ItemUpdatedAt              : 1731448171022
+ItemUrl                    : https://external.posh.local
+UpdatedById                : m:b7a85d794b3bb820413309acefe94adcb8767c16
+UpdatedByName              : powershell
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This cmdlet updates an external access policy.

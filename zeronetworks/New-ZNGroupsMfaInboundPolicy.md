@@ -15,12 +15,12 @@ Returns the properties of the inbound MFA policy after creation.
 ```
 New-ZNGroupsMfaInboundPolicy -GroupId <String> -GroupType <String> -AdditionalPortsList <IPortsListItem[]>
  -DstEntityInfoId <String> -DstPort <String> -DstProcessNames <String[]> -FallbackToLoggedOnUser
- -MfaMethods <Int32[]> -OverrideBuiltins -ProtocolType <Int32> -RestrictLoginToOriginatingUser
- -RuleDuration <Int32> -SrcEntityInfos <IReactivePolicyInboundBodySrcEntityInfosItem[]>
- -SrcProcessNames <String[]> -SrcUserInfos <IReactivePolicyInboundBodySrcUserInfosItem[]> -State <Int32>
- [-AccountName <String>] [-Description <String>]
- [-ExcludedSrcEntityInfos <IReactivePolicyInboundBodyExcludedSrcEntityInfosItem[]>]
- [-ExcludedSrcProcesses <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -MfaMethods <Int32[]> -OverrideBuiltins -ProtocolType <Int32> -RuleDuration <Int32>
+ -SrcEntityInfos <IReactivePolicyInboundBodySrcEntityInfosItem[]> -SrcProcessNames <String[]>
+ -SrcUserInfos <IReactivePolicyInboundBodySrcUserInfosItem[]> -State <Int32> [-AccountName <String>]
+ [-Description <String>] [-ExcludedSrcEntityInfos <IReactivePolicyInboundBodyExcludedSrcEntityInfosItem[]>]
+ [-ExcludedSrcProcesses <String[]>] [-RestrictLoginToOriginatingUser] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -306,7 +306,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

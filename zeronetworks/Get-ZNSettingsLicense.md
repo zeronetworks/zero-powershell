@@ -84,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -LicenseType
-The license
+The license type
 
 ```yaml
 Type: System.String

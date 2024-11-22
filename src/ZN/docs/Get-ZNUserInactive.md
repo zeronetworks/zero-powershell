@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: ZeroNetworks
-online version: https://github.com/zeronetworks/zero-powershell/zeronetworks/get-znusersinactive
+online version: https://github.com/zeronetworks/zero-powershell/zeronetworks/get-znuserinactive
 schema: 2.0.0
 ---
 
-# Get-ZNUsersInactive
+# Get-ZNUserInactive
 
 ## SYNOPSIS
 Returns a list of Users.
@@ -14,7 +14,7 @@ Pass the returned 'nextCursor' as the '_cursor' query param of the next request 
 ## SYNTAX
 
 ```
-Get-ZNUsersInactive [-AccountName <String>] [-Cursor <Int64>] [-Filters <String>] [-Limit <Int32>]
+Get-ZNUserInactive [-AccountName <String>] [-Cursor <Int64>] [-Filters <String>] [-Limit <Int32>]
  [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>] [-Search <String>] [-WithCount]
  [<CommonParameters>]
 ```
@@ -25,41 +25,27 @@ Pass the returned 'nextCursor' as the '_cursor' query param of the next request 
 
 ## EXAMPLES
 
-### Example 1: List inactive users
+### Example 1: {{ Add title here }}
 ```powershell
-(Get-ZNUsersInactive).Items
+{{ Add code here }}
 ```
 
 ```output
-AddedAt             : 
-AddedBy             : 
-ClassifiedById      : 1f352ed0-86f1-454f-90a5-592c197c8000
-ClassifiedByName    : Zero Networks
-CreatedAt           : 1702251607249
-DistinguishedName   : CN=zSvcAcct3,CN=Users,DC=posh,DC=local
-Domain              : posh.local
-Email               : 
-FirstName           : 
-Guid                : 13bcfd10-6848-441f-85da-b7a548d68cf8
-Id                  : u:a:Hk7V9Fp7
-JobTitle            : 
-LastLogonReplicated : 
-LastName            : 
-Name                : zSvcAcct3 (inactive)
-OfficePhone         : 
-Phone               : 
-PrincipalName       : POSH\zSvcAcct3
-ProtectAt           : 
-ProtectedAt         : 
-ProtectionState     : 1
-Role                : 3
-Sid                 : S-1-5-21-4035814016-3211323426-385196088-1111
-Source              : 3
-UserPrincipleName   : 
-UserType            : 3
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This cmdlet will list the inactive users.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

@@ -23,7 +23,7 @@ Describe 'Update-ZNGroupsExternalAccessPolicy' {
         
         $updatedPolicy = Update-ZNGroupsExternalAccessPolicy -GroupId $groupId -GroupType tag -PolicyId $Policy.ItemId -Name "ExternalTestUpdateGroups" -Url "https://external.posh.local/updated"
         
-        $Policy.ItemUrl | Should -Be "https://external.posh.local/updated"
+        $updatedPolicy.ItemUrl | Should -Be "https://external.posh.local/updated"
         Remove-ZNGroupsExternalAccessPolicy -GroupId $groupId -GroupType tag -PolicyId $Policy.ItemId
     }
 }

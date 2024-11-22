@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNUserIdentityQueue'))
 
 Describe 'Invoke-ZNUserIdentityQueue' {
     It 'QueueExpanded' {
-        $svcAccount = ((Get-ZNUsersServiceAccount).Items | where {$_.ProtectionState -eq 1})[0]
+        $svcAccount = ((Get-ZNUsersServiceAccount).Items | where {$_.ProtectionState -eq 1 -and $_.id -like "u:a:*"})[0]
         Invoke-ZNUserIdentityQueue -QueueDays 30 -UserIds @($svcAccount.Id)
         (Get-ZNUser -UserId $svcAccount.id).EntityProtectionState | Should -Be 5
         Unprotect-ZNUserIdentitySegment -UserIds @($svcAccount.Id)

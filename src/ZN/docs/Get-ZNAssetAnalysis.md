@@ -13,8 +13,9 @@ Returns an object with asset analysis data.
 ## SYNTAX
 
 ```
-Get-ZNAssetAnalysis -AssetId <String> -Direction <String> [-AccountName <String>] [-Connectionstate <Int32>]
- [-From <Int32>] [-Sort <String>] [-To <Int32>] [<CommonParameters>]
+Get-ZNAssetAnalysis -AssetId <String> -Direction <String> -DirectlyRetrievedFromAsset -TrafficType <Int32>
+ [-AccountName <String>] [-ConnectionState <Int32>] [-From <Int64>] [-Sort <String>] [-To <Int64>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +74,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Connectionstate
+### -ConnectionState
 connection state for the query
 
 ```yaml
@@ -103,11 +104,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DirectlyRetrievedFromAsset
+Only get activities retrieved from the asset
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -From
 startTime in epoch(ms)
 
 ```yaml
-Type: System.Int32
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -137,11 +153,26 @@ Accept wildcard characters: False
 endTime in epoch(ms)
 
 ```yaml
-Type: System.Int32
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TrafficType
+1-Internal, 2-External or 3-Both
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

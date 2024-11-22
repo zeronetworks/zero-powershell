@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Zero Networks
-  version: 1.0.5
+  version: 1.0.6
   description: APIs for Zero Networks
   contact:
     name: Support
@@ -2304,6 +2304,8 @@ paths:
         - $ref: '#/components/parameters/sortParameter'
         - $ref: '#/components/parameters/analysisDirectionParameter'
         - $ref: '#/components/parameters/connectionStateParameter'
+        - $ref: '#/components/parameters/trafficTypeParameter'
+        - $ref: '#/components/parameters/directlyRetrievedFromAssetParameter'
         - $ref: '#/components/parameters/fromParameter'
         - $ref: '#/components/parameters/toParameter'
       responses:
@@ -14242,6 +14244,9 @@ paths:
       description: list switch interfaces
       parameters:
         - $ref: '#/components/parameters/switchIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/withCountParameter'
       responses:
         '200':
           description: OK
@@ -14255,6 +14260,33 @@ paths:
           $ref: '#/components/responses/500'
       security:
         - api_key: []
+      tags:
+        - Switch
+    put:
+      operationId: Update_switch_interfaces_monitor
+      summary: update switch interfaces monitor
+      parameters:
+        - $ref: '#/components/parameters/switchIdParameter'
+      requestBody:
+        description: 'update switch interfaces monitor state'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/switchInterfacesBody'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: [ ]
       tags:
         - Switch
   /audit:
@@ -15022,6 +15054,283 @@ paths:
           $ref: '#/components/responses/401'
         '403':
           $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Group
+  /groups/{groupType}/{groupId}/activities/network:
+    get:
+      operationId: GroupsNetworkActivities_List
+      summary: List Network Activities for a specific group
+      description: Returns a list of network activities for a specific group.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/cursorParameter'
+        - $ref: '#/components/parameters/searchParameter'
+        - $ref: '#/components/parameters/entityIdQueryParameter'
+        - $ref: '#/components/parameters/fromParameter'
+        - $ref: '#/components/parameters/toParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activitiesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Group
+  /groups/{groupType}/{groupId}/activities/network/export:
+    post:
+      operationId: GroupsNetworkActivities_Export
+      summary: Export network activities for a specific group
+      description: Returns an exportId to pass into the download API.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+      requestBody:
+        description: 'EntityId, from, to, search, filter or date time format for export'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/exportBodyActivities'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exportId'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Group
+  /groups/{groupType}/{groupId}/activities/network/export/csv/{exportId}:
+    get:
+      operationId: GroupsNetworkActivitiesExport_Get
+      summary: Download network activities export for a specific group
+      description: Returns a csv file to be downloaded.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/exportIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: object
+                format: file
+        '401':
+          $ref: '#/components/responses/401'
+      security:
+        - api_key: []
+      tags:
+        - Group
+  /groups/{groupType}/{groupId}/activities/network/filters:
+    get:
+      operationId: GroupsNetworkActivitiesFilters_List
+      summary: Get network activity filters for a specific group
+      description: Returns the filters that can be used for network activities for a specific group.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Group
+  /groups/{groupType}/{groupId}/activities/network/user-filters:
+    get:
+      operationId: GroupsNetworkActivitiesSavedFilters_List
+      summary: List Saved Filters for Network Activities
+      description: Returns a list of saved filters for network activities.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/savedFiltersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Group
+    post:
+      operationId: GroupsNetworkActivitiesSavedFilters_Create
+      summary: Create a Saved Filter for Network Activities
+      description: Returns the filter id.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+      requestBody:
+        description: 'Name, filters, and description for the saved filter'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/savedFilterBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/savedFilterId'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Group
+  /groups/{groupType}/{groupId}/activities/network/user-filters/{filterId}:
+    get:
+      operationId: GroupsNetworkActivitiesSavedFilters_Get
+      summary: Get a Saved Filter for Network Activities
+      description: Returns a saved filters for network activities.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/filterIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/savedFilterObject'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Group
+    put:
+      operationId: GroupsNetworkActivitiesSavedFilters_Update
+      summary: update a Saved Filter for Network Activities
+      description: Returns an empty object.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/filterIdParameter'
+      requestBody:
+        description: 'Name, filters, and description for the saved filter'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/savedFilterUpdateBody'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Group
+    delete:
+      operationId: GroupsNetworkActivitiesSavedFilters_Delete
+      summary: Delete a Saved Filter for Network Activities
+      description: Returns an empty object.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/filterIdParameter'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
         '500':
           $ref: '#/components/responses/500'
       security:
@@ -19803,6 +20112,304 @@ paths:
           $ref: '#/components/responses/500'
       security:
         - api_key: []
+  /protection-policies/identity:
+    get:
+      operationId: IdentityOnboardingPolicies_List
+      summary: List identity onboarding policies
+      description: Returns a list of identity onboarding policies.
+      parameters:
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/protectionPoliciesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Onboarding Policies
+    post:
+      operationId: IdentityOnboardingPolicies_Create
+      summary: Add identity onboarding policy
+      description: Returns the identity onboarding policy that was created.
+      requestBody:
+        description: Identity onboarding Policy properties
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/protectionPolicyBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/protectionPolicyResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Onboarding Policies
+  /protection-policies/identity/{onboardingPolicyId}:
+    delete:
+      operationId: IdentityOnboardingPolicies_Delete
+      summary: Remove identity onboarding policy
+      description: Returns and empty object.
+      parameters:
+        - $ref: '#/components/parameters/onboardingPolicyIdParameter'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Onboarding Policies
+    put:
+      operationId: IdentityOnboardingPolicies_Update
+      summary: Update identity onboarding policy
+      description: Returns the updated settings for the identity onboarding policy.
+      parameters:
+        - $ref: '#/components/parameters/onboardingPolicyIdParameter'
+      requestBody:
+        description: Identity onboarding Policy properties
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/protectionPolicyUpdateBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/protectionPolicyResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Onboarding Policies
+  /protection-policies/identity/group-candidates:
+    get:
+      operationId: IdentityOnboardingPoliciesGroupCandidates_List
+      summary: Get groups for identity onboarding policy
+      description: Returns a list of candidates for identity onboarding policies.
+      parameters:
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/groupCandidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Onboarding Policies
+  /protection-policies/network:
+    get:
+      operationId: NetworkOnboardingPolicies_List
+      summary: List network onboarding policies
+      description: Returns a list of network onboarding policies.
+      parameters:
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/protectionPoliciesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Onboarding Policies
+    post:
+      operationId: NetworkOnboardingPolicies_Create
+      summary: Add network onboarding policy
+      description: Returns the network onboarding policy that was created.
+      requestBody:
+        description: Network onboarding Policy properties
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/protectionPolicyBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/protectionPolicyResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Onboarding Policies
+  /protection-policies/network/{onboardingPolicyId}:
+    delete:
+      operationId: NetworkOnboardingPolicies_Delete
+      summary: Remove network onboarding policy
+      description: Returns and empty object.
+      parameters:
+        - $ref: '#/components/parameters/onboardingPolicyIdParameter'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Onboarding Policies
+    put:
+      operationId: NetworkOnboardingPolicies_Update
+      summary: Update network onboarding policy
+      description: Returns the updated settings for the network onboarding policy.
+      parameters:
+        - $ref: '#/components/parameters/onboardingPolicyIdParameter'
+      requestBody:
+        description: Network onboarding Policy properties
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/protectionPolicyUpdateBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/protectionPolicyResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Onboarding Policies
+  /protection-policies/network/group-candidates:
+    get:
+      operationId: NetworkOnboardingPoliciesGroupCandidates_List
+      summary: Get candidates for Network onboarding Policies.
+      description: Returns a list of candidates for a network onboarding policy.
+      parameters:
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/groupCandidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Onboarding Policies
   /protection/ae-exclusions/inbound:
     get:
       operationId: AEExclusionsInbound_List
@@ -27135,304 +27742,6 @@ paths:
         - Settings Custom Users
       x-stoplight:
         id: 9ip489dgishvk
-  /settings/protection-policies/identity:
-    get:
-      operationId: IdentityOnboardingPolicies_List
-      summary: List identity onboarding policies
-      description: Returns a list of identity onboarding policies.
-      parameters:
-        - $ref: '#/components/parameters/limitParameter'
-        - $ref: '#/components/parameters/offsetParameter'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/protectionPoliciesList'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
-      security:
-        - api_key: []
-      tags:
-        - Onboarding Policies
-    post:
-      operationId: IdentityOnboardingPolicies_Create
-      summary: Add identity onboarding policy
-      description: Returns the identity onboarding policy that was created.
-      requestBody:
-        description: Identity onboarding Policy properties
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/protectionPolicyBody'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/protectionPolicyResponse'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
-      security:
-        - api_key: []
-      tags:
-        - Onboarding Policies
-  /settings/protection-policies/identity/{onboardingPolicyId}:
-    delete:
-      operationId: IdentityOnboardingPolicies_Delete
-      summary: Remove identity onboarding policy
-      description: Returns and empty object.
-      parameters:
-        - $ref: '#/components/parameters/onboardingPolicyIdParameter'
-      responses:
-        '200':
-          description: OK
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
-      security:
-        - api_key: []
-      tags:
-        - Onboarding Policies
-    put:
-      operationId: IdentityOnboardingPolicies_Update
-      summary: Update identity onboarding policy
-      description: Returns the updated settings for the identity onboarding policy.
-      parameters:
-        - $ref: '#/components/parameters/onboardingPolicyIdParameter'
-      requestBody:
-        description: Identity onboarding Policy properties
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/protectionPolicyUpdateBody'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/protectionPolicyResponse'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
-      security:
-        - api_key: []
-      tags:
-        - Onboarding Policies
-  /settings/protection-policies/identity/group-candidates:
-    get:
-      operationId: IdentityOnboardingPoliciesGroupCandidates_List
-      summary: Get groups for identity onboarding policy
-      description: Returns a list of candidates for identity onboarding policies.
-      parameters:
-        - $ref: '#/components/parameters/limitParameter'
-        - $ref: '#/components/parameters/offsetParameter'
-        - $ref: '#/components/parameters/searchParameter'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/groupCandidatesList'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
-      security:
-        - api_key: []
-      tags:
-        - Onboarding Policies
-  /settings/protection-policies/network:
-    get:
-      operationId: NetworkOnboardingPolicies_List
-      summary: List network onboarding policies
-      description: Returns a list of network onboarding policies.
-      parameters:
-        - $ref: '#/components/parameters/limitParameter'
-        - $ref: '#/components/parameters/offsetParameter'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/protectionPoliciesList'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
-      security:
-        - api_key: []
-      tags:
-        - Onboarding Policies
-    post:
-      operationId: NetworkOnboardingPolicies_Create
-      summary: Add network onboarding policy
-      description: Returns the network onboarding policy that was created.
-      requestBody:
-        description: Network onboarding Policy properties
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/protectionPolicyBody'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/protectionPolicyResponse'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
-      security:
-        - api_key: []
-      tags:
-        - Onboarding Policies
-  /settings/protection-policies/network/{onboardingPolicyId}:
-    delete:
-      operationId: NetworkOnboardingPolicies_Delete
-      summary: Remove network onboarding policy
-      description: Returns and empty object.
-      parameters:
-        - $ref: '#/components/parameters/onboardingPolicyIdParameter'
-      responses:
-        '200':
-          description: OK
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
-      security:
-        - api_key: []
-      tags:
-        - Onboarding Policies
-    put:
-      operationId: NetworkOnboardingPolicies_Update
-      summary: Update network onboarding policy
-      description: Returns the updated settings for the network onboarding policy.
-      parameters:
-        - $ref: '#/components/parameters/onboardingPolicyIdParameter'
-      requestBody:
-        description: Network onboarding Policy properties
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/protectionPolicyUpdateBody'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/protectionPolicyResponse'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
-      security:
-        - api_key: []
-      tags:
-        - Onboarding Policies
-  /settings/protection-policies/network/group-candidates:
-    get:
-      operationId: NetworkOnboardingPoliciesGroupCandidates_List
-      summary: Get candidates for Network onboarding Policies.
-      description: Returns a list of candidates for a network onboarding policy.
-      parameters:
-        - $ref: '#/components/parameters/limitParameter'
-        - $ref: '#/components/parameters/offsetParameter'
-        - $ref: '#/components/parameters/searchParameter'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/groupCandidatesList'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
-      security:
-        - api_key: []
-      tags:
-        - Onboarding Policies
   /settings/reactive-policy:
     get:
       operationId: SettingsMFADetection_Get
@@ -28736,6 +29045,96 @@ paths:
           $ref: '#/components/responses/404'
         '500':
           $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - User
+  /users/{userId}/analysis:
+    get:
+      operationId: UserAnalysis_Get
+      summary: Get a user analysis
+      description: Returns an object with asset analysis data.
+      parameters:
+        - $ref: '#/components/parameters/userIdParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/trafficTypeParameter'
+        - $ref: '#/components/parameters/connectionStateParameter'
+        - $ref: '#/components/parameters/fromParameter'
+        - $ref: '#/components/parameters/toParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userAnalysis'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - User
+  /users/{userId}/analysis/export:
+    post:
+      operationId: UserAnalysis_Export
+      summary: Export user analysis
+      description: Returns an exportId to pass into the download API.
+      parameters:
+        - $ref: '#/components/parameters/userIdParameter'
+      requestBody:
+        description: 'EntityId, from, to, search, filter or date time format for export'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/exportBodyAnalysis'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exportId'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - User
+  /users/{userId}/analysis/export/csv/{exportId}:
+    get:
+      operationId: UserAnalysisExport_Get
+      summary: Download user analysis report
+      description: Returns a csv file to be downloaded.
+      parameters:
+        - $ref: '#/components/parameters/exportIdParameter'
+        - $ref: '#/components/parameters/userIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/401'
       security:
         - api_key: []
       tags:
@@ -30320,6 +30719,124 @@ paths:
         - api_key: []
       tags:
         - Users
+  /users/actions/inactivate:
+    post:
+      operationId: UsersInactive_Set
+      summary: Mark users inactive
+      description: Returns and empty object.
+      requestBody:
+        description: Array of userIds to mark inactive
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/usersActivateBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: [ ]
+      tags:
+        - Users
+  /users/actions/activate:
+    post:
+      operationId: UsersActive_Set
+      summary: Mark users active
+      description: Returns and empty object.
+      requestBody:
+        description: Array of userIds to activate
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/usersActivateBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: [ ]
+      tags:
+        - Users
+  /users/{userId}/actions/inactivate:
+    post:
+      operationId: UserInactive_Set
+      summary: Mark user inactive
+      description: Returns and empty object.
+      parameters:
+        - $ref: '#/components/parameters/userIdParameter'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userActivateBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: [ ]
+      tags:
+        - Users
+  /users/{userId}/actions/activate:
+    post:
+      operationId: UsersActive_Set
+      summary: Mark user active
+      description: Returns and empty object.
+      parameters:
+        - $ref: '#/components/parameters/userIdParameter'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userActivateBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: [ ]
+      tags:
+        - Users
   /users/export/csv/{exportId}:
     get:
       operationId: UsersExport_Get
@@ -31137,7 +31654,7 @@ components:
       schema:
         type: string
     connectionStateParameter:
-      name: connectionstate
+      name: connection_state
       in: query
       description: connection state for the query
       schema:
@@ -31196,6 +31713,14 @@ components:
       schema:
         type: integer
       example: 1
+    directlyRetrievedFromAssetParameter:
+      name: directly_retrieved_from_asset
+      in: query
+      description: Only get activities retrieved from the asset
+      required: true
+      schema:
+        type: boolean
+      example: true
     domainIdParameter:
       name: domainId
       in: path
@@ -31315,6 +31840,7 @@ components:
       description: startTime in epoch(ms)
       schema:
         type: integer
+        format: int64
         pattern: '^\d{13}$'
       example: 1647308838000
     groupIdParameter:
@@ -31430,7 +31956,7 @@ components:
         pattern: '^[e]:[m]:[a-zA-Z0-9]{8}$'
     offsetParameter:
       name: _offset
-      required: true
+      required: false
       in: query
       description: Used to page through results
       schema:
@@ -31523,7 +32049,7 @@ components:
     licenseTypeParameter:
       name: licenseType
       in: path
-      description: The license
+      description: The license type
       required: true
       schema:
         type: string
@@ -31665,8 +32191,16 @@ components:
       description: endTime in epoch(ms)
       schema:
         type: integer
+        format: int64
         pattern: '^\d{13}$'
       example: 1647305854366
+    trafficTypeParameter:
+      name: traffic_type
+      in: query
+      description: 1-Internal, 2-External or 3-Both
+      required: true
+      schema:
+        type: integer
     updateIdParameter:
       name: updateId
       in: query
@@ -32145,7 +32679,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/byUser'
-            byProcess:
+            bySrcProcess:
               type: array
               items:
                 $ref: '#/components/schemas/byProcess'
@@ -32999,10 +33533,6 @@ components:
     byAsset:
       type: object
       properties:
-        occurred:
-          type: integer
-        lastTimeSeen:
-          type: string
         aggregation:
           type: object
           properties:
@@ -33012,31 +33542,65 @@ components:
               type: string
             name:
               type: string
-        ports:
-          type: array
-          items:
-            $ref: '#/components/schemas/portSummary'
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/userSummary'
-        processes:
-          type: array
-          items:
-            $ref: '#/components/schemas/processSummary'
         assets:
           type: array
           items:
             $ref: '#/components/schemas/assetSummary'
         connectionState:
           type: integer
+        lastTimeSeen:
+          type: string
+        occurred:
+          type: integer
+        ports:
+          type: array
+          items:
+            $ref: '#/components/schemas/portSummary'
+        srcProcesses:
+          type: array
+          items:
+            $ref: '#/components/schemas/processSummary'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/userSummary'
+    byDstAsset:
+      type: object
+      properties:
+        aggregation:
+          type: object
+          properties:
+            count:
+              type: integer
+            id:
+              type: string
+            name:
+              type: string
+        connectionState:
+          type: integer
+        dstAssets:
+          type: array
+          items:
+            $ref: '#/components/schemas/assetSummary'
+        lastTimeSeen:
+          type: string
+        occurred:
+          type: integer
+        ports:
+          type: array
+          items:
+            $ref: '#/components/schemas/portSummary'
+        srcAssets:
+          type: array
+          items:
+            $ref: '#/components/schemas/assetSummary'
+        srcProcesses:
+          type: array
+          items:
+            $ref: '#/components/schemas/processSummary'  
     byPort:
       type: object
       properties:
-        occurred:
-          type: integer
-        lastTimeSeen:
-          type: string
         aggregation:
           type: object
           properties:
@@ -33053,20 +33617,61 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/assetSummary'
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/userSummary'
-        processes:
-          type: array
-          items:
-            $ref: '#/components/schemas/processSummary'
+        connectionState:
+          type: integer
+        lastTimeSeen:
+          type: string
+        occurred:
+          type: integer
         ports:
           type: array
           items:
             $ref: '#/components/schemas/portSummary'
+        srcProcesses:
+          type: array
+          items:
+            $ref: '#/components/schemas/processSummary'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/userSummary'
+    byPortUser:
+      type: object
+      properties:
+        aggregation:
+          type: object
+          properties:
+            count:
+              type: integer
+            port:
+              type: object
+              properties:
+                protocol:
+                  $ref: '#/components/schemas/protocol'
+                port:
+                  type: integer
         connectionState:
           type: integer
+        dstAssets:
+          type: array
+          items:
+            $ref: '#/components/schemas/assetSummary'
+        lastTimeSeen:
+          type: string
+        occurred:
+          type: integer
+        ports:
+          type: array
+          items:
+            $ref: '#/components/schemas/portSummary'
+        srcAssets:
+          type: array
+          items:
+            $ref: '#/components/schemas/assetSummary'
+        srcProcesses:
+          type: array
+          items:
+            $ref: '#/components/schemas/processSummary'
     byProcess:
       type: object
       properties:
@@ -33099,13 +33704,75 @@ components:
             $ref: '#/components/schemas/processSummary'
         connectionState:
           type: integer
+    bySrcAsset:
+      type: object
+      properties:
+        aggregation:
+          type: object
+          properties:
+            count:
+              type: integer
+            id:
+              type: string
+            name:
+              type: string
+        connectionState:
+          type: integer
+        dstAssets:
+          type: array
+          items:
+            $ref: '#/components/schemas/assetSummary'
+        lastTimeSeen:
+          type: string
+        occurred:
+          type: integer
+        ports:
+          type: array
+          items:
+            $ref: '#/components/schemas/portSummary'
+        srcAssets:
+          type: array
+          items:
+            $ref: '#/components/schemas/assetSummary'
+        srcProcesses:
+          type: array
+          items:
+            $ref: '#/components/schemas/processSummary'  
+    bySrcProcess:
+      type: object
+      properties:
+        aggregation:
+          type: object
+          properties:
+            count:
+              type: integer
+            name:
+              type: string
+        connectionState:
+          type: integer
+        dstAssets:
+          type: array
+          items:
+            $ref: '#/components/schemas/assetSummary'
+        lastTimeSeen:
+          type: string
+        occurred:
+          type: integer
+        ports:
+          type: array
+          items:
+            $ref: '#/components/schemas/portSummary'
+        srcAssets:
+          type: array
+          items:
+            $ref: '#/components/schemas/assetSummary'
+        srcProcesses:
+          type: array
+          items:
+            $ref: '#/components/schemas/processSummary'
     byUser:
       type: object
       properties:
-        occurred:
-          type: integer
-        lastTimeSeen:
-          type: string
         aggregation:
           type: object
           properties:
@@ -33119,20 +33786,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/assetSummary'
+        connectionState:
+          type: integer
+        lastTimeSeen:
+          type: string
+        occurred:
+          type: integer
         ports:
           type: array
           items:
             $ref: '#/components/schemas/portSummary'
-        processes:
+        srcProcesses:
           type: array
           items:
             $ref: '#/components/schemas/processSummary'
         users:
           type: array
           items:
-            $ref: '#/components/schemas/userSummary'
-        connectionState:
-          type: integer
+            $ref: '#/components/schemas/userSummary'  
     candidate:
       type: object
       properties:
@@ -33655,6 +34326,17 @@ components:
         localDateTimeFormat:
           type: string
           default: en-US
+    switchInterfacesBody:
+      type: object
+      properties:
+        switchId:
+          type: string
+        interfaces:
+          type: array
+          items:
+            type: string
+        shouldMonitor:
+          type: boolean
     exportBodyActivities:
       type: object
       properties:
@@ -34567,11 +35249,12 @@ components:
             - 36
     inactiveReason:
       description: |
-        * '1' - Deleted in asset repository
+        * '1' - Duplicated in asset repository
         * '2' - Manually set as inactive
         * '3' - None
         * '4' - Disabled in asset repository
         * '5' - Inactive in asset repository
+        * '6' - Deleted in asset repository
       type: integer
       format: int32
       enum:
@@ -34580,6 +35263,7 @@ components:
         - 3
         - 4
         - 5
+        - 6
     interfaceUuidsList:
       type: array
       items:
@@ -34622,24 +35306,37 @@ components:
             configInfo:
               type: object
               properties:
+                activitiesRetentionDays:
+                  type: integer
+                clientsLimit:
+                  type: integer
+                endTime:
+                  $ref: '#/components/schemas/epochMillis'
                 licenseMode:
-                  description: '1-On, 2-Off, 3-Trial, 4-Trial_NoLimits'
+                  description: '1-On, 2-Off, 3-Trial, 4-Trial_NoLimits, 5-On_WithLimits'
                   type: integer
                   enum:
                     - 1
                     - 2
                     - 3
                     - 4
-                protectedAndQueuedAssetsLimit:
+                    - 5
+                limit:
                   type: integer
-                queuedAssetsLimit:
+                otsLimit:
                   type: integer
+                serversLimit:
+                  type: integer
+                startTime:
+                  $ref: '#/components/schemas/epochMillis'
             counts:
               type: object
               properties:
-                pb_protected:
+                totalClientUsed:
                   type: integer
-                queued:
+                totalOtsUsed:
+                  type: integer
+                totalServerUsed:
                   type: integer
     linuxBody:
       type: object
@@ -34950,7 +35647,7 @@ components:
     managedAssetsUpdateBody:
       type: object
       properties:
-        managedEntityId	:
+        managedEntityId:
           description: managed asset id
           type: string
           pattern: '^[ag]:[a-z]:[a-zA-Z0-9]{8}$'
@@ -34961,7 +35658,7 @@ components:
           type: integer
           format: int32
       required:
-        - managedEntityId	
+        - managedEntityId
         - permissions
     managedAssetsList:
       type: object
@@ -35122,6 +35819,10 @@ components:
         displayName:
           type: string
         fqdn:
+          type: string
+        switchId:
+          type: string
+        interfaceName:
           type: string
       required:
         - type
@@ -35366,6 +36067,9 @@ components:
           type: string
         enabled:
           type: boolean
+        enforceBlocks:
+          type: boolean
+          default: false
         existingMembersLearningDays:
           type: integer
           default: 30
@@ -35388,17 +36092,10 @@ components:
             - 30
             - 60
             - 90
-        policyType:
-          type: integer
-          default: 1
-          enum:
-            - 0
-            - 1
-            - 2
       required:
         - existingMembersLearningDays
         - newMembersLearningDays
-        - policyType
+        - enforceBlocks
     protectionState:
       description: |
         * '0' - Unspecified
@@ -36363,7 +37060,6 @@ components:
         - mfaMethods
         - overrideBuiltins
         - protocolType
-        - restrictLoginToOriginatingUser
         - ruleDuration
         - srcEntityInfos
         - srcProcessNames
@@ -36471,7 +37167,6 @@ components:
         - mfaMethods
         - overrideBuiltins
         - protocolType
-        - restrictLoginToOriginatingUser
         - ruleDuration
         - srcEntityInfos
         - srcProcessNames
@@ -38524,6 +39219,10 @@ components:
               type: string
             password:
               type: string
+            monitorOnInterfaceDiscovery:
+              type: boolean
+            monitorInterfaceOnOtAdded:
+              type: boolean
     switchArray:
       type: object
       properties:
@@ -38631,6 +39330,39 @@ components:
           $ref: '#/components/schemas/epochMillis'
         addedBy:
           $ref: '#/components/schemas/epochMillis'
+    userAnalysis:
+      type: object
+      properties:
+        items:
+          type: object
+          properties:
+            counts:
+              type: object
+              properties:
+                byDstAsset:
+                  type: integer
+                byPort:
+                  type: integer
+                bySrcAsset:
+                  type: integer
+                bySrcProcess:
+                  type: integer
+            byDstAsset:
+              type: array
+              items:
+                $ref: '#/components/schemas/byDstAsset'
+            byPort:
+              type: array
+              items:
+                $ref: '#/components/schemas/byPortUser'
+            bySrcAsset:
+              type: array
+              items:
+                $ref: '#/components/schemas/bySrcAsset'
+            bySrcProcess:
+              type: array
+              items:
+                $ref: '#/components/schemas/bySrcProcess'
     userIdResponse:
       type: object
       properties:
@@ -38747,6 +39479,22 @@ components:
         id:
           type: string
         name:
+          type: string
+    usersActivateBody:
+      type: object
+      required:
+        - items
+      properties:
+        comment:
+          type: string
+        items:
+          type: array
+          items:
+            type: string
+    userActivateBody:
+      type: object
+      properties:
+        comment:
           type: string
     validateResponse:
       type: object

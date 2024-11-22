@@ -214,7 +214,7 @@ function Update-ZNUserExternalAccessPolicy {
         
             #Write-Debug $updatedPolicy | Out-String
             $null = $PSBoundParameters.Add('Body', $updatedPolicy)
-            ZeroNetworks.internal\Update-ZNGroupsExternalAccessPolicy @PSBoundParameters
+            ZeroNetworks.internal\Update-ZNUserExternalAccessPolicy @PSBoundParameters
         }
         catch {
             throw

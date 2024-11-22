@@ -31,3 +31,20 @@ catch{
     Write-Host "Failed to build modules" -ForegroundColor Red
     exit
 }
+
+try{
+    Remove-Item ..\..\zeronetworks -force -recurse
+    copy-item .\docs ..\..\zeronetworks -recurse
+}
+catch{
+    Write-Host "Failed to build modules" -ForegroundColor Red
+    exit
+}
+
+try{
+    .\pack-module.ps1
+}
+catch{
+    Write-Host "Failed to build modules" -ForegroundColor Red
+    exit
+}
