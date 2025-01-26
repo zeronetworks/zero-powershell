@@ -24,7 +24,7 @@ If you have an earlier version of the ZeroNetworks PowerShell module installed f
 and would like to update to the latest version, run the following command in a PowerShell session:
 
 ```powershell
-Update-Module -Name ZeroNetworks -Scope CurrentUser -Force
+Update-Module -Name ZeroNetworks -Scope CurrentUser -Force -AllowPrerelease
 ```
 
 `Update-Module` installs the new version side-by-side with previous versions. It does not uninstall
