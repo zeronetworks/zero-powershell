@@ -79,7 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -Action
-* '1' - Allow* '2' - Block
+* 1 - Allow* 2 - Block
 
 ```yaml
 Type: System.Int32
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
-* '1' - Enabled* '2' - Disabled* '4' - Pending Review
+* '1' - Enabled* '2' - Disabled* '3' - Deleted By User* '4' - Pending Review* '5' - Pending Review Auto* '6' - Rejected by User* '7' - Excluded by User
 
 ```yaml
 Type: System.Int32

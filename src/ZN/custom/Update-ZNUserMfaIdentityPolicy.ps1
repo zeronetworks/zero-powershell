@@ -11,6 +11,12 @@ function Update-ZNUserMfaIdentityPolicy {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.IdentityReactivePolicy])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
+        [Parameter(ParameterSetName = 'UpdateExpanded')]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Path')]
+        [System.String]
+        # Account Name
+        ${AccountName},
+        
         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Path')]
         [System.String]

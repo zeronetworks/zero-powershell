@@ -1,10 +1,10 @@
-### Example 1: Delete an AE exclusion
+### Example 1: Remove inbound AE exclusion
 ```powershell
-Remove-ZNAeExclusionsInbound -RuleId 3a6f56a8-288f-4447-b8bc-9c63c4c8a58d
+Remove-ZNAeExclusionsInbound -RuleId d6dd7b37-a47e-4cb1-be55-bbdd38cf3bc0
 ```
 
 ```output
 
 ```
 
-This cmdlet deletes an AE exclusion.
+This cmdlet deletes an inbound AE exclusion.

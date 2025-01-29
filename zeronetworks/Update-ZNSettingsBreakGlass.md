@@ -14,8 +14,8 @@ Update break glass settings
 
 ```
 Update-ZNSettingsBreakGlass [-AccountName <String>] [-AgentConfigAllowIdentity] [-AgentConfigAllowInbound]
- [-AgentConfigAllowOutbound] [-TrustConfigAllowIdentity] [-TrustConfigAllowInbound]
- [-TrustConfigAllowOutbound] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AgentConfigAllowOutbound] [-AgentConfigAllowRpc] [-TrustConfigAllowIdentity] [-TrustConfigAllowInbound]
+ [-TrustConfigAllowOutbound] [-TrustConfigAllowRpc] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,6 +92,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AgentConfigAllowRpc
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -138,6 +153,21 @@ Accept wildcard characters: False
 ```
 
 ### -TrustConfigAllowOutbound
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TrustConfigAllowRpc
 .
 
 ```yaml

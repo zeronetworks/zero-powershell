@@ -12,6 +12,11 @@ https://github.com/zeronetworks/zero-powershell/zeronetworks/connect-zn
 function Connect-ZN {
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Low')]
     param(
+        [Parameter()]
+        [System.String]
+        # Account Name
+        ${AccountName},
+        
         [Parameter(Mandatory)]
         [System.String]
         # login
@@ -21,7 +26,14 @@ function Connect-ZN {
     process {
         CheckModuleLatest
 
-        $uri = "https://portal.zeronetworks.com/api/v1"
+        if ($PSBoundParameters['AccountName']) {
+            $url = "https://" + $PSBoundParameters['AccountName'] + ".zeronetworks.com/api/v1"
+            $null = $PSBoundParameters.Remove('AccountName')
+        }
+        else {
+            $uri = "https://portal.zeronetworks.com/api/v1"
+        }
+        
             
         $challengeBody = @{
             "challengeMediumType" = "email"

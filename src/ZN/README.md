@@ -32,7 +32,7 @@ require:
 input-file:
   - $(this-folder)/../openapi.yaml
 
-module-version: 0.0.17-preview
+module-version: 0.0.18-preview
 title: Api
   
 inlining-threshold: 50
@@ -40,188 +40,118 @@ inlining-threshold: 50
 directive:
   # Fixes/overrides to swaggers
   - from: openapi.yaml
-    where: $.components.schemas.entity
+    where: $.components.schemas.assetManager
     debug: true
     transform: >-
       return {
         "type": "object",
         "properties": {
-          "createdAt": {
-              "$ref": "#/components/schemas/epochMillis"
+          "manager": {
+            "type": "object",
+            "properties": {
+              "addedAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "addedBy": {
+                  "$ref": "#/components/schemas/idNamePair"
+              },
+              "classifiedBy": {
+                  "$ref": "#/components/schemas/idNamePair"
+              },
+              "createdAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "description": {
+                  "type": "string"
+              },
+              "directMembersCount": {
+                  "type": "integer"
+              },
+              "distinguishedName": {
+                  "type": "string"
+              },
+              "domain": {
+                  "type": "string"
+              },
+              "externalId": {
+                  "type": "string"
+              },
+              "email": {
+                  "type": "string"
+              },
+              "firstName": {
+                  "type": "string"
+              },
+              "guid": {
+                  "type": "string"
+              },
+              "hasProtectionPolicy": {
+                  "type": "boolean"
+              },
+              "id": {
+                  "type": "string"
+              },
+              "jobTitle": {
+                  "type": "string"
+              },
+              "lastLogonReplicated": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "lastName": {
+                  "type": "string"
+              },
+              "name": {
+                  "type": "string"
+              },
+              "officePhone": {
+                  "type": "string"
+              },
+              "phone": {
+                  "type": "string"
+              },
+              "principalName": {
+                  "type": "string"
+              },
+              "protectionState": {
+                  "$ref": "#/components/schemas/userProtectionState"
+              },
+              "role": {
+                  "type": "integer",
+                  "format": "int32"
+              },
+              "sid": {
+                  "type": "string"
+              },
+              "updatedAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "source": {
+                  "type": "integer"
+              },
+              "userPrincipleName": {
+                  "type": "string"
+              },
+              "userType": {
+                  "type": "integer"
+              },
+              "protectAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "protectedAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              }
+            }
           },
-          "description": {
+          "managerId": {
               "type": "string"
           },
-          "directMembersCount": {
-              "type": "integer"
-          },
-          "domain": {
-              "type": "string"
-          },
-          "guid": {
-              "type": "string"
-          },
-          "hasProtectionPolicy": {
-              "type": "boolean"
-          },
-          "id": {
-              "type": "string"
-          },
-          "name": {
-              "type": "string"
-          },
-          "role": {
+          "permission": {
               "type": "integer",
               "format": "int32"
           },
-          "sid": {
-              "type": "string"
-          },
-          "updatedAt": {
-              "$ref": "#/components/schemas/epochMillis"
-          },
-          "distinguishedName": {
-              "type": "string"
-          },
-          "email": {
-              "type": "string"
-          },
-          "firstName": {
-              "type": "string"
-          },
-          "jobTitle": {
-              "type": "string"
-          },
-          "lastLogon": {
-              "$ref": "#/components/schemas/epochMillis"
-          },
-          "lastName": {
-              "type": "string"
-          },
-          "officePhone": {
-              "type": "string"
-          },
-          "phone": {
-              "type": "string"
-          },
-          "userPrincipleName": {
-              "type": "string"
-          },
-          "assetType": {
-              "description": "Possible asset status:\n  * `1` - UNKNOWN \n  * `2` - CLIENT \n  * `3` - SERVER \n  * `4` - CLUSTER \n  * `5` - CAMERA \n  * `6` - TV\n  * `7` - FACTORY_CONTROLLER \n  * `8` - MEDICAL_DEVICE\n  * `9` - PRINTER \n  * `10` - SCANNER \n  * `11` - SMART_CARD_READER \n  * `12` - ROUTER \n  * `13` - HYPERVISOR \n  * `14` - PLC \n  * `15` - HMI \n  * `16` - SWITCH \n  * `17` - TERMINAL_STATION \n  * `18` - RTU \n  * `19` - WIRELESS_ACCESS_POINT \n  * `20` - HISTORIAN \n  * `21` - GAME_CONSOLE \n  * `22` - FIRE_ALARM \n  * `23` - UPS \n  * `24` - STORAGE_APPLIANCE \n  * `25` - VIRTUALIZATION_APPLIANCE \n  * `26` - FIREWALL_APPLIANCE \n  * `27` - SECURITY_SCANNER \n  * `28` - SECURITY_CONTROLLER \n  * `29` - DOOR_LOCK \n  * `30` - BIOMETRIC_ENTRY_SYSTEM \n  * `31` - HVAC \n  * `1000` - ROOM_SCHEDULER\n",
+          "relation": {
               "type": "integer",
-              "format": "int32",
-              "enum": [
-                  0,
-                  1,
-                  2,
-                  3,
-                  4,
-                  5,
-                  6,
-                  7,
-                  8,
-                  9,
-                  10,
-                  11,
-                  12,
-                  13,
-                  14,
-                  15,
-                  16,
-                  17,
-                  18,
-                  19,
-                  20,
-                  21,
-                  22,
-                  23,
-                  24,
-                  25,
-                  26,
-                  27,
-                  29,
-                  30,
-                  31,
-                  1000
-              ]
-          },
-          "fqdn": {
-              "type": "string",
-              "example": "laptoppc.domain.local"
-          },
-          "ipV4Addresses": {
-              "type": "array",
-              "items": {
-                  "type": "string",
-                  "example": "1.1.1.1"
-              }
-          },
-          "ipV6Addresses": {
-              "type": "array",
-              "items": {
-                  "type": "string"
-              }
-          },
-          "assetStatus": {
-              "description": "Possible asset status:\n  * `1` - UNDISCOVERED\n  * `2` - STALKED\n  * `3` - DELETED\n  * `4` - OS_UNSUPPORTED\n  * `5` - TYPE_UNSUPPORTED\n  * `6` - IGNORED\n  * `7` - CLOUD_CONNECTOR\n",
-              "type": "integer",
-              "enum": [
-                  1,
-                  2,
-                  3,
-                  4,
-                  5,
-                  6,
-                  7
-              ]
-          },
-          "operatingSystem": {
-              "type": "string",
-              "example": "Windows 10 Pro"
-          },
-          "protectionState": {
-              "type": "integer",
-              "format": "int32",
-              "enum": [
-                  0,
-                  1,
-                  2,
-                  3,
-                  4
-              ]
-          },
-          "source": {
-              "description": "Possible asset sources:\n  * `0` - UNSPECIFIED\n  * `1` - PORTAL \n  * `2` - SSP \n  * `3` - AD \n  * `4` - CUSTOM\n  * `5` - SYSTEM\n  * `6` - ANSIBLE\n  * `7` - OT\n  * `8` - WORKGROUP\n  * `9` - AZURE_AD \n  * `10` - AZURE \n  * `11` - AWS \n  * `12` - GCP\n  * `13` - TAG \n  * `14` - JAMF \n  * `15` - LINUX \n  * `16` - IBM \n  * `17` - ORACLE \n  * `18` - VMWARE \n  * `19` - ALIBABA \n  * `20` - LUMEN \n  * `21` - OVH\n",
-              "type": "integer",
-              "format": "int32",
-              "enum": [
-                  0,
-                  1,
-                  2,
-                  3,
-                  4,
-                  5,
-                  6,
-                  7,
-                  8,
-                  9,
-                  10,
-                  11,
-                  12,
-                  13,
-                  14,
-                  15,
-                  16,
-                  17,
-                  18,
-                  19,
-                  20,
-                  21
-              ]
-          },
-          "state": {
-              "$ref": "#/components/schemas/state"
+              "format": "int32"
           }
         }
       }
@@ -237,161 +167,344 @@ directive:
             "items": {
               "type": "object",
               "properties": {
-                "assetType": {
-                  "description": "Possible asset status:\n  * `1` - UNKNOWN \n  * `2` - CLIENT \n  * `3` - SERVER \n  * `4` - CLUSTER \n  * `5` - CAMERA \n  * `6` - TV\n  * `7` - FACTORY_CONTROLLER \n  * `8` - MEDICAL_DEVICE\n  * `9` - PRINTER \n  * `10` - SCANNER \n  * `11` - SMART_CARD_READER \n  * `12` - ROUTER \n  * `13` - HYPERVISOR \n  * `14` - PLC \n  * `15` - HMI \n  * `16` - SWITCH \n  * `17` - TERMINAL_STATION \n  * `18` - RTU \n  * `19` - WIRELESS_ACCESS_POINT \n  * `20` - HISTORIAN \n  * `21` - GAME_CONSOLE \n  * `22` - FIRE_ALARM \n  * `23` - UPS \n  * `24` - STORAGE_APPLIANCE \n  * `25` - VIRTUALIZATION_APPLIANCE \n  * `26` - FIREWALL_APPLIANCE \n  * `27` - SECURITY_SCANNER \n  * `28` - SECURITY_CONTROLLER \n  * `29` - DOOR_LOCK \n  * `30` - BIOMETRIC_ENTRY_SYSTEM \n  * `31` - HVAC \n  * `1000` - ROOM_SCHEDULER\n",
-                  "type": "integer",
-                  "format": "int32",
-                  "enum": [
-                    0,
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7,
-                    8,
-                    9,
-                    10,
-                    11,
-                    12,
-                    13,
-                    14,
-                    15,
-                    16,
-                    17,
-                    18,
-                    19,
-                    20,
-                    21,
-                    22,
-                    23,
-                    24,
-                    25,
-                    26,
-                    27,
-                    29,
-                    30,
-                    31,
-                    1000
-                  ]
+                "addedAt": {
+                    "$ref": "#/components/schemas/epochMillis"
                 },
-                "domain": {
-                  "type": "string",
-                  "example": "domain.local"
-                },
-                "fqdn": {
-                  "type": "string",
-                  "example": "laptoppc.domain.local"
-                },
-                "id": {
-                  "type": "string",
-                  "example": "a:a:6d020055"
-                },
-                "ipV4Addresses": {
-                  "type": "array",
-                  "items": {
-                      "type": "string",
-                      "example": "1.1.1.1"
-                  }
-                },
-                "ipV6Addresses": {
-                  "type": "array",
-                  "items": {
-                      "type": "string"
-                  }
+                "addedBy": {
+                    "$ref": "#/components/schemas/idNamePair"
                 },
                 "assetStatus": {
-                  "description": "Possible asset status:\n  * `1` - UNDISCOVERED\n  * `2` - STALKED\n  * `3` - DELETED\n  * `4` - OS_UNSUPPORTED\n  * `5` - TYPE_UNSUPPORTED\n  * `6` - IGNORED\n  * `7` - CLOUD_CONNECTOR\n",
-                  "type": "integer",
-                  "enum": [
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7
-                  ]
+                    "$ref": "#/components/schemas/assetStatus"
                 },
-                "name": {
-                  "type": "string",
-                  "example": "laptoppc"
+                "assetType": {
+                    "$ref": "#/components/schemas/assetType"
                 },
-                "operatingSystem": {
-                  "type": "string",
-                  "example": "Windows 10 Pro"
+                "assignedDeployment": {
+                    "$ref": "#/components/schemas/idNamePair"
                 },
-                "protectionState": {
-                  "type": "integer",
-                  "format": "int32",
-                  "enum": [
-                    0,
-                    1,
-                    2,
-                    3,
-                    4
-                  ]
+                "assignedDeploymentId": {
+                    "type": "string"
                 },
-                "source": {
-                  "description": "Possible asset sources:\n  * `0` - UNSPECIFIED\n  * `1` - PORTAL \n  * `2` - SSP \n  * `3` - AD \n  * `4` - CUSTOM\n  * `5` - SYSTEM\n  * `6` - ANSIBLE\n  * `7` - OT\n  * `8` - WORKGROUP\n  * `9` - AZURE_AD \n  * `10` - AZURE \n  * `11` - AWS \n  * `12` - GCP\n  * `13` - TAG \n  * `14` - JAMF \n  * `15` - LINUX \n  * `16` - IBM \n  * `17` - ORACLE \n  * `18` - VMWARE \n  * `19` - ALIBABA \n  * `20` - LUMEN \n  * `21` - OVH\n",
-                  "type": "integer",
-                  "format": "int32",
-                  "enum": [
-                    0,
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7,
-                    8,
-                    9,
-                    10,
-                    11,
-                    12,
-                    13,
-                    14,
-                    15,
-                    16,
-                    17,
-                    18,
-                    19,
-                    20,
-                    21
-                  ]
+                "breakGlassActivated": {
+                    "type": "boolean"
                 },
-                "state": {
-                  "$ref": "#/components/schemas/state"
+                "cloudConnectorVersion": {
+                    "type": "string"
                 },
                 "createdAt": {
-                  "$ref": "#/components/schemas/epochMillis"
+                    "$ref": "#/components/schemas/epochMillis"
                 },
                 "description": {
-                  "type": "string"
+                    "type": "string"
                 },
                 "directMembersCount": {
-                  "type": "integer"
+                    "type": "integer"
+                },
+                "domain": {
+                    "type": "string",
+                    "example": "domain.local"
+                },
+                "fqdn": {
+                    "type": "string",
+                    "example": "laptoppc.domain.local"
+                },
+                "externalId": {
+                    "type": "string"
                 },
                 "guid": {
-                  "type": "string"
+                    "type": "string"
                 },
                 "hasProtectionPolicy": {
-                  "type": "boolean"
+                    "type": "boolean"
+                },
+                "healthState": {
+                    "$ref": "#/components/schemas/healthState"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "a:a:6d020055"
+                },
+                "identityProtectAt": {
+                    "$ref": "#/components/schemas/epochMillis"
+                },
+                "identityProtectionState": {
+                    "$ref": "#/components/schemas/identityProtectionState"
+                },
+                "inactiveReason": {
+                    "$ref": "#/components/schemas/inactiveReason"
+                },
+                "ipV4Addresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "example": "1.1.1.1"
+                    }
+                },
+                "ipV6Addresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "example": "fe80::17f:884b:250e:7759"
+                    }
+                },
+                "lastLogon": {
+                    "$ref": "#/components/schemas/epochMillis"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "laptoppc"
+                },
+                "operatingSystem": {
+                    "type": "string",
+                    "example": "Windows 10 Pro"
+                },
+                "passwordUpdateTime": {
+                    "$ref": "#/components/schemas/epochMillis"
+                },
+                "preferredDeployment": {
+                    "$ref": "#/components/schemas/idNamePair"
+                },
+                "preferredDeploymentId": {
+                    "type": "string"
+                },
+                "principalName": {
+                    "type": "string"
+                },
+                "protectedAt": {
+                    "$ref": "#/components/schemas/epochMillis"
+                },
+                "protectionState": {
+                    "$ref": "#/components/schemas/protectionState"
                 },
                 "role": {
-                  "type": "integer",
-                  "format": "int32"
+                    "type": "integer",
+                    "format": "int32"
                 },
                 "sid": {
-                  "type": "string"
+                    "type": "string"
+                },
+                "rpcMonitored": {
+                    "type": "boolean"
+                },
+                "rpcProtectedAt": {
+                    "$ref": "#/components/schemas/epochMillis"
+                },
+                "rpcProtectionState": {
+                    "$ref": "#/components/schemas/rpcProtectionState"
+                },
+                "source": {
+                    "$ref": "#/components/schemas/source"
+                },
+                "state": {
+                    "$ref": "#/components/schemas/state"
                 },
                 "updatedAt": {
-                  "$ref": "#/components/schemas/epochMillis"
+                    "$ref": "#/components/schemas/epochMillis"
                 }
               }
             }
+          }
+        }
+      }
+  - from: openapi.yaml
+    where: $.components.schemas.candidatesList
+    debug: true
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "assetType": {
+                    "type": "integer"
+                },
+                "breakGlassActivated": {
+                    "type": "boolean"
+                },
+                "domain": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "guid": {
+                    "type": "string"
+                },
+                "hasIdentityProtectionPolicy": {
+                    "type": "boolean"
+                },
+                "hasNetworkProtectionPolicy": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "identityProtectionState": {
+                    "$ref": "#/components/schemas/identityProtectionState"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "protectionState": {
+                    "$ref": "#/components/schemas/protectionState"
+                },
+                "rpcProtectionState": {
+                    "$ref": "#/components/schemas/rpcProtectionState"
+                },
+                "sid": {
+                    "type": "string"
+                }
+              }
+            }
+          },
+          "scrollCursor": {
+              "type": "string"
+          }
+        }
+      }
+  - from: openapi.yaml
+    where: $.components.schemas.entity
+    debug: true
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {
+          "addedAt": {
+              "$ref": "#/components/schemas/epochMillis"
+          },
+          "addedBy": {
+              "$ref": "#/components/schemas/idNamePair"
+          },
+          "createdAt": {
+              "$ref": "#/components/schemas/epochMillis"
+          },
+          "description": {
+              "type": "string"
+          },
+          "directMembersCount": {
+              "type": "integer"
+          },
+          "assetStatus": {
+              "$ref": "#/components/schemas/assetStatus"
+          },
+          "assetType": {
+              "$ref": "#/components/schemas/assetType"
+          },
+          "assignedDeployment": {
+              "$ref": "#/components/schemas/idNamePair"
+          },
+          "assignedDeploymentId": {
+              "type": "string"
+          },
+          "breakGlassActivated": {
+              "type": "boolean"
+          },
+          "cloudConnectorVersion": {
+              "type": "string"
+          },
+          "domain": {
+              "type": "string",
+              "example": "domain.local"
+          },
+          "externalId": {
+              "type": "string"
+          },
+          "guid": {
+              "type": "string"
+          },
+          "hasProtectionPolicy": {
+              "type": "boolean"
+          },
+          "fqdn": {
+              "type": "string",
+              "example": "laptoppc.domain.local"
+          },
+          "healthState": {
+              "$ref": "#/components/schemas/healthState"
+          },
+          "id": {
+              "type": "string",
+              "example": "a:a:6d020055"
+          },
+          "identityProtectAt": {
+              "$ref": "#/components/schemas/epochMillis"
+          },
+          "identityProtectionState": {
+              "$ref": "#/components/schemas/identityProtectionState"
+          },
+          "inactiveReason": {
+              "$ref": "#/components/schemas/inactiveReason"
+          },
+          "ipV4Addresses": {
+              "type": "array",
+              "items": {
+                  "type": "string",
+                  "example": "1.1.1.1"
+              }
+          },
+          "ipV6Addresses": {
+              "type": "array",
+              "items": {
+                  "type": "string",
+                  "example": "fe80::17f:884b:250e:7759"
+              }
+          },
+          "lastLogon": {
+              "$ref": "#/components/schemas/epochMillis"
+          },
+          "name": {
+              "type": "string",
+              "example": "laptoppc"
+          },
+          "operatingSystem": {
+              "type": "string",
+              "example": "Windows 10 Pro"
+          },
+          "passwordUpdateTime": {
+              "$ref": "#/components/schemas/epochMillis"
+          },
+          "preferredDeployment": {
+              "$ref": "#/components/schemas/idNamePair"
+          },
+          "preferredDeploymentId": {
+              "type": "string"
+          },
+          "principalName": {
+              "type": "string"
+          },
+          "protectedAt": {
+              "$ref": "#/components/schemas/epochMillis"
+          },
+          "protectionState": {
+              "$ref": "#/components/schemas/protectionState"
+          },
+          "role": {
+              "type": "integer",
+              "format": "int32"
+          },
+          "sid": {
+              "type": "string"
+          },
+          "updatedAt": {
+              "$ref": "#/components/schemas/epochMillis"
+          },
+          "rpcMonitored": {
+              "type": "boolean"
+          },
+          "rpcProtectedAt": {
+              "$ref": "#/components/schemas/epochMillis"
+          },
+          "rpcProtectionState": {
+              "$ref": "#/components/schemas/rpcProtectionState"
+          },
+          "source": {
+              "$ref": "#/components/schemas/source"
+          },
+          "state": {
+              "$ref": "#/components/schemas/state"
           }
         }
       }
@@ -407,72 +520,368 @@ directive:
             "items": {
               "type": "object",
               "properties": {
+                "addedAt": {
+                    "$ref": "#/components/schemas/epochMillis"
+                },
+                "addedBy": {
+                    "$ref": "#/components/schemas/idNamePair"
+                },
+                "classifiedBy": {
+                    "$ref": "#/components/schemas/idNamePair"
+                },
                 "createdAt": {
-                  "$ref": "#/components/schemas/epochMillis"
+                    "$ref": "#/components/schemas/epochMillis"
                 },
                 "description": {
-                  "type": "string"
-                },
-                "directMembersCount": {
-                  "type": "integer"
-                },
-                "domain": {
-                  "type": "string"
-                },
-                "guid": {
-                  "type": "string"
-                },
-                "hasProtectionPolicy": {
-                  "type": "boolean"
-                },
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "role": {
-                  "type": "integer",
-                  "format": "int32"
-                },
-                "sid": {
-                  "type": "string"
-                },
-                "updatedAt": {
-                  "$ref": "#/components/schemas/epochMillis"
+                    "type": "string"
                 },
                 "distinguishedName": {
-                  "type": "string"
+                    "type": "string"
+                },
+                "directMembersCount": {
+                    "type": "integer"
+                },
+                "domain": {
+                    "type": "string"
+                },
+                "externalId": {
+                    "type": "string"
                 },
                 "email": {
-                  "type": "string"
+                    "type": "string"
                 },
                 "firstName": {
-                  "type": "string"
+                    "type": "string"
+                },
+                "guid": {
+                    "type": "string"
+                },
+                "hasProtectionPolicy": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
                 },
                 "jobTitle": {
-                  "type": "string"
+                    "type": "string"
                 },
-                "lastLogon": {
-                  "$ref": "#/components/schemas/epochMillis"
+                "lastLogonReplicated": {
+                    "$ref": "#/components/schemas/epochMillis"
                 },
                 "lastName": {
-                  "type": "string"
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
                 },
                 "officePhone": {
-                  "type": "string"
+                    "type": "string"
                 },
                 "phone": {
-                  "type": "string"
+                    "type": "string"
+                },
+                "principalName": {
+                    "type": "string"
+                },
+                "protectedAt": {
+                    "$ref": "#/components/schemas/epochMillis"
+                },
+                "protectionState": {
+                    "$ref": "#/components/schemas/userProtectionState"
+                },
+                "role": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sid": {
+                    "type": "string"
                 },
                 "source": {
-                  "type": "integer"
+                    "type": "integer"
                 },
                 "userPrincipleName": {
-                  "type": "string"
+                    "type": "string"
+                },
+                "userType": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "$ref": "#/components/schemas/epochMillis"
                 }
               }
             }
+          }
+        }
+      }
+  - from: openapi.yaml
+    where: $.components.schemas.managedAsset
+    debug: true
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {
+          "entity": {
+            "type": "object",
+            "properties": {
+              "addedAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "addedBy": {
+                  "$ref": "#/components/schemas/idNamePair"
+              },
+              "assetStatus": {
+                  "$ref": "#/components/schemas/assetStatus"
+              },
+              "assetType": {
+                  "$ref": "#/components/schemas/assetType"
+              },
+              "assignedDeployment": {
+                  "$ref": "#/components/schemas/idNamePair"
+              },
+              "assignedDeploymentId": {
+                  "type": "string"
+              },
+              "breakGlassActivated": {
+                  "type": "boolean"
+              },
+              "cloudConnectorVersion": {
+                  "type": "string"
+              },
+              "createdAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "description": {
+                  "type": "string"
+              },
+              "directMembersCount": {
+                  "type": "integer"
+              },
+              "domain": {
+                  "type": "string",
+                  "example": "domain.local"
+              },
+              "fqdn": {
+                  "type": "string",
+                  "example": "laptoppc.domain.local"
+              },
+              "externalId": {
+                  "type": "string"
+              },
+              "guid": {
+                  "type": "string"
+              },
+              "hasProtectionPolicy": {
+                  "type": "boolean"
+              },
+              "healthState": {
+                  "$ref": "#/components/schemas/healthState"
+              },
+              "id": {
+                  "type": "string",
+                  "example": "a:a:6d020055"
+              },
+              "identityProtectAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "identityProtectionState": {
+                  "$ref": "#/components/schemas/identityProtectionState"
+              },
+              "inactiveReason": {
+                  "$ref": "#/components/schemas/inactiveReason"
+              },
+              "ipV4Addresses": {
+                  "type": "array",
+                  "items": {
+                      "type": "string",
+                      "example": "1.1.1.1"
+                  }
+              },
+              "ipV6Addresses": {
+                  "type": "array",
+                  "items": {
+                      "type": "string",
+                      "example": "fe80::17f:884b:250e:7759"
+                  }
+              },
+              "lastLogon": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "name": {
+                  "type": "string",
+                  "example": "laptoppc"
+              },
+              "operatingSystem": {
+                  "type": "string",
+                  "example": "Windows 10 Pro"
+              },
+              "passwordUpdateTime": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "preferredDeployment": {
+                  "$ref": "#/components/schemas/idNamePair"
+              },
+              "preferredDeploymentId": {
+                  "type": "string"
+              },
+              "principalName": {
+                  "type": "string"
+              },
+              "protectedAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "protectionState": {
+                  "$ref": "#/components/schemas/protectionState"
+              },
+              "role": {
+                  "type": "integer",
+                  "format": "int32"
+              },
+              "sid": {
+                  "type": "string"
+              },
+              "rpcMonitored": {
+                  "type": "boolean"
+              },
+              "rpcProtectedAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "rpcProtectionState": {
+                  "$ref": "#/components/schemas/rpcProtectionState"
+              },
+              "source": {
+                  "$ref": "#/components/schemas/source"
+              },
+              "state": {
+                  "$ref": "#/components/schemas/state"
+              },
+              "updatedAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              }
+            }
+          },
+          "entityId": {
+              "type": "string"
+          },
+          "permission": {
+              "type": "integer",
+              "format": "int32"
+          },
+          "relation": {
+              "type": "integer",
+              "format": "int32"
+          }
+        }
+      }
+  - from: openapi.yaml
+    where: $.components.schemas.manager
+    debug: true
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {
+          "manager": {
+            "type": "object",
+            "properties": {
+              "addedAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "addedBy": {
+                  "$ref": "#/components/schemas/idNamePair"
+              },
+              "classifiedBy": {
+                  "$ref": "#/components/schemas/idNamePair"
+              },
+              "createdAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "description": {
+                  "type": "string"
+              },
+              "directMembersCount": {
+                  "type": "integer"
+              },
+              "distinguishedName": {
+                  "type": "string"
+              },
+              "domain": {
+                  "type": "string"
+              },
+              "externalId": {
+                  "type": "string"
+              },
+              "email": {
+                  "type": "string"
+              },
+              "firstName": {
+                  "type": "string"
+              },
+              "guid": {
+                  "type": "string"
+              },
+              "hasProtectionPolicy": {
+                  "type": "boolean"
+              },
+              "id": {
+                  "type": "string"
+              },
+              "jobTitle": {
+                  "type": "string"
+              },
+              "lastLogonReplicated": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "lastName": {
+                  "type": "string"
+              },
+              "name": {
+                  "type": "string"
+              },
+              "officePhone": {
+                  "type": "string"
+              },
+              "phone": {
+                  "type": "string"
+              },
+              "principalName": {
+                  "type": "string"
+              },
+              "protectedAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "protectionState": {
+                  "$ref": "#/components/schemas/userProtectionState"
+              },
+              "role": {
+                  "type": "integer",
+                  "format": "int32"
+              },
+              "sid": {
+                  "type": "string"
+              },
+              "updatedAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "source": {
+                  "type": "integer"
+              },
+              "userPrincipleName": {
+                  "type": "string"
+              },
+              "userType": {
+                  "type": "integer"
+              }
+            }
+          },
+          "managerId": {
+              "type": "string"
+          },
+          "permission": {
+              "type": "integer",
+              "format": "int32"
+          },
+          "relation": {
+              "type": "integer",
+              "format": "int32"
           }
         }
       }
@@ -488,72 +897,99 @@ directive:
             "items": {
               "type": "object",
               "properties": {
+                "addedAt": {
+                    "$ref": "#/components/schemas/epochMillis"
+                },
+                "addedBy": {
+                    "$ref": "#/components/schemas/idNamePair"
+                },
+                "classifiedBy": {
+                    "$ref": "#/components/schemas/idNamePair"
+                },
                 "createdAt": {
-                  "$ref": "#/components/schemas/epochMillis"
+                    "$ref": "#/components/schemas/epochMillis"
                 },
                 "description": {
-                  "type": "string"
+                    "type": "string"
                 },
                 "directMembersCount": {
-                  "type": "integer"
-                },
-                "domain": {
-                  "type": "string"
-                },
-                "guid": {
-                  "type": "string"
-                },
-                "hasProtectionPolicy": {
-                  "type": "boolean"
-                },
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "role": {
-                  "type": "integer",
-                  "format": "int32"
-                },
-                "sid": {
-                  "type": "string"
-                },
-                "updatedAt": {
-                  "$ref": "#/components/schemas/epochMillis"
+                    "type": "integer"
                 },
                 "distinguishedName": {
-                  "type": "string"
+                    "type": "string"
+                },
+                "domain": {
+                    "type": "string"
+                },
+                "externalId": {
+                    "type": "string"
                 },
                 "email": {
-                  "type": "string"
+                    "type": "string"
                 },
                 "firstName": {
-                  "type": "string"
+                    "type": "string"
+                },
+                "guid": {
+                    "type": "string"
+                },
+                "hasProtectionPolicy": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
                 },
                 "jobTitle": {
-                  "type": "string"
+                    "type": "string"
                 },
-                "lastLogon": {
-                  "$ref": "#/components/schemas/epochMillis"
+                "lastLogonReplicated": {
+                    "$ref": "#/components/schemas/epochMillis"
                 },
                 "lastName": {
-                  "type": "string"
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
                 },
                 "officePhone": {
-                  "type": "string"
+                    "type": "string"
                 },
                 "phone": {
-                  "type": "string"
+                    "type": "string"
+                },
+                "principalName": {
+                    "type": "string"
+                },
+                "protectedAt": {
+                    "$ref": "#/components/schemas/epochMillis"
+                },
+                "protectionState": {
+                    "$ref": "#/components/schemas/userProtectionState"
+                },
+                "role": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sid": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "$ref": "#/components/schemas/epochMillis"
                 },
                 "source": {
-                  "type": "integer"
+                    "type": "integer"
                 },
                 "userPrincipleName": {
-                  "type": "string"
+                    "type": "string"
+                },
+                "userType": {
+                    "type": "integer"
                 }
               }
             }
+          },
+          "scrollCursor": {
+              "type": "string"
           }
         }
       }
@@ -569,81 +1005,825 @@ directive:
             "items": {
               "type": "object",
               "properties": {
+                "addedAt": {
+                    "$ref": "#/components/schemas/epochMillis"
+                },
+                "addedBy": {
+                    "$ref": "#/components/schemas/idNamePair"
+                },
+                "classifiedBy": {
+                    "$ref": "#/components/schemas/idNamePair"
+                },
                 "createdAt": {
-                  "$ref": "#/components/schemas/epochMillis"
+                    "$ref": "#/components/schemas/epochMillis"
                 },
                 "description": {
-                  "type": "string"
+                    "type": "string"
                 },
                 "directMembersCount": {
-                  "type": "integer"
-                },
-                "domain": {
-                  "type": "string"
-                },
-                "guid": {
-                  "type": "string"
-                },
-                "hasProtectionPolicy": {
-                  "type": "boolean"
-                },
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "role": {
-                  "type": "integer",
-                  "format": "int32"
-                },
-                "sid": {
-                  "type": "string"
-                },
-                "updatedAt": {
-                  "$ref": "#/components/schemas/epochMillis"
+                    "type": "integer"
                 },
                 "distinguishedName": {
-                  "type": "string"
+                    "type": "string"
+                },
+                "domain": {
+                    "type": "string"
+                },
+                "externalId": {
+                    "type": "string"
                 },
                 "email": {
-                  "type": "string"
+                    "type": "string"
                 },
                 "firstName": {
-                  "type": "string"
+                    "type": "string"
+                },
+                "guid": {
+                    "type": "string"
+                },
+                "hasProtectionPolicy": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
                 },
                 "jobTitle": {
-                  "type": "string"
+                    "type": "string"
                 },
-                "lastLogon": {
-                  "$ref": "#/components/schemas/epochMillis"
+                "lastLogonReplicated": {
+                    "$ref": "#/components/schemas/epochMillis"
                 },
                 "lastName": {
-                  "type": "string"
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
                 },
                 "officePhone": {
-                  "type": "string"
+                    "type": "string"
                 },
                 "phone": {
-                  "type": "string"
+                    "type": "string"
+                },
+                "principalName": {
+                    "type": "string"
+                },
+                "protectedAt": {
+                    "$ref": "#/components/schemas/epochMillis"
+                },
+                "protectionState": {
+                    "$ref": "#/components/schemas/userProtectionState"
+                },
+                "role": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sid": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "$ref": "#/components/schemas/epochMillis"
                 },
                 "source": {
-                  "type": "integer"
+                    "type": "integer"
                 },
                 "userPrincipleName": {
-                  "type": "string"
+                    "type": "string"
+                },
+                "userType": {
+                    "type": "integer"
                 }
+              }
+            }
+          },
+          "scrollCursor": {
+              "type": "string"
+          }
+        }
+      }
+  - from: openapi.yaml
+    where: $.components.schemas.rule
+    debug: true
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {
+            "action": {
+                "$ref": "#/components/schemas/ruleAction"
+            },
+            "activitiesCount": {
+                "type": "integer",
+                "format": "int32"
+            },
+            "approvedAt": {
+                "$ref": "#/components/schemas/epochMillis"
+            },
+            "approvedBy": {
+                "$ref": "#/components/schemas/idNamePair"
+            },
+            "mirrorSwitchRuleId": {
+                "type": "string",
+                "format": "uuid"
+            },
+            "createdAt": {
+                "$ref": "#/components/schemas/epochMillis"
+            },
+            "createdBy": {
+                "$ref": "#/components/schemas/createdBy"
+            },
+            "description": {
+                "type": "string"
+            },
+            "direction": {
+                "$ref": "#/components/schemas/ruleDirection"
+            },
+            "excludedEntityInfos": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/idNamePair"
+                }
+            },
+            "excludedLocalIdsList": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "expiresAt": {
+                "$ref": "#/components/schemas/epochMillis"
+            },
+            "id": {
+                "type": "string",
+                "format": "uuid"
+            },
+            "ipSecOpt": {
+                "$ref": "#/components/schemas/ipSecOpt"
+            },
+            "localEntityId": {
+                "type": "string"
+            },
+            "localEntityInfos": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "assetStatus": {
+                            "$ref": "#/components/schemas/assetStatus"
+                        },
+                        "assetType": {
+                            "$ref": "#/components/schemas/assetType"
+                        },
+                        "assignedDeploymentId": {
+                            "type": "string"
+                        },
+                        "breakGlassActivated": {
+                            "type": "boolean"
+                        },
+                        "createdAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "directMembersCount": {
+                            "type": "integer"
+                        },
+                        "domain": {
+                            "type": "string",
+                            "example": "domain.local"
+                        },
+                        "externalId": {
+                            "type": "string"
+                        },
+                        "fqdn": {
+                            "type": "string",
+                            "example": "laptoppc.domain.local"
+                        },
+                        "hasProtectionPolicy": {
+                            "type": "boolean"
+                        },
+                        "healthState": {
+                            "$ref": "#/components/schemas/healthState"
+                        },
+                        "id": {
+                            "type": "string",
+                            "example": "a:a:6d020055"
+                        },
+                        "identityProtectedAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "identityProtectionState": {
+                            "$ref": "#/components/schemas/identityProtectionState"
+                        },
+                        "inactiveReason": {
+                            "$ref": "#/components/schemas/inactiveReason"
+                        },
+                        "ipV4Addresses": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "example": "1.1.1.1"
+                            }
+                        },
+                        "ipV6Addresses": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "lastLogonReplicated": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "name": {
+                            "type": "string",
+                            "example": "laptoppc"
+                        },
+                        "operatingSystem": {
+                            "type": "string",
+                            "example": "Windows 10 Pro"
+                        },
+                        "passwordUpdateTime": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "preferredDeploymentId": {
+                            "type": "string"
+                        },
+                        "principalName": {
+                            "type": "string"
+                        },
+                        "protectAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "protectionState": {
+                            "$ref": "#/components/schemas/protectionState"
+                        },
+                        "role": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "rpcMonitored": {
+                            "type": "boolean"
+                        },
+                        "rpcProtectionState": {
+                            "$ref": "#/components/schemas/protectionState"
+                        },
+                        "source": {
+                            "$ref": "#/components/schemas/source"
+                        },
+                        "state": {
+                            "$ref": "#/components/schemas/state"
+                        },
+                        "sid": {
+                            "type": "string"
+                        },
+                        "guid": {
+                            "type": "string"
+                        },
+                        "userAccountControl": {
+                            "type": "integer"
+                        },
+                        "servicePrincipleNames": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "distinguishedName": {
+                            "type": "string"
+                        },
+                        "addedAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "addedBy": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "example": "User Name"
+                                }
+                            }
+                        },
+                        "protectedAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "identityProtectAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "rpcProtectAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "rpcProtectedAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "assignedDeployment": {
+                            "$ref": "#/components/schemas/idNamePair"
+                        },
+                        "preferredDeployment": {
+                            "$ref": "#/components/schemas/idNamePair"
+                        },
+                        "inactiveSince": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "environmentGroup": {
+                            "$ref": "#/components/schemas/idNamePair"
+                        },
+                        "updatedAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        }
+                    }
+                }
+            },
+            "localEntitySuccessor": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/idNamePair"
+              }
+            },
+            "localProcessesList": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "parentId": {
+              "type": "string"
+            },
+            "parentType": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "portsList": {
+              "$ref": "#/components/schemas/portsList"
+            },
+            "remoteEntityIdsList": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "remoteEntityInfos": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/idNamePair"
+              }
+            },
+            "ruleclass": {
+              "$ref": "#/components/schemas/ruleClass"
+            },
+            "servicesList": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "srcUserInfos": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/groupsOrUsersList"
+              }
+            },
+            "srcUsersList": {
+              "$ref": "#/components/schemas/srcUsersList"
+            },
+            "state": {
+              "$ref": "#/components/schemas/ruleState"
+            },
+            "updatedAt": {
+              "$ref": "#/components/schemas/epochMillis"
+            },
+            "updatedBy": {
+              "$ref": "#/components/schemas/idNamePair"
+            }
+          }
+        }
+  - from: openapi.yaml
+    where: $.components.schemas.settingsMfaCache
+    debug: true
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {
+          "assetLimit": {
+              "type": "integer"
+          },
+          "entityId": {
+              "type": "string"
+          },
+          "ttlMinutes": {
+              "type": "integer"
+          },
+          "entityInfo": {
+            "type": "object",
+            "properties": {
+              "addedAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "addedBy": {
+                  "$ref": "#/components/schemas/idNamePair"
+              },
+              "classifiedBy": {
+                  "$ref": "#/components/schemas/idNamePair"
+              },
+              "createdAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "description": {
+                  "type": "string"
+              },
+              "directMembersCount": {
+                  "type": "integer"
+              },
+              "distinguishedName": {
+                  "type": "string"
+              },
+              "domain": {
+                  "type": "string"
+              },
+              "externalId": {
+                  "type": "string"
+              },
+              "email": {
+                  "type": "string"
+              },
+              "firstName": {
+                  "type": "string"
+              },
+              "guid": {
+                  "type": "string"
+              },
+              "hasProtectionPolicy": {
+                  "type": "boolean"
+              },
+              "id": {
+                  "type": "string"
+              },
+              "jobTitle": {
+                  "type": "string"
+              },
+              "lastLogonReplicated": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "lastName": {
+                  "type": "string"
+              },
+              "name": {
+                  "type": "string"
+              },
+              "officePhone": {
+                  "type": "string"
+              },
+              "phone": {
+                  "type": "string"
+              },
+              "principalName": {
+                  "type": "string"
+              },
+              "protectedAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "protectionState": {
+                  "$ref": "#/components/schemas/userProtectionState"
+              },
+              "role": {
+                  "type": "integer",
+                  "format": "int32"
+              },
+              "sid": {
+                  "type": "string"
+              },
+              "updatedAt": {
+                  "$ref": "#/components/schemas/epochMillis"
+              },
+              "source": {
+                  "type": "integer"
+              },
+              "userPrincipleName": {
+                  "type": "string"
+              },
+              "userType": {
+                  "type": "integer"
               }
             }
           }
         }
       }
-
+  - from: openapi.yaml
+    where: $.components.schemas.switchRule
+    debug: true
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {
+            "action": {
+                "$ref": "#/components/schemas/ruleAction"
+            },
+            "activitiesCount": {
+                "type": "integer",
+                "format": "int32"
+            },
+            "approvedAt": {
+                "$ref": "#/components/schemas/epochMillis"
+            },
+            "approvedBy": {
+                "$ref": "#/components/schemas/idNamePair"
+            },
+            "createdAt": {
+                "$ref": "#/components/schemas/epochMillis"
+            },
+            "createdBy": {
+                "$ref": "#/components/schemas/createdBy"
+            },
+            "description": {
+                "type": "string"
+            },
+            "direction": {
+                "$ref": "#/components/schemas/ruleDirection"
+            },
+            "excludedAssetInfos": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/idNamePair"
+                }
+            },
+            "excludedLocalIdsList": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "expiresAt": {
+                "$ref": "#/components/schemas/epochMillis"
+            },
+            "id": {
+                "type": "string"
+            },
+            "localEntityId": {
+                "type": "string"
+            },
+            "localEntityInfos": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "assetStatus": {
+                            "$ref": "#/components/schemas/assetStatus"
+                        },
+                        "assetType": {
+                            "$ref": "#/components/schemas/assetType"
+                        },
+                        "assignedDeploymentId": {
+                            "type": "string"
+                        },
+                        "breakGlassActivated": {
+                            "type": "boolean"
+                        },
+                        "createdAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "directMembersCount": {
+                            "type": "integer"
+                        },
+                        "domain": {
+                            "type": "string",
+                            "example": "domain.local"
+                        },
+                        "externalId": {
+                            "type": "string"
+                        },
+                        "fqdn": {
+                            "type": "string",
+                            "example": "laptoppc.domain.local"
+                        },
+                        "hasProtectionPolicy": {
+                            "type": "boolean"
+                        },
+                        "healthState": {
+                            "$ref": "#/components/schemas/healthState"
+                        },
+                        "id": {
+                            "type": "string",
+                            "example": "a:a:6d020055"
+                        },
+                        "identityProtectedAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "identityProtectionState": {
+                            "$ref": "#/components/schemas/identityProtectionState"
+                        },
+                        "inactiveReason": {
+                            "$ref": "#/components/schemas/inactiveReason"
+                        },
+                        "ipV4Addresses": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "example": "1.1.1.1"
+                            }
+                        },
+                        "ipV6Addresses": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "lastLogonReplicated": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "name": {
+                            "type": "string",
+                            "example": "laptoppc"
+                        },
+                        "operatingSystem": {
+                            "type": "string",
+                            "example": "Windows 10 Pro"
+                        },
+                        "passwordUpdateTime": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "preferredDeploymentId": {
+                            "type": "string"
+                        },
+                        "principalName": {
+                            "type": "string"
+                        },
+                        "protectAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "protectionState": {
+                            "$ref": "#/components/schemas/protectionState"
+                        },
+                        "role": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "rpcMonitored": {
+                            "type": "boolean"
+                        },
+                        "rpcProtectionState": {
+                            "$ref": "#/components/schemas/protectionState"
+                        },
+                        "source": {
+                            "$ref": "#/components/schemas/source"
+                        },
+                        "state": {
+                            "$ref": "#/components/schemas/state"
+                        },
+                        "sid": {
+                            "type": "string"
+                        },
+                        "guid": {
+                            "type": "string"
+                        },
+                        "userAccountControl": {
+                            "type": "integer"
+                        },
+                        "servicePrincipleNames": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "distinguishedName": {
+                            "type": "string"
+                        },
+                        "addedAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "addedBy": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "example": "User Name"
+                                }
+                            }
+                        },
+                        "protectedAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "identityProtectAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "rpcProtectAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "rpcProtectedAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "assignedDeployment": {
+                            "$ref": "#/components/schemas/idNamePair"
+                        },
+                        "preferredDeployment": {
+                            "$ref": "#/components/schemas/idNamePair"
+                        },
+                        "inactiveSince": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        },
+                        "environmentGroup": {
+                            "$ref": "#/components/schemas/idNamePair"
+                        },
+                        "updatedAt": {
+                            "$ref": "#/components/schemas/epochMillis"
+                        }
+                    }
+                }
+            },
+            "localProcessesList": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "mirrorNetworkRuleId": {
+                "type": "string",
+                "format": "uuid"
+            },
+            "mirrorSwitchRuleId": {
+                "type": "string",
+                "format": "uuid"
+            },
+            "multipleLocalEntityIdsList": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "policyParentRuleId": {
+                "type": "string"
+            },
+            "policyParentRuleType": {
+                "type": "integer"
+            },
+            "protocolsList": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/switchProtocolsList"
+                }
+            },
+            "remoteEntitiesIdList": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "remoteEntitiesInfos": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/idNamePair"
+                }
+            },
+            "servicesList": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "shouldBuildMirrorRules": {
+                "type": "boolean"
+            },
+            "srcUserInfos": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/idNamePair"
+                }
+            },
+            "srcUsersList": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "state": {
+                "$ref": "#/components/schemas/ruleState"
+            },
+            "switchParentRuleId": {
+                "type": "string"
+            },
+            "switchParentRuleType": {
+                "type": "integer"
+            },
+            "updatedAt": {
+                "$ref": "#/components/schemas/epochMillis"
+            },
+            "updatedBy": {
+                "$ref": "#/components/schemas/idNamePair"
+            }
+          }
+        }   
   # Following is two common directive which are normally required
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Activate$|^ActivateViaIdentity$|^ActivateViaIdentityExpanded$|^AddViaIdentity$|^AddViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Deactivate$|^DeactivateViaIdentity$|^DeactivateViaIdentityExpanded$|^DeleteViaIdentity$|^DeleteViaIdentityExpanded$|^Enable$|^EnableViaIdentity$|^EnableViaIdentityExpanded$|^ExpandViaIdentity$|^Extend$|^Extend1$|^ExtendViaIdentity$|^ExtendViaIdentityExpanded$|^GetViaIdentity$|^Learn$|^LearnViaIdentity$|^LearnViaIdentityExpanded$|^Mirror$|^Mirror1$|^MirrorViaIdentity$|^MirrorViaIdentityExpanded$|^ProtectViaIdentity$|^ProtectViaIdentityExpanded$|^Queue$|^Queue1$|^QueueViaIdentity$|^QueueViaIdentityExpanded$|^RevokeViaIdentity$|^SearchViaIdentity$|^Set$|^SetViaIdentity$|^SetViaIdentityExpanded$|^UnprotectViaIdentity$|^UnprotectViaIdentityExpanded$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|^ValidateViaIdentity$
+      variant: ^Activate$|^ActivateViaIdentity$|^ActivateViaIdentityExpanded$|^AddViaIdentity$|^AddViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Deactivate$|^DeactivateViaIdentity$|^DeactivateViaIdentityExpanded$|^DeleteViaIdentity$|^DeleteViaIdentityExpanded$|^Enable$|^EnableViaIdentity$|^EnableViaIdentityExpanded$|^ExpandViaIdentity$|^Extend$|^Extend1$|^ExtendViaIdentity$|^ExtendViaIdentityExpanded$|^GetViaIdentity$|^Learn$|^LearnViaIdentity$|^LearnViaIdentityExpanded$|^Mirror$|^Mirror1$|^MirrorViaIdentity$|^MirrorViaIdentityExpanded$|^Notify$|^NotifyViaIdentity$|^ProtectViaIdentity$|^ProtectViaIdentityExpanded$|^Queue$|^Queue1$|^QueueViaIdentity$|^QueueViaIdentityExpanded$|^RevokeViaIdentity$|^SearchViaIdentity$|^Set$|^SetViaIdentity$|^SetViaIdentityExpanded$|^UnprotectViaIdentity$|^UnprotectViaIdentityExpanded$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|^ValidateViaIdentity$
     remove: true
   - where:
       subject: ^CustomGroupsMember$|^TagGroupsMember$
@@ -655,6 +1835,12 @@ directive:
     remove: true
   - where:
       variant: ^Add$|^Update$
+    hide: true
+  - where:
+      subject: SettingsAdOuConfig
+    hide: true
+  - where:
+      subject: DownloadSegmentConnectorLinux
     hide: true
   # Customize
   # Remove the export cmdlets
@@ -726,23 +1912,13 @@ directive:
   - where:
       subject: ^ProfileEnvironment$|^Profile$
     hide: true
-  #hide OTv2
-  - where:
-      subject: ^OtRule$|^Switch$|^SwitchInterface$|^UpdateInterfaceMonitor$
-    remove: true
   # Hide Not useful for OT assets
   - where:
       subject: ^AssetOtAnalysis$|^AssetOtIdentityRule$|^AssetOtIdentityRulesAssetsCandidate$|^AssetOtIdentityRulesExcludedAssetsCandidate$|^AssetOtIdentityRulesUserCandidate$|^AssetOtInboundRule$|^AssetOtInboundRulesDestinationCandidate$|^AssetOtInboundRulesExcludedDestinationCandidate$|^AssetOtInboundRulesSourceCandidate$|^AssetOtmfaIdentityPoliciesDestinationCandidate$|^AssetOtmfaIdentityPoliciesExcludedSourceCandidate$|^AssetOtmfaIdentityPoliciesMfamethod$|^AssetOtmfaIdentityPoliciesSourceCandidate$|^AssetOtmfaIdentityPoliciesSourceUserCandidate$|^AssetOtmfaIdentityPolicy$|^AssetOtmfaInboundPoliciesDestinationCandidate$|^AssetOtmfaInboundPoliciesExcludedSourceCandidate$|^AssetOtmfaInboundPoliciesMfamethod$|^AssetOtmfaInboundPoliciesSourceCandidate$|^AssetOtmfaInboundPoliciesSourceUserCandidate$|^AssetOtmfaInboundPolicy$|^AssetOtOutboundRule$|^AssetOtmfaOutboundPoliciesDestinationCandidate$|^AssetOtmfaOutboundPoliciesExcludedSourceCandidate$|^AssetOtmfaOutboundPoliciesMfamethod$|^AssetOtmfaOutboundPoliciesSourceCandidate$|^AssetOtmfaOutboundPoliciesSourceUserCandidate$|^AssetOtmfaOutboundPolicy$|^AssetOtOutboundRulesDestinationCandidate$|^AssetOtOutboundRulesExcludedSourceCandidate$|^AssetOtOutboundRulesSourceCandidate$|^AssetOtOutboundRulesUserCandidate$|^AssetOtrpcRule$|^AssetOtrpcRulesDestinationCandidate$|^AssetOtrpcRulesExcludedDestinationCandidate$|^AssetOtrpcRulesSourceCandidate$|^AssetOtrpcRulesUserCandidate$|^AssetOtRulesDistribution$
     hide: true
   # Remove APIs that require Human access
   - where:
-      subject: AccessToken
-    remove: true
-  - where:
-      subject: CloudConnectorAccessToken
-    remove: true
-  - where:
-      subject: ServiceNowAccessToken
+      subject: (.*)Token
     remove: true
   - where:
       subject: SettingsCustomUser
@@ -976,7 +2152,7 @@ directive:
         script: '(Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]'
   # set the default directions for cmdlets
   - where:
-      subject: ^AssetInboundRule$|^AssetOtOutboundRule$|^GroupsInboundRule$
+      subject: ^AssetInboundRule$|^AssetOtOutboundRule$|^GroupsInboundRule$|^AssetOtInboundOtRule$|^InboundOtRule$
       parameter-name: Direction
     set:
       default:
@@ -984,12 +2160,29 @@ directive:
         description: Sets the direction parameter to 1
         script: '1'
   - where:
-      subject: ^AssetOutboundRule$|^AssetOtInboundRule$|^GroupsOutboundRule$
+      subject: ^AssetOutboundRule$|^AssetOtInboundRule$|^GroupsOutboundRule$|^AssetOtOutboundOtRule$|^OutboundOtRule$
       parameter-name: Direction
     set:
       default:
         name: Direction Default
         description: Sets the direction parameter to 2
+        script: '2'
+  # set the default RuleType for AE Exclusions
+  - where:
+      subject: AeExclusionsInbound(.*)
+      parameter-name: RuleType
+    set:
+      default:
+        name: RuleType Default
+        description: Sets the rule type parameter to 1
+        script: '1'
+  - where:
+      subject: AeExclusionsOutbound(.*)
+      parameter-name: RuleType
+    set:
+      default:
+        name: RuleType Default
+        description: Sets the rule type parameter to 2
         script: '2'
   # set AddAncestors parameter default
   - where:
@@ -1026,6 +2219,25 @@ directive:
         name: PolicyType Default
         description: Sets the PolicyType parmaeter to 1.
         script: '1'
+  #set default state for AE Exclusions
+  - where:
+      verb: New
+      subject: ^AeExclusionsInbound$|^AeExclusionsOutbound$
+      parameter-name: state
+    set:
+      default:
+        name: State Default
+        description: Sets the State parmaeter to 7.
+        script: '7'
+  - where:
+      verb: New
+      subject: ^AeExclusionsInbound$|^AeExclusionsOutbound$
+      parameter-name: action
+    set:
+      default:
+        name: Action Default
+        description: Sets the Action parmaeter to 1.
+        script: '1'
   # combine User Inactive
   - where:
       subject: UsersActive
@@ -1033,6 +2245,7 @@ directive:
       subject: UserActive
   - where:
       subject: UsersInactive
+      verb: Update
     set:
       subject: UserInactive
   # Hide
@@ -1044,7 +2257,7 @@ directive:
   # Hide for Custom Wrappers
   - where:
       verb: Update
-      subject: ^AssetExternalAccessPolicy$|^AssetIdentityRule$|^AssetInboundRule$|^AssetMfaIdentityPolicy$|^AssetMFAInboundPolicy$|^AssetMFAOutboundPolicy$|^AssetOutboundRule$|^AssetOtMFAOutboundPolicy$|^AssetRpcRule$|^CustomGroup$|^ExternalAccessPolicy$|^GroupsExternalAccessPolicy$|^GroupsIdentityRule$|^GroupsInboundRule$|^GroupsMfaIdentityPolicy$|^GroupsMFAInboundPolicy$|^GroupsMFAOutboundPolicy$|^GroupsOutboundRule$|^GroupsRpcRule$|^IdentityRule$|^InboundRule$|^MfaIdentityPolicy$|^MFAInboundPolicy$|^MFAOutboundPolicy$|^OutboundRule$|^RpcRule$|^SettingsPushNotification$|^UserExternalAccessPolicy$|^UserIdentityRule$|^UserMfaIdentityPolicy$
+      subject: ^AeExclusionsInbound$|^AeExclusionsOutbound$|^AssetExternalAccessPolicy$|^AssetIdentityRule$|^AssetInboundRule$|^AssetMfaIdentityPolicy$|^AssetMFAInboundPolicy$|^AssetMFAOutboundPolicy$|^AssetOtInboundOtrule$|^AssetOtOutboundOtrule$|^AssetOutboundRule$|^AssetOtMFAOutboundPolicy$|^AssetRpcRule$|^CustomGroup$|^ExternalAccessPolicy$|^GroupsExternalAccessPolicy$|^GroupsIdentityRule$|^GroupsInboundRule$|^GroupsMfaIdentityPolicy$|^GroupsMFAInboundPolicy$|^GroupsMFAOutboundPolicy$|^GroupsOutboundRule$|^GroupsRpcRule$|^IdentityRule$|^InboundRule$|^InboundOtRule$|^MfaIdentityPolicy$|^MFAInboundPolicy$|^MFAOutboundPolicy$|^OutboundRule$|^OutboundOtRule$|^RpcRule$|^SettingsPushNotification$|^SwitchInboundOtRule$|^SwitchOutboundOtRule$|^UserExternalAccessPolicy$|^UserIdentityRule$|^UserMfaIdentityPolicy$
     hide: true
   - where:
       subject: ^AuthLogin$|^AuthChallenge$
@@ -1089,6 +2302,36 @@ directive:
           - PerformedByName
   - where:
       model-name: Rule
+    set:
+      format-table:
+        properties:
+          - CreatedAt
+          - RemoteEntityInfos
+          - LocalEntityInfoName
+          - ExcludedEntityInfoName
+          - RuleClass
+          - ActivitiesCount
+          - Id
+          - CreatedByEnforcementSource
+          - State
+          - Description
+  - where:
+      model-name: SwitchRule
+    set:
+      format-table:
+        properties:
+          - CreatedAt
+          - RemoteEntityInfos
+          - LocalEntityInfoName
+          - ExcludedEntityInfoName
+          - RuleClass
+          - ActivitiesCount
+          - Id
+          - CreatedByEnforcementSource
+          - State
+          - Description
+  - where:
+      model-name: AeExclusion
     set:
       format-table:
         properties:
@@ -1215,4 +2458,20 @@ directive:
           - Phone
           - JobTitle
           - LastLogon
+  - where:
+      model-name: CandidatesList
+    set:
+      format-table:
+        properties:
+          - Id
+          - Name
+          - Domain
+  - where:
+      model-name: GroupCandidate
+    set:
+      format-table:
+        properties:
+          - Id
+          - Name
+          - Domain
 ```

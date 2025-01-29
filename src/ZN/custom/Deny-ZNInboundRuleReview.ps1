@@ -11,6 +11,12 @@ function Deny-ZNInboundRuleReview {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.Any])]
     [CmdletBinding(DefaultParameterSetName = 'DenyExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
+        [Parameter(ParameterSetName = 'DenyExpanded')]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Path')]
+        [System.String]
+        # Account Name
+        ${AccountName},
+        
         [Parameter(ParameterSetName = 'DenyExpanded', Mandatory)]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Path')]
         [System.String]

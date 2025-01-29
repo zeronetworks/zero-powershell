@@ -13,10 +13,10 @@ Updates an outbound MFA Policy.
 ## SYNTAX
 
 ```
-Update-ZNMfaOutboundPolicy -ReactivePolicyId <String> [-AdditionalPortsList <IPortsListItem[]>]
- [-Description <String>] [-DstPort <String>] [-ExcludedSrcEntityInfos <String[]>]
- [-ExcludedSrcProcesses <String[]>] [-FallbackToLoggedOnUser] [-MfaMethods <Int32[]>] [-OverrideBuiltins]
- [-ProtocolType <Int32>] [-RuleDuration <Int32>]
+Update-ZNMfaOutboundPolicy -ReactivePolicyId <String> [-AccountName <String>]
+ [-AdditionalPortsList <IPortsListItem[]>] [-Description <String>] [-DstPort <String>]
+ [-ExcludedSrcEntityInfos <String[]>] [-ExcludedSrcProcesses <String[]>] [-FallbackToLoggedOnUser]
+ [-MfaMethods <Int32[]>] [-OverrideBuiltins] [-ProtocolType <Int32>] [-RuleDuration <Int32>]
  [-SrcEntityInfos <IReactivePolicyOutboundBodySrcEntityInfosItem[]>] [-SrcProcessNames <String[]>]
  [-SrcUserInfos <IReactivePolicyOutboundBodySrcUserInfosItem[]>] [-State <Int32>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -74,6 +74,21 @@ StateProtectionState         : 1
 This cmdlet will update an outbound MFA policy.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AdditionalPortsList
 extra ports to open.

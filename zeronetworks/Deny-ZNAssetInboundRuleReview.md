@@ -13,8 +13,8 @@ Reject a "pending review" rule
 ## SYNTAX
 
 ```
-Deny-ZNAssetInboundRuleReview -AssetId <String> -RuleId <String> -Reason <Object> [-Details <String>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Deny-ZNAssetInboundRuleReview -AssetId <String> -RuleId <String> -Reason <Object> [-AccountName <String>]
+ [-Details <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ Deny-ZNAssetInboundRuleReview -AssetId $asset -RuleId '9d275288-4fc3-46e5-a5a0-f
 This cmdlet denies a rule pending review for a specific asset.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job

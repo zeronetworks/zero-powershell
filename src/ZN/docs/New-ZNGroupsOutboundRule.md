@@ -16,7 +16,8 @@ Returns the properties of the created Outbound rule.
 New-ZNGroupsOutboundRule -GroupId <String> -GroupType <String> -Action <Int32> -LocalEntityId <String>
  -LocalProcessesList <String[]> -PortsList <IPortsListItem[]> -RemoteEntityIdsList <String[]> -State <Int32>
  [-AccountName <String>] [-Description <String>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>]
- [-IPSecOpt <Int32>] [-SrcUsersList <ISrcUsersListItem[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IPSecOpt <Int32>] [-ServicesList <String[]>] [-SrcUsersList <ISrcUsersListItem[]>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -250,6 +251,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ServicesList
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SrcUsersList
 .
 To construct, see NOTES section for SRCUSERSLIST properties and create a hash table.
@@ -267,7 +283,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
-* '1' - Enabled* '2' - Disabled* '4' - Pending Review
+* '1' - Enabled* '2' - Disabled* '3' - Deleted By User* '4' - Pending Review* '5' - Pending Review Auto* '6' - Rejected by User* '7' - Excluded by User
 
 ```yaml
 Type: System.Int32

@@ -13,10 +13,10 @@ Updates an identity rule.
 ## SYNTAX
 
 ```
-Update-ZNGroupsIdentityRule -GroupId <String> -GroupType <String> -RuleId <String> [-Action <Int32>]
- [-AssetId <String>] [-Description <String>] [-ExcludedAssetIdsList <String[]>] [-ExpiresAt <Int64>]
- [-IdentityProtectionCategoryList <Int32[]>] [-State <Int32>] [-UserIdsList <String[]>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNGroupsIdentityRule -GroupId <String> -GroupType <String> -RuleId <String> [-AccountName <String>]
+ [-Action <Int32>] [-AssetId <String>] [-Description <String>] [-ExcludedAssetIdsList <String[]>]
+ [-ExpiresAt <Int64>] [-IdentityProtectionCategoryList <Int32[]>] [-State <Int32>] [-UserIdsList <String[]>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +32,21 @@ Update-ZNGroupsIdentityRule -GroupId g:t:018cf3ae -GroupType tag -RuleId 7c2aa07
 This cmdlet updates an identity rule.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Action
 Allow or block.

@@ -13,7 +13,7 @@ Login to Zero Networks to get a token for cmdlet use
 ## SYNTAX
 
 ```
-Connect-ZN -Email <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Connect-ZN -Email <String> [-AccountName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +41,21 @@ user@zeronetworks.com                     False
 This cmdlet logs into Zero Networks
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Email
 login

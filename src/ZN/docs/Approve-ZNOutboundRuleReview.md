@@ -14,16 +14,17 @@ Approve a "pending review" rule with or without changes
 
 ### ApproveExpanded (Default)
 ```
-Approve-ZNOutboundRuleReview -RuleId <String> [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Approve-ZNOutboundRuleReview -RuleId <String> [-AccountName <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ApproveWithChangesExpanded
 ```
-Approve-ZNOutboundRuleReview -RuleId <String> -Reason <Object> [-Action <Int32>] [-Description <String>]
- [-Details <String>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>] [-IpSecOpt <Int32>]
- [-LocalEntityId <String>] [-LocalProcessesList <String[]>] [-PortsList <IPortsListItem[]>]
- [-RemoteEntityIdsList <String[]>] [-State <Int32>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Approve-ZNOutboundRuleReview -RuleId <String> -Reason <Object> [-AccountName <String>] [-Action <Int32>]
+ [-Description <String>] [-Details <String>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>]
+ [-IpSecOpt <Int32>] [-LocalEntityId <String>] [-LocalProcessesList <String[]>]
+ [-PortsList <IPortsListItem[]>] [-RemoteEntityIdsList <String[]>] [-State <Int32>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +47,21 @@ Approve-ZNOutboundRuleReview -RuleId 'e4a170be-c192-414a-9d36-380a4483583a' -Des
 This cmdlet also supports changing the rule details upon approval.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Action
 Action

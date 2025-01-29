@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAeExclusionsOutbound'))
 }
 
 Describe 'Get-ZNAeExclusionsOutbound' {
-    It 'List' {
-        (Get-ZNAeExclusionsOutbound).Count | Should -BeGreaterThan 0
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

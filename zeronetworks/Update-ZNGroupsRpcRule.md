@@ -13,8 +13,8 @@ Updates an RPC rule.
 ## SYNTAX
 
 ```
-Update-ZNGroupsRpcRule -GroupId <String> -GroupType <String> -RuleId <String> [-Action <Int32>]
- [-Description <String>] [-ExcludedAssetIdsList <String[]>] [-ExpiresAt <Int64>]
+Update-ZNGroupsRpcRule -GroupId <String> -GroupType <String> -RuleId <String> [-AccountName <String>]
+ [-Action <Int32>] [-Description <String>] [-ExcludedAssetIdsList <String[]>] [-ExpiresAt <Int64>]
  [-InterfaceUuidsList <String[]>] [-LocalAssetId <String>] [-OpNumbersList <String[]>]
  [-ProtocolsList <String[]>] [-RemoteAssetIdsList <String[]>] [-State <Int32>] [-UserIdsList <String[]>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -64,6 +64,21 @@ UpdatedByName              : powershell
 This cmdlet updates a rpc rule.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Action
 Allow or block.

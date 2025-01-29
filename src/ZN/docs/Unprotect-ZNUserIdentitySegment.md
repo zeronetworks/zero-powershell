@@ -12,6 +12,13 @@ Returns an empty object.
 
 ## SYNTAX
 
+### Unprotect (Default)
+```
+Unprotect-ZNUserIdentitySegment -UserId <String> [-AccountName <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UnprotectExpanded
 ```
 Unprotect-ZNUserIdentitySegment -UserIds <String[]> [-AccountName <String>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -46,12 +53,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserId
+userId to filter on
+
+```yaml
+Type: System.String
+Parameter Sets: Unprotect
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UserIds
 .
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UnprotectExpanded
 Aliases:
 
 Required: True

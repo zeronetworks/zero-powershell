@@ -13,9 +13,10 @@ Updates an external access policy.
 ## SYNTAX
 
 ```
-Update-ZNExternalAccessPolicy -PolicyId <String> [-Description <String>] [-DstPortsList <IPortsListItem[]>]
- [-DstProcessNamesList <String[]>] [-Name <String>] [-RuleDuration <Int32>] [-SrcUserIdsList <String[]>]
- [-State <Int32[]>] [-Url <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNExternalAccessPolicy -PolicyId <String> [-AccountName <String>] [-Description <String>]
+ [-DstPortsList <IPortsListItem[]>] [-DstProcessNamesList <String[]>] [-Name <String>] [-RuleDuration <Int32>]
+ [-SrcUserIdsList <String[]>] [-State <Int32[]>] [-Url <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +57,21 @@ UpdatedByName              : powershell
 This cmdlet updates an external access policy.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job

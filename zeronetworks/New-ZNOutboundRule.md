@@ -16,7 +16,7 @@ Returns the properties of the created Outbound rule.
 New-ZNOutboundRule -Action <Int32> -LocalEntityId <String> -LocalProcessesList <String[]>
  -PortsList <IPortsListItem[]> -RemoteEntityIdsList <String[]> -State <Int32> [-AccountName <String>]
  [-Description <String>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>] [-IPSecOpt <Int32>]
- [-SrcUsersList <ISrcUsersListItem[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ServicesList <String[]>] [-SrcUsersList <ISrcUsersListItem[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,12 +24,12 @@ Returns the properties of the created Outbound rule.
 
 ## EXAMPLES
 
-### Example 1: Create an inbound allow rule
+### Example 1: Create an outbound allow rule
 ```powershell
 $portsList = New-ZNPortsList -Protocol TCP -Ports "44,45"
-$source = (Get-ZNInboundAllowRulesSourceCandidate -search "any asset").Items
-$destination = (Get-ZNInboundAllowRulesDestinationCandidate -Search FS1).Items
-New-ZNInboundRule -Action 1 -LocalEntityId $destination.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1
+$source = (Get-ZNOutboundAllowRulesSourceCandidate -search "any asset").Items
+$destination = (Get-ZNOutboundAllowRulesDestinationCandidate -Search FS1).Items
+New-ZNOutboundRule -Action 1 -LocalEntityId $destination.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1
 ```
 
 ```output
@@ -56,7 +56,7 @@ UpdatedById                :
 UpdatedByName              :
 ```
 
-This cmdlet creates an inbound allow rule for the environment.
+This cmdlet creates an outbound allow rule for the environment.
 
 ## PARAMETERS
 
@@ -211,6 +211,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ServicesList
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SrcUsersList
 .
 To construct, see NOTES section for SRCUSERSLIST properties and create a hash table.
@@ -228,7 +243,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
-* '1' - Enabled* '2' - Disabled* '4' - Pending Review
+* '1' - Enabled* '2' - Disabled* '3' - Deleted By User* '4' - Pending Review* '5' - Pending Review Auto* '6' - Rejected by User* '7' - Excluded by User
 
 ```yaml
 Type: System.Int32
