@@ -22,12 +22,12 @@ Returns an empty object.
 
 ## EXAMPLES
 
-### Example 1: Delete an AE exclusion
+### Example 1: Remove outbound AE exclusion
 ```powershell
-Remove-ZNAeExclusionsOutbound -RuleId 3a6f56a8-288f-4447-b8bc-9c63c4c8a58d
+Remove-ZNAeExclusionsOutbound -RuleId d6dd7b37-a47e-4cb1-be55-bbdd38cf3bc0
 ```
 
-This cmdlet deletes an AE exclusion.
+This cmdlet deletes an outbound AE exclusion.
 
 ## PARAMETERS
 

@@ -13,9 +13,10 @@ Updates an identity rule.
 ## SYNTAX
 
 ```
-Update-ZNAssetIdentityRule -AssetId <String> -RuleId <String> [-Action <Int32>] [-Description <String>]
- [-ExcludedAssetIdsList <String[]>] [-ExpiresAt <Int64>] [-IdentityProtectionCategoryList <Int32[]>]
- [-State <Int32>] [-UserIdsList <String[]>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNAssetIdentityRule -AssetId <String> -RuleId <String> [-AccountName <String>] [-Action <Int32>]
+ [-Description <String>] [-ExcludedAssetIdsList <String[]>] [-ExpiresAt <Int64>]
+ [-IdentityProtectionCategoryList <Int32[]>] [-State <Int32>] [-UserIdsList <String[]>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +33,21 @@ Update-ZNAssetIdentityRule -AssetId $asset -RuleId 4e080155-63ca-4db4-9f8a-a02fc
 This cmdlet updates an identity rule.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Action
 Allow or block.

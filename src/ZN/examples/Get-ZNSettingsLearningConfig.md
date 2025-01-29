@@ -4,9 +4,9 @@ Get-ZNSettingsLearningConfig
 ```
 
 ```output
-AllowQueueForever AllowQuickLearning
------------------ ------------------
-True              False
+AllowQueueForever AllowQuickLearning EnforceBlocksAsDefault
+----------------- ------------------ ----------------------
+             True              False                   True
 ```
 
 This cmdlet gets the lerarning config settings from AI.

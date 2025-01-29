@@ -13,7 +13,7 @@ Returns and empty object.
 ## SYNTAX
 
 ```
-Remove-ZNNetworkOnboardingPolicy -OnboardingPolicyId <String> [-AccountName <String>] [-PassThru] [-Confirm]
+Remove-ZNNetworkOnboardingPolicy -ProtectionPolicyId <String> [-AccountName <String>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -46,21 +46,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OnboardingPolicyId
-The id of the onboarding policy
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PassThru
 Returns true when the command succeeds
 
@@ -70,6 +55,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProtectionPolicyId
+The id of the onboarding policy
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

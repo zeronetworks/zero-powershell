@@ -21,13 +21,13 @@ New-ZNSettingsPushNotification -PushIdentityProviderId <String> [-AccountName <S
 ### CreateDuo
 ```
 New-ZNSettingsPushNotification -PushIdentityProviderId <String> -ApiHostname <String> -IntegrationKey <String>
- -SecretKey <String> [<CommonParameters>]
+ -SecretKey <String> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ### CreateMSFT
 ```
 New-ZNSettingsPushNotification -PushIdentityProviderId <String> -SecretKey <String> -TenantId <String>
- [<CommonParameters>]
+ [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +56,7 @@ this value is per customer / partner
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False

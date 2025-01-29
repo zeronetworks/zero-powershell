@@ -13,9 +13,10 @@ Updates an identity rule.
 ## SYNTAX
 
 ```
-Update-ZNIdentityRule -RuleId <String> [-Action <Int32>] [-AssetId <String>] [-Description <String>]
- [-ExcludedAssetIdsList <String[]>] [-ExpiresAt <Int64>] [-IdentityProtectionCategoryList <Int32[]>]
- [-State <Int32>] [-UserIdsList <String[]>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNIdentityRule -RuleId <String> [-AccountName <String>] [-Action <Int32>] [-AssetId <String>]
+ [-Description <String>] [-ExcludedAssetIdsList <String[]>] [-ExpiresAt <Int64>]
+ [-IdentityProtectionCategoryList <Int32[]>] [-State <Int32>] [-UserIdsList <String[]>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +32,21 @@ Update-ZNIdentityRule -RuleId 7c2aa070-d6a3-41f2-945f-dbd7ae80f76f -IdentityProt
 This cmdlet updates an identity rule.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Action
 Allow or block.

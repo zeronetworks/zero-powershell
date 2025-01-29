@@ -13,7 +13,7 @@ Updates an outbound  rule.
 ## SYNTAX
 
 ```
-Update-ZNOutboundRule -RuleId <String> [-Action <String>] [-Description <String>]
+Update-ZNOutboundRule -RuleId <String> [-AccountName <String>] [-Action <String>] [-Description <String>]
  [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>] [-IPSecOpt <String[]>] [-LocalEntityId <String>]
  [-LocalProcessesList <String[]>] [-PortsList <IPortsListItem[]>] [-RemoteEntityIdsList <String[]>]
  [-State <Int32>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -62,6 +62,21 @@ UpdatedByName              : Nicholas DiCola
 This cmdlet updates an outbound rule.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Action
 Allow or Block

@@ -13,7 +13,13 @@
         [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.Any])]
         [CmdletBinding(PositionalBinding=$false)]
         Param(
-    
+            [Parameter(ParameterSetName = 'CreateDuo')]
+            [Parameter(ParameterSetName = 'CreateMSFT')]
+            [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Path')]
+            [System.String]
+            # Account Name
+            ${AccountName},
+        
             [Parameter(Mandatory, HelpMessage="duo or microsoftAuthenticator", ParameterSetName = 'CreateDuo')]
             [Parameter(Mandatory, HelpMessage="duo or microsoftAuthenticator", ParameterSetName = 'CreateMSFT')]
             [ValidateSet("duo","microsoftAuthenticator")]

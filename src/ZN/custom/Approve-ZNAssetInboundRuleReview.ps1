@@ -11,6 +11,13 @@ function Approve-ZNAssetInboundRuleReview {
     [OutputType([ZeroNetworks.PowerShell.Cmdlets.Api.Models.Any])]
     [CmdletBinding(DefaultParameterSetName = 'ApproveExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
+        [Parameter(ParameterSetName = 'ApproveExpanded')]
+        [Parameter(ParameterSetName = 'ApproveWithChangesExpanded')]
+        [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Path')]
+        [System.String]
+        # Account Name
+        ${AccountName},
+
         [Parameter(ParameterSetName = 'ApproveExpanded', Mandatory)]
         [Parameter(ParameterSetName = 'ApproveWithChangesExpanded', Mandatory)]
         [ZeroNetworks.PowerShell.Cmdlets.Api.Category('Path')]

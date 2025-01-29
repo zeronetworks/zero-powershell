@@ -13,8 +13,8 @@ Updates a custom group properties.
 ## SYNTAX
 
 ```
-Update-ZNCustomGroup -GroupId <String> [-Description <String>] [-Name <String>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-ZNCustomGroup -GroupId <String> [-AccountName <String>] [-Description <String>] [-Name <String>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,21 @@ Update-ZNCustomGroup -GroupId g:c:DtglBTHi -Description "updated desccription"
 This cmdlet updates the name or description of a custom group.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job

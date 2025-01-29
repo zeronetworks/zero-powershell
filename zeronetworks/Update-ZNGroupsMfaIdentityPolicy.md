@@ -14,11 +14,11 @@ Updates an identity MFA Policy.
 
 ```
 Update-ZNGroupsMfaIdentityPolicy -GroupId <String> -GroupType <String> -ReactivePolicyId <String>
- [-Description <String>] [-ExcludedDstAssetIdsList <String[]>] [-ExcludedSrcAssetIdsList <String[]>]
- [-ExtraIdentityProtectionCategoryList <Int32[]>] [-FallbackToSingleLoggedOnUser]
- [-IdentityProtectionCategoryList <Int32[]>] [-MfaMethodsList <Int32[]>] [-OverrideBuiltins]
- [-RuleDuration <Int32>] [-SrcAssetIdsList <String[]>] [-SrcUserIdsList <String[]>] [-State <Int32>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AccountName <String>] [-Description <String>] [-ExcludedDstAssetIdsList <String[]>]
+ [-ExcludedSrcAssetIdsList <String[]>] [-ExtraIdentityProtectionCategoryList <Int32[]>]
+ [-FallbackToSingleLoggedOnUser] [-IdentityProtectionCategoryList <Int32[]>] [-MfaMethodsList <Int32[]>]
+ [-OverrideBuiltins] [-RuleDuration <Int32>] [-SrcAssetIdsList <String[]>] [-SrcUserIdsList <String[]>]
+ [-State <Int32>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,6 +67,21 @@ UpdatedByName                           : powershell
 This cmdlet updates an identity MFA policy.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job

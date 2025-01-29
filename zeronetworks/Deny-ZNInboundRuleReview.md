@@ -13,8 +13,8 @@ Reject a "pending review" rule
 ## SYNTAX
 
 ```
-Deny-ZNInboundRuleReview -RuleId <String> -Reason <Object> [-Details <String>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Deny-ZNInboundRuleReview -RuleId <String> -Reason <Object> [-AccountName <String>] [-Details <String>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,21 @@ Deny-ZNInboundRuleReview -RuleId 6c468ed5-ca0e-463e-8cc6-331ae2fa7990 -Reason Mi
 This cmdlet rejects a pending rule review for inbound rules.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job

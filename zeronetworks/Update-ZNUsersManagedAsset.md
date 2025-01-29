@@ -13,8 +13,8 @@ Update a managed asset for user
 ## SYNTAX
 
 ```
-Update-ZNUsersManagedAsset -UserId <String> -ManagedEntityId <String> [-AccountName <String>]
- [-Permission <Int32>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNUsersManagedAsset -UserId <String> -ManagedEntityId <String> -Permission <Int32>
+ [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +84,7 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

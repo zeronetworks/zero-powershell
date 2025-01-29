@@ -18,12 +18,6 @@ Update-ZNUserActive -Items <String[]> [-AccountName <String>] [-Comment <String>
  [<CommonParameters>]
 ```
 
-### Set1
-```
-Update-ZNUserActive -UserId <String> -Body <IUserActivateBody> [-AccountName <String>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### SetExpanded1
 ```
 Update-ZNUserActive -UserId <String> [-AccountName <String>] [-Comment <String>] [-Confirm] [-WhatIf]
@@ -35,27 +29,12 @@ Returns and empty object.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Mark user active
 ```powershell
-{{ Add code here }}
+Update-ZNUserActive -UserId u:a:85fqUZ9R
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This cmdlet marks a user active.
 
 ## PARAMETERS
 
@@ -74,28 +53,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IUserActivateBody
-Parameter Sets: Set1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Comment
 .
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -125,7 +88,7 @@ userId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: Set1, SetExpanded1
+Parameter Sets: SetExpanded1
 Aliases:
 
 Required: True
@@ -171,8 +134,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IUserActivateBody
-
 ## OUTPUTS
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAny
@@ -180,14 +141,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
 ## NOTES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <IUserActivateBody>`: .
-  - `[Comment <String>]`: 
 
 ## RELATED LINKS
 

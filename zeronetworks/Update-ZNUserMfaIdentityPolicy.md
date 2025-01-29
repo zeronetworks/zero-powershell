@@ -13,8 +13,8 @@ Updates an identity MFA Policy.
 ## SYNTAX
 
 ```
-Update-ZNUserMfaIdentityPolicy -ReactivePolicyId <String> -UserId <String> [-Description <String>]
- [-ExcludedDstAssetIdsList <String[]>] [-ExcludedSrcAssetIdsList <String[]>]
+Update-ZNUserMfaIdentityPolicy -ReactivePolicyId <String> -UserId <String> [-AccountName <String>]
+ [-Description <String>] [-ExcludedDstAssetIdsList <String[]>] [-ExcludedSrcAssetIdsList <String[]>]
  [-ExtraIdentityProtectionCategoryList <Int32[]>] [-FallbackToSingleLoggedOnUser]
  [-IdentityProtectionCategoryList <Int32[]>] [-MfaMethodsList <Int32[]>] [-OverrideBuiltins]
  [-RuleDuration <Int32>] [-SrcAssetIdsList <String[]>] [-SrcUserIdsList <String[]>] [-State <Int32>] [-AsJob]
@@ -67,6 +67,21 @@ UpdatedByName                           : powershell
 This cmdlet updates an identity MFA policy.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job

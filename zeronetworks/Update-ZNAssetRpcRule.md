@@ -13,11 +13,11 @@ Updates an RPC rule.
 ## SYNTAX
 
 ```
-Update-ZNAssetRpcRule -AssetId <String> -RuleId <String> [-Action <Int32>] [-Description <String>]
- [-ExcludedAssetIdsList <String[]>] [-ExpiresAt <Int64>] [-InterfaceUuidsList <String[]>]
- [-LocalAssetId <String>] [-OpNumbersList <String[]>] [-ProtocolsList <String[]>]
- [-RemoteAssetIdsList <String[]>] [-State <Int32>] [-UserIdsList <String[]>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-ZNAssetRpcRule -AssetId <String> -RuleId <String> [-AccountName <String>] [-Action <Int32>]
+ [-Description <String>] [-ExcludedAssetIdsList <String[]>] [-ExpiresAt <Int64>]
+ [-InterfaceUuidsList <String[]>] [-LocalAssetId <String>] [-OpNumbersList <String[]>]
+ [-ProtocolsList <String[]>] [-RemoteAssetIdsList <String[]>] [-State <Int32>] [-UserIdsList <String[]>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +66,21 @@ UpdatedByName              : powershell
 This cmdlet updates a rpc rule for an asset.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Action
 Allow or block.

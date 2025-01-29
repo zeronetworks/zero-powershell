@@ -14,7 +14,7 @@ Updates an inbound MFA Policy.
 
 ```
 Update-ZNGroupsMfaInboundPolicy -GroupId <String> -GroupType <String> -ReactivePolicyId <String>
- [-AdditionalPortsList <IPortsListItem[]>] [-Description <String>] [-DstPort <String>]
+ [-AccountName <String>] [-AdditionalPortsList <IPortsListItem[]>] [-Description <String>] [-DstPort <String>]
  [-DstProcessNames <String[]>] [-ExcludedSrcEntityInfos <String[]>] [-ExcludedSrcProcesses <String[]>]
  [-FallbackToLoggedOnUser] [-MfaMethods <Int32[]>] [-OverrideBuiltins] [-ProtocolType <Int32>]
  [-RuleDuration <Int32>] [-SrcEntityInfos <ReactivePolicyInboundBodySrcEntityInfosItem[]>]
@@ -78,6 +78,21 @@ StateProtectionState         :
 This cmdlet updates an inbound MFA policy for an group.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AdditionalPortsList
 extra ports to open.

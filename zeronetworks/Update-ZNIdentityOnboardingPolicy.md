@@ -13,7 +13,7 @@ Returns the updated settings for the identity onboarding policy.
 ## SYNTAX
 
 ```
-Update-ZNIdentityOnboardingPolicy -OnboardingPolicyId <String> -EnforceBlocks
+Update-ZNIdentityOnboardingPolicy -ProtectionPolicyId <String> -EnforceBlocks
  -ExistingMembersLearningDays <Int32> -NewMembersLearningDays <Int32> [-AccountName <String>]
  [-Description <String>] [-Enabled] [-Id <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -162,7 +162,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OnboardingPolicyId
+### -ProtectionPolicyId
 The id of the onboarding policy
 
 ```yaml

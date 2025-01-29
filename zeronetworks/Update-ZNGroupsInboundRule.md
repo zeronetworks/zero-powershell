@@ -13,11 +13,11 @@ Updates an inbound  rule.
 ## SYNTAX
 
 ```
-Update-ZNGroupsInboundRule -GroupId <String> -GroupType <String> -RuleId <String> [-Action <String>]
- [-Description <String>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>] [-IPSecOpt <String[]>]
- [-LocalEntityId <String>] [-LocalProcessesList <String[]>] [-PortsList <IPortsListItem[]>]
- [-RemoteEntityIdsList <String[]>] [-State <Int32>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-ZNGroupsInboundRule -GroupId <String> -GroupType <String> -RuleId <String> [-AccountName <String>]
+ [-Action <String>] [-Description <String>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>]
+ [-IPSecOpt <String[]>] [-LocalEntityId <String>] [-LocalProcessesList <String[]>]
+ [-PortsList <IPortsListItem[]>] [-RemoteEntityIdsList <String[]>] [-State <Int32>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,6 +69,21 @@ UpdatedByName              : ModuleTesting
 This cmdlet updates a rule for a group.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Action
 Allow or Block

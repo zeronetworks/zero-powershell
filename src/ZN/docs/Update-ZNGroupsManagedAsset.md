@@ -14,7 +14,7 @@ Update a managed assets for group
 
 ```
 Update-ZNGroupsManagedAsset -GroupId <String> -GroupType <String> -ManagedEntityId <String>
- [-AccountName <String>] [-Permission <Int32>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Permission <Int32> [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,7 +114,7 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

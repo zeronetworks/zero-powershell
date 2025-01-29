@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -OutboundRestriction
-.
+* 1 - NO_RESTRICTION* 2 - RESTRICTED_INTERNAL* 3 - RESTRICTED_EXTERNAL* 4 - RESTRICTED_INTERNAL_EXTERNAL
 
 ```yaml
 Type: System.Int32

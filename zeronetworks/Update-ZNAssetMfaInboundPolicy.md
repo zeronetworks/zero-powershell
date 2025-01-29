@@ -13,7 +13,7 @@ Updates an inbound MFA Policy.
 ## SYNTAX
 
 ```
-Update-ZNAssetMfaInboundPolicy -AssetId <String> -ReactivePolicyId <String>
+Update-ZNAssetMfaInboundPolicy -AssetId <String> -ReactivePolicyId <String> [-AccountName <String>]
  [-AdditionalPortsList <IPortsListItem[]>] [-Description <String>] [-DstPort <String>]
  [-DstProcessNames <String[]>] [-ExcludedSrcEntityInfos <String[]>] [-ExcludedSrcProcesses <String[]>]
  [-FallbackToLoggedOnUser] [-MfaMethods <Int32[]>] [-OverrideBuiltins] [-ProtocolType <Int32>]
@@ -78,6 +78,21 @@ StateProtectionState         : 1
 This cmdlet updates an inbound MFA policy for an asset.
 
 ## PARAMETERS
+
+### -AccountName
+Account Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AdditionalPortsList
 extra ports to open.

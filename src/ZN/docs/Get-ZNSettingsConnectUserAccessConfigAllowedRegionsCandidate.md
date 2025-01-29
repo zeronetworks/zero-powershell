@@ -106,7 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IConnectUserAccessConfigList
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IConnectRegionsList
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
