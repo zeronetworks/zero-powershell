@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNSwitch'))
 }
 
 Describe 'Update-ZNSwitch' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $switch = New-ZNSwitch -IP '192.168.250.2' -MonitorInterfaceOnOtAdded -MonitorOnInterfaceDiscovery -Name "test" -Password 'testP@ssw0rd' -Type 1 -Username'zero'
+        { Update-ZNSwitch -SwitchId $switch.SwitchId1 -IP '192.168.250.2' -MonitorInterfaceOnOtAdded -MonitorOnInterfaceDiscovery -Name 'test' -Password 'testP@ssw0rd2' -Type 1 -Username 'zero' } | Should -Not -Throw
+        Remove-ZNSwitch -SwitchId $switch.SwitchId1
     }
 }

@@ -13,7 +13,7 @@ Returns a list of network policies in the k8s cluster.
 ## SYNTAX
 
 ```
-Get-ZNK8SClusterInboundNetworkPolicy -ClusterId <String> [-AccountName <String>] [-Filters <String>]
+Get-ZNK8SClusterInboundNetworkPolicy -K8SClusterId <String> [-AccountName <String>] [-Filters <String>]
  [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>] [-WithCount]
  [<CommonParameters>]
 ```
@@ -75,21 +75,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusterId
-cluserId to filter on
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Filters
 JSON string URI encoded set of filters
 
@@ -99,6 +84,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -K8SClusterId
+cluserId to filter on
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

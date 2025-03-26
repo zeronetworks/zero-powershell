@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNK8SCluster'))
 }
 
 Describe 'Remove-ZNK8SCluster' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        $cluster = New-ZNK8SCluster -Name "RemoveCluster"
+        { Remove-ZNK8SCluster -ClusterId $cluster.ItemId } | Should -Not -Throw
     }
 }

@@ -13,7 +13,7 @@ Returns a k8s cluster.
 ## SYNTAX
 
 ```
-Update-ZNK8SCluster -ClusterId <String> -Name <String> [-AccountName <String>] [-Confirm] [-WhatIf]
+Update-ZNK8SCluster -K8SClusterId <String> -Name <String> [-AccountName <String>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -69,7 +69,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusterId
+### -K8SClusterId
 cluserId to filter on
 
 ```yaml

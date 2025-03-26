@@ -13,7 +13,7 @@ Returns a list of audits for the K8s.
 ## SYNTAX
 
 ```
-Get-ZNK8SClusterAudit -ClusterId <String> [-AccountName <String>] [-Cursor <Int64>] [-Order <String>]
+Get-ZNK8SClusterAudit -K8SClusterId <String> [-AccountName <String>] [-Cursor <Int64>] [-Order <String>]
  [-Search <String>] [<CommonParameters>]
 ```
 
@@ -61,21 +61,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusterId
-cluserId to filter on
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Cursor
 cursor position to start at
 
@@ -85,6 +70,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -K8SClusterId
+cluserId to filter on
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

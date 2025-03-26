@@ -1,6 +1,6 @@
 ### Example 1: Create outbound OT rule
 ```powershell
-$protocolsList = New-ZNProtocolsList -Protocol tcp -Ports 111
+$protocolsList = New-ZNProtocolsList -Protocol tcp -LocalPorts 111
 $source = (Get-ZNOutboundOtRulesSourceCandidate -Search "otv2").Items
 $destination = (Get-ZNOutboundOtRulesDestinationCandidate -Search "any asset").items[0]
 New-ZNOutboundOtRule -Action 1 -Direction 2 -localEntityId $source.Id -RemoteEntitiesIdList @($destination.id) -protocolsList $protocolsList -state 1 -LocalProcessesList @("*") -ExcludedLocalIdsList @() -ShouldBuildMirrorRules

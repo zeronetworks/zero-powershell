@@ -15,7 +15,7 @@ Returns the properties of an Inbound rule.
 ### List (Default)
 ```
 Get-ZNGroupsInboundRule -GroupId <String> -GroupType <String> [-AccountName <String>] [-AddAncestors]
- [-AddBuiltins] [-Direction <String>] [-EnrichRemoteIps] [-EntityParams <String>] [-Filters <String>]
+ [-AddBuiltins] [-Direction <Int32>] [-EnrichRemoteIps] [-EntityParams <String>] [-Filters <String>]
  [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>] [-WithCount]
  [<CommonParameters>]
 ```
@@ -133,10 +133,10 @@ Accept wildcard characters: False
 ```
 
 ### -Direction
-direction for the query, incoming or outgoing
+direction for the query, 1=Inbound, 2=Outbound, 3=Both
 
 ```yaml
-Type: System.String
+Type: System.Int32
 Parameter Sets: List
 Aliases:
 

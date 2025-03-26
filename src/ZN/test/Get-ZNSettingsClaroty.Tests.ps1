@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsClaroty'))
 }
 
 Describe 'Get-ZNSettingsClaroty' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        (Get-ZNSettingsClaroty).ApiUrl | Should -Not -BeNullOrEmpty
     }
 }

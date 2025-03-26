@@ -15,11 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNK8SClusterNamespace'))
 }
 
 Describe 'Get-ZNK8SClusterNamespace' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $cluster = (Get-ZNK8SCluster).ITems | Select -First 1
+        (Get-ZNK8SClusterNamespace -ClusterId $cluster.id).Items.Count | Should -BeGreaterThan
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $cluster = (Get-ZNK8SCluster).ITems | Select -First 1
+        $namespace = (Get-ZNK8SClusterNamespace -ClusterId $cluster.id).Items | Select -First 1
+        $namespace = Get-ZNK8SClusterNamespace -ClusterId $cluster.id -NamespaceId $namespace.Id
+        $namespace.EntityId | Should -Not -BeNullOrEmpty
     }
 }

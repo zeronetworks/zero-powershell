@@ -20,7 +20,7 @@ Get-ZNK8SCluster [-AccountName <String>] [-Filters <String>] [-Limit <Int32>] [-
 
 ### Get
 ```
-Get-ZNK8SCluster -ClusterId <String> [-AccountName <String>] [<CommonParameters>]
+Get-ZNK8SCluster -K8SClusterId <String> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,21 +75,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusterId
-cluserId to filter on
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Filters
 JSON string URI encoded set of filters
 
@@ -99,6 +84,21 @@ Parameter Sets: List
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -K8SClusterId
+cluserId to filter on
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -189,7 +189,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IK8SItem
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IK8SEntity
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IK8SList
 

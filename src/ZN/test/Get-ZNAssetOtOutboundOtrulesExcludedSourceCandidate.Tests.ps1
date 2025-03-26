@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetOtOutboundOtrulesE
 }
 
 Describe 'Get-ZNAssetOtOutboundOtrulesExcludedSourceCandidate' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $assetOt = Get-ZNAssetsOt | Select -First 1
+        (Get-ZNAssetOtOutboundOtrulesExcludedSourceCandidate -AssetId $assetOt.Id).Items.Count | Should -BeGreaterThan 0
     }
 }

@@ -13,7 +13,7 @@ Returns a list of workloads in the k8s cluster.
 ## SYNTAX
 
 ```
-Get-ZNK8SClusterWorkload -ClusterId <String> [-AccountName <String>] [-Filters <String>] [-Limit <Int32>]
+Get-ZNK8SClusterWorkload -K8SClusterId <String> [-AccountName <String>] [-Filters <String>] [-Limit <Int32>]
  [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>] [-WithCount] [<CommonParameters>]
 ```
 
@@ -67,21 +67,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusterId
-cluserId to filter on
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Filters
 JSON string URI encoded set of filters
 
@@ -91,6 +76,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -K8SClusterId
+cluserId to filter on
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

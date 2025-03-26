@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNOutboundOtRule'))
 }
 
 Describe 'Remove-ZNOutboundOtRule' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        $protocolsList = New-ZNProtocolsList -Protocol tcp -Ports 111
+        $destination = Invoke-ZNEncodeEntityip -IP 1.1.1.2
+        $source = (Get-ZNInboundOtRulesDestinationCandidate -Search "otv2").items
+        $rule = New-ZNOutboundOtRule -Action 1 -Direction 1 -localEntityId $source.Id -RemoteEntitiesIdList @($destination.id) -protocolsList $protocolsList -state 1 -LocalProcessesList @("*") -ExcludedLocalIdsList @() -ShouldBuildMirrorRules
+        { Remove-ZNOutboundOtRule -RuleId $rule.ItemId } | Should -Not -Throw
     }
 }

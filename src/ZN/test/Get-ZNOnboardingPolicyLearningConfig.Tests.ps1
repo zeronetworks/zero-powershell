@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNOnboardingPolicyLearnin
 }
 
 Describe 'Get-ZNOnboardingPolicyLearningConfig' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        (Get-ZNOnboardingPolicyLearningConfig).AllowQueueForever | Should -Not -BeNullOrEmpty
     }
 }

@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNK8SCluster'))
 }
 
 Describe 'New-ZNK8SCluster' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $cluster = New-ZNK8SCluster -Name "NewCluster"
+        $cluster.ItemId | Should -Not -BeNullOrEmpty
+        Remove-ZNK8SCluster -ClusterId $cluster.ItemId
     }
 }

@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNOutboundOtRule'))
 }
 
 Describe 'Update-ZNOutboundOtRule' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $rule = (Get-ZNOutboundOtrule -AddBuiltins).Items | select -First 1
+        $description = "Updated $(Get-Random -Minimum 1 -Maximum 1000)"
+        $updated = Update-ZNOutboundOtrule -RuleId $rule.Id -Description $description
+        $updated.ItemDescription | Should -Be $description
     }
 }

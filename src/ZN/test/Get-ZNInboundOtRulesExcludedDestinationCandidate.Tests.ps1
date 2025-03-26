@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNInboundOtRulesExcludedD
 }
 
 Describe 'Get-ZNInboundOtRulesExcludedDestinationCandidate' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        (Get-ZNInboundOtRulesExcludedDestinationCandidate).Items.Count | Should -BeGreaterThan 0
     }
 }

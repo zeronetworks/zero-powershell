@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-Possible asset status: * `1' - Client * `2' - Server
+Possible asset status: * '1' - Client * '2' - Server
 
 ```yaml
 Type: System.Int32

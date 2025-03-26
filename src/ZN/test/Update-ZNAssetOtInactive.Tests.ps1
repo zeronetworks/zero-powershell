@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNAssetOtInactive'))
 }
 
 Describe 'Update-ZNAssetOtInactive' {
-    It 'SetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetExpanded' {
+        $assetOT = Get-ZNAssetsOt -ShowInactive -Limit 400 | where {$_.Name -eq "activeOT"}
+        { Update-ZNAssetOtInactive -AssetId $assetOT.Id } | Should -Not -Throw
+        Update-ZNAssetOtActive -AssetId $assetOT.Id -DisplayName $assetOT.Name -Fqdn $assetOT.Fqdn -Ipv4 $assetOT.IPV4Addresses[0] -Type 5
     }
 }

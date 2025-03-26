@@ -16,10 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNMirrorAsset'))
 
 Describe 'Invoke-ZNMirrorAsset' {
     It 'MirrorExpanded' {
-        { Invoke-ZNMirrorAsset -OriginalAssetId "a:l:4NMHdoaO" -TargetAssetId "a:l:18VODYZg" } | Should -Not -Throw
-    }
-
-    It 'MirrorExpanded1' -skip {
-        { Invoke-ZNMirrorAsset -AssetId "a:l:4NMHdoaO" -OriginalAssetId "a:l:4NMHdoaO" -TargetAssetId "a:l:18VODYZg" } | Should -Not -Throw
+        $asset1 = Search-ZNAsset -Fqdn mirror1.posh.local
+        $asset2 = Search-ZNAsset -Fqdn mirror2.posh.local
+        $group =  (Get-ZNGroup -Search MirrorAsset).Items
+        Invoke-ZNMirrorAsset -OriginalAssetId $asset1.AssetId -TargetAssetId $asset2.AssetId 
+        $members = (Get-ZNGroupsMember -Groupid $group.Id -GroupType custom -IncludeNestedMembers).ITems | select Name
+        $members.Count | Should -BeGreaterThan 1
+        Remove-ZNCustomGroupsMember -GroupId $group.id -MembersId @($asset2.AssetId)
     }
 }

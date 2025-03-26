@@ -13,8 +13,8 @@ updates interfaces for a switch
 ## SYNTAX
 
 ```
-Update-ZNSwitchInterface -SwitchId <String> [-AccountName <String>] [-Interfaces <String[]>] [-ShouldMonitor]
- [-SwitchId1 <String>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSwitchInterface -SwitchId <String> -Interfaces <String[]> -ShouldMonitor [-AccountName <String>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,7 +61,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -91,7 +91,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -107,21 +107,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SwitchId1
-.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

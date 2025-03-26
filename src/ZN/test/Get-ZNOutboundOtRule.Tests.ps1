@@ -15,11 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNOutboundOtRule'))
 }
 
 Describe 'Get-ZNOutboundOtRule' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        (Get-ZNOutboundOtRule -AddBuiltins).Items | Should -BeGreaterThan 0
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $rule = (Get-ZNOutboundOtRule -AddBuiltins).Items | Select -First 1
+        $rule = Get-ZNOutboundOtRule -RuleId $rule.Id
+        $rule.Id | Should -Not -BeNullOrEmpty
     }
 }

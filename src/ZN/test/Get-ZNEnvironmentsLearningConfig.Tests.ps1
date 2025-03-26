@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNEnvironmentsLearningCon
 }
 
 Describe 'Get-ZNEnvironmentsLearningConfig' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        (Get-ZNEnvironmentsLearningConfig).AllowQueueForever | Should -Not -BeNullOrEmpty
     }
 }

@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNK8SCluster'))
 }
 
 Describe 'Update-ZNK8SCluster' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $cluster = New-ZNK8SCluster -Name "NewCluster"
+        $updated = Update-ZNK8SCluster -ClusterId $cluster.ItemId -Name "NewClusterName"
+        $updated.ItemName | Should -Be "NewClusterName"
+        Remove-ZNK8SCluster -ClusterId $cluster.ItemId
     }
 }

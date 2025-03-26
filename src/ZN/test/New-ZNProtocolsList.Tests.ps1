@@ -15,11 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNProtocolsList'))
 }
 
 Describe 'New-ZNProtocolsList' {
-    It 'Protocol' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Protocol' {
+        (New-ZNProtocolsList -Protocol 6 -ports 111).LocalPorts | Should -Not -BeNullOrEmpty
     }
 
-    It 'Empty' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Empty' {
+        (New-ZNProtocolsList -Empty).LocalPorts | Should -BeNullOrEmpty
     }
 }

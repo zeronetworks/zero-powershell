@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Zero Networks
-  version: 1.0.7
+  version: 1.0.8
   description: APIs for Zero Networks
   contact:
     name: Support
@@ -2347,18 +2347,16 @@ paths:
         - api_key: []
       tags:
         - Asset activities
-  '/assets/{assetId}/analysis':
+  '/assets/{assetId}/analysis/identity':
     get:
-      operationId: AssetAnalysis_Get
+      operationId: AssetIdentityAnalysis_Get
       summary: Get an asset analysis
       description: Returns an object with asset analysis data.
       parameters:
         - $ref: '#/components/parameters/assetIdParameter'
         - $ref: '#/components/parameters/sortParameter'
-        - $ref: '#/components/parameters/analysisDirectionParameter'
-        - $ref: '#/components/parameters/connectionStateParameter'
-        - $ref: '#/components/parameters/trafficTypeParameter'
-        - $ref: '#/components/parameters/directlyRetrievedFromAssetParameter'
+        - $ref: '#/components/parameters/directionParameter'
+        - $ref: '#/components/parameters/eventTypeParameter'
         - $ref: '#/components/parameters/fromParameter'
         - $ref: '#/components/parameters/toParameter'
       responses:
@@ -2367,7 +2365,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/assetAnalysis'
+                $ref: '#/components/schemas/assetIdentityAnalysis'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -2382,9 +2380,9 @@ paths:
         - api_key: []
       tags:
         - Asset
-  '/assets/{assetId}/analysis/export':
+  '/assets/{assetId}/analysis/identity/export':
     post:
-      operationId: AssetAnalysis_Export
+      operationId: AssetIdentityAnalysis_Export
       summary: Export asset analysis
       description: Returns an exportId to pass into the download API.
       parameters:
@@ -2417,9 +2415,101 @@ paths:
         - api_key: []
       tags:
         - Asset analysis
-  '/assets/{assetId}/analysis/export/csv/{exportId}':
+  '/assets/{assetId}/analysis/identity/export/csv/{exportId}':
     get:
-      operationId: AssetAnalysisExport_Get
+      operationId: AssetIdentityAnalysisExport_Get
+      summary: Download asset analysis report
+      description: Returns a csv file to be downloaded.
+      parameters:
+        - $ref: '#/components/parameters/exportIdParameter'
+        - $ref: '#/components/parameters/assetIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/401'
+      security:
+        - api_key: []
+      tags:
+        - Asset analysis
+  '/assets/{assetId}/analysis/network':
+    get:
+      operationId: AssetNetworkAnalysis_Get
+      summary: Get an asset analysis
+      description: Returns an object with asset analysis data.
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/analysisDirectionParameter'
+        - $ref: '#/components/parameters/connectionStateParameter'
+        - $ref: '#/components/parameters/trafficTypeParameter'
+        - $ref: '#/components/parameters/directlyRetrievedFromAssetParameter'
+        - $ref: '#/components/parameters/fromParameter'
+        - $ref: '#/components/parameters/toParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assetNetworkAnalysis'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Asset
+  '/assets/{assetId}/analysis/network/export':
+    post:
+      operationId: AssetNetworkAnalysis_Export
+      summary: Export asset analysis
+      description: Returns an exportId to pass into the download API.
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+      requestBody:
+        description: 'EntityId, from, to, search, filter or date time format for export'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/exportBodyAnalysis'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exportId'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Asset analysis
+  '/assets/{assetId}/analysis/network/export/csv/{exportId}':
+    get:
+      operationId: AssetNetworkAnalysisExport_Get
       summary: Download asset analysis report
       description: Returns a csv file to be downloaded.
       parameters:
@@ -2996,6 +3086,33 @@ paths:
           $ref: '#/components/responses/500'
       tags:
         - Asset managers
+  /assets/{assetId}/mirror-candidates:
+    get:
+      operationId: AssetMirrorCandidates_List
+      summary: Get mirror candidates
+      description: Get mirror candidates
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assetBasicInfoList'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      tags:
+        - Asset
   '/assets/{assetId}/protection/external-access-policies':
     get:
       operationId: AssetExternalAccessPolicy_List
@@ -8252,6 +8369,36 @@ paths:
         - api_key: []
       tags:
         - Asset OT/IoT
+  '/assets/ot/{assetId}/actions/activate':
+    post:
+      operationId: AssetOTActive_Set
+      summary: Mark OT asset active
+      description: Returns and empty object.
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/assetActivateBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Asset OT/IoT actions
   '/assets/ot/{assetId}/actions/inactivate':
     post:
       operationId: AssetOTInactive_Set
@@ -8350,36 +8497,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/queueAssetExtendBody'
-      responses:
-        '200':
-          $ref: '#/components/responses/200_empty'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
-      security:
-        - api_key: []
-      tags:
-        - Asset OT/IoT actions
-  '/assets/ot/{assetId}/revive':
-    post:
-      operationId: AssetOTActive_Set
-      summary: Mark OT asset active
-      description: Returns and empty object.
-      parameters:
-        - $ref: '#/components/parameters/assetIdParameter'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/otAssetEditBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -9281,16 +9398,16 @@ paths:
         - api_key: []
       tags:
         - Asset OT/IoT activities
-  '/assets/ot/{assetId}/analysis':
+  '/assets/ot/{assetId}/analysis/identity':
     get:
-      operationId: AssetOTAnalysis_Get
+      operationId: AssetOTIdentityAnalysis_Get
       summary: Get an OT/IoT asset analysis
       description: Returns an object with OT/IoT asset analysis data.
       parameters:
         - $ref: '#/components/parameters/assetIdParameter'
         - $ref: '#/components/parameters/sortParameter'
-        - $ref: '#/components/parameters/analysisDirectionParameter'
-        - $ref: '#/components/parameters/connectionStateParameter'
+        - $ref: '#/components/parameters/directionParameter'
+        - $ref: '#/components/parameters/eventTypeParameter'
         - $ref: '#/components/parameters/fromParameter'
         - $ref: '#/components/parameters/toParameter'
       responses:
@@ -9299,7 +9416,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/assetAnalysis'
+                $ref: '#/components/schemas/assetIdentityAnalysis'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -9314,9 +9431,9 @@ paths:
         - api_key: []
       tags:
         - Asset OT/IoT analysis
-  '/assets/ot/{assetId}/analysis/export':
+  '/assets/ot/{assetId}/analysis/identity/export':
     post:
-      operationId: AssetOTAnalysis_Export
+      operationId: AssetOTIdentityAnalysis_Export
       summary: Export OT/IoT asset analysis
       description: Returns an exportId to pass into the download API.
       parameters:
@@ -9349,9 +9466,101 @@ paths:
         - api_key: []
       tags:
         - Asset OT/IoT analysis
-  '/assets/ot/{assetId}/analysis/export/csv/{exportId}':
+  '/assets/ot/{assetId}/analysis/identity/export/csv/{exportId}':
     get:
-      operationId: AssetOTAnalysisExport_Get
+      operationId: AssetOTIdentityAnalysisExport_Get
+      summary: Download OT/IoT asset analysis report
+      description: Returns a csv file to be downloaded.
+      parameters:
+        - $ref: '#/components/parameters/exportIdParameter'
+        - $ref: '#/components/parameters/assetIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/401'
+      security:
+        - api_key: []
+      tags:
+        - Asset OT/IoT analysis
+  '/assets/ot/{assetId}/analysis/network':
+    get:
+      operationId: AssetOTNetworkAnalysis_Get
+      summary: Get an OT/IoT asset analysis
+      description: Returns an object with OT/IoT asset analysis data.
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/analysisDirectionParameter'
+        - $ref: '#/components/parameters/connectionStateParameter'
+        - $ref: '#/components/parameters/trafficTypeParameter'
+        - $ref: '#/components/parameters/directlyRetrievedFromAssetParameter'
+        - $ref: '#/components/parameters/fromParameter'
+        - $ref: '#/components/parameters/toParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assetNetworkAnalysis'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Asset OT/IoT analysis
+  '/assets/ot/{assetId}/analysis/network/export':
+    post:
+      operationId: AssetOTNetworkAnalysis_Export
+      summary: Export OT/IoT asset analysis
+      description: Returns an exportId to pass into the download API.
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+      requestBody:
+        description: 'EntityId, from, to, search, filter or date time format for export'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/exportBodyAnalysis'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exportId'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Asset OT/IoT analysis
+  '/assets/ot/{assetId}/analysis/network/export/csv/{exportId}':
+    get:
+      operationId: AssetOTNetworkAnalysisExport_Get
       summary: Download OT/IoT asset analysis report
       description: Returns a csv file to be downloaded.
       parameters:
@@ -9683,6 +9892,33 @@ paths:
           $ref: '#/components/responses/500'
       tags:
         - Asset OT/IoT managers
+  /assets/ot/{assetId}/mirror-candidates:
+    get:
+      operationId: AssetOTMirrorCandidates_List
+      summary: Get mirror candidates
+      description: Get mirror candidates
+      parameters:
+        - $ref: '#/components/parameters/assetIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assetBasicInfoList'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      tags:
+        - Asset OT/IoT
   '/assets/ot/{assetId}/protection/identity-rules':
     get:
       operationId: AssetOTIdentityRules_List
@@ -13711,7 +13947,7 @@ paths:
     get:
       operationId: AssetOTOutboundOTRulesSourceCandidatesFilters_List
       summary: List OT/IoT Outbound Rules Source Candidates Filters
-      description: Returns a list of filters for Source candidates for Outbound rules.
+      description: Returns a list of filters for source candidates for Outbound rules.
       parameters:
         - $ref: '#/components/parameters/assetIdParameter'
         - $ref: '#/components/parameters/limitParameter'
@@ -13740,7 +13976,7 @@ paths:
     get:
       operationId: AssetOTOutboundOTRulesDestinationCandidatesFilters_List
       summary: Get OT/IoT Outbound Rules Destination Candidates Filters
-      description: Returns a list of filters for destination candiates for Outbound rules.
+      description: Returns a list of filters for destination candidates for Outbound rules.
       parameters:
         - $ref: '#/components/parameters/assetIdParameter'
         - $ref: '#/components/parameters/limitParameter'
@@ -13847,6 +14083,35 @@ paths:
         - api_key: []
       tags:
         - Asset OT/IoT tags
+  /assets/ot/actions/activate:
+    post:
+      operationId: AssetsOTActive_Set
+      summary: Mark OT assets active
+      description: Returns and empty object.
+      requestBody:
+        description: Array of assetIds to mark acactive
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/assetsActivateBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets OT/IoT actions
   /assets/ot/actions/inactivate:
     post:
       operationId: AssetsOTInactive_Set
@@ -15075,7 +15340,7 @@ paths:
         - Assets Switches
   '/assets/switches/{switchId}':
     get:
-      operationId: Switches_Get
+      operationId: Switch_Get
       summary: Gets a switch
       description: gets a switch
       parameters:
@@ -15100,7 +15365,7 @@ paths:
       tags:
         - Assets Switches
     delete:
-      operationId: Switches_Delete
+      operationId: Switch_Delete
       summary: Delete a switch
       description: delete a switch
       parameters:
@@ -15108,10 +15373,6 @@ paths:
       responses:
         '200':
           description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/switchInterfacesList'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -15125,7 +15386,7 @@ paths:
       tags:
         - Assets Switches
     put:
-      operationId: Switches_Update
+      operationId: Switch_Update
       summary: Update a switch
       description: update a switch
       parameters:
@@ -15576,7 +15837,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/switchInterfacesBody'
+              $ref: '#/components/schemas/switchInterfaceBody'
       responses:
         '200':
           description: OK
@@ -16335,7 +16596,7 @@ paths:
     get:
       operationId: SwitchOutboundOTRulesSourceCandidatesFilters_List
       summary: List OT/IoT Outbound Rules Source Candidates Filters
-      description: Returns a list of filters for destination candidates for Outbound rules.
+      description: Returns a list of filters for source candidates for Outbound rules.
       parameters:
         - $ref: '#/components/parameters/switchIdParameter'
         - $ref: '#/components/parameters/limitParameter'
@@ -18259,9 +18520,9 @@ paths:
         - api_key: []
       tags:
         - Groups activities
-  '/groups/{groupType}/{groupId}/analysis':
+  '/groups/{groupType}/{groupId}/analysis/network':
     get:
-      operationId: GroupsAnalysis_Get
+      operationId: GroupsNetworkAnalysis_Get
       summary: Get a group analysis
       description: Returns an object with group analysis data.
       parameters:
@@ -18295,9 +18556,9 @@ paths:
         - api_key: []
       tags:
         - Asset OT/IoT analysis
-  '/groups/{groupType}/{groupId}/analysis/export':
+  '/groups/{groupType}/{groupId}/analysis/network/export':
     post:
-      operationId: GroupsAnalysis_Export
+      operationId: GroupsNetworkAnalysis_Export
       summary: Export analysis for a specific group
       description: Returns an exportId to pass into the download API.
       parameters:
@@ -18331,9 +18592,9 @@ paths:
         - api_key: []
       tags:
         - Group
-  '/groups/{groupType}/{groupId}/analysis/export/csv/{exportId}':
+  '/groups/{groupType}/{groupId}/analysis/network/export/csv/{exportId}':
     get:
-      operationId: GroupsAnalysisExport_Get
+      operationId: GroupsNetworkAnalysisExport_Get
       summary: Download analysis export for a specific group
       description: Returns a csv file to be downloaded.
       parameters:
@@ -22675,6 +22936,774 @@ paths:
         - api_key: []
       tags:
         - Group
+  /groups/{groupType}/{groupId}/protection/switch-rules/inbound:
+    get:
+      operationId: GroupsInboundOTRules_List
+      summary: List OT/IOT rules
+      description: Returns a list of OT/IoT rules.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/addBuiltinsParameter'
+        - $ref: '#/components/parameters/addAncestorsParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/switchRulesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+    post:
+      operationId: GroupsInboundOTRules_Create
+      summary: Create an OT/IoT rule
+      description: creates an OT/IoT rule
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/switchRuleBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/switchRuleItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  '/groups/{groupType}/{groupId}/protection/switch-rules/inbound/{ruleId}':
+    get:
+      operationId: GroupsInboundOTRules_Get
+      summary: Get an OT/IoT Rule
+      description: get an OT/IoT Rule
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/otRuleIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/switchRuleItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+    delete:
+      operationId: GroupsInboundOTRules_Delete
+      summary: Deletes an OT/IoT rule
+      description: deletes an OT/IoT rule
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/otRuleIdParameter'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+    put:
+      operationId: GroupsInboundOTRules_Update
+      summary: Update an OT/IoT Rule
+      description: updates an OT/IoT Rule
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/otRuleIdParameter'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/switchRuleBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/switchRuleItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  /groups/{groupType}/{groupId}/protection/switch-rules/inbound/excluded-local-candidates:
+    get:
+      operationId: GroupsInboundOTRulesExcludedDestinationCandidates_List
+      summary: OT/IoT List Inbound Rules Excluded Destination Candidates
+      description: Returns a list of excluded destination candidates for OT/IoT Inbound rules.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/cursorParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/candidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  /groups/{groupType}/{groupId}/protection/switch-rules/inbound/export:
+    post:
+      operationId: GroupsInboundOTRules_Export
+      summary: Export OT/IoT Rules
+      description: Returns an exportId to pass into the download API.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+      requestBody:
+        description: 'EntityId, from, to, search, filter or date time format for export'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/exportBodyRules'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exportId'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  '/groups/{groupType}/{groupId}/protection/switch-rules/inbound/export/csv/{exportId}':
+    get:
+      operationId: GroupsInboundOTRulesExport_Get
+      summary: Download OT/IoT Rules Export
+      description: Returns a csv file to be downloaded.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/exportIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/401'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  /groups/{groupType}/{groupId}/protection/switch-rules/inbound/filters:
+    get:
+      operationId: GroupsInboundOTRulesFilters_List
+      summary: List OT/IoT Rules Filters
+      description: Returns a list of filters for OT/IoT Rules.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  /groups/{groupType}/{groupId}/protection/switch-rules/inbound/filters/local-candidates:
+    get:
+      operationId: GroupsInboundOTRulesDestinationCandidatesFilters_List
+      summary: List OT/IoT Inbound Rules Destination Candidates Filters
+      description: Returns a list of filters for destination candidates for Inbound rules.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/cursorParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/candidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  /groups/{groupType}/{groupId}/protection/switch-rules/inbound/filters/remote-candidates:
+    get:
+      operationId: GroupsInboundOTRulesSourceCandidatesFilters_List
+      summary: Get OT/IoT Inbound Rules Source Candidates Filters
+      description: Returns a list of filters for source candidates for Inbound rules.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/cursorParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/candidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  /groups/{groupType}/{groupId}/protection/switch-rules/inbound/local-candidates:
+    get:
+      operationId: GroupsInboundOTRulesDestinationCandidates_List
+      summary: List OT/IoT Inbound Rules Destination Candidates
+      description: Returns a list of destination candidates for Inbound rules.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/cursorParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/candidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  /groups/{groupType}/{groupId}/protection/switch-rules/inbound/remote-candidates:
+    get:
+      operationId: GroupsInboundOTRulesSourceCandidates_List
+      summary: List OT/IoT Inbound Rules Source Candidates
+      description: Returns a list of source candidates for Inbound rules.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/candidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  /groups/{groupType}/{groupId}/protection/switch-rules/outbound:
+    get:
+      operationId: GroupsOutboundOTRules_List
+      summary: List OT/IOT rules
+      description: Returns a list of OT/IoT rules.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/addBuiltinsParameter'
+        - $ref: '#/components/parameters/addAncestorsParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/switchRulesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+    post:
+      operationId: GroupsOutboundOTRules_Create
+      summary: Create an OT/IoT rule
+      description: creates an OT/IoT rule
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/switchRuleBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/switchRuleItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  '/groups/{groupType}/{groupId}/protection/switch-rules/outbound/{ruleId}':
+    get:
+      operationId: GroupsOutboundOTRules_Get
+      summary: Get an OT/IoT Rule
+      description: get an OT/IoT Rule
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/otRuleIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/switchRuleItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+    delete:
+      operationId: GroupsOutboundOTRules_Delete
+      summary: Deletes an OT/IoT rule
+      description: deletes an OT/IoT rule
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/otRuleIdParameter'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+    put:
+      operationId: GroupsOutboundOTRules_Update
+      summary: Update an OT/IoT Rule
+      description: updates an OT/IoT Rule
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/otRuleIdParameter'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/switchRuleBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/switchRuleItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  /groups/{groupType}/{groupId}/protection/switch-rules/outbound/excluded-local-candidates:
+    get:
+      operationId: GroupsOutboundOTRulesExcludedSourceCandidates_List
+      summary: OT/IoT List Outbound Rules Excluded Source Candidates
+      description: Returns a list of excluded source candidates for OT/IoT Outbound rules.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/cursorParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/candidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  /groups/{groupType}/{groupId}/protection/switch-rules/outbound/export:
+    post:
+      operationId: GroupsOutboundOTRules_Export
+      summary: Export OT/IoT Rules
+      description: Returns an exportId to pass into the download API.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+      requestBody:
+        description: 'EntityId, from, to, search, filter or date time format for export'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/exportBodyRules'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exportId'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  '/groups/{groupType}/{groupId}/protection/switch-rules/outbound/export/csv/{exportId}':
+    get:
+      operationId: GroupsOutboundOTRulesExport_Get
+      summary: Download OT/IoT Rules Export
+      description: Returns a csv file to be downloaded.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/exportIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/401'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  /groups/{groupType}/{groupId}/protection/switch-rules/outbound/filters:
+    get:
+      operationId: GroupsOutboundOTRulesFilters_List
+      summary: List OT/IoT Rules Filters
+      description: Returns a list of filters for OT/IoT Rules.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  /groups/{groupType}/{groupId}/protection/switch-rules/outbound/filters/local-candidates:
+    get:
+      operationId: GroupsOutboundOTRulesSourceCandidatesFilters_List
+      summary: List OT/IoT Outbound Rules Source Candidates Filters
+      description: Returns a list of filters for source candidates for Outbound rules.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/cursorParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/candidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  /groups/{groupType}/{groupId}/protection/switch-rules/outbound/filters/remote-candidates:
+    get:
+      operationId: GroupsOutboundOTRulesDestinationCandidatesFilters_List
+      summary: Get OT/IoT Outbound Rules Destination Candidates Filters
+      description: Returns a list of filters for destination candidates for Outbound rules.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/cursorParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/candidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  /groups/{groupType}/{groupId}/protection/switch-rules/outbound/local-candidates:
+    get:
+      operationId: GroupsOutboundOTRulesSourceCandidates_List
+      summary: List OT/IoT Outbound Rules Source Candidates
+      description: Returns a list of source candidates for Outbound rules.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/cursorParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/candidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
+  /groups/{groupType}/{groupId}/protection/switch-rules/outbound/remote-candidates:
+    get:
+      operationId: GroupsOutboundOTRulesDestinationCandidates_List
+      summary: List OT/IoT Outbound Rules Destination Candidates
+      description: Returns a list of destination candidates for Outbound rules.
+      parameters:
+        - $ref: '#/components/parameters/groupTypeParameter'
+        - $ref: '#/components/parameters/groupIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/candidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Groups protection
   '/groups/{groupType}/{groupId}/successors':
     get:
       operationId: GroupsMembers_List
@@ -23133,20 +24162,20 @@ paths:
         - api_key: []
       tags:
         - K8s
-  '/k8s/clusters/{clusterId}':
+  '/k8s/clusters/{k8sClusterId}':
     get:
       operationId: K8sCluster_Get
       summary: Get a k8s cluster
       description: Returns a k8s cluster.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/k8sItem'
+                $ref: '#/components/schemas/k8sEntity'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -23164,7 +24193,7 @@ paths:
       summary: Update a k8s cluster
       description: Returns a k8s cluster.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
       requestBody:
         description: K8s cluster properties
         required: true
@@ -23196,7 +24225,7 @@ paths:
       summary: Delete a k8s cluster
       description: Returns an empty object.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
       responses:
         '200':
           description: OK
@@ -23212,13 +24241,13 @@ paths:
         - api_key: []
       tags:
         - K8s
-  '/k8s/clusters/{clusterId}/audit':
+  '/k8s/clusters/{k8sClusterId}/audit':
     get:
       operationId: K8sClusterAudit_Get
       summary: Get a K8s audits
       description: Returns a list of audits for the K8s.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
         - $ref: '#/components/parameters/cursorParameter'
         - $ref: '#/components/parameters/searchParameter'
         - $ref: '#/components/parameters/orderParameter'
@@ -23243,13 +24272,13 @@ paths:
         - api_key: []
       tags:
         - K8s audit
-  '/k8s/clusters/{clusterId}/audit/export':
+  '/k8s/clusters/{k8sClusterId}/audit/export':
     post:
       operationId: K8sClusterAudit_Export
       summary: Export K8s audits
       description: Returns an exportId to pass into the download API.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
       requestBody:
         description: 'EntityId, from, to, search, filter or date time format for export'
         required: true
@@ -23278,13 +24307,13 @@ paths:
         - api_key: []
       tags:
         - K8s audit
-  '/k8s/clusters/{clusterId}/audit/export/csv/{exportId}':
+  '/k8s/clusters/{k8sClusterId}/audit/export/csv/{exportId}':
     get:
       operationId: K8sClusterAuditExport_Get
       summary: Download K8s audit export
       description: Returns a csv file to be downloaded.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
         - $ref: '#/components/parameters/exportIdParameter'
       responses:
         '200':
@@ -23300,13 +24329,13 @@ paths:
         - api_key: []
       tags:
         - K8s audit
-  '/k8s/clusters/{clusterId}/audit/filters':
+  '/k8s/clusters/{k8sClusterId}/audit/filters':
     get:
       operationId: K8sClusterAuditsFilters_List
       summary: List Audit Filters for a K8s
       description: Returns a list of filters for Audit events for a K8s.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
       responses:
         '200':
           description: OK
@@ -23326,13 +24355,13 @@ paths:
         - api_key: []
       tags:
         - K8s audit
-  '/k8s/clusters/{clusterId}/command':
+  '/k8s/clusters/{k8sClusterId}/command':
     get:
       operationId: K8sClusterCommand_Get
       summary: Get the commands for a K8s cluster
       description: Returns the commands for a K8s cluster.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
       responses:
         '200':
           description: OK
@@ -23352,13 +24381,13 @@ paths:
         - api_key: []
       tags:
         - K8s
-  '/k8s/clusters/{clusterId}/namespaces':
+  '/k8s/clusters/{k8sClusterId}/namespaces':
     get:
       operationId: K8sClusterNamespaces_List
       summary: Get a k8s cluster namespaces
       description: Returns a list of namespaces for the k8s cluster.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
@@ -23384,14 +24413,14 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
-  '/k8s/clusters/{clusterId}/namespaces/{namespaceId}':
+  '/k8s/clusters/{k8sClusterId}/namespaces/{k8sNamespaceId}':
     get:
       operationId: K8sClusterNamespace_Get
       summary: Get a k8s cluster namespace
       description: Returns a list of namespaces for the k8s cluster.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
-        - $ref: '#/components/parameters/namespaceIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
       responses:
         '200':
           description: OK
@@ -23411,14 +24440,14 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
-  '/k8s/clusters/{clusterId}/namespaces/{namespaceId}/network-policies/inbound':
+  '/k8s/clusters/{k8sClusterId}/namespaces/{k8sNamespaceId}/network-policies/inbound':
     get:
       operationId: K8sClusterNamespaceInboundNetworkPolicies_List
       summary: Get a k8s cluster namespace Inbound Network Policies
       description: Returns a list of network policies for a namespaces in the k8s cluster.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
-        - $ref: '#/components/parameters/namespaceIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
@@ -23444,14 +24473,14 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
-  '/k8s/clusters/{clusterId}/namespaces/{namespaceId}/network-policies/inbound/filters':
+  '/k8s/clusters/{k8sClusterId}/namespaces/{k8sNamespaceId}/network-policies/inbound/filters':
     get:
       operationId: K8sClusterNamespaceInboundNetworkPoliciesFilters_List
       summary: List K8s Cluster Namespace Inbound Network Policy Filters
       description: Returns a list of filters for K8s Cluster Namespace Network Polcy.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
-        - $ref: '#/components/parameters/namespaceIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
       responses:
         '200':
           description: OK
@@ -23473,14 +24502,14 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
-  '/k8s/clusters/{clusterId}/namespaces/{namespaceId}/network-policies/outbound':
+  '/k8s/clusters/{k8sClusterId}/namespaces/{k8sNamespaceId}/network-policies/outbound':
     get:
       operationId: K8sClusterNamespaceOutboundNetworkPolicies_List
       summary: Get a k8s cluster namespace Outbound Network Policies
       description: Returns a list of network policies for a namespaces in the k8s cluster.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
-        - $ref: '#/components/parameters/namespaceIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
@@ -23506,14 +24535,14 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
-  '/k8s/clusters/{clusterId}/namespaces/{namespaceId}/network-policies/outbound/filters':
+  '/k8s/clusters/{k8sClusterId}/namespaces/{k8sNamespaceId}/network-policies/outbound/filters':
     get:
       operationId: K8sClusterNamespaceOutboundNetworkPoliciesFilters_List
       summary: List K8s Cluster Namespace Outbound Network Policy Filters
       description: Returns a list of filters for K8s Cluster Namespace Network Polcy.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
-        - $ref: '#/components/parameters/namespaceIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
       responses:
         '200':
           description: OK
@@ -23535,14 +24564,14 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
-  '/k8s/clusters/{clusterId}/namespaces/{namespaceId}/workloads':
+  '/k8s/clusters/{k8sClusterId}/namespaces/{k8sNamespaceId}/workloads':
     get:
       operationId: K8sClusterNamespaceWorkloads_List
       summary: List a k8s cluster namespace workloads
       description: Returns a list of workloads for a namespaces in the k8s cluster.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
-        - $ref: '#/components/parameters/namespaceIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
@@ -23568,14 +24597,14 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
-  '/k8s/clusters/{clusterId}/namespaces/{namespaceId}/workloads/filters':
+  '/k8s/clusters/{k8sClusterId}/namespaces/{k8sNamespaceId}/workloads/filters':
     get:
       operationId: K8sClusterNamespaceWorkloadsFilters_List
       summary: List K8s Cluster Namespace Workloads filters
       description: Returns a list of filters for K8s Cluster Namespace Workloads.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
-        - $ref: '#/components/parameters/namespaceIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
       responses:
         '200':
           description: OK
@@ -23597,13 +24626,13 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
-  '/k8s/clusters/{clusterId}/network-policies/inbound':
+  '/k8s/clusters/{k8sClusterId}/network-policies/inbound':
     get:
       operationId: K8sClusterInboundNetworkPolicies_List
       summary: Get a k8s cluster Inbound Network Policies
       description: Returns a list of network policies in the k8s cluster.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
@@ -23629,13 +24658,13 @@ paths:
         - api_key: []
       tags:
         - K8s network policy
-  '/k8s/clusters/{clusterId}/network-policies/inbound/filters':
+  '/k8s/clusters/{k8sClusterId}/network-policies/inbound/filters':
     get:
       operationId: K8sClusterInboundNetworkPoliciesFilters_List
       summary: List K8s Cluster Inbound Network Policy Filters
       description: Returns a list of filters for K8s Cluster Network Polcy.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
       responses:
         '200':
           description: OK
@@ -23657,13 +24686,13 @@ paths:
         - api_key: []
       tags:
         - K8s network policy
-  '/k8s/clusters/{clusterId}/network-policies/outbound':
+  '/k8s/clusters/{k8sClusterId}/network-policies/outbound':
     get:
       operationId: K8sClusterOutboundNetworkPolicies_List
       summary: Get a k8s cluster Outbound Network Policies
       description: Returns a list of network policies in the k8s cluster.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
@@ -23689,13 +24718,13 @@ paths:
         - api_key: []
       tags:
         - K8s network policy
-  '/k8s/clusters/{clusterId}/network-policies/outbound/filters':
+  '/k8s/clusters/{k8sClusterId}/network-policies/outbound/filters':
     get:
       operationId: K8sClusterOutboundNetworkPoliciesFilters_List
       summary: List K8s Cluster Outbound Network Policy Filters
       description: Returns a list of filters for K8s Cluster Network Polcy.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
       responses:
         '200':
           description: OK
@@ -23717,13 +24746,13 @@ paths:
         - api_key: []
       tags:
         - K8s network policy
-  '/k8s/clusters/{clusterId}/namespaces/filters':
+  '/k8s/clusters/{k8sClusterId}/namespaces/filters':
     get:
       operationId: K8sClusterNamespacesFilters_List
       summary: List K8s Cluster Namespace Filters
       description: Returns a list of filters for K8s Cluster Namespace.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
       responses:
         '200':
           description: OK
@@ -23745,13 +24774,13 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
-  '/k8s/clusters/{clusterId}/nodes':
+  '/k8s/clusters/{k8sClusterId}/nodes':
     get:
       operationId: K8sClusterNodes_List
       summary: List a k8s cluster nodes
       description: Returns a list of nodes in the k8s cluster.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
@@ -23777,13 +24806,13 @@ paths:
         - api_key: []
       tags:
         - K8s nodes
-  '/k8s/clusters/{clusterId}/nodes/filters':
+  '/k8s/clusters/{k8sClusterId}/nodes/filters':
     get:
       operationId: K8sClusterNodesFilters_List
       summary: List K8s Cluster Nodes filters
       description: Returns a list of filters for K8s Cluster Nodes.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
       responses:
         '200':
           description: OK
@@ -23805,13 +24834,13 @@ paths:
         - api_key: []
       tags:
         - K8s nodes
-  '/k8s/clusters/{clusterId}/workloads':
+  '/k8s/clusters/{k8sClusterId}/workloads':
     get:
       operationId: K8sClusterWorkloads_List
       summary: List a k8s cluster workloads
       description: Returns a list of workloads in the k8s cluster.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
@@ -23837,13 +24866,13 @@ paths:
         - api_key: []
       tags:
         - K8s workloads
-  '/k8s/clusters/{clusterId}/workloads/filters':
+  '/k8s/clusters/{k8sClusterId}/workloads/filters':
     get:
       operationId: K8sClusterWorkloadsFilters_List
       summary: List K8s Cluster Workloads filters
       description: Returns a list of filters for K8s Cluster Workloads.
       parameters:
-        - $ref: '#/components/parameters/clusterIdParameter'
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
       responses:
         '200':
           description: OK
@@ -23922,13 +24951,13 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
-  '/k8s/namespaces/{namespaceId}':
+  '/k8s/namespaces/{k8sNamespaceId}':
     get:
       operationId: K8sNamespace_Get
       summary: Get a k8s namespace
       description: Returns a list of namespaces for the k8s.
       parameters:
-        - $ref: '#/components/parameters/namespaceIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
       responses:
         '200':
           description: OK
@@ -23948,13 +24977,13 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
-  '/k8s/namespaces/{namespaceId}/network-policies/inbound':
+  '/k8s/namespaces/{k8sNamespaceId}/network-policies/inbound':
     get:
       operationId: K8sNamespaceInboundNetworkPolicies_List
       summary: Get a k8s namespace Inbound Network Policies
       description: Returns a list of network policies for a namespaces in the k8s.
       parameters:
-        - $ref: '#/components/parameters/namespaceIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
@@ -23980,13 +25009,13 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
-  '/k8s/namespaces/{namespaceId}/network-policies/inbound/filters':
+  '/k8s/namespaces/{k8sNamespaceId}/network-policies/inbound/filters':
     get:
       operationId: K8sNamespaceInboundNetworkPoliciesFilters_List
       summary: List K8s Namespace Inbound Network Policy Filters
       description: Returns a list of filters for K8s Namespace Network Polcy.
       parameters:
-        - $ref: '#/components/parameters/namespaceIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
       responses:
         '200':
           description: OK
@@ -24008,13 +25037,13 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
-  '/k8s/namespaces/{namespaceId}/network-policies/outbound':
+  '/k8s/namespaces/{k8sNamespaceId}/network-policies/outbound':
     get:
       operationId: K8sNamespaceOutboundNetworkPolicies_List
       summary: Get a k8s namespace Outbound Network Policies
       description: Returns a list of network policies for a namespaces in the k8s.
       parameters:
-        - $ref: '#/components/parameters/namespaceIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
@@ -24040,13 +25069,13 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
-  '/k8s/namespaces/{namespaceId}/network-policies/outbound/filters':
+  '/k8s/namespaces/{k8sNamespaceId}/network-policies/outbound/filters':
     get:
       operationId: K8sNamespaceOutboundNetworkPoliciesFilters_List
       summary: List K8s Namespace Outbound Network Policy Filters
       description: Returns a list of filters for K8s Namespace Network Polcy.
       parameters:
-        - $ref: '#/components/parameters/namespaceIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
       responses:
         '200':
           description: OK
@@ -24068,13 +25097,13 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
-  '/k8s/namespaces/{namespaceId}/workloads':
+  '/k8s/namespaces/{k8sNamespaceId}/workloads':
     get:
       operationId: K8sNamespaceWorkloads_List
       summary: List a k8s namespace workloads
       description: Returns a list of workloads for a namespaces in the k8s.
       parameters:
-        - $ref: '#/components/parameters/namespaceIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
         - $ref: '#/components/parameters/limitParameter'
         - $ref: '#/components/parameters/offsetParameter'
         - $ref: '#/components/parameters/filtersParameter'
@@ -24100,13 +25129,13 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
-  '/k8s/namespaces/{namespaceId}/workloads/filters':
+  '/k8s/namespaces/{k8sNamespaceId}/workloads/filters':
     get:
       operationId: K8sNamespaceWorkloadsFilters_List
       summary: List K8s Namespace Workloads filters
       description: Returns a list of filters for K8s Namespace Workloads.
       parameters:
-        - $ref: '#/components/parameters/namespaceIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
       responses:
         '200':
           description: OK
@@ -30286,10 +31315,10 @@ paths:
         - api_key: []
       tags:
         - Settings Asset Management
-  '/settings/asset-management/active-directory/{forestId}/{domainId}/ou-config':
+  '/settings/asset-management/active-directory/{forestId}/{domainId}/ou-configs':
     get:
-      operationId: SettingsADOuConfig_Get
-      summary: Get ou config
+      operationId: SettingsADOuConfigs_Get
+      summary: Get ou configs
       description: Get ou user names of domain.
       parameters:
         - $ref: '#/components/parameters/forestIdParameter'
@@ -30300,7 +31329,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getOuConfig'
+                $ref: '#/components/schemas/getOuConfigs'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -30324,7 +31353,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createOuConfig'
+              $ref: '#/components/schemas/createOuConfigs'
       responses:
         '200':
           description: OK
@@ -30353,7 +31382,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/editOuConfig'
+              $ref: '#/components/schemas/editOuConfigs'
       responses:
         '200':
           description: OK
@@ -30382,7 +31411,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/deleteOuConfig'
+              $ref: '#/components/schemas/deleteOuConfigs'
       responses:
         '200':
           description: OK
@@ -31084,6 +32113,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/settingsClaroty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
         '500':
           $ref: '#/components/responses/500'
       security:
@@ -31095,15 +32132,24 @@ paths:
       operationId: SettingsClaroty_Update
       summary: Update Claroty Settings
       description: Update Claroty Settings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/settingsClarotyBody'
       responses:
         '200':
           description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/settingsClaroty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
         '403':
           $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
       security:
         - api_key: []
       tags:
@@ -31115,6 +32161,12 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
         '500':
@@ -31131,6 +32183,12 @@ paths:
       responses:
         '204':
           description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
         '500':
@@ -31915,6 +32973,30 @@ paths:
         - api_key: []
       tags:
         - Settings Activities
+  /settings/domain/subdomains:
+    get:
+      operationId: SettingsDomains_List
+      summary: Get Domains
+      description: Get domains
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsDomains'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Domains
   /settings/entities-config:
     get:
       operationId: SettingsInactiveAssets_List
@@ -31967,6 +33049,134 @@ paths:
         - api_key: []
       tags:
         - Settings Inactive Assets
+  /settings/events-receiver/configuration:
+    get:
+      operationId: SettingsSIEM_Get
+      summary: List SIEM Configurations
+      description: List SIEM Configuration
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsEventsReceiverConfig'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Events Receiver
+    delete:
+      operationId: SettingsSIEM_Delete
+      summary: Remove SIEM Settings
+      description: Returns an empty object.
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Events Receiver
+  /settings/events-receiver/configuration/sync-status:
+    get:
+      operationId: SettingsSIEMSyncStatus_Get
+      summary: Get SIEM Sync Status Configurations
+      description: Get SIEM Sync Status Configuration
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsEventsReceiverSyncStatus'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Events Receiver
+  /settings/events-receiver/configuration/{receiverType}:
+    post:  
+      operationId: SettingsSIEM_Create
+      summary: Create SIEM Configurations
+      description: Create SIEM Configuration
+      parameters:
+        - $ref: '#/components/parameters/receiverTypeParameter'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/settingsEventsReceiverConfigBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsEventsReceiverConfig'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Events Receiver
+    put:  
+      operationId: SettingsSIEM_Update
+      summary: Update SIEM Configurations
+      description: Update SIEM Configuration
+      parameters:
+        - $ref: '#/components/parameters/receiverTypeParameter'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/settingsEventsReceiverConfigBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsEventsReceiverConfig'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Events Receiver
   /settings/ext-auth:
     get:
       operationId: SettingsPushNotifications_Get
@@ -34704,16 +35914,15 @@ paths:
         - api_key: []
       tags:
         - User
-  '/users/{userId}/analysis':
+  '/users/{userId}/analysis/identity':
     get:
-      operationId: UserAnalysis_Get
+      operationId: UserIdentityAnalysis_Get
       summary: Get a user analysis
       description: Returns an object with asset analysis data.
       parameters:
         - $ref: '#/components/parameters/userIdParameter'
         - $ref: '#/components/parameters/sortParameter'
-        - $ref: '#/components/parameters/trafficTypeParameter'
-        - $ref: '#/components/parameters/connectionStateParameter'
+        - $ref: '#/components/parameters/eventTypeParameter'
         - $ref: '#/components/parameters/fromParameter'
         - $ref: '#/components/parameters/toParameter'
       responses:
@@ -34722,7 +35931,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/userAnalysis'
+                $ref: '#/components/schemas/userIdentityAnalysis'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -34737,9 +35946,9 @@ paths:
         - api_key: []
       tags:
         - User
-  '/users/{userId}/analysis/export':
+  '/users/{userId}/analysis/identity/export':
     post:
-      operationId: UserAnalysis_Export
+      operationId: UserIdentityAnalysis_Export
       summary: Export user analysis
       description: Returns an exportId to pass into the download API.
       parameters:
@@ -34772,9 +35981,99 @@ paths:
         - api_key: []
       tags:
         - User
-  '/users/{userId}/analysis/export/csv/{exportId}':
+  '/users/{userId}/analysis/identity/export/csv/{exportId}':
     get:
-      operationId: UserAnalysisExport_Get
+      operationId: UserIdentityAnalysisExport_Get
+      summary: Download user analysis report
+      description: Returns a csv file to be downloaded.
+      parameters:
+        - $ref: '#/components/parameters/exportIdParameter'
+        - $ref: '#/components/parameters/userIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/401'
+      security:
+        - api_key: []
+      tags:
+        - User
+  '/users/{userId}/analysis/network':
+    get:
+      operationId: UserNetworkAnalysis_Get
+      summary: Get a user analysis
+      description: Returns an object with asset analysis data.
+      parameters:
+        - $ref: '#/components/parameters/userIdParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/trafficTypeParameter'
+        - $ref: '#/components/parameters/connectionStateParameter'
+        - $ref: '#/components/parameters/fromParameter'
+        - $ref: '#/components/parameters/toParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userNetworkAnalysis'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - User
+  '/users/{userId}/analysis/network/export':
+    post:
+      operationId: UserNetworkAnalysis_Export
+      summary: Export user analysis
+      description: Returns an exportId to pass into the download API.
+      parameters:
+        - $ref: '#/components/parameters/userIdParameter'
+      requestBody:
+        description: 'EntityId, from, to, search, filter or date time format for export'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/exportBodyAnalysis'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exportId'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - User
+  '/users/{userId}/analysis/network/export/csv/{exportId}':
+    get:
+      operationId: UserNetworkAnalysisExport_Get
       summary: Download user analysis report
       description: Returns a csv file to be downloaded.
       parameters:
@@ -37106,7 +38405,7 @@ paths:
         - api_key: []
       tags:
         - Users
-  /users/service-account/protect:
+  /users/protect:
     post:
       operationId: UsersIdentitySegment_Protect
       summary: Move users to identity segmentation.
@@ -37135,7 +38434,7 @@ paths:
         - api_key: []
       tags:
         - Users
-  /users/service-account/queue:
+  /users/queue:
     post:
       operationId: UsersIdentity_Queue
       summary: Queue users
@@ -37163,7 +38462,7 @@ paths:
         - api_key: []
       tags:
         - Users
-  /users/service-account/unprotect:
+  /users/unprotect:
     post:
       operationId: UsersIdentitySegment_Unprotect
       summary: Unprotect users
@@ -37279,13 +38578,6 @@ components:
       name: clientId
       in: path
       description: clientId to filter on
-      required: true
-      schema:
-        type: string
-    clusterIdParameter:
-      name: clusterId
-      in: path
-      description: cluserId to filter on
       required: true
       schema:
         type: string
@@ -37433,6 +38725,16 @@ components:
       required: true
       schema:
         type: string
+    eventTypeParameter:
+      name: eventType
+      in: query
+      description: '0-Success, 2-Failure'
+      required: true
+      schema:
+        type: integer
+        enum:
+          - 1
+          - 2
     filterIdParameter:
       name: filterId
       in: path
@@ -37531,6 +38833,7 @@ components:
           - custom
           - cyberark
           - duo
+          - ping-identity
           - okta
     includeNestedMembersQueryParameter:
       name: includeNestedMembers
@@ -37590,13 +38893,6 @@ components:
       schema:
         type: string
         pattern: '^[e]:[m]:[a-zA-Z0-9]{8}$'
-    namespaceIdParameter:
-      name: namespaceId
-      in: path
-      required: true
-      description: id of the K8s namespace
-      schema:
-        type: string
     offsetParameter:
       name: _offset
       required: false
@@ -37689,6 +38985,20 @@ components:
       schema:
         type: string
         example: 'c:\windows\system32\lsass.exe'
+    k8sClusterIdParameter:
+      name: k8sClusterId
+      in: path
+      description: cluserId to filter on
+      required: true
+      schema:
+        type: string
+    k8sNamespaceIdParameter:
+      name: k8sNamespaceId
+      in: path
+      required: true
+      description: id of the K8s namespace
+      schema:
+        type: string
     licenseTypeParameter:
       name: licenseType
       in: path
@@ -37701,6 +39011,7 @@ components:
           - network
           - rpc
           - connect
+          - externalAccess
     protocolType:
       name: protocolType
       in: query
@@ -37726,6 +39037,17 @@ components:
       schema:
         type: string
         format: uuid
+    receiverTypeParameter:
+      name: receiverType
+      in: path
+      description: receiver type
+      required: true
+      schema:
+        type: string
+        enum:
+          - elastic
+          - splunk
+          - microsoft-sentinel
     roleEntityIdParameter:
       name: roleEntityId
       in: path
@@ -38318,41 +39640,39 @@ components:
       properties:
         comment:
           type: string
-    assetAnalysis:
+    assetIdentityAnalysis:
       type: object
       properties:
         items:
           type: object
           properties:
+            authenticationPackage:
+              type: array
+              items:
+                $ref: '#/components/schemas/identityAnalysis'
             counts:
               type: object
               properties:
-                byProcess:
+                authenticationPackage:
                   type: integer
-                byUser:
+                targetUsername:
                   type: integer
-                byPort:
+                logonType:
                   type: integer
-                byAsset:
+                srcAsset:
                   type: integer
-            byAsset:
+            srcAsset:
               type: array
               items:
-                $ref: '#/components/schemas/byAsset'
-            byUser:
+                $ref: '#/components/schemas/identityAnalysis'
+            logonType:
               type: array
               items:
-                $ref: '#/components/schemas/byUser'
-            bySrcProcess:
+                $ref: '#/components/schemas/identityAnalysis'
+            targetUsername:
               type: array
               items:
-                $ref: '#/components/schemas/byProcess'
-            byPort:
-              type: array
-              items:
-                $ref: '#/components/schemas/byPort'
-            connectionState:
-              type: integer
+                $ref: '#/components/schemas/identityAnalysis'
     assetBasicInfo:
       type: object
       properties:
@@ -38382,6 +39702,13 @@ components:
           identityProtectionState: 1
           rpcProtectionState: 1
           breakGlassActivated: false
+    assetBasicInfoList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/assetBasicInfo'
     assetCandidate:
       type: object
       properties:
@@ -38484,6 +39811,45 @@ components:
           enum:
             - 2
             - 3
+    assetNetworkAnalysis:
+      type: object
+      properties:
+        items:
+          type: object
+          properties:
+            byLocalAsset:
+              type: array
+              items:
+                $ref: '#/components/schemas/networkAnalysis'
+            byPort:
+              type: array
+              items:
+                $ref: '#/components/schemas/networkAnalysis'
+            byRemoteAsset:
+              type: array
+              items:
+                $ref: '#/components/schemas/networkAnalysis'
+            bySrcProcess:
+              type: array
+              items:
+                $ref: '#/components/schemas/networkAnalysis'
+            byUser:
+              type: array
+              items:
+                $ref: '#/components/schemas/networkAnalysis'
+            counts:
+              type: object
+              properties:
+                byLocalAsset:
+                  type: integer
+                byPort:
+                  type: integer
+                byRemoteAsset:
+                  type: integer
+                bySrcProcess:
+                  type: integer
+                byUser:
+                  type: integer
     assetOt:
       type: object
       properties:
@@ -38753,16 +40119,16 @@ components:
     assetStatus:
       description: |
         Possible asset status:
-          * `1`' - Not monitored
-          * `2' - Segment server
-          * `4' - Can't be monitored (unsupported OS)
-          * `5' - Can't be monitored (unmonitorable)
-          * `6' - Can't be monitored (unmonitorable)
-          * `7' - Cloud connector
-          * `8' - Not monitored (ansible unreachable)
-          * `9' - Not monitored (cloud connector uninstalled)
-          * `10' - Not monitored (cloud connector required)
-          * `12' - Can't be monitored (inactive entity)
+          * '1' - Not monitored
+          * '2' - Segment server
+          * '4' - Can't be monitored (unsupported OS)
+          * '5' - Can't be monitored (unmonitorable)
+          * '6' - Can't be monitored (unmonitorable)
+          * '7' - Cloud connector
+          * '8' - Not monitored (ansible unreachable)
+          * '9' - Not monitored (cloud connector uninstalled)
+          * '10' - Not monitored (cloud connector required)
+          * '12' - Can't be monitored (inactive entity)
       type: integer
       enum:
         - 1
@@ -38796,41 +40162,185 @@ components:
     assetType:
       description: |
         Possible asset status:
-          * `0' - Unknown
-          * `1' - Client
-          * `2' - Server
-          * `3' - Virtual cluster
-          * `4' - IP camera
-          * `5' - Smart TV
-          * `6' - Factory controller
-          * `7' - Medical device
-          * `8' - Printer
-          * `9' - Scanner
-          * `10' - Smart card reader
-          * `11' - Router
-          * `12' - Hypervisor
-          * `13' - PLC
-          * `14' - HMI
-          * `15' - Switch
-          * `16' - Terminal station
-          * `17' - RTU
-          * `18' - Wireless access point
-          * `19' - Historian
-          * `20' - Game console
-          * `21' - Fire alarm
-          * `22' - UPS
-          * `23' - Storage appliance
-          * `24' - Virtualization appliance
-          * `25' - Firewall appliance
-          * `26' - Security scanner
-          * `27' - Security controller
-          * `28 ' - Door lock
-          * `29' - Biometric entry system
-          * `30' - HVAC
-          * `31' - Room scheduler
-          * `32' - Load Balancer Appliance
-          * `33' - WAN Concentrator
-          * `34' - IPAM Appliance
+          * '0' - Unknown
+          * '1' - Client
+          * '2' - Server
+          * '3' - Virtual cluster
+          * '4' - IP camera
+          * '5' - Smart TV
+          * '6' - Factory controller
+          * '7' - Medical device
+          * '8' - Printer
+          * '9' - Scanner
+          * '10' - Smart card reader
+          * '11' - Router
+          * '12' - Hypervisor
+          * '13' - PLC
+          * '14' - HMI
+          * '15' - Switch
+          * '16' - Terminal station
+          * '17' - RTU
+          * '18' - Wireless access point
+          * '19' - Historian
+          * '20' - Game console
+          * '21' - Fire alarm
+          * '22' - UPS
+          * '23' - Storage appliance
+          * '24' - Virtualization appliance
+          * '25' - Firewall appliance
+          * '26' - Security scanner
+          * '27' - Security controller
+          * '28 ' - Door lock
+          * '29' - Biometric entry system
+          * '30' - HVAC
+          * '31' - Room scheduler
+          * '32' - Load Balancer Appliance
+          * '33' - WAN Concentrator
+          * '34' - IPAM Appliance
+          * '35' - TEMPERATURE SENSOR GATEWAY
+          * '36' - POWER METER
+          * '37' - CONVEYOR SYSTEM
+          * '38' - BUILDING AUTOMATION DEVICE
+          * '39' - VISION CONTROLLER
+          * '40' - MANUFACTURING EXECUTION SYSTEM
+          * '41' - BACNET BROADCAST MANAGEMENT DEVICE BBMD
+          * '42' - BACNET ROUTER AND BBMD
+          * '43' - CLOCK
+          * '44' - RFID
+          * '45' - SCALE
+          * '46' - MOBILE PRINTER
+          * '47' - IED
+          * '48' - CNC MILL
+          * '49' - ROOM MONITOR
+          * '50' - SMART SPEAKER
+          * '51' - VENDING MACHINE
+          * '52' - AUTONOMOUS VEHICLE
+          * '53' - FLEET MANAGEMENT SYSTEM
+          * '54' - BACNET ROUTER
+          * '55' - MOTOR CONTROLLER
+          * '56' - OT GATEWAY
+          * '57' - CONTROLLER
+          * '58' - BUILDING MANAGEMENT SYSTEM
+          * '59' - VOIP PHONE
+          * '60' - VISION SENSOR
+          * '61' - REMOTE IO
+          * '62' - VOIP SERVER
+          * '63' - FLOW METER
+          * '64' - BUILDING AUTOMATION CONTROLLER
+          * '65' - SECURITY CAMERA
+          * '66' - DIGITAL SIGN
+          * '67' - REMOTE ACCESS GATEWAY
+          * '68' - TEMPERATURE SENSOR
+          * '69' - RTLS
+          * '70' - SERIAL TO ETHERNET
+          * '71' - INTERCOM
+          * '72' - ENGINEERING STATION
+          * '73' - DATA LOGGER GATEWAY
+          * '74' - ROBOT
+          * '75' - TABLET
+          * '76' - SCADA SERVER
+          * '77' - INDUSTRIAL PRINTER
+          * '78' - VISION CAMERA
+          * '79' - TIME CLOCK
+          * '80' - VIDEO CONFERENCE
+          * '81' - ELECTRICAL DRIVE
+          * '82' - ACCESS CONTROL
+          * '83' - PRINTER 3D
+          * '84' - ACCESS CONTROL GATEWAY
+          * '85' - ATM
+          * '86' - AUDIO DECODER
+          * '87' - AV SYSTEM
+          * '88' - BACNET ROUTER BBMD
+          * '89' - BADGE READER
+          * '90' - BARCODE SCANNER
+          * '91' - BUILDING AUTOMATION CONTROLLER GATEWAY
+          * '92' - BUILDING MANAGEMENT SENSOR
+          * '93' - BUILDING MANAGEMENT SENSOR GATEWAY
+          * '94' - BUILDING MANAGEMENT SYSTEM GATEWAY
+          * '95' - CAR
+          * '96' - CIRCUIT MONITOR
+          * '97' - CLINICAL MOBILE DEVICE
+          * '98' - CLINICAL MOBILE DEVICE GATEWAY
+          * '99' - CLOCK GATEWAY
+          * '100' - CNC SYSTEM
+          * '101' - CONFERENCE ROOM
+          * '102' - DATA LOGGER
+          * '103' - DIGITAL SIGN WORKSTATION
+          * '104' - DISK PUBLISHER
+          * '105' - DISPATCHER
+          * '106' - EMBEDDED PC
+          * '107' - ENCODER
+          * '108' - EV CHARGING
+          * '109' - FITNESS DEVICE
+          * '110' - GENERIC MOBILE DEVICE
+          * '111' - GPS NAVIGATOR
+          * '112' - INDUSTRIAL BARCODE SCANNER
+          * '113' - INDUSTRIAL METAL DETECTOR
+          * '114' - INDUSTRIAL NETWORK EQUIPMENT
+          * '115' - INDUSTRIAL THIN CLIENT
+          * '116' - INDUSTRIAL THIN CLIENT GATEWAY
+          * '117' - INDUSTRIAL WIRELESS
+          * '118' - INDUSTRIAL WORKSTATION
+          * '119' - INSPECTION SYSTEM
+          * '120' - INTERACTIVE VOICE RESPONSE
+          * '121' - INTERCOM GATEWAY
+          * '122' - IOT CONTROLLER
+          * '123' - LOCK BOX
+          * '124' - MACHINERY HEALTH ANALYZER
+          * '125' - MAILING SYSTEM
+          * '126' - MEDIA GATEWAY
+          * '127' - MEDIA PLAYER
+          * '128' - MEDIA STREAMER
+          * '129' - MICROSCOPE
+          * '130' - MOBILE COMPUTER
+          * '131' - MOTOR STARTER
+          * '132' - MUSICAL INSTRUMENT
+          * '133' - OPC SERVER
+          * '134' - ORDER FULFILLMENT SYSTEM
+          * '135' - OT DEVICE
+          * '136' - OT SERVER
+          * '137' - PA SYSTEM
+          * '138' - PAYMENT KIOSK
+          * '139' - PHYSICAL SECURITY PLATFORM
+          * '140' - POINT OF SALE
+          * '141' - POINT OF SALE GATEWAY
+          * '142' - POWER DISTRIBUTION UNIT
+          * '143' - POWER DISTRIBUTION UNIT GATEWAY
+          * '144' - POWER SUPPLY
+          * '145' - PRINT SERVER
+          * '146' - PROJECTOR
+          * '147' - RADIO
+          * '148' - RADIO REPEATER
+          * '149' - RECORDING SERVER
+          * '150' - REPORTING SERVER
+          * '151' - ROOM AUTOMATION STATION
+          * '152' - ROOM DISPLAY
+          * '153' - RTLS GATEWAY
+          * '154' - SAFETY SYSTEM
+          * '155' - SCADA CLIENT
+          * '156' - SCREEN SHARE
+          * '157' - SECURITY XRAY SCANNER
+          * '158' - SENSOR
+          * '159' - SERIAL TO ETHERNET GATEWAY
+          * '160' - SERVICE TROLLEY
+          * '161' - SMART BOARD
+          * '162' - SMART HOME
+          * '163' - SMART LIGHT
+          * '164' - SMART LIGHT GATEWAY
+          * '165' - SMART LOCK CONTROLLER
+          * '166' - SMARTPHONE
+          * '167' - SMARTWATCH
+          * '168' - SOLAR ENERGY
+          * '169' - TIME CLOCK GATEWAY
+          * '170' - VIDEO CONFERENCE GATEWAY
+          * '171' - VIDEO DECODER
+          * '172' - VIDEO ENCODER
+          * '173' - VIDEO SURVEILLANCE DEVICE
+          * '174' - VOIP ADAPTER
+          * '175' - VOIP PHONE GATEWAY
+          * '176' - WATER SYSTEM
+          * '177' - WIRELESS PHONE
+          * '178' - WIRELESS PHONE GATEWAY
       type: integer
       format: int32
       enum:
@@ -38868,12 +40378,156 @@ components:
         - 32
         - 33
         - 34
+        - 35
+        - 36
+        - 37
+        - 38
+        - 39
+        - 40
+        - 41
+        - 42
+        - 43
+        - 44
+        - 45
+        - 46
+        - 47
+        - 48
+        - 49
+        - 50
+        - 51
+        - 52
+        - 53
+        - 54
+        - 55
+        - 56
+        - 57
+        - 58
+        - 59
+        - 60
+        - 61
+        - 62
+        - 63
+        - 64
+        - 65
+        - 66
+        - 67
+        - 68
+        - 69
+        - 70
+        - 71
+        - 72
+        - 73
+        - 74
+        - 75
+        - 76
+        - 77
+        - 78
+        - 79
+        - 80
+        - 81
+        - 82
+        - 83
+        - 84
+        - 85
+        - 86
+        - 87
+        - 88
+        - 89
+        - 90
+        - 91
+        - 92
+        - 93
+        - 94
+        - 95
+        - 96
+        - 97
+        - 98
+        - 99
+        - 100
+        - 101
+        - 102
+        - 103
+        - 104
+        - 105
+        - 106
+        - 107
+        - 108
+        - 109
+        - 110
+        - 111
+        - 112
+        - 113
+        - 114
+        - 115
+        - 116
+        - 117
+        - 118
+        - 119
+        - 120
+        - 121
+        - 122
+        - 123
+        - 124
+        - 125
+        - 126
+        - 127
+        - 128
+        - 129
+        - 130
+        - 131
+        - 132
+        - 133
+        - 134
+        - 135
+        - 136
+        - 137
+        - 138
+        - 139
+        - 140
+        - 141
+        - 142
+        - 143
+        - 144
+        - 145
+        - 146
+        - 147
+        - 148
+        - 149
+        - 150
+        - 151
+        - 152
+        - 153
+        - 154
+        - 155
+        - 156
+        - 157
+        - 158
+        - 159
+        - 160
+        - 161
+        - 162
+        - 163
+        - 164
+        - 165
+        - 166
+        - 167
+        - 168
+        - 169
+        - 170
+        - 171
+        - 172
+        - 173
+        - 174
+        - 175
+        - 176
+        - 177
+        - 178
     audienceType:
       description: |
         dictionary:
-          * `0` PORTAL_AUDIENCE
-          * `1` SSP_AUDIENCE
-          * `2` RP_AUDIENCE
+          * '0' PORTAL_AUDIENCE
+          * '1' SSP_AUDIENCE
+          * '2' RP_AUDIENCE
       type: integer
       enum:
         - 0
@@ -39422,6 +41076,13 @@ components:
         - 259
         - 260
         - 261
+    authenticationPackageSummary:
+      type: object
+      properties:
+        count:
+          type: integer
+        name:
+          type: string
     byAsset:
       type: object
       properties:
@@ -39456,40 +41117,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/userSummary'
-    byDstAsset:
-      type: object
-      properties:
-        aggregation:
-          type: object
-          properties:
-            count:
-              type: integer
-            id:
-              type: string
-            name:
-              type: string
-        connectionState:
-          type: integer
-        dstAssets:
-          type: array
-          items:
-            $ref: '#/components/schemas/assetSummary'
-        lastTimeSeen:
-          type: string
-        occurred:
-          type: integer
-        ports:
-          type: array
-          items:
-            $ref: '#/components/schemas/portSummary'
-        srcAssets:
-          type: array
-          items:
-            $ref: '#/components/schemas/assetSummary'
-        srcProcesses:
-          type: array
-          items:
-            $ref: '#/components/schemas/processSummary'
     byPort:
       type: object
       properties:
@@ -39505,49 +41132,12 @@ components:
                   $ref: '#/components/schemas/protocol'
                 port:
                   type: integer
-        assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/assetSummary'
-        connectionState:
-          type: integer
-        lastTimeSeen:
-          type: string
-        occurred:
-          type: integer
-        ports:
-          type: array
-          items:
-            $ref: '#/components/schemas/portSummary'
-        srcProcesses:
-          type: array
-          items:
-            $ref: '#/components/schemas/processSummary'
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/userSummary'
-    byPortUser:
-      type: object
-      properties:
-        aggregation:
-          type: object
-          properties:
-            count:
-              type: integer
-            port:
-              type: object
-              properties:
-                protocol:
-                  $ref: '#/components/schemas/protocol'
-                port:
-                  type: integer
-        connectionState:
-          type: integer
         dstAssets:
           type: array
           items:
             $ref: '#/components/schemas/assetSummary'
+        connectionState:
+          type: integer
         lastTimeSeen:
           type: string
         occurred:
@@ -39596,72 +41186,6 @@ components:
             $ref: '#/components/schemas/processSummary'
         connectionState:
           type: integer
-    bySrcAsset:
-      type: object
-      properties:
-        aggregation:
-          type: object
-          properties:
-            count:
-              type: integer
-            id:
-              type: string
-            name:
-              type: string
-        connectionState:
-          type: integer
-        dstAssets:
-          type: array
-          items:
-            $ref: '#/components/schemas/assetSummary'
-        lastTimeSeen:
-          type: string
-        occurred:
-          type: integer
-        ports:
-          type: array
-          items:
-            $ref: '#/components/schemas/portSummary'
-        srcAssets:
-          type: array
-          items:
-            $ref: '#/components/schemas/assetSummary'
-        srcProcesses:
-          type: array
-          items:
-            $ref: '#/components/schemas/processSummary'
-    bySrcProcess:
-      type: object
-      properties:
-        aggregation:
-          type: object
-          properties:
-            count:
-              type: integer
-            name:
-              type: string
-        connectionState:
-          type: integer
-        dstAssets:
-          type: array
-          items:
-            $ref: '#/components/schemas/assetSummary'
-        lastTimeSeen:
-          type: string
-        occurred:
-          type: integer
-        ports:
-          type: array
-          items:
-            $ref: '#/components/schemas/portSummary'
-        srcAssets:
-          type: array
-          items:
-            $ref: '#/components/schemas/assetSummary'
-        srcProcesses:
-          type: array
-          items:
-            $ref: '#/components/schemas/processSummary'
     byUser:
       type: object
       properties:
@@ -39743,10 +41267,10 @@ components:
         - 4
       description: |
         dictionary:
-          * `1` Previous connectivity state
-          * `2` Connected (Always-on)
-          * `3` Disconnected
-          * `4` Signed out
+          * '1' Previous connectivity state
+          * '2' Connected (Always-on)
+          * '3' Disconnected
+          * '4' Signed out
     connectRegion:
       type: object
       properties:
@@ -40180,6 +41704,10 @@ components:
             $ref: '#/components/schemas/entity'
         count:
           type: integer
+        nextCursor:
+          type: string
+        nextOffset:
+          type: integer
     entity:
       type: object
       anyOf:
@@ -40254,17 +41782,18 @@ components:
         localDateTimeFormat:
           type: string
           default: en-US
-    switchInterfacesBody:
+    switchInterfaceBody:
       type: object
       properties:
-        switchId:
-          type: string
         interfaces:
           type: array
           items:
             type: string
         shouldMonitor:
           type: boolean
+      required:
+        - interfaces
+        - shouldMonitor
     exportBodyActivities:
       type: object
       properties:
@@ -40766,6 +42295,7 @@ components:
             * '36' - Linux firewall logs oversized
             * '1000' - First blocker issue code
             * '1001' - Cluster node ipv6 disabled
+            * '1002' - Local rules merge disallowed
           type: integer
           format: int32
           enum:
@@ -40808,6 +42338,7 @@ components:
             - 36
             - 1000
             - 1001
+            - 1002
         details:
           type: string
     healthStateObject:
@@ -40875,6 +42406,38 @@ components:
               $ref: '#/components/schemas/idNamePair'
             enforcementSource:
               $ref: '#/components/schemas/enforcementSource'
+    identityAnalysis:
+      type: object
+      properties:
+        aggregation:
+          type: object
+          properties:
+            count:
+              type: integer
+            name:
+              type: string
+        authenticationPackages:
+          type: array
+          items:
+            $ref: '#/components/schemas/authenticationPackageSummary'
+        dstAssets:
+          type: array
+          items:
+            $ref: '#/components/schemas/assetSummary'
+        eventType:
+          type: integer
+        lastTimeSeen:
+          type: string
+        logonTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/logonTypeSummary'
+        occurred:
+          type: integer
+        srcAssets:
+          type: array
+          items:
+            $ref: '#/components/schemas/assetSummary'
     identityProtectionState:
       description: |
         Possible asset status:
@@ -41391,6 +42954,11 @@ components:
           type: string
         loginCommand:
           type: string
+    k8sEntity:
+      type: object
+      properties:
+        entity:
+          $ref: '#/components/schemas/k8s'
     k8sItem:
       type: object
       properties:
@@ -41711,6 +43279,13 @@ components:
           type: string
         timestamp:
           $ref: '#/components/schemas/epochMillis'
+    logonTypeSummary:
+      type: object
+      properties:
+        count:
+          type: integer
+        logonType:
+          type: integer
     maintenanceWindow:
       type: object
       properties:
@@ -41838,9 +43413,9 @@ components:
     manageableOSType:
       description: |
         Possible osType:
-          * `1' - Windows
-          * `2' - Linux
-          * `3' - Mac
+          * '1' - Windows
+          * '2' - Linux
+          * '3' - Mac
       type: integer
       format: int32
       enum:
@@ -41941,6 +43516,40 @@ components:
         - 4
         - 5
         - 6
+    networkAnalysis:
+      type: object
+      properties:
+        aggregation:
+          type: object
+          properties:
+            count:
+              type: integer
+            id:
+              type: string
+            name:
+              type: string
+        connectionState:
+          type: integer
+        dstAssets:
+          type: array
+          items:
+            $ref: '#/components/schemas/assetSummary'
+        lastTimeSeen:
+          type: string
+        occurred:
+          type: integer
+        ports:
+          type: array
+          items:
+            $ref: '#/components/schemas/portSummary'
+        srcAssets:
+          type: array
+          items:
+            $ref: '#/components/schemas/assetSummary'
+        srcProcesses:
+          type: array
+          items:
+            $ref: '#/components/schemas/processSummary'
     nextBatch:
       type: object
       properties:
@@ -41950,8 +43559,8 @@ components:
     nonOtAssetType:
       description: |
         Possible asset status:
-          * `1' - Client
-          * `2' - Server
+          * '1' - Client
+          * '2' - Server
       type: integer
       format: int32
       enum:
@@ -43090,6 +44699,11 @@ components:
         updatedByName:
           type: string
           example: User Name
+        identityProtectionCategoryList:
+          type: array
+          items:
+            type: integer
+            format: int32
     reactivePolicyDistribution:
       type: object
       properties:
@@ -43420,16 +45034,16 @@ components:
     role:
       description: |
         dictionary:
-          * `0` ROLE_UNSPECIFIED
-          * `1` ROLE_ADMIN
-          * `2` ROLE_VIEWER
-          * `3` ROLE_REGULAR
-          * `4` ROLE_MACHINE_FULL_ACCESS
-          * `5` ROLE_MACHINE_READ_ONLY
-          * `6` ROLE_SELF_SERVICE
-          * `7` ROLE_CLOUD_CONNECTOR_PROVISIONING
-          * `8` ROLE_JAMF_ASSET
-          * `9` ROLE_ASSET_MANAGER
+          * '0' ROLE_UNSPECIFIED
+          * '1' ROLE_ADMIN
+          * '2' ROLE_VIEWER
+          * '3' ROLE_REGULAR
+          * '4' ROLE_MACHINE_FULL_ACCESS
+          * '5' ROLE_MACHINE_READ_ONLY
+          * '6' ROLE_SELF_SERVICE
+          * '7' ROLE_CLOUD_CONNECTOR_PROVISIONING
+          * '8' ROLE_JAMF_ASSET
+          * '9' ROLE_ASSET_MANAGER
       type: integer
       enum:
         - 0
@@ -44240,6 +45854,8 @@ components:
           type: integer
         nextCursor:
           type: string
+        nextOffset:
+          type: integer
     searchGroupsResponse:
       type: object
       properties:
@@ -44251,6 +45867,8 @@ components:
           type: integer
         nextCursor:
           type: string
+        nextOffset:
+          type: integer
     searchUsersResponse:
       type: object
       properties:
@@ -44262,6 +45880,8 @@ components:
           type: integer
         nextCursor:
           type: string
+        nextOffset:
+          type: integer
     session:
       type: object
       properties:
@@ -44491,68 +46111,68 @@ components:
               example: child.zeronetworks.com
       required:
         - secondaryDomainConfig
-    getOuConfig:
+    getOuConfigs:
       type: object
       properties:
-        OuToConfigs:
-          type: array
-          items:
-            type: object
-            properties:
-              ouName:
-                type: string
-              userFqdn:
-                type: string
-              password:
-                type: string
-            required:
-              - ouName
-              - userFqdn
-      required:
-        - OuToConfigs
-    createOuConfig:
-      type: object
-      properties:
-        ouCredentialsInfo:
+        ouInfo:
           type: object
           properties:
-            ouName:
-              type: string
-            userFqdn:
-              type: string
-            password:
-              type: string
-          required:
-            - ouName
-            - userFqdn
-            - password
+            ouConfigs:
+              type: array
+              items:
+                type: object
+                properties:
+                  ouName:
+                    type: string
+                  userFqdn:
+                    type: string
+                  password:
+                    type: string
+                required:
+                  - ouName
+                  - userFqdn
       required:
-        - ouCredentialsInfo
-    editOuConfig:
-      type: object
-      properties:
-        ouConfig:
-          type: object
-          properties:
-            ouName:
-              type: string
-            userFqdn:
-              type: string
-            password:
-              type: string
-          required:
-            - ouName
-            - userFqdn
-            - password
-      required:
-        - ouConfig
-    deleteOuConfig:
+        - ouConfigs
+    ouConfig:
       type: object
       properties:
         ouName:
           type: string
+        userFqdn:
+          type: string
+        password:
+          type: string
       required:
         - ouName
+        - userFqdn
+        - password
+    createOuConfigs:
+      type: object
+      properties:
+        ouConfigs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ouConfig'
+      required:
+        - ouConfigs
+    editOuConfigs:
+      type: object
+      properties:
+        ouConfigs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ouConfig'
+      required:
+        - ouConfigs
+    deleteOuConfigs:
+      type: object
+      properties:
+        ouNames:
+          type: array
+          items:
+            type: string
+      required:
+        - ouNames
     settingsAdSyncInfoResponse:
       type: object
       additionalProperties:
@@ -44729,8 +46349,18 @@ components:
       properties:
         apiUrl:
           type: string
+        errorType:
+          type: integer
+    settingsClarotyBody:
+      type: object
+      properties:
+        apiUrl:
+          type: string
         token:
           type: string
+      required:
+        - apiUrl
+        - token
     settingsBreakGlass:
       type: object
       properties:
@@ -44855,6 +46485,138 @@ components:
       required:
         - email
         - permission
+    settingsDomain:
+      type: object
+      properties:
+        ip:
+          type: string
+        url:
+          type: string
+        urlType:
+          type: integer
+    settingsDomains:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/settingsDomain'
+    settingsEventsReceiverConfig:
+      type: object
+      properties:
+        config:
+          type: object
+          properties:
+            auditsEndpoint:
+              type: string
+            identityActivitiesEndpoint:
+              type: string
+            networkActivitiesEndpoint:
+              type: string
+            receiverType:
+              type: integer
+            receiverConfig:
+                oneOf:
+                  - $ref: '#/components/schemas/settingsEventsReceiverConfigElastic'
+                  - $ref: '#/components/schemas/settingsEventsReceiverConfigMicrosoftSentinel'
+                  - $ref: '#/components/schemas/settingsEventsReceiverConfigSplunk'
+            rpcActivitiesEndpoint:
+              type: string
+    settingsEventsReceiverConfigBody:
+      type: object
+      properties:
+        auditsEndpoint:
+          type: string
+        identityActivitiesEndpoint:
+          type: string
+        networkActivitiesEndpoint:
+          type: string
+        receiverConfig:
+            oneOf:
+              - $ref: '#/components/schemas/settingsEventsReceiverConfigElasticBody'
+              - $ref: '#/components/schemas/settingsEventsReceiverConfigMicrosoftSentinelBody'
+              - $ref: '#/components/schemas/settingsEventsReceiverConfigSplunkBody'
+        rpcActivitiesEndpoint:
+          type: string
+      required:
+        - receiverConfig
+    settingsEventsReceiverConfigElastic:
+      type: object
+      properties:
+        url:
+          type: string
+    settingsEventsReceiverConfigElasticBody:
+      type: object
+      properties:
+        url:
+          type: string
+        apiKey:
+          type: string
+      required:
+        - url
+        - apiKey
+    settingsEventsReceiverConfigMicrosoftSentinel:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        clientId:
+          type: string
+        url:
+          type: string
+    settingsEventsReceiverConfigMicrosoftSentinelBody:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        clientId:
+          type: string
+        clientSecret:
+          type: string
+        url:
+          type: string
+      required:
+        - tenantId
+        - clientId
+        - clientSecret
+        - url
+    settingsEventsReceiverConfigSplunk:
+      type: object
+      properties:
+        hecUri:
+          type: string
+    settingsEventsReceiverConfigSplunkBody:
+      type: object
+      properties:
+        hecUri:
+          type: string
+        token:
+          type: string
+      required:
+        - hecUri
+        - token
+    settingsEventsReceiverSyncStatus:
+      type: object
+      properties:
+        identityActivity:
+          $ref: '#/components/schemas/settingsEventsReceiverSyncState'
+        networkActivity:
+          $ref: '#/components/schemas/settingsEventsReceiverSyncState'
+        rpcActivity:
+          $ref: '#/components/schemas/settingsEventsReceiverSyncState'
+        audit:
+          $ref: '#/components/schemas/settingsEventsReceiverSyncState'
+    settingsEventsReceiverSyncState:
+      type: object
+      properties:
+        errorType:
+          type: integer
+        errorMessage:
+          type: string
+        lastSyncTime:
+          $ref: '#/components/schemas/epochMillis'
+        lastSuccessfulSyncTime:
+          $ref: '#/components/schemas/epochMillis'
     settingsFirewall:
       type: object
       properties:
@@ -45033,6 +46795,7 @@ components:
             - custom
             - cyberark
             - duo
+            - ping-identity
             - okta
         isDefault:
           description: Set as the default authentication method
@@ -45735,8 +47498,6 @@ components:
         properties:
           localPorts:
             type: string
-          ports:
-            type: string
           protocolType:
             $ref: '#/components/schemas/protocol'
           remotePorts:
@@ -45761,7 +47522,7 @@ components:
           type: string
         direction:
           $ref: '#/components/schemas/ruleDirection'
-        excludedAssetInfos:
+        excludedEntityInfos:
           type: array
           items:
             $ref: '#/components/schemas/idNamePair'
@@ -45775,7 +47536,7 @@ components:
           type: string
         localEntityId:
           type: string
-        localEntityInfos:
+        localEntityInfoss:
           type: array
           items:
             anyOf:
@@ -45822,9 +47583,7 @@ components:
           items:
             $ref: '#/components/schemas/idNamePair'
         srcUsersList:
-          type: array
-          items:
-            type: string
+          $ref: '#/components/schemas/srcUsersList'
         state:
           $ref: '#/components/schemas/ruleState'
         switchParentRuleId:
@@ -46002,7 +47761,48 @@ components:
           $ref: '#/components/schemas/epochMillis'
         addedBy:
           $ref: '#/components/schemas/epochMillis'
-    userAnalysis:
+    userIdentityAnalysis:
+      type: object
+      properties:
+        items:
+          type: object
+          properties:
+            authenticationPackage:
+              type: array
+              items:
+                $ref: '#/components/schemas/identityAnalysis'
+            counts:
+              type: object
+              properties:
+                authenticationPackage:
+                  type: integer
+                dstAsset:
+                  type: integer
+                logonType:
+                  type: integer
+                srcAsset:
+                  type: integer
+            dstAsset:
+              type: array
+              items:
+                $ref: '#/components/schemas/identityAnalysis'
+            logonType:
+              type: array
+              items:
+                $ref: '#/components/schemas/identityAnalysis'
+            srcAsset:
+              type: array
+              items:
+                $ref: '#/components/schemas/identityAnalysis'
+    userIdResponse:
+      type: object
+      properties:
+        userId:
+          type: string
+      x-examples:
+        example-1:
+          userId: 'u:a:tOUovcIQ'
+    userNetworkAnalysis:
       type: object
       properties:
         items:
@@ -46022,27 +47822,19 @@ components:
             byDstAsset:
               type: array
               items:
-                $ref: '#/components/schemas/byDstAsset'
+                $ref: '#/components/schemas/networkAnalysis'
             byPort:
               type: array
               items:
-                $ref: '#/components/schemas/byPortUser'
+                $ref: '#/components/schemas/networkAnalysis'
             bySrcAsset:
               type: array
               items:
-                $ref: '#/components/schemas/bySrcAsset'
+                $ref: '#/components/schemas/networkAnalysis'
             bySrcProcess:
               type: array
               items:
-                $ref: '#/components/schemas/bySrcProcess'
-    userIdResponse:
-      type: object
-      properties:
-        userId:
-          type: string
-      x-examples:
-        example-1:
-          userId: 'u:a:tOUovcIQ'
+                $ref: '#/components/schemas/networkAnalysis'
     userProtectionState:
       description: |
         * '1' - Unsegmented
@@ -46251,6 +48043,8 @@ tags:
     description: API calls related to Active Directory Groups.
   - name: Groups Custom
     description: API calls related to Custom Groups.
+  - name: Groups protection
+    description: API calls related to Groups Protection.
   - name: Groups Tag
     description: API calls related to Tag Groups.
   - name: K8s
@@ -46319,6 +48113,8 @@ tags:
     description: API calls related to Connect settings.
   - name: Settings Custom Users
     description: API calls related to Custom Users settings.
+  - name: Settings Domains
+    description: API calls related to Domains.
   - name: Settings Firewall
     description: API calls related to Firewall settings.
   - name: Settings Identity Providers

@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNK8SClusterInboundNetwor
 }
 
 Describe 'Get-ZNK8SClusterInboundNetworkPolicy' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $cluster = (Get-ZNK8SCluster).ITems | Select -First 1
+        (Get-ZNK8SClusterInboundNetworkPolicy -ClusterId $cluster.id).Items.Count | Should -BeGreaterThan
     }
 }

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsLearningWithBlo
 }
 
 Describe 'Get-ZNSettingsLearningWithBlocksInbound' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        (Get-ZNSettingsLearningWithBlocksInbound).ProtocolType | Should -Not -BeNullOrEmpty
     }
 }

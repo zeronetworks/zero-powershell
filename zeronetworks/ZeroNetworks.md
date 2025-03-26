@@ -98,9 +98,6 @@ Returns a date in epoch(ms) for the next batch of AI rules.
 ### [Get-ZNAsset](Get-ZNAsset.md)
 Returns the properties of an asset.
 
-### [Get-ZNAssetAnalysis](Get-ZNAssetAnalysis.md)
-Returns an object with asset analysis data.
-
 ### [Get-ZNAssetAudit](Get-ZNAssetAudit.md)
 Returns a list of audits for the asset.
 
@@ -121,6 +118,9 @@ Returns statistics for an external access policy.
 
 ### [Get-ZNAssetHealthState](Get-ZNAssetHealthState.md)
 Get asset health state
+
+### [Get-ZNAssetIdentityAnalysis](Get-ZNAssetIdentityAnalysis.md)
+Returns an object with asset analysis data.
 
 ### [Get-ZNAssetIdentityRule](Get-ZNAssetIdentityRule.md)
 Returns the properties of an Identity rule.
@@ -215,6 +215,12 @@ Returns a list of source users candidates on outbound MFA policies.
 ### [Get-ZNAssetMfaOutboundPolicy](Get-ZNAssetMfaOutboundPolicy.md)
 Returns the properties of an outbound MFA policy.
 
+### [Get-ZNAssetMirrorCandidate](Get-ZNAssetMirrorCandidate.md)
+Get mirror candidates
+
+### [Get-ZNAssetNetworkAnalysis](Get-ZNAssetNetworkAnalysis.md)
+Returns an object with asset analysis data.
+
 ### [Get-ZNAssetOt](Get-ZNAssetOt.md)
 Returns the properties of an OT asset.
 
@@ -226,6 +232,9 @@ Get manager candidates for asset managers
 
 ### [Get-ZNAssetOtAudit](Get-ZNAssetOtAudit.md)
 Returns a list of audits for the asset.
+
+### [Get-ZNAssetOtIdentityAnalysis](Get-ZNAssetOtIdentityAnalysis.md)
+Returns an object with OT/IoT asset analysis data.
 
 ### [Get-ZNAssetOtInboundOtrule](Get-ZNAssetOtInboundOtrule.md)
 get an OT/IoT Rule
@@ -244,6 +253,12 @@ Returns a list of groups the asset is a member of.
 
 ### [Get-ZNAssetOtMemberOfGroupCandidate](Get-ZNAssetOtMemberOfGroupCandidate.md)
 Returns a list of groups the asset can be a member of.
+
+### [Get-ZNAssetOtMirrorCandidate](Get-ZNAssetOtMirrorCandidate.md)
+Get mirror candidates
+
+### [Get-ZNAssetOtNetworkAnalysis](Get-ZNAssetOtNetworkAnalysis.md)
+Returns an object with OT/IoT asset analysis data.
 
 ### [Get-ZNAssetOtOutboundOtrule](Get-ZNAssetOtOutboundOtrule.md)
 get an OT/IoT Rule
@@ -374,9 +389,6 @@ Returns a list of groups the group is a member of.
 ### [Get-ZNGroupMemberOfGroupCandidate](Get-ZNGroupMemberOfGroupCandidate.md)
 Returns a list of groups the asset can be a member of.
 
-### [Get-ZNGroupsAnalysis](Get-ZNGroupsAnalysis.md)
-Returns an object with group analysis data.
-
 ### [Get-ZNGroupsAssetManager](Get-ZNGroupsAssetManager.md)
 Get asset managers of group
 
@@ -410,6 +422,18 @@ Returns a list of excluded Assets candidates for Identity rules.
 
 ### [Get-ZNGroupsIdentityRulesUserCandidate](Get-ZNGroupsIdentityRulesUserCandidate.md)
 Returns a list of user candidates for Identity rules.
+
+### [Get-ZNGroupsInboundOtRule](Get-ZNGroupsInboundOtRule.md)
+get an OT/IoT Rule
+
+### [Get-ZNGroupsInboundOtRulesDestinationCandidate](Get-ZNGroupsInboundOtRulesDestinationCandidate.md)
+Returns a list of destination candidates for Inbound rules.
+
+### [Get-ZNGroupsInboundOtRulesExcludedDestinationCandidate](Get-ZNGroupsInboundOtRulesExcludedDestinationCandidate.md)
+Returns a list of excluded destination candidates for OT/IoT Inbound rules.
+
+### [Get-ZNGroupsInboundOtRulesSourceCandidate](Get-ZNGroupsInboundOtRulesSourceCandidate.md)
+Returns a list of source candidates for Inbound rules.
 
 ### [Get-ZNGroupsInboundRule](Get-ZNGroupsInboundRule.md)
 Returns the properties of an Inbound rule.
@@ -485,6 +509,21 @@ Returns a list of source users candidates on outbound MFA policies.
 
 ### [Get-ZNGroupsMfaOutboundPolicy](Get-ZNGroupsMfaOutboundPolicy.md)
 Returns the properties of an outbound MFA policy.
+
+### [Get-ZNGroupsNetworkAnalysis](Get-ZNGroupsNetworkAnalysis.md)
+Returns an object with group analysis data.
+
+### [Get-ZNGroupsOutboundOtRule](Get-ZNGroupsOutboundOtRule.md)
+get an OT/IoT Rule
+
+### [Get-ZNGroupsOutboundOtRulesDestinationCandidate](Get-ZNGroupsOutboundOtRulesDestinationCandidate.md)
+Returns a list of destination candidates for Outbound rules.
+
+### [Get-ZNGroupsOutboundOtRulesExcludedSourceCandidate](Get-ZNGroupsOutboundOtRulesExcludedSourceCandidate.md)
+Returns a list of excluded source candidates for OT/IoT Outbound rules.
+
+### [Get-ZNGroupsOutboundOtRulesSourceCandidate](Get-ZNGroupsOutboundOtRulesSourceCandidate.md)
+Returns a list of source candidates for Outbound rules.
 
 ### [Get-ZNGroupsOutboundRule](Get-ZNGroupsOutboundRule.md)
 Returns the properties of an Outbound rule.
@@ -819,6 +858,9 @@ Returns a list of candidates for user access config source users.
 ### [Get-ZNSettingsDefaultApplication](Get-ZNSettingsDefaultApplication.md)
 Get Default SSO Application settings in Identity Providers
 
+### [Get-ZNSettingsDomain](Get-ZNSettingsDomain.md)
+Get domains
+
 ### [Get-ZNSettingsFirewall](Get-ZNSettingsFirewall.md)
 Returns the properties of Firewall settings.
 
@@ -888,6 +930,12 @@ Get Servers Trusted Internet settings in System
 ### [Get-ZNSettingsServersUntrustedInternet](Get-ZNSettingsServersUntrustedInternet.md)
 Get Servers Untrusted Internet settings in System
 
+### [Get-ZNSettingsSiem](Get-ZNSettingsSiem.md)
+List SIEM Configuration
+
+### [Get-ZNSettingsSiemSyncStatus](Get-ZNSettingsSiemSyncStatus.md)
+Get SIEM Sync Status Configuration
+
 ### [Get-ZNSettingsTrustedInternetAddress](Get-ZNSettingsTrustedInternetAddress.md)
 Get Trusted Internet addresses settings in System
 
@@ -936,9 +984,6 @@ Returns a list of candidates for tag group membership.
 ### [Get-ZNUser](Get-ZNUser.md)
 Returns the properties of an user.
 
-### [Get-ZNUserAnalysis](Get-ZNUserAnalysis.md)
-Returns an object with asset analysis data.
-
 ### [Get-ZNUserAudit](Get-ZNUserAudit.md)
 Returns a list of audits for the user.
 
@@ -953,6 +998,9 @@ Returns a list of source user candidates for external access policies.
 
 ### [Get-ZNUserExternalAccessPolicyStatistics](Get-ZNUserExternalAccessPolicyStatistics.md)
 Returns statistics for an external access policy.
+
+### [Get-ZNUserIdentityAnalysis](Get-ZNUserIdentityAnalysis.md)
+Returns an object with asset analysis data.
 
 ### [Get-ZNUserIdentityRule](Get-ZNUserIdentityRule.md)
 Returns an identity segmentation rule.
@@ -989,6 +1037,9 @@ Returns a list of source user candidates for Identity MFA policies.
 
 ### [Get-ZNUserMfaIdentityPolicy](Get-ZNUserMfaIdentityPolicy.md)
 Returns a Identity MFA policy object.
+
+### [Get-ZNUserNetworkAnalysis](Get-ZNUserNetworkAnalysis.md)
+Returns an object with asset analysis data.
 
 ### [Get-ZNUserRulesDistribution](Get-ZNUserRulesDistribution.md)
 Returns an object with rules distribution.
@@ -1141,6 +1192,9 @@ Returns a the external access policy
 ### [New-ZNGroupsIdentityRule](New-ZNGroupsIdentityRule.md)
 Returns a the identity segmentation rule.
 
+### [New-ZNGroupsInboundOtRule](New-ZNGroupsInboundOtRule.md)
+creates an OT/IoT rule
+
 ### [New-ZNGroupsInboundRule](New-ZNGroupsInboundRule.md)
 Returns the properties of the created Inbound rule.
 
@@ -1152,6 +1206,9 @@ Returns the properties of the inbound MFA policy after creation.
 
 ### [New-ZNGroupsMfaOutboundPolicy](New-ZNGroupsMfaOutboundPolicy.md)
 Returns a the properties of outbound MFA policy created.
+
+### [New-ZNGroupsOutboundOtRule](New-ZNGroupsOutboundOtRule.md)
+creates an OT/IoT rule
 
 ### [New-ZNGroupsOutboundRule](New-ZNGroupsOutboundRule.md)
 Returns the properties of the created Outbound rule.
@@ -1224,6 +1281,9 @@ Creates a MFA Cache Policy.
 
 ### [New-ZNSettingsPushNotification](New-ZNSettingsPushNotification.md)
 Create an push notifications settings
+
+### [New-ZNSettingsSiem](New-ZNSettingsSiem.md)
+Create SIEM Configuration
 
 ### [New-ZNSwitch](New-ZNSwitch.md)
 Create a switch
@@ -1327,6 +1387,9 @@ Returns an empty object.
 ### [Remove-ZNGroupsIdentityRule](Remove-ZNGroupsIdentityRule.md)
 Returns an empty object.
 
+### [Remove-ZNGroupsInboundOtRule](Remove-ZNGroupsInboundOtRule.md)
+deletes an OT/IoT rule
+
 ### [Remove-ZNGroupsInboundRule](Remove-ZNGroupsInboundRule.md)
 Returns an empty object.
 
@@ -1341,6 +1404,9 @@ Returns an empty object.
 
 ### [Remove-ZNGroupsMfaOutboundPolicy](Remove-ZNGroupsMfaOutboundPolicy.md)
 Returns an empty object.
+
+### [Remove-ZNGroupsOutboundOtRule](Remove-ZNGroupsOutboundOtRule.md)
+deletes an OT/IoT rule
 
 ### [Remove-ZNGroupsOutboundRule](Remove-ZNGroupsOutboundRule.md)
 Returns an empty object.
@@ -1428,6 +1494,9 @@ deletes a MFA Cache Policy.
 
 ### [Remove-ZNSettingsPushNotification](Remove-ZNSettingsPushNotification.md)
 Returns an empty response.
+
+### [Remove-ZNSettingsSiem](Remove-ZNSettingsSiem.md)
+Returns an empty object.
 
 ### [Remove-ZNSwitch](Remove-ZNSwitch.md)
 delete a switch
@@ -1567,9 +1636,6 @@ Returns and empty object.
 ### [Update-ZNAssetRpcRule](Update-ZNAssetRpcRule.md)
 Updates an RPC rule.
 
-### [Update-ZNAssetsOtInactive](Update-ZNAssetsOtInactive.md)
-Returns and empty object.
-
 ### [Update-ZNAssetType](Update-ZNAssetType.md)
 Set the asset type (Client/server)
 
@@ -1588,6 +1654,9 @@ Updates an external access policy.
 ### [Update-ZNGroupsIdentityRule](Update-ZNGroupsIdentityRule.md)
 Updates an identity rule.
 
+### [Update-ZNGroupsInboundOtRule](Update-ZNGroupsInboundOtRule.md)
+Updates an inbound OTrule.
+
 ### [Update-ZNGroupsInboundRule](Update-ZNGroupsInboundRule.md)
 Updates an inbound  rule.
 
@@ -1602,6 +1671,9 @@ Updates an inbound MFA Policy.
 
 ### [Update-ZNGroupsMfaOutboundPolicy](Update-ZNGroupsMfaOutboundPolicy.md)
 Updates an outbound MFA Policy.
+
+### [Update-ZNGroupsOutboundOtRule](Update-ZNGroupsOutboundOtRule.md)
+Updates an outbound OT rule.
 
 ### [Update-ZNGroupsOutboundRule](Update-ZNGroupsOutboundRule.md)
 Updates an outbound  rule.
@@ -1677,6 +1749,9 @@ Set the portal security settings
 
 ### [Update-ZNSettingsBreakGlass](Update-ZNSettingsBreakGlass.md)
 Update break glass settings
+
+### [Update-ZNSettingsClaroty](Update-ZNSettingsClaroty.md)
+Update Claroty Settings
 
 ### [Update-ZNSettingsClientsTrustedInternet](Update-ZNSettingsClientsTrustedInternet.md)
 Set Clients Trusted Internet settings in System
@@ -1758,6 +1833,9 @@ Set Servers Trusted Internet settings in System
 
 ### [Update-ZNSettingsServersUntrustedInternet](Update-ZNSettingsServersUntrustedInternet.md)
 Set Servers Untrusted Internet settings in System
+
+### [Update-ZNSettingsSiem](Update-ZNSettingsSiem.md)
+Update SIEM Configuration
 
 ### [Update-ZNSettingsTrustedInternetAddress](Update-ZNSettingsTrustedInternetAddress.md)
 Set Trusted Internet addresses settings in System

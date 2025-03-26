@@ -15,7 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNSwitchInterface'))
 }
 
 Describe 'Update-ZNSwitchInterface' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $switch = (Get-ZNSwitch).Items | where {$_.Name -eq 'eve'}
+        $interface = (Get-ZNSwitchInterface -SwitchId $switch.Id).Items | select -Last 1
+        if($interface.IsMonitored -eq $false){
+            $updated = $true
+        } else {
+            $updated = $false
+        }
+        Update-ZNSwitchInterface -SwitchId $switch.Id -Interfaces @($interface.Name) -ShouldMonitor:$updated
+        $interface = (Get-ZNSwitchInterface -SwitchId $switch.Id).Items | select -Last 1
+        $interface.IsMonitored | Should -Be $updated
     }
 }

@@ -14,14 +14,14 @@
         [CmdletBinding(PositionalBinding=$false)]
         Param(
     
-            [Parameter(HelpMessage="List of port numbers", ParameterSetName = 'Protocol')]
-            [string]
-            $Ports,
-
             [Parameter(Mandatory, HelpMessage="Protocol", ParameterSetName = 'Protocol')]
             [ValidateSet("Any","TCP","UDP","ICMP","1","6","17","256")]
             [string]
             $Protocol,
+
+            [Parameter(HelpMessage="Local Ports", ParameterSetName = 'Protocol')]
+            [string]
+            $LocalPorts,
 
             [Parameter(HelpMessage="Remote Ports", ParameterSetName = 'Protocol')]
             [string]
@@ -38,43 +38,35 @@
             switch ($PSBoundParameters['Protocol']) {
                 "Any" {
                     $Object.ProtocolType = 256
-                    $Object.Ports = ""
                     $Object.LocalPorts = ""
                 }
                 "256" {
                     $Object.ProtocolType = 256
-                    $Object.Ports = ""
                     $Object.LocalPorts = ""
                     $Object.RemotePorts = ""
                 }
                 "TCP" {
                     $Object.ProtocolType = 6
-                    $Object.Ports = $PSBoundParameters['Ports']
-                    $Object.LocalPorts = $PSBoundParameters['Ports']
+                    $Object.LocalPorts = $PSBoundParameters['LocalPorts']
                 }
                 "6" {
                     $Object.ProtocolType = 6
-                    $Object.Ports = $PSBoundParameters['Ports']
-                    $Object.LocalPorts = $PSBoundParameters['Ports']
+                    $Object.LocalPorts = $PSBoundParameters['LocalPorts']
                 }
                 "UDP" {
                     $Object.ProtocolType = 17
-                    $Object.Ports = $PSBoundParameters['Ports']
-                    $Object.LocalPorts = $PSBoundParameters['Ports']
+                    $Object.LocalPorts = $PSBoundParameters['LocalPorts']
                 }
                 "17" {
                     $Object.ProtocolType = 17
-                    $Object.Ports = $PSBoundParameters['Ports']
-                    $Object.LocalPorts = $PSBoundParameters['Ports']
+                    $Object.LocalPorts = $PSBoundParameters['LocalPorts']
                 }
                 "ICMP" {
                     $Object.ProtocolType = 1
-                    $Object.Ports = ""
                     $Object.LocalPorts = ""
                 }
                 "1" {
                     $Object.ProtocolType = 1
-                    $Object.Ports = ""
                     $Object.LocalPorts = ""
                 }
             }

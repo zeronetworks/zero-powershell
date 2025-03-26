@@ -15,11 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNNetworkOverridingOnb
 }
 
 Describe 'Remove-ZNNetworkOverridingOnboardingPolicy' {
-    It 'DeleteExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteExpanded' {
+        $group = (Get-ZNNetworkOverridingOnboardingPoliciesGroupCandidate).Items | select -First 1
+        Update-ZNNetworkOverridingOnboardingPolicy -MemberIds @($group.id)
+        { Remove-ZNNetworkOverridingOnboardingPolicy -MemberIds @($group.id) } | Should -Not -Throw
     }
 }

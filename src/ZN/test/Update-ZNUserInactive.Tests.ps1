@@ -15,11 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNUserInactive'))
 }
 
 Describe 'Update-ZNUserInactive' {
-    It 'SetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetExpanded' {
+        $user = (Get-ZNUser).Items | where {$_.Name -like "Guest*"}
+        { Update-ZNUserInactive -Items @($user.Id) } | Should -Not -Throw
+        Update-ZNUserActive -Items @($user.Id)
     }
 
-    It 'SetExpanded1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetExpanded1' {
+        $user = (Get-ZNUser).Items | where {$_.Name -like "Guest*"}
+        { Update-ZNUserInactive -UserId $user.Id } | Should -Not -Throw
+        Update-ZNUserActive -UserId $user.Id
     }
 }

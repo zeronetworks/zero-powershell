@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNEnvironmentsLicense'))
 }
 
 Describe 'Get-ZNEnvironmentsLicense' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        (Get-ZNEnvironmentsLicense -LicenseType network).ConfigInfoLicenseMode | Should -Not -BeNullOrEmpty
     }
 }

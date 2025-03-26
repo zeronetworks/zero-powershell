@@ -84,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -OSType
-Possible osType: * `1' - Windows * `2' - Linux * `3' - Mac
+Possible osType: * '1' - Windows * '2' - Linux * '3' - Mac
 
 ```yaml
 Type: System.Int32

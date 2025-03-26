@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAeExclusionsInboundDest
 }
 
 Describe 'Get-ZNAeExclusionsInboundDestinationCandidate' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        (Get-ZNAeExclusionsInboundDestinationCandidate).Items.Count | Should -BeGreaterThan 0
     }
 }

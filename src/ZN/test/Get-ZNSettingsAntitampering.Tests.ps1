@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsAntitampering')
 }
 
 Describe 'Get-ZNSettingsAntitampering' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        (Get-ZNSettingsAntitampering).ConfigAuditCooldownMinutes | Should -Not -BeNullOrEmpty
     }
 }

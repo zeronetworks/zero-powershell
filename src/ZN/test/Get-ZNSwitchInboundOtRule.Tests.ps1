@@ -15,11 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSwitchInboundOtRule'))
 }
 
 Describe 'Get-ZNSwitchInboundOtRule' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $switch = (Get-ZNSwitch).Items | select -First 1
+        (Get-ZNSwitchInboundOtRule -SwitchId $switch.id).Items.Count | Should -BeGreaterThan 0
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $switch = (Get-ZNSwitch).Items | select -First 1
+        $rule = (Get-ZNSwitchInboundOtRule -SwitchId $switch.id -AddBuiltins).Items | select -First 1
+        $rule = Get-ZNSwitchInboundOtRule -SwitchId $switch.id -RuleId $rule.id
+        $rule.ItemLocalEntityId | Should -Not -BeNullOrEmpty
     }
 }

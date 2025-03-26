@@ -20,7 +20,7 @@ Get-ZNK8SNamespace [-AccountName <String>] [-Filters <String>] [-Limit <Int32>] 
 
 ### Get
 ```
-Get-ZNK8SNamespace -NamespaceId <String> [-AccountName <String>] [<CommonParameters>]
+Get-ZNK8SNamespace -K8SNamespaceId <String> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,6 +99,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -K8SNamespaceId
+id of the K8s namespace
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Limit
 Limit the return results
 
@@ -110,21 +125,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: 10
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NamespaceId
-id of the K8s namespace
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
