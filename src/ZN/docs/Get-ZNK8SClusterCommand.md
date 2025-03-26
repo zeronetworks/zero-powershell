@@ -13,7 +13,7 @@ Returns the commands for a K8s cluster.
 ## SYNTAX
 
 ```
-Get-ZNK8SClusterCommand -ClusterId <String> [-AccountName <String>] [<CommonParameters>]
+Get-ZNK8SClusterCommand -K8SClusterId <String> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +51,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusterId
+### -K8SClusterId
 cluserId to filter on
 
 ```yaml

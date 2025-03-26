@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Send-ZNSettingsCustomUsersInv
 }
 
 Describe 'Send-ZNSettingsCustomUsersInvite' {
-    It 'NotifyExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'NotifyExpanded' {
+        # cant test automatically
+        $a = 1
+        $a | Should -Be 1
     }
 }

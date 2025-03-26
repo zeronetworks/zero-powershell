@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectivityStateAfterReboot
-dictionary: * `1` Previous connectivity state * `2` Connected (Always-on) * `3` Disconnected * `4` Signed out
+dictionary: * '1' Previous connectivity state * '2' Connected (Always-on) * '3' Disconnected * '4' Signed out
 
 ```yaml
 Type: System.Int32

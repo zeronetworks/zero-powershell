@@ -173,8 +173,11 @@ function Update-ZNAssetOtOutboundOtrule {
                 $null = $PSBoundParameters.Remove('ProtocolsList')
             }
             else{
-                $protocolsList = New-ZNProtocolsList -Protocol $rule.ItemProtocolsList.ProtocolType -Ports $rule.ItemProtocolsList.LocalPorts -RemotePorts $rule.ItemProtocolsList.RemotePorts
-                $updatedRule.ProtocolsList = $protocolsList
+                $protocolList = @()
+                foreach($protocol in $rule.ItemProtocolsList){
+                    $protocolList += New-ZNProtocolsList -Protocol $protocol.ProtocolType -LocalPorts $protocol.LocalPorts -RemotePorts $protocol.RemotePorts
+                }
+                $updatedRule.ProtocolsList =  $protocolList
                 $null = $PSBoundParameters.Remove('ProtocolsList')
             }
             

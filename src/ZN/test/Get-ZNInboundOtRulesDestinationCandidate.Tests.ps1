@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNInboundOtRulesDestinati
 }
 
 Describe 'Get-ZNInboundOtRulesDestinationCandidate' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        (Get-ZNInboundOtRulesDestinationCandidate).Items.Count | Should -BeGreaterThan 0
     }
 }

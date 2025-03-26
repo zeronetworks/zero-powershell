@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNEnvironmentsSystemHealt
 }
 
 Describe 'Get-ZNEnvironmentsSystemHealth' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        (Get-ZNEnvironmentsSystemHealth).Severity | Should -Not -BeNullOrEmpty
     }
 }

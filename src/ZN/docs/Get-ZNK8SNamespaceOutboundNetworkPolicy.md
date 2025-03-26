@@ -13,7 +13,7 @@ Returns a list of network policies for a namespaces in the k8s.
 ## SYNTAX
 
 ```
-Get-ZNK8SNamespaceOutboundNetworkPolicy -NamespaceId <String> [-AccountName <String>] [-Filters <String>]
+Get-ZNK8SNamespaceOutboundNetworkPolicy -K8SNamespaceId <String> [-AccountName <String>] [-Filters <String>]
  [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>] [-WithCount]
  [<CommonParameters>]
 ```
@@ -78,6 +78,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -K8SNamespaceId
+id of the K8s namespace
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Limit
 Limit the return results
 
@@ -89,21 +104,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: 10
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NamespaceId
-id of the K8s namespace
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

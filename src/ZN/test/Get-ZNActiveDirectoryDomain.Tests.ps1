@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNActiveDirectoryDomain')
 }
 
 Describe 'Get-ZNActiveDirectoryDomain' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        (Get-ZNActiveDirectoryDomain).Id | Should -Not -Be $null
     }
 }

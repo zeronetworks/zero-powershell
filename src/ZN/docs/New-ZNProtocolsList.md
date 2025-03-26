@@ -14,7 +14,7 @@ Create a in-memory object for protcolList
 
 ### Protocol (Default)
 ```
-New-ZNProtocolsList -Protocol <String> [-Ports <String>] [-RemotePorts <String>] [<CommonParameters>]
+New-ZNProtocolsList -Protocol <String> [-LocalPorts <String>] [-RemotePorts <String>] [<CommonParameters>]
 ```
 
 ### Empty
@@ -51,8 +51,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Ports
-List of port numbers
+### -LocalPorts
+Local Ports
 
 ```yaml
 Type: System.String

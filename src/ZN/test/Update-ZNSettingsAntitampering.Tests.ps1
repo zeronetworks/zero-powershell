@@ -15,7 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNSettingsAntitamperin
 }
 
 Describe 'Update-ZNSettingsAntitampering' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $setting = Get-ZNSettingsAntitampering
+        if($setting.ConfigAuditCooldownMinutes -eq 5){
+            $updatedSetting = 7
+        } else {
+            $updatedSetting = 5
+        }
+        Update-ZNSettingsAntitampering -AuditCooldownMinutes $updatedSetting
+        $updated = Get-ZNSettingsAntitampering
+        $updated.ConfigAuditCooldownMinutes | Should -Be $updatedSetting
     }
 }

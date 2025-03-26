@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNSwitchOutboundOtRule
 }
 
 Describe 'Update-ZNSwitchOutboundOtRule' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $switch = (Get-ZNSwitch).Items | where {$_.Name -eq 'eve'}
+        $rule = (Get-ZNSwitchOutboundOtRule -SwitchId $switch.Id -AddBuiltins).Items | select -First 1
+        $description = "Updated $(Get-Random -Minimum 1 -Maximum 1000)"
+        $updated = Update-ZNSwitchOutboundOtRule -SwitchId $switch.Id -RuleId $rule.Id -Description $description
+        $updated.ItemDescription | Should -Be $description
     }
 }

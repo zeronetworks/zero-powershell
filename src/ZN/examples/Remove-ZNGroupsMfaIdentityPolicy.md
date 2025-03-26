@@ -1,3 +1,6 @@
+
+
+
 ### Example 1: Delete identity MFA policy
 ```powershell
 $group = (Get-ZNMfaIdentityPoliciesDestinationCandidate -Search "domain controllers").items | where {$_.Id -like "g:t:*"}

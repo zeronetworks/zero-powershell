@@ -32,7 +32,7 @@ require:
 input-file:
   - $(this-folder)/../openapi.yaml
 
-module-version: 0.0.18-preview
+module-version: 0.0.19-preview
 title: Api
   
 inlining-threshold: 50
@@ -1400,6 +1400,102 @@ directive:
           }
         }
   - from: openapi.yaml
+    where: $.components.schemas.settingsEventsReceiverConfig
+    debug: true
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {
+            "config": {
+                "type": "object",
+                "properties": {
+                    "auditsEndpoint": {
+                    "type": "string"
+                    },
+                    "identityActivitiesEndpoint": {
+                    "type": "string"
+                    },
+                    "networkActivitiesEndpoint": {
+                    "type": "string"
+                    },
+                    "receiverType": {
+                    "type": "integer"
+                    },
+                    "receiverConfig": {
+                        "type": "object",
+                        "properties": {
+                            "url": {
+                                "type": "string"
+                            },
+                            "tenantId": {
+                                "type": "string"
+                            },
+                            "clientId": {
+                                "type": "string"
+                            },
+                            "hecUri": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "rpcActivitiesEndpoint": {
+                    "type": "string"
+                    }
+                }
+            }
+        }
+      }
+  - from: openapi.yaml
+    where: $.components.schemas.settingsEventsReceiverConfigBody
+    debug: true
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {
+            "auditsEndpoint": {
+              "type": "string"
+            },
+            "identityActivitiesEndpoint": {
+              "type": "string"
+            },
+            "networkActivitiesEndpoint": {
+              "type": "string"
+            },
+            "receiverConfig": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string"
+                    },
+                    "apiKey": {
+                        "type": "string"
+                    },
+                    "tenantId": {
+                        "type": "string"
+                    },
+                    "clientId": {
+                        "type": "string"
+                    },
+                    "clientSecret": {
+                        "type": "string"
+                    },
+                    "hecUri": {
+                        "type": "string"
+                    },
+                    "token": {
+                        "type": "string"
+                    }
+                }
+            },
+            "rpcActivitiesEndpoint": {
+              "type": "string"
+            }
+        },
+        "required": [
+            "receiverConfig"
+        ]
+      }
+  - from: openapi.yaml
     where: $.components.schemas.settingsMfaCache
     debug: true
     transform: >-
@@ -1797,11 +1893,8 @@ directive:
                 }
             },
             "srcUsersList": {
-                "type": "array",
-                "items": {
-                    "type": "string"
-                }
-            },
+              "$ref": "#/components/schemas/srcUsersList"
+            }
             "state": {
                 "$ref": "#/components/schemas/ruleState"
             },
@@ -2099,7 +2192,7 @@ directive:
     hide: false
   #Combine Active/Inactive
   - where:
-      subject: ^AssetActive$|^AssetsActive$|^AssetInactive$|^AssetsInactive$
+      subject: ^AssetActive$|^AssetsActive$|^AssetInactive$|^AssetsInactive$|^AssetOtActive$|^AssetsOtActive$|^AssetOtInactive$|^AssetsOtInactive$
       variant: Set
     remove: true
   - where:
@@ -2112,6 +2205,16 @@ directive:
       variant: SetExpanded
     set:
       subject: AssetInactive
+  - where:
+      subject: AssetsOtInactive
+      variant: SetExpanded
+    set:
+      subject: AssetOtInactive
+  - where:
+      subject: AssetsOtActive
+      variant: SetExpanded
+    set:
+      subject: AssetOtActive
   # Combine break glass
   - where:
       subject: AssetsBreakGlass
@@ -2152,7 +2255,7 @@ directive:
         script: '(Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]'
   # set the default directions for cmdlets
   - where:
-      subject: ^AssetInboundRule$|^AssetOtOutboundRule$|^GroupsInboundRule$|^AssetOtInboundOtRule$|^InboundOtRule$
+      subject: ^AssetInboundRule$|^AssetOtOutboundRule$|^GroupsInboundRule$|^AssetOtInboundOtRule$|^GroupsInboundOtRule$|^InboundOtRule$
       parameter-name: Direction
     set:
       default:
@@ -2160,13 +2263,49 @@ directive:
         description: Sets the direction parameter to 1
         script: '1'
   - where:
-      subject: ^AssetOutboundRule$|^AssetOtInboundRule$|^GroupsOutboundRule$|^AssetOtOutboundOtRule$|^OutboundOtRule$
+      subject: ^AssetOutboundRule$|^AssetOtInboundRule$|^GroupsOutboundRule$|^AssetOtOutboundOtRule$|^GroupsOutboundOtRule$|^OutboundOtRule$
       parameter-name: Direction
     set:
       default:
         name: Direction Default
         description: Sets the direction parameter to 2
         script: '2'
+  # set default Direction for Analysis Commands
+  - where:
+      subject: (.*)Analysis
+      parameter-name: Direction
+    set:
+      default:
+        name: Direction Default
+        description: Sets the direction parameter to 1
+        script: '1'
+  # Set Default TrafficType for Network Analysis commands
+  - where:
+      subject: (.*)NetworkAnalysis
+      parameter-name: TrafficType
+    set:
+      default:
+        name: TrafficType Default
+        description: Sets the TrafficType to Both
+        script: '3'
+  # Set default ConnectionState for  Network Analysis
+  - where:
+      subject: (.*)NetworkAnalysis
+      parameter-name:  ConnectionState
+    set:
+      default:
+        name: ConnectionState Default
+        description: Sets the ConnectionState to Established
+        script: '3'
+# Set Default EventType for Identity Analysus commands
+  - where:
+      subject: (.*)IdentityAnalysis
+      parameter-name: EventType
+    set:
+      default:
+        name: EventType Default
+        description: Sets the EventType to Success
+        script: '0'
   # set the default RuleType for AE Exclusions
   - where:
       subject: AeExclusionsInbound(.*)
@@ -2254,10 +2393,14 @@ directive:
       subject: AssetPreferredSegmentServer
       variant: Get
     hide: true
+  - where:
+      subject: MirrorAsset
+      variant: MirrorExpanded1
+    hide: true
   # Hide for Custom Wrappers
   - where:
       verb: Update
-      subject: ^AeExclusionsInbound$|^AeExclusionsOutbound$|^AssetExternalAccessPolicy$|^AssetIdentityRule$|^AssetInboundRule$|^AssetMfaIdentityPolicy$|^AssetMFAInboundPolicy$|^AssetMFAOutboundPolicy$|^AssetOtInboundOtrule$|^AssetOtOutboundOtrule$|^AssetOutboundRule$|^AssetOtMFAOutboundPolicy$|^AssetRpcRule$|^CustomGroup$|^ExternalAccessPolicy$|^GroupsExternalAccessPolicy$|^GroupsIdentityRule$|^GroupsInboundRule$|^GroupsMfaIdentityPolicy$|^GroupsMFAInboundPolicy$|^GroupsMFAOutboundPolicy$|^GroupsOutboundRule$|^GroupsRpcRule$|^IdentityRule$|^InboundRule$|^InboundOtRule$|^MfaIdentityPolicy$|^MFAInboundPolicy$|^MFAOutboundPolicy$|^OutboundRule$|^OutboundOtRule$|^RpcRule$|^SettingsPushNotification$|^SwitchInboundOtRule$|^SwitchOutboundOtRule$|^UserExternalAccessPolicy$|^UserIdentityRule$|^UserMfaIdentityPolicy$
+      subject: ^AeExclusionsInbound$|^AeExclusionsOutbound$|^AssetExternalAccessPolicy$|^AssetIdentityRule$|^AssetInboundRule$|^AssetMfaIdentityPolicy$|^AssetMFAInboundPolicy$|^AssetMFAOutboundPolicy$|^AssetOtInboundOtrule$|^AssetOtOutboundOtrule$|^AssetOutboundRule$|^AssetOtMFAOutboundPolicy$|^AssetRpcRule$|^CustomGroup$|^ExternalAccessPolicy$|^GroupsExternalAccessPolicy$|^GroupsIdentityRule$|^GroupsInboundRule$|^GroupsInboundOtRule$|^GroupsMfaIdentityPolicy$|^GroupsMFAInboundPolicy$|^GroupsMFAOutboundPolicy$|^GroupsOutboundRule$|^GroupsOutboundOtRule$|^GroupsRpcRule$|^IdentityRule$|^InboundRule$|^InboundOtRule$|^MfaIdentityPolicy$|^MFAInboundPolicy$|^MFAOutboundPolicy$|^OutboundRule$|^OutboundOtRule$|^RpcRule$|^SettingsPushNotification$|^SwitchInboundOtRule$|^SwitchOutboundOtRule$|^UserExternalAccessPolicy$|^UserIdentityRule$|^UserMfaIdentityPolicy$
     hide: true
   - where:
       subject: ^AuthLogin$|^AuthChallenge$

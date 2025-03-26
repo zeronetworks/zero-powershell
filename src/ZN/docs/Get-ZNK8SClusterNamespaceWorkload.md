@@ -13,7 +13,7 @@ Returns a list of workloads for a namespaces in the k8s cluster.
 ## SYNTAX
 
 ```
-Get-ZNK8SClusterNamespaceWorkload -ClusterId <String> -NamespaceId <String> [-AccountName <String>]
+Get-ZNK8SClusterNamespaceWorkload -K8SClusterId <String> -K8SNamespaceId <String> [-AccountName <String>]
  [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>]
  [-WithCount] [<CommonParameters>]
 ```
@@ -58,7 +58,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusterId
+### -Filters
+JSON string URI encoded set of filters
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -K8SClusterId
 cluserId to filter on
 
 ```yaml
@@ -73,15 +88,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Filters
-JSON string URI encoded set of filters
+### -K8SNamespaceId
+id of the K8s namespace
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -99,21 +114,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: 10
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NamespaceId
-id of the K8s namespace
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

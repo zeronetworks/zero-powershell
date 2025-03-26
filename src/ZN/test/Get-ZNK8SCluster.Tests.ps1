@@ -15,11 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNK8SCluster'))
 }
 
 Describe 'Get-ZNK8SCluster' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        (Get-ZNK8SCluster).Items.Count | Should -BeGreaterThan 0
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $cluster = (Get-ZNK8SCluster).ITems | Select -First 1
+        $cluster = Get-ZNK8SCluster -ClusterId $cluster.Id
+        $cluster.Id | Should -Not -BeNullOrEmpty
     }
 }

@@ -15,11 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetOtInboundOtrule'))
 }
 
 Describe 'Get-ZNAssetOtInboundOtrule' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $assetOt = Get-ZNAssetsOt | where {$_.Fqdn -eq "otv2.posh.local"}
+        (Get-ZNAssetOtInboundOtrule -AssetId $assetOt.Id -AddBuiltins).Items.Count | Should -BeGreaterThan 0
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $assetOt = Get-ZNAssetsOt | where {$_.Fqdn -eq "otv2.posh.local"}
+        $rule = (Get-ZNAssetOtInboundOtrule -AssetId $assetOt.Id -AddBuiltins).Items | Select -First 1
+        $rule = Get-ZNAssetOtInboundOtrule -AssetId $assetOt.Id -RuleId $rule.Id
+        $rule.Id | Should -Not -BeNullOrEmpty
     }
 }

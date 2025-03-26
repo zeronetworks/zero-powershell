@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSwitchInterface'))
 }
 
 Describe 'Get-ZNSwitchInterface' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $switch = (Get-ZNSwitch).Items | select -First 1
+        (Get-ZNSwitchInterface -SwitchId $switch.Id).Items.Count | Should -BeGreaterThan 0
     }
 }

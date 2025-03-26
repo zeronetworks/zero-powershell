@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNK8SClusterCommand'))
 }
 
 Describe 'Get-ZNK8SClusterCommand' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $cluster = (Get-ZNK8SCluster).ITems | Select -First 1
+        (Get-ZNK8SClusterCommand -ClusterId $cluster.Id).InstallationCommand | Should -Not -BeNullOrEmpty
     }
 }

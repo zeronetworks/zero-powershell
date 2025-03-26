@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNAeExclusionsInbound'
 }
 
 Describe 'Update-ZNAeExclusionsInbound' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $aeExclusion = (Get-ZNAeExclusionsInbound).Items | select -First 1
+        $description = "Updated $(Get-Random -Minimum 1 -Maximum 1000)"
+        $updated = Update-ZNAeExclusionsInbound -RuleId $aeExclusion.Id -Description $description
+        $updated.ItemDescription | Should -Be $description
     }
 }

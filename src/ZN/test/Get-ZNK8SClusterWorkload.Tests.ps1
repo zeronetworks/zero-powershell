@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNK8SClusterWorkload'))
 }
 
 Describe 'Get-ZNK8SClusterWorkload' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        (Get-ZNK8SClusterWorkload -ClusterId $cluster.id).Items.Count | Should -BeGreaterThan 0
     }
 }

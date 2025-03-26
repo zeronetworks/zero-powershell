@@ -13,7 +13,7 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-Remove-ZNK8SCluster -ClusterId <String> [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf]
+Remove-ZNK8SCluster -K8SClusterId <String> [-AccountName <String>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -46,7 +46,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusterId
+### -K8SClusterId
 cluserId to filter on
 
 ```yaml

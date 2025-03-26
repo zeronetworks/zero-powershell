@@ -15,11 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAeExclusionsOutbound'))
 }
 
 Describe 'Get-ZNAeExclusionsOutbound' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        (Get-ZNAeExclusionsOutbound).Count | Should -BeGreaterThan 0
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $aeExclusion = (Get-ZNAeExclusionsOutbound).Items | Select-Object -First 1
+        $aeExclusion.id | Should -Not -Be $null
     }
 }

@@ -15,7 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNAeExclusionsOutbound'))
 }
 
 Describe 'New-ZNAeExclusionsOutbound' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $portsList = New-ZNPortsList -Protocol TCP -Ports "44"
+        $destination = Invoke-ZNEncodeEntityIP -IP 1.1.1.2
+        $source = (Get-ZNAeExclusionsInboundSourceCandidate -Search "All segmented Clients").Items
+        $aeExclusion = New-ZNAeExclusionsOutbound -LocalEntityId $source.id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($destination.id) -Action 1
+        $aeExclusion.ItemId | Should -Not -BeNullOrEmpty
+        Remove-ZNAeExclusionsOutbound -RuleId $aeExclusion.ItemId
     }
 }

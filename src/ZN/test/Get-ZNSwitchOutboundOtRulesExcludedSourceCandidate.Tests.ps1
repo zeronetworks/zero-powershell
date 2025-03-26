@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSwitchOutboundOtRulesEx
 }
 
 Describe 'Get-ZNSwitchOutboundOtRulesExcludedSourceCandidate' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $switch = (Get-ZNSwitch).Items[0]
+        (Get-ZNSwitchOutboundOtRulesExcludedSourceCandidate -SwitchId $switch.Id).Items.Count | Should -BeGreaterThan 0
     }
 }

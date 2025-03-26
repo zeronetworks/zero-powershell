@@ -15,11 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNK8SNamespace'))
 }
 
 Describe 'Get-ZNK8SNamespace' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        (Get-ZNK8SNamespace).Items.Count | Should -BeGreaterThan 0
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $namespace = (Get-ZNK8SNamespace).Items | select -First 1
+        $namespace = Get-ZNK8SNamespace -NamespaceId $namespace.id
+        $namepsace.EntityId | Should -Not -BeNullOrEmpty
     }
 }

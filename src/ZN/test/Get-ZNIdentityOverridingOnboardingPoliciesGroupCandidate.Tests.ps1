@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNIdentityOverridingOnboa
 }
 
 Describe 'Get-ZNIdentityOverridingOnboardingPoliciesGroupCandidate' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        (Get-ZNIdentityOverridingOnboardingPoliciesGroupCandidate).ITems.Count | Should -BeGreaterThan 0
     }
 }

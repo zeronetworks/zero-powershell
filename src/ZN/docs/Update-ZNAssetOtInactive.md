@@ -12,8 +12,15 @@ Returns and empty object.
 
 ## SYNTAX
 
+### SetExpanded (Default)
 ```
 Update-ZNAssetOtInactive -AssetId <String> [-AccountName <String>] [-Comment <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### SetExpanded1
+```
+Update-ZNAssetOtInactive -Items <String[]> [-AccountName <String>] [-Comment <String>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -51,7 +58,7 @@ assetId to filter on
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -70,6 +77,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Items
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: SetExpanded1
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
