@@ -27,8 +27,8 @@ function Connect-ZN {
         CheckModuleLatest
 
         if ($PSBoundParameters['AccountName']) {
-            $url = "https://" + $PSBoundParameters['AccountName'] + ".zeronetworks.com/api/v1"
-            $null = $PSBoundParameters.Remove('AccountName')
+            $uri = "https://" + $PSBoundParameters['AccountName'] + ".zeronetworks.com/api/v1"
+            #$null = $PSBoundParameters.Remove('AccountName')
         }
         else {
             $uri = "https://portal.zeronetworks.com/api/v1"
@@ -36,13 +36,12 @@ function Connect-ZN {
         
             
         $challengeBody = @{
-            "challengeMediumType" = "email"
-            "email" = "$UserName"
+            "email" = "$Email"
         }
         #$PSBoundParameters.Add("email", $email)
         try {
-            #Invoke-RestMethod -Uri "$uri/auth/challenge" -Method POST -Body ($challengeBody | ConvertTo-Json) -ContentType application/json
-            ZeroNetworks.internal\Invoke-ZNAuthChallenge @PSBoundParameters
+            Invoke-RestMethod -Uri "$uri/auth/challenge" -Method POST -Body ($challengeBody | ConvertTo-Json) -ContentType application/json
+            #ZeroNetworks.internal\Invoke-ZNAuthChallenge @PSBoundParameters
         }
         catch {
             Write-Host "Unable to challenge" -ForegroundColor Red
@@ -53,14 +52,13 @@ function Connect-ZN {
         [string] $otp = Read-Host "Code"
 
         $loginBody = @{
-            "challengeMediumType" = "email"
-            "email" = "$UserName"
+            "email" = "$Email"
             "otp" = "$otp"
         }
         $PSBoundParameters.Add("Otp", $otp)
         try {
-            #$response = Invoke-RestMethod -Uri "$uri/auth/login" -Method POST -Body ($loginBody | ConvertTo-Json) -ContentType application/json
-            $response = ZeroNetworks.internal\Invoke-ZNAuthLogin @PSBoundParameters
+            $response = Invoke-RestMethod -Uri "$uri/auth/login" -Method POST -Body ($loginBody | ConvertTo-Json) -ContentType application/json
+            #$response = ZeroNetworks.internal\Invoke-ZNAuthLogin @PSBoundParameters
         }
         catch {
             Write-Host "Unable to login" -ForegroundColor Red
