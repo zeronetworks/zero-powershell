@@ -25,6 +25,6 @@ Describe 'Get-ZNGroupsInboundOtRule' {
         $group = (Get-ZNGroup -Search "Cameras").Items | where {$_.name -eq "cameras"}
         $rules = Get-ZNGroupsInboundOtRule -GroupId $group.Id -GroupType ot
         $rule = Get-ZNGroupsInboundOtRule -GroupId $group.Id -GroupType ot -RuleId $rules.Items[0].Id
-        $rule.ItemId | Should -Not -Be $null
+        $rule.ItemId | Should -Not -BeNullOrEmpty
     }
 }

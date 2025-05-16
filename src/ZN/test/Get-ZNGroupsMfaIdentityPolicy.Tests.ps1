@@ -17,12 +17,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNGroupsMfaIdentityPolicy
 Describe 'Get-ZNGroupsMfaIdentityPolicy' {
     It 'List' {
         $group = (Get-ZNGroup -Search "domain controllers").Items | where {$_.id -like "g:t:*"}
-        { (Get-ZNGroupsMfaIdentityPolicy -GroupId $group.id -GroupType tag).Items } | Should -Not -Be $null
+        (Get-ZNGroupsMfaIdentityPolicy -GroupId $group.id -GroupType tag).Items.Count | Should -BeGreaterThan 0
     }
 
     It 'Get' {
         $group = (Get-ZNGroup -Search "domain controllers").Items | where {$_.id -like "g:t:*"}
         $policy = (Get-ZNGroupsMfaIdentityPolicy -GroupId $group.id -GroupType tag).Items | Select -First 1
-        { (Get-ZNGroupsMfaIdentityPolicy -GroupId $group.id -GroupType tag -ReactivePolicyId $policy.ItemId).ItemId } | Should -Not -Be $null
+        { (Get-ZNGroupsMfaIdentityPolicy -GroupId $group.id -GroupType tag -ReactivePolicyId $policy.ItemId).ItemId } | Should -Not -BeNullOrEmpty
     }
 }

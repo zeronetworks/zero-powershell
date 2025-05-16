@@ -14,6 +14,6 @@ while(-not $mockingPath) {
 Describe 'Get-ZNAssetListeningPort' {
     It 'List' {
         $asset= (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
-        Get-ZNAssetListeningPort -AssetId $asset | Should -Not -Be $null
+        (Get-ZNAssetListeningPort -AssetId $asset).Count | Should -BeGreaterThan 0
     }
 }

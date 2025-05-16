@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNDownloadCloudConnect
 
 Describe 'Invoke-ZNDownloadCloudConnectorInstaller' {
     It 'Download' {
-        { (invoke-ZNDownloadCloudConnectorInstaller).Url } | Should -Not -Be $null
+        (invoke-ZNDownloadCloudConnectorInstaller).Url | Should -Not -BeNullOrEmpty
     }
 }

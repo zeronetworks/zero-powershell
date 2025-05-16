@@ -18,7 +18,7 @@ Describe 'New-ZNSettingsMfaCache' {
     It 'CreateExpanded' {
         $group = (Get-ZNGroup -Search Users).Items | where {$_.Domain -eq "posh.local" -and $_.Name -eq "Users"}
         $policy = New-ZNSettingsMfaCache -AssetLimit 5 -EntityId $group.Id -TtlMinutes 720
-        $policy.ItemEntityId | Should -Not -Be $null
+        $policy.ItemEntityId | Should -Not -BeNullOrEmpty
         Remove-ZNSettingsMfaCache -EntityId $policy.ItemEntityId
     }
 }

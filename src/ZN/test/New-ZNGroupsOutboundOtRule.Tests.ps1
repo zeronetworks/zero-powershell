@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNGroupsOutboundOtRule'))
 Describe 'New-ZNGroupsOutboundOtRule' {
     It 'CreateExpanded' {
         $group = (Get-ZNGroup -Search ATM).Items | where {$_.Name -eq "ATM"} 
-        $protocolList = New-ZNProtocolsList -Pro udp -Ports 4
+        $protocolList = New-ZNProtocolsList -Pro udp -LocalPorts (Get-Random -min 1 -max 1024)
         $destination = (Get-ZNGroupsOutboundOtRulesDestinationCandidate -GroupType ot -GroupId $group.Id -Search "Any asset").Items | where {$_.Id -like "b:*"}
         $rule = New-ZNGroupsOutboundOtRule -GroupId $group.Id -GroupType ot -Action 1 -LocalEntityId $group.Id -ProtocolsList $protocolList -ShouldBuildMirrorRules:$true -State 1 -LocalProcessesList @("*") -ExcludedLocalIdsList @() -RemoteEntitiesIdList @($destination.Id)
         $rule.ItemId | Should -Not -BeNullOrEmpty

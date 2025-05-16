@@ -13,6 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNUsersManagedAssetsCandidate' {
     It 'List' {
-        (Get-ZNUsersManagedAssetsCandidate -UserId ((Get-ZNUser).Items | Select-Object -First 1).Id).Items | Should -Not -Be $null
+        (Get-ZNUsersManagedAssetsCandidate -UserId ((Get-ZNUser).Items | Select-Object -First 1).Id).Items.Count | Should -BeGreaterThan 0
     }
 }

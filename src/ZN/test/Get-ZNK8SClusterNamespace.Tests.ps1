@@ -17,13 +17,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNK8SClusterNamespace'))
 Describe 'Get-ZNK8SClusterNamespace' {
     It 'List' {
         $cluster = (Get-ZNK8SCluster).ITems | Select -First 1
-        (Get-ZNK8SClusterNamespace -ClusterId $cluster.id).Items.Count | Should -BeGreaterThan
+        (Get-ZNK8SClusterNamespace -K8SClusterId $cluster.id).Items.Count | Should -BeGreaterThan
     }
 
     It 'Get' {
         $cluster = (Get-ZNK8SCluster).ITems | Select -First 1
-        $namespace = (Get-ZNK8SClusterNamespace -ClusterId $cluster.id).Items | Select -First 1
-        $namespace = Get-ZNK8SClusterNamespace -ClusterId $cluster.id -NamespaceId $namespace.Id
+        $namespace = (Get-ZNK8SClusterNamespace -K8SClusterId $cluster.id).Items | Select -First 1
+        $namespace = Get-ZNK8SClusterNamespace -K8SClusterId $cluster.id -K8SNamespaceId $namespace.Id
         $namespace.EntityId | Should -Not -BeNullOrEmpty
     }
 }

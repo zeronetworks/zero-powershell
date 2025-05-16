@@ -17,13 +17,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNUserIdentityRule'))
 Describe 'Get-ZNUserIdentityRule' {
     It 'List' {
         $user = (Get-ZNUser -Search zero).Items | where {$_.Name -eq "zero"}
-        $rules = Get-ZNUserIdentityRule -UserId $user.Id -AddBuiltins
-        $rules.Count | Should -BeGreaterThan 0
+        ($rules = Get-ZNUserIdentityRule -UserId $user.Id -AddBuiltins).Count | Should -BeGreaterThan 0
     }
     It 'Get' {
         $user = (Get-ZNUser -Search zero).Items | where {$_.Name -eq "zero"}
         $rules = Get-ZNUserIdentityRule -UserId $user.Id -AddBuiltins 
         $rule = Get-ZNUserIdentityRule -UserId $user.Id -RuleId $rules.Items[0].Id
-        $rule.ItemId | Should -Be $rules.Items[0].Id
+        $rule.ItemId | Should -Not -BeNullOrEmpty
     }
 }

@@ -14,6 +14,6 @@ while(-not $mockingPath) {
 Describe 'Get-ZNAssetManagersCandidate' {
     It 'List' {
         $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
-        (Get-ZNAssetManagersCandidate -AssetId $asset).Count | Should -Not -Be $null
+        (Get-ZNAssetManagersCandidate -AssetId $asset).Count | Should -BeGreaterThan 0
     }
 }

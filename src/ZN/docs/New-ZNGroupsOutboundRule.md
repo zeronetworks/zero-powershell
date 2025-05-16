@@ -15,9 +15,9 @@ Returns the properties of the created Outbound rule.
 ```
 New-ZNGroupsOutboundRule -GroupId <String> -GroupType <String> -Action <Int32> -LocalEntityId <String>
  -LocalProcessesList <String[]> -PortsList <IPortsListItem[]> -RemoteEntityIdsList <String[]> -State <Int32>
- [-AccountName <String>] [-Description <String>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>]
- [-IPSecOpt <Int32>] [-ServicesList <String[]>] [-SrcUsersList <ISrcUsersListItem[]>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AccountName <String>] [-ChangeTicket <String>] [-Description <String>] [-ExcludedLocalIdsList <String[]>]
+ [-ExpiresAt <Int64>] [-IPSecOpt <Int32>] [-Name <String>] [-ServicesList <String[]>]
+ [-SrcUsersList <ISrcUsersListItem[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -Action
-* '1' - Allow* '2' - Block
+* 1 - Allow* 2 - Block
 
 ```yaml
 Type: System.Int32
@@ -94,6 +94,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeTicket
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -214,6 +229,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

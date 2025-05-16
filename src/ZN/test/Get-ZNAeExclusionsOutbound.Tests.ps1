@@ -21,6 +21,6 @@ Describe 'Get-ZNAeExclusionsOutbound' {
 
     It 'Get' {
         $aeExclusion = (Get-ZNAeExclusionsOutbound).Items | Select-Object -First 1
-        $aeExclusion.id | Should -Not -Be $null
+        $aeExclusion.id | Should -Not -BeNullOrEmpty
     }
 }

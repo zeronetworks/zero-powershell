@@ -13,8 +13,8 @@ Returns a list of audits for the K8s.
 ## SYNTAX
 
 ```
-Get-ZNK8SClusterAudit -K8SClusterId <String> [-AccountName <String>] [-Cursor <Int64>] [-Order <String>]
- [-Search <String>] [<CommonParameters>]
+Get-ZNK8SClusterAudit -K8SClusterId <String> [-AccountName <String>] [-Cursor <Int64>] [-Filters <String>]
+ [-From <Int64>] [-Limit <Int32>] [-Order <String>] [-Search <String>] [-To <Int64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,6 +76,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Filters
+JSON string URI encoded set of filters
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -From
+startTime in epoch(ms)
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -K8SClusterId
 cluserId to filter on
 
@@ -87,6 +117,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Limit
+Limit the return results
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 10
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -111,6 +156,21 @@ Test to search for
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -To
+endTime in epoch(ms)
+
+```yaml
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 

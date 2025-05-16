@@ -16,6 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNK8SClusterWorkload'))
 
 Describe 'Get-ZNK8SClusterWorkload' {
     It 'List' {
-        (Get-ZNK8SClusterWorkload -ClusterId $cluster.id).Items.Count | Should -BeGreaterThan 0
+        $cluster = (Get-ZNK8SCluster).Items  | where {$_.Name -like "Openshift*"}
+        (Get-ZNK8SClusterWorkload -K8SClusterId $cluster.id).Items.Count | Should -BeGreaterThan 0
     }
 }

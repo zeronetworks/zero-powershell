@@ -19,16 +19,16 @@ Describe 'Update-ZNAssetInactive' {
         $asset = (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         Update-ZNAssetInactive -Items @($asset)
         $inactiveAsset = Get-ZNAsset -AssetId $asset
-        $inactiveAsset.Entity.AssetStatus | Should -Be 12
-        Update-ZNAssetActive -Items @($asset)        
+        Update-ZNAssetActive -Items @($asset)
+        $inactiveAsset.EntityAssetStatus | Should -Be 12   
     }
 
     It 'Set' {
         $asset = (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
         Update-ZNAssetInactive -AssetId $asset
         $inactiveAsset = Get-ZNAsset -AssetId $asset
-        $inactiveAsset.Entity.AssetStatus | Should -Be 12
-        Update-ZNAssetActive -AssetId $asset       
+        Update-ZNAssetActive -AssetId $asset
+        $inactiveAsset.EntityAssetStatus | Should -Be 12     
     }
 
 }

@@ -13,6 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNSettingsInternalSubnet' {
     It 'Get' {
-        { Get-ZNSettingsInternalSubnet } | Should -Not -Be $null
+        (Get-ZNSettingsInternalSubnet).ConfigPrivateIpv4NetworksList.Count | Should -BeGreaterThan 0
     }
 }

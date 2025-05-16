@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsServersUntruste
 
 Describe 'Get-ZNSettingsServersUntrustedInternet' {
     It 'Get' {
-        (Get-ZNSettingsServersUntrustedInternet).Ports | Should -Not -Be $null
+        (Get-ZNSettingsServersUntrustedInternet).ProtocolType | Should -Not -BeNullOrEmpty
     }
 }

@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetsMonitored'))
 
 Describe 'Get-ZNAssetsMonitored' {
     It 'List' {
-        { (Get-ZNAssetsMonitored).Items}  | Should -Not -Be $null
+        (Get-ZNAssetsMonitored).Items.Count | Should -BeGreaterThan 0
     }
 }

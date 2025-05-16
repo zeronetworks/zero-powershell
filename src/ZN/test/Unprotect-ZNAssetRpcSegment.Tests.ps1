@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Unprotect-ZNAssetRpcSegment')
 
 Describe 'Unprotect-ZNAssetRpcSegment' {
     It 'UnprotectExpanded' {
-        $asset = (Search-ZNAsset -Fqdn ts01.posh.local).AssetId
+        $asset = (Search-ZNAsset -Fqdn ss01.posh.local).AssetId
         Add-ZNAssetRpcMonitoring -Items @($asset)
         start-sleep 30
         Protect-ZNAssetRpcSegment -Items @($asset)
@@ -26,7 +26,7 @@ Describe 'Unprotect-ZNAssetRpcSegment' {
     }
 
     It 'Unprotect' {
-        $asset = (Search-ZNAsset -Fqdn ts01.posh.local).AssetId
+        $asset = (Search-ZNAsset -Fqdn ss01.posh.local).AssetId
         Add-ZNAssetRpcMonitoring -Items @($asset)
         start-sleep 30
         Protect-ZNAssetRpcSegment -AssetId $asset

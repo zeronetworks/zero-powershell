@@ -17,12 +17,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetOutboundRule'))
 Describe 'Get-ZNAssetOutboundRule' {
     It 'Get' {
         $asset= (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
-        { Get-ZNAssetOutboundRule -AssetId $asset -AddBuiltins } | Should -Not -Be $null
+        (Get-ZNAssetOutboundRule -AssetId $asset -AddBuiltins).Count | Should -BeGreaterThan 0
     }
 
     It 'List' {
         $asset= (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
-        $rule = Get-ZNAssetOutboundRule -AssetId $asset -AddBuiltins | Select -first 1
-        { Get-ZNAssetOutboundRule -AssetId $asset -RuleId $rule.id } | Should -Not -Be $null
+        $rule = (Get-ZNAssetOutboundRule -AssetId $asset -AddBuiltins).Items | Select -first 1
+        (Get-ZNAssetOutboundRule -AssetId $asset -RuleId $rule.id).ItemId | Should -Not -BeNullOrEmpty
     }
 }

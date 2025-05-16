@@ -16,13 +16,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNAssetDeactivateBreak
 
 Describe 'Invoke-ZNAssetDeactivateBreakGlass' {
     It 'DeactivateExpanded' {
-        $asset = (search-ZNAsset -Fqdn ts01.posh.local).AssetId
+        $asset = (Search-ZNAsset -Fqdn ss01.posh.local).AssetId
         Initialize-ZNAssetBreakGlass -Items @($asset)
         { Invoke-ZNAssetDeactivateBreakGlass -Items @($asset) } | Should -Not -Throw
     }
 
     It 'DeactivateExpanded1' {
-        $asset = (search-ZNAsset -Fqdn ts01.posh.local).AssetId
+        $asset = (Search-ZNAsset -Fqdn ss01.posh.local).AssetId
         Initialize-ZNAssetBreakGlass -AssetId $asset
         { Invoke-ZNAssetDeactivateBreakGlass -AssetId $asset } | Should -Not -Throw
     }

@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsLicense'))
 
 Describe 'Get-ZNSettingsLicense' {
     It 'Get' {
-        { (Get-ZNSettingsLicense -ProtectionType network).ConfigInfoLicenseMode } | Should -Not -Be $null
+        (Get-ZNSettingsLicense -LicenseType network).ConfigInfoLicenseMode | Should -Not -BeNullOrEmpty
     }
 }

@@ -28,9 +28,9 @@ Returns the properties of an outbound MFA policy.
 
 ## EXAMPLES
 
-### Example 1: List outbound MFA policies
+### Example 1: List outbound MFA policy
 ```powershell
-Get-ZNOutboundBlockRule
+Get-ZNMFAOutboundPolicy
 ```
 
 ```output

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNProtocolsList'))
 
 Describe 'New-ZNProtocolsList' {
     It 'Protocol' {
-        (New-ZNProtocolsList -Protocol 6 -ports 111).LocalPorts | Should -Not -BeNullOrEmpty
+        (New-ZNProtocolsList -Protocol 6 -LocalPorts 111).LocalPorts | Should -Not -BeNullOrEmpty
     }
 
     It 'Empty' {

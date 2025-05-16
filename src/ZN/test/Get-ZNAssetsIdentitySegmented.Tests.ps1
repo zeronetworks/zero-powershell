@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetsIdentitySegmented
 
 Describe 'Get-ZNAssetsIdentitySegmented' {
     It 'List' {
-        { (Get-ZNAssetsIdentitySegmented).Items } | Should -Not -Be $null
+        (Get-ZNAssetsIdentitySegmented).Items.Count | Should -BeGreaterThan 0
     }
 }

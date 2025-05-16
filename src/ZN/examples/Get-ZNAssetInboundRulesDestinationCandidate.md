@@ -1,7 +1,7 @@
 ### Example 1: Get destination candidates for an rule for a specific asset
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
-(Get-ZNAssetInboundAllowRulesDestinationCandidate -AssetId $asset).Items
+(Get-ZNAssetInboundRulesDestinationCandidate -AssetId $asset).Items
 ```
 
 ```output

@@ -18,7 +18,7 @@ Describe 'Remove-ZNUserExternalAccessPolicy' {
     It 'Delete' {
         $userId = ((Get-ZNUser -Search "zero").Items | where {$_.Name -eq "zero"}).Id
         $portsList = New-ZNPortsList -Protocol TCP -Ports 12
-        $dstAsset = (Search-ZNAsset -Fqdn ls01.posh.local).AssetId
+        $dstAsset = (Search-ZNAsset -Fqdn ml01.posh.local).AssetId
         $Policy = New-ZNUserExternalAccessPolicy -UserId $userId -DstAssetId $dstAsset -DstPortsList $portsList -DstProcessNamesList @("*") -Name "ExternalDeleteUserTest" -RuleDuration 4 -SrcUserIdsList @($userId) -State 1 -Url "https://external.posh.local"
         { Remove-ZNUserExternalAccessPolicy -UserId $userId -PolicyId $Policy.ItemId } | Should -Not -Throw
     }

@@ -16,18 +16,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-ZNAssetQuarantine'))
 
 Describe 'Enable-ZNAssetQuarantine' {
     It 'EnableExpanded' {
-        $assetId = (Search-ZNAsset -Fqdn ls01.posh.local).AssetId
-        Protect-ZNAssetNetworkSegment -AssetId $assetId
+        $assetId = (Search-ZNAsset -Fqdn ml01.posh.local).AssetId
+        #Protect-ZNAssetNetworkSegment -AssetId $assetId
         { Enable-ZNAssetQuarantine -AssetId $assetId -Quarantine } | Should -Not -Throw
         Enable-ZNAssetQuarantine -AssetId $assetId -Quarantine:$false
-        Unprotect-ZNAssetNetworkSegment -AssetId $assetId
+        #Unprotect-ZNAssetNetworkSegment -AssetId $assetId
     }
 
     It 'Enable' {
-        $assetId = (Search-ZNAsset -Fqdn ls01.posh.local).AssetId
-        Protect-ZNAssetNetworkSegment -AssetId $assetId
+        $assetId = (Search-ZNAsset -Fqdn ml01.posh.local).AssetId
+        #Protect-ZNAssetNetworkSegment -AssetId $assetId
         { Enable-ZNAssetQuarantine -AssetIds @($assetId) -Quarantine } | Should -Not -Throw
         Enable-ZNAssetQuarantine -AssetIds @($assetId) -Quarantine:$false
-        Unprotect-ZNAssetNetworkSegment -AssetId $assetId
+        #Unprotect-ZNAssetNetworkSegment -AssetId $assetId
     }
 }

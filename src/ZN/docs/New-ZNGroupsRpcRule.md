@@ -16,8 +16,8 @@ Returns the properties of the create RPC rule.
 New-ZNGroupsRpcRule -GroupId <String> -GroupType <String> -Action <Int32> -Description <String>
  -ExcludedAssetIdsList <String[]> -InterfaceUuidsList <String[]> -LocalAssetId <String>
  -OpNumbersList <Int32[]> -ProtocolsList <Int32[]> -RemoteAssetIdsList <String[]> -State <Int32>
- -UserIdsList <String[]> [-AccountName <String>] [-ExpiresAt <Int64>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -UserIdsList <String[]> [-AccountName <String>] [-ChangeTicket <String>] [-ExpiresAt <Int64>]
+ [-Name <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,6 +88,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeTicket
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -193,6 +208,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

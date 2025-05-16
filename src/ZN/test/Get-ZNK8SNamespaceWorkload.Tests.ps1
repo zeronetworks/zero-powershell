@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNK8SNamespaceWorkload'))
 Describe 'Get-ZNK8SNamespaceWorkload' {
     It 'List' {
         $namespace = (Get-ZNK8SNamespace -limit 400).Items | where {$_.Name -like "zn*"}
-        (Get-ZNK8SNamespaceWorkload -NamespaceId $namespace.Id).Items.Count  | Should -BeGreaterThan 0
+        (Get-ZNK8SNamespaceWorkload -K8SNamespaceId $namespace.Id).Items.Count  | Should -BeGreaterThan 0
     }
 }

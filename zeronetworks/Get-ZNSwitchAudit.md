@@ -13,8 +13,8 @@ Returns a list of audits for the asset.
 ## SYNTAX
 
 ```
-Get-ZNSwitchAudit -SwitchId <String> [-AccountName <String>] [-Cursor <Int64>] [-Order <String>]
- [-Search <String>] [<CommonParameters>]
+Get-ZNSwitchAudit -SwitchId <String> [-AccountName <String>] [-Cursor <Int64>] [-Filters <String>]
+ [-From <Int64>] [-Limit <Int32>] [-Order <String>] [-Search <String>] [-To <Int64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,6 +87,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Filters
+JSON string URI encoded set of filters
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -From
+startTime in epoch(ms)
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Limit
+Limit the return results
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 10
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Order
 What order to sort the results
 
@@ -126,6 +171,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -To
+endTime in epoch(ms)
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

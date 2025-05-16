@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsAdLinuxMonitore
 Describe 'Get-ZNSettingsAdLinuxMonitoredCandidate' {
     It 'Get' {
         $forest = Get-ZNSettingsAd | select -first 1
-        (Get-ZNSettingsAdLinuxMonitoredCandidate -ForestId $forest.ForestId).Items | Should -BeGreaterThan 0
+        (Get-ZNSettingsAdLinuxMonitoredCandidate -ForestId $forest.ForestId).Items.Count | Should -BeGreaterThan 0
     }
 }

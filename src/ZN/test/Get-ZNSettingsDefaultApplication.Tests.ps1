@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsDefaultApplicat
 
 Describe 'Get-ZNSettingsDefaultApplication' {
     It 'Get' {
-        Get-ZNSettingsDefaultApplication | Should -Not -Be $null
+        (Get-ZNSettingsDefaultApplication).Application | Should -Not -BeNullOrEmpty
     }
 }

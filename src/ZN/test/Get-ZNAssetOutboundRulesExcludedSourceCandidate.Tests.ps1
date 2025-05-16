@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetOutboundRulesExclu
 Describe 'Get-ZNAssetOutboundRulesExcludedSourceCandidate' {
    It 'List' {
         $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
-        { (Get-ZNAssetOutboundRulesExcludedSourceCandidate -AssetId $asset).Items } | Should -Not -Be $null
+        (Get-ZNAssetOutboundRulesExcludedSourceCandidate -AssetId $asset).Items.Count | Should -BeGreaterThan 0
     }
 }

@@ -84,10 +84,10 @@ Returns a list of source candidates for AE Exclusions.
 Returns the properties of the update AE exclusion.
 
 ### [Get-ZNAeExclusionsOutboundDestinationCandidate](Get-ZNAeExclusionsOutboundDestinationCandidate.md)
-Returns a list of destination candidates for AE Exclusion rules.
+Returns a list of destination candidates for AE Exclusions.
 
 ### [Get-ZNAeExclusionsOutboundSourceCandidate](Get-ZNAeExclusionsOutboundSourceCandidate.md)
-Returns a list of source candidates for AE Exclusions.
+Returns a list of source candidates for AE Exclusion rules.
 
 ### [Get-ZNAeExclusionsOutboundUserCandidate](Get-ZNAeExclusionsOutboundUserCandidate.md)
 Returns a list of users candidates for Outbound AE Exclusions.
@@ -134,6 +134,21 @@ Returns a list of excluded assets candidates for Identity rules.
 ### [Get-ZNAssetIdentityRulesUserCandidate](Get-ZNAssetIdentityRulesUserCandidate.md)
 Returns a list of user candidates for Identity rules.
 
+### [Get-ZNAssetInboundOtRule](Get-ZNAssetInboundOtRule.md)
+get an Asset Rule
+
+### [Get-ZNAssetInboundOtRulesDestinationCandidate](Get-ZNAssetInboundOtRulesDestinationCandidate.md)
+Returns a list of destination candidates for Inbound rules.
+
+### [Get-ZNAssetInboundOtRulesExcludedDestinationCandidate](Get-ZNAssetInboundOtRulesExcludedDestinationCandidate.md)
+Returns a list of excluded destination candidates for Asset Inbound rules.
+
+### [Get-ZNAssetInboundOtRulesSourceCandidate](Get-ZNAssetInboundOtRulesSourceCandidate.md)
+Returns a list of source candidates for Inbound rules.
+
+### [Get-ZNAssetInboundOtRulesUserCandidate](Get-ZNAssetInboundOtRulesUserCandidate.md)
+Returns a list of users candidates for Inbound rules.
+
 ### [Get-ZNAssetInboundRule](Get-ZNAssetInboundRule.md)
 Returns the properties of an Inbound rule.
 
@@ -148,6 +163,9 @@ Returns a list of source candidates for Inbound rules.
 
 ### [Get-ZNAssetListeningPort](Get-ZNAssetListeningPort.md)
 List listening ports of an asset
+
+### [Get-ZNAssetLogonActivitiesDistinctValue](Get-ZNAssetLogonActivitiesDistinctValue.md)
+Returns a list of distinct values for a field in logon activities.
 
 ### [Get-ZNAssetManager](Get-ZNAssetManager.md)
 Get asset managers of asset
@@ -218,6 +236,9 @@ Returns the properties of an outbound MFA policy.
 ### [Get-ZNAssetMirrorCandidate](Get-ZNAssetMirrorCandidate.md)
 Get mirror candidates
 
+### [Get-ZNAssetNetworkActivitiesDistinctValue](Get-ZNAssetNetworkActivitiesDistinctValue.md)
+Returns a list of distinct values for a field in network activities.
+
 ### [Get-ZNAssetNetworkAnalysis](Get-ZNAssetNetworkAnalysis.md)
 Returns an object with asset analysis data.
 
@@ -248,6 +269,12 @@ Returns a list of excluded destination candidates for OT/IoT Inbound rules.
 ### [Get-ZNAssetOtInboundOtrulesSourceCandidate](Get-ZNAssetOtInboundOtrulesSourceCandidate.md)
 Returns a list of source candidates for Inbound rules.
 
+### [Get-ZNAssetOtInboundOtrulesUserCandidate](Get-ZNAssetOtInboundOtrulesUserCandidate.md)
+Returns a list of users candidates for Inbound rules.
+
+### [Get-ZNAssetOtLogonActivitiesDistinctValue](Get-ZNAssetOtLogonActivitiesDistinctValue.md)
+Returns a list of distinct values for a field in logon activities.
+
 ### [Get-ZNAssetOtMemberOf](Get-ZNAssetOtMemberOf.md)
 Returns a list of groups the asset is a member of.
 
@@ -256,6 +283,9 @@ Returns a list of groups the asset can be a member of.
 
 ### [Get-ZNAssetOtMirrorCandidate](Get-ZNAssetOtMirrorCandidate.md)
 Get mirror candidates
+
+### [Get-ZNAssetOtNetworkActivitiesDistinctValue](Get-ZNAssetOtNetworkActivitiesDistinctValue.md)
+Returns a list of distinct values for a field in network activities.
 
 ### [Get-ZNAssetOtNetworkAnalysis](Get-ZNAssetOtNetworkAnalysis.md)
 Returns an object with OT/IoT asset analysis data.
@@ -274,6 +304,18 @@ Returns a list of source candidates for Outbound rules.
 
 ### [Get-ZNAssetOtTag](Get-ZNAssetOtTag.md)
 Returns a list of tags for an entity.
+
+### [Get-ZNAssetOutboundOtRule](Get-ZNAssetOutboundOtRule.md)
+get an Asset Rule
+
+### [Get-ZNAssetOutboundOtRulesDestinationCandidate](Get-ZNAssetOutboundOtRulesDestinationCandidate.md)
+Returns a list of destination candidates for Outbound rules.
+
+### [Get-ZNAssetOutboundOtRulesExcludedSourceCandidate](Get-ZNAssetOutboundOtRulesExcludedSourceCandidate.md)
+Returns a list of excluded source candidates for Asset Outbound rules.
+
+### [Get-ZNAssetOutboundOtRulesSourceCandidate](Get-ZNAssetOutboundOtRulesSourceCandidate.md)
+Returns a list of source candidates for Outbound rules.
 
 ### [Get-ZNAssetOutboundRule](Get-ZNAssetOutboundRule.md)
 Returns the properties of an Outbound rule.
@@ -435,6 +477,9 @@ Returns a list of excluded destination candidates for OT/IoT Inbound rules.
 ### [Get-ZNGroupsInboundOtRulesSourceCandidate](Get-ZNGroupsInboundOtRulesSourceCandidate.md)
 Returns a list of source candidates for Inbound rules.
 
+### [Get-ZNGroupsInboundOtRulesUserCandidate](Get-ZNGroupsInboundOtRulesUserCandidate.md)
+Returns a list of users candidates for Inbound rules.
+
 ### [Get-ZNGroupsInboundRule](Get-ZNGroupsInboundRule.md)
 Returns the properties of an Inbound rule.
 
@@ -446,6 +491,9 @@ Returns a list of excluded destination candidates for Inbound rules.
 
 ### [Get-ZNGroupsInboundRulesSourceCandidate](Get-ZNGroupsInboundRulesSourceCandidate.md)
 Returns a list of source candidates for Inbound rules.
+
+### [Get-ZNGroupsLogonActivitiesDistinctValue](Get-ZNGroupsLogonActivitiesDistinctValue.md)
+Returns a list of distinct values for a field in logon activities.
 
 ### [Get-ZNGroupsManagedAsset](Get-ZNGroupsManagedAsset.md)
 Get managed assets for group
@@ -509,6 +557,9 @@ Returns a list of source users candidates on outbound MFA policies.
 
 ### [Get-ZNGroupsMfaOutboundPolicy](Get-ZNGroupsMfaOutboundPolicy.md)
 Returns the properties of an outbound MFA policy.
+
+### [Get-ZNGroupsNetworkActivitiesDistinctValue](Get-ZNGroupsNetworkActivitiesDistinctValue.md)
+Returns a list of distinct values for a field in network activities.
 
 ### [Get-ZNGroupsNetworkAnalysis](Get-ZNGroupsNetworkAnalysis.md)
 Returns an object with group analysis data.
@@ -594,6 +645,9 @@ Returns a list of excluded destination candidates for OT/IoT Inbound rules.
 ### [Get-ZNInboundOtRulesSourceCandidate](Get-ZNInboundOtRulesSourceCandidate.md)
 Returns a list of source candidates for Inbound rules.
 
+### [Get-ZNInboundOtRulesUserCandidate](Get-ZNInboundOtRulesUserCandidate.md)
+Returns a list of users candidates for Inbound rules.
+
 ### [Get-ZNInboundRule](Get-ZNInboundRule.md)
 Returns the properties of an Inbound rule.
 
@@ -654,6 +708,9 @@ Returns a list of workloads for a namespaces in the k8s.
 ### [Get-ZNLearningConfig](Get-ZNLearningConfig.md)
 Get Learning Config
 
+### [Get-ZNLogonActivitiesDistinctValue](Get-ZNLogonActivitiesDistinctValue.md)
+Returns a list of distinct values for a field in logon activities.
+
 ### [Get-ZNMfaIdentityPoliciesDestinationCandidate](Get-ZNMfaIdentityPoliciesDestinationCandidate.md)
 Returns a list of candidates for the destination of an identity MFA policy.
 
@@ -713,6 +770,9 @@ Returns and object with MFA distribution.
 
 ### [Get-ZNMfaPoliciesStatistics](Get-ZNMfaPoliciesStatistics.md)
 Returns an object with MFA statistics.
+
+### [Get-ZNNetworkActivitiesDistinctValue](Get-ZNNetworkActivitiesDistinctValue.md)
+Returns a list of distinct values for a field in network activities.
 
 ### [Get-ZNNetworkOnboardingPoliciesGroupCandidate](Get-ZNNetworkOnboardingPoliciesGroupCandidate.md)
 Returns a list of candidates for a network onboarding policy.
@@ -788,6 +848,9 @@ Get the AD settings in Asset Management
 
 ### [Get-ZNSettingsAdLinuxMonitoredCandidate](Get-ZNSettingsAdLinuxMonitoredCandidate.md)
 Returns a list of linux monitoring candidates for an AD forest.
+
+### [Get-ZNSettingsAdouCandidate](Get-ZNSettingsAdouCandidate.md)
+Returns a list of OU candidates for an AD forest.
 
 ### [Get-ZNSettingsAdProtectedCandidate](Get-ZNSettingsAdProtectedCandidate.md)
 Returns a list of protection candidates for an AD forest.
@@ -960,8 +1023,14 @@ Returns a list of excluded destination candidates for OT/IoT Inbound rules.
 ### [Get-ZNSwitchInboundOtRulesSourceCandidate](Get-ZNSwitchInboundOtRulesSourceCandidate.md)
 Returns a list of source candidates for Inbound rules.
 
+### [Get-ZNSwitchInboundOtRulesUserCandidate](Get-ZNSwitchInboundOtRulesUserCandidate.md)
+Returns a list of users candidates for Inbound rules.
+
 ### [Get-ZNSwitchInterface](Get-ZNSwitchInterface.md)
 List interfaces for a switch
+
+### [Get-ZNSwitchNetworkActivitiesDistinctValue](Get-ZNSwitchNetworkActivitiesDistinctValue.md)
+Returns a list of distinct values for a field in network activities.
 
 ### [Get-ZNSwitchOt](Get-ZNSwitchOt.md)
 gets OT assets for a swtich
@@ -1038,8 +1107,59 @@ Returns a list of source user candidates for Identity MFA policies.
 ### [Get-ZNUserMfaIdentityPolicy](Get-ZNUserMfaIdentityPolicy.md)
 Returns a Identity MFA policy object.
 
+### [Get-ZNUserMfaInboundPoliciesDestinationCandidate](Get-ZNUserMfaInboundPoliciesDestinationCandidate.md)
+Returns a list of candidates for the destination of an inbound MFA policy.
+
+### [Get-ZNUserMfaInboundPoliciesExcludedSourceCandidate](Get-ZNUserMfaInboundPoliciesExcludedSourceCandidate.md)
+Returns a list of candidates for the excluded sources of an inbound MFA policy.
+
+### [Get-ZNUserMfaInboundPoliciesMfamethod](Get-ZNUserMfaInboundPoliciesMfamethod.md)
+Returns a list of MFA methods for inbound MFA policies.
+
+### [Get-ZNUserMfaInboundPoliciesSourceCandidate](Get-ZNUserMfaInboundPoliciesSourceCandidate.md)
+Returns a list of source candidates on inbound MFA policies.
+
+### [Get-ZNUserMfaInboundPoliciesSourceUserCandidate](Get-ZNUserMfaInboundPoliciesSourceUserCandidate.md)
+Returns a list of source user candidates for inbound MFA policies.
+
+### [Get-ZNUserMfaInboundPolicy](Get-ZNUserMfaInboundPolicy.md)
+Returns a inbound MFA policy object.
+
+### [Get-ZNUserMfaOutboundPoliciesDestinationCandidate](Get-ZNUserMfaOutboundPoliciesDestinationCandidate.md)
+Returns a list of destination candidates on outbound MFA policies.
+
+### [Get-ZNUserMfaOutboundPoliciesExcludedSourceCandidate](Get-ZNUserMfaOutboundPoliciesExcludedSourceCandidate.md)
+Returns a list of candidates for the excluded sources of an outbound MFA policy.
+
+### [Get-ZNUserMfaOutboundPoliciesMfamethod](Get-ZNUserMfaOutboundPoliciesMfamethod.md)
+Returns a list of MFA methods on outbound MFA policies.
+
+### [Get-ZNUserMfaOutboundPoliciesSourceCandidate](Get-ZNUserMfaOutboundPoliciesSourceCandidate.md)
+Returns a list of source candidates on outbound MFA policies.
+
+### [Get-ZNUserMfaOutboundPoliciesSourceUserCandidate](Get-ZNUserMfaOutboundPoliciesSourceUserCandidate.md)
+Returns a list of source users candidates on outbound MFA policies.
+
+### [Get-ZNUserMfaOutboundPolicy](Get-ZNUserMfaOutboundPolicy.md)
+Returns the properties of an outbound MFA policy.
+
 ### [Get-ZNUserNetworkAnalysis](Get-ZNUserNetworkAnalysis.md)
 Returns an object with asset analysis data.
+
+### [Get-ZNUserOutboundRule](Get-ZNUserOutboundRule.md)
+Returns the properties of an Outbound rule.
+
+### [Get-ZNUserOutboundRulesDestinationCandidate](Get-ZNUserOutboundRulesDestinationCandidate.md)
+Returns a list of destination candidates for Outbound rules.
+
+### [Get-ZNUserOutboundRulesExcludedSourceCandidate](Get-ZNUserOutboundRulesExcludedSourceCandidate.md)
+Returns a list of excluded source candidates for Outbound rules.
+
+### [Get-ZNUserOutboundRulesSourceCandidate](Get-ZNUserOutboundRulesSourceCandidate.md)
+Returns a list of source candidates for Outbound rules.
+
+### [Get-ZNUserOutboundRulesUserCandidate](Get-ZNUserOutboundRulesUserCandidate.md)
+Returns a list of users candidates for Outbound rules.
 
 ### [Get-ZNUserRulesDistribution](Get-ZNUserRulesDistribution.md)
 Returns an object with rules distribution.
@@ -1054,11 +1174,17 @@ Returns a list of Identity segmented users.
 Returns a list of Users.
 Pass the returned 'nextCursor' as the '_cursor' query param of the next request for batches, when the '_offset' param is not used.
 
+### [Get-ZNUsersLogonActivitiesDistinctValue](Get-ZNUsersLogonActivitiesDistinctValue.md)
+Returns a list of distinct values for a field in logon activities.
+
 ### [Get-ZNUsersManagedAsset](Get-ZNUsersManagedAsset.md)
 get managed assets for user
 
 ### [Get-ZNUsersManagedAssetsCandidate](Get-ZNUsersManagedAssetsCandidate.md)
 Get asset candidates to be managed by asset managers
+
+### [Get-ZNUsersNetworkActivitiesDistinctValue](Get-ZNUsersNetworkActivitiesDistinctValue.md)
+Returns a list of distinct values for a field in network activities.
 
 ### [Get-ZNUsersPrivileged](Get-ZNUsersPrivileged.md)
 Returns a list of Privileged Users.
@@ -1150,6 +1276,9 @@ Returns a the external access policy
 ### [New-ZNAssetIdentityRule](New-ZNAssetIdentityRule.md)
 Returns a the identity segmentation rule.
 
+### [New-ZNAssetInboundOtRule](New-ZNAssetInboundOtRule.md)
+creates an Asset rule
+
 ### [New-ZNAssetInboundRule](New-ZNAssetInboundRule.md)
 Returns the properties of the created Inbound rule.
 
@@ -1167,6 +1296,9 @@ creates an OT/IoT rule
 
 ### [New-ZNAssetOtOutboundOtrule](New-ZNAssetOtOutboundOtrule.md)
 creates an OT/IoT rule
+
+### [New-ZNAssetOutboundOtRule](New-ZNAssetOutboundOtRule.md)
+creates an Asset rule
 
 ### [New-ZNAssetOutboundRule](New-ZNAssetOutboundRule.md)
 Returns the properties of the created Outbound rule.
@@ -1303,6 +1435,15 @@ Returns a the identity segmentation rule.
 ### [New-ZNUserMfaIdentityPolicy](New-ZNUserMfaIdentityPolicy.md)
 Returns the properties of the identity MFA policy after creation.
 
+### [New-ZNUserMfaInboundPolicy](New-ZNUserMfaInboundPolicy.md)
+Returns the properties of the inbound MFA policy after creation.
+
+### [New-ZNUserMfaOutboundPolicy](New-ZNUserMfaOutboundPolicy.md)
+Returns a the properties of outbound MFA policy created.
+
+### [New-ZNUserOutboundRule](New-ZNUserOutboundRule.md)
+Returns the properties of the created Outbound rule.
+
 ### [Protect-ZNAssetIdentitySegment](Protect-ZNAssetIdentitySegment.md)
 Returns and empty object.
 
@@ -1336,6 +1477,9 @@ Returns an empty object.
 ### [Remove-ZNAssetIdentityRule](Remove-ZNAssetIdentityRule.md)
 Returns an empty object.
 
+### [Remove-ZNAssetInboundOtRule](Remove-ZNAssetInboundOtRule.md)
+deletes an Asset rule
+
 ### [Remove-ZNAssetInboundRule](Remove-ZNAssetInboundRule.md)
 Returns an empty object.
 
@@ -1359,6 +1503,9 @@ deletes an OT/IoT rule
 
 ### [Remove-ZNAssetOtOutboundOtrule](Remove-ZNAssetOtOutboundOtrule.md)
 deletes an OT/IoT rule
+
+### [Remove-ZNAssetOutboundOtRule](Remove-ZNAssetOutboundOtRule.md)
+deletes an Asset rule
 
 ### [Remove-ZNAssetOutboundRule](Remove-ZNAssetOutboundRule.md)
 Returns an empty object.
@@ -1519,6 +1666,15 @@ Returns an empty object.
 ### [Remove-ZNUserMfaIdentityPolicy](Remove-ZNUserMfaIdentityPolicy.md)
 Returns an empty object.
 
+### [Remove-ZNUserMfaInboundPolicy](Remove-ZNUserMfaInboundPolicy.md)
+Returns an empty object.
+
+### [Remove-ZNUserMfaOutboundPolicy](Remove-ZNUserMfaOutboundPolicy.md)
+Returns an empty object.
+
+### [Remove-ZNUserOutboundRule](Remove-ZNUserOutboundRule.md)
+Returns an empty object.
+
 ### [Remove-ZNUsersManagedAsset](Remove-ZNUsersManagedAsset.md)
 Remove managed asset of user
 
@@ -1576,6 +1732,9 @@ Updates an inbound AE Exclusion rule.
 ### [Update-ZNAeExclusionsOutbound](Update-ZNAeExclusionsOutbound.md)
 Updates an outbound AE Exclusion rule.
 
+### [Update-ZNAsset](Update-ZNAsset.md)
+Updates the display name and FQDN for an asset
+
 ### [Update-ZNAssetActive](Update-ZNAssetActive.md)
 Returns and empty object.
 
@@ -1587,6 +1746,9 @@ Updates an identity rule.
 
 ### [Update-ZNAssetInactive](Update-ZNAssetInactive.md)
 Returns and empty object.
+
+### [Update-ZNAssetInboundOtrule](Update-ZNAssetInboundOtrule.md)
+Updates an inbound OT rule.
 
 ### [Update-ZNAssetInboundRule](Update-ZNAssetInboundRule.md)
 Updates an inbound  rule.
@@ -1622,6 +1784,9 @@ Returns and empty object.
 Updates an inbound OT rule.
 
 ### [Update-ZNAssetOtOutboundOtrule](Update-ZNAssetOtOutboundOtrule.md)
+Updates an outbound OT rule.
+
+### [Update-ZNAssetOutboundOtrule](Update-ZNAssetOutboundOtrule.md)
 Updates an outbound OT rule.
 
 ### [Update-ZNAssetOutboundRestriction](Update-ZNAssetOutboundRestriction.md)
@@ -1869,6 +2034,15 @@ Returns and empty object.
 
 ### [Update-ZNUserMfaIdentityPolicy](Update-ZNUserMfaIdentityPolicy.md)
 Updates an identity MFA Policy.
+
+### [Update-ZNUserMfaInboundPolicy](Update-ZNUserMfaInboundPolicy.md)
+Updates an inbound MFA Policy.
+
+### [Update-ZNUserMfaOutboundPolicy](Update-ZNUserMfaOutboundPolicy.md)
+Updates an outbound MFA Policy.
+
+### [Update-ZNUserOutboundRule](Update-ZNUserOutboundRule.md)
+Updates an outbound rule.
 
 ### [Update-ZNUsersManagedAsset](Update-ZNUsersManagedAsset.md)
 Update a managed asset for user

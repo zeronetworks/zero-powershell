@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNK8SClusterNamespaceInbo
 Describe 'Get-ZNK8SClusterNamespaceInboundNetworkPolicy' {
     It 'List' {
         $cluster = (Get-ZNK8SCluster).ITems | Select -First 1
-        $namespace = (Get-ZNK8SClusterNamespace -ClusterId $cluster.id -Limit 400).Items | where {$_.Name -like "zn*"}
-        (Get-ZNK8SClusterNamespaceInboundNetworkPolicy -ClusterId $cluster.id -NamespaceId $namespace.Id).Items.Count | Should -BeGreaterThan 0
+        $namespace = (Get-ZNK8SClusterNamespace -K8SClusterId $cluster.id -Limit 400).Items | where {$_.Name -like "zn*"}
+        (Get-ZNK8SClusterNamespaceInboundNetworkPolicy -K8SClusterId $cluster.id -K8SNamespaceId $namespace.Id).Items.Count | Should -BeGreaterThan 0
     }
 }

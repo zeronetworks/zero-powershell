@@ -17,18 +17,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Approve-ZNOutboundRuleReview'
 Describe 'Approve-ZNOutboundRuleReview' {
      It 'ApproveExpanded' {
         $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
-        $rule = Get-ZNOutboundRule | where {$_.State -eq 4} | Select-Object -First 1
+        $rule = (Get-ZNOutboundRule -Limit 100).Items | where {$_.State -eq 4} | Select-Object -First 1
         Approve-ZNOutboundRuleReview -RuleId $rule.id
-        $updatedRule = Get-ZNOutboundRule | where {$_.Id -eq $rule.id}
+        $updatedRule = (Get-ZNOutboundRule -Limit 100).Items | where {$_.Id -eq $rule.id}
         $updatedRule.State | Should -Be 1
         Remove-ZNOutboundRule -RuleId $updatedRule.id
     }
 
     It 'ApproveWithChangesExpanded' {
         $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
-        $rule = Get-ZNOutboundRule | where {$_.State -eq 4} | Select-Object -First 1
+        $rule = (Get-ZNOutboundRule -Limit 100).Items | where {$_.State -eq 4} | Select-Object -First 1
         Approve-ZNOutboundRuleReview -RuleId $rule.id -Description "updatedapproval" -Reason MissingPortOrProcess
-        $updatedRule = Get-ZNOutboundRule | where {$_.Id -eq $rule.id}
+        $updatedRule = (Get-ZNOutboundRule -Limit 100).Items | where {$_.Id -eq $rule.id}
         $updatedRule.State | Should -Be 1
         Remove-ZNOutboundRule -RuleId $updatedRule.id
     }

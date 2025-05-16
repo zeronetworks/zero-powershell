@@ -22,7 +22,7 @@ Describe 'Get-ZNAssetInboundRule' {
         $source = (Get-ZNAssetInboundRulesSourceCandidate -AssetId $asset -RuleType 1 -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNAssetInboundRule -AssetId $asset -LocalEntityId $asset -Action 1 -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt -IPSecOpt 1
-        { Get-ZNAssetInboundRule -AssetId $asset } | Should -Not -Be $null
+        (Get-ZNAssetInboundRule -AssetId $asset).Count | Should -BeGreaterThan 0
         Remove-ZNAssetInboundRule -AssetId $asset -RuleId $rule.ItemId
     }
 
@@ -33,8 +33,7 @@ Describe 'Get-ZNAssetInboundRule' {
         $source = (Get-ZNInboundRulesSourceCandidate -RuleType 1 -search "any asset").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNAssetInboundRule -AssetId $asset -LocalEntityId $asset -Action 1 -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt -IPSecOpt 1
-        $rule = Get-ZNAssetInboundRule -AssetId $asset | Select-Object -First 1
-        { (Get-ZNAssetInboundRule -AssetId $asset -RuleId $rule.Id).ItemId } | Should -Not -Be $null
-        Remove-ZNAssetInboundRule -AssetId $asset -RuleId $rule.Id
+        (Get-ZNAssetInboundRule -AssetId $asset -RuleId $rule.ItemId).ItemId | Should -Not -BeNullOrEmpty
+        Remove-ZNAssetInboundRule -AssetId $asset -RuleId $rule.ItemId
     }
 }

@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNMfaOutboundPoliciesSour
 
 Describe 'Get-ZNMfaOutboundPoliciesSourceUserCandidate' {
     It 'List' {
-        { (Get-ZNMfaOutboundPoliciesSourceUserCandidate).Items } | Should -Not -Be $null
+        (Get-ZNMfaOutboundPoliciesSourceUserCandidate).Items.Count | Should -BeGreaterThan 0
     }
 }

@@ -16,12 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNK8SCluster'))
 
 Describe 'Get-ZNK8SCluster' {
     It 'List' {
-        (Get-ZNK8SCluster).Items.Count | Should -BeGreaterThan 0
+        (Get-ZNK8SCluster).Count | Should -BeGreaterThan 0
     }
 
     It 'Get' {
-        $cluster = (Get-ZNK8SCluster).ITems | Select -First 1
-        $cluster = Get-ZNK8SCluster -ClusterId $cluster.Id
-        $cluster.Id | Should -Not -BeNullOrEmpty
+        $cluster = (Get-ZNK8SCluster).Items | Select -First 1
+        $cluster = Get-ZNK8SCluster -K8SClusterId $cluster.Id
+        $cluster.EntityId | Should -Not -BeNullOrEmpty
     }
 }

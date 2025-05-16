@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNGroupMemberOf'))
 
 Describe 'Get-ZNGroupMemberOf' {
     It 'Get' {
-        $group = Get-ZNGroup -Search "Domain Admins" | Select-Object -first 1
-        { Get-ZNGroupMemberOf -GroupId $group.id } | Should -Not -Be $null
+        $group = (Get-ZNGroup -Search "Domain Admins").Items | Select-Object -first 1
+        (Get-ZNGroupMemberOf -GroupId $group.id -grouptype ad).Count | Should -BeGreaterThan 0
     }
 }

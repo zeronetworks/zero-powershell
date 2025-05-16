@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsMfaDetection'))
 
 Describe 'Get-ZNSettingsMfaDetection' {
     It 'Get' {
-        Get-ZNSettingsMfaDetection | Should -Not -Be $null
+        (Get-ZNSettingsMfaDetection).ItemTimeoutMinutes | Should -Not -BeNullOrEmpty
     }
 }

@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNK8SClusterAudit'))
 Describe 'Get-ZNK8SClusterAudit' {
     It 'Get' {
         $cluster = (Get-ZNK8SCluster).ITems | Select -First 1
-        (Get-ZNK8SClusterAudit -ClusterId $cluster.id).Items.Count | Should -BeGreaterThan 0
+        (Get-ZNK8SClusterAudit -K8SClusterId $cluster.id).Items.Count | Should -BeGreaterThan 0
     }
 }

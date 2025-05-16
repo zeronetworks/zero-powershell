@@ -24,6 +24,6 @@ Describe 'Get-ZNAssetRpcRule' {
         $asset = (Search-ZNAsset -fqdn dc01.posh.local).AssetId
         $rules = (Get-ZNAssetRpcRule -AssetId $asset -AddBuiltins).Items
         $rule = Get-ZNAssetRpcRule -AssetId $asset -RuleId $rules[0].Id
-        $rule.ItemId | Should -Not -Be $null
+        $rule.ItemId | Should -Not -BeNullOrEmpty
     }
 }

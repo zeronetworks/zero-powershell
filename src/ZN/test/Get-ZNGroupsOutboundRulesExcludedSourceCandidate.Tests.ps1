@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNGroupsOutboundRulesExcl
 Describe 'Get-ZNGroupsOutboundRulesExcludedSourceCandidate' {
     It 'List' {
         $group = (Get-ZNGroup -Search "domain controllers").Items | where {$_.id -like "g:t:*"}
-        { (Get-ZNGroupsOutboundRulesExcludedSourceCandidate -GroupId $group.Id -GroupType tag).Items } | Should -Not -Be $null
+        (Get-ZNGroupsOutboundRulesExcludedSourceCandidate -GroupId $group.Id -GroupType tag).Items.Count | Should -BeGreaterThan 0
     }
 }

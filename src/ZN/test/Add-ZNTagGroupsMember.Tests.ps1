@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-ZNTagGroupsMember'))
 
 Describe 'Add-ZNTagGroupsMember' {
     It 'AddExpanded' {
-        $member= (Search-ZNAsset -Fqdn ls01.posh.local).AssetId
+        $member= (Search-ZNAsset -Fqdn ml01.posh.local).AssetId
         $group = (Get-ZNGroup -Search "Externally Facing ServerS").Items
         { Add-ZNTagGroupsMember -GroupId $group.id -MembersId @($member) } | Should -Not -Throw
         Remove-ZNTagGroupsMember -GroupId $group.id -MembersId @($member)

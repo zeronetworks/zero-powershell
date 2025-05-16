@@ -25,7 +25,7 @@ Returns a list of excluded destination candidates for Inbound rules.
 ### Example 1: Get destination candidates that can be excluded for an rule for a specific asset
 ```powershell
 $asset = Search-ZNAsset -Fqdn dc01.posh.local
-(Get-ZNAssetInboundAllowRulesExcludedDestinationCandidate -AssetId $asset).Items
+(Get-ZNAssetInboundRulesExcludedDestinationCandidate -AssetId $asset).Items
 ```
 
 ```output

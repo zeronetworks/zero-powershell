@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNAssetOutboundRestric
 
 Describe 'Update-ZNAssetOutboundRestriction' {
     It 'UpdateExpanded' {
-        $assetId = (Search-ZNAsset -Fqdn ls01.posh.local).AssetId
+        $assetId = (Search-ZNAsset -Fqdn ml01.posh.local).AssetId
         { Update-ZNAssetOutboundRestriction -AssetIds @($AssetId) -OutboundRestriction 2 } | Should -Not -Throw
         Update-ZNAssetOutboundRestriction -AssetIds @($AssetId) -OutboundRestriction 1
     }

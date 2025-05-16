@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsAd'))
 
 Describe 'Get-ZNSettingsAd' {
     It 'Get' {
-        (Get-ZNSettingsAd).ForestId | Should -Not -Be $null
+        (Get-ZNSettingsAd).ForestId | Should -Not -BeNullOrEmpty
     }
 }

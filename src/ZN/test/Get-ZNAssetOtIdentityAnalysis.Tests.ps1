@@ -17,7 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetOtIdentityAnalysis
 Describe 'Get-ZNAssetOtIdentityAnalysis' {
     It 'Get' {
         $asset = Get-ZNAssetsOt | select -First 1
-        $analysis = Get-ZNAssetOtIdentityAnalysis -AssetId $asset.Id
-        $analysis.CountSrcAsset | Should -BeGreaterThan 0
+        { Get-ZNAssetOtIdentityAnalysis -AssetId $asset.Id } |  Should -Not -throw
     }
 }

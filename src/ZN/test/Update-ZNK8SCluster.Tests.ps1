@@ -17,8 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNK8SCluster'))
 Describe 'Update-ZNK8SCluster' {
     It 'UpdateExpanded' {
         $cluster = New-ZNK8SCluster -Name "NewCluster"
-        $updated = Update-ZNK8SCluster -ClusterId $cluster.ItemId -Name "NewClusterName"
+        $updated = Update-ZNK8SCluster -K8SClusterId $cluster.ItemId -Name "NewClusterName"
         $updated.ItemName | Should -Be "NewClusterName"
-        Remove-ZNK8SCluster -ClusterId $cluster.ItemId
+        Remove-ZNK8SCluster -K8SClusterId $cluster.ItemId
     }
 }

@@ -13,6 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNSettingsFirewallIgnoredGpo' {
     It 'Get' {
-        (get-ZNSettingsFirewallIgnoredGpo).InboundList | Should -Not -Be $null
+        (get-ZNSettingsFirewallIgnoredGpo).InboundList | Should -Not -BeNullOrEmpty
     }
 }

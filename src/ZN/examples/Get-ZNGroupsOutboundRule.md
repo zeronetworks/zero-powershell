@@ -17,7 +17,7 @@ This cmdlet gets rules for a specific group.
 
 ### Example 2: Get a specific rule for a specific group
 ```powershell
-Get-ZNGroupsOutboundAllowRule -Groupid $group.Id -GroupType tag -RuleId d69a32ec-a5ea-4915-a33f-297c6ec2ceec
+Get-ZNGroupsOutboundRule -Groupid $group.Id -GroupType tag -RuleId d69a32ec-a5ea-4915-a33f-297c6ec2ceec
 ```
 
 ```output

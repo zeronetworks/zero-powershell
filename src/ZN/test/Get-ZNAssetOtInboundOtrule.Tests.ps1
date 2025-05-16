@@ -24,6 +24,6 @@ Describe 'Get-ZNAssetOtInboundOtrule' {
         $assetOt = Get-ZNAssetsOt | where {$_.Fqdn -eq "otv2.posh.local"}
         $rule = (Get-ZNAssetOtInboundOtrule -AssetId $assetOt.Id -AddBuiltins).Items | Select -First 1
         $rule = Get-ZNAssetOtInboundOtrule -AssetId $assetOt.Id -RuleId $rule.Id
-        $rule.Id | Should -Not -BeNullOrEmpty
+        $rule.ItemId | Should -Not -BeNullOrEmpty
     }
 }
