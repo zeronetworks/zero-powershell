@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNUserAudit'))
 
 Describe 'Get-ZNUserAudit' {
     It 'Get' {
-        $user = (Get-ZNUser -Search zero).Items | where {$_.Name -eq "zero"}
-        (Get-ZNUserAudit -UserId $user.id).Items | Should -Not -Be $null
+        $user = (Get-ZNUser -Search guest).Items | where {$_.Name -like "Guest*"}
+        (Get-ZNUserAudit -UserId $user.id).Items.Count | Should -BeGreaterThan 0
     }
 }

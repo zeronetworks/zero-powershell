@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetOtNetworkAnalysis'
 
 Describe 'Get-ZNAssetOtNetworkAnalysis' {
     It 'Get' {
-        $asset = Get-ZNAssetsOt | select -First 1
-        $analysis = Get-ZNAssetOtNetworkAnalysis -AssetId $asset.Id
+        $asset = (Search-ZNAsset -fqdn otv1.posh.local).AssetId
+        $analysis = Get-ZNAssetOtNetworkAnalysis -AssetId $asset -ConnectionState 2 -DirectlyRetrievedFromAsset:$false
         $analysis.CountByRemoteAsset | Should -BeGreaterThan 0
     }
 }

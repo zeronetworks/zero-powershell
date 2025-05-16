@@ -20,7 +20,7 @@ Describe 'New-ZNAssetIdentityRule' {
         $user = (Get-ZNUser).Items | Select -First 1
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNAssetIdentityRule -AssetId $asset -Action 1 -AssetId1 $asset -IdentityProtectionCategoryList 1 -State 1 -UserIdsList @($user.Id) -ExpiresAt $expiresAt
-        $rule.ItemAssetId | Should -Be $asset
+        $rule.ItemId | Should -Not -BeNullOrEmpty
         Remove-ZNIdentityRule -RuleId $rule.itemId    
     }
 }

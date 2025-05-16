@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNIdentityRulesAssetsCand
 
 Describe 'Get-ZNIdentityRulesAssetsCandidate' {
     It 'List' {
-        { Get-ZNIdentityRulesAssetsCandidate } | Should -Not -Be $null
+        (Get-ZNIdentityRulesAssetsCandidate).Items.Count | Should -BeGreaterThan 0
     }
 }

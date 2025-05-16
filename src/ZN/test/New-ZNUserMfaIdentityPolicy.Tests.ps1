@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNUserMfaIdentityPolicy')
 
 Describe 'New-ZNUserMfaIdentityPolicy' {
     It 'CreateExpanded' {
-        $user = (Get-ZNUser).Items | Select -First 1
+        $user = (Get-ZNUser).Items | where {$_.id -like "u:a:*"} | select -First 1
         $group = (Get-ZNMfaIdentityPoliciesDestinationCandidate -Search "databases").items | where {$_.Id -like "g:t:*"}
         $source = (Get-ZNMfaIdentityPoliciesSourceCandidate -Search "Any Asset").items
         $users = (Get-ZNMfaIdentityPoliciesSourceUserCandidate -Search "Domain Admins").items

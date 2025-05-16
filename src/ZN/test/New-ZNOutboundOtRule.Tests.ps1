@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNOutboundOtRule'))
 
 Describe 'New-ZNOutboundOtRule' {
     It 'CreateExpanded' {
-        $protocolsList = New-ZNProtocolsList -Protocol tcp -Ports 111
+        $protocolsList = New-ZNProtocolsList -Protocol tcp -LocalPorts (Get-Random -Min 1 -Max 1024)
         $destination = Invoke-ZNEncodeEntityip -IP 1.1.1.2
         $source = (Get-ZNInboundOtRulesDestinationCandidate -Search "otv2").items
         $rule = New-ZNOutboundOtRule -Action 1 -Direction 1 -localEntityId $source.Id -RemoteEntitiesIdList @($destination.id) -protocolsList $protocolsList -state 1 -LocalProcessesList @("*") -ExcludedLocalIdsList @() -ShouldBuildMirrorRules

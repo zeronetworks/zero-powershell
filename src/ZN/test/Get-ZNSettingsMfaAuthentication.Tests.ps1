@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsMfaAuthenticati
 
 Describe 'Get-ZNSettingsMfaAuthentication' {
     It 'Get' {
-        (Get-ZNSettingsMfaAuthentication).ItemTokenTtl | Should -Not -Be $null
+        (Get-ZNSettingsMfaAuthentication).ItemTokenTtl | Should -Not -BeNullOrEmpty
     }
 }

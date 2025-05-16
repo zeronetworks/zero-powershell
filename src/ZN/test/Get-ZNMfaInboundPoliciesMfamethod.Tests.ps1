@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNMfaInboundPoliciesMfame
 
 Describe 'Get-ZNMfaInboundPoliciesMfamethod' {
     It 'List' {
-        { Get-ZNMfaInboundPoliciesMfamethod } | Should -Not -Be $null
+        (Get-ZNMfaInboundPoliciesMfamethod).Count | Should -BeGreaterThan 0
     }
 }

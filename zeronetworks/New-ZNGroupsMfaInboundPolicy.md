@@ -18,8 +18,10 @@ New-ZNGroupsMfaInboundPolicy -GroupId <String> -GroupType <String> -AdditionalPo
  -MfaMethods <Int32[]> -OverrideBuiltins -ProtocolType <Int32> -RuleDuration <Int32>
  -SrcEntityInfos <IReactivePolicyInboundBodySrcEntityInfosItem[]> -SrcProcessNames <String[]>
  -SrcUserInfos <IReactivePolicyInboundBodySrcUserInfosItem[]> -State <Int32> [-AccountName <String>]
- [-Description <String>] [-ExcludedSrcEntityInfos <IReactivePolicyInboundBodyExcludedSrcEntityInfosItem[]>]
- [-ExcludedSrcProcesses <String[]>] [-RestrictLoginToOriginatingUser] [-Confirm] [-WhatIf]
+ [-ChangeTicket <String>] [-Description <String>]
+ [-ExcludedSrcEntityInfos <IReactivePolicyInboundBodyExcludedSrcEntityInfosItem[]>]
+ [-ExcludedSrcProcesses <String[]>] [-IdentityProtectionCategoryList <Int32[]>] [-Name <String>]
+ [-RestrictLoginToOriginatingUser] [-UseDefaultIdp] [-UseOccasionalMfa] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -111,6 +113,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeTicket
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -253,6 +270,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IdentityProtectionCategoryList
+.
+
+```yaml
+Type: System.Int32[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MfaMethods
 .
 
@@ -262,6 +294,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -376,7 +423,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
-1=Enabled, 2=Disabled
+* '1' - Enabled* '2' - Disabled
 
 ```yaml
 Type: System.Int32
@@ -384,6 +431,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseDefaultIdp
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseOccasionalMfa
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNGroupsExternalAccessPol
 
 Describe 'New-ZNGroupsExternalAccessPolicy' {
     It 'CreateExpanded' {
-        $groupId = ((Get-ZNGroup -Search "Externally Facing Servers").Items).Id
-        $srcUser = Get-ZNExternalAccessPolicySourceUserCandidate -Search "Any user"
+        $groupId = (Get-ZNGroup -Search "Externally Facing Servers").Items | Select -First 1
+        $srcUser = (Get-ZNExternalAccessPolicySourceUserCandidate -Search "Any user").Items | Select -First 1
         $portsList = New-ZNPortsList -Protocol TCP -Ports 12
         $Policy = New-ZNGroupsExternalAccessPolicy -GroupId $groupId -GroupType tag -DstAssetId $groupId -DstPortsList $portsList -DstProcessNamesList @("*") -Name "ExternalNewGroupTest" -RuleDuration 4 -SrcUserIdsList @($srcUser.Id) -State 1 -Url "https://external.posh.local"
         $Policy.ItemId | Should -Not -BeNullOrEmpty

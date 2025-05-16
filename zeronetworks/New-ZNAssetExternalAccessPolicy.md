@@ -15,8 +15,8 @@ Returns a the external access policy
 ```
 New-ZNAssetExternalAccessPolicy -AssetId <String> -DstAssetId <String> -DstPortsList <IPortsListItem[]>
  -DstProcessNamesList <String[]> -Name <String> -RuleDuration <Int32> -SrcUserIdsList <String[]>
- [-AccountName <String>] [-Description <String>] [-State <Int32>] [-Url <String>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AccountName <String>] [-ChangeTicket <String>] [-Description <String>] [-State <Int32>] [-Url <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,6 +84,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeTicket
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

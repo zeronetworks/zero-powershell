@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsLinuxUser'))
 
 Describe 'Get-ZNSettingsLinuxUser' {
     It 'Get' {
-        get-ZNSettingsLinuxUser | Should -Not -Be $null
+        (get-ZNSettingsLinuxUser).username | Should -Not -BeNullOrEmpty
     }
 }

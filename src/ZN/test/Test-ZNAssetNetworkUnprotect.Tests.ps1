@@ -16,12 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-ZNAssetNetworkUnprotect'
 
 Describe 'Test-ZNAssetNetworkUnprotect' {
     It 'Validate' {
-        $asset = (Search-ZNAsset -Fqdn ls01.posh.local).AssetId
+        $asset = (Search-ZNAsset -Fqdn ml01.posh.local).AssetId
         { Test-ZNAssetNetworkUnprotect -Items @($asset) } | Should -Not -Throw
     }
 
     It 'ValidateExpanded' {
-        $asset = (Search-ZNAsset -Fqdn ls01.posh.local).AssetId
+        $asset = (Search-ZNAsset -Fqdn ml01.posh.local).AssetId
         { Test-ZNAssetNetworkUnprotect -AssetId $asset } | Should -Not -Throw
     }
 }

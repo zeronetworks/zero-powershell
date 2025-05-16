@@ -12,9 +12,16 @@ Returns and empty object.
 
 ## SYNTAX
 
+### MirrorExpanded (Default)
 ```
 Invoke-ZNMirrorAsset -OriginalAssetId <String> -TargetAssetId <String> [-AccountName <String>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### MirrorExpanded1
+```
+Invoke-ZNMirrorAsset -AssetId <String> -OriginalAssetId <String> -TargetAssetId <String>
+ [-AccountName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +49,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AssetId
+assetId to filter on
+
+```yaml
+Type: System.String
+Parameter Sets: MirrorExpanded1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

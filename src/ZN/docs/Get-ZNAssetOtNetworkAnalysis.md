@@ -13,8 +13,8 @@ Returns an object with OT/IoT asset analysis data.
 ## SYNTAX
 
 ```
-Get-ZNAssetOtNetworkAnalysis -AssetId <String> -DirectlyRetrievedFromAsset [-AccountName <String>]
- [-ConnectionState <Int32>] [-Direction <Int32>] [-From <Int64>] [-Sort <String>] [-To <Int64>]
+Get-ZNAssetOtNetworkAnalysis -AssetId <String> [-AccountName <String>] [-ConnectionState <Int32>]
+ [-Direction <Int32>] [-DirectlyRetrievedFromAsset] [-From <Int64>] [-Sort <String>] [-To <Int64>]
  [-TrafficType <Int32>] [<CommonParameters>]
 ```
 
@@ -113,9 +113,9 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: $false
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

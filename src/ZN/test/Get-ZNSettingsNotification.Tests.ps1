@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsNotification'))
 
 Describe 'Get-ZNSettingsNotification' {
     It 'Get' {
-        (Get-ZNSettingsNotification).AssetPostponed | Should -Not -Be $null
+        (Get-ZNSettingsNotification).AssetPostponed | Should -Not -BeNullOrEmpty
     }
 }

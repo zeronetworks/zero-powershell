@@ -17,10 +17,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNUserExternalAccessPolic
 Describe 'New-ZNUserExternalAccessPolicy' {
     It 'CreateExpanded' {
         $userId = ((Get-ZNUser -Search "zero").Items | where {$_.Name -eq "zero"}).Id
-        $portsList = New-ZNPortsList -Protocol TCP -Ports 12
-        $dstAsset = (Search-ZNAsset -Fqdn ls01.posh.local).AssetId
+        $portsList = New-ZNPortsList -Protocol TCP -Ports (Get-Random -Minimum 1 -Maximum 1024)
+        $dstAsset = (Search-ZNAsset -Fqdn ml01.posh.local).AssetId
         $Policy = New-ZNUserExternalAccessPolicy -UserId $userId -DstAssetId $dstAsset -DstPortsList $portsList -DstProcessNamesList @("*") -Name "ExternalNewUserTest" -RuleDuration 4 -SrcUserIdsList @($userId) -State 1 -Url "https://external.posh.local"
-        $Policy.ItemId | Should -Not -BeNullOrEmpty
-        Remove-ZNUserExternalAccessPolicy -UserId $userId -PolicyId $Policy.ItemId
+        $Policy.Item.Id | Should -Not -BeNullOrEmpty
+        Remove-ZNUserExternalAccessPolicy -UserId $userId -PolicyId $Policy.Item.Id
     }
 }

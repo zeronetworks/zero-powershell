@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNAssetOtInboundOtrule'))
 Describe 'New-ZNAssetOtInboundOtrule' {
     It 'CreateExpanded' {
         $assetOt = Get-ZNAssetsOt | where {$_.Fqdn -eq "otv2.posh.local"}
-        $protocolsList = New-ZNProtocolsList -Protocol tcp -Ports 111
+        $protocolsList = New-ZNProtocolsList -Protocol tcp -LocalPorts (get-Random -min 1 -max 1024)
         $source = Invoke-ZNEncodeEntityip -IP 1.1.1.2
         $destination = (Get-ZNInboundOtRulesDestinationCandidate -Search "otv2").items
         $rule = New-ZNAssetOtInboundOtRule -AssetID $assetOt.id -Action 1 -Direction 1 -localEntityId $destination.Id -RemoteEntitiesIdList @($source.id) -protocolsList $protocolsList -state 1 -LocalProcessesList @("*") -ExcludedLocalIdsList @() -ShouldBuildMirrorRules

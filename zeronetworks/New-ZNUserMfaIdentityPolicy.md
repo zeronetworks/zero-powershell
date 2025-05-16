@@ -16,8 +16,9 @@ Returns the properties of the identity MFA policy after creation.
 New-ZNUserMfaIdentityPolicy -UserId <String> -DstAssetId <String> -FallbackToSingleLoggedOnUser
  -IdentityProtectionCategoryList <Int32[]> -MfaMethodsList <Int32[]> -OverrideBuiltins -RuleDuration <Int32>
  -SrcAssetIdsList <String[]> -SrcUserIdsList <String[]> -State <Int32> [-AccountName <String>]
- [-Description <String>] [-ExcludedDstAssetIdsList <String[]>] [-ExcludedSrcAssetIdsList <String[]>]
- [-ExtraIdentityProtectionCategoryList <Int32[]>] [-RestrictLoginToOriginatingUser] [-Confirm] [-WhatIf]
+ [-ChangeTicket <String>] [-Description <String>] [-ExcludedDstAssetIdsList <String[]>]
+ [-ExcludedSrcAssetIdsList <String[]>] [-ExtraIdentityProtectionCategoryList <Int32[]>] [-Name <String>]
+ [-RestrictLoginToOriginatingUser] [-UseDefaultIdp] [-UseOccasionalMfa] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -81,6 +82,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeTicket
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -205,6 +221,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OverrideBuiltins
 .
 
@@ -281,7 +312,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
-.
+* '1' - Enabled* '2' - Disabled
 
 ```yaml
 Type: System.Int32
@@ -289,6 +320,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseDefaultIdp
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseOccasionalMfa
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

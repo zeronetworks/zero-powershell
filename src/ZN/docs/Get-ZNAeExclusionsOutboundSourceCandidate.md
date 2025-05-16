@@ -8,17 +8,17 @@ schema: 2.0.0
 # Get-ZNAeExclusionsOutboundSourceCandidate
 
 ## SYNOPSIS
-Returns a list of source candidates for AE Exclusions.
+Returns a list of source candidates for AE Exclusion rules.
 
 ## SYNTAX
 
 ```
 Get-ZNAeExclusionsOutboundSourceCandidate [-AccountName <String>] [-Cursor <Int64>] [-Limit <Int32>]
- [-RuleType <Int32>] [-Search <String>] [<CommonParameters>]
+ [-Search <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns a list of source candidates for AE Exclusions.
+Returns a list of source candidates for AE Exclusion rules.
 
 ## EXAMPLES
 
@@ -101,21 +101,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: 10
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RuleType
-rule type to filter on
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 2
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

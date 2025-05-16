@@ -16,9 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNExternalAccessPolicy'))
 
 Describe 'New-ZNExternalAccessPolicy' {
     It 'CreateExpanded' {
-        $srcUser = Get-ZNExternalAccessPolicySourceUserCandidate -Search "Any user"
-        $portsList = New-ZNPortsList -Protocol TCP -Ports 12
-        $dstAsset = (Search-ZNAsset -Fqdn ls01.posh.local).AssetId
+        $srcUser = (Get-ZNExternalAccessPolicySourceUserCandidate -Search "Any user").Items | Select -First 1
+        $portsList = New-ZNPortsList -Protocol TCP -Ports (Get-Random -Minimum 1 -Maximum 1024)
+        $dstAsset = (Search-ZNAsset -Fqdn ml01.posh.local).AssetId
         $Policy = New-ZNExternalAccessPolicy -DstAssetId $dstAsset -DstPortsList $portsList -DstProcessNamesList @("*") -Name "ExternalNewTest" -RuleDuration 4 -SrcUserIdsList @($srcUser.Id) -State 1 -Url "https://external.posh.local"
         $Policy.ItemId | Should -Not -BeNullOrEmpty
         Remove-ZNExternalAccessPolicy -PolicyId $Policy.ItemId

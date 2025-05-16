@@ -16,13 +16,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Protect-ZNAssetOtNetworkSegme
 
 Describe 'Protect-ZNAssetOtNetworkSegment' {
     It 'Protect' {
-        $asset = (Search-ZNAsset -Fqdn switch03).AssetId
+        $asset = (Search-ZNAsset -Fqdn activeOT.posh.local).AssetId
         { Protect-ZNAssetOtNetworkSegment -Items @($asset) } | Should -Not -Throw
         Unprotect-ZNAssetOtNetworkSegment -Items @($asset)
     }
 
     It 'ProtectExpanded' {
-        $asset = (Search-ZNAsset -Fqdn switch03).AssetId
+        $asset = (Search-ZNAsset -Fqdn activeOT.posh.local).AssetId
         { Protect-ZNAssetOtNetworkSegment -AssetId $asset } | Should -Not -Throw
         Unprotect-ZNAssetOtNetworkSegment -AssetId $asset
     }

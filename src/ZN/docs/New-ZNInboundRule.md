@@ -15,8 +15,9 @@ Returns the properties of the created Inbound rule.
 ```
 New-ZNInboundRule -Action <Int32> -LocalEntityId <String> -LocalProcessesList <String[]>
  -PortsList <IPortsListItem[]> -RemoteEntityIdsList <String[]> -State <Int32> [-AccountName <String>]
- [-Description <String>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>] [-IPSecOpt <Int32>]
- [-ServicesList <String[]>] [-SrcUsersList <ISrcUsersListItem[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ChangeTicket <String>] [-Description <String>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>]
+ [-IPSecOpt <Int32>] [-Name <String>] [-ServicesList <String[]>] [-SrcUsersList <ISrcUsersListItem[]>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,8 +28,8 @@ Returns the properties of the created Inbound rule.
 ### Example 1: Create an inbound allow rule
 ```powershell
 $portsList = New-ZNPortsList -Protocol TCP -Ports "44,45"
-$source = (Get-ZNInboundAllowRulesSourceCandidate -search "any asset").Items
-$destination = (Get-ZNInboundAllowRulesDestinationCandidate -Search FS1).Items
+$source = (Get-ZNInboundRulesSourceCandidate -search "any asset").Items
+$destination = (Get-ZNInboundRulesDestinationCandidate -Search FS1).Items
 New-ZNInboundRule -Action 1 -LocalEntityId $destination.Id -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1
 ```
 
@@ -76,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -Action
-* '1' - Allow* '2' - Block
+* 1 - Allow* 2 - Block
 
 ```yaml
 Type: System.Int32
@@ -84,6 +85,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeTicket
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -174,6 +190,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

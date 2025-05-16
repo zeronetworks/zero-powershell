@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsFirewall'))
 
 Describe 'Get-ZNSettingsFirewall' {
     It 'Get' {
-        Get-ZNSettingsFirewall | Should -Not -Be $null
+        (Get-ZNSettingsFirewall).implicitIcmpRuleEnabled | Should -Not -BeNullOrEmpty
     }
 }

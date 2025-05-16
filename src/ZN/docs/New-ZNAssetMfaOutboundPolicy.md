@@ -17,10 +17,10 @@ New-ZNAssetMfaOutboundPolicy -AssetId <String> -AdditionalPortsList <IPortsListI
  -DstEntityInfoId <String> -DstPort <String> -FallbackToLoggedOnUser -MfaMethods <Int32[]> -OverrideBuiltins
  -ProtocolType <Int32> -RuleDuration <Int32> -SrcEntityInfos <IReactivePolicyOutboundBodySrcEntityInfosItem[]>
  -SrcProcessNames <String[]> -SrcUserInfos <IReactivePolicyOutboundBodySrcUserInfosItem[]> -State <Int32>
- [-AccountName <String>] [-Description <String>] [-DstProcessNames <String[]>]
+ [-AccountName <String>] [-ChangeTicket <String>] [-Description <String>] [-DstProcessNames <String[]>]
  [-ExcludedSrcEntityInfos <IReactivePolicyOutboundBodyExcludedSrcEntityInfosItem[]>]
- [-ExcludedSrcProcesses <String[]>] [-RestrictLoginToOriginatingUser] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ExcludedSrcProcesses <String[]>] [-Name <String>] [-RestrictLoginToOriginatingUser]
+ [-RestrictToOriginatedUser] [-UseDefaultIdp] [-UseOccasionalMfa] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -126,6 +126,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeTicket
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -253,6 +268,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OverrideBuiltins
 .
 
@@ -284,6 +314,21 @@ Accept wildcard characters: False
 ```
 
 ### -RestrictLoginToOriginatingUser
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestrictToOriginatedUser
 .
 
 ```yaml
@@ -361,7 +406,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
-1=Enabled, 2=Disabled
+* '1' - Enabled* '2' - Disabled
 
 ```yaml
 Type: System.Int32
@@ -369,6 +414,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseDefaultIdp
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseOccasionalMfa
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

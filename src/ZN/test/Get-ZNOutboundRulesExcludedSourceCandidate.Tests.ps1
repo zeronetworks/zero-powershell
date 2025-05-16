@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNOutboundRulesExcludedSo
 
 Describe 'Get-ZNOutboundRulesExcludedSourceCandidate' {
      It 'List' {
-        { (Get-ZNOutboundRulesExcludedSourceCandidate).Items } | Should -Not -Be $null
+        (Get-ZNOutboundRulesExcludedSourceCandidate).Items.Count | Should -BeGreaterThan 0
     }
 }

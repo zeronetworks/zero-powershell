@@ -23,7 +23,7 @@ Describe 'Get-ZNAssetExternalAccessPolicy' {
     It 'Get' {
         $assetId = (Search-ZNAsset -Fqdn as01.posh.local).AssetId
         $policy = (Get-ZNAssetExternalAccessPolicy -AssetId $assetId).Items | Select-Object -First 1
-        $policy = Get-ZNAssetExternalAccessPolicy -AssetId $assetId -PolicyId $policy.Id
-        $policy.ItemId | Should -Not -BeNullOrEmpty
+        $getpolicy = Get-ZNAssetExternalAccessPolicy -AssetId $assetId -PolicyId $policy.Id
+        $getpolicy.ItemId | Should -Not -BeNullOrEmpty
     }
 }

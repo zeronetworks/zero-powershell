@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNAssetRpcExtendQueue'
 
 Describe 'Invoke-ZNAssetRpcExtendQueue' {
     It 'QueueExpanded' {
-        $asset = (Search-ZNAsset -Fqdn ts01.posh.local).AssetId
+        $asset = (Search-ZNAsset -Fqdn ss01.posh.local).AssetId
         $monitored = (Get-ZNAssetsRpcMonitored).Items | where {$_.Id -eq $asset}
         if($monitored.Count -eq 0){
             Add-ZNAssetRpcMonitoring -AssetId $asset

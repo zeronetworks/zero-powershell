@@ -128,7 +128,7 @@ function setupEnv() {
     #assets
     $asset1 = Invoke-RestMethod ($env.baseUri+"/assets/searchId?fqdn=linux0.posh.local") -method GET -Headers $znTeamHeader
     $asset2 = Invoke-RestMethod ($env.baseUri+"/assets/searchId?fqdn=linux1.posh.local") -method GET -Headers $znTeamHeader
-    $asset3 = Invoke-RestMethod ($env.baseUri+"/assets/searchId?fqdn=switch01") -method GET -Headers $znTeamHeader
+    #$asset3 = Invoke-RestMethod ($env.baseUri+"/assets/searchId?fqdn=eve") -method GET -Headers $znTeamHeader
 
     #Create Review Rules
     #Asset 1-1024, 1025-2048, 2049-3072

@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNActiveDirectoryDomain')
 
 Describe 'Get-ZNActiveDirectoryDomain' {
     It 'List' {
-        (Get-ZNActiveDirectoryDomain).Id | Should -Not -Be $null
+        (Get-ZNActiveDirectoryDomain).Id | Should -Not -BeNullOrEmpty
     }
 }

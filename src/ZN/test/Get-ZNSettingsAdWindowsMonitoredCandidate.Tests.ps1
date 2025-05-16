@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsAdWindowsMonito
 Describe 'Get-ZNSettingsAdWindowsMonitoredCandidate' {
     It 'Get' {
         $forest = Get-ZNSettingsAd | select -first 1
-        (Get-ZNSettingsAdWindowsMonitoredCandidate -ForestId $forest.ForestId).Items | Should -BeGreaterThan 0
+        (Get-ZNSettingsAdWindowsMonitoredCandidate -ForestId $forest.ForestId).Items.Count | Should -BeGreaterThan 0
     }
 }

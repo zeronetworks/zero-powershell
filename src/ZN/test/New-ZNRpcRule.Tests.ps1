@@ -16,11 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNRpcRule'))
 
 Describe 'New-ZNRpcRule' {
     It 'CreateExpanded' {
-        $asset = (Search-ZNAsset -Fqdn switch03).AssetId
+        $asset = (Search-ZNAsset -Fqdn ss01.posh.local).AssetId
         $group = (Get-ZNGroup -Search 'domain controllers').Items | where {$_.Id -like 'g:t:*'}
-        $user = (Get-ZNRpcRulesUserCandidate -Search 'Any User').Id
+        $user = (Get-ZNRpcRulesUserCandidate -Search 'Any User').Items.Id
         $rule = New-ZNRpcRule -Action 1 -Description "New RPC Rule" -ExcludedAssetIdsList @() -InterfaceUuidsList @('rpcAnyInterfaceId') -LocalAssetId $group.Id -OpNumbersList @() -ProtocolsList @() -RemoteAssetIdsList @($asset) -State 1 -UserIdsList @($user)
-        $rule.ItemId | Should -Not -Be $null
+        $rule.ItemId | Should -Not -BeNullOrEmpty
         Remove-ZNRpcRule -RuleId $rule.ItemId
     }
 }

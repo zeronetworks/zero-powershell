@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsBreakGlass'))
 
 Describe 'Get-ZNSettingsBreakGlass' {
     It 'Get' {
-        (Get-ZNSettingsBreakGlass).AgentConfigAllowIdentity | Should -Not -Be $null
+        (Get-ZNSettingsBreakGlass).AgentConfigAllowIdentity | Should -Not -BeNullOrEmpty
     }
 }

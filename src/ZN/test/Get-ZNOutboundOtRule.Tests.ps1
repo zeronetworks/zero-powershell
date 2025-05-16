@@ -16,12 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNOutboundOtRule'))
 
 Describe 'Get-ZNOutboundOtRule' {
     It 'List' {
-        (Get-ZNOutboundOtRule -AddBuiltins).Items | Should -BeGreaterThan 0
+        (Get-ZNOutboundOtRule -AddBuiltins).Items.Count | Should -BeGreaterThan 0
     }
 
     It 'Get' {
         $rule = (Get-ZNOutboundOtRule -AddBuiltins).Items | Select -First 1
         $rule = Get-ZNOutboundOtRule -RuleId $rule.Id
-        $rule.Id | Should -Not -BeNullOrEmpty
+        $rule.ItemId | Should -Not -BeNullOrEmpty
     }
 }

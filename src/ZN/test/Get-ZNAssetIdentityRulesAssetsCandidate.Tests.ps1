@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetIdentityRulesAsset
 Describe 'Get-ZNAssetIdentityRulesAssetsCandidate' {
     It 'List' {
         $asset= (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
-        { Get-ZNAssetIdentityRulesAssetsCandidate -AssetId $asset } | Should -Not -Be $null
+        (Get-ZNAssetIdentityRulesAssetsCandidate -AssetId $asset).Count | Should -BeGreaterThan 0
     }
 }

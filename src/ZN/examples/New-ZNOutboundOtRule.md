@@ -45,4 +45,4 @@ UpdatedById                :
 UpdatedByName              :
 ```
 
-This cmdlet creates an inbound OT rule.
+This cmdlet creates an outbound OT rule.

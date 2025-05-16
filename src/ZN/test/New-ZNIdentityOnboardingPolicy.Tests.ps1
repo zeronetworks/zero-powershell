@@ -16,9 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNIdentityOnboardingPolic
 
 Describe 'New-ZNIdentityOnboardingPolicy' {
     It 'CreateExpanded' {
-        $group = (Get-ZNIdentityOnboardingPoliciesGroupCandidate -Search "Account Operators").Items | select -First 1
+        $group = (Get-ZNIdentityOnboardingPoliciesGroupCandidate).Items | select -first 1
         $policy = New-ZNIdentityOnboardingPolicy -ExistingMembersLearningDays 30 -GroupId $group.id -NewMembersLearningDays 30 -Description "Powershell test"  -Enabled:$false
         $policy.ItemId | Should -Not -BeNullOrEmpty
-        Remove-ZNIdentityOnboardingPolicy -OnboardingPolicyId $policy.ItemId
+        Remove-ZNIdentityOnboardingPolicy -ProtectionPolicyId $policy.ItemId
     }
 }

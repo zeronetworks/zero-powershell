@@ -13,6 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNSettingsFirewallIgnoredRule' {
     It 'Get' {
-        (get-ZNSettingsFirewallIgnoredRule).InboundList | Should -Not -Be $null
+        (get-ZNSettingsFirewallIgnoredRule).InboundList.Count | Should -BeGreaterThan 0
     }
 }

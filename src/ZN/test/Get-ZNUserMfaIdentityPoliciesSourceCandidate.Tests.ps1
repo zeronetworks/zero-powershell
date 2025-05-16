@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNUserMfaIdentityPolicies
 Describe 'Get-ZNUserMfaIdentityPoliciesSourceCandidate' {
     It 'List' {
         $user = (Get-ZNUser -Search zero).Items | where {$_.Name -eq "zero"}
-        { (Get-ZNUserMfaIdentityPoliciesSourceCandidate -UserId $user.Id).Items } | Should -Not -Be $null
+        (Get-ZNUserMfaIdentityPoliciesSourceCandidate -UserId $user.Id).Items.Count | Should -BeGreaterThan 0
     }
 }

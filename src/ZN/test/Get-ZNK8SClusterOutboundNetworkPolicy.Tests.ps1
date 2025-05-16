@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNK8SClusterOutboundNetwo
 Describe 'Get-ZNK8SClusterOutboundNetworkPolicy' {
     It 'List' {
         $cluster = (Get-ZNK8SCluster).ITems | Select -First 1
-        (Get-ZNK8SClusterOutboundNetworkPolicy -ClusterId $cluster.id).Items.Count | Should -BeGreaterThan
+        (Get-ZNK8SClusterOutboundNetworkPolicy -K8SClusterId $cluster.id).Items.Count | Should -BeGreaterThan
     }
 }

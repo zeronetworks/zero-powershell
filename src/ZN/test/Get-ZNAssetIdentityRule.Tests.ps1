@@ -25,6 +25,6 @@ Describe 'Get-ZNAssetIdentityRule' {
         $rules = Get-ZNAssetIdentityRule -Asset $asset -AddBuiltins
         $ruleId = $rules.Items[0].id
         $rule = Get-ZNAssetIdentityRule -Asset $asset -RuleId $ruleId
-        $rule.ItemAssetId | Should -Not -Be $null
+        $rule.ItemAssetId | Should -Not -BeNullOrEmpty
     }
 }

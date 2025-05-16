@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsDomain'))
 
 Describe 'Get-ZNSettingsDomain' {
     It 'List' {
-        { (Get-ZNSettingsDomain).Count } | Should -BeGreaterThan 0
+        (Get-ZNSettingsDomain).Count | Should -BeGreaterThan 0
     }
 }

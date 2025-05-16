@@ -22,7 +22,7 @@ Describe 'Get-ZNInboundRule' {
         $destination = (Get-ZNInboundRulesDestinationCandidate -Search "all segmented assets").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNInboundRule -LocalEntityId $destination.Id -Action 1 -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt -IPSecOpt 1
-        { (Get-ZNInboundRule).Items } | Should -Not -Be $null
+        (Get-ZNInboundRule).Count | Should -BeGreaterThan 0
         Remove-ZNInboundRule -RuleId $rule.ItemId
     }
 
@@ -33,8 +33,8 @@ Describe 'Get-ZNInboundRule' {
         $destination = (Get-ZNInboundRulesDestinationCandidate -Search "all segmented assets").Items
         $expiresAt = [DateTimeOffset]::UtcNow.AddHours(1).ToUnixTimeMilliseconds()
         $rule = New-ZNInboundRule -LocalEntityId $destination.Id -Action 1 -LocalProcessesList @("*") -PortsList $portsList -RemoteEntityIdsList @($source.id) -State 1 -ExpiresAt $expiresAt -IPSecOpt 1
-        $rule = Get-ZNInboundRule | Select-Object -First 1
-        { (Get-ZNInboundRule -RuleId $rule.Id).Id } | Should -Not -Be $null
+        $rule = (Get-ZNInboundRule).Items | Select-Object -First 1
+        (Get-ZNInboundRule -RuleId $rule.Id).ItemId | Should -Not -BeNullOrEmpty
         Remove-ZNInboundRule -RuleId $rule.Id
     }
 }

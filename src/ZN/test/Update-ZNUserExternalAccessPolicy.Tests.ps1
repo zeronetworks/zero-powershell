@@ -18,7 +18,7 @@ Describe 'Update-ZNUserExternalAccessPolicy' {
     It 'UpdateExpanded' {
         $userId = ((Get-ZNUser -Search "zero").Items | where {$_.Name -eq "zero"}).Id
         $portsList = New-ZNPortsList -Protocol TCP -Ports 12
-        $dstAsset = (Search-ZNAsset -Fqdn ls01.posh.local).AssetId
+        $dstAsset = (Search-ZNAsset -Fqdn ml01.posh.local).AssetId
         $Policy = New-ZNUserExternalAccessPolicy -UserId $userId -DstAssetId $dstAsset -DstPortsList $portsList -DstProcessNamesList @("*") -Name "ExternalUpdateUserTest" -RuleDuration 4 -SrcUserIdsList @($userId) -State 1 -Url "https://external.posh.local"
         
         $updatedPolicy = Update-ZNUserExternalAccessPolicy -UserId $userId -PolicyId $Policy.ItemId -Name "ExternalTestUpdateUser" -Url "https://external.posh.local/updated"

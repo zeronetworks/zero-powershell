@@ -17,11 +17,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNSwitchInboundOtRule'))
 Describe 'New-ZNSwitchInboundOtRule' {
     It 'CreateExpanded' {
         $switch = (Get-ZNSwitch).Items | Select -First 1
-        $protocolsList = New-ZNProtocolsList -Protocol tcp -Ports 456
+        $protocolsList = New-ZNProtocolsList -Protocol tcp -LocalPorts (get-Random -min 1 -max 1024)
         $source = Invoke-ZNEncodeEntityIp -Ip 1.1.1.100
         $destination = (Get-ZNInboundOtRulesDestinationCandidate -Search "otv2").items
         $rule = New-ZNSwitchInboundOtRule -SwitchId $switch.id -Action 1 -Direction 1 -localEntityId $destination.Id -RemoteEntitiesIdList @($source.id) -protocolsList $protocolsList -state 1 -LocalProcessesList @("*") -ExcludedLocalIdsList @() -ShouldBuildMirrorRules
-        $rule.ItemId = | Should -Not -BeNullOrEmpty
+        $rule.ItemId | Should -Not -BeNullOrEmpty
         Remove-ZNInboundOtRule -RuleId $rule.ItemId
     }
 }

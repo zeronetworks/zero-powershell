@@ -21,7 +21,7 @@ Describe 'Get-ZNK8SNamespace' {
 
     It 'Get' {
         $namespace = (Get-ZNK8SNamespace).Items | select -First 1
-        $namespace = Get-ZNK8SNamespace -NamespaceId $namespace.id
-        $namepsace.EntityId | Should -Not -BeNullOrEmpty
+        $namespace = Get-ZNK8SNamespace -K8SNamespaceId $namespace.id
+        $namespace.EntityId | Should -Not -BeNullOrEmpty
     }
 }

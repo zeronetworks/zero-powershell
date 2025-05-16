@@ -24,6 +24,6 @@ Describe 'Get-ZNGroupsRpcRule' {
         $group = (Get-ZNGroup -Search 'domain controllers').Items | where {$_.Id -like 'g:t:*'}
         $rules = (Get-ZNGroupsRpcRule -GroupId $group.id -GroupType Tag -AddBuiltins).Items
         $rule = Get-ZNGroupsRpcRule -GroupId $group.id -GroupType Tag -RuleId $rules[0].Id
-        $rule.ItemId | Should -Not -Be $null
+        $rule.ItemId | Should -Not -BeNullOrEmpty
     }
 }

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNGroupsIdentityRulesAsse
 
 Describe 'Get-ZNGroupsIdentityRulesAssetsCandidate' {
     It 'List' {
-        $group = Get-ZNGroup -Search "domain controllers" | where {$_.Id -like "g:t:*"}
-        { Get-ZNGroupsIdentityRulesAssetsCandidate -GroupId $group.Id -GroupType tag } | Should -Not -Be $null
+        $group = (Get-ZNGroup -Search "domain controllers").Items | where {$_.Id -like "g:t:*"}
+        (Get-ZNGroupsIdentityRulesAssetsCandidate -GroupId $group.Id -GroupType tag).Items.Count | Should -BeGreaterThan 0
     }
 }

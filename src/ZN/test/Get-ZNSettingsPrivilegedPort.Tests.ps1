@@ -13,6 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'Get-ZNSettingsPrivilegedPort' {
     It 'Get' {
-        (Get-ZNSettingsPrivilegedPort).ItemTcpPorts | Should -Not -Be $null
+        (Get-ZNSettingsPrivilegedPort).ItemTcpPorts | Should -Not -BeNullOrEmpty
     }
 }

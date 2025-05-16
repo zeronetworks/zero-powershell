@@ -1,6 +1,6 @@
-### Example 1: List destination candidate for OT outbound rule
+### Example 1: List destination candidate for OT inbound rule
 ```powershell
-(Get-ZNAssetOtOutboundOtrulesDestinationCandidate -AssetId a:t:o0AARV78).items
+(Get-ZNAssetOtInboundOtrulesDestinationCandidate -AssetId a:t:o0AARV78).items
 ```
 
 ```output
@@ -19,4 +19,4 @@ g:s:28da83cd Any except trusted Internet               system
 g:o:1Nda83cd ATM                                       OT/IoT
 ```
 
-This cmdlet lists destination candidates for an OT outbound rule.
+This cmdlet lists destination candidates for an OT inbound rule.

@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetsIdentityQueued'))
 
 Describe 'Get-ZNAssetsIdentityQueued' {
     It 'List' {
-        { (Get-ZNAssetsIdentityQueued).Items } | Should -Not -Be $null
+        (Get-ZNAssetsIdentityQueued).Items.Count | Should -BeGreaterThan 0
     }
 }

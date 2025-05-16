@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-ZNEncodeEntityIP'))
 
 Describe 'Invoke-ZNEncodeEntityIP' {
     It 'Encode'  {
-        { Invoke-ZNEncodeEntityIP -Ip 1.1.1.1} | Should -Not -Be $null
+        Invoke-ZNEncodeEntityIP -Ip 1.1.1.1 | Should -Not -BeNullOrEmpty
     }
 }

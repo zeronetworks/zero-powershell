@@ -13,9 +13,9 @@ Returns an object with group analysis data.
 ## SYNTAX
 
 ```
-Get-ZNGroupsNetworkAnalysis -GroupId <String> -GroupType <String> -DirectlyRetrievedFromAsset
- [-AccountName <String>] [-ConnectionState <Int32>] [-Direction <Int32>] [-From <Int64>] [-Sort <String>]
- [-To <Int64>] [-TrafficType <Int32>] [<CommonParameters>]
+Get-ZNGroupsNetworkAnalysis -GroupId <String> -GroupType <String> [-AccountName <String>]
+ [-ConnectionState <Int32>] [-Direction <Int32>] [-DirectlyRetrievedFromAsset] [-From <Int64>]
+ [-Sort <String>] [-To <Int64>] [-TrafficType <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,9 +99,9 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: $true
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

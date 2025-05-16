@@ -16,9 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNAssetExternalAccessP
 
 Describe 'Remove-ZNAssetExternalAccessPolicy' {
     It 'Delete' {
-        $srcUser = Get-ZNExternalAccessPolicySourceUserCandidate -Search "Any user"
+        $srcUser = (Get-ZNExternalAccessPolicySourceUserCandidate -Search "Any user").Items
         $portsList = New-ZNPortsList -Protocol TCP -Ports 12
-        $dstAsset = (Search-ZNAsset -Fqdn ls01.posh.local).AssetId
+        $dstAsset = (Search-ZNAsset -Fqdn ml01.posh.local).AssetId
         $Policy = New-ZNExternalAccessPolicy -DstAssetId $dstAsset -DstPortsList $portsList -DstProcessNamesList @("*") -Name "ExternalDeleteAssetTest" -RuleDuration 4 -SrcUserIdsList @($srcUser.Id) -State 1 -Url "https://external.posh.local"
         { Remove-ZNAssetExternalAccessPolicy -AssetId $dstAsset -PolicyId $Policy.ItemId } | SHould -Not -Throw
     }

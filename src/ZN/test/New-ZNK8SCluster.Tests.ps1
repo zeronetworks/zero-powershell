@@ -18,6 +18,6 @@ Describe 'New-ZNK8SCluster' {
     It 'CreateExpanded' {
         $cluster = New-ZNK8SCluster -Name "NewCluster"
         $cluster.ItemId | Should -Not -BeNullOrEmpty
-        Remove-ZNK8SCluster -ClusterId $cluster.ItemId
+        Remove-ZNK8SCluster -K8SClusterId $cluster.ItemId
     }
 }
