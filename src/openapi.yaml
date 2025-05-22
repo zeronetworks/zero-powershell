@@ -1308,7 +1308,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/assetsPreferredSegmentServerSetBody'
+              $ref: '#/components/schemas/assetsPreferredSegmentServerBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -8222,7 +8222,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/assetsPreferredSegmentServerSetBody'
+              $ref: '#/components/schemas/assetsPreferredSegmentServerBody'
       responses:
         '200':
           $ref: '#/components/responses/200_empty'
@@ -15471,7 +15471,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/assetsPreferredSegmentServerBody'
+              $ref: '#/components/schemas/assetPreferredSegmentServerBody'
       responses:
         '200':
           description: OK
@@ -43323,23 +43323,25 @@ components:
       properties:
         preferredDeployment:
           type: string
-    assetsPreferredSegmentServerSetBody:
+    assetPreferredSegmentServerBody:
       type: object
       properties:
         assetId:
           type: string
-        preferredDeploymentId:
-          type: string
-          description: If not provided sets the asset back to no preferred segment server
       required:
         - assetId
     assetsPreferredSegmentServerBody:
       type: object
       properties:
-        assetId:
+        assetIds:
+          type: array
+          items:
+            type: string
+        preferredDeploymentId:
           type: string
+          description: If not provided sets the asset back to no preferred segment server
       required:
-        - assetId
+        - assetIds
     assetsProtectBody:
       type: object
       properties:

@@ -1,6 +1,7 @@
 Set-Location ..\src\ZN
 
 try {
+    remove-item -Force ./obj/ -Confirm:$false -Recurse
     autorest
 }
 catch {

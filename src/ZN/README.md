@@ -32,7 +32,7 @@ require:
 input-file:
   - $(this-folder)/../openapi.yaml
 
-module-version: 0.0.20-preview
+module-version: 0.0.21-preview
 title: Api
   
 inlining-threshold: 50
@@ -2156,9 +2156,8 @@ directive:
       subject: AssetMirror
   # combine assets/asset
   - where:
-      subject: AssetsPreferredSegmentServer
-    set:
       subject: AssetPreferredSegmentServer
+    hide: true
   # combine user search
   - where:
       subject: ^UsersByPrincipalName$|^UsersBySid$

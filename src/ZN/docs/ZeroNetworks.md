@@ -332,9 +332,6 @@ Returns a list of source candidates for Outbound rules.
 ### [Get-ZNAssetOutboundRulesUserCandidate](Get-ZNAssetOutboundRulesUserCandidate.md)
 Returns a list of users candidates for Outbound rules.
 
-### [Get-ZNAssetPreferredSegmentServer](Get-ZNAssetPreferredSegmentServer.md)
-Returns the preferred segment server id.
-
 ### [Get-ZNAssetRpcRule](Get-ZNAssetRpcRule.md)
 Returns the properties of an RPC rule.
 
@@ -373,6 +370,9 @@ Returns a list of Protected assets.
 
 ### [Get-ZNAssetsOt](Get-ZNAssetsOt.md)
 Returns a list of OT/IoT assets.
+
+### [Get-ZNAssetsPreferredSegmentServer](Get-ZNAssetsPreferredSegmentServer.md)
+Returns the preferred segment server id.
 
 ### [Get-ZNAssetsRpcMonitored](Get-ZNAssetsRpcMonitored.md)
 Returns a list of assets that are RPC monitored.
@@ -1795,11 +1795,11 @@ Set the outbound restriction (Enable Internal, Enable External, Enable Both, Dis
 ### [Update-ZNAssetOutboundRule](Update-ZNAssetOutboundRule.md)
 Updates an outbound  rule.
 
-### [Update-ZNAssetPreferredSegmentServer](Update-ZNAssetPreferredSegmentServer.md)
-Returns and empty object.
-
 ### [Update-ZNAssetRpcRule](Update-ZNAssetRpcRule.md)
 Updates an RPC rule.
+
+### [Update-ZNAssetsPreferredSegmentServer](Update-ZNAssetsPreferredSegmentServer.md)
+Returns and empty object.
 
 ### [Update-ZNAssetType](Update-ZNAssetType.md)
 Set the asset type (Client/server)
