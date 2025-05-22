@@ -1,26 +1,19 @@
 ---
 external help file:
 Module Name: ZeroNetworks
-online version: https://github.com/zeronetworks/zero-powershell/zeronetworks/update-znassetpreferredsegmentserver
+online version: https://github.com/zeronetworks/zero-powershell/zeronetworks/update-znassetspreferredsegmentserver
 schema: 2.0.0
 ---
 
-# Update-ZNAssetPreferredSegmentServer
+# Update-ZNAssetsPreferredSegmentServer
 
 ## SYNOPSIS
 Returns and empty object.
 
 ## SYNTAX
 
-### UpdateExpanded1 (Default)
 ```
-Update-ZNAssetPreferredSegmentServer -AssetId <String> [-AccountName <String>]
- [-PreferredDeploymentId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Update-ZNAssetPreferredSegmentServer -AssetId <String> -AssetId1 <String> [-AccountName <String>]
+Update-ZNAssetsPreferredSegmentServer -AssetIds <String[]> [-AccountName <String>]
  [-PreferredDeploymentId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,12 +22,12 @@ Returns and empty object.
 
 ## EXAMPLES
 
-### Example 1: Set preferred Segment server
+### Example 1: Update Preferred segment server
 ```powershell
-Update-ZNAssetPreferredSegmentServer -AssetId "a:l:sQON6Vxx" -PreferredDeploymentId f56dd59d-ab65-45ed-871c-b6c0742db568
+Update-ZNAssetsPreferredSegmentServer -AssetIds @("a:n:c9PBr848") -PreferredDeploymentId c9d9e857-5f32-48ea-b9b5-9febd9f46605
 ```
 
-This cmdlet sets the preferred Segment server for an asset.
+This cmdlet updates preferred segment server for assets.
 
 ## PARAMETERS
 
@@ -53,27 +46,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AssetId
-assetId to filter on
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AssetId1
+### -AssetIds
 .
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
