@@ -72,7 +72,9 @@ function setupEnv() {
     }
 
     Connect-AzAccount -UseDeviceAuthentication -Subscription 51a36d38-3b14-471f-8dde-a5867f5e51eb
-    $azToken = "Bearer "+(Get-AzAccessToken -ResourceUrl  https://znapikeys.vault.azure.net).Token
+    $aztoken = Get-AzAccessToken -ResourceUrl  https://znapikeys.vault.azure.net
+    $aztoken = ConvertFrom-SecureString $aztoken.Token -AsPlainText
+    $azToken = "Bearer "+$azToken
     $azHeaders = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
     $azHeaders.Add("Authorization", $azToken)
     $azHeaders.Add("Content-Type","application/json")

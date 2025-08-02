@@ -43,7 +43,7 @@ catch{
 }
 
 try{
-    .\pack-module.ps1
+    x
 }
 catch{
     Write-Host "Failed to build modules" -ForegroundColor Red

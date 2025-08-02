@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-ZNSettingsZpa
 
 ## SYNOPSIS
-Get ZPA settings in Integrations
+Get ZTNA proxy settings in Integrations
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-ZNSettingsZpa [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get ZPA settings in Integrations
+Get ZTNA proxy settings in Integrations
 
 ## EXAMPLES
 

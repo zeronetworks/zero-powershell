@@ -68,6 +68,9 @@ Logout of Zero Networks
 ### [Enable-ZNAssetQuarantine](Enable-ZNAssetQuarantine.md)
 Returns an empty object.
 
+### [Enable-ZNUserQuarantine](Enable-ZNUserQuarantine.md)
+Returns an empty object.
+
 ### [Get-ZNActiveDirectoryDomain](Get-ZNActiveDirectoryDomain.md)
 Returns a list of AD domains.
 
@@ -92,8 +95,8 @@ Returns a list of source candidates for AE Exclusion rules.
 ### [Get-ZNAeExclusionsOutboundUserCandidate](Get-ZNAeExclusionsOutboundUserCandidate.md)
 Returns a list of users candidates for Outbound AE Exclusions.
 
-### [Get-ZNAiNextBatch](Get-ZNAiNextBatch.md)
-Returns a date in epoch(ms) for the next batch of AI rules.
+### [Get-ZNAeNextBatch](Get-ZNAeNextBatch.md)
+Returns a date in epoch(ms) for the next batch of AE rules.
 
 ### [Get-ZNAsset](Get-ZNAsset.md)
 Returns the properties of an asset.
@@ -164,9 +167,6 @@ Returns a list of source candidates for Inbound rules.
 ### [Get-ZNAssetListeningPort](Get-ZNAssetListeningPort.md)
 List listening ports of an asset
 
-### [Get-ZNAssetLogonActivitiesDistinctValue](Get-ZNAssetLogonActivitiesDistinctValue.md)
-Returns a list of distinct values for a field in logon activities.
-
 ### [Get-ZNAssetManager](Get-ZNAssetManager.md)
 Get asset managers of asset
 
@@ -236,9 +236,6 @@ Returns the properties of an outbound MFA policy.
 ### [Get-ZNAssetMirrorCandidate](Get-ZNAssetMirrorCandidate.md)
 Get mirror candidates
 
-### [Get-ZNAssetNetworkActivitiesDistinctValue](Get-ZNAssetNetworkActivitiesDistinctValue.md)
-Returns a list of distinct values for a field in network activities.
-
 ### [Get-ZNAssetNetworkAnalysis](Get-ZNAssetNetworkAnalysis.md)
 Returns an object with asset analysis data.
 
@@ -272,9 +269,6 @@ Returns a list of source candidates for Inbound rules.
 ### [Get-ZNAssetOtInboundOtrulesUserCandidate](Get-ZNAssetOtInboundOtrulesUserCandidate.md)
 Returns a list of users candidates for Inbound rules.
 
-### [Get-ZNAssetOtLogonActivitiesDistinctValue](Get-ZNAssetOtLogonActivitiesDistinctValue.md)
-Returns a list of distinct values for a field in logon activities.
-
 ### [Get-ZNAssetOtMemberOf](Get-ZNAssetOtMemberOf.md)
 Returns a list of groups the asset is a member of.
 
@@ -283,9 +277,6 @@ Returns a list of groups the asset can be a member of.
 
 ### [Get-ZNAssetOtMirrorCandidate](Get-ZNAssetOtMirrorCandidate.md)
 Get mirror candidates
-
-### [Get-ZNAssetOtNetworkActivitiesDistinctValue](Get-ZNAssetOtNetworkActivitiesDistinctValue.md)
-Returns a list of distinct values for a field in network activities.
 
 ### [Get-ZNAssetOtNetworkAnalysis](Get-ZNAssetOtNetworkAnalysis.md)
 Returns an object with OT/IoT asset analysis data.
@@ -383,6 +374,9 @@ Returns a list of assets in RPC learning.
 ### [Get-ZNAssetsRpcSegmented](Get-ZNAssetsRpcSegmented.md)
 Returns a list of assets that are RPC Segmented.
 
+### [Get-ZNAssetsSegmentationStatistics](Get-ZNAssetsSegmentationStatistics.md)
+Returns an object with asset segmentation statistics.
+
 ### [Get-ZNAssetsStatesStatistics](Get-ZNAssetsStatesStatistics.md)
 Returns an object with asset state statistics.
 
@@ -397,15 +391,6 @@ Returns a list of audit events.
 
 ### [Get-ZNCustomGroupsCandidate](Get-ZNCustomGroupsCandidate.md)
 Returns a list of candidates for custom group membership.
-
-### [Get-ZNEnvironmentsLearningConfig](Get-ZNEnvironmentsLearningConfig.md)
-Get Learning Config
-
-### [Get-ZNEnvironmentsLicense](Get-ZNEnvironmentsLicense.md)
-Get Subscription Licenses
-
-### [Get-ZNEnvironmentsSystemHealth](Get-ZNEnvironmentsSystemHealth.md)
-Get system health
 
 ### [Get-ZNExternalAccessPolicy](Get-ZNExternalAccessPolicy.md)
 Returns an external access policy.
@@ -492,9 +477,6 @@ Returns a list of excluded destination candidates for Inbound rules.
 ### [Get-ZNGroupsInboundRulesSourceCandidate](Get-ZNGroupsInboundRulesSourceCandidate.md)
 Returns a list of source candidates for Inbound rules.
 
-### [Get-ZNGroupsLogonActivitiesDistinctValue](Get-ZNGroupsLogonActivitiesDistinctValue.md)
-Returns a list of distinct values for a field in logon activities.
-
 ### [Get-ZNGroupsManagedAsset](Get-ZNGroupsManagedAsset.md)
 Get managed assets for group
 
@@ -557,9 +539,6 @@ Returns a list of source users candidates on outbound MFA policies.
 
 ### [Get-ZNGroupsMfaOutboundPolicy](Get-ZNGroupsMfaOutboundPolicy.md)
 Returns the properties of an outbound MFA policy.
-
-### [Get-ZNGroupsNetworkActivitiesDistinctValue](Get-ZNGroupsNetworkActivitiesDistinctValue.md)
-Returns a list of distinct values for a field in network activities.
 
 ### [Get-ZNGroupsNetworkAnalysis](Get-ZNGroupsNetworkAnalysis.md)
 Returns an object with group analysis data.
@@ -663,6 +642,15 @@ Returns a list of source candidates for Inbound rules.
 ### [Get-ZNK8SCluster](Get-ZNK8SCluster.md)
 Returns a k8s cluster.
 
+### [Get-ZNK8SClusterApplication](Get-ZNK8SClusterApplication.md)
+Returns a list of applications for the K8s.
+
+### [Get-ZNK8SClusterApplicationNamespace](Get-ZNK8SClusterApplicationNamespace.md)
+Returns a list of namespaces for an application in the k8s cluster.
+
+### [Get-ZNK8SClusterApplicationWorkload](Get-ZNK8SClusterApplicationWorkload.md)
+Returns a list of workloads for a application in the k8s cluster.
+
 ### [Get-ZNK8SClusterAudit](Get-ZNK8SClusterAudit.md)
 Returns a list of audits for the K8s.
 
@@ -674,6 +662,9 @@ Returns a list of network policies in the k8s cluster.
 
 ### [Get-ZNK8SClusterNamespace](Get-ZNK8SClusterNamespace.md)
 Returns a list of namespaces for the k8s cluster.
+
+### [Get-ZNK8SClusterNamespaceApplication](Get-ZNK8SClusterNamespaceApplication.md)
+Returns a list of applications for the K8s namespace.
 
 ### [Get-ZNK8SClusterNamespaceInboundNetworkPolicy](Get-ZNK8SClusterNamespaceInboundNetworkPolicy.md)
 Returns a list of network policies for a namespaces in the k8s cluster.
@@ -696,6 +687,9 @@ Returns a list of workloads in the k8s cluster.
 ### [Get-ZNK8SNamespace](Get-ZNK8SNamespace.md)
 Returns a list of namespaces for the k8s.
 
+### [Get-ZNK8SNamespaceApplication](Get-ZNK8SNamespaceApplication.md)
+Returns a list of applications for the K8s namespace.
+
 ### [Get-ZNK8SNamespaceInboundNetworkPolicy](Get-ZNK8SNamespaceInboundNetworkPolicy.md)
 Returns a list of network policies for a namespaces in the k8s.
 
@@ -707,9 +701,6 @@ Returns a list of workloads for a namespaces in the k8s.
 
 ### [Get-ZNLearningConfig](Get-ZNLearningConfig.md)
 Get Learning Config
-
-### [Get-ZNLogonActivitiesDistinctValue](Get-ZNLogonActivitiesDistinctValue.md)
-Returns a list of distinct values for a field in logon activities.
 
 ### [Get-ZNMfaIdentityPoliciesDestinationCandidate](Get-ZNMfaIdentityPoliciesDestinationCandidate.md)
 Returns a list of candidates for the destination of an identity MFA policy.
@@ -770,9 +761,6 @@ Returns and object with MFA distribution.
 
 ### [Get-ZNMfaPoliciesStatistics](Get-ZNMfaPoliciesStatistics.md)
 Returns an object with MFA statistics.
-
-### [Get-ZNNetworkActivitiesDistinctValue](Get-ZNNetworkActivitiesDistinctValue.md)
-Returns a list of distinct values for a field in network activities.
 
 ### [Get-ZNNetworkOnboardingPoliciesGroupCandidate](Get-ZNNetworkOnboardingPoliciesGroupCandidate.md)
 Returns a list of candidates for a network onboarding policy.
@@ -867,11 +855,17 @@ Get the anti-tampering settings
 ### [Get-ZNSettingsAssetManager](Get-ZNSettingsAssetManager.md)
 List asset managers
 
-### [Get-ZNSettingsAuth](Get-ZNSettingsAuth.md)
-Get the portal security settings
+### [Get-ZNSettingsAuthAllowedIP](Get-ZNSettingsAuthAllowedIP.md)
+Get the portal allowed ips settings
+
+### [Get-ZNSettingsAuthSessionTtl](Get-ZNSettingsAuthSessionTtl.md)
+Get the portal session ttl settings
 
 ### [Get-ZNSettingsBreakGlass](Get-ZNSettingsBreakGlass.md)
 Get break glass settings
+
+### [Get-ZNSettingsBreakGlassMfa](Get-ZNSettingsBreakGlassMfa.md)
+Get break glass MFA settings
 
 ### [Get-ZNSettingsClaroty](Get-ZNSettingsClaroty.md)
 Get Claroty Settings
@@ -918,6 +912,9 @@ Returns a list of candidates for user access config excluded source users.
 ### [Get-ZNSettingsConnectUserAccessConfigSourceUsersCandidate](Get-ZNSettingsConnectUserAccessConfigSourceUsersCandidate.md)
 Returns a list of candidates for user access config source users.
 
+### [Get-ZNSettingsDay2Automation](Get-ZNSettingsDay2Automation.md)
+Get day 2 settings automation
+
 ### [Get-ZNSettingsDefaultApplication](Get-ZNSettingsDefaultApplication.md)
 Get Default SSO Application settings in Identity Providers
 
@@ -936,6 +933,9 @@ Returns the properties of ignored rules for anti-tampering Firewall settings.
 ### [Get-ZNSettingsFirewallProfile](Get-ZNSettingsFirewallProfile.md)
 Returns the properties of firewall profiles in Firewall settings.
 
+### [Get-ZNSettingsIdentityLogoff](Get-ZNSettingsIdentityLogoff.md)
+Get identity logoff settings
+
 ### [Get-ZNSettingsIdp](Get-ZNSettingsIdp.md)
 Get identity provider settings in Identity Providers
 
@@ -948,6 +948,9 @@ Get Internal Subnets settings in System
 ### [Get-ZNSettingsJamfCredentials](Get-ZNSettingsJamfCredentials.md)
 Returns the properties for JAMF Credentials Settings.
 
+### [Get-ZNSettingsK8SApplicationsLabel](Get-ZNSettingsK8SApplicationsLabel.md)
+Get K8s application label settings
+
 ### [Get-ZNSettingsLearningConfig](Get-ZNSettingsLearningConfig.md)
 Get Learning Config settings in Network Segmentation
 
@@ -956,6 +959,9 @@ Get the inbound learning with blocks config settings
 
 ### [Get-ZNSettingsLicense](Get-ZNSettingsLicense.md)
 Get Subscription Licenses
+
+### [Get-ZNSettingsLicensesInUse](Get-ZNSettingsLicensesInUse.md)
+Returns a list of licenses in use
 
 ### [Get-ZNSettingsLinuxSetup](Get-ZNSettingsLinuxSetup.md)
 Get the linux setup settings in Asset Management
@@ -981,6 +987,9 @@ Returns the properties of MFA detection settings.
 ### [Get-ZNSettingsNotification](Get-ZNSettingsNotification.md)
 Returns the properties of the Mail Notification settings.
 
+### [Get-ZNSettingsPamCyberark](Get-ZNSettingsPamCyberark.md)
+Get CyberArk config
+
 ### [Get-ZNSettingsPrivilegedPort](Get-ZNSettingsPrivilegedPort.md)
 Get Privileged Ports settings in Network segmentation
 
@@ -1003,7 +1012,7 @@ Get SIEM Sync Status Configuration
 Get Trusted Internet addresses settings in System
 
 ### [Get-ZNSettingsZpa](Get-ZNSettingsZpa.md)
-Get ZPA settings in Integrations
+Get ZTNA proxy settings in Integrations
 
 ### [Get-ZNSwitch](Get-ZNSwitch.md)
 gets a switch
@@ -1028,9 +1037,6 @@ Returns a list of users candidates for Inbound rules.
 
 ### [Get-ZNSwitchInterface](Get-ZNSwitchInterface.md)
 List interfaces for a switch
-
-### [Get-ZNSwitchNetworkActivitiesDistinctValue](Get-ZNSwitchNetworkActivitiesDistinctValue.md)
-Returns a list of distinct values for a field in network activities.
 
 ### [Get-ZNSwitchOt](Get-ZNSwitchOt.md)
 gets OT assets for a swtich
@@ -1174,17 +1180,11 @@ Returns a list of Identity segmented users.
 Returns a list of Users.
 Pass the returned 'nextCursor' as the '_cursor' query param of the next request for batches, when the '_offset' param is not used.
 
-### [Get-ZNUsersLogonActivitiesDistinctValue](Get-ZNUsersLogonActivitiesDistinctValue.md)
-Returns a list of distinct values for a field in logon activities.
-
 ### [Get-ZNUsersManagedAsset](Get-ZNUsersManagedAsset.md)
 get managed assets for user
 
 ### [Get-ZNUsersManagedAssetsCandidate](Get-ZNUsersManagedAssetsCandidate.md)
 Get asset candidates to be managed by asset managers
-
-### [Get-ZNUsersNetworkActivitiesDistinctValue](Get-ZNUsersNetworkActivitiesDistinctValue.md)
-Returns a list of distinct values for a field in network activities.
 
 ### [Get-ZNUsersPrivileged](Get-ZNUsersPrivileged.md)
 Returns a list of Privileged Users.
@@ -1639,6 +1639,9 @@ Returns an empty object
 ### [Remove-ZNSettingsMfaCache](Remove-ZNSettingsMfaCache.md)
 deletes a MFA Cache Policy.
 
+### [Remove-ZNSettingsPamCyberark](Remove-ZNSettingsPamCyberark.md)
+Delete CyberArk config
+
 ### [Remove-ZNSettingsPushNotification](Remove-ZNSettingsPushNotification.md)
 Returns an empty response.
 
@@ -1710,6 +1713,9 @@ Returns a number of assets that are valid for network segmentation.
 
 ### [Test-ZNAssetNetworkUnprotect](Test-ZNAssetNetworkUnprotect.md)
 Returns a number of assets that are valid to unprotect.
+
+### [Test-ZNSettingsPamCyberarkConnection](Test-ZNSettingsPamCyberarkConnection.md)
+test CyberArk connection
 
 ### [Unprotect-ZNAssetIdentitySegment](Unprotect-ZNAssetIdentitySegment.md)
 Returns an empty object.
@@ -1909,11 +1915,17 @@ Get the Ansible settings in Asset Management
 ### [Update-ZNSettingsAntitampering](Update-ZNSettingsAntitampering.md)
 Set the Antitampering settings
 
-### [Update-ZNSettingsAuth](Update-ZNSettingsAuth.md)
+### [Update-ZNSettingsAuthAllowedIP](Update-ZNSettingsAuthAllowedIP.md)
+Set the allowed ips settings
+
+### [Update-ZNSettingsAuthSessionTtl](Update-ZNSettingsAuthSessionTtl.md)
 Set the portal security settings
 
 ### [Update-ZNSettingsBreakGlass](Update-ZNSettingsBreakGlass.md)
 Update break glass settings
+
+### [Update-ZNSettingsBreakGlassMfa](Update-ZNSettingsBreakGlassMfa.md)
+Update break glass MFA settings
 
 ### [Update-ZNSettingsClaroty](Update-ZNSettingsClaroty.md)
 Update Claroty Settings
@@ -1942,6 +1954,9 @@ Update Connect Server in Settings
 ### [Update-ZNSettingsConnectUserAccessConfig](Update-ZNSettingsConnectUserAccessConfig.md)
 Update a Connect User Access Configuration in Settings
 
+### [Update-ZNSettingsDay2Automation](Update-ZNSettingsDay2Automation.md)
+Set day 2 settings automation
+
 ### [Update-ZNSettingsDefaultApplication](Update-ZNSettingsDefaultApplication.md)
 Update the Default SSO Application settings in Identity Providers
 
@@ -1957,6 +1972,9 @@ Returns he properties of ignored rules for anti-tampering Firewall settings.
 ### [Update-ZNSettingsFirewallProfile](Update-ZNSettingsFirewallProfile.md)
 Returns the properties of firewall profiles in Firewall settings.
 
+### [Update-ZNSettingsIdentityLogoff](Update-ZNSettingsIdentityLogoff.md)
+Set Identity Logoff settings
+
 ### [Update-ZNSettingsIdp](Update-ZNSettingsIdp.md)
 Update identity provider settings in Identity Providers
 
@@ -1968,6 +1986,9 @@ Update the Internal Subnets settings in System
 
 ### [Update-ZNSettingsJamfCredentials](Update-ZNSettingsJamfCredentials.md)
 Returns the updated properties of JAMF Credentials settings.
+
+### [Update-ZNSettingsK8SApplicationsLabel](Update-ZNSettingsK8SApplicationsLabel.md)
+Set K8s application label settings
 
 ### [Update-ZNSettingsLearningConfig](Update-ZNSettingsLearningConfig.md)
 Update Learning Config settings in Network Segmentation
@@ -1990,6 +2011,9 @@ Returns the properties of the updated MFA detection settings.
 ### [Update-ZNSettingsNotification](Update-ZNSettingsNotification.md)
 Returns the properties of the updated Mail Notifications settings.
 
+### [Update-ZNSettingsPamCyberark](Update-ZNSettingsPamCyberark.md)
+Set CyberArk config
+
 ### [Update-ZNSettingsPrivilegedPort](Update-ZNSettingsPrivilegedPort.md)
 Set Privileged Ports settings in Network segmentation
 
@@ -2006,7 +2030,7 @@ Update SIEM Configuration
 Set Trusted Internet addresses settings in System
 
 ### [Update-ZNSettingsZpa](Update-ZNSettingsZpa.md)
-Set ZPA settings in Integrations
+Set ZTNA proxy settings in Integrations
 
 ### [Update-ZNSwitch](Update-ZNSwitch.md)
 update a switch

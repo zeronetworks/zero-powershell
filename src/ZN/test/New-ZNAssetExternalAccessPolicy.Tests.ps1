@@ -21,7 +21,7 @@ Describe 'New-ZNAssetExternalAccessPolicy' {
         $portsList = New-ZNPortsList -Protocol TCP -Ports 12
         $dstAsset = (Search-ZNAsset -Fqdn ml01.posh.local).AssetId
         $Policy = New-ZNAssetExternalAccessPolicy -AssetId $assetId -DstAssetId $dstAsset -DstPortsList $portsList -DstProcessNamesList @("*") -Name "ExternalNewAssetTest" -RuleDuration 4 -SrcUserIdsList @($srcUser.Id) -State 1 -Url "https://external.posh.local"
-        $Policy.Item.Id | Should -Not -BeNullOrEmpty
-        Remove-ZNAssetExternalAccessPolicy -AssetId $assetId -PolicyId $Policy.Item.Id
+        $Policy.ItemId | Should -Not -BeNullOrEmpty
+        Remove-ZNAssetExternalAccessPolicy -AssetId $assetId -PolicyId $Policy.ItemId
     }
 }
