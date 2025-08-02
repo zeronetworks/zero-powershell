@@ -15,7 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNAssetsPreferredSegme
 }
 
 Describe 'Update-ZNAssetsPreferredSegmentServer' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $segmentServer = (Get-ZNSegmentServer)[0]
+        $asset = ((Get-ZNAsset -Limit 100).Items | where {$_.PreferredDeploymentId -eq ""})[0]
+        Update-ZNAssetsPreferredSegmentServer -AssetIds @($asset.id) -PreferredDeploymentId $segmentServer.Id
+        $updatedAsset = Get-ZNAsset -AssetId $asset.Id
+        $updatedAsset.EntityPreferredDeploymentId | Should -Not -BeNullOrEmpty
+        Update-ZNAssetsPreferredSegmentServer -AssetIds @($asset.id) -PreferredDeploymentId $null
     }
 }

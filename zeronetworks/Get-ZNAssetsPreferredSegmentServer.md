@@ -19,7 +19,7 @@ Get-ZNAssetsPreferredSegmentServer -AssetId <String> [-AccountName <String>] [<C
 
 ### Get
 ```
-Get-ZNAssetsPreferredSegmentServer -Body <IAssetPreferredSegmentServerBody> [-AccountName <String>]
+Get-ZNAssetsPreferredSegmentServer -Body <IAssetsPreferredSegmentServerBody> [-AccountName <String>]
  [<CommonParameters>]
 ```
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetPreferredSegmentServerBody
+Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsPreferredSegmentServerBody
 Parameter Sets: Get
 Aliases:
 
@@ -94,7 +94,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetPreferredSegmentServerBody
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsPreferredSegmentServerBody
 
 ## OUTPUTS
 
@@ -109,7 +109,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`BODY <IAssetPreferredSegmentServerBody>`: .
+`BODY <IAssetsPreferredSegmentServerBody>`: .
   - `AssetId <String>`: 
 
 ## RELATED LINKS

@@ -283,9 +283,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IExternalAccessPolicyList
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IExternalAccessPolicyItem
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IExternalAccessPolicyResponse
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IExternalAccessPolicyList
 
 ## NOTES
 

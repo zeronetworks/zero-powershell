@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-ZNSettingsZpa
 
 ## SYNOPSIS
-Set ZPA settings in Integrations
+Set ZTNA proxy settings in Integrations
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Update-ZNSettingsZpa [-AccountName <String>] [-ClientOutboundSubnet <String>] [-
 ```
 
 ## DESCRIPTION
-Set ZPA settings in Integrations
+Set ZTNA proxy settings in Integrations
 
 ## EXAMPLES
 

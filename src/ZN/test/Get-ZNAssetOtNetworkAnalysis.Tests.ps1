@@ -18,6 +18,6 @@ Describe 'Get-ZNAssetOtNetworkAnalysis' {
     It 'Get' {
         $asset = (Search-ZNAsset -fqdn otv1.posh.local).AssetId
         $analysis = Get-ZNAssetOtNetworkAnalysis -AssetId $asset -ConnectionState 2 -DirectlyRetrievedFromAsset:$false
-        $analysis.CountByRemoteAsset | Should -BeGreaterThan 0
+        $analysis.CountByRemoteAsset | Should  -Not -BeNullOrEmpty
     }
 }

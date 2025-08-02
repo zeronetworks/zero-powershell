@@ -15,11 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetsPreferredSegmentS
 }
 
 Describe 'Get-ZNAssetsPreferredSegmentServer' {
-    It 'GetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetExpanded' {
+        $asset =  ((Get-ZNAsset -limit 100).Items | where {$_.PreferredDeploymentId -ne ""})[0]
+        (Get-ZNAssetsPreferredSegmentServer -AssetId $asset.Id).PreferredDeployment | Should -Not -BeNullOrEmpty
     }
 }

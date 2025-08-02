@@ -32,10 +32,10 @@ require:
 input-file:
   - $(this-folder)/../openapi.yaml
 
-module-version: 0.0.21-preview
+module-version: 0.0.22-preview
 title: Api
   
-inlining-threshold: 50
+inlining-threshold: 100
 
 directive:
   # Fixes/overrides to swaggers
@@ -1949,9 +1949,19 @@ directive:
   - where:
       verb: Export
     remove: true
+  # Remove Download cmdlets
+  - where:
+      subject: SettingsSiemDataStructure
+    remove: true
   #Remove Activity cmdlets
   - where:
       subject: (.*)Activity$
+    remove: true
+  - where:
+      subject: (.*)ActivitiesDistinctValue$
+    remove: true
+  - where:
+      subject: (.*)ActivityMap$
     remove: true
   # Remove Role cmdlets
   - where:
@@ -1995,6 +2005,10 @@ directive:
   # Hide Rule History (not useful)
   - where:
       subject: (.*)RulesHistory$
+    hide: true
+  # hide environment commands (not useful)
+  - where:
+        subject: Environments(.*)
     hide: true
   # hide simulate (not useful)
   - where:
@@ -2138,6 +2152,11 @@ directive:
       verb: Enable
     set:
       subject: AssetQuarantine
+  - where:
+      subject: UsersQuarantine
+      verb: Enable
+    set:
+      subject: UserQuarantine
   - where:
       subject: AssetsOSType
     set:
