@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetOtNetworkAnalysis'
 
 Describe 'Get-ZNAssetOtNetworkAnalysis' {
     It 'Get' {
-        $asset = (Search-ZNAsset -fqdn otv1.posh.local).AssetId
+        $asset = (Search-ZNAsset -fqdn poshotv1.posh.local).AssetId
         $analysis = Get-ZNAssetOtNetworkAnalysis -AssetId $asset -ConnectionState 2 -DirectlyRetrievedFromAsset:$false
         $analysis.CountByRemoteAsset | Should  -Not -BeNullOrEmpty
     }

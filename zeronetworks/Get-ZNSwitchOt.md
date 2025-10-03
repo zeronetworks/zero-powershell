@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-ZNSwitchOt
 
 ## SYNOPSIS
-gets OT assets for a swtich
+Gets OT assets for a swtich
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-ZNSwitchOt -SwitchId <String> [-AccountName <String>] [-Filters <String>] [-
 ```
 
 ## DESCRIPTION
-gets OT assets for a swtich
+Gets OT assets for a swtich
 
 ## EXAMPLES
 

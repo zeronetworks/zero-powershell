@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-ZNSwitch
 
 ## SYNOPSIS
-delete a switch
+Delete a switch
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Remove-ZNSwitch -SwitchId <String> [-AccountName <String>] [-PassThru] [-Confirm
 ```
 
 ## DESCRIPTION
-delete a switch
+Delete a switch
 
 ## EXAMPLES
 

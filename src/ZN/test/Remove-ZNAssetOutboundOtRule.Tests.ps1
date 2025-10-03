@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNAssetOutboundOtRule'
 
 Describe 'Remove-ZNAssetOutboundOtRule' {
     It 'Delete' {
-        $asset = (Search-ZNAsset -Fqdn otv2.posh.local).AssetId
+        $asset = (Search-ZNAsset -Fqdn poshotv2.posh.local).AssetId
         $protocolsList = New-ZNProtocolsList -Protocol tcp -LocalPorts 111
         $destination = (Get-ZNOutboundOtRulesDestinationCandidate -Search "any asset").items[0]
         $rule = New-ZNAssetOutboundOtRule -AssetId $asset -Action 1 -Direction 2 -localEntityId $asset -RemoteEntitiesIdList @($destination.id) -protocolsList $protocolsList -state 1 -LocalProcessesList @("*") -ExcludedLocalIdsList @() -ShouldBuildMirrorRules

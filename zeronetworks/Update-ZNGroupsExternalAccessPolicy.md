@@ -111,7 +111,6 @@ Accept wildcard characters: False
  destination asset(s).
 ${DstAssetId},
  extra ports to open.
-To construct, see NOTES section for DSTPORTSLIST properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]

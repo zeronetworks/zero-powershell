@@ -1,39 +1,40 @@
 ---
 external help file:
 Module Name: ZeroNetworks
-online version: https://github.com/zeronetworks/zero-powershell/zeronetworks/update-znsettingsnotification
+online version: https://github.com/zeronetworks/zero-powershell/zeronetworks/update-znsettingsbreakglassswitch
 schema: 2.0.0
 ---
 
-# Update-ZNSettingsNotification
+# Update-ZNSettingsBreakGlassSwitch
 
 ## SYNOPSIS
-Returns the properties of the updated Mail Notifications settings.
+Update break glass switches settings
 
 ## SYNTAX
 
 ```
-Update-ZNSettingsNotification -AssetPostponed -AssetProtected -AssetQueued -AssetUnprotected
- [-AccountName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-ZNSettingsBreakGlassSwitch [-AccountName <String>] [-AllowNetworkTraffic] [-StopMonitoring] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the properties of the updated Mail Notifications settings.
+Update break glass switches settings
 
 ## EXAMPLES
 
-### Example 1: Update mail notifications
+### Example 1: Enable switch break glass for the environment
 ```powershell
-Update-ZNNotificationSetting -AssetProtected:$true -AssetQueued:$false -AssetUnprotected:$true -AssetPostponed:$true
+Update-ZNSettingsBreakGlassSwitch -AllowNetworkTraffic -StopMonitoring
 ```
 
-```output
-AssetProtected AssetProtected AssetQueued AssetUnprotected
--------------- -------------- ----------- ----------------
-True           False          True        True
+This cmdlet enables both the monitoring and segmentation break glass for all switches in the environment.
+
+### Example 2: Enable switch break glass for the environment
+```powershell
+Update-ZNSettingsBreakGlassSwitch -AllowNetworkTraffic:$false -StopMonitoring:$false
 ```
 
-This cmdlet updates the Mail notifications setting under System.
+This cmdlet disables both the monitoring and segmentation break glass for all switches in the environment.
 
 ## PARAMETERS
 
@@ -52,7 +53,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AssetPostponed
+### -AllowNetworkTraffic
 .
 
 ```yaml
@@ -60,52 +61,37 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AssetProtected
-Notify asset added to protection
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AssetQueued
-Notify asset added to learning
+### -StopMonitoring
+.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AssetUnprotected
-Notify asset removed from protection
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,8 +137,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
-
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsNotification
 
 ## NOTES
 

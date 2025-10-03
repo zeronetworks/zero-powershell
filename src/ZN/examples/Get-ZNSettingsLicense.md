@@ -1,44 +1,26 @@
-### Example 1: Get network license
+### Example 1: Get license info
 ```powershell
-Get-ZNSettingsLicense -ProtectionType network
+Get-ZNSettingsLicense -LicenseType network
 ```
 
 ```output
-ConfigInfoLicenseMode                   : 1
-ConfigInfoProtectedAndQueuedAssetsLimit : -1
-ConfigInfoQueuedAssetsLimit             : -1
-CountPbProtected                        : 1
-CountQueued                             : 2
+ConfigInfoActivitiesRetentionDays : 30
+ConfigInfoClientsLimit            : 
+ConfigInfoEnableActivitySync      : True
+ConfigInfoEndTime                 : 1898571600000
+ConfigInfoK8SLicenseMode          : 1
+ConfigInfoLicenseMode             : 1
+ConfigInfoLimit                   : -1
+ConfigInfoNodesLimit              : -1
+ConfigInfoOtsLimit                : -1
+ConfigInfoSelfTrialAvailable      : False
+ConfigInfoServersLimit            : 
+ConfigInfoStartTime               : 1646110800000
+CountNodesCount                   : 1
+CountTotalClientUsed              : 1
+CountTotalOtsUsed                 : 0
+CountTotalServerUsed              : 4
+LicenseStateInUse                 : 
 ```
 
-This cmdlet gets the network licenses.
-
-### Example 2: Get identity license
-```powershell
-Get-ZNSettingsLicense -ProtectionType identity
-```
-
-```output
-ConfigInfoLicenseMode                   : 1
-ConfigInfoProtectedAndQueuedAssetsLimit : -1
-ConfigInfoQueuedAssetsLimit             : -1
-CountPbProtected                        : 1
-CountQueued                             : 2
-```
-
-This cmdlet gets the identity licenses.
-
-### Example 2: Get RPC license
-```powershell
-Get-ZNSettingsLicense -ProtectionType rpc
-```
-
-```output
-ConfigInfoLicenseMode                   : 1
-ConfigInfoProtectedAndQueuedAssetsLimit : -1
-ConfigInfoQueuedAssetsLimit             : -1
-CountPbProtected                        : 1
-CountQueued                             : 2
-```
-
-This cmdlet gets the RPC licenses.
+This cmdlet get license info.

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetOtInboundOtrulesSo
 
 Describe 'Get-ZNAssetOtInboundOtrulesSourceCandidate' {
     It 'List' {
-        $assetOt = Get-ZNAssetsOt | Select -First 1
+        $assetOt = (Get-ZNAssetsOt).Items | Select -First 1
         (Get-ZNAssetOtInboundOtrulesSourceCandidate -AssetId $assetOt.Id).Items.Count | Should -BeGreaterThan 0
     }
 }

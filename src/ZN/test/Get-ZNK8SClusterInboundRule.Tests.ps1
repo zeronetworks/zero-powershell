@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetOtLogonActivitiesDistinctValue'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNK8SClusterInboundRule'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-ZNAssetOtLogonActivitiesDistinctValue.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-ZNK8SClusterInboundRule.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,10 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetOtLogonActivitiesD
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-ZNAssetOtLogonActivitiesDistinctValue' {
+Describe 'Get-ZNK8SClusterInboundRule' {
     It 'List' {
-        # cant test automatically
-        $a = 1
-        $a | Should -Be 1
+        $k8sCluster = (Get-ZNK8SCluster).Items | Select-Object -First 1
+        (Get-ZNK8SClusterInboundRule -K8sClusterId $k8sCluster.Id).Items.Count | Should -BeGreaterThan 0
     }
 }

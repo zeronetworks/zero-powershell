@@ -96,7 +96,6 @@ Accept wildcard characters: False
 
 ### -AdditionalPortsList
 extra ports to open.
-To construct, see NOTES section for ADDITIONALPORTSLIST properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]
@@ -342,7 +341,6 @@ Accept wildcard characters: False
 
 ### -SrcEntityInfos
 source asset(s).
-To construct, see NOTES section for SRCENTITYINFOS properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyInboundBodySrcEntityInfosItem[]
@@ -373,7 +371,6 @@ Accept wildcard characters: False
 
 ### -SrcUserInfos
 source user(s).
-To construct, see NOTES section for SRCUSERINFOS properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.ReactivePolicyInboundBodySrcUserInfosItem[]

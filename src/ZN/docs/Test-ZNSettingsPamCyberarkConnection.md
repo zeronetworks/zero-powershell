@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-ZNSettingsPamCyberarkConnection
 
 ## SYNOPSIS
-test CyberArk connection
+Test CyberArk connection
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Test-ZNSettingsPamCyberarkConnection -Body <ISettingsCyberarkConfigBody> [-Accou
 ```
 
 ## DESCRIPTION
-test CyberArk connection
+Test CyberArk connection
 
 ## EXAMPLES
 
@@ -77,7 +77,6 @@ Accept wildcard characters: False
 
 ### -Body
 .
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsCyberarkConfigBody

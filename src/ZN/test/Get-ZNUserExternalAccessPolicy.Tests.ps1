@@ -17,12 +17,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNUserExternalAccessPolic
 Describe 'Get-ZNUserExternalAccessPolicy' {
     It 'List' {
         $userId = ((Get-ZNUser -Search "zero").Items | where {$_.Name -eq "zero"}).Id
-        (Get-ZNUserExternalAccessPolicy -UserId $userId).Items.Count | Should -BeGreaterThan 0
+        (Get-ZNUserExternalAccessPolicy -UserId $userId -AddBuiltins).Items.Count | Should -BeGreaterThan 0
     }
 
     It 'Get' {
         $userId = ((Get-ZNUser -Search "zero").Items | where {$_.Name -eq "zero"}).Id
-        $policies = (Get-ZNUserExternalAccessPolicy -UserId $userId).Items | Select -First 1
+        $policies = (Get-ZNUserExternalAccessPolicy -UserId $userId -AddBuiltins).Items | Select -First 1
         $policy = Get-ZNUserExternalAccessPolicy -UserId $userId -PolicyId $policies.Id
         $policy.ItemId | Should -Not -BeNullOrEmpty
     }

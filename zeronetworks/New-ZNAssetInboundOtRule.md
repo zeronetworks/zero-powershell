@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-ZNAssetInboundOtRule
 
 ## SYNOPSIS
-creates an Asset rule
+Create an Asset rule
 
 ## SYNTAX
 
@@ -21,7 +21,7 @@ New-ZNAssetInboundOtRule -AssetId <String> -Action <Int32> -Direction <Int32> -L
 ```
 
 ## DESCRIPTION
-creates an Asset rule
+Create an Asset rule
 
 ## EXAMPLES
 
@@ -230,7 +230,6 @@ Accept wildcard characters: False
 
 ### -ProtocolsList
 .
-To construct, see NOTES section for PROTOCOLSLIST properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISwitchProtocolsListBodyItem[]
@@ -291,7 +290,6 @@ Accept wildcard characters: False
 
 ### -SrcUsersList
 .
-To construct, see NOTES section for SRCUSERSLIST properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISrcUsersListItem[]

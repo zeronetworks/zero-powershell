@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-ZNUsersManagedAsset
 
 ## SYNOPSIS
-get managed assets for user
+Get managed assets for user
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-ZNUsersManagedAsset -UserId <String> [-AccountName <String>] [-Limit <Int32>
 ```
 
 ## DESCRIPTION
-get managed assets for user
+Get managed assets for user
 
 ## EXAMPLES
 

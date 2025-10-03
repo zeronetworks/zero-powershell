@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-ZNSwitchOutboundOtRule
 
 ## SYNOPSIS
-creates an OT/IoT rule
+Create an OT/IoT rule
 
 ## SYNTAX
 
@@ -21,7 +21,7 @@ New-ZNSwitchOutboundOtRule -SwitchId <String> -Action <Int32> -Direction <Int32>
 ```
 
 ## DESCRIPTION
-creates an OT/IoT rule
+Create an OT/IoT rule
 
 ## EXAMPLES
 
@@ -213,7 +213,6 @@ Accept wildcard characters: False
 
 ### -ProtocolsList
 .
-To construct, see NOTES section for PROTOCOLSLIST properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISwitchProtocolsListBodyItem[]
@@ -274,7 +273,6 @@ Accept wildcard characters: False
 
 ### -SrcUsersList
 .
-To construct, see NOTES section for SRCUSERSLIST properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISrcUsersListItem[]

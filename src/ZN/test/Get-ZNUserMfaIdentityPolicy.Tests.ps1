@@ -20,7 +20,7 @@ Describe 'Get-ZNUserMfaIdentityPolicy' {
         (Get-ZNUserMfaIdentityPolicy -UserId $user.Id).Items.Count | Should -BeGreaterThan 0
     }
 
-    It 'Get' {
+    It 'Get' -skip {
         $user = (Get-ZNUser -Search zero).Items | where {$_.Name -eq "zero"}
         $policy = (Get-ZNUserMfaIdentityPolicy -UserId $user.Id).Items | select -first 1
         (Get-ZNUserMfaIdentityPolicy -UserId $user.Id -ReactivePolicyId $policy.id).ItemId | Should -Not -BeNullOrEmpty

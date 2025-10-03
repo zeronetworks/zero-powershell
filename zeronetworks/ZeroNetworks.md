@@ -75,7 +75,7 @@ Returns an empty object.
 Returns a list of AD domains.
 
 ### [Get-ZNAeExclusionsInbound](Get-ZNAeExclusionsInbound.md)
-Returns the properties of the update AE exclusion.
+Returns the properties of the get AE exclusion.
 
 ### [Get-ZNAeExclusionsInboundDestinationCandidate](Get-ZNAeExclusionsInboundDestinationCandidate.md)
 Returns a list of destination candidates for AE Exclusion rules.
@@ -84,7 +84,7 @@ Returns a list of destination candidates for AE Exclusion rules.
 Returns a list of source candidates for AE Exclusions.
 
 ### [Get-ZNAeExclusionsOutbound](Get-ZNAeExclusionsOutbound.md)
-Returns the properties of the update AE exclusion.
+Returns the properties of the get AE exclusion.
 
 ### [Get-ZNAeExclusionsOutboundDestinationCandidate](Get-ZNAeExclusionsOutboundDestinationCandidate.md)
 Returns a list of destination candidates for AE Exclusions.
@@ -138,7 +138,7 @@ Returns a list of excluded assets candidates for Identity rules.
 Returns a list of user candidates for Identity rules.
 
 ### [Get-ZNAssetInboundOtRule](Get-ZNAssetInboundOtRule.md)
-get an Asset Rule
+Get an Asset Rule
 
 ### [Get-ZNAssetInboundOtRulesDestinationCandidate](Get-ZNAssetInboundOtRulesDestinationCandidate.md)
 Returns a list of destination candidates for Inbound rules.
@@ -255,7 +255,7 @@ Returns a list of audits for the asset.
 Returns an object with OT/IoT asset analysis data.
 
 ### [Get-ZNAssetOtInboundOtrule](Get-ZNAssetOtInboundOtrule.md)
-get an OT/IoT Rule
+Get an OT/IoT Rule
 
 ### [Get-ZNAssetOtInboundOtrulesDestinationCandidate](Get-ZNAssetOtInboundOtrulesDestinationCandidate.md)
 Returns a list of destination candidates for Inbound rules.
@@ -282,7 +282,7 @@ Get mirror candidates
 Returns an object with OT/IoT asset analysis data.
 
 ### [Get-ZNAssetOtOutboundOtrule](Get-ZNAssetOtOutboundOtrule.md)
-get an OT/IoT Rule
+Get an OT/IoT Rule
 
 ### [Get-ZNAssetOtOutboundOtrulesDestinationCandidate](Get-ZNAssetOtOutboundOtrulesDestinationCandidate.md)
 Returns a list of destination candidates for Outbound rules.
@@ -297,7 +297,7 @@ Returns a list of source candidates for Outbound rules.
 Returns a list of tags for an entity.
 
 ### [Get-ZNAssetOutboundOtRule](Get-ZNAssetOutboundOtRule.md)
-get an Asset Rule
+Get an Asset Rule
 
 ### [Get-ZNAssetOutboundOtRulesDestinationCandidate](Get-ZNAssetOutboundOtRulesDestinationCandidate.md)
 Returns a list of destination candidates for Outbound rules.
@@ -451,7 +451,7 @@ Returns a list of excluded Assets candidates for Identity rules.
 Returns a list of user candidates for Identity rules.
 
 ### [Get-ZNGroupsInboundOtRule](Get-ZNGroupsInboundOtRule.md)
-get an OT/IoT Rule
+Get an OT/IoT Rule
 
 ### [Get-ZNGroupsInboundOtRulesDestinationCandidate](Get-ZNGroupsInboundOtRulesDestinationCandidate.md)
 Returns a list of destination candidates for Inbound rules.
@@ -544,7 +544,7 @@ Returns the properties of an outbound MFA policy.
 Returns an object with group analysis data.
 
 ### [Get-ZNGroupsOutboundOtRule](Get-ZNGroupsOutboundOtRule.md)
-get an OT/IoT Rule
+Get an OT/IoT Rule
 
 ### [Get-ZNGroupsOutboundOtRulesDestinationCandidate](Get-ZNGroupsOutboundOtRulesDestinationCandidate.md)
 Returns a list of destination candidates for Outbound rules.
@@ -613,7 +613,7 @@ Returns a list of excluded assets candidates for Identity rules.
 Returns a list of user candidates for Identity rules.
 
 ### [Get-ZNInboundOtRule](Get-ZNInboundOtRule.md)
-get an OT/IoT Rule
+Get an OT/IoT Rule
 
 ### [Get-ZNInboundOtRulesDestinationCandidate](Get-ZNInboundOtRulesDestinationCandidate.md)
 Returns a list of destination candidates for Inbound rules.
@@ -657,8 +657,23 @@ Returns a list of audits for the K8s.
 ### [Get-ZNK8SClusterCommand](Get-ZNK8SClusterCommand.md)
 Returns the commands for a K8s cluster.
 
+### [Get-ZNK8SClusterEgressIP](Get-ZNK8SClusterEgressIP.md)
+Returns the egress IPs for a K8s cluster.
+
 ### [Get-ZNK8SClusterInboundNetworkPolicy](Get-ZNK8SClusterInboundNetworkPolicy.md)
 Returns a list of network policies in the k8s cluster.
+
+### [Get-ZNK8SClusterInboundRule](Get-ZNK8SClusterInboundRule.md)
+Returns a list of rules in the k8s cluster.
+
+### [Get-ZNK8SClusterLabel](Get-ZNK8SClusterLabel.md)
+Returns a list of labels for the K8s.
+
+### [Get-ZNK8SClusterLabelNamespace](Get-ZNK8SClusterLabelNamespace.md)
+Returns a list of namespaces for an label in the k8s cluster.
+
+### [Get-ZNK8SClusterLabelWorkload](Get-ZNK8SClusterLabelWorkload.md)
+Returns a list of workloads for a label in the k8s cluster.
 
 ### [Get-ZNK8SClusterNamespace](Get-ZNK8SClusterNamespace.md)
 Returns a list of namespaces for the k8s cluster.
@@ -669,8 +684,17 @@ Returns a list of applications for the K8s namespace.
 ### [Get-ZNK8SClusterNamespaceInboundNetworkPolicy](Get-ZNK8SClusterNamespaceInboundNetworkPolicy.md)
 Returns a list of network policies for a namespaces in the k8s cluster.
 
+### [Get-ZNK8SClusterNamespaceInboundRule](Get-ZNK8SClusterNamespaceInboundRule.md)
+Returns a list of rules in the k8s cluster namespace.
+
+### [Get-ZNK8SClusterNamespaceLabel](Get-ZNK8SClusterNamespaceLabel.md)
+Returns a list of labels for the K8s namespace.
+
 ### [Get-ZNK8SClusterNamespaceOutboundNetworkPolicy](Get-ZNK8SClusterNamespaceOutboundNetworkPolicy.md)
 Returns a list of network policies for a namespaces in the k8s cluster.
+
+### [Get-ZNK8SClusterNamespaceOutboundRule](Get-ZNK8SClusterNamespaceOutboundRule.md)
+Returns a list of rules in the k8s cluster namespace.
 
 ### [Get-ZNK8SClusterNamespaceWorkload](Get-ZNK8SClusterNamespaceWorkload.md)
 Returns a list of workloads for a namespaces in the k8s cluster.
@@ -681,8 +705,11 @@ Returns a list of nodes in the k8s cluster.
 ### [Get-ZNK8SClusterOutboundNetworkPolicy](Get-ZNK8SClusterOutboundNetworkPolicy.md)
 Returns a list of network policies in the k8s cluster.
 
+### [Get-ZNK8SClusterOutboundRule](Get-ZNK8SClusterOutboundRule.md)
+Returns a list of rules in the k8s cluster.
+
 ### [Get-ZNK8SClusterWorkload](Get-ZNK8SClusterWorkload.md)
-Returns a list of workloads in the k8s cluster.
+Returns a workload for k8s cluster.
 
 ### [Get-ZNK8SNamespace](Get-ZNK8SNamespace.md)
 Returns a list of namespaces for the k8s.
@@ -693,11 +720,26 @@ Returns a list of applications for the K8s namespace.
 ### [Get-ZNK8SNamespaceInboundNetworkPolicy](Get-ZNK8SNamespaceInboundNetworkPolicy.md)
 Returns a list of network policies for a namespaces in the k8s.
 
+### [Get-ZNK8SNamespaceInboundRule](Get-ZNK8SNamespaceInboundRule.md)
+Returns a list of rules in the k8s namespace.
+
+### [Get-ZNK8SNamespaceLabel](Get-ZNK8SNamespaceLabel.md)
+Returns a list of labels for the K8s namespace.
+
 ### [Get-ZNK8SNamespaceOutboundNetworkPolicy](Get-ZNK8SNamespaceOutboundNetworkPolicy.md)
 Returns a list of network policies for a namespaces in the k8s.
 
+### [Get-ZNK8SNamespaceOutboundRule](Get-ZNK8SNamespaceOutboundRule.md)
+Returns a list of rules in the k8s namespace.
+
 ### [Get-ZNK8SNamespaceWorkload](Get-ZNK8SNamespaceWorkload.md)
 Returns a list of workloads for a namespaces in the k8s.
+
+### [Get-ZNK8SWorkload](Get-ZNK8SWorkload.md)
+Returns a workload for k8s.
+
+### [Get-ZNK8SWorkloadLabel](Get-ZNK8SWorkloadLabel.md)
+Returns a list of labels for the K8s workload.
 
 ### [Get-ZNLearningConfig](Get-ZNLearningConfig.md)
 Get Learning Config
@@ -775,7 +817,7 @@ Returns a list of candidates for network overriding onboarding policies.
 Get Learning Config
 
 ### [Get-ZNOutboundOtRule](Get-ZNOutboundOtRule.md)
-get an OT/IoT Rule
+Get an OT/IoT Rule
 
 ### [Get-ZNOutboundOtRulesDestinationCandidate](Get-ZNOutboundOtRulesDestinationCandidate.md)
 Returns a list of destination candidates for Outbound rules.
@@ -867,6 +909,9 @@ Get break glass settings
 ### [Get-ZNSettingsBreakGlassMfa](Get-ZNSettingsBreakGlassMfa.md)
 Get break glass MFA settings
 
+### [Get-ZNSettingsBreakGlassSwitch](Get-ZNSettingsBreakGlassSwitch.md)
+Get break glass switches settings
+
 ### [Get-ZNSettingsClaroty](Get-ZNSettingsClaroty.md)
 Get Claroty Settings
 
@@ -883,7 +928,7 @@ Get Clients Untrusted Internet settings in System
 Returns cluster strategy configuration.
 
 ### [Get-ZNSettingsConnectClientAutoUpdate](Get-ZNSettingsConnectClientAutoUpdate.md)
-Get Connect client auto update in Settings
+Get Connect client auto get in Settings
 
 ### [Get-ZNSettingsConnectRegion](Get-ZNSettingsConnectRegion.md)
 List Connect Regions in Settings
@@ -984,9 +1029,6 @@ Returns a list of candidates for MFA Cache Policy.
 ### [Get-ZNSettingsMfaDetection](Get-ZNSettingsMfaDetection.md)
 Returns the properties of MFA detection settings.
 
-### [Get-ZNSettingsNotification](Get-ZNSettingsNotification.md)
-Returns the properties of the Mail Notification settings.
-
 ### [Get-ZNSettingsPamCyberark](Get-ZNSettingsPamCyberark.md)
 Get CyberArk config
 
@@ -1015,13 +1057,13 @@ Get Trusted Internet addresses settings in System
 Get ZTNA proxy settings in Integrations
 
 ### [Get-ZNSwitch](Get-ZNSwitch.md)
-gets a switch
+Gets a switch
 
 ### [Get-ZNSwitchAudit](Get-ZNSwitchAudit.md)
 Returns a list of audits for the asset.
 
 ### [Get-ZNSwitchInboundOtRule](Get-ZNSwitchInboundOtRule.md)
-get an OT/IoT Rule
+Get an OT/IoT Rule
 
 ### [Get-ZNSwitchInboundOtRulesDestinationCandidate](Get-ZNSwitchInboundOtRulesDestinationCandidate.md)
 Returns a list of destination candidates for Inbound rules.
@@ -1039,10 +1081,10 @@ Returns a list of users candidates for Inbound rules.
 List interfaces for a switch
 
 ### [Get-ZNSwitchOt](Get-ZNSwitchOt.md)
-gets OT assets for a swtich
+Gets OT assets for a swtich
 
 ### [Get-ZNSwitchOutboundOtRule](Get-ZNSwitchOutboundOtRule.md)
-get an OT/IoT Rule
+Get an OT/IoT Rule
 
 ### [Get-ZNSwitchOutboundOtRulesDestinationCandidate](Get-ZNSwitchOutboundOtRulesDestinationCandidate.md)
 Returns a list of destination candidates for Outbound rules.
@@ -1181,7 +1223,7 @@ Returns a list of Users.
 Pass the returned 'nextCursor' as the '_cursor' query param of the next request for batches, when the '_offset' param is not used.
 
 ### [Get-ZNUsersManagedAsset](Get-ZNUsersManagedAsset.md)
-get managed assets for user
+Get managed assets for user
 
 ### [Get-ZNUsersManagedAssetsCandidate](Get-ZNUsersManagedAssetsCandidate.md)
 Get asset candidates to be managed by asset managers
@@ -1196,6 +1238,12 @@ Returns a list of ServiceAccount Users.
 Get Users statistics
 
 ### [Initialize-ZNAssetBreakGlass](Initialize-ZNAssetBreakGlass.md)
+Returns and empty object.
+
+### [Initialize-ZNSwitchMonitoringBreakGlass](Initialize-ZNSwitchMonitoringBreakGlass.md)
+Returns and empty object.
+
+### [Initialize-ZNSwitchNetworkBreakGlass](Initialize-ZNSwitchNetworkBreakGlass.md)
 Returns and empty object.
 
 ### [Invoke-ZNAssetDeactivateBreakGlass](Invoke-ZNAssetDeactivateBreakGlass.md)
@@ -1233,6 +1281,9 @@ Returns a temporary url to the Connect client zip.
 
 ### [Invoke-ZNDownloadConnectServer](Invoke-ZNDownloadConnectServer.md)
 Returns a temporary url to the Connect server zip.
+
+### [Invoke-ZNDownloadSegmentConnector](Invoke-ZNDownloadSegmentConnector.md)
+Download the Segment connector
 
 ### [Invoke-ZNDownloadSegmentServer](Invoke-ZNDownloadSegmentServer.md)
 Returns a temporary url to the Segment server zip.
@@ -1277,7 +1328,7 @@ Returns a the external access policy
 Returns a the identity segmentation rule.
 
 ### [New-ZNAssetInboundOtRule](New-ZNAssetInboundOtRule.md)
-creates an Asset rule
+Create an Asset rule
 
 ### [New-ZNAssetInboundRule](New-ZNAssetInboundRule.md)
 Returns the properties of the created Inbound rule.
@@ -1292,13 +1343,13 @@ Returns the properties of the inbound MFA policy after creation.
 Returns a the properties of outbound MFA policy created.
 
 ### [New-ZNAssetOtInboundOtrule](New-ZNAssetOtInboundOtrule.md)
-creates an OT/IoT rule
+Create an OT/IoT rule
 
 ### [New-ZNAssetOtOutboundOtrule](New-ZNAssetOtOutboundOtrule.md)
-creates an OT/IoT rule
+Create an OT/IoT rule
 
 ### [New-ZNAssetOutboundOtRule](New-ZNAssetOutboundOtRule.md)
-creates an Asset rule
+Create an Asset rule
 
 ### [New-ZNAssetOutboundRule](New-ZNAssetOutboundRule.md)
 Returns the properties of the created Outbound rule.
@@ -1325,7 +1376,7 @@ Returns a the external access policy
 Returns a the identity segmentation rule.
 
 ### [New-ZNGroupsInboundOtRule](New-ZNGroupsInboundOtRule.md)
-creates an OT/IoT rule
+Create an OT/IoT rule
 
 ### [New-ZNGroupsInboundRule](New-ZNGroupsInboundRule.md)
 Returns the properties of the created Inbound rule.
@@ -1340,7 +1391,7 @@ Returns the properties of the inbound MFA policy after creation.
 Returns a the properties of outbound MFA policy created.
 
 ### [New-ZNGroupsOutboundOtRule](New-ZNGroupsOutboundOtRule.md)
-creates an OT/IoT rule
+Create an OT/IoT rule
 
 ### [New-ZNGroupsOutboundRule](New-ZNGroupsOutboundRule.md)
 Returns the properties of the created Outbound rule.
@@ -1355,7 +1406,7 @@ Returns the identity onboarding policy that was created.
 Returns a the identity segmentation rule.
 
 ### [New-ZNInboundOtRule](New-ZNInboundOtRule.md)
-creates an OT/IoT rule
+Create an OT/IoT rule
 
 ### [New-ZNInboundRule](New-ZNInboundRule.md)
 Returns the properties of the created Inbound rule.
@@ -1376,7 +1427,7 @@ Returns a the properties of outbound MFA policy created.
 Returns the network onboarding policy that was created.
 
 ### [New-ZNOutboundOtRule](New-ZNOutboundOtRule.md)
-creates an OT/IoT rule
+Create an OT/IoT rule
 
 ### [New-ZNOutboundRule](New-ZNOutboundRule.md)
 Returns the properties of the created Outbound rule.
@@ -1409,7 +1460,7 @@ Create an identity provider settings in Identity Providers
 Returns the maintenance window properties
 
 ### [New-ZNSettingsMfaCache](New-ZNSettingsMfaCache.md)
-Creates a MFA Cache Policy.
+Create a MFA Cache Policy.
 
 ### [New-ZNSettingsPushNotification](New-ZNSettingsPushNotification.md)
 Create an push notifications settings
@@ -1421,10 +1472,10 @@ Create SIEM Configuration
 Create a switch
 
 ### [New-ZNSwitchInboundOtRule](New-ZNSwitchInboundOtRule.md)
-creates an OT/IoT rule
+Create an OT/IoT rule
 
 ### [New-ZNSwitchOutboundOtRule](New-ZNSwitchOutboundOtRule.md)
-creates an OT/IoT rule
+Create an OT/IoT rule
 
 ### [New-ZNUserExternalAccessPolicy](New-ZNUserExternalAccessPolicy.md)
 Returns a the external access policy
@@ -1478,7 +1529,7 @@ Returns an empty object.
 Returns an empty object.
 
 ### [Remove-ZNAssetInboundOtRule](Remove-ZNAssetInboundOtRule.md)
-deletes an Asset rule
+Deletes an Asset rule
 
 ### [Remove-ZNAssetInboundRule](Remove-ZNAssetInboundRule.md)
 Returns an empty object.
@@ -1499,13 +1550,13 @@ Returns an empty object.
 Remove an asset manager of asset
 
 ### [Remove-ZNAssetOtInboundOtrule](Remove-ZNAssetOtInboundOtrule.md)
-deletes an OT/IoT rule
+Deletes an OT/IoT rule
 
 ### [Remove-ZNAssetOtOutboundOtrule](Remove-ZNAssetOtOutboundOtrule.md)
-deletes an OT/IoT rule
+Deletes an OT/IoT rule
 
 ### [Remove-ZNAssetOutboundOtRule](Remove-ZNAssetOutboundOtRule.md)
-deletes an Asset rule
+Deletes an Asset rule
 
 ### [Remove-ZNAssetOutboundRule](Remove-ZNAssetOutboundRule.md)
 Returns an empty object.
@@ -1535,7 +1586,7 @@ Returns an empty object.
 Returns an empty object.
 
 ### [Remove-ZNGroupsInboundOtRule](Remove-ZNGroupsInboundOtRule.md)
-deletes an OT/IoT rule
+Deletes an OT/IoT rule
 
 ### [Remove-ZNGroupsInboundRule](Remove-ZNGroupsInboundRule.md)
 Returns an empty object.
@@ -1553,7 +1604,7 @@ Returns an empty object.
 Returns an empty object.
 
 ### [Remove-ZNGroupsOutboundOtRule](Remove-ZNGroupsOutboundOtRule.md)
-deletes an OT/IoT rule
+Deletes an OT/IoT rule
 
 ### [Remove-ZNGroupsOutboundRule](Remove-ZNGroupsOutboundRule.md)
 Returns an empty object.
@@ -1571,7 +1622,7 @@ Returns an empty object.
 Returns an empty object.
 
 ### [Remove-ZNInboundOtRule](Remove-ZNInboundOtRule.md)
-deletes an OT/IoT rule
+Deletes an OT/IoT rule
 
 ### [Remove-ZNInboundRule](Remove-ZNInboundRule.md)
 Returns an empty object.
@@ -1595,7 +1646,7 @@ Returns and empty object.
 Returns an empty object.
 
 ### [Remove-ZNOutboundOtRule](Remove-ZNOutboundOtRule.md)
-deletes an OT/IoT rule
+Deletes an OT/IoT rule
 
 ### [Remove-ZNOutboundRule](Remove-ZNOutboundRule.md)
 Returns an empty object.
@@ -1637,7 +1688,7 @@ Returns an empty object.
 Returns an empty object
 
 ### [Remove-ZNSettingsMfaCache](Remove-ZNSettingsMfaCache.md)
-deletes a MFA Cache Policy.
+Deletes a MFA Cache Policy.
 
 ### [Remove-ZNSettingsPamCyberark](Remove-ZNSettingsPamCyberark.md)
 Delete CyberArk config
@@ -1649,13 +1700,13 @@ Returns an empty response.
 Returns an empty object.
 
 ### [Remove-ZNSwitch](Remove-ZNSwitch.md)
-delete a switch
+Delete a switch
 
 ### [Remove-ZNSwitchInboundOtRule](Remove-ZNSwitchInboundOtRule.md)
-deletes an OT/IoT rule
+Deletes an OT/IoT rule
 
 ### [Remove-ZNSwitchOutboundOtRule](Remove-ZNSwitchOutboundOtRule.md)
-deletes an OT/IoT rule
+Deletes an OT/IoT rule
 
 ### [Remove-ZNTagGroupsMember](Remove-ZNTagGroupsMember.md)
 Remove tag group members by members id.
@@ -1715,7 +1766,7 @@ Returns a number of assets that are valid for network segmentation.
 Returns a number of assets that are valid to unprotect.
 
 ### [Test-ZNSettingsPamCyberarkConnection](Test-ZNSettingsPamCyberarkConnection.md)
-test CyberArk connection
+Test CyberArk connection
 
 ### [Unprotect-ZNAssetIdentitySegment](Unprotect-ZNAssetIdentitySegment.md)
 Returns an empty object.
@@ -1739,7 +1790,7 @@ Updates an inbound AE Exclusion rule.
 Updates an outbound AE Exclusion rule.
 
 ### [Update-ZNAsset](Update-ZNAsset.md)
-Updates the display name and FQDN for an asset
+Update the display name and FQDN for an asset
 
 ### [Update-ZNAssetActive](Update-ZNAssetActive.md)
 Returns and empty object.
@@ -1898,7 +1949,7 @@ Updates an RPC rule.
 Update AD forest settings.
 
 ### [Update-ZNSettingsAdLinux](Update-ZNSettingsAdLinux.md)
-Adds or updates linux config for a domain.
+Adds or update linux config for a domain.
 
 ### [Update-ZNSettingsAdLinuxAutomationGroup](Update-ZNSettingsAdLinuxAutomationGroup.md)
 Update Linux_Rediscover Automation Groups for an AD forest setting.
@@ -1926,6 +1977,9 @@ Update break glass settings
 
 ### [Update-ZNSettingsBreakGlassMfa](Update-ZNSettingsBreakGlassMfa.md)
 Update break glass MFA settings
+
+### [Update-ZNSettingsBreakGlassSwitch](Update-ZNSettingsBreakGlassSwitch.md)
+Update break glass switches settings
 
 ### [Update-ZNSettingsClaroty](Update-ZNSettingsClaroty.md)
 Update Claroty Settings
@@ -2008,9 +2062,6 @@ Returns an empty object.
 ### [Update-ZNSettingsMfaDetection](Update-ZNSettingsMfaDetection.md)
 Returns the properties of the updated MFA detection settings.
 
-### [Update-ZNSettingsNotification](Update-ZNSettingsNotification.md)
-Returns the properties of the updated Mail Notifications settings.
-
 ### [Update-ZNSettingsPamCyberark](Update-ZNSettingsPamCyberark.md)
 Set CyberArk config
 
@@ -2033,13 +2084,13 @@ Set Trusted Internet addresses settings in System
 Set ZTNA proxy settings in Integrations
 
 ### [Update-ZNSwitch](Update-ZNSwitch.md)
-update a switch
+Update a switch
 
 ### [Update-ZNSwitchInboundOtrule](Update-ZNSwitchInboundOtrule.md)
 Updates an inbound OT rule.
 
 ### [Update-ZNSwitchInterface](Update-ZNSwitchInterface.md)
-updates interfaces for a switch
+Update interfaces for a switch
 
 ### [Update-ZNSwitchOutboundOtrule](Update-ZNSwitchOutboundOtrule.md)
 Updates an outbound OT rule.

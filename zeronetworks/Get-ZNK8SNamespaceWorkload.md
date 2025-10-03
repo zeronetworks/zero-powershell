@@ -14,8 +14,8 @@ Returns a list of workloads for a namespaces in the k8s.
 
 ```
 Get-ZNK8SNamespaceWorkload -K8SNamespaceId <String> [-AccountName <String>] [-Filters <String>]
- [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>] [-WithCount]
- [<CommonParameters>]
+ [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>] [-ShowPodlessWorkloads]
+ [-WithCount] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -137,6 +137,21 @@ what column to order on
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShowPodlessWorkloads
+show podless workloads
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

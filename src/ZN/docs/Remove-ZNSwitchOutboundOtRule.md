@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-ZNSwitchOutboundOtRule
 
 ## SYNOPSIS
-deletes an OT/IoT rule
+Deletes an OT/IoT rule
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Remove-ZNSwitchOutboundOtRule -RuleId <String> -SwitchId <String> [-AccountName 
 ```
 
 ## DESCRIPTION
-deletes an OT/IoT rule
+Deletes an OT/IoT rule
 
 ## EXAMPLES
 

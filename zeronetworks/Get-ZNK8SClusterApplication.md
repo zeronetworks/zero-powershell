@@ -116,7 +116,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IApiIdentity
@@ -262,6 +261,8 @@ To create the parameters described below, construct a hash table containing the 
   - `[IdentityProviderId <String>]`: Identity provider Id
   - `[K8SClusterId <String>]`: cluserId to filter on
   - `[K8SNamespaceId <String>]`: id of the K8s namespace
+  - `[K8SWorkloadId <String>]`: id of the K8s workload
+  - `[Label <String>]`: id of the K8s namespace
   - `[LicenseType <String>]`: The license type
   - `[MaintenanceWindowId <String>]`: id of the maintence window
   - `[PolicyId <String>]`: id of the external acess policy

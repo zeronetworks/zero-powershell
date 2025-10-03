@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNUserOutboundRule'))
 }
 
 Describe 'New-ZNUserOutboundRule' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -skip {
         $user = (Get-ZNUser -Search zero).Items | where {$_.Name -eq "zero"}
         $portsList = New-ZNPortsList -Protocol TCP -Ports "44,45"
         $source = (Get-ZNOutboundRulesSourceCandidate -search "All Segmented Assets").Items

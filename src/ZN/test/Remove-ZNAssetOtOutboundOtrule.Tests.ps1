@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNAssetOtOutboundOtrul
 
 Describe 'Remove-ZNAssetOtOutboundOtrule' {
     It 'Delete' {
-        $assetOt = Get-ZNAssetsOt | where {$_.Fqdn -eq "otv2.posh.local"}
-        $protocolsList = New-ZNProtocolsList -Protocol tcp -Ports 111
+        $assetOt = (Get-ZNAssetsOt).Items | where {$_.Fqdn -eq "poshotv2.posh.local"}
+        $protocolsList = New-ZNProtocolsList -Protocol tcp -LocalPorts 123
         $destination = Invoke-ZNEncodeEntityip -IP 1.1.1.2
         $source = (Get-ZNInboundOtRulesDestinationCandidate -Search "otv2").items
         $rule = New-ZNAssetOtOutboundOtrule -AssetID $assetOt.id -Action 1 -Direction 2 -localEntityId $source.Id -RemoteEntitiesIdList @($destination.id) -protocolsList $protocolsList -state 1 -LocalProcessesList @("*") -ExcludedLocalIdsList @() -ShouldBuildMirrorRules

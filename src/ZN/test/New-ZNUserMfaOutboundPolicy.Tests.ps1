@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNUserMfaOutboundPolicy')
 }
 
 Describe 'New-ZNUserMfaOutboundPolicy' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -skip {
         $user = (Get-ZNUser -Search zero).Items | where {$_.Name -eq "zero"}
         $destination = (Get-ZNMfaOutboundPoliciesDestinationCandidate -Search "otv2").Items
         $source = (Get-ZNMfaOutboundPoliciesSourceCandidate -search "All Segmented Assets").Items

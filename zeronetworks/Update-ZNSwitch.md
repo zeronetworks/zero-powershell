@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-ZNSwitch
 
 ## SYNOPSIS
-update a switch
+Update a switch
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Update-ZNSwitch -SwitchId <String> -IP <String> -MonitorInterfaceOnOtAdded -Moni
 ```
 
 ## DESCRIPTION
-update a switch
+Update a switch
 
 ## EXAMPLES
 

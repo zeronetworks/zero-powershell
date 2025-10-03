@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-ZNAssetOtOutboundOtrule
 
 ## SYNOPSIS
-get an OT/IoT Rule
+Get an OT/IoT Rule
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-ZNAssetOtOutboundOtrule -AssetId <String> -RuleId <String> [-AccountName <St
 ```
 
 ## DESCRIPTION
-get an OT/IoT Rule
+Get an OT/IoT Rule
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-ZNAsset
 
 ## SYNOPSIS
-Updates the display name and FQDN for an asset
+Update the display name and FQDN for an asset
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Update-ZNAsset -AssetId <String> -DisplayName <String> -Fqdn <String> [-AccountN
 ```
 
 ## DESCRIPTION
-Updates the display name and FQDN for an asset
+Update the display name and FQDN for an asset
 
 ## EXAMPLES
 
@@ -79,7 +79,6 @@ Accept wildcard characters: False
 
 ### -Body
 .
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPaths1Xlyi6HAssetsAssetidActionsPutRequestbodyContentApplicationJsonSchema

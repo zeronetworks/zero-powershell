@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-ZNGroupsInboundOtRule
 
 ## SYNOPSIS
-deletes an OT/IoT rule
+Deletes an OT/IoT rule
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Remove-ZNGroupsInboundOtRule -GroupId <String> -GroupType <String> -RuleId <Stri
 ```
 
 ## DESCRIPTION
-deletes an OT/IoT rule
+Deletes an OT/IoT rule
 
 ## EXAMPLES
 
