@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-ZNGroupsOutboundOtRule
 
 ## SYNOPSIS
-get an OT/IoT Rule
+Get an OT/IoT Rule
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Get-ZNGroupsOutboundOtRule -GroupId <String> -GroupType <String> -RuleId <String
 ```
 
 ## DESCRIPTION
-get an OT/IoT Rule
+Get an OT/IoT Rule
 
 ## EXAMPLES
 

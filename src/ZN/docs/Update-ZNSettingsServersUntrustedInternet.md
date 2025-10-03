@@ -64,7 +64,6 @@ Accept wildcard characters: False
 
 ### -Ports
 .
-To construct, see NOTES section for PORTS properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]

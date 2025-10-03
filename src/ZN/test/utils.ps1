@@ -111,7 +111,7 @@ function setupEnv() {
 
     
 
-    $env.Add("baseUri", ($constants.$envToTest.baseURL+"/api/v1"))
+    $env.Add("baseUri", ("https://"+$decodedToken.aud+"/api/v1"))
 
     $znHeader = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
     #$znHeader.Add("Authorization", $constants.$envToTest.ZNApiKey)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-ZNAssetInboundOtRule
 
 ## SYNOPSIS
-get an Asset Rule
+Get an Asset Rule
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-ZNAssetInboundOtRule -AssetId <String> -RuleId <String> [-AccountName <Strin
 ```
 
 ## DESCRIPTION
-get an Asset Rule
+Get an Asset Rule
 
 ## EXAMPLES
 

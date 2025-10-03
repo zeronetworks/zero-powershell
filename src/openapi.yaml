@@ -1081,7 +1081,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - api_key: [ ]
+        - api_key: []
       tags:
         - Asset actions
   /assets/{assetId}/actions/activate:
@@ -8530,7 +8530,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - api_key: [ ]
+        - api_key: []
       tags:
         - Asset actions
   /assets/export:
@@ -16686,6 +16686,68 @@ paths:
         - api_key: []
       tags:
         - Assets Switches
+  /assets/switches/{switchId}/actions/break-glass/monitoring:
+    put:
+      operationId: SwitchMonitoringBreakGlass_Activate
+      summary: Activate break glass for switch monitoring.
+      description: Returns and empty object.
+      parameters:
+        - $ref: '#/components/parameters/switchIdParameter'
+      requestBody:
+        description: Array of switchIds to activate break glass
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/switchMonitoringBreakGlassBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Switch Actions
+  /assets/switches/{switchId}/actions/break-glass/network:
+    put:
+      operationId: SwitchNetworkBreakGlass_Activate
+      summary: Activate break glass for switch network.
+      description: Returns and empty object.
+      parameters:
+        - $ref: '#/components/parameters/switchIdParameter'
+      requestBody:
+        description: Array of switchIds to activate break glass
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/switchNetworkBreakGlassBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Switch actions
   /assets/switches/{switchId}/activities/network:
     get:
       operationId: SwitchNetworkActivities_List
@@ -18046,6 +18108,64 @@ paths:
         - api_key: []
       tags:
         - Switch protection
+  /assets/switches/actions/break-glass/monitoring:
+    put:
+      operationId: SwitchesMonitoringBreakGlass_Activate
+      summary: Activate break glass for switch monitoring.
+      description: Returns and empty object.
+      requestBody:
+        description: Array of switchIds to activate break glass
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/switchesMonitoringBreakGlassBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets Switches
+  /assets/switches/actions/break-glass/network:
+    put:
+      operationId: SwitchesNetworkBreakGlass_Activate
+      summary: Activate break glass for switch network.
+      description: Returns and empty object.
+      requestBody:
+        description: Array of switchIds to activate break glass
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/switchesNetworkBreakGlassBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Assets Switches
   /audit:
     get:
       operationId: Audits_List
@@ -18314,11 +18434,13 @@ paths:
           $ref: '#/components/responses/403'
         '500':
           $ref: '#/components/responses/500'
-  /download/segment-connector/installer/linux:
+  /download/segment-connector/installer:
     get:
-      operationId: SegmentConnectorLinux_Download
-      summary: Download the Segment connector for linux
+      operationId: SegmentConnector_Download
+      summary: Download the Segment connector
       description: Returns a temporary url to the Segment connector zip.
+      parameters:
+        - $ref: '#/components/parameters/segmentConnectorDownloadParameter'
       responses:
         '200':
           description: OK
@@ -18545,6 +18667,32 @@ paths:
       tags:
         - Settings
   /environments/licenses/{licenseType}:
+    put:
+      operationId: EnvironmentsLicenses_Update
+      summary: Set Trial license
+      parameters:
+        - $ref: '#/components/parameters/licenseTypeParameter'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/licenseConfigBody'
+        required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Licenses
     get:
       operationId: EnvironmentsLicenses_Get
       summary: Get Subscription Licenses
@@ -26227,6 +26375,7 @@ paths:
         - $ref: '#/components/parameters/withCountParameter'
         - $ref: '#/components/parameters/orderParameter'
         - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/showPodlessWorkloadsParameter'
       responses:
         '200':
           description: OK
@@ -26419,6 +26568,334 @@ paths:
         - api_key: []
       tags:
         - K8s
+  /k8s/clusters/{k8sClusterId}/egress-ips:
+    get:
+      operationId: K8sClusterEgressIPs_Get
+      summary: Lists the egress IPs for a K8s cluster
+      description: Returns the egress IPs for a K8s cluster.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sEgressIpList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s
+  /k8s/clusters/{k8sClusterId}/egress-ips/filters:
+    get:
+      operationId: K8sClusterEgressIPsFilters_List
+      summary: List egress IPs Filters for a K8s
+      description: Returns a list of filters for egress ips events for a K8s.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - api_key: []
+      tags:
+        - K8s
+  /k8s/clusters/{k8sClusterId}/labels:
+    get:
+      operationId: K8sClusterLabels_Get
+      summary: Get a K8s labels
+      description: Returns a list of labels for the K8s.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sLabelsList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s labels
+  /k8s/clusters/{k8sClusterId}/labels/filters:
+    get:
+      operationId: K8sClusterLabelsFilters_List
+      summary: List Labels Filters for a K8s
+      description: Returns a list of filters for labels for a K8s.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - api_key: []
+      tags:
+        - K8s labels
+  /k8s/clusters/{k8sClusterId}/labels/{label}:
+    get:
+      operationId: K8sClusterLabel_Get
+      summary: Get a K8s label
+      description: Returns an label for the K8s.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sLabelParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sLabelEntity'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s labels
+  /k8s/clusters/{k8sClusterId}/labels/{label}/namespaces:
+    get:
+      operationId: K8sClusterLabelNamespaces_List
+      summary: Get a k8s label namespaces
+      description: Returns a list of namespaces for an label in the k8s cluster.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sLabelParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sNamespacesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s labels
+  /k8s/clusters/{k8sClusterId}/labels/{label}/namespaces/filters:
+    get:
+      operationId: K8sClusterLabelNamespacesFilters_List
+      summary: List Namepaces Filters for a K8s Cluster Label
+      description: Returns a list of filters for namespaces for a K8s cluster label.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sLabelParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - api_key: []
+      tags:
+        - K8s labels
+  /k8s/clusters/{k8sClusterId}/labels/{label}/nodes:
+    get:
+      operationId: K8sClusterLabelNodes_List
+      summary: Get a k8s label nodes
+      description: Returns a list of nodes for an label in the k8s cluster.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sLabelParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sNodesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s labels
+  /k8s/clusters/{k8sClusterId}/labels/{label}/nodes/filters:
+    get:
+      operationId: K8sClusterLabelNodesFilters_List
+      summary: List Nodes Filters for a K8s Cluster Label
+      description: Returns a list of filters for nodes for a K8s cluster label.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sLabelParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - api_key: []
+      tags:
+        - K8s labels
+  /k8s/clusters/{k8sClusterId}/labels/{label}/workloads:
+    get:
+      operationId: K8sClusterLabelWorkloads_List
+      summary: List a k8s cluster label workloads
+      description: Returns a list of workloads for a label in the k8s cluster.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sLabelParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/showPodlessWorkloadsParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sWorkloadsList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s labels
+  /k8s/clusters/{k8sClusterId}/labels/{label}/workloads/filters:
+    get:
+      operationId: K8sClusterLabelWorkloadsFilters_List
+      summary: List K8s Cluster Label Workloads filters
+      description: Returns a list of filters for K8s Cluster Label Workloads.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sLabelParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s labels
   /k8s/clusters/{k8sClusterId}/namespaces:
     get:
       operationId: K8sClusterNamespaces_List
@@ -26849,6 +27326,68 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces  
+  /k8s/clusters/{k8sClusterId}/namespaces/{k8sNamespaceId}/labels:
+    get:
+      operationId: K8sClusterNamespaceLabels_Get
+      summary: Get a K8s labels for a namespace
+      description: Returns a list of labels for the K8s namespace.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sLabelsList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s namespaces
+  /k8s/clusters/{k8sClusterId}/namespaces/{k8sNamespaceId}/labels/filters:
+    get:
+      operationId: K8sClusterNamespaceLabelsFilters_List
+      summary: List Labels Filters for a K8s
+      description: Returns a list of filters for labels for a K8s.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - api_key: []
+      tags:
+        - K8s namespaces
   /k8s/clusters/{k8sClusterId}/namespaces/{k8sNamespaceId}/network-policies/inbound:
     get:
       operationId: K8sClusterNamespaceInboundNetworkPolicies_List
@@ -26973,6 +27512,124 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
+  /k8s/clusters/{k8sClusterId}/namespaces/{k8sNamespaceId}/rules/inbound:
+    get:
+      operationId: K8sClusterNamespaceInboundRules_List
+      summary: Get a k8s cluster namespace Inbound rules
+      description: Returns a list of rules in the k8s cluster namespace.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sRulesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s namespaces
+  /k8s/clusters/{k8sClusterId}/namespaces/{k8sNamespaceId}/rules/inbound/filters:
+    get:
+      operationId: K8sClusterNamespaceInboundRulesFilters_List
+      summary: List K8s Cluster Namespace Inbound Rule Filters
+      description: Returns a list of filters for K8s Cluster Namespace Rule.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s namespsaces
+  /k8s/clusters/{k8sClusterId}/namespaces/{k8sNamespaceId}/rules/outbound:
+    get:
+      operationId: K8sClusterNamespaceOutboundRules_List
+      summary: Get a k8s cluster namespace Outbound rules
+      description: Returns a list of rules in the k8s cluster namespace.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sRulesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s namespaces
+  /k8s/clusters/{k8sClusterId}/namespaces/{k8sNamespaceId}/rules/outbound/filters:
+    get:
+      operationId: K8sClusterNamespaceOutboundRulesFilters_List
+      summary: List K8s Cluster Namespace Outbound Rules Filters
+      description: Returns a list of filters for K8s Cluster Namespace Rules.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s namespaces
   /k8s/clusters/{k8sClusterId}/namespaces/{k8sNamespaceId}/workloads:
     get:
       operationId: K8sClusterNamespaceWorkloads_List
@@ -26987,6 +27644,7 @@ paths:
         - $ref: '#/components/parameters/withCountParameter'
         - $ref: '#/components/parameters/orderParameter'
         - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/showPodlessWorkloadsParameter'
       responses:
         '200':
           description: OK
@@ -27202,7 +27860,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/k8sNodessList'
+                $ref: '#/components/schemas/k8sNodesList'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -27243,6 +27901,120 @@ paths:
         - api_key: []
       tags:
         - K8s nodes
+  /k8s/clusters/{k8sClusterId}/rules/inbound:
+    get:
+      operationId: K8sClusterInboundRules_List
+      summary: Get a k8s cluster Inbound rules
+      description: Returns a list of rules in the k8s cluster.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sRulesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s rules
+  /k8s/clusters/{k8sClusterId}/rules/inbound/filters:
+    get:
+      operationId: K8sClusterInboundRulesFilters_List
+      summary: List K8s Cluster Inbound Rule Filters
+      description: Returns a list of filters for K8s Cluster Rule.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s rules
+  /k8s/clusters/{k8sClusterId}/rules/outbound:
+    get:
+      operationId: K8sClusterOutboundRules_List
+      summary: Get a k8s cluster Outbound rules
+      description: Returns a list of rules in the k8s cluster.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sRulesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s rules
+  /k8s/clusters/{k8sClusterId}/rules/outbound/filters:
+    get:
+      operationId: K8sClusterOutboundRulesFilters_List
+      summary: List K8s Cluster Outbound Rules Filters
+      description: Returns a list of filters for K8s Cluster Rules.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s rules
   /k8s/clusters/{k8sClusterId}/workloads:
     get:
       operationId: K8sClusterWorkloads_List
@@ -27256,6 +28028,7 @@ paths:
         - $ref: '#/components/parameters/withCountParameter'
         - $ref: '#/components/parameters/orderParameter'
         - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/showPodlessWorkloadsParameter'
       responses:
         '200':
           description: OK
@@ -27275,6 +28048,467 @@ paths:
         - api_key: []
       tags:
         - K8s workloads
+  /k8s/clusters/{k8sClusterId}/workloads//{k8sWorkloadId}:
+    get:
+      operationId: K8sClusterWorkload_Get
+      summary: Get a k8s cluster workload
+      description: Returns a workload for k8s cluster.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sWorkload'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s clusters
+  /k8s/clusters/{k8sClusterId}/workloads//{k8sWorkloadId}/activities/network:
+    get:
+      operationId: K8sClusterWorkloadNetworkActivities_List
+      summary: List Network Activities for K8s cluster workload
+      description: Returns a list of network activities.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/cursorParameter'
+        - $ref: '#/components/parameters/searchParameter'
+        - $ref: '#/components/parameters/entityIdQueryParameter'
+        - $ref: '#/components/parameters/fromParameter'
+        - $ref: '#/components/parameters/toParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activitiesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s clusters
+  /k8s/clusters/{k8sClusterId}/workloads//{k8sWorkloadId}/activities/network/distinctField/{fieldName}:
+    get:
+      operationId: K8sClusterWorkloadNetworkActivitiesDistinctValues_List
+      summary: List Network Activities Distinct Value for K8s cluster workload
+      description: Returns a list of distinct values for a field in network activities.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+
+        - $ref: '#/components/parameters/fieldNameParameter'
+        - $ref: '#/components/parameters/searchParameter'
+        - $ref: '#/components/parameters/fromParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activitiesDistictValuesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s clusters
+  /k8s/clusters/{k8sClusterId}/workloads//{k8sWorkloadId}/activities/network/export:
+    post:
+      operationId: K8sClusterWorkloadNetworkActivities_Export
+      summary: Export network activities for K8s cluster workload
+      description: Returns an exportId to pass into the download API.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+      requestBody:
+        description: 'EntityId, from, to, search, filter or date time format for export'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/exportBodyActivities'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exportId'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s clusters
+  /k8s/clusters/{k8sClusterId}/workloads//{k8sWorkloadId}/activities/network/export/csv/{exportId}:
+    get:
+      operationId: K8sClusterWorkloadNetworkActivitiesExport_Get
+      summary: Download network activities export for K8s cluster workload
+      description: Returns a csv file to be downloaded.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/exportIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: object
+                format: file
+        '401':
+          $ref: '#/components/responses/401'
+      security:
+        - api_key: []
+      tags:
+        - K8s clusters
+  /k8s/clusters/{k8sClusterId}/workloads//{k8sWorkloadId}/activities/network/filters:
+    get:
+      operationId: K8sClusterWorkloadNetworkActivitiesFilters_List
+      summary: Get network activity filters for K8s cluster workload
+      description: Returns the filters that can be used for network activities.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s clusters
+  /k8s/clusters/{k8sClusterId}/workloads//{k8sWorkloadId}/activities/network/user-filters:
+    get:
+      operationId: K8sClusterWorkloadNetworkActivitiesSavedFilters_List
+      summary: List Saved Filters for Network Activities for K8s cluster workload
+      description: Returns a list of saved filters for network activities.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/savedFiltersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s clusters
+    post:
+      operationId: K8sClusterWorkloadNetworkActivitiesSavedFilters_Create
+      summary: Create a Saved Filter for Network Activities for K8s cluster workload
+      description: Returns the filter id.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+      requestBody:
+        description: 'Name, filters, and description for the saved filter'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/savedFilterBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/savedFilterId'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s clusters
+  /k8s/clusters/{k8sClusterId}/workloads//{k8sWorkloadId}/activities/network/user-filters/{filterId}:
+    get:
+      operationId: K8sClusterWorkloadNetworkActivitiesSavedFilters_Get
+      summary: Get a Saved Filter for Network Activities for K8s cluster workload
+      description: Returns a saved filters for network activities.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/filterIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/savedFilterObject'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s clusters
+    put:
+      operationId: K8sClusterWorkloadNetworkActivitiesSavedFilters_Update
+      summary: Update a Saved Filter for Network Activities for K8s cluster workload
+      description: Returns an empty object.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/filterIdParameter'
+      requestBody:
+        description: 'Name, filters, and description for the saved filter'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/savedFilterUpdateBody'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s clusters
+    delete:
+      operationId: K8sClusterWorkloadNetworkActivitiesSavedFilters_Delete
+      summary: Delete a Saved Filter for Network Activities for K8s cluster workload
+      description: Returns an empty object.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/filterIdParameter'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s clusters
+  /k8s/clusters/{k8sClusterId}/workloads//{k8sWorkloadId}/applications:
+    get:
+      operationId: K8sClusterWorkloadApplications_List
+      summary: Lists applications for a K8s cluster workload
+      description: Returns a list of applications for the K8s cluster workload.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sApplicationsList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s clusters
+  /k8s/clusters/{k8sClusterId}/workloads//{k8sWorkloadId}/applications/filters:
+    get:
+      operationId: K8sClusterWorkloadApplicationsFilters_List
+      summary: List Applications Filters for a K8s cluster workload
+      description: Returns a list of filters for applications for a K8s cluster workload.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - api_key: []
+      tags:
+        - K8s clusters  
+  /k8s/clusters/{k8sClusterId}/workloads//{k8sWorkloadId}/labels:
+    get:
+      operationId: K8sClusterWorkloadLabels_Get
+      summary: Lists labels for a K8s cluster workload
+      description: Returns a list of labels for the K8s cluster workload.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sLabelsList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s clusters
+  /k8s/clusters/{k8sClusterId}/workloads//{k8sWorkloadId}/labels/filters:
+    get:
+      operationId: K8sClusterWorkloadLabelsFilters_List
+      summary: List Labels Filters for a K8s cluster workload
+      description: Returns a list of filters for labels for a K8s cluster workload.
+      parameters:
+        - $ref: '#/components/parameters/k8sClusterIdParameter'
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - api_key: []
+      tags:
+        - K8s clusters
   /k8s/clusters/{k8sClusterId}/workloads/filters:
     get:
       operationId: K8sClusterWorkloadsFilters_List
@@ -27745,6 +28979,66 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces  
+  /k8s/namespaces/{k8sNamespaceId}/labels:
+    get:
+      operationId: K8sNamespaceLabels_Get
+      summary: Get a K8s labels for a namespace
+      description: Returns a list of labels for the K8s namespace.
+      parameters:
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sLabelsList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s namespaces
+  /k8s/namespaces/{k8sNamespaceId}/labels/filters:
+    get:
+      operationId: K8sNamespaceLabelsFilters_List
+      summary: List Labels Filters for a K8s
+      description: Returns a list of filters for labels for a K8s.
+      parameters:
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - api_key: []
+      tags:
+        - K8s namespaces
   /k8s/namespaces/{k8sNamespaceId}/network-policies/inbound:
     get:
       operationId: K8sNamespaceInboundNetworkPolicies_List
@@ -27865,6 +29159,120 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
+  /k8s/namespaces/{k8sNamespaceId}/rules/inbound:
+    get:
+      operationId: K8sNamespaceInboundRules_List
+      summary: Get a k8s namespace Inbound rules
+      description: Returns a list of rules in the k8s namespace.
+      parameters:
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sRulesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s namespaces
+  /k8s/namespaces/{k8sNamespaceId}/rules/inbound/filters:
+    get:
+      operationId: K8NamespaceInboundRulesFilters_List
+      summary: List K8s Namespace Inbound Rule Filters
+      description: Returns a list of filters for K8s Namespace Rule.
+      parameters:
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s namespaces
+  /k8s/namespaces/{k8sNamespaceId}/rules/outbound:
+    get:
+      operationId: K8sNamespaceOutboundRules_List
+      summary: Get a k8s Namespace Outbound rules
+      description: Returns a list of rules in the k8s namespace.
+      parameters:
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sRulesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s namespaces
+  /k8s/namespaces/{k8sNamespaceId}/rules/outbound/filters:
+    get:
+      operationId: K8sNamespaceOutboundRulesFilters_List
+      summary: List K8s Namespace Outbound Rules Filters
+      description: Returns a list of filters for K8s namespace Rules.
+      parameters:
+        - $ref: '#/components/parameters/k8sNamespaceIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s namespaces
   /k8s/namespaces/{k8sNamespaceId}/workloads:
     get:
       operationId: K8sNamespaceWorkloads_List
@@ -27878,6 +29286,7 @@ paths:
         - $ref: '#/components/parameters/withCountParameter'
         - $ref: '#/components/parameters/orderParameter'
         - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/showPodlessWorkloadsParameter'
       responses:
         '200':
           description: OK
@@ -27951,6 +29360,509 @@ paths:
         - api_key: []
       tags:
         - K8s namespaces
+  /k8s/workloads:
+    get:
+      operationId: K8sWorkloads_List
+      summary: List a k8s workloads
+      description: Returns a list of workloads for k8s.
+      parameters:
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+        - $ref: '#/components/parameters/showPodlessWorkloadsParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sWorkloadsList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads
+  /k8s/workloads/{k8sWorkloadId}:
+    get:
+      operationId: K8sWorkload_Get
+      summary: Get a k8s workload
+      description: Returns a workload for k8s.
+      parameters:
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sWorkloadEntity'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads
+  /k8s/workloads/{k8sWorkloadId}/activities/network:
+    get:
+      operationId: K8sWorkloadNetworkActivities_List
+      summary: List Network Activities for K8s workload
+      description: Returns a list of network activities.
+      parameters:
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/cursorParameter'
+        - $ref: '#/components/parameters/searchParameter'
+        - $ref: '#/components/parameters/entityIdQueryParameter'
+        - $ref: '#/components/parameters/fromParameter'
+        - $ref: '#/components/parameters/toParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activitiesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads
+  /k8s/workloads/{k8sWorkloadId}/activities/network/distinctField/{fieldName}:
+    get:
+      operationId: K8sWorkloadNetworkActivitiesDistinctValues_List
+      summary: List Network Activities Distinct Value for K8s workload
+      description: Returns a list of distinct values for a field in network activities.
+      parameters:
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/fieldNameParameter'
+        - $ref: '#/components/parameters/searchParameter'
+        - $ref: '#/components/parameters/fromParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activitiesDistictValuesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads
+  /k8s/workloads/{k8sWorkloadId}/activities/network/export:
+    post:
+      operationId: K8sWorkloadNetworkActivities_Export
+      summary: Export network activities for K8s workload
+      description: Returns an exportId to pass into the download API.
+      parameters:
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+      requestBody:
+        description: 'EntityId, from, to, search, filter or date time format for export'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/exportBodyActivities'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exportId'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads
+  /k8s/workloads/{k8sWorkloadId}/activities/network/export/csv/{exportId}:
+    get:
+      operationId: K8sWorkloadNetworkActivitiesExport_Get
+      summary: Download network activities export for K8s workload
+      description: Returns a csv file to be downloaded.
+      parameters:
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/exportIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: object
+                format: file
+        '401':
+          $ref: '#/components/responses/401'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads
+  /k8s/workloads/{k8sWorkloadId}/activities/network/filters:
+    get:
+      operationId: K8sWorkloadNetworkActivitiesFilters_List
+      summary: Get network activity filters for K8s workload
+      description: Returns the filters that can be used for network activities.
+      parameters:
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads
+  /k8s/workloads/{k8sWorkloadId}/activities/network/user-filters:
+    get:
+      operationId: K8sWorkloadNetworkActivitiesSavedFilters_List
+      summary: List Saved Filters for Network Activities for K8s workload
+      description: Returns a list of saved filters for network activities.
+      parameters:
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/savedFiltersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads
+    post:
+      operationId: K8sWorkloadNetworkActivitiesSavedFilters_Create
+      summary: Create a Saved Filter for Network Activities for K8s workload
+      description: Returns the filter id.
+      parameters:
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+      requestBody:
+        description: 'Name, filters, and description for the saved filter'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/savedFilterBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/savedFilterId'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads
+  /k8s/workloads/{k8sWorkloadId}/activities/network/user-filters/{filterId}:
+    get:
+      operationId: K8sWorkloadNetworkActivitiesSavedFilters_Get
+      summary: Get a Saved Filter for Network Activities for K8s workload
+      description: Returns a saved filters for network activities.
+      parameters:
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/filterIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/savedFilterObject'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads
+    put:
+      operationId: K8sWorkloadNetworkActivitiesSavedFilters_Update
+      summary: Update a Saved Filter for Network Activities for K8s workload
+      description: Returns an empty object.
+      parameters:
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/filterIdParameter'
+      requestBody:
+        description: 'Name, filters, and description for the saved filter'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/savedFilterUpdateBody'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads
+    delete:
+      operationId: K8sWorkloadNetworkActivitiesSavedFilters_Delete
+      summary: Delete a Saved Filter for Network Activities for K8s workload
+      description: Returns an empty object.
+      parameters:
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/filterIdParameter'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads
+  /k8s/workloads/{k8sWorkloadId}/applications:
+    get:
+      operationId: K8sWorkloadApplications_List
+      summary: Lists applications for a K8s workload
+      description: Returns a list of applications for the K8s workload.
+      parameters:
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sApplicationsList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads
+  /k8s/workloads/{k8sWorkloadId}/applications/filters:
+    get:
+      operationId: K8sWorkloadApplicationsFilters_List
+      summary: List Applications Filters for a K8s workload
+      description: Returns a list of filters for applications for a K8s workload.
+      parameters:
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads  
+  /k8s/workloads/{k8sWorkloadId}/labels:
+    get:
+      operationId: K8sWorkloadLabels_Get
+      summary: Lists labels for a K8s workload
+      description: Returns a list of labels for the K8s workload.
+      parameters:
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+        - $ref: '#/components/parameters/limitParameter'
+        - $ref: '#/components/parameters/offsetParameter'
+        - $ref: '#/components/parameters/filtersParameter'
+        - $ref: '#/components/parameters/withCountParameter'
+        - $ref: '#/components/parameters/orderParameter'
+        - $ref: '#/components/parameters/orderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/k8sLabelsList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads
+  /k8s/workloads/{k8sWorkloadId}/labels/filters:
+    get:
+      operationId: K8sWorkloadLabelsFilters_List
+      summary: List Labels Filters for a K8s workload
+      description: Returns a list of filters for labels for a K8s workload.
+      parameters:
+        - $ref: '#/components/parameters/k8sWorkloadIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads
+  /k8s/workloads/filters:
+    get:
+      operationId: K8sWorkloadsFilters_List
+      summary: List K8s Workloads filters
+      description: Returns a list of filters for K8s Workloads.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - K8s workloads
   /profile:
     get:
       operationId: Profile_Get
@@ -33800,7 +35712,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - api_key: [ ]
+        - api_key: []
       tags:
         - Settings PAM
     delete:
@@ -33819,7 +35731,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - api_key: [ ]
+        - api_key: []
       tags:
         - Settings PAM
     put:
@@ -33847,7 +35759,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - api_key: [ ]
+        - api_key: []
       tags:
         - Settings PAM
     post:
@@ -33875,7 +35787,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - api_key: [ ]
+        - api_key: []
       tags:
         - Settings PAM
   /settings/access-tokens:
@@ -35092,7 +37004,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - api_key: [ ]
+        - api_key: []
       tags:
         - Settings Portal Security
     put:
@@ -35114,7 +37026,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
       security:
-        - api_key: [ ]
+        - api_key: []
       tags:
         - Settings Portal Security
   /settings/azure-ad/credentials:
@@ -35380,6 +37292,54 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/settingsBreakGlassMFABody'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Break Glass
+  /settings/break-glass/switches:
+    get:
+      operationId: SettingsBreakGlassSwitches_Get
+      summary: Get break glass Switches settings
+      description: Get break glass switches settings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsBreakGlassSwitches'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Break Glass
+    put:
+      operationId: SettingsBreakGlassSwitches_Update
+      summary: Update break glass Switches settings
+      description: Update break glass switches settings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/settingsBreakGlassSwitchesBody'
       responses:
         '200':
           description: OK
@@ -37882,7 +39842,7 @@ paths:
                   type: integer
               x-examples:
                 example-1:
-                  name: ServiceNow test
+                  name: test
                   expiry: '2024-06-27T13:33:09.076Z'
                   accessType: 3
       responses:
@@ -37968,11 +39928,11 @@ paths:
         - api_key: []
       tags:
         - Settings Segment Connector
-  /settings/snow/access-tokens:
+  /settings/cmdb/access-tokens:
     get:
-      operationId: ServiceNowAccessTokens_List
-      summary: Get all ServiceNow access tokens
-      description: Get all ServiceNow access tokens
+      operationId: CMDBAccessTokens_List
+      summary: Get all CMDB access tokens
+      description: Get all CMDB access tokens
       responses:
         '200':
           description: OK
@@ -37996,11 +39956,11 @@ paths:
       security:
         - api_key: []
       tags:
-        - Settings ServiceNow
+        - Settings CMDB
     post:
-      operationId: ServiceNowAccessTokens_Create
-      summary: Create ServiceNow access token
-      description: Create ServiceNow access token
+      operationId: CMDBAccessTokens_Create
+      summary: Create CMDB access token
+      description: Create CMDB access token
       requestBody:
         description: ''
         content:
@@ -38016,7 +39976,7 @@ paths:
                   type: integer
               x-examples:
                 example-1:
-                  name: ServiceNow test
+                  name: CMDB test
                   expiry: '2024-06-27T13:33:09.076Z'
                   accessType: 3
       responses:
@@ -38037,12 +39997,12 @@ paths:
       security:
         - api_key: []
       tags:
-        - Settings ServiceNow
+        - Settings CMDB
   /settings/snow/access-tokens/{clientId}:
     put:
-      operationId: ServiceNowAccessTokens_Regenerate
-      summary: Regenerate ServiceNow access token
-      description: Regenerate ServiceNow access token
+      operationId: CMDBAccessTokens_Regenerate
+      summary: Regenerate CMDB access token
+      description: Regenerate CMDB access token
       parameters:
         - $ref: '#/components/parameters/clientIdParameter'
       requestBody:
@@ -38076,11 +40036,11 @@ paths:
       security:
         - api_key: []
       tags:
-        - Settings ServiceNow
+        - Settings CMDB
     delete:
-      operationId: ServiceNowAccessTokens_Delete
-      summary: Delete ServiceNow access token
-      description: Delete ServiceNow access token
+      operationId: CMDBAccessTokens_Delete
+      summary: Delete CMDB access token
+      description: Delete CMDB access token
       parameters:
         - $ref: '#/components/parameters/clientIdParameter'
       responses:
@@ -38101,7 +40061,7 @@ paths:
       security:
         - api_key: []
       tags:
-        - Settings ServiceNow
+        - Settings CMDB
   /settings/subscriptions/licenses/{licenseType}:
     get:
       operationId: SettingsLicenses_Get
@@ -38116,6 +40076,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/licensesConfig'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Licenses
+    put:
+      operationId: SettingsLicenses_Update
+      summary: Set Trial license
+      parameters:
+        - $ref: '#/components/parameters/licenseTypeParameter'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/licenseConfigBody'
+        required: true
+      responses:
+        '200':
+          description: OK
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -38540,6 +40526,54 @@ paths:
         - api_key: []
       tags:
         - Settings Trusted Internet
+  /settings/segment-connector/update-recovery-config:
+    get:
+      operationId: SettingsSegmentConnector_Get
+      summary: Get segment connector update recovery config
+      description: Get segment connector update recovery config
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsSegmentConnectorUpdateRecoveryBody'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Segment Connector
+    put:
+      operationId: SettingsSegmentConnector_Update
+      summary: Update segment connector update recovery config
+      description: Update segment connector update recovery config
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/settingsSegmentConnectorUpdateRecoveryBody'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+        - api_key: []
+      tags:
+        - Settings Segment Connector
   /users:
     get:
       operationId: Users_List
@@ -44188,11 +46222,25 @@ components:
       required: true
       schema:
         type: string
+    k8sLabelParameter:
+      name: label
+      in: path
+      required: true
+      description: id of the K8s namespace
+      schema:
+        type: string
     k8sNamespaceIdParameter:
       name: k8sNamespaceId
       in: path
       required: true
       description: id of the K8s namespace
+      schema:
+        type: string
+    k8sWorkloadIdParameter:
+      name: k8sWorkloadId
+      in: path
+      required: true
+      description: id of the K8s workload
       schema:
         type: string
     licenseTypeParameter:
@@ -44286,6 +46334,21 @@ components:
       description: Test to search for
       schema:
         type: string
+    segmentConnectorDownloadParameter:
+      name: platform
+      in: query
+      description: segment connector platform
+      required: true
+      schema:
+        type: string
+        enum:
+          - MAC_ARM64
+          - MAC_X64
+          - LEGACY_WIN_X64
+          - LINUX_X64
+          - LINUX_X86
+          - WIN_X64
+          - WIN_X86
     sessionIdParameter:
       name: sessionId
       in: path
@@ -44298,6 +46361,13 @@ components:
       name: showInactive
       in: query
       description: show inactive assets
+      schema:
+        type: boolean
+        default: false
+    showPodlessWorkloadsParameter:
+      name: showPodlessWorkloads
+      in: query
+      description: show podless workloads
       schema:
         type: boolean
         default: false
@@ -45403,7 +47473,7 @@ components:
         segmentedAssets:
           type: integer
         segmentedOutOfMonitor:
-          type: integer
+          type: number
     assetsSegmentationStatistics:
       type: object
       properties:
@@ -47382,29 +49452,26 @@ components:
     filter:
       type: object
       properties:
-        id:
-          type: string
-        type:
-          type: integer
-        name:
-          type: string
-        placeholder:
+        allowedCharactersRegex:
           type: string
         disableExcludeSupport:
           type: boolean
         enableBulkSelection:
           type: boolean
-        allowedCharactersRegex:
+        id:
           type: string
+        isSingleValue:
+          type: boolean
+        name:
+          type: string
+        placeholder:
+          type: string
+        type:
+          type: integer
         selections:
           type: array
           items:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
+            $ref: '#/components/schemas/idNamePair'
     filtersList:
       type: object
       properties:
@@ -48386,16 +50453,129 @@ components:
           type: string
         uninstallationCommand:
           type: string
+    k8sEgressIp:
+      type: object
+      properties:
+        affectedEntities:
+          type: array
+          items:
+            $ref: '#/components/schemas/k8sEntityInfo'
+        clusterId:
+          type: string
+        id:
+          type: string
+        ips:
+          type: array
+          items:
+            type: string
+        k8sUid:
+          type: string
+        name:
+          type: string
+        rawSelector:
+          type: string
+    k8sEgressIpList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/k8sEgressIp'
+        count:
+          type: integer
     k8sEntity:
       type: object
       properties:
         entity:
           $ref: '#/components/schemas/k8s'
+    k8sEntityInfo:
+      type: object
+      properties:
+        application:
+          type: string
+        hostNamespace:
+          $ref: '#/components/schemas/idNamePair'
+        type:
+          type: integer        
+    k8sEntityType:
+      description: |
+        * 0 - Other
+        * 1 - Cluster
+        * 2 - Namespace
+        * 3 - Node
+        * 4 - Pod
+        * 5 - Deployment
+        * 6 - Daemonset
+        * 7 - Statefulset
+        * 8 - Job
+        * 9 - Service
+        * 10 - Network Policy
+        * 11 - Ingress
+        * 12 - Gateway
+        * 13 - HTTP Route
+        * 14 - gRPC Route
+        * 15 - Replica Set
+        * 16 - Replication Controller  
+      type: integer
+      format: int32
+      enum: 
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+        - 11
+        - 12
+        - 13
+        - 14
+        - 15
+        - 16
     k8sItem:
       type: object
       properties:
         item:
           $ref: '#/components/schemas/k8s'
+    k8sLabel:
+      type: object
+      properties:
+        cluster:
+          $ref: '#/components/schemas/idNamePair'
+        key:
+          type: string
+        namespaces:
+          type: array
+          items:
+            $ref: '#/components/schemas/idNamePair'
+        nodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/idNamePair'
+        value:
+          type: string
+        workloads:
+          type: array
+          items:
+            $ref: '#/components/schemas/idNamePair'
+    k8sLabelEntity:
+      type: object
+      properties:
+        entity:
+          $ref: '#/components/schemas/k8sLabel'
+    k8sLabelsList:
+      type: object
+      properties:
+        count:
+          type: integer
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/k8sLabel'
     k8sList:
       type: object
       properties:
@@ -48490,7 +50670,7 @@ components:
             $ref: '#/components/schemas/idNamePair'
         name:
           type: string
-    k8sNodessList:
+    k8sNodesList:
       type: object
       properties:
         count:
@@ -48499,13 +50679,108 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/k8sNode'
+    k8sRule:
+      type: object
+      properties:
+        action:
+          $ref: "#/components/schemas/ruleAction"
+        clusterId: 
+          type: string
+        direction:
+          $ref: "#/components/schemas/k8sRuleDirection"
+        environmentId:
+          type: string
+        excludedCidrsList:
+          type: array
+          items:
+            type: string
+        localEntity:
+          $ref: '#/components/schemas/k8sTranslatedEntity'
+        localSelectors:
+          type: string
+        namespace:
+            $ref: '#/components/schemas/idNamePair'
+        networkPolicyName:
+          type: string
+        networkPolicyUid:
+          type: string
+        portsList:
+          $ref: '#/components/schemas/portsList'
+        remoteEntities:
+          type: array
+          items:
+            $ref: '#/components/schemas/k8sTranslatedEntity'
+        remoteSelectors: 
+          type: string
+    k8sRuleDirection:
+      description: |
+        * '1' - Ingress
+        * '2' - Egress
+      enum:
+        - 1
+        - 2    
+      format: int32
+      type: integer
+    k8sRulesList:
+      type: object
+      properties:
+          items:
+            type: array
+            items:
+                $ref: '#/components/schemas/k8sRule'
+          scrollCursor:
+            type: string
+    k8sTranslatedEntity:
+      type: object
+      properties:
+        hostNamespace:
+          $ref: '#/components/schemas/idNamePair'
+        application:
+          type: string
+        labelsMap:
+          type: array
+          items:
+            $ref: '#/components/schemas/keyValuePair'
+        subnet:
+          type: string
+        type:
+          $ref: '#/components/schemas/k8sTranslatedEntityType'
+    k8sTranslatedEntityType:
+      description: |
+        * 1 - Unsupported
+        * 2 - Namespace
+        * 3 - App
+        * 4 - Label
+        * 5 - App in Namespace
+        * 6 - Label in Namespace
+        * 7 - Namespace with constraints
+        * 8 - Labels
+        * 9 - Subnet
+        * 10 - Any
+      type: integer
+      format: int32
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
     k8sWorkload:
       type: object
       properties:
+        annotationsList:
+          type: array
+          items:
+            $ref: '#/components/schemas/idNamePair'
         applicationsList:
           type: array
           items:
-            $ref: '#/components/schemas/k8sApplication'
+            $ref: '#/components/schemas/idNamePair'
         cluster:
           $ref: '#/components/schemas/idNamePair'
         id:
@@ -48514,9 +50789,10 @@ components:
           type: string
           format: uuid
         labelsList:
-          type: array
           items:
-            $ref: '#/components/schemas/idNamePair'
+            type: array
+            items:
+              $ref: '#/components/schemas/keyValuePair'
         name:
           type: string
         namespace:
@@ -48524,7 +50800,12 @@ components:
         podsCount:
           type: integer
         type:
-          type: integer
+          $ref: '#/components/schemas/k8sEntityType'
+    k8sWorkloadEntity:
+      type: object
+      properties:
+        entity:
+          $ref: '#/components/schemas/k8sWorkload'
     k8sWorkloadsList:
       type: object
       properties:
@@ -48534,6 +50815,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/k8sWorkload'
+    keyValuePair:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
     licensedUserInfo:
       type: object
       properties:
@@ -48558,10 +50846,21 @@ components:
               properties:
                 activitiesRetentionDays:
                   type: integer
+                enableActivitySync:
+                  type: boolean
                 clientsLimit:
                   type: integer
                 endTime:
                   $ref: '#/components/schemas/epochMillis'
+                k8sLicenseMode:
+                  description: '1-On, 2-Off, 3-Trial, 4-Trial_NoLimits, 5-On_WithLimits'
+                  type: integer
+                  enum:
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    - 5
                 licenseMode:
                   description: '1-On, 2-Off, 3-Trial, 4-Trial_NoLimits, 5-On_WithLimits'
                   type: integer
@@ -48573,21 +50872,52 @@ components:
                     - 5
                 limit:
                   type: integer
+                nodesLimit:
+                  type: integer
                 otsLimit:
                   type: integer
                 serversLimit:
                   type: integer
+                selfTrialAvailable:
+                  type: boolean
                 startTime:
                   $ref: '#/components/schemas/epochMillis'
+            inUse:
+              type: integer
             counts:
               type: object
               properties:
+                nodesCount:
+                  type: integer
                 totalClientUsed:
                   type: integer
                 totalOtsUsed:
                   type: integer
                 totalServerUsed:
                   type: integer
+    licenseConfigBody:
+      type: object
+      properties:
+        licenseConfig:
+          type: object
+          properties:
+            activitiesRetentionDays:
+              type: integer
+            clientsLimit:
+              type: integer
+            endTime:
+              $ref: '#/components/schemas/epochMillis'
+            licenseMode:
+              type: integer
+            otsLimit:
+              type: integer
+            selfTrialAvailable:
+              type: boolean
+              default: false
+            serversLimit:
+              type: integer
+            startTime:
+              $ref: '#/components/schemas/epochMillis'
     licensesInUse:
       type: object
       properties:
@@ -51052,6 +53382,8 @@ components:
           $ref: '#/components/schemas/epochMillis'
         updatedBy:
           $ref: '#/components/schemas/idNamePair'
+        isRejectOnLinux:
+          type: boolean
     ruleAction:
       description: |
         * 1 - Allow
@@ -51100,6 +53432,9 @@ components:
           $ref: '#/components/schemas/srcUsersList'
         state:
           $ref: '#/components/schemas/ruleState'
+        context:
+          type: integer
+          format: int32
       required:
         - action
         - localEntityId
@@ -51746,8 +54081,10 @@ components:
                 required:
                   - ouName
                   - userFqdn
+          required:
+            - ouConfigs
       required:
-        - ouConfigs
+        - ouInfo
     ouConfig:
       type: object
       properties:
@@ -52136,6 +54473,23 @@ components:
           type: boolean
       required:
         - isBreakGlassMfaEnabled
+    settingsBreakGlassSwitches:
+      type: object
+      properties:
+        allowNetworkTraffic:
+          type: boolean
+        stopMonitoring:
+          type: boolean
+    settingsBreakGlassSwitchesBody:
+      type: object
+      properties:
+        allowNetworkTraffic:
+          type: boolean
+        stopMonitoring:
+          type: boolean
+      required:
+        - allowNetworkTraffic
+        - stopMonitoring
     settingsClientSubnets:
       type: object
       properties:
@@ -52803,39 +55157,85 @@ components:
         item:
           $ref: '#/components/schemas/settingsMfaDetection'
     settingsNotification:
-      type: object
-      properties:
-        assetProtected:
-          description: Notify asset added to protection
-          type: boolean
-        assetQueued:
-          description: Notify asset added to learning
-          type: boolean
-        assetUnprotected:
-          description: Notify asset removed from protection
-          type: boolean
-        assetPostponed:
-          description: Notify asset protection postponed
-          type: boolean
+      type: array
+      items: 
+        type: object
+        properties:
+          type:
+            type: integer
+            enum: 
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
+              - 10
+              - 11
+              - 12
+              - 13
+              - 14
+              - 15
+              - 16
+              - 17
+              - 18
+              - 19
+              - 20
+              - 21
+              - 22
+          enabled:
+            type: boolean
+          roles:
+            type: array
+            items:
+              type: integer
+              enum:
+                - 1
+                - 2
+                - 10
     settingsNotificationBody:
-      type: object
-      properties:
-        assetProtected:
-          description: Notify asset added to protection
-          type: boolean
-        assetQueued:
-          description: Notify asset added to learning
-          type: boolean
-        assetUnprotected:
-          description: Notify asset removed from protection
-          type: boolean
-        assetPostponed:
-          type: boolean
-      required:
-        - assetProtected
-        - assetQueued
-        - assetUnprotected
-        - assetPostponed
+      type: array
+      items: 
+        type: object
+        properties:
+          type:
+            type: integer
+            enum: 
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
+              - 10
+              - 11
+              - 12
+              - 13
+              - 14
+              - 15
+              - 16
+              - 17
+              - 18
+              - 19
+              - 20
+              - 21
+              - 22
+          enabled:
+            type: boolean
+          roles:
+            type: array
+            items:
+              type: integer
+              enum:
+                - 1
+                - 2
+                - 10
     settingsPrivilegedPorts:
       type: object
       properties:
@@ -52934,6 +55334,19 @@ components:
           $ref: '#/components/schemas/portsList'
       required:
         - ports
+    settingsSegmentConnectorUpdateRecoveryBody:
+      type: object
+      properties:
+        maxUpdateTries:
+          type: integer
+        updateCooldownHours:
+          type: integer
+        updateCooldownMinutes:
+          type: integer
+      required:
+        - maxUpdateTries
+        - updateCooldownHours
+        - updateCooldownMinutes
     settingsZpa:
       type: object
       properties:
@@ -53255,6 +55668,28 @@ components:
         - type
         - username
         - password
+    switchesMonitoringBreakGlassBody:
+      allOf:
+        - $ref: '#/components/schemas/switchMonitoringBreakGlassBody'
+        - type: object
+          properties:
+            switchIds:
+              type: array
+              items:
+                type: string
+          required:
+            - switchIds
+    switchesNetworkBreakGlassBody:
+      allOf:
+        - $ref: '#/components/schemas/switchNetworkBreakGlassBody'
+        - type: object
+          properties:
+            switchIds:
+              type: array
+              items:
+                type: string
+          required:
+            - switchIds
     switchId:
       type: object
       properties:
@@ -53298,6 +55733,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/switch'
+    switchMonitoringBreakGlassBody:
+      type: object
+      properties:
+        monitoringBreakGlassEnabled:
+          type: boolean
+      required:
+        - monitoringBreakGlassEnabled
+    switchNetworkBreakGlassBody:
+      type: object
+      properties:
+        networkBreakGlassEnabled:
+          type: boolean
+      required:
+        - networkBreakGlassEnabled    
     switchProtocolsList:
       type: object
       properties:
@@ -54046,8 +56495,8 @@ tags:
     description: API Calls related to Segment Server Settings.
   - name: Settings Segment Connector
     description: API calls related to Segment Connector settings.
-  - name: Settings ServiceNow
-    description: API calls related to ServiceNow settings.
+  - name: Settings CMDB
+    description: API calls related to CMDB settings.
   - name: Settings Trusted Internet
     description: API calls related to Trust Internet Settings
   - name: Settings ZTNA proxy

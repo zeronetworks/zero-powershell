@@ -1,11 +1,12 @@
-FROM mcr.microsoft.com/powershell:7.4-ubuntu-22.04
-#FROM mcr.microsoft.com/powershell:7.4-azurelinux-3.0-arm64
+FROM mcr.microsoft.com/dotnet/sdk:8.0.413-noble
+#FROM mcr.microsoft.com/powershell:7.4-ubuntu-22.04
 
 # Install dependencies and clean up
 RUN apt-get update \
     && apt-get install -y curl \
     && apt-get install -y dotnet-sdk-8.0 \
     && apt-get install -y git \
+    && apt-get install -y locales \
     && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash \
     && . /root/.bashrc \
     && nvm install 20.19.0 \

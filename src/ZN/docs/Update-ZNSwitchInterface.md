@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-ZNSwitchInterface
 
 ## SYNOPSIS
-updates interfaces for a switch
+Update interfaces for a switch
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Update-ZNSwitchInterface -SwitchId <String> -Interfaces <String[]> -ShouldMonito
 ```
 
 ## DESCRIPTION
-updates interfaces for a switch
+Update interfaces for a switch
 
 ## EXAMPLES
 

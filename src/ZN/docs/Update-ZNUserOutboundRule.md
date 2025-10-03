@@ -226,7 +226,6 @@ Accept wildcard characters: False
 
 ### -PortsList
 the destination ports and protocols.
-To construct, see NOTES section for PORTSLIST properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]
@@ -287,7 +286,6 @@ Accept wildcard characters: False
 
 ### -SrcUsersList
 the source user(s).
-To construct, see NOTES section for SRCUSERSLIST properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.SrcUsersListItem[]

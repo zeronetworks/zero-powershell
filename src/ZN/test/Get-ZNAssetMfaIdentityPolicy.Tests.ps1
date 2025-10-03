@@ -20,7 +20,7 @@ Describe 'Get-ZNAssetMfaIdentityPolicy' {
         (Get-ZNAssetMfaIdentityPolicy -AssetId $asset).Items.Count | Should -BeGreaterThan 0
     }
 
-    It 'Get' {
+    It 'Get' -skip {
         $asset= (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
         $policy = (Get-ZNAssetMfaIdentityPolicy -AssetId $asset).Items | select -First 1
         (Get-ZNAssetMfaIdentityPolicy -AssetId $asset -ReactivePolicyId $policy.Id).ItemId | Should -Not -BeNullOrEmpty

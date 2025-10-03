@@ -17,12 +17,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNUserMfaInboundPolicy'))
 Describe 'Get-ZNUserMfaInboundPolicy' {
     It 'List' {
         $user = (Get-ZNUser -Search zero).Items | where {$_.Name -eq "zero"}
-        (Get-ZNUserMfaInboundPolicy -UserId $user.Id).Count | Should -BeGreaterThan 0
+        (Get-ZNUserMfaInboundPolicy -UserId $user.Id -AddBuiltins).Count | Should -BeGreaterThan 0
     }
 
     It 'Get' {
         $user = (Get-ZNUser -Search zero).Items | where {$_.Name -eq "zero"}
-        $policy = Get-ZNUserMfaInboundPolicy -UserId $user.Id | select -First 1
+        $policy = Get-ZNUserMfaInboundPolicy -UserId $user.Id -AddBuiltins | select -First 1
         (Get-ZNUserMfaInboundPolicy -UserId $user.Id -reactivePolicyId $policy.Id).ItemId | Should -Not -BeNullOrEmpty
     }
 }

@@ -15,9 +15,9 @@ Returns the properties of the created Inbound rule.
 ```
 New-ZNGroupsInboundRule -GroupId <String> -GroupType <String> -Action <Int32> -LocalEntityId <String>
  -LocalProcessesList <String[]> -PortsList <IPortsListItem[]> -RemoteEntityIdsList <String[]> -State <Int32>
- [-AccountName <String>] [-ChangeTicket <String>] [-Description <String>] [-ExcludedLocalIdsList <String[]>]
- [-ExpiresAt <Int64>] [-IPSecOpt <Int32>] [-Name <String>] [-ServicesList <String[]>]
- [-SrcUsersList <ISrcUsersListItem[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AccountName <String>] [-ChangeTicket <String>] [-Context <Int32>] [-Description <String>]
+ [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>] [-IPSecOpt <Int32>] [-Name <String>]
+ [-ServicesList <String[]>] [-SrcUsersList <ISrcUsersListItem[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,6 +105,21 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Context
+.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -252,7 +267,6 @@ Accept wildcard characters: False
 
 ### -PortsList
 .
-To construct, see NOTES section for PORTSLIST properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]
@@ -298,7 +312,6 @@ Accept wildcard characters: False
 
 ### -SrcUsersList
 .
-To construct, see NOTES section for SRCUSERSLIST properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISrcUsersListItem[]

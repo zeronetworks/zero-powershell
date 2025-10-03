@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetOtMirrorCandidate'
 
 Describe 'Get-ZNAssetOtMirrorCandidate' {
     It 'List' {
-        $asset = Get-ZNAssetsOt | select -First 1
+        $asset = (Get-ZNAssetsOt).Items | select -First 1
         $mirrorCandidate = Get-ZNAssetOtMirrorCandidate -AssetId $asset.Id
         $mirrorCandidate.Count | Should -BeGreaterThan 0
     }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-ZNAeExclusionsOutbound
 
 ## SYNOPSIS
-Returns the properties of the update AE exclusion.
+Returns the properties of the get AE exclusion.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-ZNAeExclusionsOutbound -RuleId <String> [-AccountName <String>] [<CommonPara
 ```
 
 ## DESCRIPTION
-Returns the properties of the update AE exclusion.
+Returns the properties of the get AE exclusion.
 
 ## EXAMPLES
 

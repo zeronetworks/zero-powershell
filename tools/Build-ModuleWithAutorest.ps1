@@ -38,14 +38,6 @@ try{
     copy-item .\docs ..\..\zeronetworks -recurse
 }
 catch{
-    Write-Host "Failed to build modules" -ForegroundColor Red
-    exit
-}
-
-try{
-    x
-}
-catch{
-    Write-Host "Failed to build modules" -ForegroundColor Red
+    Write-Host "Failed to copy docs" -ForegroundColor Red
     exit
 }

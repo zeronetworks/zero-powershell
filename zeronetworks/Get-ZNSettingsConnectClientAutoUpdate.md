@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-ZNSettingsConnectClientAutoUpdate
 
 ## SYNOPSIS
-Get Connect client auto update in Settings
+Get Connect client auto get in Settings
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-ZNSettingsConnectClientAutoUpdate [-AccountName <String>] [<CommonParameters
 ```
 
 ## DESCRIPTION
-Get Connect client auto update in Settings
+Get Connect client auto get in Settings
 
 ## EXAMPLES
 

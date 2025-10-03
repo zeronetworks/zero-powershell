@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSwitchOutboundOtRule'))
 Describe 'Get-ZNSwitchOutboundOtRule' {
     It 'List' {
         $switch = (Get-ZNSwitch).Items | select -First 1
-        (Get-ZNSwitchOutboundOtRule -SwitchId $switch.id).Items.Count | Should -BeGreaterThan 0
+        (Get-ZNSwitchOutboundOtRule -SwitchId $switch.id -AddBuiltins).Items.Count | Should -BeGreaterThan 0
     }
 
     It 'Get' {

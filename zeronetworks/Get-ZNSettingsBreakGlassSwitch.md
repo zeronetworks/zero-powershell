@@ -1,38 +1,38 @@
 ---
 external help file:
 Module Name: ZeroNetworks
-online version: https://github.com/zeronetworks/zero-powershell/zeronetworks/get-znsettingsnotification
+online version: https://github.com/zeronetworks/zero-powershell/zeronetworks/get-znsettingsbreakglassswitch
 schema: 2.0.0
 ---
 
-# Get-ZNSettingsNotification
+# Get-ZNSettingsBreakGlassSwitch
 
 ## SYNOPSIS
-Returns the properties of the Mail Notification settings.
+Get break glass switches settings
 
 ## SYNTAX
 
 ```
-Get-ZNSettingsNotification [-AccountName <String>] [<CommonParameters>]
+Get-ZNSettingsBreakGlassSwitch [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the properties of the Mail Notification settings.
+Get break glass switches settings
 
 ## EXAMPLES
 
-### Example 1: Get notifications settings
+### Example 1: Get Switch Break glass settings
 ```powershell
-Get-ZNSettingsNotification
+Get-ZNSettingsBreakGlassSwitch
 ```
 
 ```output
-AssetPostponed AssetProtected AssetQueued AssetUnprotected
--------------- -------------- ----------- ----------------
-False          False          False       False
+AllowNetworkTraffic StopMonitoring
+------------------- --------------
+              False          False
 ```
 
-This cmdlet returns the notifications settings.
+This cmdlet gets the Switch break glass settings.
 
 ## PARAMETERS
 
@@ -60,7 +60,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsNotification
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISettingsBreakGlassSwitches
 
 ## NOTES
 

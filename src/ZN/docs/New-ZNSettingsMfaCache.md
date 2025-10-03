@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-ZNSettingsMfaCache
 
 ## SYNOPSIS
-Creates a MFA Cache Policy.
+Create a MFA Cache Policy.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-ZNSettingsMfaCache -AssetLimit <Int32> -EntityId <String> -TtlMinutes <Int32
 ```
 
 ## DESCRIPTION
-Creates a MFA Cache Policy.
+Create a MFA Cache Policy.
 
 ## EXAMPLES
 

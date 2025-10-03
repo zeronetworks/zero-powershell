@@ -19,7 +19,7 @@ Describe 'New-ZNSwitchOutboundOtRule' {
         $switch = (Get-ZNSwitch).Items | Select -First 1
         $protocolsList = New-ZNProtocolsList -Protocol tcp -LocalPorts (get-Random -min 1 -max 1024)
         $destination = Invoke-ZNEncodeEntityIp -Ip 1.1.1.100
-        $source = (Get-ZNInboundOtRulesSourceCandidate -Search "otv2").items | where {$_.Name -eq "OTv2"}
+        $source = (Get-ZNOutboundOtRulesSourceCandidate -Search "poshotv2").items
         $rule = New-ZNSwitchOutboundOtRule -SwitchId $switch.id -Action 1 -Direction 2 -localEntityId $source.Id -RemoteEntitiesIdList @($destination.id) -protocolsList $protocolsList -state 1 -LocalProcessesList @("*") -ExcludedLocalIdsList @() -ShouldBuildMirrorRules
         $rule.ItemId | Should -Not -BeNullOrEmpty
         Remove-ZNOutboundOtRule -RuleId $rule.ItemId

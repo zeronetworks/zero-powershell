@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-ZNAssetInboundOtRule
 
 ## SYNOPSIS
-deletes an Asset rule
+Deletes an Asset rule
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Remove-ZNAssetInboundOtRule -AssetId <String> -RuleId <String> [-AccountName <St
 ```
 
 ## DESCRIPTION
-deletes an Asset rule
+Deletes an Asset rule
 
 ## EXAMPLES
 

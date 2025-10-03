@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNAssetOtInboundOtrulesUs
 
 Describe 'Get-ZNAssetOtInboundOtrulesUserCandidate' {
     It 'List' {
-        $assetId = (Search-ZNAsset -Fqdn dc01.posh.local).AssetId
-        (Get-ZNAssetOtInboundOtrulesUserCandidate -AssetId $assetId).Items.Count | Should -BeGreaterThan 0
+        $assetOt = (Get-ZNAssetsOt).Items | Select -First 1
+        (Get-ZNAssetOtInboundOtrulesUserCandidate -AssetId $assetOt.Id).Items.Count | Should -BeGreaterThan 0
     }
 }

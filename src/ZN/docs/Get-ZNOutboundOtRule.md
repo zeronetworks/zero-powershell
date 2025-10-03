@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-ZNOutboundOtRule
 
 ## SYNOPSIS
-get an OT/IoT Rule
+Get an OT/IoT Rule
 
 ## SYNTAX
 
@@ -24,7 +24,7 @@ Get-ZNOutboundOtRule -RuleId <String> [-AccountName <String>] [<CommonParameters
 ```
 
 ## DESCRIPTION
-get an OT/IoT Rule
+Get an OT/IoT Rule
 
 ## EXAMPLES
 

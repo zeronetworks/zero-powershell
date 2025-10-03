@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-ZNSettingsAdLinux
 
 ## SYNOPSIS
-Adds or updates linux config for a domain.
+Adds or update linux config for a domain.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Update-ZNSettingsAdLinux -DomainId <String> -ForestId <String> [-AccountName <St
 ```
 
 ## DESCRIPTION
-Adds or updates linux config for a domain.
+Adds or update linux config for a domain.
 
 ## EXAMPLES
 

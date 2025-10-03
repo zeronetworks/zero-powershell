@@ -212,7 +212,6 @@ Accept wildcard characters: False
 
 ### -PortsList
 the destination ports and protocols.
-To construct, see NOTES section for PORTSLIST properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]

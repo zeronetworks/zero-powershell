@@ -122,7 +122,6 @@ Accept wildcard characters: False
 
 ### -DstPortsList
 .
-To construct, see NOTES section for DSTPORTSLIST properties and create a hash table.
 
 ```yaml
 Type: ZeroNetworks.PowerShell.Cmdlets.Api.Models.IPortsListItem[]

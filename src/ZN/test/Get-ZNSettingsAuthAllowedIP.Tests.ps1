@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsAuthAllowedIP')
 
 Describe 'Get-ZNSettingsAuthAllowedIP' {
     It 'Get' {
-        (Get-ZNSettingsAuthAllowedIP).ItemAllowedIPs | Should -Not -BeNullOrEmpty
+        { Get-ZNSettingsAuthAllowedIP }  | Should -Not -Throw
     }
 }

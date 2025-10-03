@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Api service.
 
 ---
-## Status
-[![ZeroNetworks](https://img.shields.io/powershellgallery/v/ZeroNetworks.svg?style=flat-square&label=ZeroNetworks "ZeroNetworks")](https://www.powershellgallery.com/packages/ZeroNetworks/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -32,7 +29,7 @@ require:
 input-file:
   - $(this-folder)/../openapi.yaml
 
-module-version: 0.0.22-preview
+module-version: 0.0.23-preview
 title: Api
   
 inlining-threshold: 100
@@ -1939,7 +1936,7 @@ directive:
       subject: SettingsAdOuConfig
     hide: true
   - where:
-      subject: DownloadSegmentConnectorLinux
+      subject: SettingsSegmentConnector
     hide: true
   # Customize
   # Remove the export cmdlets
@@ -2021,6 +2018,10 @@ directive:
   - where:
       subject: ^AssetsLinuxScript$|^AssetsLinuxScriptAvailable$
     hide: true
+  # hide K8s cmdlets (not useful)
+  - where:
+      subject: ^K8sClusterLabelNode$|^K8sClusterWorkloadApplication$|^K8sClusterWorkloadLabel$|^K8sWorkloadApplication$
+    hide: true
   # Hide profile cmdlets
   - where:
       subject: ^ProfileEnvironment$|^Profile$
@@ -2029,6 +2030,10 @@ directive:
   - where:
       subject: ^AssetOtAnalysis$|^AssetOtIdentityRule$|^AssetOtIdentityRulesAssetsCandidate$|^AssetOtIdentityRulesExcludedAssetsCandidate$|^AssetOtIdentityRulesUserCandidate$|^AssetOtInboundRule$|^AssetOtInboundRulesDestinationCandidate$|^AssetOtInboundRulesExcludedDestinationCandidate$|^AssetOtInboundRulesSourceCandidate$|^AssetOtmfaIdentityPoliciesDestinationCandidate$|^AssetOtmfaIdentityPoliciesExcludedSourceCandidate$|^AssetOtmfaIdentityPoliciesMfamethod$|^AssetOtmfaIdentityPoliciesSourceCandidate$|^AssetOtmfaIdentityPoliciesSourceUserCandidate$|^AssetOtmfaIdentityPolicy$|^AssetOtmfaInboundPoliciesDestinationCandidate$|^AssetOtmfaInboundPoliciesExcludedSourceCandidate$|^AssetOtmfaInboundPoliciesMfamethod$|^AssetOtmfaInboundPoliciesSourceCandidate$|^AssetOtmfaInboundPoliciesSourceUserCandidate$|^AssetOtmfaInboundPolicy$|^AssetOtOutboundRule$|^AssetOtmfaOutboundPoliciesDestinationCandidate$|^AssetOtmfaOutboundPoliciesExcludedSourceCandidate$|^AssetOtmfaOutboundPoliciesMfamethod$|^AssetOtmfaOutboundPoliciesSourceCandidate$|^AssetOtmfaOutboundPoliciesSourceUserCandidate$|^AssetOtmfaOutboundPolicy$|^AssetOtOutboundRulesDestinationCandidate$|^AssetOtOutboundRulesExcludedSourceCandidate$|^AssetOtOutboundRulesSourceCandidate$|^AssetOtOutboundRulesUserCandidate$|^AssetOtrpcRule$|^AssetOtrpcRulesDestinationCandidate$|^AssetOtrpcRulesExcludedDestinationCandidate$|^AssetOtrpcRulesSourceCandidate$|^AssetOtrpcRulesUserCandidate$|^AssetOtRulesDistribution$
     hide: true
+  # Hide notifications cmdlets
+  - where:
+      subject: ^SettingsNotification$
+    remove: true
   # Remove APIs that require Human access
   - where:
       subject: (.*)Token
@@ -2256,6 +2261,16 @@ directive:
       verb: Invoke
     set:
       subject: AssetDeactivateBreakGlass
+  - where:
+      subject: SwitchesNetworkBreakGlass
+      verb: Initialize
+    set:
+      subject: SwitchNetworkBreakGlass
+  - where:
+      subject: SwitchesMonitoringBreakGlass
+      verb: Initialize
+    set:
+      subject: SwitchMonitoringBreakGlass
   # change set to update
   - where:
       verb: Set
@@ -2443,6 +2458,10 @@ directive:
   - where:
       subject: SimulateSegmentation
     remove: true
+  - where:
+      subject: SettingsLicense
+      verb: Update
+    remove: true
   # Hide for Custom Wrappers
   - where:
       verb: Update
@@ -2453,6 +2472,9 @@ directive:
     hide: true
   - where:
       subject: (.*)RuleReview$|(.*)RulesReview$
+    hide: true
+  - where:
+      subject: DownloadSegmentConnector
     hide: true
   # format Responses
   - where:

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-ZNSettingsMfaCache
 
 ## SYNOPSIS
-deletes a MFA Cache Policy.
+Deletes a MFA Cache Policy.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Remove-ZNSettingsMfaCache -EntityId <String> [-AccountName <String>] [-PassThru]
 ```
 
 ## DESCRIPTION
-deletes a MFA Cache Policy.
+Deletes a MFA Cache Policy.
 
 ## EXAMPLES
 

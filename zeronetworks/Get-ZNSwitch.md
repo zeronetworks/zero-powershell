@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-ZNSwitch
 
 ## SYNOPSIS
-gets a switch
+Gets a switch
 
 ## SYNTAX
 
@@ -23,7 +23,7 @@ Get-ZNSwitch -SwitchId <String> [-AccountName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-gets a switch
+Gets a switch
 
 ## EXAMPLES
 
