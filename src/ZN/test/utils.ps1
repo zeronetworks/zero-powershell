@@ -44,6 +44,22 @@ function Decode-JWTToken {
     return $tokobj
 }
 
+function Generate-RandomPassword {
+    param (
+        [int]$length = 16
+    )
+
+    $upper = 65..90 | ForEach-Object { [char]$_ } # A-Z
+    $lower = 97..122 | ForEach-Object { [char]$_ } # a-z
+    $digits = 48..57 | ForEach-Object { [char]$_ } # 0-9
+    $special = 33..47 + 58..64 + 91..96 + 123..126 | ForEach-Object { [char]$_ } # Special characters
+
+    $allChars = $upper + $lower + $digits + $special
+
+    $password = -join (1..$length | ForEach-Object { $allChars | Get-Random })
+
+    return $password
+}
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -112,6 +128,7 @@ function setupEnv() {
     
 
     $env.Add("baseUri", ("https://"+$decodedToken.aud+"/api/v1"))
+    $env.Add("RandomP)", (Generate-RandomPassword))
 
     $znHeader = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
     #$znHeader.Add("Authorization", $constants.$envToTest.ZNApiKey)
