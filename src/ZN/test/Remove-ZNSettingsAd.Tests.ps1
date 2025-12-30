@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNSettingsAd'))
 
 Describe 'Remove-ZNSettingsAd' {
     It 'Delete' { 
-        New-ZNSettingsAd -PrimaryDomainConfigDomainControllerFqdn dc.test.com -PrimaryDomainConfigDomainName test.com -PrimaryDomainConfigUseLdaps -PrimaryDomainConfigUserFqdn ZNRemoteManagement -PrimaryDomainConfigPassword "zero@1313" -UsePrimaryUserForAllDomains -allowNtlmFallback:$false
+        New-ZNSettingsAd -PrimaryDomainConfigDomainControllerFqdn dc.test.com -PrimaryDomainConfigDomainName test.com -PrimaryDomainConfigUseLdaps -PrimaryDomainConfigUserFqdn ZNRemoteManagement -PrimaryDomainConfigPassword $env.RandomP -UsePrimaryUserForAllDomains -allowNtlmFallback:$false
         $forest = Get-ZNSettingsAd | where {$_.ActiveDirectoryInfoDomainName -eq "test.com"}
         { Remove-ZNSettingsAd -ForestId $forest.ForestId } | Should -Not -Throw
     }

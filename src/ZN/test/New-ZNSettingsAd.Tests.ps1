@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-ZNSettingsAd'))
 
 Describe 'New-ZNSettingsAd' {
     It 'NewExpanded' {
-        { New-ZNSettingsAd -PrimaryDomainConfigDomainControllerFqdn dc.test.com -PrimaryDomainConfigDomainName test.com -PrimaryDomainConfigUseLdaps -PrimaryDomainConfigUserFqdn ZNRemoteManagement -PrimaryDomainConfigPassword "zero@1313" -UsePrimaryUserForAllDomains -allowNtlmFallback:$false } | Should -Not -Throw
+        { New-ZNSettingsAd -PrimaryDomainConfigDomainControllerFqdn dc.test.com -PrimaryDomainConfigDomainName test.com -PrimaryDomainConfigUseLdaps -PrimaryDomainConfigUserFqdn ZNRemoteManagement -PrimaryDomainConfigPassword $env.RandomP -UsePrimaryUserForAllDomains -allowNtlmFallback:$false } | Should -Not -Throw
         $forest = Get-ZNSettingsAd | where {$_.ActiveDirectoryInfoDomainName -eq "test.com"}
         Remove-ZNSettingsAd -ForestId $forest.ForestId
     }

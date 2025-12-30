@@ -16,9 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-ZNSettingsAd'))
 
 Describe 'Update-ZNSettingsAd' {
     It 'UpdateExpanded' {
-        New-ZNSettingsAd -PrimaryDomainConfigDomainControllerFqdn dc.test.com -PrimaryDomainConfigDomainName test.com -PrimaryDomainConfigUseLdaps -PrimaryDomainConfigUserFqdn ZNRemoteManagement -PrimaryDomainConfigPassword "zero@1313" -UsePrimaryUserForAllDomains -allowNtlmFallback:$false
+        New-ZNSettingsAd -PrimaryDomainConfigDomainControllerFqdn dc.test.com -PrimaryDomainConfigDomainName test.com -PrimaryDomainConfigUseLdaps -PrimaryDomainConfigUserFqdn ZNRemoteManagement -PrimaryDomainConfigPassword $env.RandomP -UsePrimaryUserForAllDomains -allowNtlmFallback:$false
         $forest = Get-ZNSettingsAd | where {$_.ActiveDirectoryInfoDomainName -eq "test.com"}
-        { Update-ZNSettingsAd -ForestId $forest.ForestId -PrimaryDomainConfigDomainControllerFqdn $forest.ActiveDirectoryInfoDomainControllerFqdn -PrimaryDomainConfigDomainName $forest.ActiveDirectoryInfoDomainName -PrimaryDomainConfigPassword "zero@1313" -PrimaryDomainConfigUseLdaps -PrimaryDomainConfigUserFqdn ZNRemoteManagement -UsePrimaryUserForAllDomains:$false -allowNtlmFallback:$false} | should -not -throw
+        { Update-ZNSettingsAd -ForestId $forest.ForestId -PrimaryDomainConfigDomainControllerFqdn $forest.ActiveDirectoryInfoDomainControllerFqdn -PrimaryDomainConfigDomainName $forest.ActiveDirectoryInfoDomainName -PrimaryDomainConfigPassword $env.RandomP -PrimaryDomainConfigUseLdaps -PrimaryDomainConfigUserFqdn ZNRemoteManagement -UsePrimaryUserForAllDomains:$false -allowNtlmFallback:$false} | should -not -throw
         Remove-ZNSettingsAd -ForestId $forest.ForestId
     }
 }
