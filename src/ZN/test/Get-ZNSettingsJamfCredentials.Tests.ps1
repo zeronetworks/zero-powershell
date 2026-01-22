@@ -15,9 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNSettingsJamfCredentials
 }
 
 Describe 'Get-ZNSettingsJamfCredentials' {
-    It 'Get' {
-        # cant test automatically
-        $a = 1
-        $a | Should -Be 1
+    It 'Get' -skip {
+        
     }
 }

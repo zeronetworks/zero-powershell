@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-ZNK8SClusterEgressIP'))
 
 Describe 'Get-ZNK8SClusterEgressIP' {
     It 'Get' {
-        $k8sCluster = (Get-ZNK8SCluster).Items | Select-Object -First 1
+        $k8sCluster = (Get-ZNK8SCluster).Items | where {$_.Name -eq $env.K8sCluster} | Select-Object -First 1
         (Get-ZNK8SClusterEgressIP -K8sClusterId $k8sCluster.Id).Items.Count | Should -BeGreaterThan 0
     }
 }

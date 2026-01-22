@@ -14,9 +14,9 @@ Create an OT/IoT rule
 
 ```
 New-ZNInboundOtRule -Action <Int32> -LocalEntityId <String> -ProtocolsList <ISwitchProtocolsListBodyItem[]>
- -ShouldBuildMirrorRules -State <Int32> [-AccountName <String>] [-ChangeTicket <String>]
- [-Description <String>] [-Direction <Int32>] [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>]
- [-LocalProcessesList <String[]>] [-RemoteEntitiesIdList <String[]>] [-ServicesList <String[]>]
+ -RemoteEntitiesIdList <String[]> -ShouldBuildMirrorRules -State <Int32> [-AccountName <String>]
+ [-ChangeTicket <String>] [-Description <String>] [-Direction <Int32>] [-ExcludedLocalIdsList <String[]>]
+ [-ExpiresAt <Int64>] [-LocalProcessesList <String[]>] [-ServicesList <String[]>]
  [-SrcUsersList <ISrcUsersListItem[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -Action
-* 1 - Allow* 2 - Block
+* 1 - Allow* 2 - Block* 3 - Force Block
 
 ```yaml
 Type: System.Int32
@@ -234,7 +234,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

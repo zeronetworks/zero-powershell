@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -Action
-* 1 - Allow* 2 - Block
+* 1 - Allow* 2 - Block* 3 - Force Block
 
 ```yaml
 Type: System.Int32

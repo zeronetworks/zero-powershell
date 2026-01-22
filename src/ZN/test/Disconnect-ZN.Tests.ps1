@@ -15,9 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Disconnect-ZN'))
 }
 
 Describe 'Disconnect-ZN' {
-    It '__AllParameterSets' {
-        # cant test automatically
-        $a = 1
-        $a | Should -Be 1
+    It '__AllParameterSets' -skip {
+        
     }
 }

@@ -38,29 +38,86 @@ Add a managed assets for user
 ### [Approve-ZNAssetInboundRuleReview](Approve-ZNAssetInboundRuleReview.md)
 Approve a "pending review" rule with or without changes
 
+### [Approve-ZNAssetInboundRulesCleanup](Approve-ZNAssetInboundRulesCleanup.md)
+Approve deleting a rule AE suggested for cleanup
+
+### [Approve-ZNAssetOtInboundRulesCleanup](Approve-ZNAssetOtInboundRulesCleanup.md)
+Approve deleting a rule AE suggested for cleanup
+
+### [Approve-ZNAssetOtOutboundRulesCleanup](Approve-ZNAssetOtOutboundRulesCleanup.md)
+Approve deleting a rule AE suggested for cleanup
+
 ### [Approve-ZNAssetOutboundRuleReview](Approve-ZNAssetOutboundRuleReview.md)
 Approve a "pending review" rule with or without changes
+
+### [Approve-ZNAssetOutboundRulesCleanup](Approve-ZNAssetOutboundRulesCleanup.md)
+Approve deleting a rule AE suggested for cleanup
+
+### [Approve-ZNGroupsInboundRulesCleanup](Approve-ZNGroupsInboundRulesCleanup.md)
+Approve deleting a rule AE suggested for cleanup
+
+### [Approve-ZNGroupsOutboundRulesCleanup](Approve-ZNGroupsOutboundRulesCleanup.md)
+Approve deleting a rule AE suggested for cleanup
 
 ### [Approve-ZNInboundRuleReview](Approve-ZNInboundRuleReview.md)
 Approve a "pending review" rule with or without changes
 
+### [Approve-ZNInboundRulesCleanup](Approve-ZNInboundRulesCleanup.md)
+Approve deleting a rule AE suggested for cleanup
+
 ### [Approve-ZNOutboundRuleReview](Approve-ZNOutboundRuleReview.md)
 Approve a "pending review" rule with or without changes
+
+### [Approve-ZNOutboundRulesCleanup](Approve-ZNOutboundRulesCleanup.md)
+Approve deleting a rule AE suggested for cleanup
+
+### [Approve-ZNUserOutboundRulesCleanup](Approve-ZNUserOutboundRulesCleanup.md)
+Approve deleting a rule AE suggested for cleanup
 
 ### [Connect-ZN](Connect-ZN.md)
 Login to Zero Networks to get a token for cmdlet use
 
+### [ConvertTo-ZNEpochMS](ConvertTo-ZNEpochMS.md)
+
+
 ### [Deny-ZNAssetInboundRuleReview](Deny-ZNAssetInboundRuleReview.md)
 Reject a "pending review" rule
+
+### [Deny-ZNAssetInboundRulesCleanup](Deny-ZNAssetInboundRulesCleanup.md)
+Deny deleting a rule AE suggested for cleanup
+
+### [Deny-ZNAssetOtInboundRulesCleanup](Deny-ZNAssetOtInboundRulesCleanup.md)
+Deny deleting a rule AE suggested for cleanup
+
+### [Deny-ZNAssetOtOutboundRulesCleanup](Deny-ZNAssetOtOutboundRulesCleanup.md)
+Deny deleting a rule AE suggested for cleanup
 
 ### [Deny-ZNAssetOutboundRuleReview](Deny-ZNAssetOutboundRuleReview.md)
 Reject a "pending review" rule
 
+### [Deny-ZNAssetOutboundRulesCleanup](Deny-ZNAssetOutboundRulesCleanup.md)
+Deny deleting a rule AE suggested for cleanup
+
+### [Deny-ZNGroupsInboundRulesCleanup](Deny-ZNGroupsInboundRulesCleanup.md)
+Deny deleting a rule AE suggested for cleanup
+
+### [Deny-ZNGroupsOutboundRulesCleanup](Deny-ZNGroupsOutboundRulesCleanup.md)
+Deny deleting a rule AE suggested for cleanup
+
 ### [Deny-ZNInboundRuleReview](Deny-ZNInboundRuleReview.md)
 Reject a "pending review" rule
 
+### [Deny-ZNInboundRulesCleanup](Deny-ZNInboundRulesCleanup.md)
+Deny deleting a rule AE suggested for cleanup
+
 ### [Deny-ZNOutboundRuleReview](Deny-ZNOutboundRuleReview.md)
 Reject a "pending review" rule
+
+### [Deny-ZNOutboundRulesCleanup](Deny-ZNOutboundRulesCleanup.md)
+Deny deleting a rule AE suggested for cleanup
+
+### [Deny-ZNUserOutboundRulesCleanup](Deny-ZNUserOutboundRulesCleanup.md)
+Deny deleting a rule AE suggested for cleanup
 
 ### [Disconnect-ZN](Disconnect-ZN.md)
 Logout of Zero Networks
@@ -121,9 +178,6 @@ Returns statistics for an external access policy.
 
 ### [Get-ZNAssetHealthState](Get-ZNAssetHealthState.md)
 Get asset health state
-
-### [Get-ZNAssetIdentityAnalysis](Get-ZNAssetIdentityAnalysis.md)
-Returns an object with asset analysis data.
 
 ### [Get-ZNAssetIdentityRule](Get-ZNAssetIdentityRule.md)
 Returns the properties of an Identity rule.
@@ -236,9 +290,6 @@ Returns the properties of an outbound MFA policy.
 ### [Get-ZNAssetMirrorCandidate](Get-ZNAssetMirrorCandidate.md)
 Get mirror candidates
 
-### [Get-ZNAssetNetworkAnalysis](Get-ZNAssetNetworkAnalysis.md)
-Returns an object with asset analysis data.
-
 ### [Get-ZNAssetOt](Get-ZNAssetOt.md)
 Returns the properties of an OT asset.
 
@@ -250,9 +301,6 @@ Get manager candidates for asset managers
 
 ### [Get-ZNAssetOtAudit](Get-ZNAssetOtAudit.md)
 Returns a list of audits for the asset.
-
-### [Get-ZNAssetOtIdentityAnalysis](Get-ZNAssetOtIdentityAnalysis.md)
-Returns an object with OT/IoT asset analysis data.
 
 ### [Get-ZNAssetOtInboundOtrule](Get-ZNAssetOtInboundOtrule.md)
 Get an OT/IoT Rule
@@ -277,9 +325,6 @@ Returns a list of groups the asset can be a member of.
 
 ### [Get-ZNAssetOtMirrorCandidate](Get-ZNAssetOtMirrorCandidate.md)
 Get mirror candidates
-
-### [Get-ZNAssetOtNetworkAnalysis](Get-ZNAssetOtNetworkAnalysis.md)
-Returns an object with OT/IoT asset analysis data.
 
 ### [Get-ZNAssetOtOutboundOtrule](Get-ZNAssetOtOutboundOtrule.md)
 Get an OT/IoT Rule
@@ -388,6 +433,12 @@ Returns a list of tags for an entity.
 
 ### [Get-ZNAudit](Get-ZNAudit.md)
 Returns a list of audit events.
+
+### [Get-ZNCustomGroup](Get-ZNCustomGroup.md)
+Returns the properties of an custom group.
+
+### [Get-ZNCustomGroupMember](Get-ZNCustomGroupMember.md)
+Returns a list of all members
 
 ### [Get-ZNCustomGroupsCandidate](Get-ZNCustomGroupsCandidate.md)
 Returns a list of candidates for custom group membership.
@@ -540,9 +591,6 @@ Returns a list of source users candidates on outbound MFA policies.
 ### [Get-ZNGroupsMfaOutboundPolicy](Get-ZNGroupsMfaOutboundPolicy.md)
 Returns the properties of an outbound MFA policy.
 
-### [Get-ZNGroupsNetworkAnalysis](Get-ZNGroupsNetworkAnalysis.md)
-Returns an object with group analysis data.
-
 ### [Get-ZNGroupsOutboundOtRule](Get-ZNGroupsOutboundOtRule.md)
 Get an OT/IoT Rule
 
@@ -660,17 +708,20 @@ Returns the commands for a K8s cluster.
 ### [Get-ZNK8SClusterEgressIP](Get-ZNK8SClusterEgressIP.md)
 Returns the egress IPs for a K8s cluster.
 
-### [Get-ZNK8SClusterInboundNetworkPolicy](Get-ZNK8SClusterInboundNetworkPolicy.md)
-Returns a list of network policies in the k8s cluster.
-
 ### [Get-ZNK8SClusterInboundRule](Get-ZNK8SClusterInboundRule.md)
 Returns a list of rules in the k8s cluster.
 
 ### [Get-ZNK8SClusterLabel](Get-ZNK8SClusterLabel.md)
 Returns a list of labels for the K8s.
 
+### [Get-ZNK8SClusterLabelInboundRule](Get-ZNK8SClusterLabelInboundRule.md)
+Returns a list of rules in the k8s cluster label.
+
 ### [Get-ZNK8SClusterLabelNamespace](Get-ZNK8SClusterLabelNamespace.md)
 Returns a list of namespaces for an label in the k8s cluster.
+
+### [Get-ZNK8SClusterLabelOutboundRule](Get-ZNK8SClusterLabelOutboundRule.md)
+Returns a list of rules in the k8s cluster label.
 
 ### [Get-ZNK8SClusterLabelWorkload](Get-ZNK8SClusterLabelWorkload.md)
 Returns a list of workloads for a label in the k8s cluster.
@@ -681,17 +732,11 @@ Returns a list of namespaces for the k8s cluster.
 ### [Get-ZNK8SClusterNamespaceApplication](Get-ZNK8SClusterNamespaceApplication.md)
 Returns a list of applications for the K8s namespace.
 
-### [Get-ZNK8SClusterNamespaceInboundNetworkPolicy](Get-ZNK8SClusterNamespaceInboundNetworkPolicy.md)
-Returns a list of network policies for a namespaces in the k8s cluster.
-
 ### [Get-ZNK8SClusterNamespaceInboundRule](Get-ZNK8SClusterNamespaceInboundRule.md)
 Returns a list of rules in the k8s cluster namespace.
 
 ### [Get-ZNK8SClusterNamespaceLabel](Get-ZNK8SClusterNamespaceLabel.md)
 Returns a list of labels for the K8s namespace.
-
-### [Get-ZNK8SClusterNamespaceOutboundNetworkPolicy](Get-ZNK8SClusterNamespaceOutboundNetworkPolicy.md)
-Returns a list of network policies for a namespaces in the k8s cluster.
 
 ### [Get-ZNK8SClusterNamespaceOutboundRule](Get-ZNK8SClusterNamespaceOutboundRule.md)
 Returns a list of rules in the k8s cluster namespace.
@@ -701,9 +746,6 @@ Returns a list of workloads for a namespaces in the k8s cluster.
 
 ### [Get-ZNK8SClusterNode](Get-ZNK8SClusterNode.md)
 Returns a list of nodes in the k8s cluster.
-
-### [Get-ZNK8SClusterOutboundNetworkPolicy](Get-ZNK8SClusterOutboundNetworkPolicy.md)
-Returns a list of network policies in the k8s cluster.
 
 ### [Get-ZNK8SClusterOutboundRule](Get-ZNK8SClusterOutboundRule.md)
 Returns a list of rules in the k8s cluster.
@@ -717,23 +759,23 @@ Returns a list of namespaces for the k8s.
 ### [Get-ZNK8SNamespaceApplication](Get-ZNK8SNamespaceApplication.md)
 Returns a list of applications for the K8s namespace.
 
-### [Get-ZNK8SNamespaceInboundNetworkPolicy](Get-ZNK8SNamespaceInboundNetworkPolicy.md)
-Returns a list of network policies for a namespaces in the k8s.
-
 ### [Get-ZNK8SNamespaceInboundRule](Get-ZNK8SNamespaceInboundRule.md)
 Returns a list of rules in the k8s namespace.
 
 ### [Get-ZNK8SNamespaceLabel](Get-ZNK8SNamespaceLabel.md)
 Returns a list of labels for the K8s namespace.
 
-### [Get-ZNK8SNamespaceOutboundNetworkPolicy](Get-ZNK8SNamespaceOutboundNetworkPolicy.md)
-Returns a list of network policies for a namespaces in the k8s.
-
 ### [Get-ZNK8SNamespaceOutboundRule](Get-ZNK8SNamespaceOutboundRule.md)
 Returns a list of rules in the k8s namespace.
 
 ### [Get-ZNK8SNamespaceWorkload](Get-ZNK8SNamespaceWorkload.md)
-Returns a list of workloads for a namespaces in the k8s.
+Returns a workload for k8s namespace.
+
+### [Get-ZNK8SNamespaceWorkloadLabel](Get-ZNK8SNamespaceWorkloadLabel.md)
+Returns a list of labels for the K8s namespace workload.
+
+### [Get-ZNK8SNode](Get-ZNK8SNode.md)
+Returns a list of K8s nodes.
 
 ### [Get-ZNK8SWorkload](Get-ZNK8SWorkload.md)
 Returns a workload for k8s.
@@ -888,6 +930,9 @@ Returns a list of protection candidates for an AD forest.
 ### [Get-ZNSettingsAdWindowsMonitoredCandidate](Get-ZNSettingsAdWindowsMonitoredCandidate.md)
 Returns a list of windows monitoring candidates for an AD forest.
 
+### [Get-ZNSettingsAeRuleReviewCleanup](Get-ZNSettingsAeRuleReviewCleanup.md)
+Get AI rules review cleanup settings
+
 ### [Get-ZNSettingsAnsible](Get-ZNSettingsAnsible.md)
 Get the Ansible settings in Asset Management
 
@@ -924,17 +969,23 @@ Get Client Subnets settings in System
 ### [Get-ZNSettingsClientsUntrustedInternet](Get-ZNSettingsClientsUntrustedInternet.md)
 Get Clients Untrusted Internet settings in System
 
-### [Get-ZNSettingsClusterStrategy](Get-ZNSettingsClusterStrategy.md)
-Returns cluster strategy configuration.
+### [Get-ZNSettingsCloudConnectorFreezePeriod](Get-ZNSettingsCloudConnectorFreezePeriod.md)
+Get all cloud connector freeze periods
 
 ### [Get-ZNSettingsConnectClientAutoUpdate](Get-ZNSettingsConnectClientAutoUpdate.md)
 Get Connect client auto get in Settings
+
+### [Get-ZNSettingsConnectClientFreezePeriod](Get-ZNSettingsConnectClientFreezePeriod.md)
+Get all connect client freeze periods
 
 ### [Get-ZNSettingsConnectRegion](Get-ZNSettingsConnectRegion.md)
 List Connect Regions in Settings
 
 ### [Get-ZNSettingsConnectServer](Get-ZNSettingsConnectServer.md)
 List Connect Servers in Settings
+
+### [Get-ZNSettingsConnectServersFreezePeriod](Get-ZNSettingsConnectServersFreezePeriod.md)
+Get all connect servers freeze periods
 
 ### [Get-ZNSettingsConnectUserAccessConfig](Get-ZNSettingsConnectUserAccessConfig.md)
 List Connect User Access Configurations in Settings
@@ -963,6 +1014,9 @@ Get day 2 settings automation
 ### [Get-ZNSettingsDefaultApplication](Get-ZNSettingsDefaultApplication.md)
 Get Default SSO Application settings in Identity Providers
 
+### [Get-ZNSettingsDeploymentsCluster](Get-ZNSettingsDeploymentsCluster.md)
+Returns deployments Clusters.
+
 ### [Get-ZNSettingsDomain](Get-ZNSettingsDomain.md)
 Get domains
 
@@ -989,6 +1043,9 @@ Get inactive assets settings configuration
 
 ### [Get-ZNSettingsInternalSubnet](Get-ZNSettingsInternalSubnet.md)
 Get Internal Subnets settings in System
+
+### [Get-ZNSettingsIPAlias](Get-ZNSettingsIPAlias.md)
+Returns the properties of an IP Alias.
 
 ### [Get-ZNSettingsJamfCredentials](Get-ZNSettingsJamfCredentials.md)
 Returns the properties for JAMF Credentials Settings.
@@ -1038,6 +1095,9 @@ Get Privileged Ports settings in Network segmentation
 ### [Get-ZNSettingsPushNotification](Get-ZNSettingsPushNotification.md)
 Get Push Notifications Settings
 
+### [Get-ZNSettingsSegmentServersFreezePeriod](Get-ZNSettingsSegmentServersFreezePeriod.md)
+Get all segment server freeze periods
+
 ### [Get-ZNSettingsServersTrustedInternet](Get-ZNSettingsServersTrustedInternet.md)
 Get Servers Trusted Internet settings in System
 
@@ -1046,6 +1106,9 @@ Get Servers Untrusted Internet settings in System
 
 ### [Get-ZNSettingsSiem](Get-ZNSettingsSiem.md)
 List SIEM Configuration
+
+### [Get-ZNSettingsSiemExporterIP](Get-ZNSettingsSiemExporterIP.md)
+Get SIEM Exporter IP Configuration
 
 ### [Get-ZNSettingsSiemSyncStatus](Get-ZNSettingsSiemSyncStatus.md)
 Get SIEM Sync Status Configuration
@@ -1095,6 +1158,12 @@ Returns a list of excluded source candidates for OT/IoT Outbound rules.
 ### [Get-ZNSwitchOutboundOtRulesSourceCandidate](Get-ZNSwitchOutboundOtRulesSourceCandidate.md)
 Returns a list of source candidates for Outbound rules.
 
+### [Get-ZNSwitchRulesDistribution](Get-ZNSwitchRulesDistribution.md)
+Returns an object with rules distribution.
+
+### [Get-ZNSwitchVlan](Get-ZNSwitchVlan.md)
+Gets switchvlans
+
 ### [Get-ZNTagGroupsCandidate](Get-ZNTagGroupsCandidate.md)
 Returns a list of candidates for tag group membership.
 
@@ -1115,9 +1184,6 @@ Returns a list of source user candidates for external access policies.
 
 ### [Get-ZNUserExternalAccessPolicyStatistics](Get-ZNUserExternalAccessPolicyStatistics.md)
 Returns statistics for an external access policy.
-
-### [Get-ZNUserIdentityAnalysis](Get-ZNUserIdentityAnalysis.md)
-Returns an object with asset analysis data.
 
 ### [Get-ZNUserIdentityRule](Get-ZNUserIdentityRule.md)
 Returns an identity segmentation rule.
@@ -1190,9 +1256,6 @@ Returns a list of source users candidates on outbound MFA policies.
 
 ### [Get-ZNUserMfaOutboundPolicy](Get-ZNUserMfaOutboundPolicy.md)
 Returns the properties of an outbound MFA policy.
-
-### [Get-ZNUserNetworkAnalysis](Get-ZNUserNetworkAnalysis.md)
-Returns an object with asset analysis data.
 
 ### [Get-ZNUserOutboundRule](Get-ZNUserOutboundRule.md)
 Returns the properties of an Outbound rule.
@@ -1314,6 +1377,9 @@ Resync Claroty
 
 ### [Invoke-ZNUserIdentityQueue](Invoke-ZNUserIdentityQueue.md)
 Returns an empty object.
+
+### [Move-ZNSettingsSegmentServerDeploymentsCluster](Move-ZNSettingsSegmentServerDeploymentsCluster.md)
+Move segment server to another cluster
 
 ### [New-ZNAeExclusionsInbound](New-ZNAeExclusionsInbound.md)
 Returns the properties of the created AE Exclusion.
@@ -1447,14 +1513,29 @@ Set the AD settings in Asset Management
 ### [New-ZNSettingsAdSecondary](New-ZNSettingsAdSecondary.md)
 Add a secondary AD settings in Asset Management
 
+### [New-ZNSettingsCloudConnectorFreezePeriod](New-ZNSettingsCloudConnectorFreezePeriod.md)
+Create cloud connector freeze period
+
+### [New-ZNSettingsConnectClientFreezePeriod](New-ZNSettingsConnectClientFreezePeriod.md)
+Create connect client freeze period
+
 ### [New-ZNSettingsConnectRegion](New-ZNSettingsConnectRegion.md)
 Create a Connect region in Settings
+
+### [New-ZNSettingsConnectServersFreezePeriod](New-ZNSettingsConnectServersFreezePeriod.md)
+Create connect servers freeze period
 
 ### [New-ZNSettingsConnectUserAccessConfig](New-ZNSettingsConnectUserAccessConfig.md)
 Create a Connect User Access Configuration in Settings
 
+### [New-ZNSettingsDeploymentsCluster](New-ZNSettingsDeploymentsCluster.md)
+Create deployments Cluster.
+
 ### [New-ZNSettingsIdp](New-ZNSettingsIdp.md)
 Create an identity provider settings in Identity Providers
+
+### [New-ZNSettingsIPAlias](New-ZNSettingsIPAlias.md)
+Returns an an Ip Alias.
 
 ### [New-ZNSettingsMaintenanceWindow](New-ZNSettingsMaintenanceWindow.md)
 Returns the maintenance window properties
@@ -1464,6 +1545,9 @@ Create a MFA Cache Policy.
 
 ### [New-ZNSettingsPushNotification](New-ZNSettingsPushNotification.md)
 Create an push notifications settings
+
+### [New-ZNSettingsSegmentServersFreezePeriod](New-ZNSettingsSegmentServersFreezePeriod.md)
+Create segment server freeze period
 
 ### [New-ZNSettingsSiem](New-ZNSettingsSiem.md)
 Create SIEM Configuration
@@ -1669,17 +1753,32 @@ Returns an empty response.
 ### [Remove-ZNSettingsClaroty](Remove-ZNSettingsClaroty.md)
 Remove Claroty Settings
 
+### [Remove-ZNSettingsCloudConnectorFreezePeriod](Remove-ZNSettingsCloudConnectorFreezePeriod.md)
+Delete cloud connector freeze period
+
+### [Remove-ZNSettingsConnectClientFreezePeriod](Remove-ZNSettingsConnectClientFreezePeriod.md)
+Delete connect client freeze period
+
 ### [Remove-ZNSettingsConnectRegion](Remove-ZNSettingsConnectRegion.md)
 Delete a Connect Region in Settings
 
 ### [Remove-ZNSettingsConnectServer](Remove-ZNSettingsConnectServer.md)
 Delete Connect Server in Settings
 
+### [Remove-ZNSettingsConnectServersFreezePeriod](Remove-ZNSettingsConnectServersFreezePeriod.md)
+Delete connect server freeze period
+
 ### [Remove-ZNSettingsConnectUserAccessConfig](Remove-ZNSettingsConnectUserAccessConfig.md)
 Delete a Connect User Access Configuration in Settings
 
+### [Remove-ZNSettingsDeploymentsCluster](Remove-ZNSettingsDeploymentsCluster.md)
+Delete deployments Cluster.
+
 ### [Remove-ZNSettingsIdp](Remove-ZNSettingsIdp.md)
 Returns an empty response.
+
+### [Remove-ZNSettingsIPAlias](Remove-ZNSettingsIPAlias.md)
+Delete an IP Alias.
 
 ### [Remove-ZNSettingsJamfCredentials](Remove-ZNSettingsJamfCredentials.md)
 Returns an empty object.
@@ -1695,6 +1794,9 @@ Delete CyberArk config
 
 ### [Remove-ZNSettingsPushNotification](Remove-ZNSettingsPushNotification.md)
 Returns an empty response.
+
+### [Remove-ZNSettingsSegmentServersFreezePeriod](Remove-ZNSettingsSegmentServersFreezePeriod.md)
+Delete segment server freeze period
 
 ### [Remove-ZNSettingsSiem](Remove-ZNSettingsSiem.md)
 Returns an empty object.
@@ -1753,17 +1855,20 @@ Returns empty object
 ### [Set-ZNApiKey](Set-ZNApiKey.md)
 Set the API key for use in all other cmdlets
 
-### [Test-ZNAssetIdentityProtect](Test-ZNAssetIdentityProtect.md)
+### [Test-ZNAssetIdentitySegmentProtect](Test-ZNAssetIdentitySegmentProtect.md)
 Returns a number of assets that are valid for identity segmentation.
 
-### [Test-ZNAssetIdentityUnprotect](Test-ZNAssetIdentityUnprotect.md)
+### [Test-ZNAssetIdentitySegmentUnprotect](Test-ZNAssetIdentitySegmentUnprotect.md)
 Returns a number of assets that are valid to unprotect.
 
-### [Test-ZNAssetNetworkSegment](Test-ZNAssetNetworkSegment.md)
+### [Test-ZNAssetNetworkSegmentProtect](Test-ZNAssetNetworkSegmentProtect.md)
 Returns a number of assets that are valid for network segmentation.
 
-### [Test-ZNAssetNetworkUnprotect](Test-ZNAssetNetworkUnprotect.md)
+### [Test-ZNAssetNetworkSegmentUnprotect](Test-ZNAssetNetworkSegmentUnprotect.md)
 Returns a number of assets that are valid to unprotect.
+
+### [Test-ZNAssetOtNetworkSegmentUnprotect](Test-ZNAssetOtNetworkSegmentUnprotect.md)
+Returns a number of ot assets that are valid for network segmentation.
 
 ### [Test-ZNSettingsPamCyberarkConnection](Test-ZNSettingsPamCyberarkConnection.md)
 Test CyberArk connection
@@ -1854,6 +1959,9 @@ Updates an outbound  rule.
 
 ### [Update-ZNAssetRpcRule](Update-ZNAssetRpcRule.md)
 Updates an RPC rule.
+
+### [Update-ZNAssetsDeploymentsCluster](Update-ZNAssetsDeploymentsCluster.md)
+Pin deployments cluster
 
 ### [Update-ZNAssetsPreferredSegmentServer](Update-ZNAssetsPreferredSegmentServer.md)
 Returns and empty object.
@@ -1960,6 +2068,9 @@ Update a secondary AD settings in Asset Management
 ### [Update-ZNSettingsAdWindowsAutomationGroup](Update-ZNSettingsAdWindowsAutomationGroup.md)
 Update Windows Automation Groups for an AD forest setting.
 
+### [Update-ZNSettingsAeRuleReviewCleanup](Update-ZNSettingsAeRuleReviewCleanup.md)
+Update AI rule review cleanup settings
+
 ### [Update-ZNSettingsAnsible](Update-ZNSettingsAnsible.md)
 Get the Ansible settings in Asset Management
 
@@ -1993,17 +2104,23 @@ Update the Client Subnets settings in System
 ### [Update-ZNSettingsClientsUntrustedInternet](Update-ZNSettingsClientsUntrustedInternet.md)
 Set Clients Untrusted Internet settings in System
 
-### [Update-ZNSettingsClusterStrategy](Update-ZNSettingsClusterStrategy.md)
-Returns an empty response.
+### [Update-ZNSettingsCloudConnectorFreezePeriod](Update-ZNSettingsCloudConnectorFreezePeriod.md)
+Update cloud connector freeze period
 
 ### [Update-ZNSettingsConnectClientAutoUpdate](Update-ZNSettingsConnectClientAutoUpdate.md)
 Set Connect client auto update settings
+
+### [Update-ZNSettingsConnectClientFreezePeriod](Update-ZNSettingsConnectClientFreezePeriod.md)
+Update connect client freeze period
 
 ### [Update-ZNSettingsConnectRegion](Update-ZNSettingsConnectRegion.md)
 Update a Connect Region in Settings
 
 ### [Update-ZNSettingsConnectServer](Update-ZNSettingsConnectServer.md)
 Update Connect Server in Settings
+
+### [Update-ZNSettingsConnectServersFreezePeriod](Update-ZNSettingsConnectServersFreezePeriod.md)
+Update connect servers freeze period
 
 ### [Update-ZNSettingsConnectUserAccessConfig](Update-ZNSettingsConnectUserAccessConfig.md)
 Update a Connect User Access Configuration in Settings
@@ -2013,6 +2130,9 @@ Set day 2 settings automation
 
 ### [Update-ZNSettingsDefaultApplication](Update-ZNSettingsDefaultApplication.md)
 Update the Default SSO Application settings in Identity Providers
+
+### [Update-ZNSettingsDeploymentsCluster](Update-ZNSettingsDeploymentsCluster.md)
+Edit deployments cluster
 
 ### [Update-ZNSettingsFirewall](Update-ZNSettingsFirewall.md)
 Returns the properties of the updated Firewall settings.
@@ -2037,6 +2157,9 @@ Update inactive assets settings configuration
 
 ### [Update-ZNSettingsInternalSubnet](Update-ZNSettingsInternalSubnet.md)
 Update the Internal Subnets settings in System
+
+### [Update-ZNSettingsIPAlias](Update-ZNSettingsIPAlias.md)
+Edit an IP Alias.
 
 ### [Update-ZNSettingsJamfCredentials](Update-ZNSettingsJamfCredentials.md)
 Returns the updated properties of JAMF Credentials settings.
@@ -2067,6 +2190,9 @@ Set CyberArk config
 
 ### [Update-ZNSettingsPrivilegedPort](Update-ZNSettingsPrivilegedPort.md)
 Set Privileged Ports settings in Network segmentation
+
+### [Update-ZNSettingsSegmentServersFreezePeriod](Update-ZNSettingsSegmentServersFreezePeriod.md)
+Update segment server freeze period
 
 ### [Update-ZNSettingsServersTrustedInternet](Update-ZNSettingsServersTrustedInternet.md)
 Set Servers Trusted Internet settings in System

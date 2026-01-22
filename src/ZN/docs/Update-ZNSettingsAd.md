@@ -14,10 +14,10 @@ Update AD forest settings.
 
 ```
 Update-ZNSettingsAd -ForestId <String> [-AccountName <String>] [-AllowNtlmFallback]
- [-PrimaryDomainConfigDomainControllerFqdn <String>] [-PrimaryDomainConfigDomainName <String>]
- [-PrimaryDomainConfigPassword <String>] [-PrimaryDomainConfigUseLdaps]
- [-PrimaryDomainConfigUserFqdn <String>] [-UsePrimaryUserForAllDomains] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-PrimaryDomainConfigDeploymentsClusterId <String>] [-PrimaryDomainConfigDomainControllerFqdn <String>]
+ [-PrimaryDomainConfigDomainName <String>] [-PrimaryDomainConfigPassword <String>]
+ [-PrimaryDomainConfigUseLdaps] [-PrimaryDomainConfigUserFqdn <String>] [-UsePrimaryUserForAllDomains]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,6 +74,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimaryDomainConfigDeploymentsClusterId
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

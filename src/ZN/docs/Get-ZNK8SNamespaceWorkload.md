@@ -8,18 +8,25 @@ schema: 2.0.0
 # Get-ZNK8SNamespaceWorkload
 
 ## SYNOPSIS
-Returns a list of workloads for a namespaces in the k8s.
+Returns a workload for k8s namespace.
 
 ## SYNTAX
 
+### List (Default)
 ```
 Get-ZNK8SNamespaceWorkload -K8SNamespaceId <String> [-AccountName <String>] [-Filters <String>]
  [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>] [-ShowPodlessWorkloads]
  [-WithCount] [<CommonParameters>]
 ```
 
+### Get
+```
+Get-ZNK8SNamespaceWorkload -K8SNamespaceId <String> -K8SWorkloadId <String> [-AccountName <String>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Returns a list of workloads for a namespaces in the k8s.
+Returns a workload for k8s namespace.
 
 ## EXAMPLES
 
@@ -62,7 +69,7 @@ JSON string URI encoded set of filters
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -87,12 +94,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -K8SWorkloadId
+id of the K8s workload
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Limit
 Limit the return results
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -107,7 +129,7 @@ Used to page through results
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -122,7 +144,7 @@ What order to sort the results
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -137,7 +159,7 @@ what column to order on
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -152,7 +174,7 @@ show podless workloads
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -167,7 +189,7 @@ return count of objects
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -185,6 +207,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
+
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IK8SWorkload
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IK8SWorkloadsList
 

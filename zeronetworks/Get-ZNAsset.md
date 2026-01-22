@@ -15,7 +15,8 @@ Returns the properties of an asset.
 ### List (Default)
 ```
 Get-ZNAsset [-AccountName <String>] [-Cursor <Int64>] [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>]
- [-Order <String>] [-OrderColumns <String>] [-ShowInactive] [-WithCount] [<CommonParameters>]
+ [-Order <String>] [-OrderColumns <String>] [-ShowInactive] [-ShowOnlyIPSecConfiguredAssets] [-WithCount]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -220,6 +221,21 @@ Accept wildcard characters: False
 
 ### -ShowInactive
 show inactive assets
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShowOnlyIPSecConfiguredAssets
+show only ipsec configured assets
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

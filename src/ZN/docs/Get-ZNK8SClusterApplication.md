@@ -242,11 +242,13 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `INPUTOBJECT <IApiIdentity>`: Identity Parameter
+  - `[ActivityType <String>]`: the activity type
   - `[ApplicationName <String>]`: application name to filter on
   - `[AssetId <String>]`: assetId to filter on
   - `[ClientId <String>]`: clientId to filter on
   - `[ConnectServerId <String>]`: connect server id
   - `[CustomUserId <String>]`: id of the customer user
+  - `[DeploymentsClusterId <String>]`: 
   - `[DomainId <String>]`: The fqdn of the domain
   - `[EntityId <String>]`: The id of the user or group
   - `[ExportId <String>]`: exportId to download
@@ -254,10 +256,12 @@ To create the parameters described below, construct a hash table containing the 
   - `[FieldName <String>]`: The field name to filter on
   - `[FilterId <String>]`: The saved filter id
   - `[ForestId <String>]`: The forest id
+  - `[FreezePeriodId <String>]`: id of freeze period
   - `[GroupId <String>]`: groupId to filter on
   - `[GroupOrAssetId <String>]`: group or asset id to filter on
   - `[GroupOrUserId <String>]`: group or user id to filter on
   - `[GroupType <String>]`: group type to filter on
+  - `[IPAliasId <String>]`: IP Alias ID
   - `[IdentityProviderId <String>]`: Identity provider Id
   - `[K8SClusterId <String>]`: cluserId to filter on
   - `[K8SNamespaceId <String>]`: id of the K8s namespace
@@ -278,6 +282,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[SwitchId <String>]`: switch to delete
   - `[UserAccessConfigId <String>]`: userAccessConfigId to filter on
   - `[UserId <String>]`: userId to filter on
+  - `[WidgetId <String>]`: The id of the widget
 
 ## RELATED LINKS
 

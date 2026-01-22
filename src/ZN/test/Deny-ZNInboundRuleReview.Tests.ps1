@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Deny-ZNInboundRuleReview'))
 
 Describe 'Deny-ZNInboundRuleReview' {
     It 'DenyExpanded' {
-        $rule = (Get-ZNInboundRule -Limit 100).Items | where {$_.State -eq 4} | Select-Object -First 1
+        $rule = (Get-ZNInboundRule -Limit 100).Items | where {$_.SuggestionType -eq 1} | Select-Object -First 1
         { Deny-ZNInboundRuleReview -RuleId $rule.id -Reason MissingPortOrProcess } | Should -Not -Throw
     }
 }

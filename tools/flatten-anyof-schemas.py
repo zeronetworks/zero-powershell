@@ -58,6 +58,29 @@ def get_schema_properties(schemas: Dict[str, Any], schema: Dict[str, Any], visit
     
     properties = {}
     
+    # Handle allOf - merge all referenced schemas and inline schemas
+    # This must be processed first to properly resolve properties from schemas that use allOf
+    if 'allOf' in schema:
+        for item in schema['allOf']:
+            if isinstance(item, dict):
+                if '$ref' in item:
+                    ref = item['$ref']
+                    schema_name = ref.split('/')[-1]
+                    if schema_name in visited:
+                        continue  # Skip circular references
+                    visited.add(schema_name)
+                    ref_schema = resolve_schema_ref(schemas, ref)
+                    ref_props = get_schema_properties(schemas, ref_schema, visited)
+                    properties.update(ref_props)
+                    visited.remove(schema_name)
+                elif 'properties' in item:
+                    # Inline schema with properties
+                    properties.update(item['properties'])
+                else:
+                    # Inline schema - extract properties recursively
+                    inline_props = get_schema_properties(schemas, item, visited.copy())
+                    properties.update(inline_props)
+    
     # Handle anyOf - merge all referenced schemas
     if 'anyOf' in schema:
         for item in schema['anyOf']:

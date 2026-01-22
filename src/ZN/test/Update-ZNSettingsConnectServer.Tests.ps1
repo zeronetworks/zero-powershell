@@ -12,9 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-ZNSettingsConnectServer' {
-    It 'UpdateExpanded' {
-        # cant test automatically
-        $a = 1
-        $a | Should -Be 1
+    It 'UpdateExpanded' -skip {
+        
     }
 }

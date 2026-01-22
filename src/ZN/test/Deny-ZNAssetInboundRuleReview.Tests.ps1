@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Deny-ZNAssetInboundRuleReview
 Describe 'Deny-ZNAssetInboundRuleReview' {
     It 'DenyExpanded' {
         $asset= (Search-ZNAsset -Fqdn linux0.posh.local).AssetId
-        $rule = (Get-ZNAssetInboundRule -AssetId $asset).Items | where {$_.State -eq 4} | Select-Object -First 1
-        { Deny-ZNAssetInboundRuleReview -AssetId $asset -RuleId $rule.id -Reason MissingPortOrProcess } | Should -Not -Throw
+        $rule = (Get-ZNAssetInboundRule -AssetId $asset).Items | where {$_.SuggestionType -eq 1} | Select-Object -First 1
+        { Deny-ZNAssetInboundRuleReview -AssetId $asset -RuleId $rule.id -Details "powershelltesting" -Reason 7 } | Should -Not -Throw
     }
 }
