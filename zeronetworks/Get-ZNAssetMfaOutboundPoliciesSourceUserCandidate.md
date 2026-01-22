@@ -141,7 +141,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ISrcUserCandidatesList
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IGroupsOrUsersList
 
 ## NOTES
 

@@ -17,7 +17,8 @@ New-ZNAssetInboundRule -AssetId <String> -Action <Int32> -LocalEntityId <String>
  -LocalProcessesList <String[]> -PortsList <IPortsListItem[]> -RemoteEntityIdsList <String[]> -State <Int32>
  [-AccountName <String>] [-ChangeTicket <String>] [-Context <Int32>] [-Description <String>]
  [-ExcludedLocalIdsList <String[]>] [-ExpiresAt <Int64>] [-IPSecOpt <Int32>] [-Name <String>]
- [-ServicesList <String[]>] [-SrcUsersList <ISrcUsersListItem[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ReviewMode <Int32>] [-ServicesList <String[]>] [-SrcUsersList <ISrcUsersListItem[]>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -Action
-* 1 - Allow* 2 - Block
+* 1 - Allow* 2 - Block* 3 - Force Block
 
 ```yaml
 Type: System.Int32
@@ -274,6 +275,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReviewMode
+* 1 - Apply Immediately* 2 - Review* 3 - Conditional Review
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

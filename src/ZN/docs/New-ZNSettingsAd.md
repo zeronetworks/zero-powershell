@@ -14,10 +14,10 @@ Set the AD settings in Asset Management
 
 ```
 New-ZNSettingsAd [-AccountName <String>] [-AllowNtlmFallback]
- [-PrimaryDomainConfigDomainControllerFqdn <String>] [-PrimaryDomainConfigDomainName <String>]
- [-PrimaryDomainConfigPassword <String>] [-PrimaryDomainConfigUseLdaps]
- [-PrimaryDomainConfigUserFqdn <String>] [-UsePrimaryUserForAllDomains] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-PrimaryDomainConfigDeploymentsClusterId <String>] [-PrimaryDomainConfigDomainControllerFqdn <String>]
+ [-PrimaryDomainConfigDomainName <String>] [-PrimaryDomainConfigPassword <String>]
+ [-PrimaryDomainConfigUseLdaps] [-PrimaryDomainConfigUserFqdn <String>] [-UsePrimaryUserForAllDomains]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +54,21 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimaryDomainConfigDeploymentsClusterId
+.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

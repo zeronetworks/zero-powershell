@@ -13,8 +13,10 @@ Returns an empty object.
 ## SYNTAX
 
 ```
-New-ZNCustomGroup -Name <String> [-AccountName <String>] [-Description <String>] [-MembersId <String[]>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-ZNCustomGroup -Name <String> [-AccountName <String>] [-ConditionAssetTypes <Int32[]>]
+ [-ConditionDomains <String[]>] [-ConditionIPBuiltins <String[]>] [-ConditionNamePatterns <String[]>]
+ [-ConditionOSNamePatterns <String[]>] [-ConditionOSTypes <Int32[]>] [-Description <String>]
+ [-MembersId <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +45,96 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Read-ZNJWTtoken $env:ZNApiKey).aud.split(".")[0]
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConditionAssetTypes
+.
+
+```yaml
+Type: System.Int32[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConditionDomains
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConditionIPBuiltins
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConditionNamePatterns
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConditionOSNamePatterns
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConditionOSTypes
+.
+
+```yaml
+Type: System.Int32[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

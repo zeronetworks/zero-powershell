@@ -139,7 +139,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### ZeroNetworks.PowerShell.Cmdlets.Api.Models.ICandidatesList
+### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IAssetsOrGroupsList
 
 ### ZeroNetworks.PowerShell.Cmdlets.Api.Models.IError
 

@@ -15,9 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Send-ZNSettingsCustomUsersInv
 }
 
 Describe 'Send-ZNSettingsCustomUsersInvite' {
-    It 'NotifyExpanded' {
-        # cant test automatically
-        $a = 1
-        $a | Should -Be 1
+    It 'NotifyExpanded' -skip {
+        
     }
 }

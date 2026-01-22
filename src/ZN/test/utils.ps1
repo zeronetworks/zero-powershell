@@ -126,9 +126,13 @@ function setupEnv() {
     }
 
     
-
+    #Statics for tests
     $env.Add("baseUri", ("https://"+$decodedToken.aud+"/api/v1"))
     $env.Add("RandomP)", (Generate-RandomPassword))
+    $env.Add("K8sCluster", "okd")
+    $env.Add("K8sNameSpace", "tcp-demo")
+    $env.add("K8sWorkloadInbound", "tcp-echo")
+    $env.add("K8sWorkloadOutbound", "tcp-client")
 
     $znHeader = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
     #$znHeader.Add("Authorization", $constants.$envToTest.ZNApiKey)
@@ -149,46 +153,115 @@ function setupEnv() {
     $asset2 = Invoke-RestMethod ($env.baseUri+"/assets/searchId?fqdn=linux1.posh.local") -method GET -Headers $znTeamHeader
     #$asset3 = Invoke-RestMethod ($env.baseUri+"/assets/searchId?fqdn=eve") -method GET -Headers $znTeamHeader
 
+    $env.add("RuleReviewAsset", "linux0.posh.local")
+    $env.add("RuleReviewAssetId", $asset1.assetid)
+
     #Create Review Rules
     #Asset 1-1024, 1025-2048, 2049-3072
     #Inbound
-    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1 -Maximum 1024)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1 -Maximum 1024)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":1,""localProcessesList"":[""*""],""reviewMode"":2}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1025 -Maximum 2048)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1025 -Maximum 2048)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":1,""localProcessesList"":[""*""],""reviewMode"":2}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound") -method POST -Headers $znTeamHeader -Body $rule
     
-    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 2049 -Maximum 3072)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 2049 -Maximum 3072)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":1,""localProcessesList"":[""*""],""reviewMode"":2}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound") -method POST -Headers $znTeamHeader -Body $rule
     #Outbound
-    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1 -Maximum 1024)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1 -Maximum 1024)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":1,""localProcessesList"":[""*""],""reviewMode"":2}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1025 -Maximum 2048)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 1025 -Maximum 2048)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":1,""localProcessesList"":[""*""],""reviewMode"":2}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
     
-    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 2049 -Maximum 3072)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 2049 -Maximum 3072)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":1,""localProcessesList"":[""*""],""reviewMode"":2}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
     
     #Generic 6145-7168, 7169-8192, 8193-9216
     #Inbound
-    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 6145 -Maximum 7168)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 6145 -Maximum 7168)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":1,""localProcessesList"":[""*""],""reviewMode"":2}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 7169 -Maximum 8192)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 7169 -Maximum 8192)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":1,""localProcessesList"":[""*""],""reviewMode"":2}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 8193 -Maximum 9216)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 8193 -Maximum 9216)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":1,""localProcessesList"":[""*""],""reviewMode"":2}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound") -method POST -Headers $znTeamHeader -Body $rule
     #Outbound
-    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 6145 -Maximum 7168)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 6145 -Maximum 7168)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":1,""localProcessesList"":[""*""],""reviewMode"":2}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 7169 -Maximum 8192)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 7169 -Maximum 8192)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":1,""localProcessesList"":[""*""],""reviewMode"":2}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
 
-    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 8193 -Maximum 9216)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":4,""localProcessesList"":[""*""]}"
+    $rule = "{""action"":1,""remoteEntityIdsList"":["""+($asset2.assetid)+"""],""localEntityId"":"""+($asset1.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 8193 -Maximum 9216)+""",""protocolType"":17}],""expiresAt"":"+($expiresAt)+",""description"":"""",""state"":1,""localProcessesList"":[""*""],""reviewMode"":2}"
     Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule
+
+    #Create rules for suggest deletion
+    #Approve/Deny
+    # 2x Asset, 2x, Asset OT, 2x Groups, 1x User
+
+    #assets
+    $assetLinux = Invoke-RestMethod ($env.baseUri+"/assets/searchId?fqdn=linux0.posh.local") -method GET -Headers $znTeamHeader
+    $assetOt = Invoke-RestMethod ($env.baseUri+"/assets/searchId?fqdn=poshotv2.posh.local") -method GET -Headers $znTeamHeader
+    $group = Invoke-RestMethod ($env.baseUri+"/groups?_limit=10&_offset=0&_search=DHCP") -method GET -Headers $znTeamHeader
+    $user = Invoke-RestMethod ($env.baseUri+"/users?_limit=10&_offset=0&_search=posh%5Czero&with_count=True") -method GET -Headers $znTeamHeader
+
+    $env.add("RuleReviewSuggestDeleteAsset", "linux0.posh.local")
+    $env.add("RuleReviewSuggestDeleteAssetId", $assetLinux.assetid)
+    $env.add("RuleReviewSuggestDeleteAssetOt", "poshotv2.posh.local")
+    $env.add("RuleReviewSuggestDeleteAssetOtId", $assetOt.assetid)
+    $env.add("RuleReviewSuggestDeleteGroup", "DHCP")
+    $env.add("RuleReviewSuggestDeleteGroupId", $group.items[0].id)
+    $env.add("RuleReviewSuggestDeleteUser", "posh\zero")
+    $env.add("RuleReviewSuggestDeleteUserId", $user.items[0].id)
+
+    $pendingDeletes = @()
+    #Asset Inbound Approve Deny
+    $rule = "{""action"":1,""remoteEntityIdsList"":[""b:110001""],""localEntityId"":"""+($assetLinux.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3000 -Maximum 3500)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""reviewMode"": 1,""state"":1,""localProcessesList"":[""*""]}"
+    $pendingDeletes += (Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound") -method POST -Headers $znTeamHeader -Body $rule).item.id
+    $rule = "{""action"":1,""remoteEntityIdsList"":[""b:110001""],""localEntityId"":"""+($assetLinux.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3501 -Maximum 4000)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""reviewMode"": 1,""state"":1,""localProcessesList"":[""*""]}"
+    $pendingDeletes += (Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound") -method POST -Headers $znTeamHeader -Body $rule).item.id
+    #Asset Outbound Approve Deny
+    $rule = "{""action"":1,""remoteEntityIdsList"":[""b:110001""],""localEntityId"":"""+($assetLinux.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4000 -Maximum 4500)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""reviewMode"": 1,""state"":1,""localProcessesList"":[""*""]}"
+    $pendingDeletes += (Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule).item.id
+    $rule = "{""action"":1,""remoteEntityIdsList"":[""b:110001""],""localEntityId"":"""+($assetLinux.assetid)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4501 -Maximum 5000)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""reviewMode"": 1,""state"":1,""localProcessesList"":[""*""]}"
+    $pendingDeletes += (Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule).item.id
+    
+    #Asset OT Inbound Approve Deny
+    $rule = "{""action"":1,""remoteEntityIdsList"":["""+$assetOt.assetid+"""],""localEntityId"":""b:110002"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3000 -Maximum 3500)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""reviewMode"": 1,""state"":1,""localProcessesList"":[""*""]}"
+    $pendingDeletes += (Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound") -method POST -Headers $znTeamHeader -Body $rule).item.id
+    $rule = "{""action"":1,""remoteEntityIdsList"":["""+$assetOt.assetid+"""],""localEntityId"":""b:110002"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3501 -Maximum 4000)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""reviewMode"": 1,""state"":1,""localProcessesList"":[""*""]}"
+    $pendingDeletes += (Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound") -method POST -Headers $znTeamHeader -Body $rule).item.id
+    #Asset OT Outbound Approve Deny
+    $rule = "{""action"":1,""remoteEntityIdsList"":["""+$assetOt.assetid+"""],""localEntityId"":""b:110002"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4000 -Maximum 4500)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""reviewMode"": 1,""state"":1,""localProcessesList"":[""*""]}"
+    $pendingDeletes += (Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule).item.id
+    $rule = "{""action"":1,""remoteEntityIdsList"":["""+$assetOt.assetid+"""],""localEntityId"":""b:110002"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4501 -Maximum 5000)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""reviewMode"": 1,""state"":1,""localProcessesList"":[""*""]}"
+    $pendingDeletes += (Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule).item.id
+    
+    #Group Inbound Approve Deny
+    $rule = "{""action"":1,""remoteEntityIdsList"":[""b:110001""],""localEntityId"":"""+($group.items[0].id)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3000 -Maximum 3500)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""reviewMode"": 1,""state"":1,""localProcessesList"":[""*""]}"
+    $pendingDeletes += (Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound") -method POST -Headers $znTeamHeader -Body $rule).item.id
+    $rule = "{""action"":1,""remoteEntityIdsList"":[""b:110001""],""localEntityId"":"""+($group.items[0].id)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 3501 -Maximum 4000)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""reviewMode"": 1,""state"":1,""localProcessesList"":[""*""]}"
+    $pendingDeletes += (Invoke-RestMethod ($env.baseUri+"/protection/rules/inbound") -method POST -Headers $znTeamHeader -Body $rule).item.id
+    #Group Outbound Approve Deny
+    $rule = "{""action"":1,""remoteEntityIdsList"":[""b:110001""],""localEntityId"":"""+($group.items[0].id)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4000 -Maximum 4500)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""reviewMode"": 1,""state"":1,""localProcessesList"":[""*""]}"
+    $pendingDeletes += (Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule).item.id
+    $rule = "{""action"":1,""remoteEntityIdsList"":[""b:110001""],""localEntityId"":"""+($group.items[0].id)+""",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 4501 -Maximum 5000)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""reviewMode"": 1,""state"":1,""localProcessesList"":[""*""]}"
+    $pendingDeletes += (Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule).item.id
+
+    #User outbound Approve Deny
+    $rule = "{""action"":1,""remoteEntityIdsList"":[""b:110001""],""localEntityId"":""b:110002"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 5000 -Maximum 5250)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""reviewMode"": 1,""state"":1,""localProcessesList"":[""*""], ""srcUsersList"":[{""id"": """+($user.items[0].id)+"""}]}"
+    $pendingDeletes += (Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule).item.id
+    $rule = "{""action"":1,""remoteEntityIdsList"":[""b:110001""],""localEntityId"":""b:110002"",""excludedLocalIdsList"":[],""portsList"":[{""ports"":"""+(Get-Random -Minimum 5000 -Maximum 5250)+""",""protocolType"":6}],""expiresAt"":"+($expiresAt)+",""description"":"""",""reviewMode"": 1,""state"":1,""localProcessesList"":[""*""], ""srcUsersList"":[{""id"": """+($user.items[0].id)+"""}]}"
+    $pendingDeletes += (Invoke-RestMethod ($env.baseUri+"/protection/rules/outbound") -method POST -Headers $znTeamHeader -Body $rule).item.id
+
+
+    write-Host "Pending Deletes Rule Ids: "+$pendingDeletes
+    write-Host "You will need to mark these Ids to approve/deny the rules."
+    start-sleep -Seconds (60*10) # Sleep for 10 minutes to allow time for manual review
+    
+
 
     #$tagGroup = "g:t:27"+$constants.$envtoTest.ZNEnvId.Substring($constants.$envtoTest.ZNEnvId.Length-6)
     #$assets = Invoke-RestMethod -Method GET -URi ($env.baseUri+"/assets/monitored?_limit=400&_offset=0&_filters=&with_count=true&order=asc&orderColumns[]=name&showInactive=false") -Headers $znTeamHeader

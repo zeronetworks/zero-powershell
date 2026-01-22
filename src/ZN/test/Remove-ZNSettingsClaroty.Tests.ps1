@@ -15,9 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-ZNSettingsClaroty'))
 }
 
 Describe 'Remove-ZNSettingsClaroty' {
-    It 'Delete' {
-        # cant test automatically
-        $a = 1
-        $a | Should -Be 1
+    It 'Delete' -skip {
+        
     }
 }

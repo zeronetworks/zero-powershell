@@ -12,9 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-ZNSettingsPushNotification' {
-    It 'Delete' {
-        # cant test automatically
-        $a = 1
-        $a | Should -Be 1
+    It 'Delete' -skip {
+        
     }
 }
