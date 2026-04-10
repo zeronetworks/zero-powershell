@@ -14,8 +14,9 @@ Update AD forest settings.
 
 ```
 Update-ZNSettingsAd -ForestId <String> [-AccountName <String>] [-AllowNtlmFallback]
- [-PrimaryDomainConfigDeploymentsClusterId <String>] [-PrimaryDomainConfigDomainControllerFqdn <String>]
- [-PrimaryDomainConfigDomainName <String>] [-PrimaryDomainConfigPassword <String>]
+ [-PrimaryDomainConfigAssetsClusterId <String>] [-PrimaryDomainConfigDeploymentsClusterId <String>]
+ [-PrimaryDomainConfigDomainControllerFqdn <String>] [-PrimaryDomainConfigDomainName <String>]
+ [-PrimaryDomainConfigPassword <String>] [-PrimaryDomainConfigSyncingClusterId <String>]
  [-PrimaryDomainConfigUseLdaps] [-PrimaryDomainConfigUserFqdn <String>] [-UsePrimaryUserForAllDomains]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -80,6 +81,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrimaryDomainConfigAssetsClusterId
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PrimaryDomainConfigDeploymentsClusterId
 .
 
@@ -127,6 +143,21 @@ Accept wildcard characters: False
 
 ### -PrimaryDomainConfigPassword
 password for the service account
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimaryDomainConfigSyncingClusterId
+.
 
 ```yaml
 Type: System.String

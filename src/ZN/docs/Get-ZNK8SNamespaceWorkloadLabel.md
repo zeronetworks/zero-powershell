@@ -14,7 +14,7 @@ Returns a list of labels for the K8s namespace workload.
 
 ```
 Get-ZNK8SNamespaceWorkloadLabel -K8SNamespaceId <String> -K8SWorkloadId <String> [-AccountName <String>]
- [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>]
+ [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <List<String>>]
  [-WithCount] [<CommonParameters>]
 ```
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 what column to order on
 
 ```yaml
-Type: System.String
+Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 

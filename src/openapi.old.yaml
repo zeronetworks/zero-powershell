@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Zero Networks
-  version: 1.0.9
+  version: 1.26.3
   description: APIs for Zero Networks
   contact:
     name: Support
@@ -142,12 +142,12 @@ paths:
       - api_key: []
       tags:
       - Activities Analysis
-  /activities/analysis/widgets/{widgetId}:
     delete:
       operationId: ActivitiesAnalysisWidgets_Delete
       summary: Delete Activities Analysis Widget
       description: Returns an empty response.
       parameters:
+      - $ref: '#/components/parameters/activityTypeParameter'
       - $ref: '#/components/parameters/widgetIdParameter'
       responses:
         '200':
@@ -1054,6 +1054,62 @@ paths:
       - api_key: []
       tags:
       - Activities
+  /activities/network/internet-categories-candidates:
+    get:
+      operationId: NetworkActivitiesInternetCategoriesCandidates_List
+      summary: Get internet category candidates
+      description: Returns a list of internet categories that can be used as filters for network activities.
+      parameters:
+      - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/idNamePairList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Activities
+  /activities/network/internet-sub-categories-candidates:
+    get:
+      operationId: NetworkActivitiesInternetSubCategoriesCandidates_List
+      summary: Get internet sub-category candidates
+      description: Returns a list of internet sub-categories that can be used as filters for network activities.
+      parameters:
+      - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/idNamePairList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Activities
   /ai/learning-config:
     get:
       operationId: LearningConfig_Get
@@ -1419,11 +1475,13 @@ paths:
       - api_key: []
       tags:
       - Asset actions
-  /assets/actions/deployments-cluster:
+  /assets/{assetId}/actions/deployments-cluster:
     put:
       tags:
-      - Assets
+      - Asset actions
       summary: Pin deployments cluster
+      parameters:
+      - $ref: '#/components/parameters/assetIdParameter'
       requestBody:
         description: pin assets to deployments cluster
         content:
@@ -1442,11 +1500,13 @@ paths:
           $ref: '#/components/responses/404'
       security:
       - api_key: []
-      operationId: AssetsDeploymentsCluster_Update
+      operationId: AssetDeploymentsCluster_Update
     delete:
       tags:
-      - Assets
+      - Asset actions
       summary: Unpin deployments cluster
+      parameters:
+      - $ref: '#/components/parameters/assetIdParameter'
       requestBody:
         description: unpin assets to deployments cluster
         content:
@@ -1465,7 +1525,7 @@ paths:
           $ref: '#/components/responses/404'
       security:
       - api_key: []
-      operationId: AssetsDeploymentsCluster_Delete
+      operationId: AssetDeploymentsCluster_Delete
   /assets/{assetId}/actions/preferred-deployment:
     put:
       operationId: AssetPreferredSegmentServer_Update
@@ -3284,6 +3344,139 @@ paths:
       - api_key: []
       tags:
       - Asset identity-actions
+  /assets/{assetId}/labels/add:
+    post:
+      operationId: AssetLabels_Add
+      summary: Add labels to asset
+      description: Add one or more labels to an asset
+      parameters:
+      - $ref: '#/components/parameters/assetIdParameter'
+      requestBody:
+        description: Array of labels to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/labelsBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/labelsResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Asset labels
+  /assets/{assetId}/labels/key-candidates:
+    get:
+      operationId: AssetLabelsKeyCandidates_List
+      summary: List key candidates for asset labels
+      description: Returns a list of key candidates for asset labels
+      parameters:
+      - $ref: '#/components/parameters/assetIdParameter'
+      - $ref: '#/components/parameters/searchParameter'
+      - $ref: '#/components/parameters/limitParameter'
+      - $ref: '#/components/parameters/offsetParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/labelsKeyCandidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Asset labels
+  /assets/{assetId}/labels/remove:
+    post:
+      operationId: AssetLabels_Remove
+      summary: Remove labels from asset
+      description: Remove one or more labels from an asset
+      parameters:
+      - $ref: '#/components/parameters/assetIdParameter'
+      requestBody:
+        description: Array of labels to remove
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/labelsBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/labelsResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Asset labels
+  /assets/{assetId}/labels/value-candidates:
+    get:
+      operationId: AssetLabelsValueCandidates_List
+      summary: List value candidates for asset labels
+      description: Returns a list of value candidates for asset labels
+      parameters:
+      - $ref: '#/components/parameters/assetIdParameter'
+      - $ref: '#/components/parameters/keyParameter'
+      - $ref: '#/components/parameters/searchParameter'
+      - $ref: '#/components/parameters/limitParameter'
+      - $ref: '#/components/parameters/offsetParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/labelsValueCandidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Asset labels
   /assets/{assetId}/listening-ports:
     get:
       operationId: AssetListeningPorts_List
@@ -9727,6 +9920,30 @@ paths:
       - api_key: []
       tags:
       - Assets
+  /assets/actions/deployments-cluster:
+    put:
+      tags:
+      - Assets
+      summary: Pin deployments cluster
+      requestBody:
+        description: pin assets to deployments cluster
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pinDeploymentsClusterBody'
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+      security:
+      - api_key: []
+      operationId: AssetsDeploymentsCluster_Update
   /assets/actions/inactivate:
     post:
       operationId: AssetsInactive_Set
@@ -13211,6 +13428,139 @@ paths:
       - api_key: []
       tags:
       - Asset OT/IoT audit
+  /assets/ot/{assetId}/labels/add:
+    post:
+      operationId: AssetOTLabels_Add
+      summary: Add labels to asset
+      description: Add one or more labels to an asset
+      parameters:
+      - $ref: '#/components/parameters/assetIdParameter'
+      requestBody:
+        description: Array of labels to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/labelsBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/labelsResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Asset OT/IoT labels
+  /assets/ot/{assetId}/labels/key-candidates:
+    get:
+      operationId: AssetOTLabelsKeyCandidates_List
+      summary: List key candidates for asset labels
+      description: Returns a list of key candidates for asset labels
+      parameters:
+      - $ref: '#/components/parameters/assetIdParameter'
+      - $ref: '#/components/parameters/searchParameter'
+      - $ref: '#/components/parameters/limitParameter'
+      - $ref: '#/components/parameters/offsetParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/labelsKeyCandidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Asset OT/IoT labels
+  /assets/ot/{assetId}/labels/remove:
+    post:
+      operationId: AssetOTLabels_Remove
+      summary: Remove labels from asset
+      description: Remove one or more labels from an asset
+      parameters:
+      - $ref: '#/components/parameters/assetIdParameter'
+      requestBody:
+        description: Array of labels to remove
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/labelsBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/labelsResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Asset OT/IoT labels
+  /assets/ot/{assetId}/labels/value-candidates:
+    get:
+      operationId: AssetOTLabelsValueCandidates_List
+      summary: List value candidates for asset labels
+      description: Returns a list of value candidates for asset labels
+      parameters:
+      - $ref: '#/components/parameters/assetIdParameter'
+      - $ref: '#/components/parameters/keyParameter'
+      - $ref: '#/components/parameters/searchParameter'
+      - $ref: '#/components/parameters/limitParameter'
+      - $ref: '#/components/parameters/offsetParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/labelsValueCandidatesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Asset OT/IoT labels
   /assets/ot/{assetId}/managers:
     get:
       operationId: AssetOTAssetManagers_List
@@ -23322,6 +23672,35 @@ paths:
       - api_key: []
       tags:
       - Assets Switches
+  /assets/switches/{switchId}/binding-direction:
+    put:
+      operationId: SwitchBindingDirection_Set
+      summary: Sets Switch protection to allow egress only/ingress only/both
+      description: Returns and empty object.
+      parameters:
+      - $ref: '#/components/parameters/switchIdParameter'
+      requestBody:
+        description: The switch and binding direction requested
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/switchSetBindingDirectionalBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_empty'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Assets Switches
   /audit:
     get:
       operationId: Audits_List
@@ -32703,6 +33082,238 @@ paths:
       - api_key: []
       tags:
       - Groups Tag
+  /identity/ispm/posture-violations:
+    get:
+      operationId: IdentityPostureViolations_List
+      summary: List identity posture violations
+      description: Returns a list of identity posture violations.
+      parameters:
+      - $ref: '#/components/parameters/limitParameter'
+      - $ref: '#/components/parameters/offsetParameter'
+      - $ref: '#/components/parameters/withCountParameter'
+      - $ref: '#/components/parameters/orderParameter'
+      - $ref: '#/components/parameters/orderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/identityPostureViolationsList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - ISPM
+  /identity/ispm/posture-violations/filters:
+    get:
+      operationId: IdentityPostureViolationsFilters_List
+      summary: Get identity posture violation filters
+      description: Returns the filters that can be used for identity posture violations.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - ISPM
+  /identity/ispm/posture-violations/users-violation/filters:
+    get:
+      operationId: IdentityPostureUsersViolationFilters_List
+      summary: Get identity posture users violation filters
+      description: Returns the filters that can be used for identity posture users violations.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - ISPM
+  /identity/ispm/posture-violations/users-violation/filters/user-candidates:
+    get:
+      operationId: IdentityPostureUsersViolationUserCandidates_List
+      summary: List Identity Posture Users Violation User Candidates
+      description: Returns a list of users candidates for Identity Posture users violation.
+      parameters:
+      - $ref: '#/components/parameters/limitParameter'
+      - $ref: '#/components/parameters/offsetParameter'
+      - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/groupsOrUsersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - ISPM
+  /identity/ispm/posture-violations/{postureCheckType}/users-violation:
+    get:
+      operationId: IdentityPostureUsersViolation_List
+      summary: List users with a specific posture violation
+      description: Returns a list of users with a specific posture violation.
+      parameters:
+      - $ref: '#/components/parameters/postureCheckTypeParameter'
+      - $ref: '#/components/parameters/limitParameter'
+      - $ref: '#/components/parameters/offsetParameter'
+      - $ref: '#/components/parameters/filtersParameter'
+      - $ref: '#/components/parameters/withCountParameter'
+      - $ref: '#/components/parameters/orderParameter'
+      - $ref: '#/components/parameters/orderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/usersViolationList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - ISPM
+  /identity/ispm/posture-violations/{postureCheckType}/users-violation/export:
+    post:
+      operationId: IdentityPostureUsersViolation_Export
+      summary: Export users violations for a specific posture check type
+      description: Returns an exportId to pass into the download API.
+      parameters:
+      - $ref: '#/components/parameters/postureCheckTypeParameter'
+      requestBody:
+        description: EntityId, from, to, search, filter or date time format for export
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/exportBodyActivities'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exportId'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - ISPM
+  /identity/ispm/posture-violations/{postureCheckType}/users-violation/export/csv/{exportId}:
+    get:
+      operationId: IdentityPostureUsersViolation_Export_Get
+      summary: Download users violations export for a specific posture check type
+      description: Returns a csv file to be downloaded.
+      parameters:
+      - $ref: '#/components/parameters/postureCheckTypeParameter'
+      - $ref: '#/components/parameters/exportIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: object
+                format: file
+        '401':
+          $ref: '#/components/responses/401'
+      security:
+      - api_key: []
+      tags:
+      - ISPM
+  /identity/ispm/posture-violations/{postureCheckType}/users-violation/status:
+    post:
+      operationId: IdentityPostureUsersViolation_Update
+      summary: Update users violation status for a specific posture check type
+      description: Update users violation status for a specific posture check type.
+      parameters:
+      - $ref: '#/components/parameters/postureCheckTypeParameter'
+      requestBody:
+        description: User ids and new violation status
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userViolationBody'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - ISPM
   /k8s/clusters:
     get:
       operationId: K8sClusters_List
@@ -33854,66 +34465,6 @@ paths:
       operationId: K8sClusterLabelNamespacesFilters_List
       summary: List Namepaces Filters for a K8s Cluster Label
       description: Returns a list of filters for namespaces for a K8s cluster label.
-      parameters:
-      - $ref: '#/components/parameters/k8sClusterIdParameter'
-      - $ref: '#/components/parameters/k8sLabelParameter'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/filtersList'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-      security:
-      - api_key: []
-      tags:
-      - K8s labels
-  /k8s/clusters/{k8sClusterId}/labels/{label}/nodes:
-    get:
-      operationId: K8sClusterLabelNodes_List
-      summary: Get a k8s label nodes
-      description: Returns a list of nodes for an label in the k8s cluster.
-      parameters:
-      - $ref: '#/components/parameters/k8sClusterIdParameter'
-      - $ref: '#/components/parameters/k8sLabelParameter'
-      - $ref: '#/components/parameters/limitParameter'
-      - $ref: '#/components/parameters/offsetParameter'
-      - $ref: '#/components/parameters/filtersParameter'
-      - $ref: '#/components/parameters/withCountParameter'
-      - $ref: '#/components/parameters/orderParameter'
-      - $ref: '#/components/parameters/orderColumnParameter'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/k8sNodesList'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '500':
-          $ref: '#/components/responses/500'
-      security:
-      - api_key: []
-      tags:
-      - K8s labels
-  /k8s/clusters/{k8sClusterId}/labels/{label}/nodes/filters:
-    get:
-      operationId: K8sClusterLabelNodesFilters_List
-      summary: List Nodes Filters for a K8s Cluster Label
-      description: Returns a list of filters for nodes for a K8s cluster label.
       parameters:
       - $ref: '#/components/parameters/k8sClusterIdParameter'
       - $ref: '#/components/parameters/k8sLabelParameter'
@@ -39610,6 +40161,65 @@ paths:
       - api_key: []
       tags:
       - K8s workloads
+  /labels:
+    get:
+      operationId: Labels_List
+      summary: List labels
+      description: Returns the labels.
+      parameters:
+      - $ref: '#/components/parameters/limitParameter'
+      - $ref: '#/components/parameters/offsetParameter'
+      - $ref: '#/components/parameters/filtersParameter'
+      - $ref: '#/components/parameters/withCountParameter'
+      - $ref: '#/components/parameters/orderParameter'
+      - $ref: '#/components/parameters/orderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/labelsList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Labels
+  /labels/filters:
+    get:
+      operationId: LabelsFilters_List
+      summary: List Labels filters
+      description: Returns a list of filters for Labels.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Labels
   /maintenance-window-external:
     get:
       operationId: MaintenanceWindow_List
@@ -39622,32 +40232,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/maintenanceWindowList'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '500':
-          $ref: '#/components/responses/500'
-      security:
-      - api_key: []
-      tags:
-      - Settings Maintenance Window
-  /maintenance-window-external/{maintenanceWindowId}:
-    get:
-      operationId: SettingsMaintenanceWindow_Get
-      summary: Get a maintenance window
-      description: Returns the maintenance window properties
-      parameters:
-      - $ref: '#/components/parameters/maintenanceWindowIdParameter'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/maintenanceWindowItems'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -41238,6 +41822,295 @@ paths:
       - api_key: []
       tags:
       - AE Exclusions
+  /protection/internal-access/policies:
+    get:
+      operationId: InternalAccessPolicy_List
+      summary: List Internal Access policies
+      description: Returns a list of internal access policies.
+      parameters:
+      - $ref: '#/components/parameters/limitParameter'
+      - $ref: '#/components/parameters/offsetParameter'
+      - $ref: '#/components/parameters/cursorParameter'
+      - $ref: '#/components/parameters/withCountParameter'
+      - $ref: '#/components/parameters/filtersParameter'
+      - $ref: '#/components/parameters/addBuiltinsParameter'
+      - $ref: '#/components/parameters/addAncestorsParameter'
+      - $ref: '#/components/parameters/orderParameter'
+      - $ref: '#/components/parameters/orderColumnParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internalAccessPolicyList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Internal Access Policy
+    post:
+      operationId: InternalAccessPolicy_Create
+      summary: Create an internal access policy
+      description: Returns a the internal access policy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internalAccessPolicyBody'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internalAccessPolicyItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Internal Access Policy
+  /protection/internal-access/policies/{policyId}:
+    get:
+      operationId: InternalAccessPolicy_Get
+      summary: Get an Internal Access policy
+      description: Returns an internal access policy.
+      parameters:
+      - $ref: '#/components/parameters/internalAccessPolicyIdParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internalAccessPolicyItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Internal Access Policy
+    put:
+      operationId: InternalAccessPolicy_Update
+      summary: Update an Internal Access policy
+      description: Returns an internal access policy.
+      parameters:
+      - $ref: '#/components/parameters/internalAccessPolicyIdParameter'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internalAccessPolicyBody'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internalAccessPolicyItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Internal Access Policy
+    delete:
+      operationId: InternalAccessPolicy_Delete
+      summary: Delete an Internal Access policy
+      description: Returns an empty object.
+      parameters:
+      - $ref: '#/components/parameters/internalAccessPolicyIdParameter'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Internal Access Policy
+  /protection/internal-access/policies/dst-asset-candidates:
+    get:
+      operationId: InternalAccessPolicyDestinationAssetsCandidates_List
+      summary: List Internal Access Policy Destinations Assets Candidates
+      description: Returns a list of destunation assets candidates for an internal access policy.
+      parameters:
+      - $ref: '#/components/parameters/limitParameter'
+      - $ref: '#/components/parameters/offsetParameter'
+      - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assetsOrGroupsList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Internal Access Policy
+  /protection/internal-access/policies/filters:
+    get:
+      operationId: InternalAccessPolicyFilters_List
+      summary: List Internal Access Policy Filters
+      description: Returns a list of filters for internal access policies.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Internal Access Policy
+  /protection/internal-access/policies/filters/dst-asset-candidates:
+    get:
+      operationId: InternalAccessPolicyDestinationAssetsCandidatesFilters_List
+      summary: List Internal Access Policy Destination Assets Candidates Filters
+      description: Returns a list of filters for destination asset candidates in internal access policies.
+      parameters:
+      - $ref: '#/components/parameters/limitParameter'
+      - $ref: '#/components/parameters/offsetParameter'
+      - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Internal Access Policy
+  /protection/internal-access/policies/filters/src-users-candidates:
+    get:
+      operationId: InternalAccessPolicySourceUserCandidatesFilters_List
+      summary: List Internal Access Policy Source User Candidates Filters
+      description: Returns a list of filters for source user candidates in internal access policies.
+      parameters:
+      - $ref: '#/components/parameters/limitParameter'
+      - $ref: '#/components/parameters/offsetParameter'
+      - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filtersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Internal Access Policy
+  /protection/internal-access/policies/src-users-candidates:
+    get:
+      operationId: InternalAccessPolicySourceUserCandidates_List
+      summary: List Internal Access Policy Source User Candidates
+      description: Returns a list of source user candidates for internal access policies.
+      parameters:
+      - $ref: '#/components/parameters/limitParameter'
+      - $ref: '#/components/parameters/offsetParameter'
+      - $ref: '#/components/parameters/searchParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/groupsOrUsersList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Internal Access Policy
   /protection/external-access-policies:
     get:
       operationId: ExternalAccessPolicy_List
@@ -47063,7 +47936,7 @@ paths:
       - api_key: []
       tags:
       - Rules
-  /sessions:
+  /connect/sessions:
     get:
       operationId: Sessions_List
       summary: List Connect sessions
@@ -47091,7 +47964,7 @@ paths:
       - api_key: []
       tags:
       - Sessions
-  /sessions/{sessionId}/revoke:
+  /connect/sessions/{sessionId}/revoke:
     post:
       operationId: Session_Revoke
       summary: Revoke a Connect session
@@ -47113,7 +47986,7 @@ paths:
       - api_key: []
       tags:
       - Sessions
-  /sessions/filters:
+  /connect/sessions/filters:
     get:
       operationId: SessionsFilters_List
       summary: List Sessions Filters
@@ -47236,6 +48109,61 @@ paths:
       - api_key: []
       tags:
       - Settings PAM
+  /settings/version-maintenance-window/modify/{product}:
+    put:
+      operationId: SettingsVersionMaintenanceWindow_Update
+      summary: Modify version maintenance window
+      description: Modify version maintenance window
+      parameters:
+      - $ref: '#/components/parameters/productPathParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/versionMaintenanceWindowBody'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Settings Version Maintenance Window
+  /settings/version-maintenance-window/{product}:
+    get:
+      operationId: SettingsVersionMaintenanceWindow_List
+      summary: Get all version maintenance windows
+      description: Get all version maintenance windows
+      parameters:
+      - $ref: '#/components/parameters/productPathParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versionMaintenanceWindowList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Settings Version Maintenance Window
   /settings/access-tokens:
     get:
       operationId: AccessTokens_List
@@ -47377,7 +48305,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SettingsAERuleReview'
+                $ref: '#/components/schemas/settingsAERuleReview'
         '400':
           $ref: '#/components/responses/400'
         '500':
@@ -47394,14 +48322,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SettingsAERuleReview'
+              $ref: '#/components/schemas/settingsAERuleReview'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SettingsAERuleReview'
+                $ref: '#/components/schemas/settingsAERuleReview'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -47425,7 +48353,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SettingsAERuleReviewCleanup'
+                $ref: '#/components/schemas/settingsAERuleReviewCleanup'
         '400':
           $ref: '#/components/responses/400'
         '500':
@@ -47442,14 +48370,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SettingsAERuleReviewCleanupBody'
+              $ref: '#/components/schemas/settingsAERuleReviewCleanupBody'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SettingsAERuleReviewCleanup'
+                $ref: '#/components/schemas/settingsAERuleReviewCleanup'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -49230,6 +50158,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/limitParameter'
       - $ref: '#/components/parameters/offsetParameter'
+      - $ref: '#/components/parameters/withCountParameter'
       responses:
         '200':
           description: OK
@@ -49315,6 +50244,34 @@ paths:
       responses:
         '200':
           description: Ok
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Settings Connect
+  /settings/connect/regions/{regionId}/failover-candidates:
+    get:
+      operationId: SettingsConnectRegion_GetFailoverCandidates
+      summary: Get failover candidates for a Connect Region
+      description: Get a list of regions that can be used as failover candidates for the specified region
+      parameters:
+      - $ref: '#/components/parameters/connectRegionIdParameter'
+      - $ref: '#/components/parameters/limitParameter'
+      - $ref: '#/components/parameters/offsetParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/idNamePairList'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -49565,11 +50522,11 @@ paths:
       - api_key: []
       tags:
       - Settings Connect
-  /settings/connect/user-access-config:
+  /connect/policies:
     get:
-      operationId: SettingsConnectUserAccessConfig_List
-      summary: List Connect User Access Configurations
-      description: List Connect User Access Configurations in Settings
+      operationId: ConnectPolicies_List
+      summary: List Connect Policies
+      description: List Connect Policies (User Access Configurations)
       parameters:
       - $ref: '#/components/parameters/limitParameter'
       - $ref: '#/components/parameters/offsetParameter'
@@ -49591,11 +50548,11 @@ paths:
       security:
       - api_key: []
       tags:
-      - Settings Connect
+      - Connect Policies
     post:
-      operationId: SettingsConnectUserAccessConfig_Create
-      summary: Create a Connect User Access Configuration
-      description: Create a Connect User Access Configuration in Settings
+      operationId: ConnectPolicies_Create
+      summary: Create a Connect Policy
+      description: Create a Connect Policy (User Access Configuration)
       requestBody:
         content:
           application/json:
@@ -49614,13 +50571,15 @@ paths:
           $ref: '#/components/responses/409'
         '500':
           $ref: '#/components/responses/500'
+      security:
+      - api_key: []
       tags:
-      - Settings Connect
-  /settings/connect/user-access-config/{userAccessConfigId}:
+      - Connect Policies
+  /connect/policies/{userAccessConfigId}:
     put:
-      operationId: SettingsConnectUserAccessConfig_Update
-      summary: Update a Connect User Access Configuration
-      description: Update a Connect User Access Configuration in Settings
+      operationId: ConnectPolicies_Update
+      summary: Update a Connect Policy
+      description: Update a Connect Policy (User Access Configuration)
       parameters:
       - $ref: '#/components/parameters/userAccessConfigParameter'
       requestBody:
@@ -49642,11 +50601,11 @@ paths:
       security:
       - api_key: []
       tags:
-      - Settings Connect
+      - Connect Policies
     delete:
-      operationId: SettingsConnectUserAccessConfig_Delete
-      summary: Delete a Connect User Access Configuration
-      description: Delete a Connect User Access Configuration in Settings
+      operationId: ConnectPolicies_Delete
+      summary: Delete a Connect Policy
+      description: Delete a Connect Policy (User Access Configuration)
       parameters:
       - $ref: '#/components/parameters/userAccessConfigParameter'
       responses:
@@ -49663,12 +50622,12 @@ paths:
       security:
       - api_key: []
       tags:
-      - Settings Connect
-  /settings/connect/user-access-config/assets-candidates:
+      - Connect Policies
+  /connect/policies/assets-candidates:
     get:
-      operationId: SettingsConnectUserAccessConfigAssetsCandidates_List
-      summary: Get user access configuration excluded assets candidates Candidates
-      description: Returns a list of candidates for user access config excluded assets.
+      operationId: ConnectPoliciesAssetsCandidates_List
+      summary: Get Connect Policy assets candidates
+      description: Returns a list of candidates for Connect Policy assets.
       parameters:
       - $ref: '#/components/parameters/limitParameter'
       - $ref: '#/components/parameters/searchParameter'
@@ -49691,12 +50650,12 @@ paths:
       security:
       - api_key: []
       tags:
-      - Settings Connect
-  /settings/connect/user-access-config/destinations-candidates:
+      - Connect Policies
+  /connect/policies/destinations-candidates:
     get:
-      operationId: SettingsConnectUserAccessConfigDestinationsCandidates_List
-      summary: Get user access configuration excluded destinations candidates Candidates
-      description: Returns a list of candidates for user access config excluded destinations.
+      operationId: ConnectPoliciesDestinationsCandidates_List
+      summary: Get Connect Policy destinations candidates
+      description: Returns a list of candidates for Connect Policy destinations.
       parameters:
       - $ref: '#/components/parameters/limitParameter'
       - $ref: '#/components/parameters/searchParameter'
@@ -49719,12 +50678,12 @@ paths:
       security:
       - api_key: []
       tags:
-      - Settings Connect
-  /settings/connect/user-access-config/excluded-assets-candidates:
+      - Connect Policies
+  /connect/policies/excluded-assets-candidates:
     get:
-      operationId: SettingsConnectUserAccessConfigExcludedAssetsCandidates_List
-      summary: Get user access configuration excluded assets candidates
-      description: Returns a list of candidates for user access config excluded assets.
+      operationId: ConnectPoliciesExcludedAssetsCandidates_List
+      summary: Get Connect Policy excluded assets candidates
+      description: Returns a list of candidates for Connect Policy excluded assets.
       parameters:
       - $ref: '#/components/parameters/limitParameter'
       - $ref: '#/components/parameters/searchParameter'
@@ -49747,12 +50706,12 @@ paths:
       security:
       - api_key: []
       tags:
-      - Settings Connect
-  /settings/connect/user-access-config/excluded-users-candidates:
+      - Connect Policies
+  /connect/policies/excluded-users-candidates:
     get:
-      operationId: SettingsConnectUserAccessConfigExcludedSourceUsersCandidates_List
-      summary: Get user access configuration xxcluded source users candidates Candidates
-      description: Returns a list of candidates for user access config excluded source users.
+      operationId: ConnectPoliciesExcludedSourceUsersCandidates_List
+      summary: Get Connect Policy excluded source users candidates
+      description: Returns a list of candidates for Connect Policy excluded source users.
       parameters:
       - $ref: '#/components/parameters/limitParameter'
       - $ref: '#/components/parameters/searchParameter'
@@ -49775,12 +50734,12 @@ paths:
       security:
       - api_key: []
       tags:
-      - Settings Connect
-  /settings/connect/user-access-config/regions-candidates:
+      - Connect Policies
+  /connect/policies/regions-candidates:
     get:
-      operationId: SettingsConnectUserAccessConfigAllowedRegionsCandidates_List
-      summary: Get user access configuration allowed regions Candidates
-      description: Returns a list of candidates for user access config allowed regions.
+      operationId: ConnectPoliciesAllowedRegionsCandidates_List
+      summary: Get Connect Policy allowed regions candidates
+      description: Returns a list of candidates for Connect Policy allowed regions.
       parameters:
       - $ref: '#/components/parameters/limitParameter'
       - $ref: '#/components/parameters/searchParameter'
@@ -49803,12 +50762,12 @@ paths:
       security:
       - api_key: []
       tags:
-      - Settings Connect
-  /settings/connect/user-access-config/users-candidates:
+      - Connect Policies
+  /connect/policies/users-candidates:
     get:
-      operationId: SettingsConnectUserAccessConfigSourceUsersCandidates_List
-      summary: Get user access configuration source users candidates Candidates
-      description: Returns a list of candidates for user access config source users.
+      operationId: ConnectPoliciesSourceUsersCandidates_List
+      summary: Get Connect Policy source users candidates
+      description: Returns a list of candidates for Connect Policy source users.
       parameters:
       - $ref: '#/components/parameters/limitParameter'
       - $ref: '#/components/parameters/searchParameter'
@@ -49831,7 +50790,137 @@ paths:
       security:
       - api_key: []
       tags:
-      - Settings Connect
+      - Connect Policies
+  /connect/posture/checks:
+    get:
+      operationId: ConnectPostureChecks_Get
+      summary: Get posture check definitions
+      description: Get the metadata definitions for all available posture checks
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postureCheckDefinitionsList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Connect Posture
+  /connect/posture:
+    get:
+      operationId: ConnectPostureProfiles_List
+      summary: List Connect Posture Profiles
+      description: List Connect Posture Profiles
+      parameters:
+      - $ref: '#/components/parameters/limitParameter'
+      - $ref: '#/components/parameters/offsetParameter'
+      - $ref: '#/components/parameters/withCountParameter'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postureProfilesList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Connect Posture
+    post:
+      operationId: ConnectPostureProfiles_Create
+      summary: Create a Connect Posture Profile
+      description: Create a Connect Posture Profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postureProfileBody'
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Connect Posture
+  /connect/posture/{profileId}:
+    put:
+      operationId: ConnectPostureProfile_Update
+      summary: Update a Connect Posture Profile
+      description: Update a Connect Posture Profile
+      parameters:
+      - $ref: '#/components/parameters/postureProfileIdParameter'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postureProfileBody'
+      responses:
+        '200':
+          description: Ok
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Connect Posture
+    delete:
+      operationId: ConnectPostureProfile_Delete
+      summary: Delete a Connect Posture Profile
+      description: Delete a Connect Posture Profile
+      parameters:
+      - $ref: '#/components/parameters/postureProfileIdParameter'
+      responses:
+        '200':
+          description: Ok
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Connect Posture
   /settings/data-collection/activities:
     get:
       operationId: SettingsActivities_Get
@@ -52389,15 +53478,16 @@ paths:
       - api_key: []
       tags:
       - Settings Trusted Internet
+  /settings/system/restricted/clients:
     put:
-      operationId: SettingsClientsTrustedInternet_Update
-      summary: Set Clients Trusted Internet settings in System
-      description: Set Clients Trusted Internet settings in System
+      operationId: SettingsClientsInternetAccess_Update
+      summary: Set Clients Internet access settings in System
+      description: Set Clients Internet access settings in System
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/settingsTrustedInternetBody'
+              $ref: '#/components/schemas/settingsInternetAccessBody'
       responses:
         '200':
           description: OK
@@ -52437,30 +53527,6 @@ paths:
       - api_key: []
       tags:
       - Settings Trusted Internet
-    put:
-      operationId: SettingsClientsUntrustedInternet_Update
-      summary: Set Clients Untrusted Internet settings in System
-      description: Set Clients Untrusted Internet settings in System
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/settingsUntrustedInternetBody'
-      responses:
-        '200':
-          description: OK
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '500':
-          $ref: '#/components/responses/500'
-      security:
-      - api_key: []
-      tags:
-      - Settings Trusted Internet
   /settings/system/restricted/servers/trusted-external:
     get:
       operationId: SettingsServersTrustedInternet_Get
@@ -52485,15 +53551,16 @@ paths:
       - api_key: []
       tags:
       - Settings Trusted Internet
+  /settings/system/restricted/servers:
     put:
-      operationId: SettingsServersTrustedInternet_Update
-      summary: Set Servers Trusted Internet settings in System
-      description: Set Servers Trusted Internet settings in System
+      operationId: SettingsServersInternetAccess_Update
+      summary: Set Servers Internet access settings in System
+      description: Set Servers Internet access settings in System
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/settingsTrustedInternetBody'
+              $ref: '#/components/schemas/settingsInternetAccessBody'
       responses:
         '200':
           description: OK
@@ -52521,30 +53588,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/settingsUntrustedInternet'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '500':
-          $ref: '#/components/responses/500'
-      security:
-      - api_key: []
-      tags:
-      - Settings Trusted Internet
-    put:
-      operationId: SettingsServersUntrustedInternet_Update
-      summary: Set Servers Untrusted Internet settings in System
-      description: Set Servers Untrusted Internet settings in System
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/settingsUntrustedInternetBody'
-      responses:
-        '200':
-          description: OK
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -52653,6 +53696,227 @@ paths:
       - api_key: []
       tags:
       - Settings Segment Connector
+  /settings/webhooks:
+    get:
+      operationId: SettingsWebhooks_List
+      summary: List Webhooks settings
+      description: List Webhooks settings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsWebhooksList'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Settings Webhooks
+    post:
+      operationId: SettingsWebhooks_Create
+      summary: Create Webhooks settings
+      description: Create Webhooks settings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/settingsWebhookBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsWebhookItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Settings Webhooks
+  /settings/webhooks/sender-ip:
+    get:
+      operationId: SettingsWebhooksSenderIp_Get
+      summary: Get Sender IP Configurations
+      description: Get Sender IP Configuration
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsWebhooksSenderIp'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Settings Webhooks
+  /settings/webhooks/test:
+    post:
+      operationId: SettingsWebhooks_Test
+      summary: Test Webhooks settings
+      description: Test Webhooks settings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/settingsWebhookTestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsWebhookTestResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Settings Webhooks
+  /settings/webhooks/{webhookId}:
+    put:
+      operationId: SettingsWebhooks_Update
+      summary: Update Webhooks settings
+      description: Update Webhooks settings
+      parameters:
+      - $ref: '#/components/parameters/webhookIdParameter'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/settingsWebhookTestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsWebhookItem'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Settings Webhooks
+    delete:
+      operationId: SettingsWebhooks_Delete
+      summary: Delete Webhooks settings
+      description: Delete Webhooks settings
+      parameters:
+      - $ref: '#/components/parameters/webhookIdParameter'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Settings Webhooks
+  /settings/webhooks/{webhookId}/test:
+    post:
+      operationId: SettingsWebhook_Test
+      summary: Test Webhook settings
+      description: Test Webhook settings
+      parameters:
+      - $ref: '#/components/parameters/webhookIdParameter'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/settingsWebhookTestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsWebhookTestResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Settings Webhooks
+  /settings/webhooks/{webhookId}/triggers:
+    put:
+      operationId: SettingsWebhooksTriggers_Update
+      summary: Update Webhooks triggers settings
+      description: Update Webhooks triggers settings
+      parameters:
+      - $ref: '#/components/parameters/webhookIdParameter'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/settingsWebhookTriggersBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/settingsWebhookTriggers'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      security:
+      - api_key: []
+      tags:
+      - Settings Webhooks
   /users:
     get:
       operationId: Users_List
@@ -58666,6 +59930,15 @@ components:
       schema:
         type: string
       example: y:a:jUDZuhXU
+    postureProfileIdParameter:
+      name: profileId
+      in: path
+      description: posture profile id
+      required: true
+      schema:
+        type: string
+        format: uuid
+      example: ab803afb-83bd-4bfe-9e0e-a5db212d134b
     cursorParameter:
       name: _cursor
       in: query
@@ -58692,6 +59965,46 @@ components:
       schema:
         type: string
         format: uuid
+    platformParameter:
+      name: platform
+      in: path
+      description: platform
+      required: true
+      schema:
+        type: string
+        enum:
+        - WIN_X64
+        - WIN_X86
+        - LINUX_X64
+        - LINUX_X86
+        - MAC_X64
+        - MAC_ARM64
+    productPathParam:
+      name: product
+      in: path
+      required: true
+      description: Product type for which to modify or fetch the version maintenance window
+      schema:
+        type: string
+        enum:
+        - segment-server
+        - connect-server
+    pilotGroupProductPathParam:
+      name: product
+      in: path
+      required: true
+      description: Product type for pilot group
+      schema:
+        type: string
+        enum:
+        - cloud-connector
+    pilotGroupOsTypePathParam:
+      name: osType
+      in: path
+      required: true
+      description: OS type for pilot group
+      schema:
+        $ref: '#/components/schemas/osType'
     directionParameter:
       name: direction
       in: query
@@ -58983,6 +60296,14 @@ components:
         type: string
         example: 192.168.1.0/24
         pattern: '[0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}/[0-9]{1,3}'
+    internalAccessPolicyIdParameter:
+      name: policyId
+      in: path
+      description: id of the external acess policy
+      required: true
+      schema:
+        type: string
+        example: p:e:8199d54b
     deploymentsClusterIdParameter:
       name: deploymentsClusterId
       in: path
@@ -58997,6 +60318,13 @@ components:
       required: false
       schema:
         type: boolean
+    keyParameter:
+      name: key
+      in: query
+      description: key for key-value pair filtering
+      required: true
+      schema:
+        type: string
     limitParameter:
       name: _limit
       in: query
@@ -59015,6 +60343,20 @@ components:
       schema:
         type: string
         pattern: ^[e]:[m]:[a-zA-Z0-9]{8}$
+    postureCheckTypeParameter:
+      name: postureCheckType
+      in: path
+      description: posture check type
+      required: true
+      schema:
+        type: string
+        enum:
+        - PASSWORD_NOT_NEEDED
+        - USE_DES_KEY_ONLY
+        - DONT_REQUIRE_PREAUTH
+        - PASSWORD_NEVER_EXPIRE
+        - UNCONSTRAINED_DELEGATION_ENABLED
+        - DEFAULT_ADMIN_ACCOUNT_ENABLED
     offsetParameter:
       name: _offset
       required: false
@@ -59058,8 +60400,11 @@ components:
       description: what column to order on
       required: false
       schema:
-        type: string
-        example: name
+        type: array
+        items:
+          type: string
+        example:
+        - name
     orderParameter:
       name: order
       in: query
@@ -59075,9 +60420,13 @@ components:
       in: query
       description: what column to order on
       schema:
-        type: string
-        default: name
-        example: name
+        type: array
+        items:
+          type: string
+        default:
+        - name
+        example:
+        - name
     otRuleIdParameter:
       name: ruleId
       in: path
@@ -59391,6 +60740,15 @@ components:
         type: string
         pattern: ^u:[a]:[a-zA-Z0-9]{8}$
       example: u:a:w27loY5p
+    webhookIdParameter:
+      name: webhookId
+      in: path
+      description: webhookId to filter on
+      required: true
+      schema:
+        type: string
+        pattern: ^e:w:[a-zA-Z0-9]{8}$
+      example: e:w:1ZdDPsky
     widgetIdParameter:
       name: widgetId
       in: path
@@ -60586,10 +61944,35 @@ components:
             type: object
             properties:
               id:
-                description: EntityId
                 type: string
               name:
-                description: Entity Name
+                type: string
+              assetStatus:
+                $ref: '#/components/schemas/assetStatus'
+              assetType:
+                $ref: '#/components/schemas/assetType'
+              breakGlassActivated:
+                type: boolean
+              domain:
+                type: string
+              identityProtectionState:
+                $ref: '#/components/schemas/protectionState'
+              isQuarantined:
+                type: boolean
+              otLocattion:
+                $ref: '#/components/schemas/otLocation'
+              protectionState:
+                $ref: '#/components/schemas/protectionState'
+              rpcProtectionState:
+                $ref: '#/components/schemas/protectionState'
+              guid:
+                type: string
+                format: uuid
+              hasNetworkProtectionPolicy:
+                type: boolean
+              hasIdentityProtectionPolicy:
+                type: boolean
+              sid:
                 type: string
         scrollCursor:
           type: string
@@ -62124,6 +63507,305 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/connectRegion'
+    postureProfile:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        action:
+          type: string
+          enum:
+          - BLOCK
+          - ALERT_ONLY
+          description: Posture action
+        checkIntervalSeconds:
+          type: integer
+        windowsChecks:
+          $ref: '#/components/schemas/windowsPostureChecks'
+        macChecks:
+          $ref: '#/components/schemas/macPostureChecks'
+        roleIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/idNamePair'
+        createdBy:
+          $ref: '#/components/schemas/idNamePair'
+        createdAt:
+          $ref: '#/components/schemas/epochMillis'
+        updatedBy:
+          $ref: '#/components/schemas/idNamePair'
+        updatedAt:
+          $ref: '#/components/schemas/epochMillis'
+    postureProfileBody:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        action:
+          type: string
+          enum:
+          - BLOCK
+          - ALERT_ONLY
+          description: Posture action
+        checkIntervalSeconds:
+          type: integer
+        windowsChecks:
+          $ref: '#/components/schemas/windowsPostureChecks'
+        macChecks:
+          $ref: '#/components/schemas/macPostureChecks'
+      required:
+      - name
+      - action
+      - checkIntervalSeconds
+    postureProfilesList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/postureProfile'
+        count:
+          type: integer
+    postureCheckDefinitionsList:
+      type: object
+      properties:
+        checks:
+          type: array
+          items:
+            $ref: '#/components/schemas/postureCheckDefinition'
+    postureCheckDefinition:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        singleValueOnly:
+          type: boolean
+        maxItems:
+          type: integer
+        windows:
+          type: array
+          items:
+            $ref: '#/components/schemas/postureCheckFieldDefinition'
+        mac:
+          type: array
+          items:
+            $ref: '#/components/schemas/postureCheckFieldDefinition'
+    postureCheckFieldDefinition:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        inputType:
+          type: string
+          enum:
+          - boolean
+          - text
+          - dropdown
+        required:
+          type: boolean
+        placeholder:
+          type: string
+        listLogic:
+          type: string
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/postureCheckDropdownOption'
+    postureCheckDropdownOption:
+      type: object
+      properties:
+        label:
+          type: string
+        value:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/postureCheckDropdownOption'
+    windowsPostureChecks:
+      type: object
+      properties:
+        antivirus:
+          type: object
+          properties:
+            isEnabled:
+              type: boolean
+        certificateExistsList:
+          type: array
+          items:
+            type: object
+            properties:
+              subjectNameList:
+                type: array
+                items:
+                  type: string
+        diskEncrypted:
+          type: object
+          properties:
+            isEncrypted:
+              type: boolean
+        fileExistsList:
+          type: array
+          items:
+            type: object
+            properties:
+              filePathList:
+                type: array
+                items:
+                  type: string
+        processRunningList:
+          type: array
+          items:
+            type: object
+            properties:
+              processPathList:
+                type: array
+                items:
+                  type: string
+        osVersionBuild:
+          type: object
+          properties:
+            osVersionsList:
+              type: array
+              items:
+                type: object
+                required:
+                - osName
+                - version
+                - allowNewer
+                properties:
+                  osName:
+                    type: string
+                    description: Windows OS marketing name
+                    enum:
+                    - Windows 10
+                    - Windows 11
+                  version:
+                    type: string
+                  patch:
+                    type: integer
+                  allowNewer:
+                    type: boolean
+        domainJoinedList:
+          type: array
+          items:
+            type: object
+            properties:
+              domainList:
+                type: array
+                items:
+                  type: string
+        registryKeyValueDataExistsList:
+          type: array
+          items:
+            type: object
+            properties:
+              entriesList:
+                type: array
+                items:
+                  type: object
+                  required:
+                  - keyPath
+                  properties:
+                    keyPath:
+                      type: string
+                    valueName:
+                      type: string
+                    dataList:
+                      type: array
+                      items:
+                        type: string
+    macPostureChecks:
+      type: object
+      properties:
+        antivirus:
+          type: object
+          properties:
+            isEnabled:
+              type: boolean
+        certificateExistsList:
+          type: array
+          items:
+            type: object
+            properties:
+              subjectNameList:
+                type: array
+                items:
+                  type: string
+        diskEncrypted:
+          type: object
+          properties:
+            isEncrypted:
+              type: boolean
+        fileExistsList:
+          type: array
+          items:
+            type: object
+            properties:
+              filePathList:
+                type: array
+                items:
+                  type: string
+        processRunningList:
+          type: array
+          items:
+            type: object
+            properties:
+              processPathList:
+                type: array
+                items:
+                  type: string
+        osVersionBuild:
+          type: object
+          properties:
+            osVersionsList:
+              type: array
+              items:
+                type: object
+                required:
+                - osName
+                - version
+                - allowNewer
+                properties:
+                  osName:
+                    type: string
+                    description: macOS marketing name
+                    enum:
+                    - Tahoe
+                    - Sequoia
+                    - Sonoma
+                    - Ventura
+                    - Monterey
+                    - Big Sur
+                    - Catalina
+                    - Mojave
+                    - High Sierra
+                    - Sierra
+                  version:
+                    type: string
+                  patch:
+                    type: string
+                  allowNewer:
+                    type: boolean
+        domainJoinedList:
+          type: array
+          items:
+            type: object
+            properties:
+              domainList:
+                type: array
+                items:
+                  type: string
     connectServer:
       type: object
       properties:
@@ -62963,6 +64645,34 @@ components:
       properties:
         exportId:
           type: string
+    exposureMeterStatistics:
+      type: object
+      properties:
+        items:
+          type: array
+          $ref: '#/components/schemas/exposureMeterStatisticsItem'
+    exposureMeterStatisticsItem:
+      type: object
+      properties:
+        date:
+          $ref: '#/components/schemas/epochMillis'
+        monitoredAssets:
+          $ref: '#/components/schemas/exposureMeterStatisticsItemCounts'
+        segmentedAssets:
+          $ref: '#/components/schemas/exposureMeterStatisticsItemCounts'
+        segmentationCoverage:
+          $ref: '#/components/schemas/exposureMeterStatisticsItemCounts'
+        lateralMovementRisk:
+          $ref: '#/components/schemas/exposureMeterStatisticsItemCounts'
+    exposureMeterStatisticsItemCounts:
+      type: object
+      properties:
+        total:
+          type: integer
+        clients:
+          type: integer
+        servers:
+          type: integer
     externalAccessPolicy:
       type: object
       properties:
@@ -63123,52 +64833,65 @@ components:
             resolvedFilters:
               type: object
     group:
-      allOf:
-      - $ref: '#/components/schemas/groupBasicInfo'
-      - type: object
-        properties:
-          addedAt:
-            $ref: '#/components/schemas/epochMillis'
-          addedBy:
-            $ref: '#/components/schemas/idNamePair'
-          createdAt:
-            $ref: '#/components/schemas/epochMillis'
-          conditions:
-            $ref: '#/components/schemas/groupConditions'
-          description:
-            type: string
-          directMembersCount:
-            type: integer
-          domain:
-            type: string
-          externalId:
-            type: string
-          principalName:
-            type: string
-          role:
-            $ref: '#/components/schemas/userRole'
-          source:
-            $ref: '#/components/schemas/source'
-          type:
-            type: string
-          updatedAt:
-            $ref: '#/components/schemas/epochMillis'
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        domain:
+          type: string
+        guid:
+          type: string
+          format: uuid
+        hasNetworkProtectionPolicy:
+          type: boolean
+        hasIdentityProtectionPolicy:
+          type: boolean
+        sid:
+          type: string
+        addedAt:
+          $ref: '#/components/schemas/epochMillis'
+        addedBy:
+          $ref: '#/components/schemas/idNamePair'
+        createdAt:
+          $ref: '#/components/schemas/epochMillis'
+        conditions:
+          $ref: '#/components/schemas/groupConditions'
+        description:
+          type: string
+        directMembersCount:
+          type: integer
+        externalId:
+          type: string
+        principalName:
+          type: string
+        role:
+          $ref: '#/components/schemas/userRole'
+        source:
+          $ref: '#/components/schemas/source'
+        type:
+          type: string
+        updatedAt:
+          $ref: '#/components/schemas/epochMillis'
     groupBasicInfo:
-      allOf:
-      - $ref: '#/components/schemas/idNamePair'
-      - type: object
-        properties:
-          domain:
-            type: string
-          guid:
-            type: string
-            format: uuid
-          hasNetworkProtectionPolicy:
-            type: boolean
-          hasIdentityProtectionPolicy:
-            type: boolean
-          sid:
-            type: string
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        domain:
+          type: string
+        guid:
+          type: string
+          format: uuid
+        hasNetworkProtectionPolicy:
+          type: boolean
+        hasIdentityProtectionPolicy:
+          type: boolean
+        sid:
+          type: string
     groupAnalysis:
       type: object
       properties:
@@ -63379,11 +65102,24 @@ components:
             type: object
             properties:
               id:
-                description: EntityId
                 type: string
               name:
-                description: Entity Name
                 type: string
+              domain:
+                type: string
+              guid:
+                type: string
+                format: uuid
+              hasNetworkProtectionPolicy:
+                type: boolean
+              hasIdentityProtectionPolicy:
+                type: boolean
+              sid:
+                type: string
+              email:
+                type: string
+              userType:
+                $ref: '#/components/schemas/userType'
         cursor:
           type: string
     groupsStatistics:
@@ -63683,6 +65419,95 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/assetSummary'
+    identityPostureViolation:
+      type: object
+      properties:
+        affectedIdentitiesCount:
+          type: integer
+        category:
+          description: '* ''1'' - Authentication
+
+            * ''2'' - Operational
+
+            * ''3'' - Privilege
+
+            * ''4'' - Life Cycle
+
+            '
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+        description:
+          type: string
+        id:
+          type: string
+          format: uuid
+        ignoredAffectedIdentitiesCount:
+          type: integer
+        mitreTactics:
+          type: array
+          items:
+            type: string
+        mitreTechniques:
+          type: array
+          items:
+            type: string
+        postureCheckType:
+          $ref: '#/components/schemas/identityPostureCheckType'
+        remediation:
+          type: string
+        severity:
+          description: '* ''1'' - CRITICAL
+
+            * ''2'' - HIGH
+
+            * ''3'' - MEDIUM
+
+            * ''4'' - LOW
+
+            '
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+        totalCheckedUsers:
+          type: integer
+    identityPostureViolationsList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/identityPostureViolation'
+        count:
+          type: integer
+    identityPostureCheckType:
+      description: '* ''1'' - Password Not Needed
+
+        * ''2'' - Use DES key only
+
+        * ''3'' - Dont Require PreAuth
+
+        * ''4'' - Password Never Expire
+
+        * ''5'' - Unconstrained Delegation Enabled
+
+        * ''6'' - Default Admin Account Enabled
+
+        '
+      type: integer
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
     identityProtectionState:
       description: "Possible asset status:\n  * '0' - Unspecified\n  * '1' - Unsegmented\n  * '2' - Unspecified\n  * '3' -\
         \ Segmented\n  * '4' - Unsegmented\n  * '5' - In learning\n  * '6' - Forced Unprotected\n  * '7' - Forced Removing\
@@ -64098,6 +65923,93 @@ components:
         format: uuid or string
       description: "one of the following: \n* \"rpcAnyInterface\" for any interface \n* List of interface uuids for explicit\
         \ interfaces\n"
+    internalAccessPolicy:
+      type: object
+      properties:
+        changeTicket:
+          type: string
+        createdAt:
+          $ref: '#/components/schemas/epochMillis'
+        createdBy:
+          $ref: '#/components/schemas/createdBy'
+        description:
+          type: string
+        dstAssetId:
+          type: string
+        dstAssetInfo:
+          $ref: '#/components/schemas/asset'
+        dstPortsList:
+          $ref: '#/components/schemas/portsList'
+        dstProcessNamesList:
+          type: array
+          items:
+            type: string
+        id:
+          type: string
+        name:
+          type: string
+        ruleDuration:
+          $ref: '#/components/schemas/ruleDuration'
+        srcUserInfos:
+          type: array
+          items:
+            $ref: '#/components/schemas/idNamePair'
+        srcUserIdsList:
+          type: array
+          items:
+            type: string
+        state:
+          $ref: '#/components/schemas/ruleState'
+        updatedAt:
+          $ref: '#/components/schemas/epochMillis'
+        updatedBy:
+          $ref: '#/components/schemas/idNamePair'
+    internalAccessPolicyBody:
+      type: object
+      properties:
+        changeTicket:
+          type: string
+        description:
+          type: string
+        dstAssetId:
+          type: string
+        dstPortsList:
+          $ref: '#/components/schemas/portsList'
+        dstProcessNamesList:
+          type: array
+          items:
+            type: string
+        name:
+          type: string
+        ruleDuration:
+          $ref: '#/components/schemas/ruleDuration'
+        srcUserIdsList:
+          type: array
+          items:
+            type: string
+        state:
+          $ref: '#/components/schemas/ruleState'
+      required:
+      - dstAssetId
+      - dstPortsList
+      - dstProcessNamesList
+      - name
+      - ruleDuration
+      - srcUserIdsList
+    internalAccessPolicyItem:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/internalAccessPolicy'
+    internalAccessPolicyList:
+      type: object
+      properties:
+        count:
+          type: integer
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/internalAccessPolicy'
     ipSecOpt:
       description: '* For allow rule only.
 
@@ -64602,6 +66514,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/k8sWorkload'
+    labelsKeyCandidatesList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/idNamePair'
+    labelsValueCandidatesList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/idNamePair'
     keyValuePair:
       type: object
       properties:
@@ -64609,6 +66535,38 @@ components:
           type: string
         value:
           type: string
+    label:
+      type: object
+      properties:
+        entityCount:
+          type: integer
+        key:
+          type: string
+        source:
+          type: integer
+        value:
+          type: string
+    labelsBody:
+      type: object
+      properties:
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/keyValuePair'
+    labelsList:
+      type: object
+      properties:
+        count:
+          type: integer
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/label'
+    labelsResponse:
+      type: object
+      properties:
+        affectedEntities:
+          type: integer
     licensedUserInfo:
       type: object
       properties:
@@ -65190,10 +67148,8 @@ components:
           type: object
           properties:
             id:
-              description: EntityId
               type: string
             name:
-              description: Entity Name
               type: string
             domain:
               type: string
@@ -66800,11 +68756,110 @@ components:
           type: object
           properties:
             id:
-              description: EntityId
               type: string
             name:
-              description: Entity Name
               type: string
+            assetStatus:
+              $ref: '#/components/schemas/assetStatus'
+            assetType:
+              $ref: '#/components/schemas/assetType'
+            breakGlassActivated:
+              type: boolean
+            domain:
+              type: string
+            identityProtectionState:
+              $ref: '#/components/schemas/protectionState'
+            isQuarantined:
+              type: boolean
+            otLocattion:
+              $ref: '#/components/schemas/otLocation'
+            protectionState:
+              $ref: '#/components/schemas/protectionState'
+            rpcProtectionState:
+              $ref: '#/components/schemas/protectionState'
+            assignedDeploymentId:
+              type: string
+            assignedDeployment:
+              $ref: '#/components/schemas/idNamePair'
+            cloudConnectorVersion:
+              type: string
+            deploymentaClusterId:
+              type: string
+            deploymentsClusterSource:
+              $ref: '#/components/schemas/deploymentsClusterSource'
+            deploymentsCluster:
+              $ref: '#/components/schemas/idNamePair'
+            enforcementMethod:
+              $ref: '#/components/schemas/enforcementMethod'
+            environmentGroup:
+              $ref: '#/components/schemas/idNamePair'
+            externalDeviceId:
+              type: string
+            fqdn:
+              type: string
+              example: laptoppc.domain.local
+            hasDns:
+              type: boolean
+            healthState:
+              $ref: '#/components/schemas/healthState'
+            identityProtectAt:
+              $ref: '#/components/schemas/epochMillis'
+            identityProtectedAt:
+              $ref: '#/components/schemas/epochMillis'
+            inactiveReason:
+              $ref: '#/components/schemas/inactiveReason'
+            inactiveSince:
+              $ref: '#/components/schemas/epochMillis'
+            ipV4Addresses:
+              type: array
+              items:
+                type: string
+                example: 1.1.1.1
+            ipV6Addresses:
+              type: array
+              items:
+                type: string
+            ipSpace:
+              type: integer
+            isIpSecConfigured:
+              type: boolean
+            lastLogon:
+              $ref: '#/components/schemas/epochMillis'
+            manufacturer:
+              type: string
+            operatingSystem:
+              type: string
+              example: Windows 10 Pro
+            osType:
+              $ref: '#/components/schemas/osType'
+            outboundRestriction:
+              $ref: '#/components/schemas/outboundRestrictionMode'
+            passwordUpdateTime:
+              $ref: '#/components/schemas/epochMillis'
+            preferredDeploymentId:
+              type: string
+            preferredDeployment:
+              $ref: '#/components/schemas/idNamePair'
+            principalName:
+              type: string
+            protectAt:
+              $ref: '#/components/schemas/epochMillis'
+            protectedAt:
+              $ref: '#/components/schemas/epochMillis'
+            purdueLevel:
+              $ref: '#/components/schemas/purdueLevel'
+            rpcMonitored:
+              type: boolean
+            rpcProtectAt:
+              $ref: '#/components/schemas/epochMillis'
+            rpcProtectedAt:
+              $ref: '#/components/schemas/epochMillis'
+            source:
+              $ref: '#/components/schemas/source'
+            state:
+              $ref: '#/components/schemas/state'
+            switchLocationOverridden:
+              type: boolean
         description:
           type: string
         dstPort:
@@ -66857,11 +68912,110 @@ components:
             type: object
             properties:
               id:
-                description: EntityId
                 type: string
               name:
-                description: Entity Name
                 type: string
+              assetStatus:
+                $ref: '#/components/schemas/assetStatus'
+              assetType:
+                $ref: '#/components/schemas/assetType'
+              breakGlassActivated:
+                type: boolean
+              domain:
+                type: string
+              identityProtectionState:
+                $ref: '#/components/schemas/protectionState'
+              isQuarantined:
+                type: boolean
+              otLocattion:
+                $ref: '#/components/schemas/otLocation'
+              protectionState:
+                $ref: '#/components/schemas/protectionState'
+              rpcProtectionState:
+                $ref: '#/components/schemas/protectionState'
+              assignedDeploymentId:
+                type: string
+              assignedDeployment:
+                $ref: '#/components/schemas/idNamePair'
+              cloudConnectorVersion:
+                type: string
+              deploymentaClusterId:
+                type: string
+              deploymentsClusterSource:
+                $ref: '#/components/schemas/deploymentsClusterSource'
+              deploymentsCluster:
+                $ref: '#/components/schemas/idNamePair'
+              enforcementMethod:
+                $ref: '#/components/schemas/enforcementMethod'
+              environmentGroup:
+                $ref: '#/components/schemas/idNamePair'
+              externalDeviceId:
+                type: string
+              fqdn:
+                type: string
+                example: laptoppc.domain.local
+              hasDns:
+                type: boolean
+              healthState:
+                $ref: '#/components/schemas/healthState'
+              identityProtectAt:
+                $ref: '#/components/schemas/epochMillis'
+              identityProtectedAt:
+                $ref: '#/components/schemas/epochMillis'
+              inactiveReason:
+                $ref: '#/components/schemas/inactiveReason'
+              inactiveSince:
+                $ref: '#/components/schemas/epochMillis'
+              ipV4Addresses:
+                type: array
+                items:
+                  type: string
+                  example: 1.1.1.1
+              ipV6Addresses:
+                type: array
+                items:
+                  type: string
+              ipSpace:
+                type: integer
+              isIpSecConfigured:
+                type: boolean
+              lastLogon:
+                $ref: '#/components/schemas/epochMillis'
+              manufacturer:
+                type: string
+              operatingSystem:
+                type: string
+                example: Windows 10 Pro
+              osType:
+                $ref: '#/components/schemas/osType'
+              outboundRestriction:
+                $ref: '#/components/schemas/outboundRestrictionMode'
+              passwordUpdateTime:
+                $ref: '#/components/schemas/epochMillis'
+              preferredDeploymentId:
+                type: string
+              preferredDeployment:
+                $ref: '#/components/schemas/idNamePair'
+              principalName:
+                type: string
+              protectAt:
+                $ref: '#/components/schemas/epochMillis'
+              protectedAt:
+                $ref: '#/components/schemas/epochMillis'
+              purdueLevel:
+                $ref: '#/components/schemas/purdueLevel'
+              rpcMonitored:
+                type: boolean
+              rpcProtectAt:
+                $ref: '#/components/schemas/epochMillis'
+              rpcProtectedAt:
+                $ref: '#/components/schemas/epochMillis'
+              source:
+                $ref: '#/components/schemas/source'
+              state:
+                $ref: '#/components/schemas/state'
+              switchLocationOverridden:
+                type: boolean
         srcProcessNames:
           type: array
           items:
@@ -66885,7 +69039,9 @@ components:
         useOccasionalMfa:
           type: boolean
     reactivePolicyContext:
-      description: '* ''1'' - Unmonitored Policies
+      description: '* ''0'' - Unspecified
+
+        * ''1'' - Unmonitored Policies
 
         * ''2'' - Default MFA Policies
 
@@ -66895,6 +69051,7 @@ components:
       type: integer
       format: int32
       enum:
+      - 0
       - 1
       - 2
       - 3
@@ -67185,10 +69342,8 @@ components:
             type: object
             properties:
               id:
-                description: EntityId
                 type: string
               name:
-                description: Entity Name
                 type: string
               domain:
                 type: string
@@ -67276,10 +69431,8 @@ components:
             type: object
             properties:
               id:
-                description: EntityId
                 type: string
               name:
-                description: Entity Name
                 type: string
               domain:
                 type: string
@@ -67727,11 +69880,110 @@ components:
             type: object
             properties:
               id:
-                description: EntityId
                 type: string
               name:
-                description: Entity Name
                 type: string
+              assetStatus:
+                $ref: '#/components/schemas/assetStatus'
+              assetType:
+                $ref: '#/components/schemas/assetType'
+              breakGlassActivated:
+                type: boolean
+              domain:
+                type: string
+              identityProtectionState:
+                $ref: '#/components/schemas/protectionState'
+              isQuarantined:
+                type: boolean
+              otLocattion:
+                $ref: '#/components/schemas/otLocation'
+              protectionState:
+                $ref: '#/components/schemas/protectionState'
+              rpcProtectionState:
+                $ref: '#/components/schemas/protectionState'
+              assignedDeploymentId:
+                type: string
+              assignedDeployment:
+                $ref: '#/components/schemas/idNamePair'
+              cloudConnectorVersion:
+                type: string
+              deploymentaClusterId:
+                type: string
+              deploymentsClusterSource:
+                $ref: '#/components/schemas/deploymentsClusterSource'
+              deploymentsCluster:
+                $ref: '#/components/schemas/idNamePair'
+              enforcementMethod:
+                $ref: '#/components/schemas/enforcementMethod'
+              environmentGroup:
+                $ref: '#/components/schemas/idNamePair'
+              externalDeviceId:
+                type: string
+              fqdn:
+                type: string
+                example: laptoppc.domain.local
+              hasDns:
+                type: boolean
+              healthState:
+                $ref: '#/components/schemas/healthState'
+              identityProtectAt:
+                $ref: '#/components/schemas/epochMillis'
+              identityProtectedAt:
+                $ref: '#/components/schemas/epochMillis'
+              inactiveReason:
+                $ref: '#/components/schemas/inactiveReason'
+              inactiveSince:
+                $ref: '#/components/schemas/epochMillis'
+              ipV4Addresses:
+                type: array
+                items:
+                  type: string
+                  example: 1.1.1.1
+              ipV6Addresses:
+                type: array
+                items:
+                  type: string
+              ipSpace:
+                type: integer
+              isIpSecConfigured:
+                type: boolean
+              lastLogon:
+                $ref: '#/components/schemas/epochMillis'
+              manufacturer:
+                type: string
+              operatingSystem:
+                type: string
+                example: Windows 10 Pro
+              osType:
+                $ref: '#/components/schemas/osType'
+              outboundRestriction:
+                $ref: '#/components/schemas/outboundRestrictionMode'
+              passwordUpdateTime:
+                $ref: '#/components/schemas/epochMillis'
+              preferredDeploymentId:
+                type: string
+              preferredDeployment:
+                $ref: '#/components/schemas/idNamePair'
+              principalName:
+                type: string
+              protectAt:
+                $ref: '#/components/schemas/epochMillis'
+              protectedAt:
+                $ref: '#/components/schemas/epochMillis'
+              purdueLevel:
+                $ref: '#/components/schemas/purdueLevel'
+              rpcMonitored:
+                type: boolean
+              rpcProtectAt:
+                $ref: '#/components/schemas/epochMillis'
+              rpcProtectedAt:
+                $ref: '#/components/schemas/epochMillis'
+              source:
+                $ref: '#/components/schemas/source'
+              state:
+                $ref: '#/components/schemas/state'
+              switchLocationOverridden:
+                type: boolean
         localEntitySuccessor:
           $ref: '#/components/schemas/idNamePair'
         localProcessesList:
@@ -67766,11 +70018,110 @@ components:
             type: object
             properties:
               id:
-                description: EntityId
                 type: string
               name:
-                description: Entity Name
                 type: string
+              assetStatus:
+                $ref: '#/components/schemas/assetStatus'
+              assetType:
+                $ref: '#/components/schemas/assetType'
+              breakGlassActivated:
+                type: boolean
+              domain:
+                type: string
+              identityProtectionState:
+                $ref: '#/components/schemas/protectionState'
+              isQuarantined:
+                type: boolean
+              otLocattion:
+                $ref: '#/components/schemas/otLocation'
+              protectionState:
+                $ref: '#/components/schemas/protectionState'
+              rpcProtectionState:
+                $ref: '#/components/schemas/protectionState'
+              assignedDeploymentId:
+                type: string
+              assignedDeployment:
+                $ref: '#/components/schemas/idNamePair'
+              cloudConnectorVersion:
+                type: string
+              deploymentaClusterId:
+                type: string
+              deploymentsClusterSource:
+                $ref: '#/components/schemas/deploymentsClusterSource'
+              deploymentsCluster:
+                $ref: '#/components/schemas/idNamePair'
+              enforcementMethod:
+                $ref: '#/components/schemas/enforcementMethod'
+              environmentGroup:
+                $ref: '#/components/schemas/idNamePair'
+              externalDeviceId:
+                type: string
+              fqdn:
+                type: string
+                example: laptoppc.domain.local
+              hasDns:
+                type: boolean
+              healthState:
+                $ref: '#/components/schemas/healthState'
+              identityProtectAt:
+                $ref: '#/components/schemas/epochMillis'
+              identityProtectedAt:
+                $ref: '#/components/schemas/epochMillis'
+              inactiveReason:
+                $ref: '#/components/schemas/inactiveReason'
+              inactiveSince:
+                $ref: '#/components/schemas/epochMillis'
+              ipV4Addresses:
+                type: array
+                items:
+                  type: string
+                  example: 1.1.1.1
+              ipV6Addresses:
+                type: array
+                items:
+                  type: string
+              ipSpace:
+                type: integer
+              isIpSecConfigured:
+                type: boolean
+              lastLogon:
+                $ref: '#/components/schemas/epochMillis'
+              manufacturer:
+                type: string
+              operatingSystem:
+                type: string
+                example: Windows 10 Pro
+              osType:
+                $ref: '#/components/schemas/osType'
+              outboundRestriction:
+                $ref: '#/components/schemas/outboundRestrictionMode'
+              passwordUpdateTime:
+                $ref: '#/components/schemas/epochMillis'
+              preferredDeploymentId:
+                type: string
+              preferredDeployment:
+                $ref: '#/components/schemas/idNamePair'
+              principalName:
+                type: string
+              protectAt:
+                $ref: '#/components/schemas/epochMillis'
+              protectedAt:
+                $ref: '#/components/schemas/epochMillis'
+              purdueLevel:
+                $ref: '#/components/schemas/purdueLevel'
+              rpcMonitored:
+                type: boolean
+              rpcProtectAt:
+                $ref: '#/components/schemas/epochMillis'
+              rpcProtectedAt:
+                $ref: '#/components/schemas/epochMillis'
+              source:
+                $ref: '#/components/schemas/source'
+              state:
+                $ref: '#/components/schemas/state'
+              switchLocationOverridden:
+                type: boolean
         remoteEntitySuccessor:
           $ref: '#/components/schemas/idNamePair'
         reviewMode:
@@ -67893,7 +70244,9 @@ components:
       - 6
       - 8
     ruleContext:
-      description: '- ''1'' - Block
+      description: '- ''0'' - Unspecified
+
+        - ''1'' - Block
 
         - ''2'' - App Ring
 
@@ -67985,6 +70338,7 @@ components:
       type: integer
       format: int32
       enum:
+      - 0
       - 1
       - 2
       - 3
@@ -68295,7 +70649,9 @@ components:
         outboundBlock:
           $ref: '#/components/schemas/ruleStatisticsObject'
     ruleSuggestionType:
-      description: '* ''1'' - Create
+      description: '* ''0'' - Unspecified
+
+        * ''1'' - Create
 
         * ''2'' - Delete
 
@@ -68303,6 +70659,7 @@ components:
       type: integer
       format: int32
       enum:
+      - 0
       - 1
       - 2
     savedFilter:
@@ -68586,6 +70943,8 @@ components:
         primaryDomainConfig:
           type: object
           properties:
+            assetsClusterId:
+              type: string
             deploymentsClusterID:
               type: string
             domainControllerFqdn:
@@ -68599,6 +70958,8 @@ components:
             password:
               type: string
               description: password for the service account
+            syncingClusterId:
+              type: string
             useLdaps:
               description: Use LDAP or LDAPs
               type: boolean
@@ -68610,6 +70971,7 @@ components:
           - domainControllerFqdn
           - domainName
           - password
+          - syncingClusterId
           - useLdaps
           - userFqdn
         usePrimaryUserForAllDomains:
@@ -68777,7 +71139,7 @@ components:
           type: string
         protectedGroupId:
           type: string
-    SettingsAERuleReview:
+    settingsAERuleReview:
       type: object
       properties:
         ruleClassesList:
@@ -68791,12 +71153,12 @@ components:
           ruleClassesList:
           - 1
           - 6
-    SettingsAERuleReviewCleanup:
+    settingsAERuleReviewCleanup:
       type: object
       properties:
         unusedRulesCleanupState:
           type: string
-    SettingsAERuleReviewCleanupBody:
+    settingsAERuleReviewCleanupBody:
       type: object
       properties:
         unusedRulesCleanupState:
@@ -69176,6 +71538,100 @@ components:
           type: boolean
       required:
       - state
+    settingsPostureCheckDefinition:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/identityPostureCheckType'
+        category:
+          type: integer
+          description: 'Posture check category:
+
+            * `1` - AUTHENTICATION
+
+            * `2` - OPERATIONAL
+
+            * `3` - PRIVILEGE
+
+            * `4` - LIFE_CYCLE
+
+            '
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+        severity:
+          type: integer
+          description: 'Violation severity:
+
+            * `1` - CRITICAL
+
+            * `2` - HIGH
+
+            * `3` - MEDIUM
+
+            * `4` - LOW
+
+            '
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+        enabled:
+          type: boolean
+        mitreTacticsList:
+          type: array
+          items:
+            type: string
+        mitreTechniquesList:
+          type: array
+          items:
+            type: string
+        remediation:
+          type: string
+        description:
+          type: string
+        excludedUserIdsList:
+          type: array
+          items:
+            type: string
+          description: User IDs excluded from this specific posture check type
+    settingsPostureCheckSettingInput:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/identityPostureCheckType'
+        severity:
+          type: integer
+          description: 'Violation severity:
+
+            * `1` - CRITICAL
+
+            * `2` - HIGH
+
+            * `3` - MEDIUM
+
+            * `4` - LOW
+
+            '
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+        enabled:
+          type: boolean
+        excludedUserIdsList:
+          type: array
+          items:
+            type: string
+          description: User IDs to exclude from this specific posture check type
+      required:
+      - type
+      - severity
+      - enabled
     settingsDomain:
       type: object
       properties:
@@ -70082,25 +72538,21 @@ components:
           $ref: '#/components/schemas/externalIpsList'
       required:
       - externalIpsList
-    settingsTrustedInternetBody:
+    settingsInternetAccessBody:
       type: object
       properties:
-        ports:
+        trusted:
+          $ref: '#/components/schemas/portsList'
+        untrusted:
           $ref: '#/components/schemas/portsList'
       required:
-      - ports
+      - trusted
+      - untrusted
     settingsUntrustedInternet:
       type: object
       properties:
         ports:
           $ref: '#/components/schemas/portsList'
-    settingsUntrustedInternetBody:
-      type: object
-      properties:
-        ports:
-          $ref: '#/components/schemas/portsList'
-      required:
-      - ports
     settingsSegmentConnectorUpdateRecoveryBody:
       type: object
       properties:
@@ -70114,6 +72566,178 @@ components:
       - maxUpdateTries
       - updateCooldownHours
       - updateCooldownMinutes
+    settingsWebhook:
+      type: object
+      properties:
+        authType:
+          type: integer
+        description:
+          type: string
+        isEnabled:
+          type: boolean
+        id:
+          type: string
+        name:
+          type: string
+        syncStatus:
+          type: object
+          properties:
+            errorType:
+              type: integer
+            errorMessage:
+              type: string
+            statusCode:
+              type: integer
+        triggers:
+          type: array
+          items:
+            $ref: '#/components/schemas/settingsWebhookTrigger'
+        url:
+          type: string
+        validateCertificate:
+          type: boolean
+    settingsWebhookBody:
+      type: object
+      properties:
+        authType:
+          type: integer
+        description:
+          type: string
+        isEnabled:
+          type: boolean
+        name:
+          type: string
+        triggers:
+          type: array
+          items:
+            $ref: '#/components/schemas/settingsWebhookTriggerBody'
+        url:
+          type: string
+        validateCertificate:
+          type: boolean
+      required:
+      - authType
+      - isEnabled
+      - name
+      - triggers
+      - url
+      - validateCertificate
+    settingsWebhookItem:
+      type: object
+      properties:
+        webhook:
+          $ref: '#/components/schemas/settingsWebhook'
+    settingsWebhookTestBody:
+      type: object
+      properties:
+        authType:
+          type: integer
+        description:
+          type: string
+        isEnabled:
+          type: boolean
+        name:
+          type: string
+        url:
+          type: string
+        validateCertificate:
+          type: boolean
+      required:
+      - authType
+      - isEnabled
+      - name
+      - url
+      - validateCertificate
+    settingsWebhookTriggerBody:
+      type: object
+      properties:
+        topic:
+          type: integer
+        eventsConfig:
+          type: object
+          properties:
+            ruleEventsConfigs:
+              type: object
+              properties:
+                resource:
+                  type: integer
+                eventList:
+                  type: array
+                  items:
+                    type: integer
+                enforcementSourcesList:
+                  type: array
+                  items:
+                    type: integer
+              required:
+              - resource
+              - eventList
+              - enforcementSourcesList
+          required:
+          - ruleEventsConfigs
+      required:
+      - topic
+      - eventsConfig
+    settingsWebhookTriggersBody:
+      type: object
+      properties:
+        triggers:
+          type: array
+          items:
+            $ref: '#/components/schemas/settingsWebhookTriggerBody'
+    settingsWebhookTestResponse:
+      type: object
+      properties:
+        connectionState:
+          type: object
+          properties:
+            errorType:
+              type: integer
+            errorMessage:
+              type: string
+            statusCode:
+              type: integer
+    settingsWebhookTriggers:
+      type: object
+      properties:
+        triggers:
+          type: array
+          items:
+            $ref: '#/components/schemas/settingsWebhookTrigger'
+    settingsWebhookTrigger:
+      type: object
+      properties:
+        topic:
+          type: integer
+        eventsConfig:
+          type: object
+          properties:
+            ruleEventsConfigs:
+              type: object
+              properties:
+                resource:
+                  type: integer
+                eventList:
+                  type: array
+                  items:
+                    type: integer
+                enforcementSourcesList:
+                  type: array
+                  items:
+                    type: integer
+    settingsWebhooksList:
+      type: object
+      properties:
+        webhooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/settingsWebhook'
+    settingsWebhooksSenderIp:
+      type: object
+      properties:
+        senderIp:
+          type: string
+          format: ipv4
     settingsZpa:
       type: object
       properties:
@@ -70264,17 +72888,22 @@ components:
         srcAssetInfo:
           $ref: '#/components/schemas/asset'
     source:
-      description: "Possible asset sources:\n  * '1' - Access portal\n  * '2' - SSP\n  * '3' - Active directory\n  * '4' -\
-        \ Custom\n  * '5' - System\n  * '6' - Ansible\n  * '7' - Manual OT/IoT\n  * '8' - Workgroup\n  * '9' - Azure active\
-        \ directory\n  * '10' - Azure\n  * '11' - AWS\n  * '12' - GCP\n  * '14' - Jamf\n  * '15' - Manual Linux\n  * '16'\
-        \ - IBM cloud\n  * '17' - Oracle cloud\n  * '18' - VMware cloud\n  * '19' - Alibaba cloud\n  * '20' - Lumen cloud\n\
-        \  * '21' - OVH cloud\n  * '22' - Connect\n  * '23' - AI\n  * '24' - SNOW\n  * '25' - Google Workspace\n  * '26' -\
-        \ OU\n  * '27' - Environment\n  * '28' - Conditional\n  * '29' - Claroty OT\n  * '30' - Manual Mac\n"
+      description: "Possible asset sources:\n  * '0' - Unspecified\n  * '1' - Access portal\n  * '2' - SSP\n  * '3' - Active\
+        \ directory\n  * '4' - Custom\n  * '5' - System\n  * '6' - Ansible\n  * '7' - Manual OT/IoT\n  * '8' - Workgroup\n\
+        \  * '9' - Azure active directory\n  * '10' - Azure\n  * '11' - AWS\n  * '12' - GCP\n  * '13' - Tag\n  * '14' - Jamf\n\
+        \  * '15' - Manual Linux\n  * '16' - IBM cloud\n  * '17' - Oracle cloud\n  * '18' - VMware cloud\n  * '19' - Alibaba\
+        \ cloud\n  * '20' - Lumen cloud\n  * '21' - OVH cloud\n  * '22' - Connect\n  * '23' - AI\n  * '24' - SNOW\n  * '25'\
+        \ - Google Workspace\n  * '26' - OU\n  * '27' - Environment\n  * '28' - Conditional\n  * '29' - Claroty OT\n  * '30'\
+        \ - Manual Mac\n"
       type: integer
       format: int32
       enum:
+      - 0
+      - 1
       - 2
       - 3
+      - 4
+      - 5
       - 6
       - 7
       - 8
@@ -70282,6 +72911,7 @@ components:
       - 10
       - 11
       - 12
+      - 13
       - 14
       - 15
       - 16
@@ -70471,6 +73101,8 @@ components:
     switchVlan:
       type: object
       properties:
+        id:
+          type: string
         name:
           type: string
         interfacesList:
@@ -70495,6 +73127,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/switch'
+    switchSetBindingDirectionalBody:
+      type: object
+      properties:
+        bindingDirection:
+          type: string
+          enum:
+          - both
+          - ingress
+          - egress
+          description: 'Binding direction options:
+
+            * ''both'' - Both directions active
+
+            * ''ingress'' - Ingress only
+
+            * ''egress'' - Egress only
+
+            '
     switchMonitoringBreakGlassBody:
       type: object
       properties:
@@ -70569,11 +73219,110 @@ components:
             type: object
             properties:
               id:
-                description: EntityId
                 type: string
               name:
-                description: Entity Name
                 type: string
+              assetStatus:
+                $ref: '#/components/schemas/assetStatus'
+              assetType:
+                $ref: '#/components/schemas/assetType'
+              breakGlassActivated:
+                type: boolean
+              domain:
+                type: string
+              identityProtectionState:
+                $ref: '#/components/schemas/protectionState'
+              isQuarantined:
+                type: boolean
+              otLocattion:
+                $ref: '#/components/schemas/otLocation'
+              protectionState:
+                $ref: '#/components/schemas/protectionState'
+              rpcProtectionState:
+                $ref: '#/components/schemas/protectionState'
+              assignedDeploymentId:
+                type: string
+              assignedDeployment:
+                $ref: '#/components/schemas/idNamePair'
+              cloudConnectorVersion:
+                type: string
+              deploymentaClusterId:
+                type: string
+              deploymentsClusterSource:
+                $ref: '#/components/schemas/deploymentsClusterSource'
+              deploymentsCluster:
+                $ref: '#/components/schemas/idNamePair'
+              enforcementMethod:
+                $ref: '#/components/schemas/enforcementMethod'
+              environmentGroup:
+                $ref: '#/components/schemas/idNamePair'
+              externalDeviceId:
+                type: string
+              fqdn:
+                type: string
+                example: laptoppc.domain.local
+              hasDns:
+                type: boolean
+              healthState:
+                $ref: '#/components/schemas/healthState'
+              identityProtectAt:
+                $ref: '#/components/schemas/epochMillis'
+              identityProtectedAt:
+                $ref: '#/components/schemas/epochMillis'
+              inactiveReason:
+                $ref: '#/components/schemas/inactiveReason'
+              inactiveSince:
+                $ref: '#/components/schemas/epochMillis'
+              ipV4Addresses:
+                type: array
+                items:
+                  type: string
+                  example: 1.1.1.1
+              ipV6Addresses:
+                type: array
+                items:
+                  type: string
+              ipSpace:
+                type: integer
+              isIpSecConfigured:
+                type: boolean
+              lastLogon:
+                $ref: '#/components/schemas/epochMillis'
+              manufacturer:
+                type: string
+              operatingSystem:
+                type: string
+                example: Windows 10 Pro
+              osType:
+                $ref: '#/components/schemas/osType'
+              outboundRestriction:
+                $ref: '#/components/schemas/outboundRestrictionMode'
+              passwordUpdateTime:
+                $ref: '#/components/schemas/epochMillis'
+              preferredDeploymentId:
+                type: string
+              preferredDeployment:
+                $ref: '#/components/schemas/idNamePair'
+              principalName:
+                type: string
+              protectAt:
+                $ref: '#/components/schemas/epochMillis'
+              protectedAt:
+                $ref: '#/components/schemas/epochMillis'
+              purdueLevel:
+                $ref: '#/components/schemas/purdueLevel'
+              rpcMonitored:
+                type: boolean
+              rpcProtectAt:
+                $ref: '#/components/schemas/epochMillis'
+              rpcProtectedAt:
+                $ref: '#/components/schemas/epochMillis'
+              source:
+                $ref: '#/components/schemas/source'
+              state:
+                $ref: '#/components/schemas/state'
+              switchLocationOverridden:
+                type: boolean
         localProcessesList:
           type: array
           items:
@@ -70694,6 +73443,161 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/switchRule'
+    versionMaintenanceWindowBody:
+      type: object
+      properties:
+        maintenanceWindows:
+          type: array
+          items:
+            $ref: '#/components/schemas/versionMaintenanceWindowBodyItem'
+      required:
+      - maintenanceWindows
+    versionMaintenanceWindowBodyItem:
+      type: object
+      properties:
+        description:
+          type: string
+        startTimeUTC:
+          type: integer
+          description: Start hour of maintenance window (0–24)
+          minimum: 0
+          maximum: 24
+        weekday:
+          type: integer
+          description: Day of week (1 = Sunday, 7 = Saturday)
+          minimum: 1
+          maximum: 7
+    versionMaintenanceWindowList:
+      type: object
+      required:
+      - items
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/versionMaintenanceWindow'
+    versionMaintenanceWindow:
+      type: object
+      required:
+      - weekday
+      - startTime
+      - duration
+      properties:
+        weekday:
+          type: integer
+          description: Day of week (1 = Sunday, 7 = Saturday)
+          minimum: 1
+          maximum: 7
+        startTime:
+          type: integer
+          description: Start hour of maintenance window (0–24)
+          minimum: 0
+          maximum: 24
+        duration:
+          $ref: '#/components/schemas/duration'
+        description:
+          type: string
+          description: Optional description of the version maintenance window
+    duration:
+      type: object
+      required:
+      - seconds
+      - nanos
+      properties:
+        seconds:
+          type: integer
+          format: int64
+          description: Duration in seconds
+          minimum: 0
+        nanos:
+          type: integer
+          description: Nanoseconds part of the duration
+          minimum: 0
+          maximum: 999999999
+    tempVersionMaintenanceWindowList:
+      type: object
+      required:
+      - items
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/tempVersionMaintenanceWindow'
+    tempVersionMaintenanceWindow:
+      type: object
+      required:
+      - startTime
+      - duration
+      properties:
+        startTime:
+          $ref: '#/components/schemas/epochMillis'
+        duration:
+          $ref: '#/components/schemas/duration'
+    pilotGroupAssetList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/pilotGroupAsset'
+        count:
+          type: integer
+    pilotGroupAsset:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        assetType:
+          type: integer
+        protectionState:
+          type: integer
+        assetStatus:
+          type: integer
+        assetId:
+          type: string
+        version:
+          type: string
+        createdBy:
+          type: object
+          properties:
+            id:
+              type: string
+            email:
+              type: string
+        createdAt:
+          type: object
+          properties:
+            seconds:
+              type: integer
+            nanos:
+              type: integer
+        osType:
+          $ref: '#/components/schemas/osType'
+    pilotGroupModifyBody:
+      type: object
+      required:
+      - assetIds
+      properties:
+        assetIds:
+          type: array
+          minItems: 1
+          items:
+            type: string
+    pilotRolloutInfo:
+      type: object
+      properties:
+        pilotVersion:
+          type: string
+        baselineVersion:
+          type: string
+        pilotStartTime:
+          $ref: '#/components/schemas/epochMillis'
+        pilotEndTime:
+          $ref: '#/components/schemas/epochMillis'
+        extensionCount:
+          type: integer
     systemHealthIssue:
       type: object
       properties:
@@ -70737,6 +73641,8 @@ components:
 
         * ''3'' - Both
 
+        * ''4'' - Any
+
         '
       type: integer
       format: int32
@@ -70745,6 +73651,7 @@ components:
       - 1
       - 2
       - 3
+      - 4
     pinDeploymentsClusterBody:
       type: object
       properties:
@@ -71097,6 +74004,57 @@ components:
           - 3
         userType:
           $ref: '#/components/schemas/userType'
+    userViolation:
+      type: object
+      properties:
+        userId:
+          type: string
+        userName:
+          type: string
+        userType:
+          $ref: '#/components/schemas/userType'
+        postureCheckType:
+          $ref: '#/components/schemas/identityPostureCheckType'
+        violationState:
+          $ref: '#/components/schemas/userViolationState'
+        lastLogon:
+          $ref: '#/components/schemas/epochMillis'
+        foundTime:
+          $ref: '#/components/schemas/epochMillis'
+    userViolationBody:
+      type: object
+      properties:
+        violationState:
+          $ref: '#/components/schemas/userViolationState'
+        userIds:
+          type: array
+          items:
+            type: string
+      required:
+      - violationState
+      - userIds
+    usersViolationList:
+      type: object
+      properties:
+        count:
+          type: integer
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/userViolation'
+    userViolationState:
+      description: '* ''1'' - FOUND
+
+        * ''2'' - IGNORED
+
+        * ''3'' - DEFERRED
+
+        '
+      type: integer
+      enum:
+      - 1
+      - 2
+      - 3
     validateResponse:
       type: object
       properties:

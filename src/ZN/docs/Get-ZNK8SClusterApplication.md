@@ -15,21 +15,21 @@ Returns a list of applications for the K8s.
 ### Get (Default)
 ```
 Get-ZNK8SClusterApplication -K8SClusterId <String> [-AccountName <String>] [-Filters <String>]
- [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>] [-WithCount]
+ [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <List<String>>] [-WithCount]
  [<CommonParameters>]
 ```
 
 ### Get1
 ```
 Get-ZNK8SClusterApplication -ApplicationName <String> -K8SClusterId <String> [-AccountName <String>]
- [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>]
+ [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <List<String>>]
  [-WithCount] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
 ```
 Get-ZNK8SClusterApplication -InputObject <IApiIdentity> [-AccountName <String>] [-Filters <String>]
- [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>] [-WithCount]
+ [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <List<String>>] [-WithCount]
  [<CommonParameters>]
 ```
 
@@ -193,7 +193,7 @@ Accept wildcard characters: False
 what column to order on
 
 ```yaml
-Type: System.String
+Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -270,6 +270,9 @@ To create the parameters described below, construct a hash table containing the 
   - `[LicenseType <String>]`: The license type
   - `[MaintenanceWindowId <String>]`: id of the maintence window
   - `[PolicyId <String>]`: id of the external acess policy
+  - `[PostureCheckType <String>]`: posture check type
+  - `[Product <String>]`: Product type for which to modify or fetch the version maintenance window
+  - `[ProfileId <String>]`: posture profile id
   - `[ProtectionPolicyId <String>]`: The id of the onboarding policy
   - `[PushIdentityProviderId <String>]`: Push Identity provider Id
   - `[ReactivePolicyId <String>]`: The id of the MFA policy
@@ -282,6 +285,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[SwitchId <String>]`: switch to delete
   - `[UserAccessConfigId <String>]`: userAccessConfigId to filter on
   - `[UserId <String>]`: userId to filter on
+  - `[WebhookId <String>]`: webhookId to filter on
   - `[WidgetId <String>]`: The id of the widget
 
 ## RELATED LINKS

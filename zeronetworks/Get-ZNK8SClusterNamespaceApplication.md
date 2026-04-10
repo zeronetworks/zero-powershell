@@ -14,7 +14,7 @@ Returns a list of applications for the K8s namespace.
 
 ```
 Get-ZNK8SClusterNamespaceApplication -K8SClusterId <String> -K8SNamespaceId <String> [-AccountName <String>]
- [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>]
+ [-Filters <String>] [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <List<String>>]
  [-WithCount] [<CommonParameters>]
 ```
 
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 what column to order on
 
 ```yaml
-Type: System.String
+Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
