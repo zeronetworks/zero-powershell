@@ -16,7 +16,7 @@ Returns the properties of an Inbound rule.
 ```
 Get-ZNGroupsInboundRule -GroupId <String> -GroupType <String> [-AccountName <String>] [-AddAncestors]
  [-AddBuiltins] [-Direction <Int32>] [-EnrichRemoteIps] [-EntityParams <String>] [-Filters <String>]
- [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <String>] [-WithCount]
+ [-Limit <Int32>] [-Offset <Int32>] [-Order <String>] [-OrderColumns <List<String>>] [-WithCount]
  [<CommonParameters>]
 ```
 
@@ -271,7 +271,7 @@ Accept wildcard characters: False
 what column to order on
 
 ```yaml
-Type: System.String
+Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: List
 Aliases:
 

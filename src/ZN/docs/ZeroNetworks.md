@@ -11,11 +11,17 @@ Locale: en-US
 Zero Networks PowerShell cmdlets
 
 ## ZeroNetworks Cmdlets
+### [Add-ZNAssetLabel](Add-ZNAssetLabel.md)
+Add one or more labels to an asset
+
 ### [Add-ZNAssetManager](Add-ZNAssetManager.md)
 Add an asset manager of asset
 
 ### [Add-ZNAssetOtAssetManager](Add-ZNAssetOtAssetManager.md)
 Add an asset manager of asset
+
+### [Add-ZNAssetOtLabel](Add-ZNAssetOtLabel.md)
+Add one or more labels to an asset
 
 ### [Add-ZNAssetRpcMonitoring](Add-ZNAssetRpcMonitoring.md)
 Returns an empty object.
@@ -218,6 +224,12 @@ Returns a list of excluded destination candidates for Inbound rules.
 ### [Get-ZNAssetInboundRulesSourceCandidate](Get-ZNAssetInboundRulesSourceCandidate.md)
 Returns a list of source candidates for Inbound rules.
 
+### [Get-ZNAssetLabelsKeyCandidate](Get-ZNAssetLabelsKeyCandidate.md)
+Returns a list of key candidates for asset labels
+
+### [Get-ZNAssetLabelsValueCandidate](Get-ZNAssetLabelsValueCandidate.md)
+Returns a list of value candidates for asset labels
+
 ### [Get-ZNAssetListeningPort](Get-ZNAssetListeningPort.md)
 List listening ports of an asset
 
@@ -316,6 +328,12 @@ Returns a list of source candidates for Inbound rules.
 
 ### [Get-ZNAssetOtInboundOtrulesUserCandidate](Get-ZNAssetOtInboundOtrulesUserCandidate.md)
 Returns a list of users candidates for Inbound rules.
+
+### [Get-ZNAssetOtLabelsKeyCandidate](Get-ZNAssetOtLabelsKeyCandidate.md)
+Returns a list of key candidates for asset labels
+
+### [Get-ZNAssetOtLabelsValueCandidate](Get-ZNAssetOtLabelsValueCandidate.md)
+Returns a list of value candidates for asset labels
 
 ### [Get-ZNAssetOtMemberOf](Get-ZNAssetOtMemberOf.md)
 Returns a list of groups the asset is a member of.
@@ -433,6 +451,33 @@ Returns a list of tags for an entity.
 
 ### [Get-ZNAudit](Get-ZNAudit.md)
 Returns a list of audit events.
+
+### [Get-ZNConnectPoliciesAllowedRegionsCandidate](Get-ZNConnectPoliciesAllowedRegionsCandidate.md)
+Returns a list of candidates for Connect Policy allowed regions.
+
+### [Get-ZNConnectPoliciesAssetsCandidate](Get-ZNConnectPoliciesAssetsCandidate.md)
+Returns a list of candidates for Connect Policy assets.
+
+### [Get-ZNConnectPoliciesDestinationsCandidate](Get-ZNConnectPoliciesDestinationsCandidate.md)
+Returns a list of candidates for Connect Policy destinations.
+
+### [Get-ZNConnectPoliciesExcludedAssetsCandidate](Get-ZNConnectPoliciesExcludedAssetsCandidate.md)
+Returns a list of candidates for Connect Policy excluded assets.
+
+### [Get-ZNConnectPoliciesExcludedSourceUsersCandidate](Get-ZNConnectPoliciesExcludedSourceUsersCandidate.md)
+Returns a list of candidates for Connect Policy excluded source users.
+
+### [Get-ZNConnectPoliciesSourceUsersCandidate](Get-ZNConnectPoliciesSourceUsersCandidate.md)
+Returns a list of candidates for Connect Policy source users.
+
+### [Get-ZNConnectPolicy](Get-ZNConnectPolicy.md)
+List Connect Policies (User Access Configurations)
+
+### [Get-ZNConnectPostureCheck](Get-ZNConnectPostureCheck.md)
+Get the metadata definitions for all available posture checks
+
+### [Get-ZNConnectPostureProfile](Get-ZNConnectPostureProfile.md)
+List Connect Posture Profiles
 
 ### [Get-ZNCustomGroup](Get-ZNCustomGroup.md)
 Returns the properties of an custom group.
@@ -648,6 +693,15 @@ Returns a list of identity onboarding policies.
 ### [Get-ZNIdentityOverridingOnboardingPoliciesGroupCandidate](Get-ZNIdentityOverridingOnboardingPoliciesGroupCandidate.md)
 Returns a list of candidates for identity overriding onboarding policies.
 
+### [Get-ZNIdentityPostureUsersViolation](Get-ZNIdentityPostureUsersViolation.md)
+Returns a list of users with a specific posture violation.
+
+### [Get-ZNIdentityPostureUsersViolationUserCandidate](Get-ZNIdentityPostureUsersViolationUserCandidate.md)
+Returns a list of users candidates for Identity Posture users violation.
+
+### [Get-ZNIdentityPostureViolation](Get-ZNIdentityPostureViolation.md)
+Returns a list of identity posture violations.
+
 ### [Get-ZNIdentityRule](Get-ZNIdentityRule.md)
 Returns an identity segmentation rule.
 
@@ -686,6 +740,15 @@ Returns a list of excluded destination candidates for Inbound rules.
 
 ### [Get-ZNInboundRulesSourceCandidate](Get-ZNInboundRulesSourceCandidate.md)
 Returns a list of source candidates for Inbound rules.
+
+### [Get-ZNInternalAccessPolicy](Get-ZNInternalAccessPolicy.md)
+Returns an internal access policy.
+
+### [Get-ZNInternalAccessPolicyDestinationAssetsCandidate](Get-ZNInternalAccessPolicyDestinationAssetsCandidate.md)
+Returns a list of destunation assets candidates for an internal access policy.
+
+### [Get-ZNInternalAccessPolicySourceUserCandidate](Get-ZNInternalAccessPolicySourceUserCandidate.md)
+Returns a list of source user candidates for internal access policies.
 
 ### [Get-ZNK8SCluster](Get-ZNK8SCluster.md)
 Returns a k8s cluster.
@@ -783,6 +846,9 @@ Returns a workload for k8s.
 ### [Get-ZNK8SWorkloadLabel](Get-ZNK8SWorkloadLabel.md)
 Returns a list of labels for the K8s workload.
 
+### [Get-ZNLabel](Get-ZNLabel.md)
+Returns the labels.
+
 ### [Get-ZNLearningConfig](Get-ZNLearningConfig.md)
 Get Learning Config
 
@@ -845,6 +911,12 @@ Returns and object with MFA distribution.
 
 ### [Get-ZNMfaPoliciesStatistics](Get-ZNMfaPoliciesStatistics.md)
 Returns an object with MFA statistics.
+
+### [Get-ZNNetworkActivitiesInternetCategoriesCandidate](Get-ZNNetworkActivitiesInternetCategoriesCandidate.md)
+Returns a list of internet categories that can be used as filters for network activities.
+
+### [Get-ZNNetworkActivitiesInternetSubCategoriesCandidate](Get-ZNNetworkActivitiesInternetSubCategoriesCandidate.md)
+Returns a list of internet sub-categories that can be used as filters for network activities.
 
 ### [Get-ZNNetworkOnboardingPoliciesGroupCandidate](Get-ZNNetworkOnboardingPoliciesGroupCandidate.md)
 Returns a list of candidates for a network onboarding policy.
@@ -981,32 +1053,14 @@ Get all connect client freeze periods
 ### [Get-ZNSettingsConnectRegion](Get-ZNSettingsConnectRegion.md)
 List Connect Regions in Settings
 
+### [Get-ZNSettingsConnectRegionFailoverCandidate](Get-ZNSettingsConnectRegionFailoverCandidate.md)
+Get a list of regions that can be used as failover candidates for the specified region
+
 ### [Get-ZNSettingsConnectServer](Get-ZNSettingsConnectServer.md)
 List Connect Servers in Settings
 
 ### [Get-ZNSettingsConnectServersFreezePeriod](Get-ZNSettingsConnectServersFreezePeriod.md)
 Get all connect servers freeze periods
-
-### [Get-ZNSettingsConnectUserAccessConfig](Get-ZNSettingsConnectUserAccessConfig.md)
-List Connect User Access Configurations in Settings
-
-### [Get-ZNSettingsConnectUserAccessConfigAllowedRegionsCandidate](Get-ZNSettingsConnectUserAccessConfigAllowedRegionsCandidate.md)
-Returns a list of candidates for user access config allowed regions.
-
-### [Get-ZNSettingsConnectUserAccessConfigAssetsCandidate](Get-ZNSettingsConnectUserAccessConfigAssetsCandidate.md)
-Returns a list of candidates for user access config excluded assets.
-
-### [Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate](Get-ZNSettingsConnectUserAccessConfigDestinationsCandidate.md)
-Returns a list of candidates for user access config excluded destinations.
-
-### [Get-ZNSettingsConnectUserAccessConfigExcludedAssetsCandidate](Get-ZNSettingsConnectUserAccessConfigExcludedAssetsCandidate.md)
-Returns a list of candidates for user access config excluded assets.
-
-### [Get-ZNSettingsConnectUserAccessConfigExcludedSourceUsersCandidate](Get-ZNSettingsConnectUserAccessConfigExcludedSourceUsersCandidate.md)
-Returns a list of candidates for user access config excluded source users.
-
-### [Get-ZNSettingsConnectUserAccessConfigSourceUsersCandidate](Get-ZNSettingsConnectUserAccessConfigSourceUsersCandidate.md)
-Returns a list of candidates for user access config source users.
 
 ### [Get-ZNSettingsDay2Automation](Get-ZNSettingsDay2Automation.md)
 Get day 2 settings automation
@@ -1071,9 +1125,6 @@ Get the linux setup settings in Asset Management
 ### [Get-ZNSettingsLinuxUser](Get-ZNSettingsLinuxUser.md)
 Get the linux user settings in Asset Management
 
-### [Get-ZNSettingsMaintenanceWindow](Get-ZNSettingsMaintenanceWindow.md)
-Returns the maintenance window properties
-
 ### [Get-ZNSettingsMfaAuthentication](Get-ZNSettingsMfaAuthentication.md)
 Returns the properties of MFA authentication settings.
 
@@ -1115,6 +1166,15 @@ Get SIEM Sync Status Configuration
 
 ### [Get-ZNSettingsTrustedInternetAddress](Get-ZNSettingsTrustedInternetAddress.md)
 Get Trusted Internet addresses settings in System
+
+### [Get-ZNSettingsVersionMaintenanceWindow](Get-ZNSettingsVersionMaintenanceWindow.md)
+Get all version maintenance windows
+
+### [Get-ZNSettingsWebhook](Get-ZNSettingsWebhook.md)
+List Webhooks settings
+
+### [Get-ZNSettingsWebhooksSenderIP](Get-ZNSettingsWebhooksSenderIP.md)
+Get Sender IP Configuration
 
 ### [Get-ZNSettingsZpa](Get-ZNSettingsZpa.md)
 Get ZTNA proxy settings in Integrations
@@ -1429,6 +1489,12 @@ Returns the assetId of the created Linux asset.
 ### [New-ZNAssetsOt](New-ZNAssetsOt.md)
 Returns an empty object.
 
+### [New-ZNConnectPolicy](New-ZNConnectPolicy.md)
+Create a Connect Policy (User Access Configuration)
+
+### [New-ZNConnectPostureProfile](New-ZNConnectPostureProfile.md)
+Create a Connect Posture Profile
+
 ### [New-ZNCustomGroup](New-ZNCustomGroup.md)
 Returns an empty object.
 
@@ -1476,6 +1542,9 @@ Create an OT/IoT rule
 
 ### [New-ZNInboundRule](New-ZNInboundRule.md)
 Returns the properties of the created Inbound rule.
+
+### [New-ZNInternalAccessPolicy](New-ZNInternalAccessPolicy.md)
+Returns a the internal access policy
 
 ### [New-ZNK8SCluster](New-ZNK8SCluster.md)
 Returns a list of k8s cluster.
@@ -1525,9 +1594,6 @@ Create a Connect region in Settings
 ### [New-ZNSettingsConnectServersFreezePeriod](New-ZNSettingsConnectServersFreezePeriod.md)
 Create connect servers freeze period
 
-### [New-ZNSettingsConnectUserAccessConfig](New-ZNSettingsConnectUserAccessConfig.md)
-Create a Connect User Access Configuration in Settings
-
 ### [New-ZNSettingsDeploymentsCluster](New-ZNSettingsDeploymentsCluster.md)
 Create deployments Cluster.
 
@@ -1536,9 +1602,6 @@ Create an identity provider settings in Identity Providers
 
 ### [New-ZNSettingsIPAlias](New-ZNSettingsIPAlias.md)
 Returns an an Ip Alias.
-
-### [New-ZNSettingsMaintenanceWindow](New-ZNSettingsMaintenanceWindow.md)
-Returns the maintenance window properties
 
 ### [New-ZNSettingsMfaCache](New-ZNSettingsMfaCache.md)
 Create a MFA Cache Policy.
@@ -1551,6 +1614,15 @@ Create segment server freeze period
 
 ### [New-ZNSettingsSiem](New-ZNSettingsSiem.md)
 Create SIEM Configuration
+
+### [New-ZNSettingsVersionMaintenanceWindow](New-ZNSettingsVersionMaintenanceWindow.md)
+Create a in-memory object for VersionMaintenanceWindow
+
+### [New-ZNSettingsWebhook](New-ZNSettingsWebhook.md)
+Create Webhooks settings
+
+### [New-ZNSettingsWebhooksTrigger](New-ZNSettingsWebhooksTrigger.md)
+Create a in-memory object for webhooks trigger
 
 ### [New-ZNSwitch](New-ZNSwitch.md)
 Create a switch
@@ -1618,6 +1690,9 @@ Deletes an Asset rule
 ### [Remove-ZNAssetInboundRule](Remove-ZNAssetInboundRule.md)
 Returns an empty object.
 
+### [Remove-ZNAssetLabel](Remove-ZNAssetLabel.md)
+Remove one or more labels from an asset
+
 ### [Remove-ZNAssetManager](Remove-ZNAssetManager.md)
 Remove an asset manager of asset
 
@@ -1636,6 +1711,9 @@ Remove an asset manager of asset
 ### [Remove-ZNAssetOtInboundOtrule](Remove-ZNAssetOtInboundOtrule.md)
 Deletes an OT/IoT rule
 
+### [Remove-ZNAssetOtLabel](Remove-ZNAssetOtLabel.md)
+Remove one or more labels from an asset
+
 ### [Remove-ZNAssetOtOutboundOtrule](Remove-ZNAssetOtOutboundOtrule.md)
 Deletes an OT/IoT rule
 
@@ -1650,6 +1728,12 @@ Returns an empty object.
 
 ### [Remove-ZNAssetRpcRule](Remove-ZNAssetRpcRule.md)
 Returns an empty object.
+
+### [Remove-ZNConnectPolicy](Remove-ZNConnectPolicy.md)
+Delete a Connect Policy (User Access Configuration)
+
+### [Remove-ZNConnectPostureProfile](Remove-ZNConnectPostureProfile.md)
+Delete a Connect Posture Profile
 
 ### [Remove-ZNCustomGroup](Remove-ZNCustomGroup.md)
 Returns an empty object.
@@ -1711,6 +1795,9 @@ Deletes an OT/IoT rule
 ### [Remove-ZNInboundRule](Remove-ZNInboundRule.md)
 Returns an empty object.
 
+### [Remove-ZNInternalAccessPolicy](Remove-ZNInternalAccessPolicy.md)
+Returns an empty object.
+
 ### [Remove-ZNK8SCluster](Remove-ZNK8SCluster.md)
 Returns an empty object.
 
@@ -1768,9 +1855,6 @@ Delete Connect Server in Settings
 ### [Remove-ZNSettingsConnectServersFreezePeriod](Remove-ZNSettingsConnectServersFreezePeriod.md)
 Delete connect server freeze period
 
-### [Remove-ZNSettingsConnectUserAccessConfig](Remove-ZNSettingsConnectUserAccessConfig.md)
-Delete a Connect User Access Configuration in Settings
-
 ### [Remove-ZNSettingsDeploymentsCluster](Remove-ZNSettingsDeploymentsCluster.md)
 Delete deployments Cluster.
 
@@ -1782,9 +1866,6 @@ Delete an IP Alias.
 
 ### [Remove-ZNSettingsJamfCredentials](Remove-ZNSettingsJamfCredentials.md)
 Returns an empty object.
-
-### [Remove-ZNSettingsMaintenanceWindow](Remove-ZNSettingsMaintenanceWindow.md)
-Returns an empty object
 
 ### [Remove-ZNSettingsMfaCache](Remove-ZNSettingsMfaCache.md)
 Deletes a MFA Cache Policy.
@@ -1800,6 +1881,9 @@ Delete segment server freeze period
 
 ### [Remove-ZNSettingsSiem](Remove-ZNSettingsSiem.md)
 Returns an empty object.
+
+### [Remove-ZNSettingsWebhook](Remove-ZNSettingsWebhook.md)
+Delete Webhooks settings
 
 ### [Remove-ZNSwitch](Remove-ZNSwitch.md)
 Delete a switch
@@ -1873,6 +1957,9 @@ Returns a number of ot assets that are valid for network segmentation.
 ### [Test-ZNSettingsPamCyberarkConnection](Test-ZNSettingsPamCyberarkConnection.md)
 Test CyberArk connection
 
+### [Test-ZNSettingsWebhook](Test-ZNSettingsWebhook.md)
+Test Webhooks settings
+
 ### [Unprotect-ZNAssetIdentitySegment](Unprotect-ZNAssetIdentitySegment.md)
 Returns an empty object.
 
@@ -1899,6 +1986,9 @@ Update the display name and FQDN for an asset
 
 ### [Update-ZNAssetActive](Update-ZNAssetActive.md)
 Returns and empty object.
+
+### [Update-ZNAssetDeploymentsCluster](Update-ZNAssetDeploymentsCluster.md)
+Pin deployments cluster
 
 ### [Update-ZNAssetExternalAccessPolicy](Update-ZNAssetExternalAccessPolicy.md)
 Updates an external access policy.
@@ -1960,14 +2050,17 @@ Updates an outbound  rule.
 ### [Update-ZNAssetRpcRule](Update-ZNAssetRpcRule.md)
 Updates an RPC rule.
 
-### [Update-ZNAssetsDeploymentsCluster](Update-ZNAssetsDeploymentsCluster.md)
-Pin deployments cluster
-
 ### [Update-ZNAssetsPreferredSegmentServer](Update-ZNAssetsPreferredSegmentServer.md)
 Returns and empty object.
 
 ### [Update-ZNAssetType](Update-ZNAssetType.md)
 Set the asset type (Client/server)
+
+### [Update-ZNConnectPolicy](Update-ZNConnectPolicy.md)
+Updates a Connect policy.
+
+### [Update-ZNConnectPostureProfile](Update-ZNConnectPostureProfile.md)
+Updates a Connect posture profile.
 
 ### [Update-ZNCustomGroup](Update-ZNCustomGroup.md)
 Updates a custom group properties.
@@ -2017,6 +2110,9 @@ Returns the updated settings for the identity onboarding policy.
 ### [Update-ZNIdentityOverridingOnboardingPolicy](Update-ZNIdentityOverridingOnboardingPolicy.md)
 Returns an empty object.
 
+### [Update-ZNIdentityPostureUsersViolation](Update-ZNIdentityPostureUsersViolation.md)
+Update users violation status for a specific posture check type.
+
 ### [Update-ZNIdentityRule](Update-ZNIdentityRule.md)
 Updates an identity rule.
 
@@ -2025,6 +2121,9 @@ Updates an inbound OT rule.
 
 ### [Update-ZNInboundRule](Update-ZNInboundRule.md)
 Updates an inbound  rule.
+
+### [Update-ZNInternalAccessPolicy](Update-ZNInternalAccessPolicy.md)
+Updates an internal access policy.
 
 ### [Update-ZNK8SCluster](Update-ZNK8SCluster.md)
 Returns a k8s cluster.
@@ -2095,14 +2194,11 @@ Update break glass switches settings
 ### [Update-ZNSettingsClaroty](Update-ZNSettingsClaroty.md)
 Update Claroty Settings
 
-### [Update-ZNSettingsClientsTrustedInternet](Update-ZNSettingsClientsTrustedInternet.md)
-Set Clients Trusted Internet settings in System
+### [Update-ZNSettingsClientsInternetAccess](Update-ZNSettingsClientsInternetAccess.md)
+Set Clients Internet access settings in System
 
 ### [Update-ZNSettingsClientSubnet](Update-ZNSettingsClientSubnet.md)
 Update the Client Subnets settings in System
-
-### [Update-ZNSettingsClientsUntrustedInternet](Update-ZNSettingsClientsUntrustedInternet.md)
-Set Clients Untrusted Internet settings in System
 
 ### [Update-ZNSettingsCloudConnectorFreezePeriod](Update-ZNSettingsCloudConnectorFreezePeriod.md)
 Update cloud connector freeze period
@@ -2121,9 +2217,6 @@ Update Connect Server in Settings
 
 ### [Update-ZNSettingsConnectServersFreezePeriod](Update-ZNSettingsConnectServersFreezePeriod.md)
 Update connect servers freeze period
-
-### [Update-ZNSettingsConnectUserAccessConfig](Update-ZNSettingsConnectUserAccessConfig.md)
-Update a Connect User Access Configuration in Settings
 
 ### [Update-ZNSettingsDay2Automation](Update-ZNSettingsDay2Automation.md)
 Set day 2 settings automation
@@ -2176,9 +2269,6 @@ Update the linux setup settings in Asset Management
 ### [Update-ZNSettingsLinuxUser](Update-ZNSettingsLinuxUser.md)
 Update the linux user settings in Asset Management
 
-### [Update-ZNSettingsMaintenanceWindow](Update-ZNSettingsMaintenanceWindow.md)
-Returns the maintenance window properties
-
 ### [Update-ZNSettingsMfaAuthentication](Update-ZNSettingsMfaAuthentication.md)
 Returns an empty object.
 
@@ -2194,17 +2284,23 @@ Set Privileged Ports settings in Network segmentation
 ### [Update-ZNSettingsSegmentServersFreezePeriod](Update-ZNSettingsSegmentServersFreezePeriod.md)
 Update segment server freeze period
 
-### [Update-ZNSettingsServersTrustedInternet](Update-ZNSettingsServersTrustedInternet.md)
-Set Servers Trusted Internet settings in System
-
-### [Update-ZNSettingsServersUntrustedInternet](Update-ZNSettingsServersUntrustedInternet.md)
-Set Servers Untrusted Internet settings in System
+### [Update-ZNSettingsServersInternetAccess](Update-ZNSettingsServersInternetAccess.md)
+Set Servers Internet access settings in System
 
 ### [Update-ZNSettingsSiem](Update-ZNSettingsSiem.md)
 Update SIEM Configuration
 
 ### [Update-ZNSettingsTrustedInternetAddress](Update-ZNSettingsTrustedInternetAddress.md)
 Set Trusted Internet addresses settings in System
+
+### [Update-ZNSettingsVersionMaintenanceWindow](Update-ZNSettingsVersionMaintenanceWindow.md)
+Modify version maintenance window
+
+### [Update-ZNSettingsWebhook](Update-ZNSettingsWebhook.md)
+Update Webhooks settings
+
+### [Update-ZNSettingsWebhooksTrigger](Update-ZNSettingsWebhooksTrigger.md)
+Update Webhooks triggers settings
 
 ### [Update-ZNSettingsZpa](Update-ZNSettingsZpa.md)
 Set ZTNA proxy settings in Integrations

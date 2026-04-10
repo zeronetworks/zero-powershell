@@ -13,7 +13,8 @@ List Connect Regions in Settings
 ## SYNTAX
 
 ```
-Get-ZNSettingsConnectRegion [-AccountName <String>] [-Limit <Int32>] [-Offset <Int32>] [<CommonParameters>]
+Get-ZNSettingsConnectRegion [-AccountName <String>] [-Limit <Int32>] [-Offset <Int32>] [-WithCount]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,6 +79,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WithCount
+return count of objects
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: $true
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
